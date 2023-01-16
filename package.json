@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "BZE JS lib ",
   "author": "Stefan Victor <faneatiku@yahoo.com>",
-  "homepage": "https://github.com/faneaatiku/bzejs#readme",
+  "homepage": "https://github.com/bze-alphateam/bzejs",
   "license": "SEE LICENSE IN LICENSE",
   "main": "main/index.js",
   "module": "module/index.js",
@@ -38,11 +38,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/faneaatiku/bzejs"
+    "url": "https://github.com/bze-alphateam/bzejs"
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/faneaatiku/bzejs/issues"
+    "url": "https://github.com/bze-alphateam/bzejs/issues"
   },
   "devDependencies": {
     "@babel/cli": "7.19.3",
