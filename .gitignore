@@ -50,5 +50,3 @@ yarn.lock
 # others
 .DS_Store
 .vscode
-src/codegen
-src/codegen/*.ts
