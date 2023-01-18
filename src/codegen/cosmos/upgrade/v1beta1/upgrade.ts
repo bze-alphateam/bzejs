@@ -1,7 +1,7 @@
-import { Timestamp } from "../../../google/protobuf/timestamp";
+import { Timestamp, TimestampSDKType } from "../../../google/protobuf/timestamp";
 import { Any, AnySDKType } from "../../../google/protobuf/any";
-import { Long, toTimestamp, fromTimestamp, DeepPartial } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
+import { Long, isSet, fromJsonTimestamp, fromTimestamp } from "../../../helpers";
 /** Plan specifies information about a planned upgrade and when it should occur. */
 
 export interface Plan {
@@ -23,7 +23,7 @@ export interface Plan {
 
   /** @deprecated */
 
-  time?: Date;
+  time?: Timestamp;
   /**
    * The height at which the upgrade must be performed.
    * Only used if Time is not set.
@@ -49,12 +49,43 @@ export interface Plan {
 /** Plan specifies information about a planned upgrade and when it should occur. */
 
 export interface PlanSDKType {
+  /**
+   * Sets the name for the upgrade. This name will be used by the upgraded
+   * version of the software to apply any special "on-upgrade" commands during
+   * the first BeginBlock method after the upgrade is applied. It is also used
+   * to detect whether a software version can handle a given upgrade. If no
+   * upgrade handler with this name has been set in the software, it will be
+   * assumed that the software is out-of-date when the upgrade Time or Height is
+   * reached and the software will exit.
+   */
   name: string;
+  /**
+   * Deprecated: Time based upgrades have been deprecated. Time based upgrade logic
+   * has been removed from the SDK.
+   * If this field is not empty, an error will be thrown.
+   */
+
   /** @deprecated */
 
-  time?: Date;
+  time?: TimestampSDKType;
+  /**
+   * The height at which the upgrade must be performed.
+   * Only used if Time is not set.
+   */
+
   height: Long;
+  /**
+   * Any application specific upgrade info to be included on-chain
+   * such as a git commit that validators could automatically upgrade to
+   */
+
   info: string;
+  /**
+   * Deprecated: UpgradedClientState field has been deprecated. IBC upgrade logic has been
+   * moved to the IBC module in the sub module 02-client.
+   * If this field is not empty, an error will be thrown.
+   */
+
   /** @deprecated */
 
   upgraded_client_state?: AnySDKType;
@@ -133,7 +164,10 @@ export interface ModuleVersion {
  */
 
 export interface ModuleVersionSDKType {
+  /** name of the app module */
   name: string;
+  /** consensus version of the app module */
+
   version: Long;
 }
 
@@ -154,7 +188,7 @@ export const Plan = {
     }
 
     if (message.time !== undefined) {
-      Timestamp.encode(toTimestamp(message.time), writer.uint32(18).fork()).ldelim();
+      Timestamp.encode(message.time, writer.uint32(18).fork()).ldelim();
     }
 
     if (!message.height.isZero()) {
@@ -186,7 +220,7 @@ export const Plan = {
           break;
 
         case 2:
-          message.time = fromTimestamp(Timestamp.decode(reader, reader.uint32()));
+          message.time = Timestamp.decode(reader, reader.uint32());
           break;
 
         case 3:
@@ -210,10 +244,30 @@ export const Plan = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Plan>): Plan {
+  fromJSON(object: any): Plan {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      time: isSet(object.time) ? fromJsonTimestamp(object.time) : undefined,
+      height: isSet(object.height) ? Long.fromValue(object.height) : Long.ZERO,
+      info: isSet(object.info) ? String(object.info) : "",
+      upgradedClientState: isSet(object.upgradedClientState) ? Any.fromJSON(object.upgradedClientState) : undefined
+    };
+  },
+
+  toJSON(message: Plan): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.time !== undefined && (obj.time = fromTimestamp(message.time).toISOString());
+    message.height !== undefined && (obj.height = (message.height || Long.ZERO).toString());
+    message.info !== undefined && (obj.info = message.info);
+    message.upgradedClientState !== undefined && (obj.upgradedClientState = message.upgradedClientState ? Any.toJSON(message.upgradedClientState) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<Plan>): Plan {
     const message = createBasePlan();
     message.name = object.name ?? "";
-    message.time = object.time ?? undefined;
+    message.time = object.time !== undefined && object.time !== null ? Timestamp.fromPartial(object.time) : undefined;
     message.height = object.height !== undefined && object.height !== null ? Long.fromValue(object.height) : Long.ZERO;
     message.info = object.info ?? "";
     message.upgradedClientState = object.upgradedClientState !== undefined && object.upgradedClientState !== null ? Any.fromPartial(object.upgradedClientState) : undefined;
@@ -277,7 +331,23 @@ export const SoftwareUpgradeProposal = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<SoftwareUpgradeProposal>): SoftwareUpgradeProposal {
+  fromJSON(object: any): SoftwareUpgradeProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      plan: isSet(object.plan) ? Plan.fromJSON(object.plan) : undefined
+    };
+  },
+
+  toJSON(message: SoftwareUpgradeProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    message.plan !== undefined && (obj.plan = message.plan ? Plan.toJSON(message.plan) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<SoftwareUpgradeProposal>): SoftwareUpgradeProposal {
     const message = createBaseSoftwareUpgradeProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
@@ -333,7 +403,21 @@ export const CancelSoftwareUpgradeProposal = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<CancelSoftwareUpgradeProposal>): CancelSoftwareUpgradeProposal {
+  fromJSON(object: any): CancelSoftwareUpgradeProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : ""
+    };
+  },
+
+  toJSON(message: CancelSoftwareUpgradeProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    return obj;
+  },
+
+  fromPartial(object: Partial<CancelSoftwareUpgradeProposal>): CancelSoftwareUpgradeProposal {
     const message = createBaseCancelSoftwareUpgradeProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";
@@ -388,7 +472,21 @@ export const ModuleVersion = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ModuleVersion>): ModuleVersion {
+  fromJSON(object: any): ModuleVersion {
+    return {
+      name: isSet(object.name) ? String(object.name) : "",
+      version: isSet(object.version) ? Long.fromValue(object.version) : Long.UZERO
+    };
+  },
+
+  toJSON(message: ModuleVersion): unknown {
+    const obj: any = {};
+    message.name !== undefined && (obj.name = message.name);
+    message.version !== undefined && (obj.version = (message.version || Long.UZERO).toString());
+    return obj;
+  },
+
+  fromPartial(object: Partial<ModuleVersion>): ModuleVersion {
     const message = createBaseModuleVersion();
     message.name = object.name ?? "";
     message.version = object.version !== undefined && object.version !== null ? Long.fromValue(object.version) : Long.UZERO;

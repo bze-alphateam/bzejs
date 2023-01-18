@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../helpers";
+import { isSet } from "../../helpers";
 export interface CoinsBurnedEvent {
   burned: string;
 }
@@ -52,7 +52,19 @@ export const CoinsBurnedEvent = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<CoinsBurnedEvent>): CoinsBurnedEvent {
+  fromJSON(object: any): CoinsBurnedEvent {
+    return {
+      burned: isSet(object.burned) ? String(object.burned) : ""
+    };
+  },
+
+  toJSON(message: CoinsBurnedEvent): unknown {
+    const obj: any = {};
+    message.burned !== undefined && (obj.burned = message.burned);
+    return obj;
+  },
+
+  fromPartial(object: Partial<CoinsBurnedEvent>): CoinsBurnedEvent {
     const message = createBaseCoinsBurnedEvent();
     message.burned = object.burned ?? "";
     return message;
@@ -106,7 +118,21 @@ export const FundBurnerEvent = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<FundBurnerEvent>): FundBurnerEvent {
+  fromJSON(object: any): FundBurnerEvent {
+    return {
+      from: isSet(object.from) ? String(object.from) : "",
+      amount: isSet(object.amount) ? String(object.amount) : ""
+    };
+  },
+
+  toJSON(message: FundBurnerEvent): unknown {
+    const obj: any = {};
+    message.from !== undefined && (obj.from = message.from);
+    message.amount !== undefined && (obj.amount = message.amount);
+    return obj;
+  },
+
+  fromPartial(object: Partial<FundBurnerEvent>): FundBurnerEvent {
     const message = createBaseFundBurnerEvent();
     message.from = object.from ?? "";
     message.amount = object.amount ?? "";

@@ -1,5 +1,5 @@
-import { Long, DeepPartial } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
+import { Long, isSet, bytesFromBase64, base64FromBytes } from "../../../../helpers";
 /**
  * PageRequest is to be embedded in gRPC request messages for efficient
  * pagination. Ex:
@@ -57,10 +57,39 @@ export interface PageRequest {
  */
 
 export interface PageRequestSDKType {
+  /**
+   * key is a value returned in PageResponse.next_key to begin
+   * querying the next page most efficiently. Only one of offset or key
+   * should be set.
+   */
   key: Uint8Array;
+  /**
+   * offset is a numeric offset that can be used when key is unavailable.
+   * It is less efficient than using key. Only one of offset or key should
+   * be set.
+   */
+
   offset: Long;
+  /**
+   * limit is the total number of results to be returned in the result page.
+   * If left empty it will default to a value to be set by each app.
+   */
+
   limit: Long;
+  /**
+   * count_total is set to true  to indicate that the result set should include
+   * a count of the total number of items available for pagination in UIs.
+   * count_total is only respected when offset is used. It is ignored when key
+   * is set.
+   */
+
   count_total: boolean;
+  /**
+   * reverse is set to true if results are to be returned in the descending order.
+   * 
+   * Since: cosmos-sdk 0.43
+   */
+
   reverse: boolean;
 }
 /**
@@ -98,7 +127,17 @@ export interface PageResponse {
  */
 
 export interface PageResponseSDKType {
+  /**
+   * next_key is the key to be passed to PageRequest.key to
+   * query the next page most efficiently. It will be empty if
+   * there are no more results.
+   */
   next_key: Uint8Array;
+  /**
+   * total is total number of results available if PageRequest.count_total
+   * was set, its value is undefined otherwise
+   */
+
   total: Long;
 }
 
@@ -175,7 +214,27 @@ export const PageRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PageRequest>): PageRequest {
+  fromJSON(object: any): PageRequest {
+    return {
+      key: isSet(object.key) ? bytesFromBase64(object.key) : new Uint8Array(),
+      offset: isSet(object.offset) ? Long.fromValue(object.offset) : Long.UZERO,
+      limit: isSet(object.limit) ? Long.fromValue(object.limit) : Long.UZERO,
+      countTotal: isSet(object.countTotal) ? Boolean(object.countTotal) : false,
+      reverse: isSet(object.reverse) ? Boolean(object.reverse) : false
+    };
+  },
+
+  toJSON(message: PageRequest): unknown {
+    const obj: any = {};
+    message.key !== undefined && (obj.key = base64FromBytes(message.key !== undefined ? message.key : new Uint8Array()));
+    message.offset !== undefined && (obj.offset = (message.offset || Long.UZERO).toString());
+    message.limit !== undefined && (obj.limit = (message.limit || Long.UZERO).toString());
+    message.countTotal !== undefined && (obj.countTotal = message.countTotal);
+    message.reverse !== undefined && (obj.reverse = message.reverse);
+    return obj;
+  },
+
+  fromPartial(object: Partial<PageRequest>): PageRequest {
     const message = createBasePageRequest();
     message.key = object.key ?? new Uint8Array();
     message.offset = object.offset !== undefined && object.offset !== null ? Long.fromValue(object.offset) : Long.UZERO;
@@ -233,7 +292,21 @@ export const PageResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PageResponse>): PageResponse {
+  fromJSON(object: any): PageResponse {
+    return {
+      nextKey: isSet(object.nextKey) ? bytesFromBase64(object.nextKey) : new Uint8Array(),
+      total: isSet(object.total) ? Long.fromValue(object.total) : Long.UZERO
+    };
+  },
+
+  toJSON(message: PageResponse): unknown {
+    const obj: any = {};
+    message.nextKey !== undefined && (obj.nextKey = base64FromBytes(message.nextKey !== undefined ? message.nextKey : new Uint8Array()));
+    message.total !== undefined && (obj.total = (message.total || Long.UZERO).toString());
+    return obj;
+  },
+
+  fromPartial(object: Partial<PageResponse>): PageResponse {
     const message = createBasePageResponse();
     message.nextKey = object.nextKey ?? new Uint8Array();
     message.total = object.total !== undefined && object.total !== null ? Long.fromValue(object.total) : Long.UZERO;

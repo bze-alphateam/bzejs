@@ -1,6 +1,6 @@
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial, Long } from "../../helpers";
+import { isSet, Long } from "../../helpers";
 /** Params defines the parameters for the module. */
 
 export interface PublisherRespectParams {
@@ -70,7 +70,21 @@ export const PublisherRespectParams = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<PublisherRespectParams>): PublisherRespectParams {
+  fromJSON(object: any): PublisherRespectParams {
+    return {
+      tax: isSet(object.tax) ? String(object.tax) : "",
+      denom: isSet(object.denom) ? String(object.denom) : ""
+    };
+  },
+
+  toJSON(message: PublisherRespectParams): unknown {
+    const obj: any = {};
+    message.tax !== undefined && (obj.tax = message.tax);
+    message.denom !== undefined && (obj.denom = message.denom);
+    return obj;
+  },
+
+  fromPartial(object: Partial<PublisherRespectParams>): PublisherRespectParams {
     const message = createBasePublisherRespectParams();
     message.tax = object.tax ?? "";
     message.denom = object.denom ?? "";
@@ -134,7 +148,23 @@ export const Params = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<Params>): Params {
+  fromJSON(object: any): Params {
+    return {
+      anonArticleLimit: isSet(object.anonArticleLimit) ? Long.fromValue(object.anonArticleLimit) : Long.UZERO,
+      anonArticleCost: isSet(object.anonArticleCost) ? Coin.fromJSON(object.anonArticleCost) : undefined,
+      publisherRespectParams: isSet(object.publisherRespectParams) ? PublisherRespectParams.fromJSON(object.publisherRespectParams) : undefined
+    };
+  },
+
+  toJSON(message: Params): unknown {
+    const obj: any = {};
+    message.anonArticleLimit !== undefined && (obj.anonArticleLimit = (message.anonArticleLimit || Long.UZERO).toString());
+    message.anonArticleCost !== undefined && (obj.anonArticleCost = message.anonArticleCost ? Coin.toJSON(message.anonArticleCost) : undefined);
+    message.publisherRespectParams !== undefined && (obj.publisherRespectParams = message.publisherRespectParams ? PublisherRespectParams.toJSON(message.publisherRespectParams) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
     message.anonArticleLimit = object.anonArticleLimit !== undefined && object.anonArticleLimit !== null ? Long.fromValue(object.anonArticleLimit) : Long.UZERO;
     message.anonArticleCost = object.anonArticleCost !== undefined && object.anonArticleCost !== null ? Coin.fromPartial(object.anonArticleCost) : undefined;

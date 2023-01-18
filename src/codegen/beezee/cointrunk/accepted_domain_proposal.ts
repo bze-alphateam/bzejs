@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../helpers";
+import { isSet } from "../../helpers";
 export interface AcceptedDomainProposal {
   title: string;
   description: string;
@@ -77,7 +77,25 @@ export const AcceptedDomainProposal = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<AcceptedDomainProposal>): AcceptedDomainProposal {
+  fromJSON(object: any): AcceptedDomainProposal {
+    return {
+      title: isSet(object.title) ? String(object.title) : "",
+      description: isSet(object.description) ? String(object.description) : "",
+      domain: isSet(object.domain) ? String(object.domain) : "",
+      active: isSet(object.active) ? Boolean(object.active) : false
+    };
+  },
+
+  toJSON(message: AcceptedDomainProposal): unknown {
+    const obj: any = {};
+    message.title !== undefined && (obj.title = message.title);
+    message.description !== undefined && (obj.description = message.description);
+    message.domain !== undefined && (obj.domain = message.domain);
+    message.active !== undefined && (obj.active = message.active);
+    return obj;
+  },
+
+  fromPartial(object: Partial<AcceptedDomainProposal>): AcceptedDomainProposal {
     const message = createBaseAcceptedDomainProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";

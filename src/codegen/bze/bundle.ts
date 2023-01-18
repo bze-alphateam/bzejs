@@ -16,19 +16,15 @@ import * as _14 from "../beezee/cointrunk/publisher_proposal";
 import * as _15 from "../beezee/cointrunk/publisher";
 import * as _16 from "../beezee/cointrunk/query";
 import * as _17 from "../beezee/cointrunk/tx";
-import * as _130 from "../beezee/burner/tx.amino";
-import * as _131 from "../beezee/cointrunk/tx.amino";
-import * as _132 from "../beezee/burner/tx.registry";
-import * as _133 from "../beezee/cointrunk/tx.registry";
-import * as _134 from "../beezee/burner/query.lcd";
-import * as _135 from "../beezee/cointrunk/query.lcd";
-import * as _136 from "../beezee/burner/query.rpc.Query";
-import * as _137 from "../beezee/cointrunk/query.rpc.Query";
-import * as _138 from "../beezee/burner/tx.rpc.msg";
-import * as _139 from "../beezee/cointrunk/tx.rpc.msg";
-import * as _217 from "./lcd";
-import * as _218 from "./rpc.query";
-import * as _219 from "./rpc.tx";
+import * as _130 from "../beezee/burner/query.lcd";
+import * as _131 from "../beezee/cointrunk/query.lcd";
+import * as _132 from "../beezee/burner/query.rpc.Query";
+import * as _133 from "../beezee/cointrunk/query.rpc.Query";
+import * as _134 from "../beezee/burner/tx.rpc.msg";
+import * as _135 from "../beezee/cointrunk/tx.rpc.msg";
+import * as _185 from "./lcd";
+import * as _186 from "./rpc.query";
+import * as _187 from "./rpc.tx";
 export namespace bze {
   export namespace burner {
     export const v1 = { ..._0,
@@ -40,9 +36,7 @@ export namespace bze {
       ..._6,
       ..._130,
       ..._132,
-      ..._134,
-      ..._136,
-      ..._138
+      ..._134
     };
   }
   export namespace cointrunk {
@@ -59,13 +53,11 @@ export namespace bze {
       ..._17,
       ..._131,
       ..._133,
-      ..._135,
-      ..._137,
-      ..._139
+      ..._135
     };
   }
-  export const ClientFactory = { ..._217,
-    ..._218,
-    ..._219
+  export const ClientFactory = { ..._185,
+    ..._186,
+    ..._187
   };
 }

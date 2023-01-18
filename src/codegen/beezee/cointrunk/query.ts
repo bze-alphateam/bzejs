@@ -5,7 +5,7 @@ import { Publisher, PublisherSDKType } from "./publisher";
 import { Article, ArticleSDKType } from "./article";
 import { AnonArticlesCounter, AnonArticlesCounterSDKType } from "./anon_articles_counter";
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../helpers";
+import { isSet } from "../../helpers";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 
 export interface QueryParamsRequest {}
@@ -21,6 +21,7 @@ export interface QueryParamsResponse {
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
 
 export interface QueryParamsResponseSDKType {
+  /** params holds all the parameters of this module. */
   params?: ParamsSDKType;
 }
 export interface QueryAcceptedDomainRequest {
@@ -119,7 +120,16 @@ export const QueryParamsRequest = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest {
+  fromJSON(_: any): QueryParamsRequest {
+    return {};
+  },
+
+  toJSON(_: QueryParamsRequest): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest {
     const message = createBaseQueryParamsRequest();
     return message;
   }
@@ -163,7 +173,19 @@ export const QueryParamsResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse {
+  fromJSON(object: any): QueryParamsResponse {
+    return {
+      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined
+    };
+  },
+
+  toJSON(message: QueryParamsResponse): unknown {
+    const obj: any = {};
+    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse {
     const message = createBaseQueryParamsResponse();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     return message;
@@ -208,7 +230,19 @@ export const QueryAcceptedDomainRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryAcceptedDomainRequest>): QueryAcceptedDomainRequest {
+  fromJSON(object: any): QueryAcceptedDomainRequest {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
+
+  toJSON(message: QueryAcceptedDomainRequest): unknown {
+    const obj: any = {};
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<QueryAcceptedDomainRequest>): QueryAcceptedDomainRequest {
     const message = createBaseQueryAcceptedDomainRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
@@ -262,7 +296,27 @@ export const QueryAcceptedDomainResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryAcceptedDomainResponse>): QueryAcceptedDomainResponse {
+  fromJSON(object: any): QueryAcceptedDomainResponse {
+    return {
+      acceptedDomain: Array.isArray(object?.acceptedDomain) ? object.acceptedDomain.map((e: any) => AcceptedDomain.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
+
+  toJSON(message: QueryAcceptedDomainResponse): unknown {
+    const obj: any = {};
+
+    if (message.acceptedDomain) {
+      obj.acceptedDomain = message.acceptedDomain.map(e => e ? AcceptedDomain.toJSON(e) : undefined);
+    } else {
+      obj.acceptedDomain = [];
+    }
+
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<QueryAcceptedDomainResponse>): QueryAcceptedDomainResponse {
     const message = createBaseQueryAcceptedDomainResponse();
     message.acceptedDomain = object.acceptedDomain?.map(e => AcceptedDomain.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -308,7 +362,19 @@ export const QueryPublisherRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryPublisherRequest>): QueryPublisherRequest {
+  fromJSON(object: any): QueryPublisherRequest {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
+
+  toJSON(message: QueryPublisherRequest): unknown {
+    const obj: any = {};
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<QueryPublisherRequest>): QueryPublisherRequest {
     const message = createBaseQueryPublisherRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
@@ -362,7 +428,27 @@ export const QueryPublisherResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryPublisherResponse>): QueryPublisherResponse {
+  fromJSON(object: any): QueryPublisherResponse {
+    return {
+      publisher: Array.isArray(object?.publisher) ? object.publisher.map((e: any) => Publisher.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
+
+  toJSON(message: QueryPublisherResponse): unknown {
+    const obj: any = {};
+
+    if (message.publisher) {
+      obj.publisher = message.publisher.map(e => e ? Publisher.toJSON(e) : undefined);
+    } else {
+      obj.publisher = [];
+    }
+
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<QueryPublisherResponse>): QueryPublisherResponse {
     const message = createBaseQueryPublisherResponse();
     message.publisher = object.publisher?.map(e => Publisher.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -408,7 +494,19 @@ export const QueryPublisherByIndexRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryPublisherByIndexRequest>): QueryPublisherByIndexRequest {
+  fromJSON(object: any): QueryPublisherByIndexRequest {
+    return {
+      index: isSet(object.index) ? String(object.index) : ""
+    };
+  },
+
+  toJSON(message: QueryPublisherByIndexRequest): unknown {
+    const obj: any = {};
+    message.index !== undefined && (obj.index = message.index);
+    return obj;
+  },
+
+  fromPartial(object: Partial<QueryPublisherByIndexRequest>): QueryPublisherByIndexRequest {
     const message = createBaseQueryPublisherByIndexRequest();
     message.index = object.index ?? "";
     return message;
@@ -453,7 +551,19 @@ export const QueryPublisherByIndexResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryPublisherByIndexResponse>): QueryPublisherByIndexResponse {
+  fromJSON(object: any): QueryPublisherByIndexResponse {
+    return {
+      publisher: isSet(object.publisher) ? Publisher.fromJSON(object.publisher) : undefined
+    };
+  },
+
+  toJSON(message: QueryPublisherByIndexResponse): unknown {
+    const obj: any = {};
+    message.publisher !== undefined && (obj.publisher = message.publisher ? Publisher.toJSON(message.publisher) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<QueryPublisherByIndexResponse>): QueryPublisherByIndexResponse {
     const message = createBaseQueryPublisherByIndexResponse();
     message.publisher = object.publisher !== undefined && object.publisher !== null ? Publisher.fromPartial(object.publisher) : undefined;
     return message;
@@ -498,7 +608,19 @@ export const QueryAllArticlesRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryAllArticlesRequest>): QueryAllArticlesRequest {
+  fromJSON(object: any): QueryAllArticlesRequest {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
+
+  toJSON(message: QueryAllArticlesRequest): unknown {
+    const obj: any = {};
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<QueryAllArticlesRequest>): QueryAllArticlesRequest {
     const message = createBaseQueryAllArticlesRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
@@ -552,7 +674,27 @@ export const QueryAllArticlesResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryAllArticlesResponse>): QueryAllArticlesResponse {
+  fromJSON(object: any): QueryAllArticlesResponse {
+    return {
+      article: Array.isArray(object?.article) ? object.article.map((e: any) => Article.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
+
+  toJSON(message: QueryAllArticlesResponse): unknown {
+    const obj: any = {};
+
+    if (message.article) {
+      obj.article = message.article.map(e => e ? Article.toJSON(e) : undefined);
+    } else {
+      obj.article = [];
+    }
+
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<QueryAllArticlesResponse>): QueryAllArticlesResponse {
     const message = createBaseQueryAllArticlesResponse();
     message.article = object.article?.map(e => Article.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
@@ -598,7 +740,19 @@ export const QueryAllAnonArticlesCountersRequest = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryAllAnonArticlesCountersRequest>): QueryAllAnonArticlesCountersRequest {
+  fromJSON(object: any): QueryAllAnonArticlesCountersRequest {
+    return {
+      pagination: isSet(object.pagination) ? PageRequest.fromJSON(object.pagination) : undefined
+    };
+  },
+
+  toJSON(message: QueryAllAnonArticlesCountersRequest): unknown {
+    const obj: any = {};
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageRequest.toJSON(message.pagination) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<QueryAllAnonArticlesCountersRequest>): QueryAllAnonArticlesCountersRequest {
     const message = createBaseQueryAllAnonArticlesCountersRequest();
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
     return message;
@@ -652,7 +806,27 @@ export const QueryAllAnonArticlesCountersResponse = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<QueryAllAnonArticlesCountersResponse>): QueryAllAnonArticlesCountersResponse {
+  fromJSON(object: any): QueryAllAnonArticlesCountersResponse {
+    return {
+      AnonArticlesCounters: Array.isArray(object?.AnonArticlesCounters) ? object.AnonArticlesCounters.map((e: any) => AnonArticlesCounter.fromJSON(e)) : [],
+      pagination: isSet(object.pagination) ? PageResponse.fromJSON(object.pagination) : undefined
+    };
+  },
+
+  toJSON(message: QueryAllAnonArticlesCountersResponse): unknown {
+    const obj: any = {};
+
+    if (message.AnonArticlesCounters) {
+      obj.AnonArticlesCounters = message.AnonArticlesCounters.map(e => e ? AnonArticlesCounter.toJSON(e) : undefined);
+    } else {
+      obj.AnonArticlesCounters = [];
+    }
+
+    message.pagination !== undefined && (obj.pagination = message.pagination ? PageResponse.toJSON(message.pagination) : undefined);
+    return obj;
+  },
+
+  fromPartial(object: Partial<QueryAllAnonArticlesCountersResponse>): QueryAllAnonArticlesCountersResponse {
     const message = createBaseQueryAllAnonArticlesCountersResponse();
     message.AnonArticlesCounters = object.AnonArticlesCounters?.map(e => AnonArticlesCounter.fromPartial(e)) || [];
     message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;

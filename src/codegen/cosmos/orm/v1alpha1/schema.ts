@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../../helpers";
+import { isSet, bytesFromBase64, base64FromBytes } from "../../../helpers";
 /** StorageType */
 
 export enum StorageType {
@@ -48,7 +48,54 @@ export enum StorageType {
   STORAGE_TYPE_COMMITMENT = 4,
   UNRECOGNIZED = -1,
 }
-export const StorageTypeSDKType = StorageType;
+/** StorageType */
+
+export enum StorageTypeSDKType {
+  /**
+   * STORAGE_TYPE_DEFAULT_UNSPECIFIED - STORAGE_TYPE_DEFAULT_UNSPECIFIED indicates the persistent
+   * KV-storage where primary key entries are stored in merkle-tree
+   * backed commitment storage and indexes and seqs are stored in
+   * fast index storage. Note that the Cosmos SDK before store/v2alpha1
+   * does not support this.
+   */
+  STORAGE_TYPE_DEFAULT_UNSPECIFIED = 0,
+
+  /**
+   * STORAGE_TYPE_MEMORY - STORAGE_TYPE_MEMORY indicates in-memory storage that will be
+   * reloaded every time an app restarts. Tables with this type of storage
+   * will by default be ignored when importing and exporting a module's
+   * state from JSON.
+   */
+  STORAGE_TYPE_MEMORY = 1,
+
+  /**
+   * STORAGE_TYPE_TRANSIENT - STORAGE_TYPE_TRANSIENT indicates transient storage that is reset
+   * at the end of every block. Tables with this type of storage
+   * will by default be ignored when importing and exporting a module's
+   * state from JSON.
+   */
+  STORAGE_TYPE_TRANSIENT = 2,
+
+  /**
+   * STORAGE_TYPE_INDEX - STORAGE_TYPE_INDEX indicates persistent storage which is not backed
+   * by a merkle-tree and won't affect the app hash. Note that the Cosmos SDK
+   * before store/v2alpha1 does not support this.
+   */
+  STORAGE_TYPE_INDEX = 3,
+
+  /**
+   * STORAGE_TYPE_COMMITMENT - STORAGE_TYPE_INDEX indicates persistent storage which is backed by
+   * a merkle-tree. With this type of storage, both primary and index keys
+   * will affect the app hash and this is generally less efficient
+   * than using STORAGE_TYPE_DEFAULT_UNSPECIFIED which separates index
+   * keys into index storage. Note that modules built with the
+   * Cosmos SDK before store/v2alpha1 must specify STORAGE_TYPE_COMMITMENT
+   * instead of STORAGE_TYPE_DEFAULT_UNSPECIFIED or STORAGE_TYPE_INDEX
+   * because this is the only type of persistent storage available.
+   */
+  STORAGE_TYPE_COMMITMENT = 4,
+  UNRECOGNIZED = -1,
+}
 export function storageTypeFromJSON(object: any): StorageType {
   switch (object) {
     case 0:
@@ -114,6 +161,11 @@ export interface ModuleSchemaDescriptor {
 
 export interface ModuleSchemaDescriptorSDKType {
   schema_file: ModuleSchemaDescriptor_FileEntrySDKType[];
+  /**
+   * prefix is an optional prefix that precedes all keys in this module's
+   * store.
+   */
+
   prefix: Uint8Array;
 }
 /** FileEntry describes an ORM file used in a module. */
@@ -142,9 +194,25 @@ export interface ModuleSchemaDescriptor_FileEntry {
 /** FileEntry describes an ORM file used in a module. */
 
 export interface ModuleSchemaDescriptor_FileEntrySDKType {
+  /**
+   * id is a prefix that will be varint encoded and prepended to all the
+   * table keys specified in the file's tables.
+   */
   id: number;
+  /**
+   * proto_file_name is the name of a file .proto in that contains
+   * table definitions. The .proto file must be in a package that the
+   * module has referenced using cosmos.app.v1.ModuleDescriptor.use_package.
+   */
+
   proto_file_name: string;
-  storage_type: StorageType;
+  /**
+   * storage_type optionally indicates the type of storage this file's
+   * tables should used. If it is left unspecified, the default KV-storage
+   * of the app will be used.
+   */
+
+  storage_type: StorageTypeSDKType;
 }
 
 function createBaseModuleSchemaDescriptor(): ModuleSchemaDescriptor {
@@ -193,7 +261,27 @@ export const ModuleSchemaDescriptor = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ModuleSchemaDescriptor>): ModuleSchemaDescriptor {
+  fromJSON(object: any): ModuleSchemaDescriptor {
+    return {
+      schemaFile: Array.isArray(object?.schemaFile) ? object.schemaFile.map((e: any) => ModuleSchemaDescriptor_FileEntry.fromJSON(e)) : [],
+      prefix: isSet(object.prefix) ? bytesFromBase64(object.prefix) : new Uint8Array()
+    };
+  },
+
+  toJSON(message: ModuleSchemaDescriptor): unknown {
+    const obj: any = {};
+
+    if (message.schemaFile) {
+      obj.schemaFile = message.schemaFile.map(e => e ? ModuleSchemaDescriptor_FileEntry.toJSON(e) : undefined);
+    } else {
+      obj.schemaFile = [];
+    }
+
+    message.prefix !== undefined && (obj.prefix = base64FromBytes(message.prefix !== undefined ? message.prefix : new Uint8Array()));
+    return obj;
+  },
+
+  fromPartial(object: Partial<ModuleSchemaDescriptor>): ModuleSchemaDescriptor {
     const message = createBaseModuleSchemaDescriptor();
     message.schemaFile = object.schemaFile?.map(e => ModuleSchemaDescriptor_FileEntry.fromPartial(e)) || [];
     message.prefix = object.prefix ?? new Uint8Array();
@@ -257,7 +345,23 @@ export const ModuleSchemaDescriptor_FileEntry = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<ModuleSchemaDescriptor_FileEntry>): ModuleSchemaDescriptor_FileEntry {
+  fromJSON(object: any): ModuleSchemaDescriptor_FileEntry {
+    return {
+      id: isSet(object.id) ? Number(object.id) : 0,
+      protoFileName: isSet(object.protoFileName) ? String(object.protoFileName) : "",
+      storageType: isSet(object.storageType) ? storageTypeFromJSON(object.storageType) : 0
+    };
+  },
+
+  toJSON(message: ModuleSchemaDescriptor_FileEntry): unknown {
+    const obj: any = {};
+    message.id !== undefined && (obj.id = Math.round(message.id));
+    message.protoFileName !== undefined && (obj.protoFileName = message.protoFileName);
+    message.storageType !== undefined && (obj.storageType = storageTypeToJSON(message.storageType));
+    return obj;
+  },
+
+  fromPartial(object: Partial<ModuleSchemaDescriptor_FileEntry>): ModuleSchemaDescriptor_FileEntry {
     const message = createBaseModuleSchemaDescriptor_FileEntry();
     message.id = object.id ?? 0;
     message.protoFileName = object.protoFileName ?? "";

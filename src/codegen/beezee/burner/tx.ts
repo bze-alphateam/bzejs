@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { DeepPartial } from "../../helpers";
+import { isSet } from "../../helpers";
 export interface MsgFundBurner {
   creator: string;
   amount: string;
@@ -57,7 +57,21 @@ export const MsgFundBurner = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgFundBurner>): MsgFundBurner {
+  fromJSON(object: any): MsgFundBurner {
+    return {
+      creator: isSet(object.creator) ? String(object.creator) : "",
+      amount: isSet(object.amount) ? String(object.amount) : ""
+    };
+  },
+
+  toJSON(message: MsgFundBurner): unknown {
+    const obj: any = {};
+    message.creator !== undefined && (obj.creator = message.creator);
+    message.amount !== undefined && (obj.amount = message.amount);
+    return obj;
+  },
+
+  fromPartial(object: Partial<MsgFundBurner>): MsgFundBurner {
     const message = createBaseMsgFundBurner();
     message.creator = object.creator ?? "";
     message.amount = object.amount ?? "";
@@ -93,7 +107,16 @@ export const MsgFundBurnerResponse = {
     return message;
   },
 
-  fromPartial(_: DeepPartial<MsgFundBurnerResponse>): MsgFundBurnerResponse {
+  fromJSON(_: any): MsgFundBurnerResponse {
+    return {};
+  },
+
+  toJSON(_: MsgFundBurnerResponse): unknown {
+    const obj: any = {};
+    return obj;
+  },
+
+  fromPartial(_: Partial<MsgFundBurnerResponse>): MsgFundBurnerResponse {
     const message = createBaseMsgFundBurnerResponse();
     return message;
   }
