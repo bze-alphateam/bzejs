@@ -1,5 +1,5 @@
+import { Long, DeepPartial } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { Long } from "../../../../helpers";
 /** Snapshot contains Tendermint state sync snapshot info. */
 export interface Snapshot {
     height: Long;
@@ -23,7 +23,6 @@ export interface Metadata {
 }
 /** Metadata contains SDK-specific snapshot metadata. */
 export interface MetadataSDKType {
-    /** SHA-256 chunk hashes */
     chunk_hashes: Uint8Array[];
 }
 /** SnapshotItem is an item contained in a rootmulti.Store snapshot. */
@@ -65,9 +64,7 @@ export interface SnapshotIAVLItem {
 export interface SnapshotIAVLItemSDKType {
     key: Uint8Array;
     value: Uint8Array;
-    /** version is block height */
     version: Long;
-    /** height is depth of the tree. */
     height: number;
 }
 /** SnapshotExtensionMeta contains metadata about an external snapshotter. */
@@ -109,63 +106,45 @@ export interface SnapshotSchemaSDKType {
 export declare const Snapshot: {
     encode(message: Snapshot, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Snapshot;
-    fromJSON(object: any): Snapshot;
-    toJSON(message: Snapshot): unknown;
-    fromPartial(object: Partial<Snapshot>): Snapshot;
+    fromPartial(object: DeepPartial<Snapshot>): Snapshot;
 };
 export declare const Metadata: {
     encode(message: Metadata, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Metadata;
-    fromJSON(object: any): Metadata;
-    toJSON(message: Metadata): unknown;
-    fromPartial(object: Partial<Metadata>): Metadata;
+    fromPartial(object: DeepPartial<Metadata>): Metadata;
 };
 export declare const SnapshotItem: {
     encode(message: SnapshotItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotItem;
-    fromJSON(object: any): SnapshotItem;
-    toJSON(message: SnapshotItem): unknown;
-    fromPartial(object: Partial<SnapshotItem>): SnapshotItem;
+    fromPartial(object: DeepPartial<SnapshotItem>): SnapshotItem;
 };
 export declare const SnapshotStoreItem: {
     encode(message: SnapshotStoreItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotStoreItem;
-    fromJSON(object: any): SnapshotStoreItem;
-    toJSON(message: SnapshotStoreItem): unknown;
-    fromPartial(object: Partial<SnapshotStoreItem>): SnapshotStoreItem;
+    fromPartial(object: DeepPartial<SnapshotStoreItem>): SnapshotStoreItem;
 };
 export declare const SnapshotIAVLItem: {
     encode(message: SnapshotIAVLItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotIAVLItem;
-    fromJSON(object: any): SnapshotIAVLItem;
-    toJSON(message: SnapshotIAVLItem): unknown;
-    fromPartial(object: Partial<SnapshotIAVLItem>): SnapshotIAVLItem;
+    fromPartial(object: DeepPartial<SnapshotIAVLItem>): SnapshotIAVLItem;
 };
 export declare const SnapshotExtensionMeta: {
     encode(message: SnapshotExtensionMeta, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotExtensionMeta;
-    fromJSON(object: any): SnapshotExtensionMeta;
-    toJSON(message: SnapshotExtensionMeta): unknown;
-    fromPartial(object: Partial<SnapshotExtensionMeta>): SnapshotExtensionMeta;
+    fromPartial(object: DeepPartial<SnapshotExtensionMeta>): SnapshotExtensionMeta;
 };
 export declare const SnapshotExtensionPayload: {
     encode(message: SnapshotExtensionPayload, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotExtensionPayload;
-    fromJSON(object: any): SnapshotExtensionPayload;
-    toJSON(message: SnapshotExtensionPayload): unknown;
-    fromPartial(object: Partial<SnapshotExtensionPayload>): SnapshotExtensionPayload;
+    fromPartial(object: DeepPartial<SnapshotExtensionPayload>): SnapshotExtensionPayload;
 };
 export declare const SnapshotKVItem: {
     encode(message: SnapshotKVItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotKVItem;
-    fromJSON(object: any): SnapshotKVItem;
-    toJSON(message: SnapshotKVItem): unknown;
-    fromPartial(object: Partial<SnapshotKVItem>): SnapshotKVItem;
+    fromPartial(object: DeepPartial<SnapshotKVItem>): SnapshotKVItem;
 };
 export declare const SnapshotSchema: {
     encode(message: SnapshotSchema, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): SnapshotSchema;
-    fromJSON(object: any): SnapshotSchema;
-    toJSON(message: SnapshotSchema): unknown;
-    fromPartial(object: Partial<SnapshotSchema>): SnapshotSchema;
+    fromPartial(object: DeepPartial<SnapshotSchema>): SnapshotSchema;
 };

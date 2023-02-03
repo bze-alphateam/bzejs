@@ -5,6 +5,7 @@ import { Publisher, PublisherSDKType } from "./publisher";
 import { Article, ArticleSDKType } from "./article";
 import { AnonArticlesCounter, AnonArticlesCounterSDKType } from "./anon_articles_counter";
 import * as _m0 from "protobufjs/minimal";
+import { DeepPartial } from "../../helpers";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
 }
@@ -18,7 +19,6 @@ export interface QueryParamsResponse {
 }
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
-    /** params holds all the parameters of this module. */
     params?: ParamsSDKType;
 }
 export interface QueryAcceptedDomainRequest {
@@ -92,84 +92,60 @@ export interface QueryAllAnonArticlesCountersResponseSDKType {
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
-    fromJSON(_: any): QueryParamsRequest;
-    toJSON(_: QueryParamsRequest): unknown;
-    fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
+    fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
-    fromJSON(object: any): QueryParamsResponse;
-    toJSON(message: QueryParamsResponse): unknown;
-    fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
+    fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const QueryAcceptedDomainRequest: {
     encode(message: QueryAcceptedDomainRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAcceptedDomainRequest;
-    fromJSON(object: any): QueryAcceptedDomainRequest;
-    toJSON(message: QueryAcceptedDomainRequest): unknown;
-    fromPartial(object: Partial<QueryAcceptedDomainRequest>): QueryAcceptedDomainRequest;
+    fromPartial(object: DeepPartial<QueryAcceptedDomainRequest>): QueryAcceptedDomainRequest;
 };
 export declare const QueryAcceptedDomainResponse: {
     encode(message: QueryAcceptedDomainResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAcceptedDomainResponse;
-    fromJSON(object: any): QueryAcceptedDomainResponse;
-    toJSON(message: QueryAcceptedDomainResponse): unknown;
-    fromPartial(object: Partial<QueryAcceptedDomainResponse>): QueryAcceptedDomainResponse;
+    fromPartial(object: DeepPartial<QueryAcceptedDomainResponse>): QueryAcceptedDomainResponse;
 };
 export declare const QueryPublisherRequest: {
     encode(message: QueryPublisherRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPublisherRequest;
-    fromJSON(object: any): QueryPublisherRequest;
-    toJSON(message: QueryPublisherRequest): unknown;
-    fromPartial(object: Partial<QueryPublisherRequest>): QueryPublisherRequest;
+    fromPartial(object: DeepPartial<QueryPublisherRequest>): QueryPublisherRequest;
 };
 export declare const QueryPublisherResponse: {
     encode(message: QueryPublisherResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPublisherResponse;
-    fromJSON(object: any): QueryPublisherResponse;
-    toJSON(message: QueryPublisherResponse): unknown;
-    fromPartial(object: Partial<QueryPublisherResponse>): QueryPublisherResponse;
+    fromPartial(object: DeepPartial<QueryPublisherResponse>): QueryPublisherResponse;
 };
 export declare const QueryPublisherByIndexRequest: {
     encode(message: QueryPublisherByIndexRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPublisherByIndexRequest;
-    fromJSON(object: any): QueryPublisherByIndexRequest;
-    toJSON(message: QueryPublisherByIndexRequest): unknown;
-    fromPartial(object: Partial<QueryPublisherByIndexRequest>): QueryPublisherByIndexRequest;
+    fromPartial(object: DeepPartial<QueryPublisherByIndexRequest>): QueryPublisherByIndexRequest;
 };
 export declare const QueryPublisherByIndexResponse: {
     encode(message: QueryPublisherByIndexResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryPublisherByIndexResponse;
-    fromJSON(object: any): QueryPublisherByIndexResponse;
-    toJSON(message: QueryPublisherByIndexResponse): unknown;
-    fromPartial(object: Partial<QueryPublisherByIndexResponse>): QueryPublisherByIndexResponse;
+    fromPartial(object: DeepPartial<QueryPublisherByIndexResponse>): QueryPublisherByIndexResponse;
 };
 export declare const QueryAllArticlesRequest: {
     encode(message: QueryAllArticlesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllArticlesRequest;
-    fromJSON(object: any): QueryAllArticlesRequest;
-    toJSON(message: QueryAllArticlesRequest): unknown;
-    fromPartial(object: Partial<QueryAllArticlesRequest>): QueryAllArticlesRequest;
+    fromPartial(object: DeepPartial<QueryAllArticlesRequest>): QueryAllArticlesRequest;
 };
 export declare const QueryAllArticlesResponse: {
     encode(message: QueryAllArticlesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllArticlesResponse;
-    fromJSON(object: any): QueryAllArticlesResponse;
-    toJSON(message: QueryAllArticlesResponse): unknown;
-    fromPartial(object: Partial<QueryAllArticlesResponse>): QueryAllArticlesResponse;
+    fromPartial(object: DeepPartial<QueryAllArticlesResponse>): QueryAllArticlesResponse;
 };
 export declare const QueryAllAnonArticlesCountersRequest: {
     encode(message: QueryAllAnonArticlesCountersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllAnonArticlesCountersRequest;
-    fromJSON(object: any): QueryAllAnonArticlesCountersRequest;
-    toJSON(message: QueryAllAnonArticlesCountersRequest): unknown;
-    fromPartial(object: Partial<QueryAllAnonArticlesCountersRequest>): QueryAllAnonArticlesCountersRequest;
+    fromPartial(object: DeepPartial<QueryAllAnonArticlesCountersRequest>): QueryAllAnonArticlesCountersRequest;
 };
 export declare const QueryAllAnonArticlesCountersResponse: {
     encode(message: QueryAllAnonArticlesCountersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllAnonArticlesCountersResponse;
-    fromJSON(object: any): QueryAllAnonArticlesCountersResponse;
-    toJSON(message: QueryAllAnonArticlesCountersResponse): unknown;
-    fromPartial(object: Partial<QueryAllAnonArticlesCountersResponse>): QueryAllAnonArticlesCountersResponse;
+    fromPartial(object: DeepPartial<QueryAllAnonArticlesCountersResponse>): QueryAllAnonArticlesCountersResponse;
 };

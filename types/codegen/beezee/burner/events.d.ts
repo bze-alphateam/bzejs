@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { DeepPartial } from "../../helpers";
 export interface CoinsBurnedEvent {
     burned: string;
 }
@@ -16,14 +17,10 @@ export interface FundBurnerEventSDKType {
 export declare const CoinsBurnedEvent: {
     encode(message: CoinsBurnedEvent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): CoinsBurnedEvent;
-    fromJSON(object: any): CoinsBurnedEvent;
-    toJSON(message: CoinsBurnedEvent): unknown;
-    fromPartial(object: Partial<CoinsBurnedEvent>): CoinsBurnedEvent;
+    fromPartial(object: DeepPartial<CoinsBurnedEvent>): CoinsBurnedEvent;
 };
 export declare const FundBurnerEvent: {
     encode(message: FundBurnerEvent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): FundBurnerEvent;
-    fromJSON(object: any): FundBurnerEvent;
-    toJSON(message: FundBurnerEvent): unknown;
-    fromPartial(object: Partial<FundBurnerEvent>): FundBurnerEvent;
+    fromPartial(object: DeepPartial<FundBurnerEvent>): FundBurnerEvent;
 };

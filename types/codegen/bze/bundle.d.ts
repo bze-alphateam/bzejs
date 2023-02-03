@@ -16,112 +16,162 @@ import * as _14 from "../beezee/cointrunk/publisher_proposal";
 import * as _15 from "../beezee/cointrunk/publisher";
 import * as _16 from "../beezee/cointrunk/query";
 import * as _17 from "../beezee/cointrunk/tx";
-import * as _130 from "../beezee/burner/query.lcd";
-import * as _131 from "../beezee/cointrunk/query.lcd";
-import * as _132 from "../beezee/burner/query.rpc.Query";
-import * as _133 from "../beezee/cointrunk/query.rpc.Query";
-import * as _134 from "../beezee/burner/tx.rpc.msg";
-import * as _135 from "../beezee/cointrunk/tx.rpc.msg";
+import * as _134 from "../beezee/burner/query.lcd";
+import * as _135 from "../beezee/cointrunk/query.lcd";
+import * as _136 from "../beezee/burner/query.rpc.Query";
+import * as _137 from "../beezee/cointrunk/query.rpc.Query";
+import * as _138 from "../beezee/burner/tx.rpc.msg";
+import * as _139 from "../beezee/cointrunk/tx.rpc.msg";
 export declare namespace bze {
     namespace burner {
         const v1: {
-            MsgClientImpl: typeof _134.MsgClientImpl;
-            QueryClientImpl: typeof _132.QueryClientImpl;
+            MsgClientImpl: typeof _138.MsgClientImpl;
+            QueryClientImpl: typeof _136.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                 params(request?: _5.QueryParamsRequest): Promise<_5.QueryParamsResponse>;
                 allBurnedCoins(request?: _5.QueryAllBurnedCoinsRequest): Promise<_5.QueryAllBurnedCoinsResponse>;
             };
-            LCDQueryClient: typeof _130.LCDQueryClient;
+            LCDQueryClient: typeof _134.LCDQueryClient;
+            registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
+            load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
+            MessageComposer: {
+                encoded: {
+                    fundBurner(value: _6.MsgFundBurner): {
+                        typeUrl: string;
+                        value: Uint8Array;
+                    };
+                };
+                withTypeUrl: {
+                    fundBurner(value: _6.MsgFundBurner): {
+                        typeUrl: string;
+                        value: _6.MsgFundBurner;
+                    };
+                };
+                fromPartial: {
+                    fundBurner(value: _6.MsgFundBurner): {
+                        typeUrl: string;
+                        value: _6.MsgFundBurner;
+                    };
+                };
+            };
+            AminoConverter: {
+                "/bze.burner.v1.MsgFundBurner": {
+                    aminoType: string;
+                    toAmino: ({ creator, amount }: _6.MsgFundBurner) => {
+                        creator: string;
+                        amount: string;
+                    };
+                    fromAmino: ({ creator, amount }: {
+                        creator: string;
+                        amount: string;
+                    }) => _6.MsgFundBurner;
+                };
+            };
             MsgFundBurner: {
                 encode(message: _6.MsgFundBurner, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _6.MsgFundBurner;
-                fromJSON(object: any): _6.MsgFundBurner;
-                toJSON(message: _6.MsgFundBurner): unknown;
-                fromPartial(object: Partial<_6.MsgFundBurner>): _6.MsgFundBurner;
+                fromPartial(object: {
+                    creator?: string;
+                    amount?: string;
+                }): _6.MsgFundBurner;
             };
             MsgFundBurnerResponse: {
                 encode(_: _6.MsgFundBurnerResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _6.MsgFundBurnerResponse;
-                fromJSON(_: any): _6.MsgFundBurnerResponse;
-                toJSON(_: _6.MsgFundBurnerResponse): unknown;
-                fromPartial(_: Partial<_6.MsgFundBurnerResponse>): _6.MsgFundBurnerResponse;
+                fromPartial(_: {}): _6.MsgFundBurnerResponse;
             };
             QueryParamsRequest: {
                 encode(_: _5.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _5.QueryParamsRequest;
-                fromJSON(_: any): _5.QueryParamsRequest;
-                toJSON(_: _5.QueryParamsRequest): unknown;
-                fromPartial(_: Partial<_5.QueryParamsRequest>): _5.QueryParamsRequest;
+                fromPartial(_: {}): _5.QueryParamsRequest;
             };
             QueryParamsResponse: {
                 encode(message: _5.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _5.QueryParamsResponse;
-                fromJSON(object: any): _5.QueryParamsResponse;
-                toJSON(message: _5.QueryParamsResponse): unknown;
-                fromPartial(object: Partial<_5.QueryParamsResponse>): _5.QueryParamsResponse;
+                fromPartial(object: {
+                    params?: {};
+                }): _5.QueryParamsResponse;
             };
             QueryAllBurnedCoinsRequest: {
                 encode(message: _5.QueryAllBurnedCoinsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _5.QueryAllBurnedCoinsRequest;
-                fromJSON(object: any): _5.QueryAllBurnedCoinsRequest;
-                toJSON(message: _5.QueryAllBurnedCoinsRequest): unknown;
-                fromPartial(object: Partial<_5.QueryAllBurnedCoinsRequest>): _5.QueryAllBurnedCoinsRequest;
+                fromPartial(object: {
+                    pagination?: {
+                        key?: Uint8Array;
+                        offset?: string | number | import("long");
+                        limit?: string | number | import("long");
+                        countTotal?: boolean;
+                        reverse?: boolean;
+                    };
+                }): _5.QueryAllBurnedCoinsRequest;
             };
             QueryAllBurnedCoinsResponse: {
                 encode(message: _5.QueryAllBurnedCoinsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _5.QueryAllBurnedCoinsResponse;
-                fromJSON(object: any): _5.QueryAllBurnedCoinsResponse;
-                toJSON(message: _5.QueryAllBurnedCoinsResponse): unknown;
-                fromPartial(object: Partial<_5.QueryAllBurnedCoinsResponse>): _5.QueryAllBurnedCoinsResponse;
+                fromPartial(object: {
+                    burnedCoins?: {
+                        burned?: string;
+                        height?: string;
+                    }[];
+                    pagination?: {
+                        nextKey?: Uint8Array;
+                        total?: string | number | import("long");
+                    };
+                }): _5.QueryAllBurnedCoinsResponse;
             };
             Params: {
                 encode(_: _4.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _4.Params;
-                fromJSON(_: any): _4.Params;
-                toJSON(_: _4.Params): unknown;
-                fromPartial(_: Partial<_4.Params>): _4.Params;
+                fromPartial(_: {}): _4.Params;
             };
             GenesisState: {
                 encode(message: _3.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _3.GenesisState;
-                fromJSON(object: any): _3.GenesisState;
-                toJSON(message: _3.GenesisState): unknown;
-                fromPartial(object: Partial<_3.GenesisState>): _3.GenesisState;
+                fromPartial(object: {
+                    params?: {};
+                    burnedCoinsList?: {
+                        burned?: string;
+                        height?: string;
+                    }[];
+                }): _3.GenesisState;
             };
             CoinsBurnedEvent: {
                 encode(message: _2.CoinsBurnedEvent, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _2.CoinsBurnedEvent;
-                fromJSON(object: any): _2.CoinsBurnedEvent;
-                toJSON(message: _2.CoinsBurnedEvent): unknown;
-                fromPartial(object: Partial<_2.CoinsBurnedEvent>): _2.CoinsBurnedEvent;
+                fromPartial(object: {
+                    burned?: string;
+                }): _2.CoinsBurnedEvent;
             };
             FundBurnerEvent: {
                 encode(message: _2.FundBurnerEvent, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _2.FundBurnerEvent;
-                fromJSON(object: any): _2.FundBurnerEvent;
-                toJSON(message: _2.FundBurnerEvent): unknown;
-                fromPartial(object: Partial<_2.FundBurnerEvent>): _2.FundBurnerEvent;
+                fromPartial(object: {
+                    from?: string;
+                    amount?: string;
+                }): _2.FundBurnerEvent;
             };
             BurnedCoins: {
                 encode(message: _1.BurnedCoins, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _1.BurnedCoins;
-                fromJSON(object: any): _1.BurnedCoins;
-                toJSON(message: _1.BurnedCoins): unknown;
-                fromPartial(object: Partial<_1.BurnedCoins>): _1.BurnedCoins;
+                fromPartial(object: {
+                    burned?: string;
+                    height?: string;
+                }): _1.BurnedCoins;
             };
             BurnCoinsProposal: {
                 encode(message: _0.BurnCoinsProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _0.BurnCoinsProposal;
-                fromJSON(object: any): _0.BurnCoinsProposal;
-                toJSON(message: _0.BurnCoinsProposal): unknown;
-                fromPartial(object: Partial<_0.BurnCoinsProposal>): _0.BurnCoinsProposal;
+                fromPartial(object: {
+                    title?: string;
+                    description?: string;
+                }): _0.BurnCoinsProposal;
             };
         };
     }
     namespace cointrunk {
         const v1: {
-            MsgClientImpl: typeof _135.MsgClientImpl;
-            QueryClientImpl: typeof _133.QueryClientImpl;
+            MsgClientImpl: typeof _139.MsgClientImpl;
+            QueryClientImpl: typeof _137.QueryClientImpl;
             createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
                 params(request?: _16.QueryParamsRequest): Promise<_16.QueryParamsResponse>;
                 acceptedDomain(request?: _16.QueryAcceptedDomainRequest): Promise<_16.QueryAcceptedDomainResponse>;
@@ -130,223 +180,454 @@ export declare namespace bze {
                 allArticles(request?: _16.QueryAllArticlesRequest): Promise<_16.QueryAllArticlesResponse>;
                 allAnonArticlesCounters(request?: _16.QueryAllAnonArticlesCountersRequest): Promise<_16.QueryAllAnonArticlesCountersResponse>;
             };
-            LCDQueryClient: typeof _131.LCDQueryClient;
+            LCDQueryClient: typeof _135.LCDQueryClient;
+            registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
+            load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
+            MessageComposer: {
+                encoded: {
+                    addArticle(value: _17.MsgAddArticle): {
+                        typeUrl: string;
+                        value: Uint8Array;
+                    };
+                    payPublisherRespect(value: _17.MsgPayPublisherRespect): {
+                        typeUrl: string;
+                        value: Uint8Array;
+                    };
+                };
+                withTypeUrl: {
+                    addArticle(value: _17.MsgAddArticle): {
+                        typeUrl: string;
+                        value: _17.MsgAddArticle;
+                    };
+                    payPublisherRespect(value: _17.MsgPayPublisherRespect): {
+                        typeUrl: string;
+                        value: _17.MsgPayPublisherRespect;
+                    };
+                };
+                fromPartial: {
+                    addArticle(value: _17.MsgAddArticle): {
+                        typeUrl: string;
+                        value: _17.MsgAddArticle;
+                    };
+                    payPublisherRespect(value: _17.MsgPayPublisherRespect): {
+                        typeUrl: string;
+                        value: _17.MsgPayPublisherRespect;
+                    };
+                };
+            };
+            AminoConverter: {
+                "/bze.cointrunk.v1.MsgAddArticle": {
+                    aminoType: string;
+                    toAmino: ({ publisher, title, url, picture }: _17.MsgAddArticle) => {
+                        publisher: string;
+                        title: string;
+                        url: string;
+                        picture: string;
+                    };
+                    fromAmino: ({ publisher, title, url, picture }: {
+                        publisher: string;
+                        title: string;
+                        url: string;
+                        picture: string;
+                    }) => _17.MsgAddArticle;
+                };
+                "/bze.cointrunk.v1.MsgPayPublisherRespect": {
+                    aminoType: string;
+                    toAmino: ({ creator, address, amount }: _17.MsgPayPublisherRespect) => {
+                        creator: string;
+                        address: string;
+                        amount: string;
+                    };
+                    fromAmino: ({ creator, address, amount }: {
+                        creator: string;
+                        address: string;
+                        amount: string;
+                    }) => _17.MsgPayPublisherRespect;
+                };
+            };
             MsgAddArticle: {
                 encode(message: _17.MsgAddArticle, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _17.MsgAddArticle;
-                fromJSON(object: any): _17.MsgAddArticle;
-                toJSON(message: _17.MsgAddArticle): unknown;
-                fromPartial(object: Partial<_17.MsgAddArticle>): _17.MsgAddArticle;
+                fromPartial(object: {
+                    publisher?: string;
+                    title?: string;
+                    url?: string;
+                    picture?: string;
+                }): _17.MsgAddArticle;
             };
             MsgAddArticleResponse: {
                 encode(_: _17.MsgAddArticleResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _17.MsgAddArticleResponse;
-                fromJSON(_: any): _17.MsgAddArticleResponse;
-                toJSON(_: _17.MsgAddArticleResponse): unknown;
-                fromPartial(_: Partial<_17.MsgAddArticleResponse>): _17.MsgAddArticleResponse;
+                fromPartial(_: {}): _17.MsgAddArticleResponse;
             };
             MsgPayPublisherRespect: {
                 encode(message: _17.MsgPayPublisherRespect, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _17.MsgPayPublisherRespect;
-                fromJSON(object: any): _17.MsgPayPublisherRespect;
-                toJSON(message: _17.MsgPayPublisherRespect): unknown;
-                fromPartial(object: Partial<_17.MsgPayPublisherRespect>): _17.MsgPayPublisherRespect;
+                fromPartial(object: {
+                    creator?: string;
+                    address?: string;
+                    amount?: string;
+                }): _17.MsgPayPublisherRespect;
             };
             MsgPayPublisherRespectResponse: {
                 encode(message: _17.MsgPayPublisherRespectResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _17.MsgPayPublisherRespectResponse;
-                fromJSON(object: any): _17.MsgPayPublisherRespectResponse;
-                toJSON(message: _17.MsgPayPublisherRespectResponse): unknown;
-                fromPartial(object: Partial<_17.MsgPayPublisherRespectResponse>): _17.MsgPayPublisherRespectResponse;
+                fromPartial(object: {
+                    respectPaid?: string | number | import("long");
+                    publisherReward?: string | number | import("long");
+                    communityPoolFunds?: string | number | import("long");
+                }): _17.MsgPayPublisherRespectResponse;
             };
             QueryParamsRequest: {
                 encode(_: _16.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _16.QueryParamsRequest;
-                fromJSON(_: any): _16.QueryParamsRequest;
-                toJSON(_: _16.QueryParamsRequest): unknown;
-                fromPartial(_: Partial<_16.QueryParamsRequest>): _16.QueryParamsRequest;
+                fromPartial(_: {}): _16.QueryParamsRequest;
             };
             QueryParamsResponse: {
                 encode(message: _16.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _16.QueryParamsResponse;
-                fromJSON(object: any): _16.QueryParamsResponse;
-                toJSON(message: _16.QueryParamsResponse): unknown;
-                fromPartial(object: Partial<_16.QueryParamsResponse>): _16.QueryParamsResponse;
+                fromPartial(object: {
+                    params?: {
+                        anonArticleLimit?: string | number | import("long");
+                        anonArticleCost?: {
+                            denom?: string;
+                            amount?: string;
+                        };
+                        publisherRespectParams?: {
+                            tax?: string;
+                            denom?: string;
+                        };
+                    };
+                }): _16.QueryParamsResponse;
             };
             QueryAcceptedDomainRequest: {
                 encode(message: _16.QueryAcceptedDomainRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _16.QueryAcceptedDomainRequest;
-                fromJSON(object: any): _16.QueryAcceptedDomainRequest;
-                toJSON(message: _16.QueryAcceptedDomainRequest): unknown;
-                fromPartial(object: Partial<_16.QueryAcceptedDomainRequest>): _16.QueryAcceptedDomainRequest;
+                fromPartial(object: {
+                    pagination?: {
+                        key?: Uint8Array;
+                        offset?: string | number | import("long");
+                        limit?: string | number | import("long");
+                        countTotal?: boolean;
+                        reverse?: boolean;
+                    };
+                }): _16.QueryAcceptedDomainRequest;
             };
             QueryAcceptedDomainResponse: {
                 encode(message: _16.QueryAcceptedDomainResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _16.QueryAcceptedDomainResponse;
-                fromJSON(object: any): _16.QueryAcceptedDomainResponse;
-                toJSON(message: _16.QueryAcceptedDomainResponse): unknown;
-                fromPartial(object: Partial<_16.QueryAcceptedDomainResponse>): _16.QueryAcceptedDomainResponse;
+                fromPartial(object: {
+                    acceptedDomain?: {
+                        domain?: string;
+                        active?: boolean;
+                    }[];
+                    pagination?: {
+                        nextKey?: Uint8Array;
+                        total?: string | number | import("long");
+                    };
+                }): _16.QueryAcceptedDomainResponse;
             };
             QueryPublisherRequest: {
                 encode(message: _16.QueryPublisherRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _16.QueryPublisherRequest;
-                fromJSON(object: any): _16.QueryPublisherRequest;
-                toJSON(message: _16.QueryPublisherRequest): unknown;
-                fromPartial(object: Partial<_16.QueryPublisherRequest>): _16.QueryPublisherRequest;
+                fromPartial(object: {
+                    pagination?: {
+                        key?: Uint8Array;
+                        offset?: string | number | import("long");
+                        limit?: string | number | import("long");
+                        countTotal?: boolean;
+                        reverse?: boolean;
+                    };
+                }): _16.QueryPublisherRequest;
             };
             QueryPublisherResponse: {
                 encode(message: _16.QueryPublisherResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _16.QueryPublisherResponse;
-                fromJSON(object: any): _16.QueryPublisherResponse;
-                toJSON(message: _16.QueryPublisherResponse): unknown;
-                fromPartial(object: Partial<_16.QueryPublisherResponse>): _16.QueryPublisherResponse;
+                fromPartial(object: {
+                    publisher?: {
+                        name?: string;
+                        address?: string;
+                        active?: boolean;
+                        articlesCount?: number;
+                        createdAt?: string | number | import("long");
+                        respect?: string | number | import("long");
+                    }[];
+                    pagination?: {
+                        nextKey?: Uint8Array;
+                        total?: string | number | import("long");
+                    };
+                }): _16.QueryPublisherResponse;
             };
             QueryPublisherByIndexRequest: {
                 encode(message: _16.QueryPublisherByIndexRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _16.QueryPublisherByIndexRequest;
-                fromJSON(object: any): _16.QueryPublisherByIndexRequest;
-                toJSON(message: _16.QueryPublisherByIndexRequest): unknown;
-                fromPartial(object: Partial<_16.QueryPublisherByIndexRequest>): _16.QueryPublisherByIndexRequest;
+                fromPartial(object: {
+                    index?: string;
+                }): _16.QueryPublisherByIndexRequest;
             };
             QueryPublisherByIndexResponse: {
                 encode(message: _16.QueryPublisherByIndexResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _16.QueryPublisherByIndexResponse;
-                fromJSON(object: any): _16.QueryPublisherByIndexResponse;
-                toJSON(message: _16.QueryPublisherByIndexResponse): unknown;
-                fromPartial(object: Partial<_16.QueryPublisherByIndexResponse>): _16.QueryPublisherByIndexResponse;
+                fromPartial(object: {
+                    publisher?: {
+                        name?: string;
+                        address?: string;
+                        active?: boolean;
+                        articlesCount?: number;
+                        createdAt?: string | number | import("long");
+                        respect?: string | number | import("long");
+                    };
+                }): _16.QueryPublisherByIndexResponse;
             };
             QueryAllArticlesRequest: {
                 encode(message: _16.QueryAllArticlesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _16.QueryAllArticlesRequest;
-                fromJSON(object: any): _16.QueryAllArticlesRequest;
-                toJSON(message: _16.QueryAllArticlesRequest): unknown;
-                fromPartial(object: Partial<_16.QueryAllArticlesRequest>): _16.QueryAllArticlesRequest;
+                fromPartial(object: {
+                    pagination?: {
+                        key?: Uint8Array;
+                        offset?: string | number | import("long");
+                        limit?: string | number | import("long");
+                        countTotal?: boolean;
+                        reverse?: boolean;
+                    };
+                }): _16.QueryAllArticlesRequest;
             };
             QueryAllArticlesResponse: {
                 encode(message: _16.QueryAllArticlesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _16.QueryAllArticlesResponse;
-                fromJSON(object: any): _16.QueryAllArticlesResponse;
-                toJSON(message: _16.QueryAllArticlesResponse): unknown;
-                fromPartial(object: Partial<_16.QueryAllArticlesResponse>): _16.QueryAllArticlesResponse;
+                fromPartial(object: {
+                    article?: {
+                        id?: string | number | import("long");
+                        title?: string;
+                        url?: string;
+                        picture?: string;
+                        publisher?: string;
+                        paid?: boolean;
+                        createdAt?: string | number | import("long");
+                    }[];
+                    pagination?: {
+                        nextKey?: Uint8Array;
+                        total?: string | number | import("long");
+                    };
+                }): _16.QueryAllArticlesResponse;
             };
             QueryAllAnonArticlesCountersRequest: {
                 encode(message: _16.QueryAllAnonArticlesCountersRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _16.QueryAllAnonArticlesCountersRequest;
-                fromJSON(object: any): _16.QueryAllAnonArticlesCountersRequest;
-                toJSON(message: _16.QueryAllAnonArticlesCountersRequest): unknown;
-                fromPartial(object: Partial<_16.QueryAllAnonArticlesCountersRequest>): _16.QueryAllAnonArticlesCountersRequest;
+                fromPartial(object: {
+                    pagination?: {
+                        key?: Uint8Array;
+                        offset?: string | number | import("long");
+                        limit?: string | number | import("long");
+                        countTotal?: boolean;
+                        reverse?: boolean;
+                    };
+                }): _16.QueryAllAnonArticlesCountersRequest;
             };
             QueryAllAnonArticlesCountersResponse: {
                 encode(message: _16.QueryAllAnonArticlesCountersResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _16.QueryAllAnonArticlesCountersResponse;
-                fromJSON(object: any): _16.QueryAllAnonArticlesCountersResponse;
-                toJSON(message: _16.QueryAllAnonArticlesCountersResponse): unknown;
-                fromPartial(object: Partial<_16.QueryAllAnonArticlesCountersResponse>): _16.QueryAllAnonArticlesCountersResponse;
+                fromPartial(object: {
+                    AnonArticlesCounters?: {
+                        key?: string;
+                        counter?: string | number | import("long");
+                    }[];
+                    pagination?: {
+                        nextKey?: Uint8Array;
+                        total?: string | number | import("long");
+                    };
+                }): _16.QueryAllAnonArticlesCountersResponse;
             };
             Publisher: {
                 encode(message: _15.Publisher, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _15.Publisher;
-                fromJSON(object: any): _15.Publisher;
-                toJSON(message: _15.Publisher): unknown;
-                fromPartial(object: Partial<_15.Publisher>): _15.Publisher;
+                fromPartial(object: {
+                    name?: string;
+                    address?: string;
+                    active?: boolean;
+                    articlesCount?: number;
+                    createdAt?: string | number | import("long");
+                    respect?: string | number | import("long");
+                }): _15.Publisher;
             };
             PublisherProposal: {
                 encode(message: _14.PublisherProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _14.PublisherProposal;
-                fromJSON(object: any): _14.PublisherProposal;
-                toJSON(message: _14.PublisherProposal): unknown;
-                fromPartial(object: Partial<_14.PublisherProposal>): _14.PublisherProposal;
+                fromPartial(object: {
+                    title?: string;
+                    description?: string;
+                    name?: string;
+                    address?: string;
+                    active?: boolean;
+                }): _14.PublisherProposal;
             };
             PublisherRespectParams: {
                 encode(message: _13.PublisherRespectParams, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _13.PublisherRespectParams;
-                fromJSON(object: any): _13.PublisherRespectParams;
-                toJSON(message: _13.PublisherRespectParams): unknown;
-                fromPartial(object: Partial<_13.PublisherRespectParams>): _13.PublisherRespectParams;
+                fromPartial(object: {
+                    tax?: string;
+                    denom?: string;
+                }): _13.PublisherRespectParams;
             };
             Params: {
                 encode(message: _13.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _13.Params;
-                fromJSON(object: any): _13.Params;
-                toJSON(message: _13.Params): unknown;
-                fromPartial(object: Partial<_13.Params>): _13.Params;
+                fromPartial(object: {
+                    anonArticleLimit?: string | number | import("long");
+                    anonArticleCost?: {
+                        denom?: string;
+                        amount?: string;
+                    };
+                    publisherRespectParams?: {
+                        tax?: string;
+                        denom?: string;
+                    };
+                }): _13.Params;
             };
             GenesisState: {
                 encode(message: _12.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _12.GenesisState;
-                fromJSON(object: any): _12.GenesisState;
-                toJSON(message: _12.GenesisState): unknown;
-                fromPartial(object: Partial<_12.GenesisState>): _12.GenesisState;
+                fromPartial(object: {
+                    params?: {
+                        anonArticleLimit?: string | number | import("long");
+                        anonArticleCost?: {
+                            denom?: string;
+                            amount?: string;
+                        };
+                        publisherRespectParams?: {
+                            tax?: string;
+                            denom?: string;
+                        };
+                    };
+                    publisherList?: {
+                        name?: string;
+                        address?: string;
+                        active?: boolean;
+                        articlesCount?: number;
+                        createdAt?: string | number | import("long");
+                        respect?: string | number | import("long");
+                    }[];
+                    acceptedDomainList?: {
+                        domain?: string;
+                        active?: boolean;
+                    }[];
+                    articleList?: {
+                        id?: string | number | import("long");
+                        title?: string;
+                        url?: string;
+                        picture?: string;
+                        publisher?: string;
+                        paid?: boolean;
+                        createdAt?: string | number | import("long");
+                    }[];
+                    articlesCounter?: string | number | import("long");
+                }): _12.GenesisState;
             };
             ArticleAddedEvent: {
                 encode(message: _11.ArticleAddedEvent, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _11.ArticleAddedEvent;
-                fromJSON(object: any): _11.ArticleAddedEvent;
-                toJSON(message: _11.ArticleAddedEvent): unknown;
-                fromPartial(object: Partial<_11.ArticleAddedEvent>): _11.ArticleAddedEvent;
+                fromPartial(object: {
+                    publisher?: string;
+                    articleId?: string | number | import("long");
+                    paid?: boolean;
+                }): _11.ArticleAddedEvent;
             };
             PublisherAddedEvent: {
                 encode(message: _11.PublisherAddedEvent, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _11.PublisherAddedEvent;
-                fromJSON(object: any): _11.PublisherAddedEvent;
-                toJSON(message: _11.PublisherAddedEvent): unknown;
-                fromPartial(object: Partial<_11.PublisherAddedEvent>): _11.PublisherAddedEvent;
+                fromPartial(object: {
+                    publisher?: {
+                        name?: string;
+                        address?: string;
+                        active?: boolean;
+                        articlesCount?: number;
+                        createdAt?: string | number | import("long");
+                        respect?: string | number | import("long");
+                    };
+                }): _11.PublisherAddedEvent;
             };
             PublisherUpdatedEvent: {
                 encode(message: _11.PublisherUpdatedEvent, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _11.PublisherUpdatedEvent;
-                fromJSON(object: any): _11.PublisherUpdatedEvent;
-                toJSON(message: _11.PublisherUpdatedEvent): unknown;
-                fromPartial(object: Partial<_11.PublisherUpdatedEvent>): _11.PublisherUpdatedEvent;
+                fromPartial(object: {
+                    publisher?: {
+                        name?: string;
+                        address?: string;
+                        active?: boolean;
+                        articlesCount?: number;
+                        createdAt?: string | number | import("long");
+                        respect?: string | number | import("long");
+                    };
+                }): _11.PublisherUpdatedEvent;
             };
             AcceptedDomainAddedEvent: {
                 encode(message: _11.AcceptedDomainAddedEvent, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _11.AcceptedDomainAddedEvent;
-                fromJSON(object: any): _11.AcceptedDomainAddedEvent;
-                toJSON(message: _11.AcceptedDomainAddedEvent): unknown;
-                fromPartial(object: Partial<_11.AcceptedDomainAddedEvent>): _11.AcceptedDomainAddedEvent;
+                fromPartial(object: {
+                    acceptedDomain?: {
+                        domain?: string;
+                        active?: boolean;
+                    };
+                }): _11.AcceptedDomainAddedEvent;
             };
             AcceptedDomainUpdatedEvent: {
                 encode(message: _11.AcceptedDomainUpdatedEvent, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _11.AcceptedDomainUpdatedEvent;
-                fromJSON(object: any): _11.AcceptedDomainUpdatedEvent;
-                toJSON(message: _11.AcceptedDomainUpdatedEvent): unknown;
-                fromPartial(object: Partial<_11.AcceptedDomainUpdatedEvent>): _11.AcceptedDomainUpdatedEvent;
+                fromPartial(object: {
+                    acceptedDomain?: {
+                        domain?: string;
+                        active?: boolean;
+                    };
+                }): _11.AcceptedDomainUpdatedEvent;
             };
             PublisherRespectPaidEvent: {
                 encode(message: _11.PublisherRespectPaidEvent, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _11.PublisherRespectPaidEvent;
-                fromJSON(object: any): _11.PublisherRespectPaidEvent;
-                toJSON(message: _11.PublisherRespectPaidEvent): unknown;
-                fromPartial(object: Partial<_11.PublisherRespectPaidEvent>): _11.PublisherRespectPaidEvent;
+                fromPartial(object: {
+                    respectPaid?: string | number | import("long");
+                    publisherReward?: string | number | import("long");
+                    communityPoolFunds?: string | number | import("long");
+                    publisher?: string;
+                }): _11.PublisherRespectPaidEvent;
             };
             Article: {
                 encode(message: _10.Article, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _10.Article;
-                fromJSON(object: any): _10.Article;
-                toJSON(message: _10.Article): unknown;
-                fromPartial(object: Partial<_10.Article>): _10.Article;
+                fromPartial(object: {
+                    id?: string | number | import("long");
+                    title?: string;
+                    url?: string;
+                    picture?: string;
+                    publisher?: string;
+                    paid?: boolean;
+                    createdAt?: string | number | import("long");
+                }): _10.Article;
             };
             AnonArticlesCounter: {
                 encode(message: _9.AnonArticlesCounter, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _9.AnonArticlesCounter;
-                fromJSON(object: any): _9.AnonArticlesCounter;
-                toJSON(message: _9.AnonArticlesCounter): unknown;
-                fromPartial(object: Partial<_9.AnonArticlesCounter>): _9.AnonArticlesCounter;
+                fromPartial(object: {
+                    key?: string;
+                    counter?: string | number | import("long");
+                }): _9.AnonArticlesCounter;
             };
             AcceptedDomain: {
                 encode(message: _8.AcceptedDomain, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _8.AcceptedDomain;
-                fromJSON(object: any): _8.AcceptedDomain;
-                toJSON(message: _8.AcceptedDomain): unknown;
-                fromPartial(object: Partial<_8.AcceptedDomain>): _8.AcceptedDomain;
+                fromPartial(object: {
+                    domain?: string;
+                    active?: boolean;
+                }): _8.AcceptedDomain;
             };
             AcceptedDomainProposal: {
                 encode(message: _7.AcceptedDomainProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _7.AcceptedDomainProposal;
-                fromJSON(object: any): _7.AcceptedDomainProposal;
-                toJSON(message: _7.AcceptedDomainProposal): unknown;
-                fromPartial(object: Partial<_7.AcceptedDomainProposal>): _7.AcceptedDomainProposal;
+                fromPartial(object: {
+                    title?: string;
+                    description?: string;
+                    domain?: string;
+                    active?: boolean;
+                }): _7.AcceptedDomainProposal;
             };
         };
     }
@@ -356,10 +637,10 @@ export declare namespace bze {
         }) => Promise<{
             bze: {
                 burner: {
-                    v1: _134.MsgClientImpl;
+                    v1: _138.MsgClientImpl;
                 };
                 cointrunk: {
-                    v1: _135.MsgClientImpl;
+                    v1: _139.MsgClientImpl;
                 };
             };
             cosmos: {
@@ -614,10 +895,10 @@ export declare namespace bze {
         }) => Promise<{
             bze: {
                 burner: {
-                    v1: _130.LCDQueryClient;
+                    v1: _134.LCDQueryClient;
                 };
                 cointrunk: {
-                    v1: _131.LCDQueryClient;
+                    v1: _135.LCDQueryClient;
                 };
             };
             cosmos: {

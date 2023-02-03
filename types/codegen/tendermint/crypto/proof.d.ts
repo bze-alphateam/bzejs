@@ -1,5 +1,5 @@
+import { Long, DeepPartial } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { Long } from "../../helpers";
 export interface Proof {
     total: Long;
     index: Long;
@@ -19,9 +19,7 @@ export interface ValueOp {
     proof?: Proof;
 }
 export interface ValueOpSDKType {
-    /** Encoded in ProofOp.Key. */
     key: Uint8Array;
-    /** To encode in ProofOp.Data */
     proof?: ProofSDKType;
 }
 export interface DominoOp {
@@ -65,35 +63,25 @@ export interface ProofOpsSDKType {
 export declare const Proof: {
     encode(message: Proof, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Proof;
-    fromJSON(object: any): Proof;
-    toJSON(message: Proof): unknown;
-    fromPartial(object: Partial<Proof>): Proof;
+    fromPartial(object: DeepPartial<Proof>): Proof;
 };
 export declare const ValueOp: {
     encode(message: ValueOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ValueOp;
-    fromJSON(object: any): ValueOp;
-    toJSON(message: ValueOp): unknown;
-    fromPartial(object: Partial<ValueOp>): ValueOp;
+    fromPartial(object: DeepPartial<ValueOp>): ValueOp;
 };
 export declare const DominoOp: {
     encode(message: DominoOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): DominoOp;
-    fromJSON(object: any): DominoOp;
-    toJSON(message: DominoOp): unknown;
-    fromPartial(object: Partial<DominoOp>): DominoOp;
+    fromPartial(object: DeepPartial<DominoOp>): DominoOp;
 };
 export declare const ProofOp: {
     encode(message: ProofOp, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProofOp;
-    fromJSON(object: any): ProofOp;
-    toJSON(message: ProofOp): unknown;
-    fromPartial(object: Partial<ProofOp>): ProofOp;
+    fromPartial(object: DeepPartial<ProofOp>): ProofOp;
 };
 export declare const ProofOps: {
     encode(message: ProofOps, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ProofOps;
-    fromJSON(object: any): ProofOps;
-    toJSON(message: ProofOps): unknown;
-    fromPartial(object: Partial<ProofOps>): ProofOps;
+    fromPartial(object: DeepPartial<ProofOps>): ProofOps;
 };

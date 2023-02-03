@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { Long } from "../../helpers";
+import { DeepPartial, Long } from "../../helpers";
 export interface MsgAddArticle {
     publisher: string;
     title: string;
@@ -39,28 +39,20 @@ export interface MsgPayPublisherRespectResponseSDKType {
 export declare const MsgAddArticle: {
     encode(message: MsgAddArticle, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddArticle;
-    fromJSON(object: any): MsgAddArticle;
-    toJSON(message: MsgAddArticle): unknown;
-    fromPartial(object: Partial<MsgAddArticle>): MsgAddArticle;
+    fromPartial(object: DeepPartial<MsgAddArticle>): MsgAddArticle;
 };
 export declare const MsgAddArticleResponse: {
     encode(_: MsgAddArticleResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgAddArticleResponse;
-    fromJSON(_: any): MsgAddArticleResponse;
-    toJSON(_: MsgAddArticleResponse): unknown;
-    fromPartial(_: Partial<MsgAddArticleResponse>): MsgAddArticleResponse;
+    fromPartial(_: DeepPartial<MsgAddArticleResponse>): MsgAddArticleResponse;
 };
 export declare const MsgPayPublisherRespect: {
     encode(message: MsgPayPublisherRespect, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgPayPublisherRespect;
-    fromJSON(object: any): MsgPayPublisherRespect;
-    toJSON(message: MsgPayPublisherRespect): unknown;
-    fromPartial(object: Partial<MsgPayPublisherRespect>): MsgPayPublisherRespect;
+    fromPartial(object: DeepPartial<MsgPayPublisherRespect>): MsgPayPublisherRespect;
 };
 export declare const MsgPayPublisherRespectResponse: {
     encode(message: MsgPayPublisherRespectResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgPayPublisherRespectResponse;
-    fromJSON(object: any): MsgPayPublisherRespectResponse;
-    toJSON(message: MsgPayPublisherRespectResponse): unknown;
-    fromPartial(object: Partial<MsgPayPublisherRespectResponse>): MsgPayPublisherRespectResponse;
+    fromPartial(object: DeepPartial<MsgPayPublisherRespectResponse>): MsgPayPublisherRespectResponse;
 };

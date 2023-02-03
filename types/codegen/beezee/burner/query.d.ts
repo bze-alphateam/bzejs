@@ -2,6 +2,7 @@ import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } fr
 import { Params, ParamsSDKType } from "./params";
 import { BurnedCoins, BurnedCoinsSDKType } from "./burned_coins";
 import * as _m0 from "protobufjs/minimal";
+import { DeepPartial } from "../../helpers";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
 }
@@ -15,7 +16,6 @@ export interface QueryParamsResponse {
 }
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
-    /** params holds all the parameters of this module. */
     params?: ParamsSDKType;
 }
 export interface QueryAllBurnedCoinsRequest {
@@ -35,28 +35,20 @@ export interface QueryAllBurnedCoinsResponseSDKType {
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
-    fromJSON(_: any): QueryParamsRequest;
-    toJSON(_: QueryParamsRequest): unknown;
-    fromPartial(_: Partial<QueryParamsRequest>): QueryParamsRequest;
+    fromPartial(_: DeepPartial<QueryParamsRequest>): QueryParamsRequest;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
-    fromJSON(object: any): QueryParamsResponse;
-    toJSON(message: QueryParamsResponse): unknown;
-    fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
+    fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const QueryAllBurnedCoinsRequest: {
     encode(message: QueryAllBurnedCoinsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllBurnedCoinsRequest;
-    fromJSON(object: any): QueryAllBurnedCoinsRequest;
-    toJSON(message: QueryAllBurnedCoinsRequest): unknown;
-    fromPartial(object: Partial<QueryAllBurnedCoinsRequest>): QueryAllBurnedCoinsRequest;
+    fromPartial(object: DeepPartial<QueryAllBurnedCoinsRequest>): QueryAllBurnedCoinsRequest;
 };
 export declare const QueryAllBurnedCoinsResponse: {
     encode(message: QueryAllBurnedCoinsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllBurnedCoinsResponse;
-    fromJSON(object: any): QueryAllBurnedCoinsResponse;
-    toJSON(message: QueryAllBurnedCoinsResponse): unknown;
-    fromPartial(object: Partial<QueryAllBurnedCoinsResponse>): QueryAllBurnedCoinsResponse;
+    fromPartial(object: DeepPartial<QueryAllBurnedCoinsResponse>): QueryAllBurnedCoinsResponse;
 };

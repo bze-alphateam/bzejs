@@ -1,6 +1,6 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
+import { Long, DeepPartial } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { Long } from "../../../helpers";
 /**
  * BaseAccount defines a base account type. It contains all the necessary fields
  * for basic account functionality. Any custom account type should extend this
@@ -54,21 +54,15 @@ export interface ParamsSDKType {
 export declare const BaseAccount: {
     encode(message: BaseAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): BaseAccount;
-    fromJSON(object: any): BaseAccount;
-    toJSON(message: BaseAccount): unknown;
-    fromPartial(object: Partial<BaseAccount>): BaseAccount;
+    fromPartial(object: DeepPartial<BaseAccount>): BaseAccount;
 };
 export declare const ModuleAccount: {
     encode(message: ModuleAccount, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ModuleAccount;
-    fromJSON(object: any): ModuleAccount;
-    toJSON(message: ModuleAccount): unknown;
-    fromPartial(object: Partial<ModuleAccount>): ModuleAccount;
+    fromPartial(object: DeepPartial<ModuleAccount>): ModuleAccount;
 };
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromJSON(object: any): Params;
-    toJSON(message: Params): unknown;
-    fromPartial(object: Partial<Params>): Params;
+    fromPartial(object: DeepPartial<Params>): Params;
 };

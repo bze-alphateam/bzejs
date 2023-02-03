@@ -1,7 +1,7 @@
 import { Publisher, PublisherSDKType } from "./publisher";
 import { AcceptedDomain, AcceptedDomainSDKType } from "./accepted_domain";
+import { Long, DeepPartial } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { Long } from "../../helpers";
 export interface ArticleAddedEvent {
     publisher: string;
     articleId: Long;
@@ -51,42 +51,30 @@ export interface PublisherRespectPaidEventSDKType {
 export declare const ArticleAddedEvent: {
     encode(message: ArticleAddedEvent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): ArticleAddedEvent;
-    fromJSON(object: any): ArticleAddedEvent;
-    toJSON(message: ArticleAddedEvent): unknown;
-    fromPartial(object: Partial<ArticleAddedEvent>): ArticleAddedEvent;
+    fromPartial(object: DeepPartial<ArticleAddedEvent>): ArticleAddedEvent;
 };
 export declare const PublisherAddedEvent: {
     encode(message: PublisherAddedEvent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PublisherAddedEvent;
-    fromJSON(object: any): PublisherAddedEvent;
-    toJSON(message: PublisherAddedEvent): unknown;
-    fromPartial(object: Partial<PublisherAddedEvent>): PublisherAddedEvent;
+    fromPartial(object: DeepPartial<PublisherAddedEvent>): PublisherAddedEvent;
 };
 export declare const PublisherUpdatedEvent: {
     encode(message: PublisherUpdatedEvent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PublisherUpdatedEvent;
-    fromJSON(object: any): PublisherUpdatedEvent;
-    toJSON(message: PublisherUpdatedEvent): unknown;
-    fromPartial(object: Partial<PublisherUpdatedEvent>): PublisherUpdatedEvent;
+    fromPartial(object: DeepPartial<PublisherUpdatedEvent>): PublisherUpdatedEvent;
 };
 export declare const AcceptedDomainAddedEvent: {
     encode(message: AcceptedDomainAddedEvent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AcceptedDomainAddedEvent;
-    fromJSON(object: any): AcceptedDomainAddedEvent;
-    toJSON(message: AcceptedDomainAddedEvent): unknown;
-    fromPartial(object: Partial<AcceptedDomainAddedEvent>): AcceptedDomainAddedEvent;
+    fromPartial(object: DeepPartial<AcceptedDomainAddedEvent>): AcceptedDomainAddedEvent;
 };
 export declare const AcceptedDomainUpdatedEvent: {
     encode(message: AcceptedDomainUpdatedEvent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): AcceptedDomainUpdatedEvent;
-    fromJSON(object: any): AcceptedDomainUpdatedEvent;
-    toJSON(message: AcceptedDomainUpdatedEvent): unknown;
-    fromPartial(object: Partial<AcceptedDomainUpdatedEvent>): AcceptedDomainUpdatedEvent;
+    fromPartial(object: DeepPartial<AcceptedDomainUpdatedEvent>): AcceptedDomainUpdatedEvent;
 };
 export declare const PublisherRespectPaidEvent: {
     encode(message: PublisherRespectPaidEvent, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PublisherRespectPaidEvent;
-    fromJSON(object: any): PublisherRespectPaidEvent;
-    toJSON(message: PublisherRespectPaidEvent): unknown;
-    fromPartial(object: Partial<PublisherRespectPaidEvent>): PublisherRespectPaidEvent;
+    fromPartial(object: DeepPartial<PublisherRespectPaidEvent>): PublisherRespectPaidEvent;
 };

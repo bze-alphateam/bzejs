@@ -1,7 +1,7 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { GroupInfo, GroupInfoSDKType, GroupPolicyInfo, GroupPolicyInfoSDKType, GroupMember, GroupMemberSDKType, Proposal, ProposalSDKType, Vote, VoteSDKType, TallyResult, TallyResultSDKType } from "./types";
+import { Long, DeepPartial } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { Long } from "../../../helpers";
 /** QueryGroupInfoRequest is the Query/GroupInfo request type. */
 export interface QueryGroupInfoRequest {
     /** group_id is the unique ID of the group. */
@@ -9,7 +9,6 @@ export interface QueryGroupInfoRequest {
 }
 /** QueryGroupInfoRequest is the Query/GroupInfo request type. */
 export interface QueryGroupInfoRequestSDKType {
-    /** group_id is the unique ID of the group. */
     group_id: Long;
 }
 /** QueryGroupInfoResponse is the Query/GroupInfo response type. */
@@ -19,7 +18,6 @@ export interface QueryGroupInfoResponse {
 }
 /** QueryGroupInfoResponse is the Query/GroupInfo response type. */
 export interface QueryGroupInfoResponseSDKType {
-    /** info is the GroupInfo for the group. */
     info?: GroupInfoSDKType;
 }
 /** QueryGroupPolicyInfoRequest is the Query/GroupPolicyInfo request type. */
@@ -29,7 +27,6 @@ export interface QueryGroupPolicyInfoRequest {
 }
 /** QueryGroupPolicyInfoRequest is the Query/GroupPolicyInfo request type. */
 export interface QueryGroupPolicyInfoRequestSDKType {
-    /** address is the account address of the group policy. */
     address: string;
 }
 /** QueryGroupPolicyInfoResponse is the Query/GroupPolicyInfo response type. */
@@ -39,7 +36,6 @@ export interface QueryGroupPolicyInfoResponse {
 }
 /** QueryGroupPolicyInfoResponse is the Query/GroupPolicyInfo response type. */
 export interface QueryGroupPolicyInfoResponseSDKType {
-    /** info is the GroupPolicyInfo for the group policy. */
     info?: GroupPolicyInfoSDKType;
 }
 /** QueryGroupMembersRequest is the Query/GroupMembers request type. */
@@ -51,9 +47,7 @@ export interface QueryGroupMembersRequest {
 }
 /** QueryGroupMembersRequest is the Query/GroupMembers request type. */
 export interface QueryGroupMembersRequestSDKType {
-    /** group_id is the unique ID of the group. */
     group_id: Long;
-    /** pagination defines an optional pagination for the request. */
     pagination?: PageRequestSDKType;
 }
 /** QueryGroupMembersResponse is the Query/GroupMembersResponse response type. */
@@ -65,9 +59,7 @@ export interface QueryGroupMembersResponse {
 }
 /** QueryGroupMembersResponse is the Query/GroupMembersResponse response type. */
 export interface QueryGroupMembersResponseSDKType {
-    /** members are the members of the group with given group_id. */
     members: GroupMemberSDKType[];
-    /** pagination defines the pagination in the response. */
     pagination?: PageResponseSDKType;
 }
 /** QueryGroupsByAdminRequest is the Query/GroupsByAdmin request type. */
@@ -79,9 +71,7 @@ export interface QueryGroupsByAdminRequest {
 }
 /** QueryGroupsByAdminRequest is the Query/GroupsByAdmin request type. */
 export interface QueryGroupsByAdminRequestSDKType {
-    /** admin is the account address of a group's admin. */
     admin: string;
-    /** pagination defines an optional pagination for the request. */
     pagination?: PageRequestSDKType;
 }
 /** QueryGroupsByAdminResponse is the Query/GroupsByAdminResponse response type. */
@@ -93,9 +83,7 @@ export interface QueryGroupsByAdminResponse {
 }
 /** QueryGroupsByAdminResponse is the Query/GroupsByAdminResponse response type. */
 export interface QueryGroupsByAdminResponseSDKType {
-    /** groups are the groups info with the provided admin. */
     groups: GroupInfoSDKType[];
-    /** pagination defines the pagination in the response. */
     pagination?: PageResponseSDKType;
 }
 /** QueryGroupPoliciesByGroupRequest is the Query/GroupPoliciesByGroup request type. */
@@ -107,9 +95,7 @@ export interface QueryGroupPoliciesByGroupRequest {
 }
 /** QueryGroupPoliciesByGroupRequest is the Query/GroupPoliciesByGroup request type. */
 export interface QueryGroupPoliciesByGroupRequestSDKType {
-    /** group_id is the unique ID of the group policy's group. */
     group_id: Long;
-    /** pagination defines an optional pagination for the request. */
     pagination?: PageRequestSDKType;
 }
 /** QueryGroupPoliciesByGroupResponse is the Query/GroupPoliciesByGroup response type. */
@@ -121,9 +107,7 @@ export interface QueryGroupPoliciesByGroupResponse {
 }
 /** QueryGroupPoliciesByGroupResponse is the Query/GroupPoliciesByGroup response type. */
 export interface QueryGroupPoliciesByGroupResponseSDKType {
-    /** group_policies are the group policies info associated with the provided group. */
     group_policies: GroupPolicyInfoSDKType[];
-    /** pagination defines the pagination in the response. */
     pagination?: PageResponseSDKType;
 }
 /** QueryGroupPoliciesByAdminRequest is the Query/GroupPoliciesByAdmin request type. */
@@ -135,9 +119,7 @@ export interface QueryGroupPoliciesByAdminRequest {
 }
 /** QueryGroupPoliciesByAdminRequest is the Query/GroupPoliciesByAdmin request type. */
 export interface QueryGroupPoliciesByAdminRequestSDKType {
-    /** admin is the admin address of the group policy. */
     admin: string;
-    /** pagination defines an optional pagination for the request. */
     pagination?: PageRequestSDKType;
 }
 /** QueryGroupPoliciesByAdminResponse is the Query/GroupPoliciesByAdmin response type. */
@@ -149,9 +131,7 @@ export interface QueryGroupPoliciesByAdminResponse {
 }
 /** QueryGroupPoliciesByAdminResponse is the Query/GroupPoliciesByAdmin response type. */
 export interface QueryGroupPoliciesByAdminResponseSDKType {
-    /** group_policies are the group policies info with provided admin. */
     group_policies: GroupPolicyInfoSDKType[];
-    /** pagination defines the pagination in the response. */
     pagination?: PageResponseSDKType;
 }
 /** QueryProposalRequest is the Query/Proposal request type. */
@@ -161,7 +141,6 @@ export interface QueryProposalRequest {
 }
 /** QueryProposalRequest is the Query/Proposal request type. */
 export interface QueryProposalRequestSDKType {
-    /** proposal_id is the unique ID of a proposal. */
     proposal_id: Long;
 }
 /** QueryProposalResponse is the Query/Proposal response type. */
@@ -171,7 +150,6 @@ export interface QueryProposalResponse {
 }
 /** QueryProposalResponse is the Query/Proposal response type. */
 export interface QueryProposalResponseSDKType {
-    /** proposal is the proposal info. */
     proposal?: ProposalSDKType;
 }
 /** QueryProposalsByGroupPolicyRequest is the Query/ProposalByGroupPolicy request type. */
@@ -183,9 +161,7 @@ export interface QueryProposalsByGroupPolicyRequest {
 }
 /** QueryProposalsByGroupPolicyRequest is the Query/ProposalByGroupPolicy request type. */
 export interface QueryProposalsByGroupPolicyRequestSDKType {
-    /** address is the account address of the group policy related to proposals. */
     address: string;
-    /** pagination defines an optional pagination for the request. */
     pagination?: PageRequestSDKType;
 }
 /** QueryProposalsByGroupPolicyResponse is the Query/ProposalByGroupPolicy response type. */
@@ -197,9 +173,7 @@ export interface QueryProposalsByGroupPolicyResponse {
 }
 /** QueryProposalsByGroupPolicyResponse is the Query/ProposalByGroupPolicy response type. */
 export interface QueryProposalsByGroupPolicyResponseSDKType {
-    /** proposals are the proposals with given group policy. */
     proposals: ProposalSDKType[];
-    /** pagination defines the pagination in the response. */
     pagination?: PageResponseSDKType;
 }
 /** QueryVoteByProposalVoterRequest is the Query/VoteByProposalVoter request type. */
@@ -211,9 +185,7 @@ export interface QueryVoteByProposalVoterRequest {
 }
 /** QueryVoteByProposalVoterRequest is the Query/VoteByProposalVoter request type. */
 export interface QueryVoteByProposalVoterRequestSDKType {
-    /** proposal_id is the unique ID of a proposal. */
     proposal_id: Long;
-    /** voter is a proposal voter account address. */
     voter: string;
 }
 /** QueryVoteByProposalVoterResponse is the Query/VoteByProposalVoter response type. */
@@ -223,7 +195,6 @@ export interface QueryVoteByProposalVoterResponse {
 }
 /** QueryVoteByProposalVoterResponse is the Query/VoteByProposalVoter response type. */
 export interface QueryVoteByProposalVoterResponseSDKType {
-    /** vote is the vote with given proposal_id and voter. */
     vote?: VoteSDKType;
 }
 /** QueryVotesByProposalRequest is the Query/VotesByProposal request type. */
@@ -235,9 +206,7 @@ export interface QueryVotesByProposalRequest {
 }
 /** QueryVotesByProposalRequest is the Query/VotesByProposal request type. */
 export interface QueryVotesByProposalRequestSDKType {
-    /** proposal_id is the unique ID of a proposal. */
     proposal_id: Long;
-    /** pagination defines an optional pagination for the request. */
     pagination?: PageRequestSDKType;
 }
 /** QueryVotesByProposalResponse is the Query/VotesByProposal response type. */
@@ -249,9 +218,7 @@ export interface QueryVotesByProposalResponse {
 }
 /** QueryVotesByProposalResponse is the Query/VotesByProposal response type. */
 export interface QueryVotesByProposalResponseSDKType {
-    /** votes are the list of votes for given proposal_id. */
     votes: VoteSDKType[];
-    /** pagination defines the pagination in the response. */
     pagination?: PageResponseSDKType;
 }
 /** QueryVotesByVoterRequest is the Query/VotesByVoter request type. */
@@ -263,9 +230,7 @@ export interface QueryVotesByVoterRequest {
 }
 /** QueryVotesByVoterRequest is the Query/VotesByVoter request type. */
 export interface QueryVotesByVoterRequestSDKType {
-    /** voter is a proposal voter account address. */
     voter: string;
-    /** pagination defines an optional pagination for the request. */
     pagination?: PageRequestSDKType;
 }
 /** QueryVotesByVoterResponse is the Query/VotesByVoter response type. */
@@ -277,9 +242,7 @@ export interface QueryVotesByVoterResponse {
 }
 /** QueryVotesByVoterResponse is the Query/VotesByVoter response type. */
 export interface QueryVotesByVoterResponseSDKType {
-    /** votes are the list of votes by given voter. */
     votes: VoteSDKType[];
-    /** pagination defines the pagination in the response. */
     pagination?: PageResponseSDKType;
 }
 /** QueryGroupsByMemberRequest is the Query/GroupsByMember request type. */
@@ -291,9 +254,7 @@ export interface QueryGroupsByMemberRequest {
 }
 /** QueryGroupsByMemberRequest is the Query/GroupsByMember request type. */
 export interface QueryGroupsByMemberRequestSDKType {
-    /** address is the group member address. */
     address: string;
-    /** pagination defines an optional pagination for the request. */
     pagination?: PageRequestSDKType;
 }
 /** QueryGroupsByMemberResponse is the Query/GroupsByMember response type. */
@@ -305,9 +266,7 @@ export interface QueryGroupsByMemberResponse {
 }
 /** QueryGroupsByMemberResponse is the Query/GroupsByMember response type. */
 export interface QueryGroupsByMemberResponseSDKType {
-    /** groups are the groups info with the provided group member. */
     groups: GroupInfoSDKType[];
-    /** pagination defines the pagination in the response. */
     pagination?: PageResponseSDKType;
 }
 /** QueryTallyResultRequest is the Query/TallyResult request type. */
@@ -317,7 +276,6 @@ export interface QueryTallyResultRequest {
 }
 /** QueryTallyResultRequest is the Query/TallyResult request type. */
 export interface QueryTallyResultRequestSDKType {
-    /** proposal_id is the unique id of a proposal. */
     proposal_id: Long;
 }
 /** QueryTallyResultResponse is the Query/TallyResult response type. */
@@ -327,188 +285,135 @@ export interface QueryTallyResultResponse {
 }
 /** QueryTallyResultResponse is the Query/TallyResult response type. */
 export interface QueryTallyResultResponseSDKType {
-    /** tally defines the requested tally. */
     tally?: TallyResultSDKType;
 }
 export declare const QueryGroupInfoRequest: {
     encode(message: QueryGroupInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupInfoRequest;
-    fromJSON(object: any): QueryGroupInfoRequest;
-    toJSON(message: QueryGroupInfoRequest): unknown;
-    fromPartial(object: Partial<QueryGroupInfoRequest>): QueryGroupInfoRequest;
+    fromPartial(object: DeepPartial<QueryGroupInfoRequest>): QueryGroupInfoRequest;
 };
 export declare const QueryGroupInfoResponse: {
     encode(message: QueryGroupInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupInfoResponse;
-    fromJSON(object: any): QueryGroupInfoResponse;
-    toJSON(message: QueryGroupInfoResponse): unknown;
-    fromPartial(object: Partial<QueryGroupInfoResponse>): QueryGroupInfoResponse;
+    fromPartial(object: DeepPartial<QueryGroupInfoResponse>): QueryGroupInfoResponse;
 };
 export declare const QueryGroupPolicyInfoRequest: {
     encode(message: QueryGroupPolicyInfoRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupPolicyInfoRequest;
-    fromJSON(object: any): QueryGroupPolicyInfoRequest;
-    toJSON(message: QueryGroupPolicyInfoRequest): unknown;
-    fromPartial(object: Partial<QueryGroupPolicyInfoRequest>): QueryGroupPolicyInfoRequest;
+    fromPartial(object: DeepPartial<QueryGroupPolicyInfoRequest>): QueryGroupPolicyInfoRequest;
 };
 export declare const QueryGroupPolicyInfoResponse: {
     encode(message: QueryGroupPolicyInfoResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupPolicyInfoResponse;
-    fromJSON(object: any): QueryGroupPolicyInfoResponse;
-    toJSON(message: QueryGroupPolicyInfoResponse): unknown;
-    fromPartial(object: Partial<QueryGroupPolicyInfoResponse>): QueryGroupPolicyInfoResponse;
+    fromPartial(object: DeepPartial<QueryGroupPolicyInfoResponse>): QueryGroupPolicyInfoResponse;
 };
 export declare const QueryGroupMembersRequest: {
     encode(message: QueryGroupMembersRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupMembersRequest;
-    fromJSON(object: any): QueryGroupMembersRequest;
-    toJSON(message: QueryGroupMembersRequest): unknown;
-    fromPartial(object: Partial<QueryGroupMembersRequest>): QueryGroupMembersRequest;
+    fromPartial(object: DeepPartial<QueryGroupMembersRequest>): QueryGroupMembersRequest;
 };
 export declare const QueryGroupMembersResponse: {
     encode(message: QueryGroupMembersResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupMembersResponse;
-    fromJSON(object: any): QueryGroupMembersResponse;
-    toJSON(message: QueryGroupMembersResponse): unknown;
-    fromPartial(object: Partial<QueryGroupMembersResponse>): QueryGroupMembersResponse;
+    fromPartial(object: DeepPartial<QueryGroupMembersResponse>): QueryGroupMembersResponse;
 };
 export declare const QueryGroupsByAdminRequest: {
     encode(message: QueryGroupsByAdminRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupsByAdminRequest;
-    fromJSON(object: any): QueryGroupsByAdminRequest;
-    toJSON(message: QueryGroupsByAdminRequest): unknown;
-    fromPartial(object: Partial<QueryGroupsByAdminRequest>): QueryGroupsByAdminRequest;
+    fromPartial(object: DeepPartial<QueryGroupsByAdminRequest>): QueryGroupsByAdminRequest;
 };
 export declare const QueryGroupsByAdminResponse: {
     encode(message: QueryGroupsByAdminResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupsByAdminResponse;
-    fromJSON(object: any): QueryGroupsByAdminResponse;
-    toJSON(message: QueryGroupsByAdminResponse): unknown;
-    fromPartial(object: Partial<QueryGroupsByAdminResponse>): QueryGroupsByAdminResponse;
+    fromPartial(object: DeepPartial<QueryGroupsByAdminResponse>): QueryGroupsByAdminResponse;
 };
 export declare const QueryGroupPoliciesByGroupRequest: {
     encode(message: QueryGroupPoliciesByGroupRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupPoliciesByGroupRequest;
-    fromJSON(object: any): QueryGroupPoliciesByGroupRequest;
-    toJSON(message: QueryGroupPoliciesByGroupRequest): unknown;
-    fromPartial(object: Partial<QueryGroupPoliciesByGroupRequest>): QueryGroupPoliciesByGroupRequest;
+    fromPartial(object: DeepPartial<QueryGroupPoliciesByGroupRequest>): QueryGroupPoliciesByGroupRequest;
 };
 export declare const QueryGroupPoliciesByGroupResponse: {
     encode(message: QueryGroupPoliciesByGroupResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupPoliciesByGroupResponse;
-    fromJSON(object: any): QueryGroupPoliciesByGroupResponse;
-    toJSON(message: QueryGroupPoliciesByGroupResponse): unknown;
-    fromPartial(object: Partial<QueryGroupPoliciesByGroupResponse>): QueryGroupPoliciesByGroupResponse;
+    fromPartial(object: DeepPartial<QueryGroupPoliciesByGroupResponse>): QueryGroupPoliciesByGroupResponse;
 };
 export declare const QueryGroupPoliciesByAdminRequest: {
     encode(message: QueryGroupPoliciesByAdminRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupPoliciesByAdminRequest;
-    fromJSON(object: any): QueryGroupPoliciesByAdminRequest;
-    toJSON(message: QueryGroupPoliciesByAdminRequest): unknown;
-    fromPartial(object: Partial<QueryGroupPoliciesByAdminRequest>): QueryGroupPoliciesByAdminRequest;
+    fromPartial(object: DeepPartial<QueryGroupPoliciesByAdminRequest>): QueryGroupPoliciesByAdminRequest;
 };
 export declare const QueryGroupPoliciesByAdminResponse: {
     encode(message: QueryGroupPoliciesByAdminResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupPoliciesByAdminResponse;
-    fromJSON(object: any): QueryGroupPoliciesByAdminResponse;
-    toJSON(message: QueryGroupPoliciesByAdminResponse): unknown;
-    fromPartial(object: Partial<QueryGroupPoliciesByAdminResponse>): QueryGroupPoliciesByAdminResponse;
+    fromPartial(object: DeepPartial<QueryGroupPoliciesByAdminResponse>): QueryGroupPoliciesByAdminResponse;
 };
 export declare const QueryProposalRequest: {
     encode(message: QueryProposalRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalRequest;
-    fromJSON(object: any): QueryProposalRequest;
-    toJSON(message: QueryProposalRequest): unknown;
-    fromPartial(object: Partial<QueryProposalRequest>): QueryProposalRequest;
+    fromPartial(object: DeepPartial<QueryProposalRequest>): QueryProposalRequest;
 };
 export declare const QueryProposalResponse: {
     encode(message: QueryProposalResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalResponse;
-    fromJSON(object: any): QueryProposalResponse;
-    toJSON(message: QueryProposalResponse): unknown;
-    fromPartial(object: Partial<QueryProposalResponse>): QueryProposalResponse;
+    fromPartial(object: DeepPartial<QueryProposalResponse>): QueryProposalResponse;
 };
 export declare const QueryProposalsByGroupPolicyRequest: {
     encode(message: QueryProposalsByGroupPolicyRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalsByGroupPolicyRequest;
-    fromJSON(object: any): QueryProposalsByGroupPolicyRequest;
-    toJSON(message: QueryProposalsByGroupPolicyRequest): unknown;
-    fromPartial(object: Partial<QueryProposalsByGroupPolicyRequest>): QueryProposalsByGroupPolicyRequest;
+    fromPartial(object: DeepPartial<QueryProposalsByGroupPolicyRequest>): QueryProposalsByGroupPolicyRequest;
 };
 export declare const QueryProposalsByGroupPolicyResponse: {
     encode(message: QueryProposalsByGroupPolicyResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryProposalsByGroupPolicyResponse;
-    fromJSON(object: any): QueryProposalsByGroupPolicyResponse;
-    toJSON(message: QueryProposalsByGroupPolicyResponse): unknown;
-    fromPartial(object: Partial<QueryProposalsByGroupPolicyResponse>): QueryProposalsByGroupPolicyResponse;
+    fromPartial(object: DeepPartial<QueryProposalsByGroupPolicyResponse>): QueryProposalsByGroupPolicyResponse;
 };
 export declare const QueryVoteByProposalVoterRequest: {
     encode(message: QueryVoteByProposalVoterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVoteByProposalVoterRequest;
-    fromJSON(object: any): QueryVoteByProposalVoterRequest;
-    toJSON(message: QueryVoteByProposalVoterRequest): unknown;
-    fromPartial(object: Partial<QueryVoteByProposalVoterRequest>): QueryVoteByProposalVoterRequest;
+    fromPartial(object: DeepPartial<QueryVoteByProposalVoterRequest>): QueryVoteByProposalVoterRequest;
 };
 export declare const QueryVoteByProposalVoterResponse: {
     encode(message: QueryVoteByProposalVoterResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVoteByProposalVoterResponse;
-    fromJSON(object: any): QueryVoteByProposalVoterResponse;
-    toJSON(message: QueryVoteByProposalVoterResponse): unknown;
-    fromPartial(object: Partial<QueryVoteByProposalVoterResponse>): QueryVoteByProposalVoterResponse;
+    fromPartial(object: DeepPartial<QueryVoteByProposalVoterResponse>): QueryVoteByProposalVoterResponse;
 };
 export declare const QueryVotesByProposalRequest: {
     encode(message: QueryVotesByProposalRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVotesByProposalRequest;
-    fromJSON(object: any): QueryVotesByProposalRequest;
-    toJSON(message: QueryVotesByProposalRequest): unknown;
-    fromPartial(object: Partial<QueryVotesByProposalRequest>): QueryVotesByProposalRequest;
+    fromPartial(object: DeepPartial<QueryVotesByProposalRequest>): QueryVotesByProposalRequest;
 };
 export declare const QueryVotesByProposalResponse: {
     encode(message: QueryVotesByProposalResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVotesByProposalResponse;
-    fromJSON(object: any): QueryVotesByProposalResponse;
-    toJSON(message: QueryVotesByProposalResponse): unknown;
-    fromPartial(object: Partial<QueryVotesByProposalResponse>): QueryVotesByProposalResponse;
+    fromPartial(object: DeepPartial<QueryVotesByProposalResponse>): QueryVotesByProposalResponse;
 };
 export declare const QueryVotesByVoterRequest: {
     encode(message: QueryVotesByVoterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVotesByVoterRequest;
-    fromJSON(object: any): QueryVotesByVoterRequest;
-    toJSON(message: QueryVotesByVoterRequest): unknown;
-    fromPartial(object: Partial<QueryVotesByVoterRequest>): QueryVotesByVoterRequest;
+    fromPartial(object: DeepPartial<QueryVotesByVoterRequest>): QueryVotesByVoterRequest;
 };
 export declare const QueryVotesByVoterResponse: {
     encode(message: QueryVotesByVoterResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryVotesByVoterResponse;
-    fromJSON(object: any): QueryVotesByVoterResponse;
-    toJSON(message: QueryVotesByVoterResponse): unknown;
-    fromPartial(object: Partial<QueryVotesByVoterResponse>): QueryVotesByVoterResponse;
+    fromPartial(object: DeepPartial<QueryVotesByVoterResponse>): QueryVotesByVoterResponse;
 };
 export declare const QueryGroupsByMemberRequest: {
     encode(message: QueryGroupsByMemberRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupsByMemberRequest;
-    fromJSON(object: any): QueryGroupsByMemberRequest;
-    toJSON(message: QueryGroupsByMemberRequest): unknown;
-    fromPartial(object: Partial<QueryGroupsByMemberRequest>): QueryGroupsByMemberRequest;
+    fromPartial(object: DeepPartial<QueryGroupsByMemberRequest>): QueryGroupsByMemberRequest;
 };
 export declare const QueryGroupsByMemberResponse: {
     encode(message: QueryGroupsByMemberResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGroupsByMemberResponse;
-    fromJSON(object: any): QueryGroupsByMemberResponse;
-    toJSON(message: QueryGroupsByMemberResponse): unknown;
-    fromPartial(object: Partial<QueryGroupsByMemberResponse>): QueryGroupsByMemberResponse;
+    fromPartial(object: DeepPartial<QueryGroupsByMemberResponse>): QueryGroupsByMemberResponse;
 };
 export declare const QueryTallyResultRequest: {
     encode(message: QueryTallyResultRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTallyResultRequest;
-    fromJSON(object: any): QueryTallyResultRequest;
-    toJSON(message: QueryTallyResultRequest): unknown;
-    fromPartial(object: Partial<QueryTallyResultRequest>): QueryTallyResultRequest;
+    fromPartial(object: DeepPartial<QueryTallyResultRequest>): QueryTallyResultRequest;
 };
 export declare const QueryTallyResultResponse: {
     encode(message: QueryTallyResultResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryTallyResultResponse;
-    fromJSON(object: any): QueryTallyResultResponse;
-    toJSON(message: QueryTallyResultResponse): unknown;
-    fromPartial(object: Partial<QueryTallyResultResponse>): QueryTallyResultResponse;
+    fromPartial(object: DeepPartial<QueryTallyResultResponse>): QueryTallyResultResponse;
 };

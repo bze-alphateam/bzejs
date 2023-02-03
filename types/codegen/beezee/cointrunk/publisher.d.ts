@@ -1,5 +1,5 @@
+import { Long, DeepPartial } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { Long } from "../../helpers";
 export interface Publisher {
     name: string;
     address: string;
@@ -19,7 +19,5 @@ export interface PublisherSDKType {
 export declare const Publisher: {
     encode(message: Publisher, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Publisher;
-    fromJSON(object: any): Publisher;
-    toJSON(message: Publisher): unknown;
-    fromPartial(object: Partial<Publisher>): Publisher;
+    fromPartial(object: DeepPartial<Publisher>): Publisher;
 };

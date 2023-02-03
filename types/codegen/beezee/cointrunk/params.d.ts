@@ -1,6 +1,6 @@
 import { Coin, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import * as _m0 from "protobufjs/minimal";
-import { Long } from "../../helpers";
+import { DeepPartial, Long } from "../../helpers";
 /** Params defines the parameters for the module. */
 export interface PublisherRespectParams {
     tax: string;
@@ -24,14 +24,10 @@ export interface ParamsSDKType {
 export declare const PublisherRespectParams: {
     encode(message: PublisherRespectParams, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PublisherRespectParams;
-    fromJSON(object: any): PublisherRespectParams;
-    toJSON(message: PublisherRespectParams): unknown;
-    fromPartial(object: Partial<PublisherRespectParams>): PublisherRespectParams;
+    fromPartial(object: DeepPartial<PublisherRespectParams>): PublisherRespectParams;
 };
 export declare const Params: {
     encode(message: Params, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Params;
-    fromJSON(object: any): Params;
-    toJSON(message: Params): unknown;
-    fromPartial(object: Partial<Params>): Params;
+    fromPartial(object: DeepPartial<Params>): Params;
 };

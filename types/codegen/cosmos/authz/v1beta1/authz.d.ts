@@ -1,6 +1,6 @@
 import { Any, AnySDKType } from "../../../google/protobuf/any";
-import { Timestamp, TimestampSDKType } from "../../../google/protobuf/timestamp";
 import * as _m0 from "protobufjs/minimal";
+import { DeepPartial } from "../../../helpers";
 /**
  * GenericAuthorization gives the grantee unrestricted permissions to execute
  * the provided method on behalf of the granter's account.
@@ -14,7 +14,6 @@ export interface GenericAuthorization {
  * the provided method on behalf of the granter's account.
  */
 export interface GenericAuthorizationSDKType {
-    /** Msg, identified by it's type URL, to grant unrestricted permissions to execute */
     msg: string;
 }
 /**
@@ -28,7 +27,7 @@ export interface Grant {
      * doesn't have a time expiration (other conditions  in `authorization`
      * may apply to invalidate the grant)
      */
-    expiration?: Timestamp;
+    expiration?: Date;
 }
 /**
  * Grant gives permissions to execute
@@ -36,12 +35,7 @@ export interface Grant {
  */
 export interface GrantSDKType {
     authorization?: AnySDKType;
-    /**
-     * time when the grant will expire and will be pruned. If null, then the grant
-     * doesn't have a time expiration (other conditions  in `authorization`
-     * may apply to invalidate the grant)
-     */
-    expiration?: TimestampSDKType;
+    expiration?: Date;
 }
 /**
  * GrantAuthorization extends a grant with both the addresses of the grantee and granter.
@@ -51,7 +45,7 @@ export interface GrantAuthorization {
     granter: string;
     grantee: string;
     authorization?: Any;
-    expiration?: Timestamp;
+    expiration?: Date;
 }
 /**
  * GrantAuthorization extends a grant with both the addresses of the grantee and granter.
@@ -61,7 +55,7 @@ export interface GrantAuthorizationSDKType {
     granter: string;
     grantee: string;
     authorization?: AnySDKType;
-    expiration?: TimestampSDKType;
+    expiration?: Date;
 }
 /** GrantQueueItem contains the list of TypeURL of a sdk.Msg. */
 export interface GrantQueueItem {
@@ -70,34 +64,25 @@ export interface GrantQueueItem {
 }
 /** GrantQueueItem contains the list of TypeURL of a sdk.Msg. */
 export interface GrantQueueItemSDKType {
-    /** msg_type_urls contains the list of TypeURL of a sdk.Msg. */
     msg_type_urls: string[];
 }
 export declare const GenericAuthorization: {
     encode(message: GenericAuthorization, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenericAuthorization;
-    fromJSON(object: any): GenericAuthorization;
-    toJSON(message: GenericAuthorization): unknown;
-    fromPartial(object: Partial<GenericAuthorization>): GenericAuthorization;
+    fromPartial(object: DeepPartial<GenericAuthorization>): GenericAuthorization;
 };
 export declare const Grant: {
     encode(message: Grant, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Grant;
-    fromJSON(object: any): Grant;
-    toJSON(message: Grant): unknown;
-    fromPartial(object: Partial<Grant>): Grant;
+    fromPartial(object: DeepPartial<Grant>): Grant;
 };
 export declare const GrantAuthorization: {
     encode(message: GrantAuthorization, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GrantAuthorization;
-    fromJSON(object: any): GrantAuthorization;
-    toJSON(message: GrantAuthorization): unknown;
-    fromPartial(object: Partial<GrantAuthorization>): GrantAuthorization;
+    fromPartial(object: DeepPartial<GrantAuthorization>): GrantAuthorization;
 };
 export declare const GrantQueueItem: {
     encode(message: GrantQueueItem, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GrantQueueItem;
-    fromJSON(object: any): GrantQueueItem;
-    toJSON(message: GrantQueueItem): unknown;
-    fromPartial(object: Partial<GrantQueueItem>): GrantQueueItem;
+    fromPartial(object: DeepPartial<GrantQueueItem>): GrantQueueItem;
 };

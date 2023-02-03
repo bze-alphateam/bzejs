@@ -1,5 +1,6 @@
 import { ParamChange, ParamChangeSDKType } from "./params";
 import * as _m0 from "protobufjs/minimal";
+import { DeepPartial } from "../../../helpers";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequest {
     /** subspace defines the module to query the parameter for. */
@@ -9,9 +10,7 @@ export interface QueryParamsRequest {
 }
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
 export interface QueryParamsRequestSDKType {
-    /** subspace defines the module to query the parameter for. */
     subspace: string;
-    /** key defines the key of the parameter in the subspace. */
     key: string;
 }
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
@@ -21,7 +20,6 @@ export interface QueryParamsResponse {
 }
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
-    /** param defines the queried parameter. */
     param?: ParamChangeSDKType;
 }
 /**
@@ -69,35 +67,25 @@ export interface SubspaceSDKType {
 export declare const QueryParamsRequest: {
     encode(message: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
-    fromJSON(object: any): QueryParamsRequest;
-    toJSON(message: QueryParamsRequest): unknown;
-    fromPartial(object: Partial<QueryParamsRequest>): QueryParamsRequest;
+    fromPartial(object: DeepPartial<QueryParamsRequest>): QueryParamsRequest;
 };
 export declare const QueryParamsResponse: {
     encode(message: QueryParamsResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsResponse;
-    fromJSON(object: any): QueryParamsResponse;
-    toJSON(message: QueryParamsResponse): unknown;
-    fromPartial(object: Partial<QueryParamsResponse>): QueryParamsResponse;
+    fromPartial(object: DeepPartial<QueryParamsResponse>): QueryParamsResponse;
 };
 export declare const QuerySubspacesRequest: {
     encode(_: QuerySubspacesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySubspacesRequest;
-    fromJSON(_: any): QuerySubspacesRequest;
-    toJSON(_: QuerySubspacesRequest): unknown;
-    fromPartial(_: Partial<QuerySubspacesRequest>): QuerySubspacesRequest;
+    fromPartial(_: DeepPartial<QuerySubspacesRequest>): QuerySubspacesRequest;
 };
 export declare const QuerySubspacesResponse: {
     encode(message: QuerySubspacesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QuerySubspacesResponse;
-    fromJSON(object: any): QuerySubspacesResponse;
-    toJSON(message: QuerySubspacesResponse): unknown;
-    fromPartial(object: Partial<QuerySubspacesResponse>): QuerySubspacesResponse;
+    fromPartial(object: DeepPartial<QuerySubspacesResponse>): QuerySubspacesResponse;
 };
 export declare const Subspace: {
     encode(message: Subspace, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Subspace;
-    fromJSON(object: any): Subspace;
-    toJSON(message: Subspace): unknown;
-    fromPartial(object: Partial<Subspace>): Subspace;
+    fromPartial(object: DeepPartial<Subspace>): Subspace;
 };

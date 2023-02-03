@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { DeepPartial } from "../../helpers";
 export interface PublisherProposal {
     title: string;
     description: string;
@@ -16,7 +17,5 @@ export interface PublisherProposalSDKType {
 export declare const PublisherProposal: {
     encode(message: PublisherProposal, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): PublisherProposal;
-    fromJSON(object: any): PublisherProposal;
-    toJSON(message: PublisherProposal): unknown;
-    fromPartial(object: Partial<PublisherProposal>): PublisherProposal;
+    fromPartial(object: DeepPartial<PublisherProposal>): PublisherProposal;
 };

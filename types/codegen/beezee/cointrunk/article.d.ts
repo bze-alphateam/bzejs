@@ -1,5 +1,5 @@
+import { Long, DeepPartial } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { Long } from "../../helpers";
 export interface Article {
     id: Long;
     title: string;
@@ -21,7 +21,5 @@ export interface ArticleSDKType {
 export declare const Article: {
     encode(message: Article, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): Article;
-    fromJSON(object: any): Article;
-    toJSON(message: Article): unknown;
-    fromPartial(object: Partial<Article>): Article;
+    fromPartial(object: DeepPartial<Article>): Article;
 };

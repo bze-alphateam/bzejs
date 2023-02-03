@@ -1,6 +1,7 @@
 import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } from "../../base/query/v1beta1/pagination";
 import { Grant, GrantSDKType } from "./feegrant";
 import * as _m0 from "protobufjs/minimal";
+import { DeepPartial } from "../../../helpers";
 /** QueryAllowanceRequest is the request type for the Query/Allowance RPC method. */
 export interface QueryAllowanceRequest {
     /** granter is the address of the user granting an allowance of their funds. */
@@ -10,9 +11,7 @@ export interface QueryAllowanceRequest {
 }
 /** QueryAllowanceRequest is the request type for the Query/Allowance RPC method. */
 export interface QueryAllowanceRequestSDKType {
-    /** granter is the address of the user granting an allowance of their funds. */
     granter: string;
-    /** grantee is the address of the user being granted an allowance of another user's funds. */
     grantee: string;
 }
 /** QueryAllowanceResponse is the response type for the Query/Allowance RPC method. */
@@ -22,7 +21,6 @@ export interface QueryAllowanceResponse {
 }
 /** QueryAllowanceResponse is the response type for the Query/Allowance RPC method. */
 export interface QueryAllowanceResponseSDKType {
-    /** allowance is a allowance granted for grantee by granter. */
     allowance?: GrantSDKType;
 }
 /** QueryAllowancesRequest is the request type for the Query/Allowances RPC method. */
@@ -34,7 +32,6 @@ export interface QueryAllowancesRequest {
 /** QueryAllowancesRequest is the request type for the Query/Allowances RPC method. */
 export interface QueryAllowancesRequestSDKType {
     grantee: string;
-    /** pagination defines an pagination for the request. */
     pagination?: PageRequestSDKType;
 }
 /** QueryAllowancesResponse is the response type for the Query/Allowances RPC method. */
@@ -46,9 +43,7 @@ export interface QueryAllowancesResponse {
 }
 /** QueryAllowancesResponse is the response type for the Query/Allowances RPC method. */
 export interface QueryAllowancesResponseSDKType {
-    /** allowances are allowance's granted for grantee by granter. */
     allowances: GrantSDKType[];
-    /** pagination defines an pagination for the response. */
     pagination?: PageResponseSDKType;
 }
 /** QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method. */
@@ -60,7 +55,6 @@ export interface QueryAllowancesByGranterRequest {
 /** QueryAllowancesByGranterRequest is the request type for the Query/AllowancesByGranter RPC method. */
 export interface QueryAllowancesByGranterRequestSDKType {
     granter: string;
-    /** pagination defines an pagination for the request. */
     pagination?: PageRequestSDKType;
 }
 /** QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method. */
@@ -72,50 +66,36 @@ export interface QueryAllowancesByGranterResponse {
 }
 /** QueryAllowancesByGranterResponse is the response type for the Query/AllowancesByGranter RPC method. */
 export interface QueryAllowancesByGranterResponseSDKType {
-    /** allowances that have been issued by the granter. */
     allowances: GrantSDKType[];
-    /** pagination defines an pagination for the response. */
     pagination?: PageResponseSDKType;
 }
 export declare const QueryAllowanceRequest: {
     encode(message: QueryAllowanceRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowanceRequest;
-    fromJSON(object: any): QueryAllowanceRequest;
-    toJSON(message: QueryAllowanceRequest): unknown;
-    fromPartial(object: Partial<QueryAllowanceRequest>): QueryAllowanceRequest;
+    fromPartial(object: DeepPartial<QueryAllowanceRequest>): QueryAllowanceRequest;
 };
 export declare const QueryAllowanceResponse: {
     encode(message: QueryAllowanceResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowanceResponse;
-    fromJSON(object: any): QueryAllowanceResponse;
-    toJSON(message: QueryAllowanceResponse): unknown;
-    fromPartial(object: Partial<QueryAllowanceResponse>): QueryAllowanceResponse;
+    fromPartial(object: DeepPartial<QueryAllowanceResponse>): QueryAllowanceResponse;
 };
 export declare const QueryAllowancesRequest: {
     encode(message: QueryAllowancesRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowancesRequest;
-    fromJSON(object: any): QueryAllowancesRequest;
-    toJSON(message: QueryAllowancesRequest): unknown;
-    fromPartial(object: Partial<QueryAllowancesRequest>): QueryAllowancesRequest;
+    fromPartial(object: DeepPartial<QueryAllowancesRequest>): QueryAllowancesRequest;
 };
 export declare const QueryAllowancesResponse: {
     encode(message: QueryAllowancesResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowancesResponse;
-    fromJSON(object: any): QueryAllowancesResponse;
-    toJSON(message: QueryAllowancesResponse): unknown;
-    fromPartial(object: Partial<QueryAllowancesResponse>): QueryAllowancesResponse;
+    fromPartial(object: DeepPartial<QueryAllowancesResponse>): QueryAllowancesResponse;
 };
 export declare const QueryAllowancesByGranterRequest: {
     encode(message: QueryAllowancesByGranterRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowancesByGranterRequest;
-    fromJSON(object: any): QueryAllowancesByGranterRequest;
-    toJSON(message: QueryAllowancesByGranterRequest): unknown;
-    fromPartial(object: Partial<QueryAllowancesByGranterRequest>): QueryAllowancesByGranterRequest;
+    fromPartial(object: DeepPartial<QueryAllowancesByGranterRequest>): QueryAllowancesByGranterRequest;
 };
 export declare const QueryAllowancesByGranterResponse: {
     encode(message: QueryAllowancesByGranterResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllowancesByGranterResponse;
-    fromJSON(object: any): QueryAllowancesByGranterResponse;
-    toJSON(message: QueryAllowancesByGranterResponse): unknown;
-    fromPartial(object: Partial<QueryAllowancesByGranterResponse>): QueryAllowancesByGranterResponse;
+    fromPartial(object: DeepPartial<QueryAllowancesByGranterResponse>): QueryAllowancesByGranterResponse;
 };

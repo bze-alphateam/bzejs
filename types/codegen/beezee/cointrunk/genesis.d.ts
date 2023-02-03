@@ -2,8 +2,8 @@ import { Params, ParamsSDKType } from "./params";
 import { Publisher, PublisherSDKType } from "./publisher";
 import { AcceptedDomain, AcceptedDomainSDKType } from "./accepted_domain";
 import { Article, ArticleSDKType } from "./article";
+import { Long, DeepPartial } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { Long } from "../../helpers";
 /** GenesisState defines the cointrunk module's genesis state. */
 export interface GenesisState {
     params?: Params;
@@ -23,7 +23,5 @@ export interface GenesisStateSDKType {
 export declare const GenesisState: {
     encode(message: GenesisState, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): GenesisState;
-    fromJSON(object: any): GenesisState;
-    toJSON(message: GenesisState): unknown;
-    fromPartial(object: Partial<GenesisState>): GenesisState;
+    fromPartial(object: DeepPartial<GenesisState>): GenesisState;
 };

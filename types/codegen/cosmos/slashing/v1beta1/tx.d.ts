@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { DeepPartial } from "../../../helpers";
 /** MsgUnjail defines the Msg/Unjail request type */
 export interface MsgUnjail {
     validatorAddr: string;
@@ -16,14 +17,10 @@ export interface MsgUnjailResponseSDKType {
 export declare const MsgUnjail: {
     encode(message: MsgUnjail, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnjail;
-    fromJSON(object: any): MsgUnjail;
-    toJSON(message: MsgUnjail): unknown;
-    fromPartial(object: Partial<MsgUnjail>): MsgUnjail;
+    fromPartial(object: DeepPartial<MsgUnjail>): MsgUnjail;
 };
 export declare const MsgUnjailResponse: {
     encode(_: MsgUnjailResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgUnjailResponse;
-    fromJSON(_: any): MsgUnjailResponse;
-    toJSON(_: MsgUnjailResponse): unknown;
-    fromPartial(_: Partial<MsgUnjailResponse>): MsgUnjailResponse;
+    fromPartial(_: DeepPartial<MsgUnjailResponse>): MsgUnjailResponse;
 };
