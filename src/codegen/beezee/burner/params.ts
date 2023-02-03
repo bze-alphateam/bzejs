@@ -1,4 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
+import { DeepPartial } from "../../helpers";
 /** Params defines the parameters for the module. */
 
 export interface Params {}
@@ -33,16 +34,7 @@ export const Params = {
     return message;
   },
 
-  fromJSON(_: any): Params {
-    return {};
-  },
-
-  toJSON(_: Params): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
-  fromPartial(_: Partial<Params>): Params {
+  fromPartial(_: DeepPartial<Params>): Params {
     const message = createBaseParams();
     return message;
   }

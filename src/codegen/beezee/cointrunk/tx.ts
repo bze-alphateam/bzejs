@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet, Long } from "../../helpers";
+import { DeepPartial, Long } from "../../helpers";
 export interface MsgAddArticle {
   publisher: string;
   title: string;
@@ -99,25 +99,7 @@ export const MsgAddArticle = {
     return message;
   },
 
-  fromJSON(object: any): MsgAddArticle {
-    return {
-      publisher: isSet(object.publisher) ? String(object.publisher) : "",
-      title: isSet(object.title) ? String(object.title) : "",
-      url: isSet(object.url) ? String(object.url) : "",
-      picture: isSet(object.picture) ? String(object.picture) : ""
-    };
-  },
-
-  toJSON(message: MsgAddArticle): unknown {
-    const obj: any = {};
-    message.publisher !== undefined && (obj.publisher = message.publisher);
-    message.title !== undefined && (obj.title = message.title);
-    message.url !== undefined && (obj.url = message.url);
-    message.picture !== undefined && (obj.picture = message.picture);
-    return obj;
-  },
-
-  fromPartial(object: Partial<MsgAddArticle>): MsgAddArticle {
+  fromPartial(object: DeepPartial<MsgAddArticle>): MsgAddArticle {
     const message = createBaseMsgAddArticle();
     message.publisher = object.publisher ?? "";
     message.title = object.title ?? "";
@@ -155,16 +137,7 @@ export const MsgAddArticleResponse = {
     return message;
   },
 
-  fromJSON(_: any): MsgAddArticleResponse {
-    return {};
-  },
-
-  toJSON(_: MsgAddArticleResponse): unknown {
-    const obj: any = {};
-    return obj;
-  },
-
-  fromPartial(_: Partial<MsgAddArticleResponse>): MsgAddArticleResponse {
+  fromPartial(_: DeepPartial<MsgAddArticleResponse>): MsgAddArticleResponse {
     const message = createBaseMsgAddArticleResponse();
     return message;
   }
@@ -226,23 +199,7 @@ export const MsgPayPublisherRespect = {
     return message;
   },
 
-  fromJSON(object: any): MsgPayPublisherRespect {
-    return {
-      creator: isSet(object.creator) ? String(object.creator) : "",
-      address: isSet(object.address) ? String(object.address) : "",
-      amount: isSet(object.amount) ? String(object.amount) : ""
-    };
-  },
-
-  toJSON(message: MsgPayPublisherRespect): unknown {
-    const obj: any = {};
-    message.creator !== undefined && (obj.creator = message.creator);
-    message.address !== undefined && (obj.address = message.address);
-    message.amount !== undefined && (obj.amount = message.amount);
-    return obj;
-  },
-
-  fromPartial(object: Partial<MsgPayPublisherRespect>): MsgPayPublisherRespect {
+  fromPartial(object: DeepPartial<MsgPayPublisherRespect>): MsgPayPublisherRespect {
     const message = createBaseMsgPayPublisherRespect();
     message.creator = object.creator ?? "";
     message.address = object.address ?? "";
@@ -307,23 +264,7 @@ export const MsgPayPublisherRespectResponse = {
     return message;
   },
 
-  fromJSON(object: any): MsgPayPublisherRespectResponse {
-    return {
-      respectPaid: isSet(object.respectPaid) ? Long.fromValue(object.respectPaid) : Long.UZERO,
-      publisherReward: isSet(object.publisherReward) ? Long.fromValue(object.publisherReward) : Long.UZERO,
-      communityPoolFunds: isSet(object.communityPoolFunds) ? Long.fromValue(object.communityPoolFunds) : Long.UZERO
-    };
-  },
-
-  toJSON(message: MsgPayPublisherRespectResponse): unknown {
-    const obj: any = {};
-    message.respectPaid !== undefined && (obj.respectPaid = (message.respectPaid || Long.UZERO).toString());
-    message.publisherReward !== undefined && (obj.publisherReward = (message.publisherReward || Long.UZERO).toString());
-    message.communityPoolFunds !== undefined && (obj.communityPoolFunds = (message.communityPoolFunds || Long.UZERO).toString());
-    return obj;
-  },
-
-  fromPartial(object: Partial<MsgPayPublisherRespectResponse>): MsgPayPublisherRespectResponse {
+  fromPartial(object: DeepPartial<MsgPayPublisherRespectResponse>): MsgPayPublisherRespectResponse {
     const message = createBaseMsgPayPublisherRespectResponse();
     message.respectPaid = object.respectPaid !== undefined && object.respectPaid !== null ? Long.fromValue(object.respectPaid) : Long.UZERO;
     message.publisherReward = object.publisherReward !== undefined && object.publisherReward !== null ? Long.fromValue(object.publisherReward) : Long.UZERO;

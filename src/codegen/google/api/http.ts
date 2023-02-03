@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet } from "../../helpers";
+import { DeepPartial } from "../../helpers";
 /**
  * Defines the HTTP configuration for an API service. It contains a list of
  * [HttpRule][google.api.HttpRule], each specifying the mapping of an RPC method
@@ -31,21 +31,7 @@ export interface Http {
  */
 
 export interface HttpSDKType {
-  /**
-   * A list of HTTP configuration rules that apply to individual API methods.
-   * 
-   * **NOTE:** All service configuration rules follow "last one wins" order.
-   */
   rules: HttpRuleSDKType[];
-  /**
-   * When set to true, URL path parameters will be fully URI-decoded except in
-   * cases of single segment matches in reserved expansion, where "%2F" will be
-   * left encoded.
-   * 
-   * The default behavior is to not decode RFC 6570 reserved characters in multi
-   * segment matches.
-   */
-
   fully_decode_reserved_expansion: boolean;
 }
 /**
@@ -654,64 +640,15 @@ export interface HttpRule {
  */
 
 export interface HttpRuleSDKType {
-  /**
-   * Selects a method to which this rule applies.
-   * 
-   * Refer to [selector][google.api.DocumentationRule.selector] for syntax details.
-   */
   selector: string;
-  /**
-   * Maps to HTTP GET. Used for listing and getting information about
-   * resources.
-   */
-
   get?: string;
-  /** Maps to HTTP PUT. Used for replacing a resource. */
-
   put?: string;
-  /** Maps to HTTP POST. Used for creating a resource or performing an action. */
-
   post?: string;
-  /** Maps to HTTP DELETE. Used for deleting a resource. */
-
   delete?: string;
-  /** Maps to HTTP PATCH. Used for updating a resource. */
-
   patch?: string;
-  /**
-   * The custom pattern is used for specifying an HTTP method that is not
-   * included in the `pattern` field, such as HEAD, or "*" to leave the
-   * HTTP method unspecified for this rule. The wild-card rule is useful
-   * for services that provide content to Web (HTML) clients.
-   */
-
   custom?: CustomHttpPatternSDKType;
-  /**
-   * The name of the request field whose value is mapped to the HTTP request
-   * body, or `*` for mapping all request fields not captured by the path
-   * pattern to the HTTP body, or omitted for not having any HTTP request body.
-   * 
-   * NOTE: the referred field must be present at the top-level of the request
-   * message type.
-   */
-
   body: string;
-  /**
-   * Optional. The name of the response field whose value is mapped to the HTTP
-   * response body. When omitted, the entire response message will be used
-   * as the HTTP response body.
-   * 
-   * NOTE: The referred field must be present at the top-level of the response
-   * message type.
-   */
-
   response_body: string;
-  /**
-   * Additional HTTP bindings for the selector. Nested bindings must
-   * not contain an `additional_bindings` field themselves (that is,
-   * the nesting may only be one level deep).
-   */
-
   additional_bindings: HttpRuleSDKType[];
 }
 /** A custom pattern is used for defining custom HTTP verb. */
@@ -726,10 +663,7 @@ export interface CustomHttpPattern {
 /** A custom pattern is used for defining custom HTTP verb. */
 
 export interface CustomHttpPatternSDKType {
-  /** The name of this custom HTTP verb. */
   kind: string;
-  /** The path matched by this custom verb. */
-
   path: string;
 }
 
@@ -779,27 +713,7 @@ export const Http = {
     return message;
   },
 
-  fromJSON(object: any): Http {
-    return {
-      rules: Array.isArray(object?.rules) ? object.rules.map((e: any) => HttpRule.fromJSON(e)) : [],
-      fullyDecodeReservedExpansion: isSet(object.fullyDecodeReservedExpansion) ? Boolean(object.fullyDecodeReservedExpansion) : false
-    };
-  },
-
-  toJSON(message: Http): unknown {
-    const obj: any = {};
-
-    if (message.rules) {
-      obj.rules = message.rules.map(e => e ? HttpRule.toJSON(e) : undefined);
-    } else {
-      obj.rules = [];
-    }
-
-    message.fullyDecodeReservedExpansion !== undefined && (obj.fullyDecodeReservedExpansion = message.fullyDecodeReservedExpansion);
-    return obj;
-  },
-
-  fromPartial(object: Partial<Http>): Http {
+  fromPartial(object: DeepPartial<Http>): Http {
     const message = createBaseHttp();
     message.rules = object.rules?.map(e => HttpRule.fromPartial(e)) || [];
     message.fullyDecodeReservedExpansion = object.fullyDecodeReservedExpansion ?? false;
@@ -926,43 +840,7 @@ export const HttpRule = {
     return message;
   },
 
-  fromJSON(object: any): HttpRule {
-    return {
-      selector: isSet(object.selector) ? String(object.selector) : "",
-      get: isSet(object.get) ? String(object.get) : undefined,
-      put: isSet(object.put) ? String(object.put) : undefined,
-      post: isSet(object.post) ? String(object.post) : undefined,
-      delete: isSet(object.delete) ? String(object.delete) : undefined,
-      patch: isSet(object.patch) ? String(object.patch) : undefined,
-      custom: isSet(object.custom) ? CustomHttpPattern.fromJSON(object.custom) : undefined,
-      body: isSet(object.body) ? String(object.body) : "",
-      responseBody: isSet(object.responseBody) ? String(object.responseBody) : "",
-      additionalBindings: Array.isArray(object?.additionalBindings) ? object.additionalBindings.map((e: any) => HttpRule.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: HttpRule): unknown {
-    const obj: any = {};
-    message.selector !== undefined && (obj.selector = message.selector);
-    message.get !== undefined && (obj.get = message.get);
-    message.put !== undefined && (obj.put = message.put);
-    message.post !== undefined && (obj.post = message.post);
-    message.delete !== undefined && (obj.delete = message.delete);
-    message.patch !== undefined && (obj.patch = message.patch);
-    message.custom !== undefined && (obj.custom = message.custom ? CustomHttpPattern.toJSON(message.custom) : undefined);
-    message.body !== undefined && (obj.body = message.body);
-    message.responseBody !== undefined && (obj.responseBody = message.responseBody);
-
-    if (message.additionalBindings) {
-      obj.additionalBindings = message.additionalBindings.map(e => e ? HttpRule.toJSON(e) : undefined);
-    } else {
-      obj.additionalBindings = [];
-    }
-
-    return obj;
-  },
-
-  fromPartial(object: Partial<HttpRule>): HttpRule {
+  fromPartial(object: DeepPartial<HttpRule>): HttpRule {
     const message = createBaseHttpRule();
     message.selector = object.selector ?? "";
     message.get = object.get ?? undefined;
@@ -1025,21 +903,7 @@ export const CustomHttpPattern = {
     return message;
   },
 
-  fromJSON(object: any): CustomHttpPattern {
-    return {
-      kind: isSet(object.kind) ? String(object.kind) : "",
-      path: isSet(object.path) ? String(object.path) : ""
-    };
-  },
-
-  toJSON(message: CustomHttpPattern): unknown {
-    const obj: any = {};
-    message.kind !== undefined && (obj.kind = message.kind);
-    message.path !== undefined && (obj.path = message.path);
-    return obj;
-  },
-
-  fromPartial(object: Partial<CustomHttpPattern>): CustomHttpPattern {
+  fromPartial(object: DeepPartial<CustomHttpPattern>): CustomHttpPattern {
     const message = createBaseCustomHttpPattern();
     message.kind = object.kind ?? "";
     message.path = object.path ?? "";

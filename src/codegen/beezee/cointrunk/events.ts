@@ -1,7 +1,7 @@
 import { Publisher, PublisherSDKType } from "./publisher";
 import { AcceptedDomain, AcceptedDomainSDKType } from "./accepted_domain";
+import { Long, DeepPartial } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet } from "../../helpers";
 export interface ArticleAddedEvent {
   publisher: string;
   articleId: Long;
@@ -104,23 +104,7 @@ export const ArticleAddedEvent = {
     return message;
   },
 
-  fromJSON(object: any): ArticleAddedEvent {
-    return {
-      publisher: isSet(object.publisher) ? String(object.publisher) : "",
-      articleId: isSet(object.articleId) ? Long.fromValue(object.articleId) : Long.UZERO,
-      paid: isSet(object.paid) ? Boolean(object.paid) : false
-    };
-  },
-
-  toJSON(message: ArticleAddedEvent): unknown {
-    const obj: any = {};
-    message.publisher !== undefined && (obj.publisher = message.publisher);
-    message.articleId !== undefined && (obj.articleId = (message.articleId || Long.UZERO).toString());
-    message.paid !== undefined && (obj.paid = message.paid);
-    return obj;
-  },
-
-  fromPartial(object: Partial<ArticleAddedEvent>): ArticleAddedEvent {
+  fromPartial(object: DeepPartial<ArticleAddedEvent>): ArticleAddedEvent {
     const message = createBaseArticleAddedEvent();
     message.publisher = object.publisher ?? "";
     message.articleId = object.articleId !== undefined && object.articleId !== null ? Long.fromValue(object.articleId) : Long.UZERO;
@@ -167,19 +151,7 @@ export const PublisherAddedEvent = {
     return message;
   },
 
-  fromJSON(object: any): PublisherAddedEvent {
-    return {
-      publisher: isSet(object.publisher) ? Publisher.fromJSON(object.publisher) : undefined
-    };
-  },
-
-  toJSON(message: PublisherAddedEvent): unknown {
-    const obj: any = {};
-    message.publisher !== undefined && (obj.publisher = message.publisher ? Publisher.toJSON(message.publisher) : undefined);
-    return obj;
-  },
-
-  fromPartial(object: Partial<PublisherAddedEvent>): PublisherAddedEvent {
+  fromPartial(object: DeepPartial<PublisherAddedEvent>): PublisherAddedEvent {
     const message = createBasePublisherAddedEvent();
     message.publisher = object.publisher !== undefined && object.publisher !== null ? Publisher.fromPartial(object.publisher) : undefined;
     return message;
@@ -224,19 +196,7 @@ export const PublisherUpdatedEvent = {
     return message;
   },
 
-  fromJSON(object: any): PublisherUpdatedEvent {
-    return {
-      publisher: isSet(object.publisher) ? Publisher.fromJSON(object.publisher) : undefined
-    };
-  },
-
-  toJSON(message: PublisherUpdatedEvent): unknown {
-    const obj: any = {};
-    message.publisher !== undefined && (obj.publisher = message.publisher ? Publisher.toJSON(message.publisher) : undefined);
-    return obj;
-  },
-
-  fromPartial(object: Partial<PublisherUpdatedEvent>): PublisherUpdatedEvent {
+  fromPartial(object: DeepPartial<PublisherUpdatedEvent>): PublisherUpdatedEvent {
     const message = createBasePublisherUpdatedEvent();
     message.publisher = object.publisher !== undefined && object.publisher !== null ? Publisher.fromPartial(object.publisher) : undefined;
     return message;
@@ -281,19 +241,7 @@ export const AcceptedDomainAddedEvent = {
     return message;
   },
 
-  fromJSON(object: any): AcceptedDomainAddedEvent {
-    return {
-      acceptedDomain: isSet(object.acceptedDomain) ? AcceptedDomain.fromJSON(object.acceptedDomain) : undefined
-    };
-  },
-
-  toJSON(message: AcceptedDomainAddedEvent): unknown {
-    const obj: any = {};
-    message.acceptedDomain !== undefined && (obj.acceptedDomain = message.acceptedDomain ? AcceptedDomain.toJSON(message.acceptedDomain) : undefined);
-    return obj;
-  },
-
-  fromPartial(object: Partial<AcceptedDomainAddedEvent>): AcceptedDomainAddedEvent {
+  fromPartial(object: DeepPartial<AcceptedDomainAddedEvent>): AcceptedDomainAddedEvent {
     const message = createBaseAcceptedDomainAddedEvent();
     message.acceptedDomain = object.acceptedDomain !== undefined && object.acceptedDomain !== null ? AcceptedDomain.fromPartial(object.acceptedDomain) : undefined;
     return message;
@@ -338,19 +286,7 @@ export const AcceptedDomainUpdatedEvent = {
     return message;
   },
 
-  fromJSON(object: any): AcceptedDomainUpdatedEvent {
-    return {
-      acceptedDomain: isSet(object.acceptedDomain) ? AcceptedDomain.fromJSON(object.acceptedDomain) : undefined
-    };
-  },
-
-  toJSON(message: AcceptedDomainUpdatedEvent): unknown {
-    const obj: any = {};
-    message.acceptedDomain !== undefined && (obj.acceptedDomain = message.acceptedDomain ? AcceptedDomain.toJSON(message.acceptedDomain) : undefined);
-    return obj;
-  },
-
-  fromPartial(object: Partial<AcceptedDomainUpdatedEvent>): AcceptedDomainUpdatedEvent {
+  fromPartial(object: DeepPartial<AcceptedDomainUpdatedEvent>): AcceptedDomainUpdatedEvent {
     const message = createBaseAcceptedDomainUpdatedEvent();
     message.acceptedDomain = object.acceptedDomain !== undefined && object.acceptedDomain !== null ? AcceptedDomain.fromPartial(object.acceptedDomain) : undefined;
     return message;
@@ -422,25 +358,7 @@ export const PublisherRespectPaidEvent = {
     return message;
   },
 
-  fromJSON(object: any): PublisherRespectPaidEvent {
-    return {
-      respectPaid: isSet(object.respectPaid) ? Long.fromValue(object.respectPaid) : Long.UZERO,
-      publisherReward: isSet(object.publisherReward) ? Long.fromValue(object.publisherReward) : Long.UZERO,
-      communityPoolFunds: isSet(object.communityPoolFunds) ? Long.fromValue(object.communityPoolFunds) : Long.UZERO,
-      publisher: isSet(object.publisher) ? String(object.publisher) : ""
-    };
-  },
-
-  toJSON(message: PublisherRespectPaidEvent): unknown {
-    const obj: any = {};
-    message.respectPaid !== undefined && (obj.respectPaid = (message.respectPaid || Long.UZERO).toString());
-    message.publisherReward !== undefined && (obj.publisherReward = (message.publisherReward || Long.UZERO).toString());
-    message.communityPoolFunds !== undefined && (obj.communityPoolFunds = (message.communityPoolFunds || Long.UZERO).toString());
-    message.publisher !== undefined && (obj.publisher = message.publisher);
-    return obj;
-  },
-
-  fromPartial(object: Partial<PublisherRespectPaidEvent>): PublisherRespectPaidEvent {
+  fromPartial(object: DeepPartial<PublisherRespectPaidEvent>): PublisherRespectPaidEvent {
     const message = createBasePublisherRespectPaidEvent();
     message.respectPaid = object.respectPaid !== undefined && object.respectPaid !== null ? Long.fromValue(object.respectPaid) : Long.UZERO;
     message.publisherReward = object.publisherReward !== undefined && object.publisherReward !== null ? Long.fromValue(object.publisherReward) : Long.UZERO;

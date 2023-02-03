@@ -1,5 +1,5 @@
+import { Long, DeepPartial } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet } from "../../helpers";
 export interface Article {
   id: Long;
   title: string;
@@ -110,31 +110,7 @@ export const Article = {
     return message;
   },
 
-  fromJSON(object: any): Article {
-    return {
-      id: isSet(object.id) ? Long.fromValue(object.id) : Long.UZERO,
-      title: isSet(object.title) ? String(object.title) : "",
-      url: isSet(object.url) ? String(object.url) : "",
-      picture: isSet(object.picture) ? String(object.picture) : "",
-      publisher: isSet(object.publisher) ? String(object.publisher) : "",
-      paid: isSet(object.paid) ? Boolean(object.paid) : false,
-      createdAt: isSet(object.createdAt) ? Long.fromValue(object.createdAt) : Long.ZERO
-    };
-  },
-
-  toJSON(message: Article): unknown {
-    const obj: any = {};
-    message.id !== undefined && (obj.id = (message.id || Long.UZERO).toString());
-    message.title !== undefined && (obj.title = message.title);
-    message.url !== undefined && (obj.url = message.url);
-    message.picture !== undefined && (obj.picture = message.picture);
-    message.publisher !== undefined && (obj.publisher = message.publisher);
-    message.paid !== undefined && (obj.paid = message.paid);
-    message.createdAt !== undefined && (obj.createdAt = (message.createdAt || Long.ZERO).toString());
-    return obj;
-  },
-
-  fromPartial(object: Partial<Article>): Article {
+  fromPartial(object: DeepPartial<Article>): Article {
     const message = createBaseArticle();
     message.id = object.id !== undefined && object.id !== null ? Long.fromValue(object.id) : Long.UZERO;
     message.title = object.title ?? "";

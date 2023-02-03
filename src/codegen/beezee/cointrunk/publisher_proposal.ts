@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet } from "../../helpers";
+import { DeepPartial } from "../../helpers";
 export interface PublisherProposal {
   title: string;
   description: string;
@@ -88,27 +88,7 @@ export const PublisherProposal = {
     return message;
   },
 
-  fromJSON(object: any): PublisherProposal {
-    return {
-      title: isSet(object.title) ? String(object.title) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      name: isSet(object.name) ? String(object.name) : "",
-      address: isSet(object.address) ? String(object.address) : "",
-      active: isSet(object.active) ? Boolean(object.active) : false
-    };
-  },
-
-  toJSON(message: PublisherProposal): unknown {
-    const obj: any = {};
-    message.title !== undefined && (obj.title = message.title);
-    message.description !== undefined && (obj.description = message.description);
-    message.name !== undefined && (obj.name = message.name);
-    message.address !== undefined && (obj.address = message.address);
-    message.active !== undefined && (obj.active = message.active);
-    return obj;
-  },
-
-  fromPartial(object: Partial<PublisherProposal>): PublisherProposal {
+  fromPartial(object: DeepPartial<PublisherProposal>): PublisherProposal {
     const message = createBasePublisherProposal();
     message.title = object.title ?? "";
     message.description = object.description ?? "";

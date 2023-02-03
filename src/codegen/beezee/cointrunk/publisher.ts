@@ -1,5 +1,5 @@
+import { Long, DeepPartial } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet } from "../../helpers";
 export interface Publisher {
   name: string;
   address: string;
@@ -99,29 +99,7 @@ export const Publisher = {
     return message;
   },
 
-  fromJSON(object: any): Publisher {
-    return {
-      name: isSet(object.name) ? String(object.name) : "",
-      address: isSet(object.address) ? String(object.address) : "",
-      active: isSet(object.active) ? Boolean(object.active) : false,
-      articlesCount: isSet(object.articlesCount) ? Number(object.articlesCount) : 0,
-      createdAt: isSet(object.createdAt) ? Long.fromValue(object.createdAt) : Long.ZERO,
-      respect: isSet(object.respect) ? Long.fromValue(object.respect) : Long.ZERO
-    };
-  },
-
-  toJSON(message: Publisher): unknown {
-    const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.address !== undefined && (obj.address = message.address);
-    message.active !== undefined && (obj.active = message.active);
-    message.articlesCount !== undefined && (obj.articlesCount = Math.round(message.articlesCount));
-    message.createdAt !== undefined && (obj.createdAt = (message.createdAt || Long.ZERO).toString());
-    message.respect !== undefined && (obj.respect = (message.respect || Long.ZERO).toString());
-    return obj;
-  },
-
-  fromPartial(object: Partial<Publisher>): Publisher {
+  fromPartial(object: DeepPartial<Publisher>): Publisher {
     const message = createBasePublisher();
     message.name = object.name ?? "";
     message.address = object.address ?? "";

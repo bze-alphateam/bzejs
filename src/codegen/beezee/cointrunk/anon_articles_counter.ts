@@ -1,5 +1,5 @@
+import { Long, DeepPartial } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet } from "../../helpers";
 export interface AnonArticlesCounter {
   key: string;
   counter: Long;
@@ -55,21 +55,7 @@ export const AnonArticlesCounter = {
     return message;
   },
 
-  fromJSON(object: any): AnonArticlesCounter {
-    return {
-      key: isSet(object.key) ? String(object.key) : "",
-      counter: isSet(object.counter) ? Long.fromValue(object.counter) : Long.UZERO
-    };
-  },
-
-  toJSON(message: AnonArticlesCounter): unknown {
-    const obj: any = {};
-    message.key !== undefined && (obj.key = message.key);
-    message.counter !== undefined && (obj.counter = (message.counter || Long.UZERO).toString());
-    return obj;
-  },
-
-  fromPartial(object: Partial<AnonArticlesCounter>): AnonArticlesCounter {
+  fromPartial(object: DeepPartial<AnonArticlesCounter>): AnonArticlesCounter {
     const message = createBaseAnonArticlesCounter();
     message.key = object.key ?? "";
     message.counter = object.counter !== undefined && object.counter !== null ? Long.fromValue(object.counter) : Long.UZERO;

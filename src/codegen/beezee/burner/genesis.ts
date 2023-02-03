@@ -1,7 +1,7 @@
 import { Params, ParamsSDKType } from "./params";
 import { BurnedCoins, BurnedCoinsSDKType } from "./burned_coins";
 import * as _m0 from "protobufjs/minimal";
-import { isSet } from "../../helpers";
+import { DeepPartial } from "../../helpers";
 /** GenesisState defines the burner module's genesis state. */
 
 export interface GenesisState {
@@ -61,27 +61,7 @@ export const GenesisState = {
     return message;
   },
 
-  fromJSON(object: any): GenesisState {
-    return {
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
-      burnedCoinsList: Array.isArray(object?.burnedCoinsList) ? object.burnedCoinsList.map((e: any) => BurnedCoins.fromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: GenesisState): unknown {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-
-    if (message.burnedCoinsList) {
-      obj.burnedCoinsList = message.burnedCoinsList.map(e => e ? BurnedCoins.toJSON(e) : undefined);
-    } else {
-      obj.burnedCoinsList = [];
-    }
-
-    return obj;
-  },
-
-  fromPartial(object: Partial<GenesisState>): GenesisState {
+  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.burnedCoinsList = object.burnedCoinsList?.map(e => BurnedCoins.fromPartial(e)) || [];

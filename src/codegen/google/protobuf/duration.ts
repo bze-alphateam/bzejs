@@ -1,5 +1,5 @@
+import { Long, DeepPartial } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet } from "../../helpers";
 /**
  * A Duration represents a signed, fixed-length span of time represented
  * as a count of seconds and fractions of seconds at nanosecond
@@ -141,21 +141,7 @@ export interface Duration {
  */
 
 export interface DurationSDKType {
-  /**
-   * Signed seconds of the span of time. Must be from -315,576,000,000
-   * to +315,576,000,000 inclusive. Note: these bounds are computed from:
-   * 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
-   */
   seconds: Long;
-  /**
-   * Signed fractions of a second at nanosecond resolution of the span
-   * of time. Durations less than one second are represented with a 0
-   * `seconds` field and a positive or negative `nanos` field. For durations
-   * of one second or more, a non-zero value for the `nanos` field must be
-   * of the same sign as the `seconds` field. Must be from -999,999,999
-   * to +999,999,999 inclusive.
-   */
-
   nanos: number;
 }
 
@@ -205,21 +191,7 @@ export const Duration = {
     return message;
   },
 
-  fromJSON(object: any): Duration {
-    return {
-      seconds: isSet(object.seconds) ? Long.fromValue(object.seconds) : Long.ZERO,
-      nanos: isSet(object.nanos) ? Number(object.nanos) : 0
-    };
-  },
-
-  toJSON(message: Duration): unknown {
-    const obj: any = {};
-    message.seconds !== undefined && (obj.seconds = (message.seconds || Long.ZERO).toString());
-    message.nanos !== undefined && (obj.nanos = Math.round(message.nanos));
-    return obj;
-  },
-
-  fromPartial(object: Partial<Duration>): Duration {
+  fromPartial(object: DeepPartial<Duration>): Duration {
     const message = createBaseDuration();
     message.seconds = object.seconds !== undefined && object.seconds !== null ? Long.fromValue(object.seconds) : Long.ZERO;
     message.nanos = object.nanos ?? 0;

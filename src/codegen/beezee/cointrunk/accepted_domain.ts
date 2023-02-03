@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet } from "../../helpers";
+import { DeepPartial } from "../../helpers";
 export interface AcceptedDomain {
   domain: string;
   active: boolean;
@@ -55,21 +55,7 @@ export const AcceptedDomain = {
     return message;
   },
 
-  fromJSON(object: any): AcceptedDomain {
-    return {
-      domain: isSet(object.domain) ? String(object.domain) : "",
-      active: isSet(object.active) ? Boolean(object.active) : false
-    };
-  },
-
-  toJSON(message: AcceptedDomain): unknown {
-    const obj: any = {};
-    message.domain !== undefined && (obj.domain = message.domain);
-    message.active !== undefined && (obj.active = message.active);
-    return obj;
-  },
-
-  fromPartial(object: Partial<AcceptedDomain>): AcceptedDomain {
+  fromPartial(object: DeepPartial<AcceptedDomain>): AcceptedDomain {
     const message = createBaseAcceptedDomain();
     message.domain = object.domain ?? "";
     message.active = object.active ?? false;

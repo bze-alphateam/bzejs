@@ -1,17 +1,12 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet } from "../helpers";
+import { DeepPartial } from "../helpers";
 export enum ScalarType {
   SCALAR_TYPE_UNSPECIFIED = 0,
   SCALAR_TYPE_STRING = 1,
   SCALAR_TYPE_BYTES = 2,
   UNRECOGNIZED = -1,
 }
-export enum ScalarTypeSDKType {
-  SCALAR_TYPE_UNSPECIFIED = 0,
-  SCALAR_TYPE_STRING = 1,
-  SCALAR_TYPE_BYTES = 2,
-  UNRECOGNIZED = -1,
-}
+export const ScalarTypeSDKType = ScalarType;
 export function scalarTypeFromJSON(object: any): ScalarType {
   switch (object) {
     case 0:
@@ -74,18 +69,7 @@ export interface InterfaceDescriptor {
  */
 
 export interface InterfaceDescriptorSDKType {
-  /**
-   * name is the name of the interface. It should be a short-name (without
-   * a period) such that the fully qualified name of the interface will be
-   * package.name, ex. for the package a.b and interface named C, the
-   * fully-qualified name will be a.b.C.
-   */
   name: string;
-  /**
-   * description is a human-readable description of the interface and its
-   * purpose.
-   */
-
   description: string;
 }
 /**
@@ -133,28 +117,9 @@ export interface ScalarDescriptor {
  */
 
 export interface ScalarDescriptorSDKType {
-  /**
-   * name is the name of the scalar. It should be a short-name (without
-   * a period) such that the fully qualified name of the scalar will be
-   * package.name, ex. for the package a.b and scalar named C, the
-   * fully-qualified name will be a.b.C.
-   */
   name: string;
-  /**
-   * description is a human-readable description of the scalar and its
-   * encoding format. For instance a big integer or decimal scalar should
-   * specify precisely the expected encoding format.
-   */
-
   description: string;
-  /**
-   * field_type is the type of field with which this scalar can be used.
-   * Scalars can be used with one and only one type of field so that
-   * encoding standards and simple and clear. Currently only string and
-   * bytes fields are supported for scalars.
-   */
-
-  field_type: ScalarTypeSDKType[];
+  field_type: ScalarType[];
 }
 
 function createBaseInterfaceDescriptor(): InterfaceDescriptor {
@@ -203,21 +168,7 @@ export const InterfaceDescriptor = {
     return message;
   },
 
-  fromJSON(object: any): InterfaceDescriptor {
-    return {
-      name: isSet(object.name) ? String(object.name) : "",
-      description: isSet(object.description) ? String(object.description) : ""
-    };
-  },
-
-  toJSON(message: InterfaceDescriptor): unknown {
-    const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.description !== undefined && (obj.description = message.description);
-    return obj;
-  },
-
-  fromPartial(object: Partial<InterfaceDescriptor>): InterfaceDescriptor {
+  fromPartial(object: DeepPartial<InterfaceDescriptor>): InterfaceDescriptor {
     const message = createBaseInterfaceDescriptor();
     message.name = object.name ?? "";
     message.description = object.description ?? "";
@@ -293,29 +244,7 @@ export const ScalarDescriptor = {
     return message;
   },
 
-  fromJSON(object: any): ScalarDescriptor {
-    return {
-      name: isSet(object.name) ? String(object.name) : "",
-      description: isSet(object.description) ? String(object.description) : "",
-      fieldType: Array.isArray(object?.fieldType) ? object.fieldType.map((e: any) => scalarTypeFromJSON(e)) : []
-    };
-  },
-
-  toJSON(message: ScalarDescriptor): unknown {
-    const obj: any = {};
-    message.name !== undefined && (obj.name = message.name);
-    message.description !== undefined && (obj.description = message.description);
-
-    if (message.fieldType) {
-      obj.fieldType = message.fieldType.map(e => scalarTypeToJSON(e));
-    } else {
-      obj.fieldType = [];
-    }
-
-    return obj;
-  },
-
-  fromPartial(object: Partial<ScalarDescriptor>): ScalarDescriptor {
+  fromPartial(object: DeepPartial<ScalarDescriptor>): ScalarDescriptor {
     const message = createBaseScalarDescriptor();
     message.name = object.name ?? "";
     message.description = object.description ?? "";

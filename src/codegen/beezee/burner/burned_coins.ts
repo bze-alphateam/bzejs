@@ -1,5 +1,5 @@
 import * as _m0 from "protobufjs/minimal";
-import { isSet } from "../../helpers";
+import { DeepPartial } from "../../helpers";
 export interface BurnedCoins {
   burned: string;
   height: string;
@@ -55,21 +55,7 @@ export const BurnedCoins = {
     return message;
   },
 
-  fromJSON(object: any): BurnedCoins {
-    return {
-      burned: isSet(object.burned) ? String(object.burned) : "",
-      height: isSet(object.height) ? String(object.height) : ""
-    };
-  },
-
-  toJSON(message: BurnedCoins): unknown {
-    const obj: any = {};
-    message.burned !== undefined && (obj.burned = message.burned);
-    message.height !== undefined && (obj.height = message.height);
-    return obj;
-  },
-
-  fromPartial(object: Partial<BurnedCoins>): BurnedCoins {
+  fromPartial(object: DeepPartial<BurnedCoins>): BurnedCoins {
     const message = createBaseBurnedCoins();
     message.burned = object.burned ?? "";
     message.height = object.height ?? "";

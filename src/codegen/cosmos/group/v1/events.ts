@@ -1,6 +1,6 @@
-import { ProposalExecutorResult, ProposalExecutorResultSDKType, proposalExecutorResultFromJSON, proposalExecutorResultToJSON } from "./types";
+import { ProposalExecutorResult } from "./types";
+import { Long, DeepPartial } from "../../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet } from "../../../helpers";
 /** EventCreateGroup is an event emitted when a group is created. */
 
 export interface EventCreateGroup {
@@ -10,7 +10,6 @@ export interface EventCreateGroup {
 /** EventCreateGroup is an event emitted when a group is created. */
 
 export interface EventCreateGroupSDKType {
-  /** group_id is the unique ID of the group. */
   group_id: Long;
 }
 /** EventUpdateGroup is an event emitted when a group is updated. */
@@ -22,7 +21,6 @@ export interface EventUpdateGroup {
 /** EventUpdateGroup is an event emitted when a group is updated. */
 
 export interface EventUpdateGroupSDKType {
-  /** group_id is the unique ID of the group. */
   group_id: Long;
 }
 /** EventCreateGroupPolicy is an event emitted when a group policy is created. */
@@ -34,7 +32,6 @@ export interface EventCreateGroupPolicy {
 /** EventCreateGroupPolicy is an event emitted when a group policy is created. */
 
 export interface EventCreateGroupPolicySDKType {
-  /** address is the account address of the group policy. */
   address: string;
 }
 /** EventUpdateGroupPolicy is an event emitted when a group policy is updated. */
@@ -46,7 +43,6 @@ export interface EventUpdateGroupPolicy {
 /** EventUpdateGroupPolicy is an event emitted when a group policy is updated. */
 
 export interface EventUpdateGroupPolicySDKType {
-  /** address is the account address of the group policy. */
   address: string;
 }
 /** EventSubmitProposal is an event emitted when a proposal is created. */
@@ -58,7 +54,6 @@ export interface EventSubmitProposal {
 /** EventSubmitProposal is an event emitted when a proposal is created. */
 
 export interface EventSubmitProposalSDKType {
-  /** proposal_id is the unique ID of the proposal. */
   proposal_id: Long;
 }
 /** EventWithdrawProposal is an event emitted when a proposal is withdrawn. */
@@ -70,7 +65,6 @@ export interface EventWithdrawProposal {
 /** EventWithdrawProposal is an event emitted when a proposal is withdrawn. */
 
 export interface EventWithdrawProposalSDKType {
-  /** proposal_id is the unique ID of the proposal. */
   proposal_id: Long;
 }
 /** EventVote is an event emitted when a voter votes on a proposal. */
@@ -82,7 +76,6 @@ export interface EventVote {
 /** EventVote is an event emitted when a voter votes on a proposal. */
 
 export interface EventVoteSDKType {
-  /** proposal_id is the unique ID of the proposal. */
   proposal_id: Long;
 }
 /** EventExec is an event emitted when a proposal is executed. */
@@ -97,11 +90,8 @@ export interface EventExec {
 /** EventExec is an event emitted when a proposal is executed. */
 
 export interface EventExecSDKType {
-  /** proposal_id is the unique ID of the proposal. */
   proposal_id: Long;
-  /** result is the proposal execution result. */
-
-  result: ProposalExecutorResultSDKType;
+  result: ProposalExecutorResult;
 }
 /** EventLeaveGroup is an event emitted when group member leaves the group. */
 
@@ -115,10 +105,7 @@ export interface EventLeaveGroup {
 /** EventLeaveGroup is an event emitted when group member leaves the group. */
 
 export interface EventLeaveGroupSDKType {
-  /** group_id is the unique ID of the group. */
   group_id: Long;
-  /** address is the account address of the group member. */
-
   address: string;
 }
 
@@ -159,19 +146,7 @@ export const EventCreateGroup = {
     return message;
   },
 
-  fromJSON(object: any): EventCreateGroup {
-    return {
-      groupId: isSet(object.groupId) ? Long.fromValue(object.groupId) : Long.UZERO
-    };
-  },
-
-  toJSON(message: EventCreateGroup): unknown {
-    const obj: any = {};
-    message.groupId !== undefined && (obj.groupId = (message.groupId || Long.UZERO).toString());
-    return obj;
-  },
-
-  fromPartial(object: Partial<EventCreateGroup>): EventCreateGroup {
+  fromPartial(object: DeepPartial<EventCreateGroup>): EventCreateGroup {
     const message = createBaseEventCreateGroup();
     message.groupId = object.groupId !== undefined && object.groupId !== null ? Long.fromValue(object.groupId) : Long.UZERO;
     return message;
@@ -216,19 +191,7 @@ export const EventUpdateGroup = {
     return message;
   },
 
-  fromJSON(object: any): EventUpdateGroup {
-    return {
-      groupId: isSet(object.groupId) ? Long.fromValue(object.groupId) : Long.UZERO
-    };
-  },
-
-  toJSON(message: EventUpdateGroup): unknown {
-    const obj: any = {};
-    message.groupId !== undefined && (obj.groupId = (message.groupId || Long.UZERO).toString());
-    return obj;
-  },
-
-  fromPartial(object: Partial<EventUpdateGroup>): EventUpdateGroup {
+  fromPartial(object: DeepPartial<EventUpdateGroup>): EventUpdateGroup {
     const message = createBaseEventUpdateGroup();
     message.groupId = object.groupId !== undefined && object.groupId !== null ? Long.fromValue(object.groupId) : Long.UZERO;
     return message;
@@ -273,19 +236,7 @@ export const EventCreateGroupPolicy = {
     return message;
   },
 
-  fromJSON(object: any): EventCreateGroupPolicy {
-    return {
-      address: isSet(object.address) ? String(object.address) : ""
-    };
-  },
-
-  toJSON(message: EventCreateGroupPolicy): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    return obj;
-  },
-
-  fromPartial(object: Partial<EventCreateGroupPolicy>): EventCreateGroupPolicy {
+  fromPartial(object: DeepPartial<EventCreateGroupPolicy>): EventCreateGroupPolicy {
     const message = createBaseEventCreateGroupPolicy();
     message.address = object.address ?? "";
     return message;
@@ -330,19 +281,7 @@ export const EventUpdateGroupPolicy = {
     return message;
   },
 
-  fromJSON(object: any): EventUpdateGroupPolicy {
-    return {
-      address: isSet(object.address) ? String(object.address) : ""
-    };
-  },
-
-  toJSON(message: EventUpdateGroupPolicy): unknown {
-    const obj: any = {};
-    message.address !== undefined && (obj.address = message.address);
-    return obj;
-  },
-
-  fromPartial(object: Partial<EventUpdateGroupPolicy>): EventUpdateGroupPolicy {
+  fromPartial(object: DeepPartial<EventUpdateGroupPolicy>): EventUpdateGroupPolicy {
     const message = createBaseEventUpdateGroupPolicy();
     message.address = object.address ?? "";
     return message;
@@ -387,19 +326,7 @@ export const EventSubmitProposal = {
     return message;
   },
 
-  fromJSON(object: any): EventSubmitProposal {
-    return {
-      proposalId: isSet(object.proposalId) ? Long.fromValue(object.proposalId) : Long.UZERO
-    };
-  },
-
-  toJSON(message: EventSubmitProposal): unknown {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposalId = (message.proposalId || Long.UZERO).toString());
-    return obj;
-  },
-
-  fromPartial(object: Partial<EventSubmitProposal>): EventSubmitProposal {
+  fromPartial(object: DeepPartial<EventSubmitProposal>): EventSubmitProposal {
     const message = createBaseEventSubmitProposal();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     return message;
@@ -444,19 +371,7 @@ export const EventWithdrawProposal = {
     return message;
   },
 
-  fromJSON(object: any): EventWithdrawProposal {
-    return {
-      proposalId: isSet(object.proposalId) ? Long.fromValue(object.proposalId) : Long.UZERO
-    };
-  },
-
-  toJSON(message: EventWithdrawProposal): unknown {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposalId = (message.proposalId || Long.UZERO).toString());
-    return obj;
-  },
-
-  fromPartial(object: Partial<EventWithdrawProposal>): EventWithdrawProposal {
+  fromPartial(object: DeepPartial<EventWithdrawProposal>): EventWithdrawProposal {
     const message = createBaseEventWithdrawProposal();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     return message;
@@ -501,19 +416,7 @@ export const EventVote = {
     return message;
   },
 
-  fromJSON(object: any): EventVote {
-    return {
-      proposalId: isSet(object.proposalId) ? Long.fromValue(object.proposalId) : Long.UZERO
-    };
-  },
-
-  toJSON(message: EventVote): unknown {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposalId = (message.proposalId || Long.UZERO).toString());
-    return obj;
-  },
-
-  fromPartial(object: Partial<EventVote>): EventVote {
+  fromPartial(object: DeepPartial<EventVote>): EventVote {
     const message = createBaseEventVote();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     return message;
@@ -567,21 +470,7 @@ export const EventExec = {
     return message;
   },
 
-  fromJSON(object: any): EventExec {
-    return {
-      proposalId: isSet(object.proposalId) ? Long.fromValue(object.proposalId) : Long.UZERO,
-      result: isSet(object.result) ? proposalExecutorResultFromJSON(object.result) : 0
-    };
-  },
-
-  toJSON(message: EventExec): unknown {
-    const obj: any = {};
-    message.proposalId !== undefined && (obj.proposalId = (message.proposalId || Long.UZERO).toString());
-    message.result !== undefined && (obj.result = proposalExecutorResultToJSON(message.result));
-    return obj;
-  },
-
-  fromPartial(object: Partial<EventExec>): EventExec {
+  fromPartial(object: DeepPartial<EventExec>): EventExec {
     const message = createBaseEventExec();
     message.proposalId = object.proposalId !== undefined && object.proposalId !== null ? Long.fromValue(object.proposalId) : Long.UZERO;
     message.result = object.result ?? 0;
@@ -636,21 +525,7 @@ export const EventLeaveGroup = {
     return message;
   },
 
-  fromJSON(object: any): EventLeaveGroup {
-    return {
-      groupId: isSet(object.groupId) ? Long.fromValue(object.groupId) : Long.UZERO,
-      address: isSet(object.address) ? String(object.address) : ""
-    };
-  },
-
-  toJSON(message: EventLeaveGroup): unknown {
-    const obj: any = {};
-    message.groupId !== undefined && (obj.groupId = (message.groupId || Long.UZERO).toString());
-    message.address !== undefined && (obj.address = message.address);
-    return obj;
-  },
-
-  fromPartial(object: Partial<EventLeaveGroup>): EventLeaveGroup {
+  fromPartial(object: DeepPartial<EventLeaveGroup>): EventLeaveGroup {
     const message = createBaseEventLeaveGroup();
     message.groupId = object.groupId !== undefined && object.groupId !== null ? Long.fromValue(object.groupId) : Long.UZERO;
     message.address = object.address ?? "";

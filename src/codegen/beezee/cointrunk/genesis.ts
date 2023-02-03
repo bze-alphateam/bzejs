@@ -2,8 +2,8 @@ import { Params, ParamsSDKType } from "./params";
 import { Publisher, PublisherSDKType } from "./publisher";
 import { AcceptedDomain, AcceptedDomainSDKType } from "./accepted_domain";
 import { Article, ArticleSDKType } from "./article";
+import { Long, DeepPartial } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { Long, isSet } from "../../helpers";
 /** GenesisState defines the cointrunk module's genesis state. */
 
 export interface GenesisState {
@@ -96,43 +96,7 @@ export const GenesisState = {
     return message;
   },
 
-  fromJSON(object: any): GenesisState {
-    return {
-      params: isSet(object.params) ? Params.fromJSON(object.params) : undefined,
-      publisherList: Array.isArray(object?.publisherList) ? object.publisherList.map((e: any) => Publisher.fromJSON(e)) : [],
-      acceptedDomainList: Array.isArray(object?.acceptedDomainList) ? object.acceptedDomainList.map((e: any) => AcceptedDomain.fromJSON(e)) : [],
-      articleList: Array.isArray(object?.articleList) ? object.articleList.map((e: any) => Article.fromJSON(e)) : [],
-      articlesCounter: isSet(object.articlesCounter) ? Long.fromValue(object.articlesCounter) : Long.UZERO
-    };
-  },
-
-  toJSON(message: GenesisState): unknown {
-    const obj: any = {};
-    message.params !== undefined && (obj.params = message.params ? Params.toJSON(message.params) : undefined);
-
-    if (message.publisherList) {
-      obj.publisherList = message.publisherList.map(e => e ? Publisher.toJSON(e) : undefined);
-    } else {
-      obj.publisherList = [];
-    }
-
-    if (message.acceptedDomainList) {
-      obj.acceptedDomainList = message.acceptedDomainList.map(e => e ? AcceptedDomain.toJSON(e) : undefined);
-    } else {
-      obj.acceptedDomainList = [];
-    }
-
-    if (message.articleList) {
-      obj.articleList = message.articleList.map(e => e ? Article.toJSON(e) : undefined);
-    } else {
-      obj.articleList = [];
-    }
-
-    message.articlesCounter !== undefined && (obj.articlesCounter = (message.articlesCounter || Long.UZERO).toString());
-    return obj;
-  },
-
-  fromPartial(object: Partial<GenesisState>): GenesisState {
+  fromPartial(object: DeepPartial<GenesisState>): GenesisState {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.publisherList = object.publisherList?.map(e => Publisher.fromPartial(e)) || [];
