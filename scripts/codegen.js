@@ -17,19 +17,6 @@ telescope({
         'cosmos/staking/v1beta1/tx.amino.ts'
       ]
     },
-    prototypes: {
-      includePackageVar: false,
-      typingsFormat: {
-        useDeepPartial: false,
-        useExact: false,
-        timestamp: 'timestamp',
-        duration: 'duration'
-      },
-      methods: {
-        toJSON: true,
-        fromJSON: true
-      }
-    },
     aminoEncoding: {
       enabled: true,
       exceptions: AMINO_MAP
@@ -40,15 +27,6 @@ telescope({
     rpcClients: {
       enabled: true,
       camelCase: true
-    },
-    packages: {
-      beezee: {
-        prototypes: {
-          typingsFormat: {
-            useExact: true
-          }
-        }
-      }
     }
   }
 })

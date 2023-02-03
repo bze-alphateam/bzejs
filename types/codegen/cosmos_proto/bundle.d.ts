@@ -3,7 +3,7 @@ export declare const cosmos_proto: {
     scalarTypeFromJSON(object: any): _18.ScalarType;
     scalarTypeToJSON(object: _18.ScalarType): string;
     ScalarType: typeof _18.ScalarType;
-    ScalarTypeSDKType: typeof _18.ScalarType;
+    ScalarTypeSDKType: typeof _18.ScalarTypeSDKType;
     InterfaceDescriptor: {
         encode(message: _18.InterfaceDescriptor, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
         decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _18.InterfaceDescriptor;

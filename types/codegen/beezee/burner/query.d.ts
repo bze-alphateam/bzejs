@@ -16,6 +16,7 @@ export interface QueryParamsResponse {
 }
 /** QueryParamsResponse is response type for the Query/Params RPC method. */
 export interface QueryParamsResponseSDKType {
+    /** params holds all the parameters of this module. */
     params?: ParamsSDKType;
 }
 export interface QueryAllBurnedCoinsRequest {

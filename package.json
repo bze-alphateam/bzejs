@@ -1,7 +1,7 @@
 {
   "name": "@bze/bzejs",
-  "version": "0.0.7",
-  "description": "BZE JS lib ",
+  "version": "0.0.8",
+  "description": "BZE JS lib - Alpha version totally unstable. If you can fix it, submit a PR.",
   "author": "Stefan Victor <faneatiku@yahoo.com>",
   "homepage": "https://github.com/bze-alphateam/bzejs",
   "license": "SEE LICENSE IN LICENSE",

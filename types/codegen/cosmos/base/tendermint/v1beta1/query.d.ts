@@ -3,8 +3,8 @@ import { Any, AnySDKType } from "../../../../google/protobuf/any";
 import { BlockID, BlockIDSDKType } from "../../../../tendermint/types/types";
 import { Block, BlockSDKType } from "../../../../tendermint/types/block";
 import { NodeInfo, NodeInfoSDKType } from "../../../../tendermint/p2p/types";
-import { Long, DeepPartial } from "../../../../helpers";
 import * as _m0 from "protobufjs/minimal";
+import { Long, DeepPartial } from "../../../../helpers";
 /** GetValidatorSetByHeightRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
 export interface GetValidatorSetByHeightRequest {
     height: Long;
@@ -14,6 +14,7 @@ export interface GetValidatorSetByHeightRequest {
 /** GetValidatorSetByHeightRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
 export interface GetValidatorSetByHeightRequestSDKType {
     height: Long;
+    /** pagination defines an pagination for the request. */
     pagination?: PageRequestSDKType;
 }
 /** GetValidatorSetByHeightResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
@@ -27,6 +28,7 @@ export interface GetValidatorSetByHeightResponse {
 export interface GetValidatorSetByHeightResponseSDKType {
     block_height: Long;
     validators: ValidatorSDKType[];
+    /** pagination defines an pagination for the response. */
     pagination?: PageResponseSDKType;
 }
 /** GetLatestValidatorSetRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
@@ -36,6 +38,7 @@ export interface GetLatestValidatorSetRequest {
 }
 /** GetLatestValidatorSetRequest is the request type for the Query/GetValidatorSetByHeight RPC method. */
 export interface GetLatestValidatorSetRequestSDKType {
+    /** pagination defines an pagination for the request. */
     pagination?: PageRequestSDKType;
 }
 /** GetLatestValidatorSetResponse is the response type for the Query/GetValidatorSetByHeight RPC method. */
@@ -49,6 +52,7 @@ export interface GetLatestValidatorSetResponse {
 export interface GetLatestValidatorSetResponseSDKType {
     block_height: Long;
     validators: ValidatorSDKType[];
+    /** pagination defines an pagination for the response. */
     pagination?: PageResponseSDKType;
 }
 /** Validator is the type for the validator-set. */
@@ -150,6 +154,7 @@ export interface VersionInfoSDKType {
     build_tags: string;
     go_version: string;
     build_deps: ModuleSDKType[];
+    /** Since: cosmos-sdk 0.43 */
     cosmos_sdk_version: string;
 }
 /** Module is the type for VersionInfo */
@@ -163,8 +168,11 @@ export interface Module {
 }
 /** Module is the type for VersionInfo */
 export interface ModuleSDKType {
+    /** module path */
     path: string;
+    /** module version */
     version: string;
+    /** checksum */
     sum: string;
 }
 export declare const GetValidatorSetByHeightRequest: {

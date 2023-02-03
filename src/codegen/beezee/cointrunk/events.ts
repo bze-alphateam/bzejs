@@ -1,7 +1,7 @@
 import { Publisher, PublisherSDKType } from "./publisher";
 import { AcceptedDomain, AcceptedDomainSDKType } from "./accepted_domain";
-import { Long, DeepPartial } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
+import { Long, DeepPartial } from "../../helpers";
 export interface ArticleAddedEvent {
   publisher: string;
   articleId: Long;

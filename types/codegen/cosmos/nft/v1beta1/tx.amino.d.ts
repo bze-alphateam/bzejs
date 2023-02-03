@@ -1,6 +1,6 @@
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgSend } from "./tx";
-export interface MsgSendAminoType extends AminoMsg {
+export interface AminoMsgSend extends AminoMsg {
     type: "cosmos-sdk/MsgNFTSend";
     value: {
         class_id: string;
@@ -12,7 +12,7 @@ export interface MsgSendAminoType extends AminoMsg {
 export declare const AminoConverter: {
     "/cosmos.nft.v1beta1.MsgSend": {
         aminoType: string;
-        toAmino: ({ classId, id, sender, receiver }: MsgSend) => MsgSendAminoType["value"];
-        fromAmino: ({ class_id, id, sender, receiver }: MsgSendAminoType["value"]) => MsgSend;
+        toAmino: ({ classId, id, sender, receiver }: MsgSend) => AminoMsgSend["value"];
+        fromAmino: ({ class_id, id, sender, receiver }: AminoMsgSend["value"]) => MsgSend;
     };
 };

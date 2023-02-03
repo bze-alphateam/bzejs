@@ -1,7 +1,7 @@
 import { AminoMsg } from "@cosmjs/amino";
 import { Long } from "../../../helpers";
 import { MsgCreateVestingAccount, MsgCreatePermanentLockedAccount, MsgCreatePeriodicVestingAccount } from "./tx";
-export interface MsgCreateVestingAccountAminoType extends AminoMsg {
+export interface AminoMsgCreateVestingAccount extends AminoMsg {
   type: "cosmos-sdk/MsgCreateVestingAccount";
   value: {
     from_address: string;
@@ -14,7 +14,7 @@ export interface MsgCreateVestingAccountAminoType extends AminoMsg {
     delayed: boolean;
   };
 }
-export interface MsgCreatePermanentLockedAccountAminoType extends AminoMsg {
+export interface AminoMsgCreatePermanentLockedAccount extends AminoMsg {
   type: "cosmos-sdk/MsgCreatePermanentLockedAccount";
   value: {
     from_address: string;
@@ -25,7 +25,7 @@ export interface MsgCreatePermanentLockedAccountAminoType extends AminoMsg {
     }[];
   };
 }
-export interface MsgCreatePeriodicVestingAccountAminoType extends AminoMsg {
+export interface AminoMsgCreatePeriodicVestingAccount extends AminoMsg {
   type: "cosmos-sdk/MsgCreatePeriodicVestingAccount";
   value: {
     from_address: string;
@@ -49,7 +49,7 @@ export const AminoConverter = {
       amount,
       endTime,
       delayed
-    }: MsgCreateVestingAccount): MsgCreateVestingAccountAminoType["value"] => {
+    }: MsgCreateVestingAccount): AminoMsgCreateVestingAccount["value"] => {
       return {
         from_address: fromAddress,
         to_address: toAddress,
@@ -67,7 +67,7 @@ export const AminoConverter = {
       amount,
       end_time,
       delayed
-    }: MsgCreateVestingAccountAminoType["value"]): MsgCreateVestingAccount => {
+    }: AminoMsgCreateVestingAccount["value"]): MsgCreateVestingAccount => {
       return {
         fromAddress: from_address,
         toAddress: to_address,
@@ -86,7 +86,7 @@ export const AminoConverter = {
       fromAddress,
       toAddress,
       amount
-    }: MsgCreatePermanentLockedAccount): MsgCreatePermanentLockedAccountAminoType["value"] => {
+    }: MsgCreatePermanentLockedAccount): AminoMsgCreatePermanentLockedAccount["value"] => {
       return {
         from_address: fromAddress,
         to_address: toAddress,
@@ -100,7 +100,7 @@ export const AminoConverter = {
       from_address,
       to_address,
       amount
-    }: MsgCreatePermanentLockedAccountAminoType["value"]): MsgCreatePermanentLockedAccount => {
+    }: AminoMsgCreatePermanentLockedAccount["value"]): MsgCreatePermanentLockedAccount => {
       return {
         fromAddress: from_address,
         toAddress: to_address,
@@ -118,7 +118,7 @@ export const AminoConverter = {
       toAddress,
       startTime,
       vestingPeriods
-    }: MsgCreatePeriodicVestingAccount): MsgCreatePeriodicVestingAccountAminoType["value"] => {
+    }: MsgCreatePeriodicVestingAccount): AminoMsgCreatePeriodicVestingAccount["value"] => {
       return {
         from_address: fromAddress,
         to_address: toAddress,
@@ -137,7 +137,7 @@ export const AminoConverter = {
       to_address,
       start_time,
       vesting_periods
-    }: MsgCreatePeriodicVestingAccountAminoType["value"]): MsgCreatePeriodicVestingAccount => {
+    }: AminoMsgCreatePeriodicVestingAccount["value"]): MsgCreatePeriodicVestingAccount => {
       return {
         fromAddress: from_address,
         toAddress: to_address,
