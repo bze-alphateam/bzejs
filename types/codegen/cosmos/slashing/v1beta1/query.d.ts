@@ -29,7 +29,6 @@ export interface QuerySigningInfoRequest {
  * method
  */
 export interface QuerySigningInfoRequestSDKType {
-    /** cons_address is the address to query signing info of */
     cons_address: string;
 }
 /**
@@ -45,7 +44,6 @@ export interface QuerySigningInfoResponse {
  * method
  */
 export interface QuerySigningInfoResponseSDKType {
-    /** val_signing_info is the signing info of requested val cons address */
     val_signing_info?: ValidatorSigningInfoSDKType;
 }
 /**
@@ -76,7 +74,6 @@ export interface QuerySigningInfosResponse {
  * method
  */
 export interface QuerySigningInfosResponseSDKType {
-    /** info is the signing info of all validators */
     info: ValidatorSigningInfoSDKType[];
     pagination?: PageResponseSDKType;
 }

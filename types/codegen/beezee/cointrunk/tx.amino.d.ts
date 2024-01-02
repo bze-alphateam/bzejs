@@ -1,6 +1,6 @@
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgAddArticle, MsgPayPublisherRespect } from "./tx";
-export interface AminoMsgAddArticle extends AminoMsg {
+export interface MsgAddArticleAminoType extends AminoMsg {
     type: "/bze.cointrunk.v1.MsgAddArticle";
     value: {
         publisher: string;
@@ -9,7 +9,7 @@ export interface AminoMsgAddArticle extends AminoMsg {
         picture: string;
     };
 }
-export interface AminoMsgPayPublisherRespect extends AminoMsg {
+export interface MsgPayPublisherRespectAminoType extends AminoMsg {
     type: "/bze.cointrunk.v1.MsgPayPublisherRespect";
     value: {
         creator: string;
@@ -20,12 +20,12 @@ export interface AminoMsgPayPublisherRespect extends AminoMsg {
 export declare const AminoConverter: {
     "/bze.cointrunk.v1.MsgAddArticle": {
         aminoType: string;
-        toAmino: ({ publisher, title, url, picture }: MsgAddArticle) => AminoMsgAddArticle["value"];
-        fromAmino: ({ publisher, title, url, picture }: AminoMsgAddArticle["value"]) => MsgAddArticle;
+        toAmino: ({ publisher, title, url, picture }: MsgAddArticle) => MsgAddArticleAminoType["value"];
+        fromAmino: ({ publisher, title, url, picture }: MsgAddArticleAminoType["value"]) => MsgAddArticle;
     };
     "/bze.cointrunk.v1.MsgPayPublisherRespect": {
         aminoType: string;
-        toAmino: ({ creator, address, amount }: MsgPayPublisherRespect) => AminoMsgPayPublisherRespect["value"];
-        fromAmino: ({ creator, address, amount }: AminoMsgPayPublisherRespect["value"]) => MsgPayPublisherRespect;
+        toAmino: ({ creator, address, amount }: MsgPayPublisherRespect) => MsgPayPublisherRespectAminoType["value"];
+        fromAmino: ({ creator, address, amount }: MsgPayPublisherRespectAminoType["value"]) => MsgPayPublisherRespect;
     };
 };

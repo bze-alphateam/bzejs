@@ -1,24 +1,24 @@
-import * as _18 from "./cosmos";
+import * as _20 from "./cosmos";
 export declare const cosmos_proto: {
-    scalarTypeFromJSON(object: any): _18.ScalarType;
-    scalarTypeToJSON(object: _18.ScalarType): string;
-    ScalarType: typeof _18.ScalarType;
-    ScalarTypeSDKType: typeof _18.ScalarTypeSDKType;
+    scalarTypeFromJSON(object: any): _20.ScalarType;
+    scalarTypeToJSON(object: _20.ScalarType): string;
+    ScalarType: typeof _20.ScalarType;
+    ScalarTypeSDKType: typeof _20.ScalarType;
     InterfaceDescriptor: {
-        encode(message: _18.InterfaceDescriptor, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _18.InterfaceDescriptor;
+        encode(message: _20.InterfaceDescriptor, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _20.InterfaceDescriptor;
         fromPartial(object: {
             name?: string;
             description?: string;
-        }): _18.InterfaceDescriptor;
+        }): _20.InterfaceDescriptor;
     };
     ScalarDescriptor: {
-        encode(message: _18.ScalarDescriptor, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _18.ScalarDescriptor;
+        encode(message: _20.ScalarDescriptor, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _20.ScalarDescriptor;
         fromPartial(object: {
             name?: string;
             description?: string;
-            fieldType?: _18.ScalarType[];
-        }): _18.ScalarDescriptor;
+            fieldType?: _20.ScalarType[];
+        }): _20.ScalarDescriptor;
     };
 };
