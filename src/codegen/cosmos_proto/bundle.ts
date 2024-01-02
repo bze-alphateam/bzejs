@@ -1,3 +1,3 @@
-import * as _18 from "./cosmos";
-export const cosmos_proto = { ..._18
+import * as _20 from "./cosmos";
+export const cosmos_proto = { ..._20
 };

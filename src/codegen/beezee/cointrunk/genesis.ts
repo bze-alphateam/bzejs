@@ -2,8 +2,8 @@ import { Params, ParamsSDKType } from "./params";
 import { Publisher, PublisherSDKType } from "./publisher";
 import { AcceptedDomain, AcceptedDomainSDKType } from "./accepted_domain";
 import { Article, ArticleSDKType } from "./article";
-import * as _m0 from "protobufjs/minimal";
 import { Long, DeepPartial } from "../../helpers";
+import * as _m0 from "protobufjs/minimal";
 /** GenesisState defines the cointrunk module's genesis state. */
 
 export interface GenesisState {

@@ -1,6 +1,6 @@
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgFundBurner } from "./tx";
-export interface AminoMsgFundBurner extends AminoMsg {
+export interface MsgFundBurnerAminoType extends AminoMsg {
   type: "/bze.burner.v1.MsgFundBurner";
   value: {
     creator: string;
@@ -13,7 +13,7 @@ export const AminoConverter = {
     toAmino: ({
       creator,
       amount
-    }: MsgFundBurner): AminoMsgFundBurner["value"] => {
+    }: MsgFundBurner): MsgFundBurnerAminoType["value"] => {
       return {
         creator,
         amount
@@ -22,7 +22,7 @@ export const AminoConverter = {
     fromAmino: ({
       creator,
       amount
-    }: AminoMsgFundBurner["value"]): MsgFundBurner => {
+    }: MsgFundBurnerAminoType["value"]): MsgFundBurner => {
       return {
         creator,
         amount

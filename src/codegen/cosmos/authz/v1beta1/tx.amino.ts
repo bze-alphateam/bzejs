@@ -1,7 +1,6 @@
-//@ts-nocheck
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgGrant, MsgExec, MsgRevoke } from "./tx";
-export interface AminoMsgGrant extends AminoMsg {
+export interface MsgGrantAminoType extends AminoMsg {
   type: "cosmos-sdk/MsgGrant";
   value: {
     granter: string;
@@ -18,7 +17,7 @@ export interface AminoMsgGrant extends AminoMsg {
     };
   };
 }
-export interface AminoMsgExec extends AminoMsg {
+export interface MsgExecAminoType extends AminoMsg {
   type: "cosmos-sdk/MsgExec";
   value: {
     grantee: string;
@@ -28,7 +27,7 @@ export interface AminoMsgExec extends AminoMsg {
     }[];
   };
 }
-export interface AminoMsgRevoke extends AminoMsg {
+export interface MsgRevokeAminoType extends AminoMsg {
   type: "cosmos-sdk/MsgRevoke";
   value: {
     granter: string;
@@ -43,7 +42,7 @@ export const AminoConverter = {
       granter,
       grantee,
       grant
-    }: MsgGrant): AminoMsgGrant["value"] => {
+    }: MsgGrant): MsgGrantAminoType["value"] => {
       return {
         granter,
         grantee,
@@ -60,7 +59,7 @@ export const AminoConverter = {
       granter,
       grantee,
       grant
-    }: AminoMsgGrant["value"]): MsgGrant => {
+    }: MsgGrantAminoType["value"]): MsgGrant => {
       return {
         granter,
         grantee,
@@ -79,7 +78,7 @@ export const AminoConverter = {
     toAmino: ({
       grantee,
       msgs
-    }: MsgExec): AminoMsgExec["value"] => {
+    }: MsgExec): MsgExecAminoType["value"] => {
       return {
         grantee,
         msgs: msgs.map(el0 => ({
@@ -91,7 +90,7 @@ export const AminoConverter = {
     fromAmino: ({
       grantee,
       msgs
-    }: AminoMsgExec["value"]): MsgExec => {
+    }: MsgExecAminoType["value"]): MsgExec => {
       return {
         grantee,
         msgs: msgs.map(el0 => ({
@@ -107,7 +106,7 @@ export const AminoConverter = {
       granter,
       grantee,
       msgTypeUrl
-    }: MsgRevoke): AminoMsgRevoke["value"] => {
+    }: MsgRevoke): MsgRevokeAminoType["value"] => {
       return {
         granter,
         grantee,
@@ -118,7 +117,7 @@ export const AminoConverter = {
       granter,
       grantee,
       msg_type_url
-    }: AminoMsgRevoke["value"]): MsgRevoke => {
+    }: MsgRevokeAminoType["value"]): MsgRevoke => {
       return {
         granter,
         grantee,
