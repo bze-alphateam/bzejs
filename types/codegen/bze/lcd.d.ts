@@ -8,6 +8,18 @@ export declare const createLCDClient: ({ restEndpoint }: {
         cointrunk: {
             v1: import("../beezee/cointrunk/query.lcd").LCDQueryClient;
         };
+        epochs: {
+            v1: import("../beezee/epochs/query.lcd").LCDQueryClient;
+        };
+        v1: {
+            rewards: import("../beezee/rewards/query.lcd").LCDQueryClient;
+        };
+        tokenfactory: {
+            v1: import("../beezee/tokenfactory/query.lcd").LCDQueryClient;
+        };
+        tradebin: {
+            v1: import("../beezee/tradebin/query.lcd").LCDQueryClient;
+        };
     };
     cosmos: {
         auth: {

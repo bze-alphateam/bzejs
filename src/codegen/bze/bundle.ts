@@ -16,19 +16,61 @@ import * as _15 from "../beezee/cointrunk/publisher_proposal";
 import * as _16 from "../beezee/cointrunk/publisher";
 import * as _17 from "../beezee/cointrunk/query";
 import * as _18 from "../beezee/cointrunk/tx";
-import * as _156 from "../beezee/burner/tx.amino";
-import * as _157 from "../beezee/cointrunk/tx.amino";
-import * as _158 from "../beezee/burner/tx.registry";
-import * as _159 from "../beezee/cointrunk/tx.registry";
-import * as _160 from "../beezee/burner/query.lcd";
-import * as _161 from "../beezee/cointrunk/query.lcd";
-import * as _162 from "../beezee/burner/query.rpc.Query";
-import * as _163 from "../beezee/cointrunk/query.rpc.Query";
-import * as _164 from "../beezee/burner/tx.rpc.msg";
-import * as _165 from "../beezee/cointrunk/tx.rpc.msg";
-import * as _264 from "./lcd";
-import * as _265 from "./rpc.query";
-import * as _266 from "./rpc.tx";
+import * as _19 from "../beezee/epochs/events";
+import * as _20 from "../beezee/epochs/genesis";
+import * as _21 from "../beezee/epochs/query";
+import * as _22 from "../beezee/rewards/events";
+import * as _23 from "../beezee/rewards/genesis";
+import * as _24 from "../beezee/rewards/gov";
+import * as _25 from "../beezee/rewards/params";
+import * as _26 from "../beezee/rewards/query";
+import * as _27 from "../beezee/rewards/staking_reward_participant";
+import * as _28 from "../beezee/rewards/staking_reward";
+import * as _29 from "../beezee/rewards/trading_reward";
+import * as _30 from "../beezee/rewards/tx";
+import * as _31 from "../beezee/tokenfactory/denom_authority";
+import * as _32 from "../beezee/tokenfactory/genesis";
+import * as _33 from "../beezee/tokenfactory/params";
+import * as _34 from "../beezee/tokenfactory/query";
+import * as _35 from "../beezee/tokenfactory/tx";
+import * as _36 from "../beezee/tradebin/events";
+import * as _37 from "../beezee/tradebin/genesis";
+import * as _38 from "../beezee/tradebin/market";
+import * as _39 from "../beezee/tradebin/order";
+import * as _40 from "../beezee/tradebin/params";
+import * as _41 from "../beezee/tradebin/query";
+import * as _42 from "../beezee/tradebin/queue_message";
+import * as _43 from "../beezee/tradebin/tx";
+import * as _181 from "../beezee/burner/tx.amino";
+import * as _182 from "../beezee/cointrunk/tx.amino";
+import * as _183 from "../beezee/rewards/tx.amino";
+import * as _184 from "../beezee/tokenfactory/tx.amino";
+import * as _185 from "../beezee/tradebin/tx.amino";
+import * as _186 from "../beezee/burner/tx.registry";
+import * as _187 from "../beezee/cointrunk/tx.registry";
+import * as _188 from "../beezee/rewards/tx.registry";
+import * as _189 from "../beezee/tokenfactory/tx.registry";
+import * as _190 from "../beezee/tradebin/tx.registry";
+import * as _191 from "../beezee/burner/query.lcd";
+import * as _192 from "../beezee/cointrunk/query.lcd";
+import * as _193 from "../beezee/epochs/query.lcd";
+import * as _194 from "../beezee/rewards/query.lcd";
+import * as _195 from "../beezee/tokenfactory/query.lcd";
+import * as _196 from "../beezee/tradebin/query.lcd";
+import * as _197 from "../beezee/burner/query.rpc.Query";
+import * as _198 from "../beezee/cointrunk/query.rpc.Query";
+import * as _199 from "../beezee/epochs/query.rpc.Query";
+import * as _200 from "../beezee/rewards/query.rpc.Query";
+import * as _201 from "../beezee/tokenfactory/query.rpc.Query";
+import * as _202 from "../beezee/tradebin/query.rpc.Query";
+import * as _203 from "../beezee/burner/tx.rpc.msg";
+import * as _204 from "../beezee/cointrunk/tx.rpc.msg";
+import * as _205 from "../beezee/rewards/tx.rpc.msg";
+import * as _206 from "../beezee/tokenfactory/tx.rpc.msg";
+import * as _207 from "../beezee/tradebin/tx.rpc.msg";
+import * as _306 from "./lcd";
+import * as _307 from "./rpc.query";
+import * as _308 from "./rpc.tx";
 export namespace bze {
   export namespace burner {
     export const v1 = { ..._1,
@@ -38,11 +80,11 @@ export namespace bze {
       ..._5,
       ..._6,
       ..._7,
-      ..._156,
-      ..._158,
-      ..._160,
-      ..._162,
-      ..._164
+      ..._181,
+      ..._186,
+      ..._191,
+      ..._197,
+      ..._203
     };
   }
   export namespace cointrunk {
@@ -57,15 +99,72 @@ export namespace bze {
       ..._16,
       ..._17,
       ..._18,
-      ..._157,
-      ..._159,
-      ..._161,
-      ..._163,
-      ..._165
+      ..._182,
+      ..._187,
+      ..._192,
+      ..._198,
+      ..._204
     };
   }
-  export const ClientFactory = { ..._264,
-    ..._265,
-    ..._266
+  export namespace epochs {
+    export const v1 = { ..._19,
+      ..._20,
+      ..._21,
+      ..._193,
+      ..._199
+    };
+  }
+  export namespace rewards {
+    export const v1 = { ..._22
+    };
+  }
+  export namespace v1 {
+    export const rewards = { ..._23,
+      ..._24,
+      ..._25,
+      ..._26,
+      ..._27,
+      ..._28,
+      ..._29,
+      ..._30,
+      ..._183,
+      ..._188,
+      ..._194,
+      ..._200,
+      ..._205
+    };
+  }
+  export namespace tokenfactory {
+    export const v1 = { ..._31,
+      ..._32,
+      ..._33,
+      ..._34,
+      ..._35,
+      ..._184,
+      ..._189,
+      ..._195,
+      ..._201,
+      ..._206
+    };
+  }
+  export namespace tradebin {
+    export const v1 = { ..._36,
+      ..._37,
+      ..._38,
+      ..._39,
+      ..._40,
+      ..._41,
+      ..._42,
+      ..._43,
+      ..._185,
+      ..._190,
+      ..._196,
+      ..._202,
+      ..._207
+    };
+  }
+  export const ClientFactory = { ..._306,
+    ..._307,
+    ..._308
   };
 }

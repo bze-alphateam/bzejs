@@ -14,6 +14,18 @@ export const createRPCQueryClient = async ({
       },
       cointrunk: {
         v1: (await import("../beezee/cointrunk/query.rpc.Query")).createRpcQueryExtension(client)
+      },
+      epochs: {
+        v1: (await import("../beezee/epochs/query.rpc.Query")).createRpcQueryExtension(client)
+      },
+      v1: {
+        rewards: (await import("../beezee/rewards/query.rpc.Query")).createRpcQueryExtension(client)
+      },
+      tokenfactory: {
+        v1: (await import("../beezee/tokenfactory/query.rpc.Query")).createRpcQueryExtension(client)
+      },
+      tradebin: {
+        v1: (await import("../beezee/tradebin/query.rpc.Query")).createRpcQueryExtension(client)
       }
     },
     cosmos: {

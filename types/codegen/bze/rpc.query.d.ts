@@ -19,6 +19,43 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
                 allAnonArticlesCounters(request?: import("../beezee/cointrunk/query").QueryAllAnonArticlesCountersRequest): Promise<import("../beezee/cointrunk/query").QueryAllAnonArticlesCountersResponse>;
             };
         };
+        epochs: {
+            v1: {
+                epochInfos(request?: import("../beezee/epochs/query").QueryEpochsInfoRequest): Promise<import("../beezee/epochs/query").QueryEpochsInfoResponse>;
+                currentEpoch(request: import("../beezee/epochs/query").QueryCurrentEpochRequest): Promise<import("../beezee/epochs/query").QueryCurrentEpochResponse>;
+            };
+        };
+        v1: {
+            rewards: {
+                params(request?: import("../beezee/rewards/query").QueryParamsRequest): Promise<import("../beezee/rewards/query").QueryParamsResponse>;
+                stakingReward(request: import("../beezee/rewards/query").QueryGetStakingRewardRequest): Promise<import("../beezee/rewards/query").QueryGetStakingRewardResponse>;
+                stakingRewardAll(request?: import("../beezee/rewards/query").QueryAllStakingRewardRequest): Promise<import("../beezee/rewards/query").QueryAllStakingRewardResponse>;
+                tradingReward(request: import("../beezee/rewards/query").QueryGetTradingRewardRequest): Promise<import("../beezee/rewards/query").QueryGetTradingRewardResponse>;
+                tradingRewardAll(request: import("../beezee/rewards/query").QueryAllTradingRewardRequest): Promise<import("../beezee/rewards/query").QueryAllTradingRewardResponse>;
+                stakingRewardParticipant(request: import("../beezee/rewards/query").QueryGetStakingRewardParticipantRequest): Promise<import("../beezee/rewards/query").QueryGetStakingRewardParticipantResponse>;
+                stakingRewardParticipantAll(request?: import("../beezee/rewards/query").QueryAllStakingRewardParticipantRequest): Promise<import("../beezee/rewards/query").QueryAllStakingRewardParticipantResponse>;
+                getTradingRewardLeaderboardHandler(request: import("../beezee/rewards/query").QueryGetTradingRewardLeaderboardRequest): Promise<import("../beezee/rewards/query").QueryGetTradingRewardLeaderboardResponse>;
+                getMarketIdTradingRewardIdHandler(request: import("../beezee/rewards/query").QueryGetMarketIdTradingRewardIdHandlerRequest): Promise<import("../beezee/rewards/query").QueryGetMarketIdTradingRewardIdHandlerResponse>;
+            };
+        };
+        tokenfactory: {
+            v1: {
+                params(request?: import("../beezee/tokenfactory/query").QueryParamsRequest): Promise<import("../beezee/tokenfactory/query").QueryParamsResponse>;
+                denomAuthority(request: import("../beezee/tokenfactory/query").QueryDenomAuthorityRequest): Promise<import("../beezee/tokenfactory/query").QueryDenomAuthorityResponse>;
+            };
+        };
+        tradebin: {
+            v1: {
+                params(request?: import("../beezee/tradebin/query").QueryParamsRequest): Promise<import("../beezee/tradebin/query").QueryParamsResponse>;
+                market(request: import("../beezee/tradebin/query").QueryGetMarketRequest): Promise<import("../beezee/tradebin/query").QueryGetMarketResponse>;
+                marketAll(request?: import("../beezee/tradebin/query").QueryAllMarketRequest): Promise<import("../beezee/tradebin/query").QueryAllMarketResponse>;
+                assetMarkets(request: import("../beezee/tradebin/query").QueryAssetMarketsRequest): Promise<import("../beezee/tradebin/query").QueryAssetMarketsResponse>;
+                userMarketOrders(request: import("../beezee/tradebin/query").QueryUserMarketOrdersRequest): Promise<import("../beezee/tradebin/query").QueryUserMarketOrdersResponse>;
+                marketAggregatedOrders(request: import("../beezee/tradebin/query").QueryMarketAggregatedOrdersRequest): Promise<import("../beezee/tradebin/query").QueryMarketAggregatedOrdersResponse>;
+                marketHistory(request: import("../beezee/tradebin/query").QueryMarketHistoryRequest): Promise<import("../beezee/tradebin/query").QueryMarketHistoryResponse>;
+                marketOrder(request: import("../beezee/tradebin/query").QueryMarketOrderRequest): Promise<import("../beezee/tradebin/query").QueryMarketOrderResponse>;
+            };
+        };
     };
     cosmos: {
         app: {

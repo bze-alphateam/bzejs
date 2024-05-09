@@ -1,4 +1,4 @@
-import { Order, Counterparty, CounterpartySDKType } from "../../channel/v1/channel";
+import { Order, OrderSDKType, Counterparty, CounterpartySDKType } from "../../channel/v1/channel";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "../../../../helpers";
 /** QueryAppVersionRequest is the request type for the Query/AppVersion RPC method */
@@ -22,10 +22,19 @@ export interface QueryAppVersionRequest {
 /** QueryAppVersionRequest is the request type for the Query/AppVersion RPC method */
 
 export interface QueryAppVersionRequestSDKType {
+  /** port unique identifier */
   port_id: string;
+  /** connection unique identifier */
+
   connection_id: string;
-  ordering: Order;
+  /** whether the channel is ordered or unordered */
+
+  ordering: OrderSDKType;
+  /** counterparty channel end */
+
   counterparty?: CounterpartySDKType;
+  /** proposed version */
+
   proposed_version: string;
 }
 /** QueryAppVersionResponse is the response type for the Query/AppVersion RPC method. */
@@ -40,7 +49,10 @@ export interface QueryAppVersionResponse {
 /** QueryAppVersionResponse is the response type for the Query/AppVersion RPC method. */
 
 export interface QueryAppVersionResponseSDKType {
+  /** port id associated with the request identifiers */
   port_id: string;
+  /** supported app version */
+
   version: string;
 }
 

@@ -9,6 +9,15 @@ export declare const createRPCMsgClient: ({ rpc }: {
         cointrunk: {
             v1: import("../beezee/cointrunk/tx.rpc.msg").MsgClientImpl;
         };
+        v1: {
+            rewards: import("../beezee/rewards/tx.rpc.msg").MsgClientImpl;
+        };
+        tokenfactory: {
+            v1: import("../beezee/tokenfactory/tx.rpc.msg").MsgClientImpl;
+        };
+        tradebin: {
+            v1: import("../beezee/tradebin/tx.rpc.msg").MsgClientImpl;
+        };
     };
     cosmos: {
         authz: {

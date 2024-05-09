@@ -10,6 +10,15 @@ export const createRPCMsgClient = async ({
     },
     cointrunk: {
       v1: new (await import("../beezee/cointrunk/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
+    v1: {
+      rewards: new (await import("../beezee/rewards/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
+    tokenfactory: {
+      v1: new (await import("../beezee/tokenfactory/tx.rpc.msg")).MsgClientImpl(rpc)
+    },
+    tradebin: {
+      v1: new (await import("../beezee/tradebin/tx.rpc.msg")).MsgClientImpl(rpc)
     }
   },
   cosmos: {

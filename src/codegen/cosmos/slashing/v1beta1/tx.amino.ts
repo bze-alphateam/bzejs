@@ -1,6 +1,6 @@
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgUnjail } from "./tx";
-export interface MsgUnjailAminoType extends AminoMsg {
+export interface AminoMsgUnjail extends AminoMsg {
   type: "cosmos-sdk/MsgUnjail";
   value: {
     validator_addr: string;
@@ -11,14 +11,14 @@ export const AminoConverter = {
     aminoType: "cosmos-sdk/MsgUnjail",
     toAmino: ({
       validatorAddr
-    }: MsgUnjail): MsgUnjailAminoType["value"] => {
+    }: MsgUnjail): AminoMsgUnjail["value"] => {
       return {
         validator_addr: validatorAddr
       };
     },
     fromAmino: ({
       validator_addr
-    }: MsgUnjailAminoType["value"]): MsgUnjail => {
+    }: AminoMsgUnjail["value"]): MsgUnjail => {
       return {
         validatorAddr: validator_addr
       };

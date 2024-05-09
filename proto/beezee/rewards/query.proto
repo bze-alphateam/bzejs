@@ -4,10 +4,10 @@ package bze.v1.rewards;
 import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
-import "rewards/params.proto";
-import "rewards/staking_reward.proto";
-import "rewards/trading_reward.proto";
-import "rewards/staking_reward_participant.proto";
+import "beezee/rewards/params.proto";
+import "beezee/rewards/staking_reward.proto";
+import "beezee/rewards/trading_reward.proto";
+import "beezee/rewards/staking_reward_participant.proto";
 // this line is used by starport scaffolding # 1
 
 option go_package = "github.com/bze-alphateam/bze/x/rewards/types";

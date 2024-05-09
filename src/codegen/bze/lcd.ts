@@ -18,6 +18,26 @@ export const createLCDClient = async ({
         v1: new (await import("../beezee/cointrunk/query.lcd")).LCDQueryClient({
           requestClient
         })
+      },
+      epochs: {
+        v1: new (await import("../beezee/epochs/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
+      v1: {
+        rewards: new (await import("../beezee/rewards/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
+      tokenfactory: {
+        v1: new (await import("../beezee/tokenfactory/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
+      tradebin: {
+        v1: new (await import("../beezee/tradebin/query.lcd")).LCDQueryClient({
+          requestClient
+        })
       }
     },
     cosmos: {
