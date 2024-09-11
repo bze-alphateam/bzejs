@@ -1,3 +1,3 @@
-import * as _44 from "../confio/proofs";
-export const ics23 = { ..._44
+import * as _45 from "../confio/proofs";
+export const ics23 = { ..._45
 };
