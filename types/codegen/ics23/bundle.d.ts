@@ -1,50 +1,50 @@
-import * as _44 from "../confio/proofs";
+import * as _45 from "../confio/proofs";
 export declare const ics23: {
-    hashOpFromJSON(object: any): _44.HashOp;
-    hashOpToJSON(object: _44.HashOp): string;
-    lengthOpFromJSON(object: any): _44.LengthOp;
-    lengthOpToJSON(object: _44.LengthOp): string;
-    HashOp: typeof _44.HashOp;
-    HashOpSDKType: typeof _44.HashOpSDKType;
-    LengthOp: typeof _44.LengthOp;
-    LengthOpSDKType: typeof _44.LengthOpSDKType;
+    hashOpFromJSON(object: any): _45.HashOp;
+    hashOpToJSON(object: _45.HashOp): string;
+    lengthOpFromJSON(object: any): _45.LengthOp;
+    lengthOpToJSON(object: _45.LengthOp): string;
+    HashOp: typeof _45.HashOp;
+    HashOpSDKType: typeof _45.HashOpSDKType;
+    LengthOp: typeof _45.LengthOp;
+    LengthOpSDKType: typeof _45.LengthOpSDKType;
     ExistenceProof: {
-        encode(message: _44.ExistenceProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _44.ExistenceProof;
+        encode(message: _45.ExistenceProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _45.ExistenceProof;
         fromPartial(object: {
             key?: Uint8Array;
             value?: Uint8Array;
             leaf?: {
-                hash?: _44.HashOp;
-                prehashKey?: _44.HashOp;
-                prehashValue?: _44.HashOp;
-                length?: _44.LengthOp;
+                hash?: _45.HashOp;
+                prehashKey?: _45.HashOp;
+                prehashValue?: _45.HashOp;
+                length?: _45.LengthOp;
                 prefix?: Uint8Array;
             };
             path?: {
-                hash?: _44.HashOp;
+                hash?: _45.HashOp;
                 prefix?: Uint8Array;
                 suffix?: Uint8Array;
             }[];
-        }): _44.ExistenceProof;
+        }): _45.ExistenceProof;
     };
     NonExistenceProof: {
-        encode(message: _44.NonExistenceProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _44.NonExistenceProof;
+        encode(message: _45.NonExistenceProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _45.NonExistenceProof;
         fromPartial(object: {
             key?: Uint8Array;
             left?: {
                 key?: Uint8Array;
                 value?: Uint8Array;
                 leaf?: {
-                    hash?: _44.HashOp;
-                    prehashKey?: _44.HashOp;
-                    prehashValue?: _44.HashOp;
-                    length?: _44.LengthOp;
+                    hash?: _45.HashOp;
+                    prehashKey?: _45.HashOp;
+                    prehashValue?: _45.HashOp;
+                    length?: _45.LengthOp;
                     prefix?: Uint8Array;
                 };
                 path?: {
-                    hash?: _44.HashOp;
+                    hash?: _45.HashOp;
                     prefix?: Uint8Array;
                     suffix?: Uint8Array;
                 }[];
@@ -53,36 +53,36 @@ export declare const ics23: {
                 key?: Uint8Array;
                 value?: Uint8Array;
                 leaf?: {
-                    hash?: _44.HashOp;
-                    prehashKey?: _44.HashOp;
-                    prehashValue?: _44.HashOp;
-                    length?: _44.LengthOp;
+                    hash?: _45.HashOp;
+                    prehashKey?: _45.HashOp;
+                    prehashValue?: _45.HashOp;
+                    length?: _45.LengthOp;
                     prefix?: Uint8Array;
                 };
                 path?: {
-                    hash?: _44.HashOp;
+                    hash?: _45.HashOp;
                     prefix?: Uint8Array;
                     suffix?: Uint8Array;
                 }[];
             };
-        }): _44.NonExistenceProof;
+        }): _45.NonExistenceProof;
     };
     CommitmentProof: {
-        encode(message: _44.CommitmentProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _44.CommitmentProof;
+        encode(message: _45.CommitmentProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _45.CommitmentProof;
         fromPartial(object: {
             exist?: {
                 key?: Uint8Array;
                 value?: Uint8Array;
                 leaf?: {
-                    hash?: _44.HashOp;
-                    prehashKey?: _44.HashOp;
-                    prehashValue?: _44.HashOp;
-                    length?: _44.LengthOp;
+                    hash?: _45.HashOp;
+                    prehashKey?: _45.HashOp;
+                    prehashValue?: _45.HashOp;
+                    length?: _45.LengthOp;
                     prefix?: Uint8Array;
                 };
                 path?: {
-                    hash?: _44.HashOp;
+                    hash?: _45.HashOp;
                     prefix?: Uint8Array;
                     suffix?: Uint8Array;
                 }[];
@@ -93,14 +93,14 @@ export declare const ics23: {
                     key?: Uint8Array;
                     value?: Uint8Array;
                     leaf?: {
-                        hash?: _44.HashOp;
-                        prehashKey?: _44.HashOp;
-                        prehashValue?: _44.HashOp;
-                        length?: _44.LengthOp;
+                        hash?: _45.HashOp;
+                        prehashKey?: _45.HashOp;
+                        prehashValue?: _45.HashOp;
+                        length?: _45.LengthOp;
                         prefix?: Uint8Array;
                     };
                     path?: {
-                        hash?: _44.HashOp;
+                        hash?: _45.HashOp;
                         prefix?: Uint8Array;
                         suffix?: Uint8Array;
                     }[];
@@ -109,14 +109,14 @@ export declare const ics23: {
                     key?: Uint8Array;
                     value?: Uint8Array;
                     leaf?: {
-                        hash?: _44.HashOp;
-                        prehashKey?: _44.HashOp;
-                        prehashValue?: _44.HashOp;
-                        length?: _44.LengthOp;
+                        hash?: _45.HashOp;
+                        prehashKey?: _45.HashOp;
+                        prehashValue?: _45.HashOp;
+                        length?: _45.LengthOp;
                         prefix?: Uint8Array;
                     };
                     path?: {
-                        hash?: _44.HashOp;
+                        hash?: _45.HashOp;
                         prefix?: Uint8Array;
                         suffix?: Uint8Array;
                     }[];
@@ -128,14 +128,14 @@ export declare const ics23: {
                         key?: Uint8Array;
                         value?: Uint8Array;
                         leaf?: {
-                            hash?: _44.HashOp;
-                            prehashKey?: _44.HashOp;
-                            prehashValue?: _44.HashOp;
-                            length?: _44.LengthOp;
+                            hash?: _45.HashOp;
+                            prehashKey?: _45.HashOp;
+                            prehashValue?: _45.HashOp;
+                            length?: _45.LengthOp;
                             prefix?: Uint8Array;
                         };
                         path?: {
-                            hash?: _44.HashOp;
+                            hash?: _45.HashOp;
                             prefix?: Uint8Array;
                             suffix?: Uint8Array;
                         }[];
@@ -146,14 +146,14 @@ export declare const ics23: {
                             key?: Uint8Array;
                             value?: Uint8Array;
                             leaf?: {
-                                hash?: _44.HashOp;
-                                prehashKey?: _44.HashOp;
-                                prehashValue?: _44.HashOp;
-                                length?: _44.LengthOp;
+                                hash?: _45.HashOp;
+                                prehashKey?: _45.HashOp;
+                                prehashValue?: _45.HashOp;
+                                length?: _45.LengthOp;
                                 prefix?: Uint8Array;
                             };
                             path?: {
-                                hash?: _44.HashOp;
+                                hash?: _45.HashOp;
                                 prefix?: Uint8Array;
                                 suffix?: Uint8Array;
                             }[];
@@ -162,14 +162,14 @@ export declare const ics23: {
                             key?: Uint8Array;
                             value?: Uint8Array;
                             leaf?: {
-                                hash?: _44.HashOp;
-                                prehashKey?: _44.HashOp;
-                                prehashValue?: _44.HashOp;
-                                length?: _44.LengthOp;
+                                hash?: _45.HashOp;
+                                prehashKey?: _45.HashOp;
+                                prehashValue?: _45.HashOp;
+                                length?: _45.LengthOp;
                                 prefix?: Uint8Array;
                             };
                             path?: {
-                                hash?: _44.HashOp;
+                                hash?: _45.HashOp;
                                 prefix?: Uint8Array;
                                 suffix?: Uint8Array;
                             }[];
@@ -183,10 +183,10 @@ export declare const ics23: {
                         key?: Uint8Array;
                         value?: Uint8Array;
                         leaf?: {
-                            hash?: _44.HashOp;
-                            prehashKey?: _44.HashOp;
-                            prehashValue?: _44.HashOp;
-                            length?: _44.LengthOp;
+                            hash?: _45.HashOp;
+                            prehashKey?: _45.HashOp;
+                            prehashValue?: _45.HashOp;
+                            length?: _45.LengthOp;
                             prefix?: Uint8Array;
                         };
                         path?: number[];
@@ -197,10 +197,10 @@ export declare const ics23: {
                             key?: Uint8Array;
                             value?: Uint8Array;
                             leaf?: {
-                                hash?: _44.HashOp;
-                                prehashKey?: _44.HashOp;
-                                prehashValue?: _44.HashOp;
-                                length?: _44.LengthOp;
+                                hash?: _45.HashOp;
+                                prehashKey?: _45.HashOp;
+                                prehashValue?: _45.HashOp;
+                                length?: _45.LengthOp;
                                 prefix?: Uint8Array;
                             };
                             path?: number[];
@@ -209,10 +209,10 @@ export declare const ics23: {
                             key?: Uint8Array;
                             value?: Uint8Array;
                             leaf?: {
-                                hash?: _44.HashOp;
-                                prehashKey?: _44.HashOp;
-                                prehashValue?: _44.HashOp;
-                                length?: _44.LengthOp;
+                                hash?: _45.HashOp;
+                                prehashKey?: _45.HashOp;
+                                prehashValue?: _45.HashOp;
+                                length?: _45.LengthOp;
                                 prefix?: Uint8Array;
                             };
                             path?: number[];
@@ -220,42 +220,42 @@ export declare const ics23: {
                     };
                 }[];
                 lookupInners?: {
-                    hash?: _44.HashOp;
+                    hash?: _45.HashOp;
                     prefix?: Uint8Array;
                     suffix?: Uint8Array;
                 }[];
             };
-        }): _44.CommitmentProof;
+        }): _45.CommitmentProof;
     };
     LeafOp: {
-        encode(message: _44.LeafOp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _44.LeafOp;
+        encode(message: _45.LeafOp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _45.LeafOp;
         fromPartial(object: {
-            hash?: _44.HashOp;
-            prehashKey?: _44.HashOp;
-            prehashValue?: _44.HashOp;
-            length?: _44.LengthOp;
+            hash?: _45.HashOp;
+            prehashKey?: _45.HashOp;
+            prehashValue?: _45.HashOp;
+            length?: _45.LengthOp;
             prefix?: Uint8Array;
-        }): _44.LeafOp;
+        }): _45.LeafOp;
     };
     InnerOp: {
-        encode(message: _44.InnerOp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _44.InnerOp;
+        encode(message: _45.InnerOp, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _45.InnerOp;
         fromPartial(object: {
-            hash?: _44.HashOp;
+            hash?: _45.HashOp;
             prefix?: Uint8Array;
             suffix?: Uint8Array;
-        }): _44.InnerOp;
+        }): _45.InnerOp;
     };
     ProofSpec: {
-        encode(message: _44.ProofSpec, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _44.ProofSpec;
+        encode(message: _45.ProofSpec, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _45.ProofSpec;
         fromPartial(object: {
             leafSpec?: {
-                hash?: _44.HashOp;
-                prehashKey?: _44.HashOp;
-                prehashValue?: _44.HashOp;
-                length?: _44.LengthOp;
+                hash?: _45.HashOp;
+                prehashKey?: _45.HashOp;
+                prehashValue?: _45.HashOp;
+                length?: _45.LengthOp;
                 prefix?: Uint8Array;
             };
             innerSpec?: {
@@ -264,41 +264,41 @@ export declare const ics23: {
                 minPrefixLength?: number;
                 maxPrefixLength?: number;
                 emptyChild?: Uint8Array;
-                hash?: _44.HashOp;
+                hash?: _45.HashOp;
             };
             maxDepth?: number;
             minDepth?: number;
-        }): _44.ProofSpec;
+        }): _45.ProofSpec;
     };
     InnerSpec: {
-        encode(message: _44.InnerSpec, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _44.InnerSpec;
+        encode(message: _45.InnerSpec, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _45.InnerSpec;
         fromPartial(object: {
             childOrder?: number[];
             childSize?: number;
             minPrefixLength?: number;
             maxPrefixLength?: number;
             emptyChild?: Uint8Array;
-            hash?: _44.HashOp;
-        }): _44.InnerSpec;
+            hash?: _45.HashOp;
+        }): _45.InnerSpec;
     };
     BatchProof: {
-        encode(message: _44.BatchProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _44.BatchProof;
+        encode(message: _45.BatchProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _45.BatchProof;
         fromPartial(object: {
             entries?: {
                 exist?: {
                     key?: Uint8Array;
                     value?: Uint8Array;
                     leaf?: {
-                        hash?: _44.HashOp;
-                        prehashKey?: _44.HashOp;
-                        prehashValue?: _44.HashOp;
-                        length?: _44.LengthOp;
+                        hash?: _45.HashOp;
+                        prehashKey?: _45.HashOp;
+                        prehashValue?: _45.HashOp;
+                        length?: _45.LengthOp;
                         prefix?: Uint8Array;
                     };
                     path?: {
-                        hash?: _44.HashOp;
+                        hash?: _45.HashOp;
                         prefix?: Uint8Array;
                         suffix?: Uint8Array;
                     }[];
@@ -309,14 +309,14 @@ export declare const ics23: {
                         key?: Uint8Array;
                         value?: Uint8Array;
                         leaf?: {
-                            hash?: _44.HashOp;
-                            prehashKey?: _44.HashOp;
-                            prehashValue?: _44.HashOp;
-                            length?: _44.LengthOp;
+                            hash?: _45.HashOp;
+                            prehashKey?: _45.HashOp;
+                            prehashValue?: _45.HashOp;
+                            length?: _45.LengthOp;
                             prefix?: Uint8Array;
                         };
                         path?: {
-                            hash?: _44.HashOp;
+                            hash?: _45.HashOp;
                             prefix?: Uint8Array;
                             suffix?: Uint8Array;
                         }[];
@@ -325,38 +325,38 @@ export declare const ics23: {
                         key?: Uint8Array;
                         value?: Uint8Array;
                         leaf?: {
-                            hash?: _44.HashOp;
-                            prehashKey?: _44.HashOp;
-                            prehashValue?: _44.HashOp;
-                            length?: _44.LengthOp;
+                            hash?: _45.HashOp;
+                            prehashKey?: _45.HashOp;
+                            prehashValue?: _45.HashOp;
+                            length?: _45.LengthOp;
                             prefix?: Uint8Array;
                         };
                         path?: {
-                            hash?: _44.HashOp;
+                            hash?: _45.HashOp;
                             prefix?: Uint8Array;
                             suffix?: Uint8Array;
                         }[];
                     };
                 };
             }[];
-        }): _44.BatchProof;
+        }): _45.BatchProof;
     };
     BatchEntry: {
-        encode(message: _44.BatchEntry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _44.BatchEntry;
+        encode(message: _45.BatchEntry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _45.BatchEntry;
         fromPartial(object: {
             exist?: {
                 key?: Uint8Array;
                 value?: Uint8Array;
                 leaf?: {
-                    hash?: _44.HashOp;
-                    prehashKey?: _44.HashOp;
-                    prehashValue?: _44.HashOp;
-                    length?: _44.LengthOp;
+                    hash?: _45.HashOp;
+                    prehashKey?: _45.HashOp;
+                    prehashValue?: _45.HashOp;
+                    length?: _45.LengthOp;
                     prefix?: Uint8Array;
                 };
                 path?: {
-                    hash?: _44.HashOp;
+                    hash?: _45.HashOp;
                     prefix?: Uint8Array;
                     suffix?: Uint8Array;
                 }[];
@@ -367,14 +367,14 @@ export declare const ics23: {
                     key?: Uint8Array;
                     value?: Uint8Array;
                     leaf?: {
-                        hash?: _44.HashOp;
-                        prehashKey?: _44.HashOp;
-                        prehashValue?: _44.HashOp;
-                        length?: _44.LengthOp;
+                        hash?: _45.HashOp;
+                        prehashKey?: _45.HashOp;
+                        prehashValue?: _45.HashOp;
+                        length?: _45.LengthOp;
                         prefix?: Uint8Array;
                     };
                     path?: {
-                        hash?: _44.HashOp;
+                        hash?: _45.HashOp;
                         prefix?: Uint8Array;
                         suffix?: Uint8Array;
                     }[];
@@ -383,34 +383,34 @@ export declare const ics23: {
                     key?: Uint8Array;
                     value?: Uint8Array;
                     leaf?: {
-                        hash?: _44.HashOp;
-                        prehashKey?: _44.HashOp;
-                        prehashValue?: _44.HashOp;
-                        length?: _44.LengthOp;
+                        hash?: _45.HashOp;
+                        prehashKey?: _45.HashOp;
+                        prehashValue?: _45.HashOp;
+                        length?: _45.LengthOp;
                         prefix?: Uint8Array;
                     };
                     path?: {
-                        hash?: _44.HashOp;
+                        hash?: _45.HashOp;
                         prefix?: Uint8Array;
                         suffix?: Uint8Array;
                     }[];
                 };
             };
-        }): _44.BatchEntry;
+        }): _45.BatchEntry;
     };
     CompressedBatchProof: {
-        encode(message: _44.CompressedBatchProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _44.CompressedBatchProof;
+        encode(message: _45.CompressedBatchProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _45.CompressedBatchProof;
         fromPartial(object: {
             entries?: {
                 exist?: {
                     key?: Uint8Array;
                     value?: Uint8Array;
                     leaf?: {
-                        hash?: _44.HashOp;
-                        prehashKey?: _44.HashOp;
-                        prehashValue?: _44.HashOp;
-                        length?: _44.LengthOp;
+                        hash?: _45.HashOp;
+                        prehashKey?: _45.HashOp;
+                        prehashValue?: _45.HashOp;
+                        length?: _45.LengthOp;
                         prefix?: Uint8Array;
                     };
                     path?: number[];
@@ -421,10 +421,10 @@ export declare const ics23: {
                         key?: Uint8Array;
                         value?: Uint8Array;
                         leaf?: {
-                            hash?: _44.HashOp;
-                            prehashKey?: _44.HashOp;
-                            prehashValue?: _44.HashOp;
-                            length?: _44.LengthOp;
+                            hash?: _45.HashOp;
+                            prehashKey?: _45.HashOp;
+                            prehashValue?: _45.HashOp;
+                            length?: _45.LengthOp;
                             prefix?: Uint8Array;
                         };
                         path?: number[];
@@ -433,10 +433,10 @@ export declare const ics23: {
                         key?: Uint8Array;
                         value?: Uint8Array;
                         leaf?: {
-                            hash?: _44.HashOp;
-                            prehashKey?: _44.HashOp;
-                            prehashValue?: _44.HashOp;
-                            length?: _44.LengthOp;
+                            hash?: _45.HashOp;
+                            prehashKey?: _45.HashOp;
+                            prehashValue?: _45.HashOp;
+                            length?: _45.LengthOp;
                             prefix?: Uint8Array;
                         };
                         path?: number[];
@@ -444,24 +444,24 @@ export declare const ics23: {
                 };
             }[];
             lookupInners?: {
-                hash?: _44.HashOp;
+                hash?: _45.HashOp;
                 prefix?: Uint8Array;
                 suffix?: Uint8Array;
             }[];
-        }): _44.CompressedBatchProof;
+        }): _45.CompressedBatchProof;
     };
     CompressedBatchEntry: {
-        encode(message: _44.CompressedBatchEntry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _44.CompressedBatchEntry;
+        encode(message: _45.CompressedBatchEntry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _45.CompressedBatchEntry;
         fromPartial(object: {
             exist?: {
                 key?: Uint8Array;
                 value?: Uint8Array;
                 leaf?: {
-                    hash?: _44.HashOp;
-                    prehashKey?: _44.HashOp;
-                    prehashValue?: _44.HashOp;
-                    length?: _44.LengthOp;
+                    hash?: _45.HashOp;
+                    prehashKey?: _45.HashOp;
+                    prehashValue?: _45.HashOp;
+                    length?: _45.LengthOp;
                     prefix?: Uint8Array;
                 };
                 path?: number[];
@@ -472,10 +472,10 @@ export declare const ics23: {
                     key?: Uint8Array;
                     value?: Uint8Array;
                     leaf?: {
-                        hash?: _44.HashOp;
-                        prehashKey?: _44.HashOp;
-                        prehashValue?: _44.HashOp;
-                        length?: _44.LengthOp;
+                        hash?: _45.HashOp;
+                        prehashKey?: _45.HashOp;
+                        prehashValue?: _45.HashOp;
+                        length?: _45.LengthOp;
                         prefix?: Uint8Array;
                     };
                     path?: number[];
@@ -484,46 +484,46 @@ export declare const ics23: {
                     key?: Uint8Array;
                     value?: Uint8Array;
                     leaf?: {
-                        hash?: _44.HashOp;
-                        prehashKey?: _44.HashOp;
-                        prehashValue?: _44.HashOp;
-                        length?: _44.LengthOp;
+                        hash?: _45.HashOp;
+                        prehashKey?: _45.HashOp;
+                        prehashValue?: _45.HashOp;
+                        length?: _45.LengthOp;
                         prefix?: Uint8Array;
                     };
                     path?: number[];
                 };
             };
-        }): _44.CompressedBatchEntry;
+        }): _45.CompressedBatchEntry;
     };
     CompressedExistenceProof: {
-        encode(message: _44.CompressedExistenceProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _44.CompressedExistenceProof;
+        encode(message: _45.CompressedExistenceProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _45.CompressedExistenceProof;
         fromPartial(object: {
             key?: Uint8Array;
             value?: Uint8Array;
             leaf?: {
-                hash?: _44.HashOp;
-                prehashKey?: _44.HashOp;
-                prehashValue?: _44.HashOp;
-                length?: _44.LengthOp;
+                hash?: _45.HashOp;
+                prehashKey?: _45.HashOp;
+                prehashValue?: _45.HashOp;
+                length?: _45.LengthOp;
                 prefix?: Uint8Array;
             };
             path?: number[];
-        }): _44.CompressedExistenceProof;
+        }): _45.CompressedExistenceProof;
     };
     CompressedNonExistenceProof: {
-        encode(message: _44.CompressedNonExistenceProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _44.CompressedNonExistenceProof;
+        encode(message: _45.CompressedNonExistenceProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+        decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _45.CompressedNonExistenceProof;
         fromPartial(object: {
             key?: Uint8Array;
             left?: {
                 key?: Uint8Array;
                 value?: Uint8Array;
                 leaf?: {
-                    hash?: _44.HashOp;
-                    prehashKey?: _44.HashOp;
-                    prehashValue?: _44.HashOp;
-                    length?: _44.LengthOp;
+                    hash?: _45.HashOp;
+                    prehashKey?: _45.HashOp;
+                    prehashValue?: _45.HashOp;
+                    length?: _45.LengthOp;
                     prefix?: Uint8Array;
                 };
                 path?: number[];
@@ -532,14 +532,14 @@ export declare const ics23: {
                 key?: Uint8Array;
                 value?: Uint8Array;
                 leaf?: {
-                    hash?: _44.HashOp;
-                    prehashKey?: _44.HashOp;
-                    prehashValue?: _44.HashOp;
-                    length?: _44.LengthOp;
+                    hash?: _45.HashOp;
+                    prehashKey?: _45.HashOp;
+                    prehashValue?: _45.HashOp;
+                    length?: _45.LengthOp;
                     prefix?: Uint8Array;
                 };
                 path?: number[];
             };
-        }): _44.CompressedNonExistenceProof;
+        }): _45.CompressedNonExistenceProof;
     };
 };

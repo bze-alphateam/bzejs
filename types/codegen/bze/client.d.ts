@@ -270,6 +270,38 @@ export declare const bzeAminoConverters: {
             amount: string;
         }) => import("../beezee/burner/tx").MsgFundBurner;
     };
+    "/bze.burner.v1.MsgStartRaffle": {
+        aminoType: string;
+        toAmino: ({ creator, pot, duration, chances, ratio, ticketPrice, denom }: import("../beezee/burner/tx").MsgStartRaffle) => {
+            creator: string;
+            pot: string;
+            duration: string;
+            chances: string;
+            ratio: string;
+            ticket_price: string;
+            denom: string;
+        };
+        fromAmino: ({ creator, pot, duration, chances, ratio, ticket_price, denom }: {
+            creator: string;
+            pot: string;
+            duration: string;
+            chances: string;
+            ratio: string;
+            ticket_price: string;
+            denom: string;
+        }) => import("../beezee/burner/tx").MsgStartRaffle;
+    };
+    "/bze.burner.v1.MsgJoinRaffle": {
+        aminoType: string;
+        toAmino: ({ creator, denom }: import("../beezee/burner/tx").MsgJoinRaffle) => {
+            creator: string;
+            denom: string;
+        };
+        fromAmino: ({ creator, denom }: {
+            creator: string;
+            denom: string;
+        }) => import("../beezee/burner/tx").MsgJoinRaffle;
+    };
 };
 export declare const bzeProtoRegistry: ReadonlyArray<[string, GeneratedType]>;
 export declare const getSigningBzeClientOptions: ({ defaultTypes }?: {

@@ -6,6 +6,8 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
         burner: {
             v1: {
                 params(request?: import("../beezee/burner/query").QueryParamsRequest): Promise<import("../beezee/burner/query").QueryParamsResponse>;
+                raffles(request?: import("../beezee/burner/query").QueryRafflesRequest): Promise<import("../beezee/burner/query").QueryRafflesResponse>;
+                raffleWinners(request: import("../beezee/burner/query").QueryRaffleWinnersRequest): Promise<import("../beezee/burner/query").QueryRaffleWinnersResponse>;
                 allBurnedCoins(request?: import("../beezee/burner/query").QueryAllBurnedCoinsRequest): Promise<import("../beezee/burner/query").QueryAllBurnedCoinsResponse>;
             };
         };

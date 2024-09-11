@@ -1,78 +1,78 @@
-import * as _146 from "./applications/transfer/v1/genesis";
-import * as _147 from "./applications/transfer/v1/query";
-import * as _148 from "./applications/transfer/v1/transfer";
-import * as _149 from "./applications/transfer/v1/tx";
-import * as _150 from "./applications/transfer/v2/packet";
-import * as _151 from "./core/channel/v1/channel";
-import * as _152 from "./core/channel/v1/genesis";
-import * as _153 from "./core/channel/v1/query";
-import * as _154 from "./core/channel/v1/tx";
-import * as _155 from "./core/client/v1/client";
-import * as _156 from "./core/client/v1/genesis";
-import * as _157 from "./core/client/v1/query";
-import * as _158 from "./core/client/v1/tx";
-import * as _159 from "./core/commitment/v1/commitment";
-import * as _160 from "./core/connection/v1/connection";
-import * as _161 from "./core/connection/v1/genesis";
-import * as _162 from "./core/connection/v1/query";
-import * as _163 from "./core/connection/v1/tx";
-import * as _164 from "./core/port/v1/query";
-import * as _165 from "./core/types/v1/genesis";
-import * as _166 from "./lightclients/localhost/v1/localhost";
-import * as _167 from "./lightclients/solomachine/v1/solomachine";
-import * as _168 from "./lightclients/solomachine/v2/solomachine";
-import * as _169 from "./lightclients/tendermint/v1/tendermint";
-import * as _293 from "./applications/transfer/v1/query.lcd";
-import * as _294 from "./core/channel/v1/query.lcd";
-import * as _295 from "./core/client/v1/query.lcd";
-import * as _296 from "./core/connection/v1/query.lcd";
-import * as _297 from "./applications/transfer/v1/query.rpc.Query";
-import * as _298 from "./core/channel/v1/query.rpc.Query";
-import * as _299 from "./core/client/v1/query.rpc.Query";
-import * as _300 from "./core/connection/v1/query.rpc.Query";
-import * as _301 from "./core/port/v1/query.rpc.Query";
-import * as _302 from "./applications/transfer/v1/tx.rpc.msg";
-import * as _303 from "./core/channel/v1/tx.rpc.msg";
-import * as _304 from "./core/client/v1/tx.rpc.msg";
-import * as _305 from "./core/connection/v1/tx.rpc.msg";
+import * as _147 from "./applications/transfer/v1/genesis";
+import * as _148 from "./applications/transfer/v1/query";
+import * as _149 from "./applications/transfer/v1/transfer";
+import * as _150 from "./applications/transfer/v1/tx";
+import * as _151 from "./applications/transfer/v2/packet";
+import * as _152 from "./core/channel/v1/channel";
+import * as _153 from "./core/channel/v1/genesis";
+import * as _154 from "./core/channel/v1/query";
+import * as _155 from "./core/channel/v1/tx";
+import * as _156 from "./core/client/v1/client";
+import * as _157 from "./core/client/v1/genesis";
+import * as _158 from "./core/client/v1/query";
+import * as _159 from "./core/client/v1/tx";
+import * as _160 from "./core/commitment/v1/commitment";
+import * as _161 from "./core/connection/v1/connection";
+import * as _162 from "./core/connection/v1/genesis";
+import * as _163 from "./core/connection/v1/query";
+import * as _164 from "./core/connection/v1/tx";
+import * as _165 from "./core/port/v1/query";
+import * as _166 from "./core/types/v1/genesis";
+import * as _167 from "./lightclients/localhost/v1/localhost";
+import * as _168 from "./lightclients/solomachine/v1/solomachine";
+import * as _169 from "./lightclients/solomachine/v2/solomachine";
+import * as _170 from "./lightclients/tendermint/v1/tendermint";
+import * as _294 from "./applications/transfer/v1/query.lcd";
+import * as _295 from "./core/channel/v1/query.lcd";
+import * as _296 from "./core/client/v1/query.lcd";
+import * as _297 from "./core/connection/v1/query.lcd";
+import * as _298 from "./applications/transfer/v1/query.rpc.Query";
+import * as _299 from "./core/channel/v1/query.rpc.Query";
+import * as _300 from "./core/client/v1/query.rpc.Query";
+import * as _301 from "./core/connection/v1/query.rpc.Query";
+import * as _302 from "./core/port/v1/query.rpc.Query";
+import * as _303 from "./applications/transfer/v1/tx.rpc.msg";
+import * as _304 from "./core/channel/v1/tx.rpc.msg";
+import * as _305 from "./core/client/v1/tx.rpc.msg";
+import * as _306 from "./core/connection/v1/tx.rpc.msg";
 export declare namespace ibc {
     namespace applications {
         namespace transfer {
             const v1: {
-                MsgClientImpl: typeof _302.MsgClientImpl;
-                QueryClientImpl: typeof _297.QueryClientImpl;
+                MsgClientImpl: typeof _303.MsgClientImpl;
+                QueryClientImpl: typeof _298.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                    denomTrace(request: _147.QueryDenomTraceRequest): Promise<_147.QueryDenomTraceResponse>;
-                    denomTraces(request?: _147.QueryDenomTracesRequest): Promise<_147.QueryDenomTracesResponse>;
-                    params(request?: _147.QueryParamsRequest): Promise<_147.QueryParamsResponse>;
+                    denomTrace(request: _148.QueryDenomTraceRequest): Promise<_148.QueryDenomTraceResponse>;
+                    denomTraces(request?: _148.QueryDenomTracesRequest): Promise<_148.QueryDenomTracesResponse>;
+                    params(request?: _148.QueryParamsRequest): Promise<_148.QueryParamsResponse>;
                 };
-                LCDQueryClient: typeof _293.LCDQueryClient;
+                LCDQueryClient: typeof _294.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
                     encoded: {
-                        transfer(value: _149.MsgTransfer): {
+                        transfer(value: _150.MsgTransfer): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
                     };
                     withTypeUrl: {
-                        transfer(value: _149.MsgTransfer): {
+                        transfer(value: _150.MsgTransfer): {
                             typeUrl: string;
-                            value: _149.MsgTransfer;
+                            value: _150.MsgTransfer;
                         };
                     };
                     fromPartial: {
-                        transfer(value: _149.MsgTransfer): {
+                        transfer(value: _150.MsgTransfer): {
                             typeUrl: string;
-                            value: _149.MsgTransfer;
+                            value: _150.MsgTransfer;
                         };
                     };
                 };
                 AminoConverter: {
                     "/ibc.applications.transfer.v1.MsgTransfer": {
                         aminoType: string;
-                        toAmino: ({ sourcePort, sourceChannel, token, sender, receiver, timeoutHeight, timeoutTimestamp }: _149.MsgTransfer) => {
+                        toAmino: ({ sourcePort, sourceChannel, token, sender, receiver, timeoutHeight, timeoutTimestamp }: _150.MsgTransfer) => {
                             source_port: string;
                             source_channel: string;
                             token: {
@@ -95,12 +95,12 @@ export declare namespace ibc {
                             receiver: string;
                             timeout_height: import("../helpers").AminoHeight;
                             timeout_timestamp: string;
-                        }) => _149.MsgTransfer;
+                        }) => _150.MsgTransfer;
                     };
                 };
                 MsgTransfer: {
-                    encode(message: _149.MsgTransfer, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.MsgTransfer;
+                    encode(message: _150.MsgTransfer, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.MsgTransfer;
                     fromPartial(object: {
                         sourcePort?: string;
                         sourceChannel?: string;
@@ -328,49 +328,49 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
-                    }): _149.MsgTransfer;
+                    }): _150.MsgTransfer;
                 };
                 MsgTransferResponse: {
-                    encode(_: _149.MsgTransferResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.MsgTransferResponse;
-                    fromPartial(_: {}): _149.MsgTransferResponse;
+                    encode(_: _150.MsgTransferResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.MsgTransferResponse;
+                    fromPartial(_: {}): _150.MsgTransferResponse;
                 };
                 DenomTrace: {
-                    encode(message: _148.DenomTrace, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.DenomTrace;
+                    encode(message: _149.DenomTrace, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.DenomTrace;
                     fromPartial(object: {
                         path?: string;
                         baseDenom?: string;
-                    }): _148.DenomTrace;
+                    }): _149.DenomTrace;
                 };
                 Params: {
-                    encode(message: _148.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.Params;
+                    encode(message: _149.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _149.Params;
                     fromPartial(object: {
                         sendEnabled?: boolean;
                         receiveEnabled?: boolean;
-                    }): _148.Params;
+                    }): _149.Params;
                 };
                 QueryDenomTraceRequest: {
-                    encode(message: _147.QueryDenomTraceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.QueryDenomTraceRequest;
+                    encode(message: _148.QueryDenomTraceRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryDenomTraceRequest;
                     fromPartial(object: {
                         hash?: string;
-                    }): _147.QueryDenomTraceRequest;
+                    }): _148.QueryDenomTraceRequest;
                 };
                 QueryDenomTraceResponse: {
-                    encode(message: _147.QueryDenomTraceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.QueryDenomTraceResponse;
+                    encode(message: _148.QueryDenomTraceResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryDenomTraceResponse;
                     fromPartial(object: {
                         denomTrace?: {
                             path?: string;
                             baseDenom?: string;
                         };
-                    }): _147.QueryDenomTraceResponse;
+                    }): _148.QueryDenomTraceResponse;
                 };
                 QueryDenomTracesRequest: {
-                    encode(message: _147.QueryDenomTracesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.QueryDenomTracesRequest;
+                    encode(message: _148.QueryDenomTracesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryDenomTracesRequest;
                     fromPartial(object: {
                         pagination?: {
                             key?: Uint8Array;
@@ -521,11 +521,11 @@ export declare namespace ibc {
                             countTotal?: boolean;
                             reverse?: boolean;
                         };
-                    }): _147.QueryDenomTracesRequest;
+                    }): _148.QueryDenomTracesRequest;
                 };
                 QueryDenomTracesResponse: {
-                    encode(message: _147.QueryDenomTracesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.QueryDenomTracesResponse;
+                    encode(message: _148.QueryDenomTracesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryDenomTracesResponse;
                     fromPartial(object: {
                         denomTraces?: {
                             path?: string;
@@ -606,26 +606,26 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _147.QueryDenomTracesResponse;
+                    }): _148.QueryDenomTracesResponse;
                 };
                 QueryParamsRequest: {
-                    encode(_: _147.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.QueryParamsRequest;
-                    fromPartial(_: {}): _147.QueryParamsRequest;
+                    encode(_: _148.QueryParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryParamsRequest;
+                    fromPartial(_: {}): _148.QueryParamsRequest;
                 };
                 QueryParamsResponse: {
-                    encode(message: _147.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.QueryParamsResponse;
+                    encode(message: _148.QueryParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _148.QueryParamsResponse;
                     fromPartial(object: {
                         params?: {
                             sendEnabled?: boolean;
                             receiveEnabled?: boolean;
                         };
-                    }): _147.QueryParamsResponse;
+                    }): _148.QueryParamsResponse;
                 };
                 GenesisState: {
-                    encode(message: _146.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _146.GenesisState;
+                    encode(message: _147.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _147.GenesisState;
                     fromPartial(object: {
                         portId?: string;
                         denomTraces?: {
@@ -636,19 +636,19 @@ export declare namespace ibc {
                             sendEnabled?: boolean;
                             receiveEnabled?: boolean;
                         };
-                    }): _146.GenesisState;
+                    }): _147.GenesisState;
                 };
             };
             const v2: {
                 FungibleTokenPacketData: {
-                    encode(message: _150.FungibleTokenPacketData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _150.FungibleTokenPacketData;
+                    encode(message: _151.FungibleTokenPacketData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _151.FungibleTokenPacketData;
                     fromPartial(object: {
                         denom?: string;
                         amount?: string;
                         sender?: string;
                         receiver?: string;
-                    }): _150.FungibleTokenPacketData;
+                    }): _151.FungibleTokenPacketData;
                 };
             };
         }
@@ -656,158 +656,158 @@ export declare namespace ibc {
     namespace core {
         namespace channel {
             const v1: {
-                MsgClientImpl: typeof _303.MsgClientImpl;
-                QueryClientImpl: typeof _298.QueryClientImpl;
+                MsgClientImpl: typeof _304.MsgClientImpl;
+                QueryClientImpl: typeof _299.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                    channel(request: _153.QueryChannelRequest): Promise<_153.QueryChannelResponse>;
-                    channels(request?: _153.QueryChannelsRequest): Promise<_153.QueryChannelsResponse>;
-                    connectionChannels(request: _153.QueryConnectionChannelsRequest): Promise<_153.QueryConnectionChannelsResponse>;
-                    channelClientState(request: _153.QueryChannelClientStateRequest): Promise<_153.QueryChannelClientStateResponse>;
-                    channelConsensusState(request: _153.QueryChannelConsensusStateRequest): Promise<_153.QueryChannelConsensusStateResponse>;
-                    packetCommitment(request: _153.QueryPacketCommitmentRequest): Promise<_153.QueryPacketCommitmentResponse>;
-                    packetCommitments(request: _153.QueryPacketCommitmentsRequest): Promise<_153.QueryPacketCommitmentsResponse>;
-                    packetReceipt(request: _153.QueryPacketReceiptRequest): Promise<_153.QueryPacketReceiptResponse>;
-                    packetAcknowledgement(request: _153.QueryPacketAcknowledgementRequest): Promise<_153.QueryPacketAcknowledgementResponse>;
-                    packetAcknowledgements(request: _153.QueryPacketAcknowledgementsRequest): Promise<_153.QueryPacketAcknowledgementsResponse>;
-                    unreceivedPackets(request: _153.QueryUnreceivedPacketsRequest): Promise<_153.QueryUnreceivedPacketsResponse>;
-                    unreceivedAcks(request: _153.QueryUnreceivedAcksRequest): Promise<_153.QueryUnreceivedAcksResponse>;
-                    nextSequenceReceive(request: _153.QueryNextSequenceReceiveRequest): Promise<_153.QueryNextSequenceReceiveResponse>;
+                    channel(request: _154.QueryChannelRequest): Promise<_154.QueryChannelResponse>;
+                    channels(request?: _154.QueryChannelsRequest): Promise<_154.QueryChannelsResponse>;
+                    connectionChannels(request: _154.QueryConnectionChannelsRequest): Promise<_154.QueryConnectionChannelsResponse>;
+                    channelClientState(request: _154.QueryChannelClientStateRequest): Promise<_154.QueryChannelClientStateResponse>;
+                    channelConsensusState(request: _154.QueryChannelConsensusStateRequest): Promise<_154.QueryChannelConsensusStateResponse>;
+                    packetCommitment(request: _154.QueryPacketCommitmentRequest): Promise<_154.QueryPacketCommitmentResponse>;
+                    packetCommitments(request: _154.QueryPacketCommitmentsRequest): Promise<_154.QueryPacketCommitmentsResponse>;
+                    packetReceipt(request: _154.QueryPacketReceiptRequest): Promise<_154.QueryPacketReceiptResponse>;
+                    packetAcknowledgement(request: _154.QueryPacketAcknowledgementRequest): Promise<_154.QueryPacketAcknowledgementResponse>;
+                    packetAcknowledgements(request: _154.QueryPacketAcknowledgementsRequest): Promise<_154.QueryPacketAcknowledgementsResponse>;
+                    unreceivedPackets(request: _154.QueryUnreceivedPacketsRequest): Promise<_154.QueryUnreceivedPacketsResponse>;
+                    unreceivedAcks(request: _154.QueryUnreceivedAcksRequest): Promise<_154.QueryUnreceivedAcksResponse>;
+                    nextSequenceReceive(request: _154.QueryNextSequenceReceiveRequest): Promise<_154.QueryNextSequenceReceiveResponse>;
                 };
-                LCDQueryClient: typeof _294.LCDQueryClient;
+                LCDQueryClient: typeof _295.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
                     encoded: {
-                        channelOpenInit(value: _154.MsgChannelOpenInit): {
+                        channelOpenInit(value: _155.MsgChannelOpenInit): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        channelOpenTry(value: _154.MsgChannelOpenTry): {
+                        channelOpenTry(value: _155.MsgChannelOpenTry): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        channelOpenAck(value: _154.MsgChannelOpenAck): {
+                        channelOpenAck(value: _155.MsgChannelOpenAck): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        channelOpenConfirm(value: _154.MsgChannelOpenConfirm): {
+                        channelOpenConfirm(value: _155.MsgChannelOpenConfirm): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        channelCloseInit(value: _154.MsgChannelCloseInit): {
+                        channelCloseInit(value: _155.MsgChannelCloseInit): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        channelCloseConfirm(value: _154.MsgChannelCloseConfirm): {
+                        channelCloseConfirm(value: _155.MsgChannelCloseConfirm): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        recvPacket(value: _154.MsgRecvPacket): {
+                        recvPacket(value: _155.MsgRecvPacket): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        timeout(value: _154.MsgTimeout): {
+                        timeout(value: _155.MsgTimeout): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        timeoutOnClose(value: _154.MsgTimeoutOnClose): {
+                        timeoutOnClose(value: _155.MsgTimeoutOnClose): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        acknowledgement(value: _154.MsgAcknowledgement): {
+                        acknowledgement(value: _155.MsgAcknowledgement): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
                     };
                     withTypeUrl: {
-                        channelOpenInit(value: _154.MsgChannelOpenInit): {
+                        channelOpenInit(value: _155.MsgChannelOpenInit): {
                             typeUrl: string;
-                            value: _154.MsgChannelOpenInit;
+                            value: _155.MsgChannelOpenInit;
                         };
-                        channelOpenTry(value: _154.MsgChannelOpenTry): {
+                        channelOpenTry(value: _155.MsgChannelOpenTry): {
                             typeUrl: string;
-                            value: _154.MsgChannelOpenTry;
+                            value: _155.MsgChannelOpenTry;
                         };
-                        channelOpenAck(value: _154.MsgChannelOpenAck): {
+                        channelOpenAck(value: _155.MsgChannelOpenAck): {
                             typeUrl: string;
-                            value: _154.MsgChannelOpenAck;
+                            value: _155.MsgChannelOpenAck;
                         };
-                        channelOpenConfirm(value: _154.MsgChannelOpenConfirm): {
+                        channelOpenConfirm(value: _155.MsgChannelOpenConfirm): {
                             typeUrl: string;
-                            value: _154.MsgChannelOpenConfirm;
+                            value: _155.MsgChannelOpenConfirm;
                         };
-                        channelCloseInit(value: _154.MsgChannelCloseInit): {
+                        channelCloseInit(value: _155.MsgChannelCloseInit): {
                             typeUrl: string;
-                            value: _154.MsgChannelCloseInit;
+                            value: _155.MsgChannelCloseInit;
                         };
-                        channelCloseConfirm(value: _154.MsgChannelCloseConfirm): {
+                        channelCloseConfirm(value: _155.MsgChannelCloseConfirm): {
                             typeUrl: string;
-                            value: _154.MsgChannelCloseConfirm;
+                            value: _155.MsgChannelCloseConfirm;
                         };
-                        recvPacket(value: _154.MsgRecvPacket): {
+                        recvPacket(value: _155.MsgRecvPacket): {
                             typeUrl: string;
-                            value: _154.MsgRecvPacket;
+                            value: _155.MsgRecvPacket;
                         };
-                        timeout(value: _154.MsgTimeout): {
+                        timeout(value: _155.MsgTimeout): {
                             typeUrl: string;
-                            value: _154.MsgTimeout;
+                            value: _155.MsgTimeout;
                         };
-                        timeoutOnClose(value: _154.MsgTimeoutOnClose): {
+                        timeoutOnClose(value: _155.MsgTimeoutOnClose): {
                             typeUrl: string;
-                            value: _154.MsgTimeoutOnClose;
+                            value: _155.MsgTimeoutOnClose;
                         };
-                        acknowledgement(value: _154.MsgAcknowledgement): {
+                        acknowledgement(value: _155.MsgAcknowledgement): {
                             typeUrl: string;
-                            value: _154.MsgAcknowledgement;
+                            value: _155.MsgAcknowledgement;
                         };
                     };
                     fromPartial: {
-                        channelOpenInit(value: _154.MsgChannelOpenInit): {
+                        channelOpenInit(value: _155.MsgChannelOpenInit): {
                             typeUrl: string;
-                            value: _154.MsgChannelOpenInit;
+                            value: _155.MsgChannelOpenInit;
                         };
-                        channelOpenTry(value: _154.MsgChannelOpenTry): {
+                        channelOpenTry(value: _155.MsgChannelOpenTry): {
                             typeUrl: string;
-                            value: _154.MsgChannelOpenTry;
+                            value: _155.MsgChannelOpenTry;
                         };
-                        channelOpenAck(value: _154.MsgChannelOpenAck): {
+                        channelOpenAck(value: _155.MsgChannelOpenAck): {
                             typeUrl: string;
-                            value: _154.MsgChannelOpenAck;
+                            value: _155.MsgChannelOpenAck;
                         };
-                        channelOpenConfirm(value: _154.MsgChannelOpenConfirm): {
+                        channelOpenConfirm(value: _155.MsgChannelOpenConfirm): {
                             typeUrl: string;
-                            value: _154.MsgChannelOpenConfirm;
+                            value: _155.MsgChannelOpenConfirm;
                         };
-                        channelCloseInit(value: _154.MsgChannelCloseInit): {
+                        channelCloseInit(value: _155.MsgChannelCloseInit): {
                             typeUrl: string;
-                            value: _154.MsgChannelCloseInit;
+                            value: _155.MsgChannelCloseInit;
                         };
-                        channelCloseConfirm(value: _154.MsgChannelCloseConfirm): {
+                        channelCloseConfirm(value: _155.MsgChannelCloseConfirm): {
                             typeUrl: string;
-                            value: _154.MsgChannelCloseConfirm;
+                            value: _155.MsgChannelCloseConfirm;
                         };
-                        recvPacket(value: _154.MsgRecvPacket): {
+                        recvPacket(value: _155.MsgRecvPacket): {
                             typeUrl: string;
-                            value: _154.MsgRecvPacket;
+                            value: _155.MsgRecvPacket;
                         };
-                        timeout(value: _154.MsgTimeout): {
+                        timeout(value: _155.MsgTimeout): {
                             typeUrl: string;
-                            value: _154.MsgTimeout;
+                            value: _155.MsgTimeout;
                         };
-                        timeoutOnClose(value: _154.MsgTimeoutOnClose): {
+                        timeoutOnClose(value: _155.MsgTimeoutOnClose): {
                             typeUrl: string;
-                            value: _154.MsgTimeoutOnClose;
+                            value: _155.MsgTimeoutOnClose;
                         };
-                        acknowledgement(value: _154.MsgAcknowledgement): {
+                        acknowledgement(value: _155.MsgAcknowledgement): {
                             typeUrl: string;
-                            value: _154.MsgAcknowledgement;
+                            value: _155.MsgAcknowledgement;
                         };
                     };
                 };
                 AminoConverter: {
                     "/ibc.core.channel.v1.MsgChannelOpenInit": {
                         aminoType: string;
-                        toAmino: ({ portId, channel, signer }: _154.MsgChannelOpenInit) => {
+                        toAmino: ({ portId, channel, signer }: _155.MsgChannelOpenInit) => {
                             port_id: string;
                             channel: {
                                 state: number;
@@ -834,11 +834,11 @@ export declare namespace ibc {
                                 version: string;
                             };
                             signer: string;
-                        }) => _154.MsgChannelOpenInit;
+                        }) => _155.MsgChannelOpenInit;
                     };
                     "/ibc.core.channel.v1.MsgChannelOpenTry": {
                         aminoType: string;
-                        toAmino: ({ portId, previousChannelId, channel, counterpartyVersion, proofInit, proofHeight, signer }: _154.MsgChannelOpenTry) => {
+                        toAmino: ({ portId, previousChannelId, channel, counterpartyVersion, proofInit, proofHeight, signer }: _155.MsgChannelOpenTry) => {
                             port_id: string;
                             previous_channel_id: string;
                             channel: {
@@ -873,11 +873,11 @@ export declare namespace ibc {
                             proof_init: Uint8Array;
                             proof_height: import("../helpers").AminoHeight;
                             signer: string;
-                        }) => _154.MsgChannelOpenTry;
+                        }) => _155.MsgChannelOpenTry;
                     };
                     "/ibc.core.channel.v1.MsgChannelOpenAck": {
                         aminoType: string;
-                        toAmino: ({ portId, channelId, counterpartyChannelId, counterpartyVersion, proofTry, proofHeight, signer }: _154.MsgChannelOpenAck) => {
+                        toAmino: ({ portId, channelId, counterpartyChannelId, counterpartyVersion, proofTry, proofHeight, signer }: _155.MsgChannelOpenAck) => {
                             port_id: string;
                             channel_id: string;
                             counterparty_channel_id: string;
@@ -894,11 +894,11 @@ export declare namespace ibc {
                             proof_try: Uint8Array;
                             proof_height: import("../helpers").AminoHeight;
                             signer: string;
-                        }) => _154.MsgChannelOpenAck;
+                        }) => _155.MsgChannelOpenAck;
                     };
                     "/ibc.core.channel.v1.MsgChannelOpenConfirm": {
                         aminoType: string;
-                        toAmino: ({ portId, channelId, proofAck, proofHeight, signer }: _154.MsgChannelOpenConfirm) => {
+                        toAmino: ({ portId, channelId, proofAck, proofHeight, signer }: _155.MsgChannelOpenConfirm) => {
                             port_id: string;
                             channel_id: string;
                             proof_ack: Uint8Array;
@@ -911,11 +911,11 @@ export declare namespace ibc {
                             proof_ack: Uint8Array;
                             proof_height: import("../helpers").AminoHeight;
                             signer: string;
-                        }) => _154.MsgChannelOpenConfirm;
+                        }) => _155.MsgChannelOpenConfirm;
                     };
                     "/ibc.core.channel.v1.MsgChannelCloseInit": {
                         aminoType: string;
-                        toAmino: ({ portId, channelId, signer }: _154.MsgChannelCloseInit) => {
+                        toAmino: ({ portId, channelId, signer }: _155.MsgChannelCloseInit) => {
                             port_id: string;
                             channel_id: string;
                             signer: string;
@@ -924,11 +924,11 @@ export declare namespace ibc {
                             port_id: string;
                             channel_id: string;
                             signer: string;
-                        }) => _154.MsgChannelCloseInit;
+                        }) => _155.MsgChannelCloseInit;
                     };
                     "/ibc.core.channel.v1.MsgChannelCloseConfirm": {
                         aminoType: string;
-                        toAmino: ({ portId, channelId, proofInit, proofHeight, signer }: _154.MsgChannelCloseConfirm) => {
+                        toAmino: ({ portId, channelId, proofInit, proofHeight, signer }: _155.MsgChannelCloseConfirm) => {
                             port_id: string;
                             channel_id: string;
                             proof_init: Uint8Array;
@@ -941,11 +941,11 @@ export declare namespace ibc {
                             proof_init: Uint8Array;
                             proof_height: import("../helpers").AminoHeight;
                             signer: string;
-                        }) => _154.MsgChannelCloseConfirm;
+                        }) => _155.MsgChannelCloseConfirm;
                     };
                     "/ibc.core.channel.v1.MsgRecvPacket": {
                         aminoType: string;
-                        toAmino: ({ packet, proofCommitment, proofHeight, signer }: _154.MsgRecvPacket) => {
+                        toAmino: ({ packet, proofCommitment, proofHeight, signer }: _155.MsgRecvPacket) => {
                             packet: {
                                 sequence: string;
                                 source_port: string;
@@ -974,11 +974,11 @@ export declare namespace ibc {
                             proof_commitment: Uint8Array;
                             proof_height: import("../helpers").AminoHeight;
                             signer: string;
-                        }) => _154.MsgRecvPacket;
+                        }) => _155.MsgRecvPacket;
                     };
                     "/ibc.core.channel.v1.MsgTimeout": {
                         aminoType: string;
-                        toAmino: ({ packet, proofUnreceived, proofHeight, nextSequenceRecv, signer }: _154.MsgTimeout) => {
+                        toAmino: ({ packet, proofUnreceived, proofHeight, nextSequenceRecv, signer }: _155.MsgTimeout) => {
                             packet: {
                                 sequence: string;
                                 source_port: string;
@@ -1009,11 +1009,11 @@ export declare namespace ibc {
                             proof_height: import("../helpers").AminoHeight;
                             next_sequence_recv: string;
                             signer: string;
-                        }) => _154.MsgTimeout;
+                        }) => _155.MsgTimeout;
                     };
                     "/ibc.core.channel.v1.MsgTimeoutOnClose": {
                         aminoType: string;
-                        toAmino: ({ packet, proofUnreceived, proofClose, proofHeight, nextSequenceRecv, signer }: _154.MsgTimeoutOnClose) => {
+                        toAmino: ({ packet, proofUnreceived, proofClose, proofHeight, nextSequenceRecv, signer }: _155.MsgTimeoutOnClose) => {
                             packet: {
                                 sequence: string;
                                 source_port: string;
@@ -1046,11 +1046,11 @@ export declare namespace ibc {
                             proof_height: import("../helpers").AminoHeight;
                             next_sequence_recv: string;
                             signer: string;
-                        }) => _154.MsgTimeoutOnClose;
+                        }) => _155.MsgTimeoutOnClose;
                     };
                     "/ibc.core.channel.v1.MsgAcknowledgement": {
                         aminoType: string;
-                        toAmino: ({ packet, acknowledgement, proofAcked, proofHeight, signer }: _154.MsgAcknowledgement) => {
+                        toAmino: ({ packet, acknowledgement, proofAcked, proofHeight, signer }: _155.MsgAcknowledgement) => {
                             packet: {
                                 sequence: string;
                                 source_port: string;
@@ -1081,17 +1081,17 @@ export declare namespace ibc {
                             proof_acked: Uint8Array;
                             proof_height: import("../helpers").AminoHeight;
                             signer: string;
-                        }) => _154.MsgAcknowledgement;
+                        }) => _155.MsgAcknowledgement;
                     };
                 };
                 MsgChannelOpenInit: {
-                    encode(message: _154.MsgChannelOpenInit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgChannelOpenInit;
+                    encode(message: _155.MsgChannelOpenInit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgChannelOpenInit;
                     fromPartial(object: {
                         portId?: string;
                         channel?: {
-                            state?: _151.State;
-                            ordering?: _151.Order;
+                            state?: _152.State;
+                            ordering?: _152.Order;
                             counterparty?: {
                                 portId?: string;
                                 channelId?: string;
@@ -1100,22 +1100,22 @@ export declare namespace ibc {
                             version?: string;
                         };
                         signer?: string;
-                    }): _154.MsgChannelOpenInit;
+                    }): _155.MsgChannelOpenInit;
                 };
                 MsgChannelOpenInitResponse: {
-                    encode(_: _154.MsgChannelOpenInitResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgChannelOpenInitResponse;
-                    fromPartial(_: {}): _154.MsgChannelOpenInitResponse;
+                    encode(_: _155.MsgChannelOpenInitResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgChannelOpenInitResponse;
+                    fromPartial(_: {}): _155.MsgChannelOpenInitResponse;
                 };
                 MsgChannelOpenTry: {
-                    encode(message: _154.MsgChannelOpenTry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgChannelOpenTry;
+                    encode(message: _155.MsgChannelOpenTry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgChannelOpenTry;
                     fromPartial(object: {
                         portId?: string;
                         previousChannelId?: string;
                         channel?: {
-                            state?: _151.State;
-                            ordering?: _151.Order;
+                            state?: _152.State;
+                            ordering?: _152.Order;
                             counterparty?: {
                                 portId?: string;
                                 channelId?: string;
@@ -1272,16 +1272,16 @@ export declare namespace ibc {
                             };
                         };
                         signer?: string;
-                    }): _154.MsgChannelOpenTry;
+                    }): _155.MsgChannelOpenTry;
                 };
                 MsgChannelOpenTryResponse: {
-                    encode(_: _154.MsgChannelOpenTryResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgChannelOpenTryResponse;
-                    fromPartial(_: {}): _154.MsgChannelOpenTryResponse;
+                    encode(_: _155.MsgChannelOpenTryResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgChannelOpenTryResponse;
+                    fromPartial(_: {}): _155.MsgChannelOpenTryResponse;
                 };
                 MsgChannelOpenAck: {
-                    encode(message: _154.MsgChannelOpenAck, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgChannelOpenAck;
+                    encode(message: _155.MsgChannelOpenAck, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgChannelOpenAck;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -1435,16 +1435,16 @@ export declare namespace ibc {
                             };
                         };
                         signer?: string;
-                    }): _154.MsgChannelOpenAck;
+                    }): _155.MsgChannelOpenAck;
                 };
                 MsgChannelOpenAckResponse: {
-                    encode(_: _154.MsgChannelOpenAckResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgChannelOpenAckResponse;
-                    fromPartial(_: {}): _154.MsgChannelOpenAckResponse;
+                    encode(_: _155.MsgChannelOpenAckResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgChannelOpenAckResponse;
+                    fromPartial(_: {}): _155.MsgChannelOpenAckResponse;
                 };
                 MsgChannelOpenConfirm: {
-                    encode(message: _154.MsgChannelOpenConfirm, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgChannelOpenConfirm;
+                    encode(message: _155.MsgChannelOpenConfirm, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgChannelOpenConfirm;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -1596,30 +1596,30 @@ export declare namespace ibc {
                             };
                         };
                         signer?: string;
-                    }): _154.MsgChannelOpenConfirm;
+                    }): _155.MsgChannelOpenConfirm;
                 };
                 MsgChannelOpenConfirmResponse: {
-                    encode(_: _154.MsgChannelOpenConfirmResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgChannelOpenConfirmResponse;
-                    fromPartial(_: {}): _154.MsgChannelOpenConfirmResponse;
+                    encode(_: _155.MsgChannelOpenConfirmResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgChannelOpenConfirmResponse;
+                    fromPartial(_: {}): _155.MsgChannelOpenConfirmResponse;
                 };
                 MsgChannelCloseInit: {
-                    encode(message: _154.MsgChannelCloseInit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgChannelCloseInit;
+                    encode(message: _155.MsgChannelCloseInit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgChannelCloseInit;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
                         signer?: string;
-                    }): _154.MsgChannelCloseInit;
+                    }): _155.MsgChannelCloseInit;
                 };
                 MsgChannelCloseInitResponse: {
-                    encode(_: _154.MsgChannelCloseInitResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgChannelCloseInitResponse;
-                    fromPartial(_: {}): _154.MsgChannelCloseInitResponse;
+                    encode(_: _155.MsgChannelCloseInitResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgChannelCloseInitResponse;
+                    fromPartial(_: {}): _155.MsgChannelCloseInitResponse;
                 };
                 MsgChannelCloseConfirm: {
-                    encode(message: _154.MsgChannelCloseConfirm, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgChannelCloseConfirm;
+                    encode(message: _155.MsgChannelCloseConfirm, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgChannelCloseConfirm;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -1771,16 +1771,16 @@ export declare namespace ibc {
                             };
                         };
                         signer?: string;
-                    }): _154.MsgChannelCloseConfirm;
+                    }): _155.MsgChannelCloseConfirm;
                 };
                 MsgChannelCloseConfirmResponse: {
-                    encode(_: _154.MsgChannelCloseConfirmResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgChannelCloseConfirmResponse;
-                    fromPartial(_: {}): _154.MsgChannelCloseConfirmResponse;
+                    encode(_: _155.MsgChannelCloseConfirmResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgChannelCloseConfirmResponse;
+                    fromPartial(_: {}): _155.MsgChannelCloseConfirmResponse;
                 };
                 MsgRecvPacket: {
-                    encode(message: _154.MsgRecvPacket, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgRecvPacket;
+                    encode(message: _155.MsgRecvPacket, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgRecvPacket;
                     fromPartial(object: {
                         packet?: {
                             sequence?: {
@@ -2227,16 +2227,16 @@ export declare namespace ibc {
                             };
                         };
                         signer?: string;
-                    }): _154.MsgRecvPacket;
+                    }): _155.MsgRecvPacket;
                 };
                 MsgRecvPacketResponse: {
-                    encode(_: _154.MsgRecvPacketResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgRecvPacketResponse;
-                    fromPartial(_: {}): _154.MsgRecvPacketResponse;
+                    encode(_: _155.MsgRecvPacketResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgRecvPacketResponse;
+                    fromPartial(_: {}): _155.MsgRecvPacketResponse;
                 };
                 MsgTimeout: {
-                    encode(message: _154.MsgTimeout, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgTimeout;
+                    encode(message: _155.MsgTimeout, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgTimeout;
                     fromPartial(object: {
                         packet?: {
                             sequence?: {
@@ -2755,16 +2755,16 @@ export declare namespace ibc {
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
                         signer?: string;
-                    }): _154.MsgTimeout;
+                    }): _155.MsgTimeout;
                 };
                 MsgTimeoutResponse: {
-                    encode(_: _154.MsgTimeoutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgTimeoutResponse;
-                    fromPartial(_: {}): _154.MsgTimeoutResponse;
+                    encode(_: _155.MsgTimeoutResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgTimeoutResponse;
+                    fromPartial(_: {}): _155.MsgTimeoutResponse;
                 };
                 MsgTimeoutOnClose: {
-                    encode(message: _154.MsgTimeoutOnClose, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgTimeoutOnClose;
+                    encode(message: _155.MsgTimeoutOnClose, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgTimeoutOnClose;
                     fromPartial(object: {
                         packet?: {
                             sequence?: {
@@ -3284,16 +3284,16 @@ export declare namespace ibc {
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
                         signer?: string;
-                    }): _154.MsgTimeoutOnClose;
+                    }): _155.MsgTimeoutOnClose;
                 };
                 MsgTimeoutOnCloseResponse: {
-                    encode(_: _154.MsgTimeoutOnCloseResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgTimeoutOnCloseResponse;
-                    fromPartial(_: {}): _154.MsgTimeoutOnCloseResponse;
+                    encode(_: _155.MsgTimeoutOnCloseResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgTimeoutOnCloseResponse;
+                    fromPartial(_: {}): _155.MsgTimeoutOnCloseResponse;
                 };
                 MsgAcknowledgement: {
-                    encode(message: _154.MsgAcknowledgement, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgAcknowledgement;
+                    encode(message: _155.MsgAcknowledgement, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgAcknowledgement;
                     fromPartial(object: {
                         packet?: {
                             sequence?: {
@@ -3741,28 +3741,28 @@ export declare namespace ibc {
                             };
                         };
                         signer?: string;
-                    }): _154.MsgAcknowledgement;
+                    }): _155.MsgAcknowledgement;
                 };
                 MsgAcknowledgementResponse: {
-                    encode(_: _154.MsgAcknowledgementResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.MsgAcknowledgementResponse;
-                    fromPartial(_: {}): _154.MsgAcknowledgementResponse;
+                    encode(_: _155.MsgAcknowledgementResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.MsgAcknowledgementResponse;
+                    fromPartial(_: {}): _155.MsgAcknowledgementResponse;
                 };
                 QueryChannelRequest: {
-                    encode(message: _153.QueryChannelRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryChannelRequest;
+                    encode(message: _154.QueryChannelRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryChannelRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
-                    }): _153.QueryChannelRequest;
+                    }): _154.QueryChannelRequest;
                 };
                 QueryChannelResponse: {
-                    encode(message: _153.QueryChannelResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryChannelResponse;
+                    encode(message: _154.QueryChannelResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryChannelResponse;
                     fromPartial(object: {
                         channel?: {
-                            state?: _151.State;
-                            ordering?: _151.Order;
+                            state?: _152.State;
+                            ordering?: _152.Order;
                             counterparty?: {
                                 portId?: string;
                                 channelId?: string;
@@ -3917,11 +3917,11 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _153.QueryChannelResponse;
+                    }): _154.QueryChannelResponse;
                 };
                 QueryChannelsRequest: {
-                    encode(message: _153.QueryChannelsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryChannelsRequest;
+                    encode(message: _154.QueryChannelsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryChannelsRequest;
                     fromPartial(object: {
                         pagination?: {
                             key?: Uint8Array;
@@ -4072,15 +4072,15 @@ export declare namespace ibc {
                             countTotal?: boolean;
                             reverse?: boolean;
                         };
-                    }): _153.QueryChannelsRequest;
+                    }): _154.QueryChannelsRequest;
                 };
                 QueryChannelsResponse: {
-                    encode(message: _153.QueryChannelsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryChannelsResponse;
+                    encode(message: _154.QueryChannelsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryChannelsResponse;
                     fromPartial(object: {
                         channels?: {
-                            state?: _151.State;
-                            ordering?: _151.Order;
+                            state?: _152.State;
+                            ordering?: _152.Order;
                             counterparty?: {
                                 portId?: string;
                                 channelId?: string;
@@ -4311,11 +4311,11 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _153.QueryChannelsResponse;
+                    }): _154.QueryChannelsResponse;
                 };
                 QueryConnectionChannelsRequest: {
-                    encode(message: _153.QueryConnectionChannelsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryConnectionChannelsRequest;
+                    encode(message: _154.QueryConnectionChannelsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryConnectionChannelsRequest;
                     fromPartial(object: {
                         connection?: string;
                         pagination?: {
@@ -4467,15 +4467,15 @@ export declare namespace ibc {
                             countTotal?: boolean;
                             reverse?: boolean;
                         };
-                    }): _153.QueryConnectionChannelsRequest;
+                    }): _154.QueryConnectionChannelsRequest;
                 };
                 QueryConnectionChannelsResponse: {
-                    encode(message: _153.QueryConnectionChannelsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryConnectionChannelsResponse;
+                    encode(message: _154.QueryConnectionChannelsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryConnectionChannelsResponse;
                     fromPartial(object: {
                         channels?: {
-                            state?: _151.State;
-                            ordering?: _151.Order;
+                            state?: _152.State;
+                            ordering?: _152.Order;
                             counterparty?: {
                                 portId?: string;
                                 channelId?: string;
@@ -4706,19 +4706,19 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _153.QueryConnectionChannelsResponse;
+                    }): _154.QueryConnectionChannelsResponse;
                 };
                 QueryChannelClientStateRequest: {
-                    encode(message: _153.QueryChannelClientStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryChannelClientStateRequest;
+                    encode(message: _154.QueryChannelClientStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryChannelClientStateRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
-                    }): _153.QueryChannelClientStateRequest;
+                    }): _154.QueryChannelClientStateRequest;
                 };
                 QueryChannelClientStateResponse: {
-                    encode(message: _153.QueryChannelClientStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryChannelClientStateResponse;
+                    encode(message: _154.QueryChannelClientStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryChannelClientStateResponse;
                     fromPartial(object: {
                         identifiedClientState?: {
                             clientId?: string;
@@ -4874,11 +4874,11 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _153.QueryChannelClientStateResponse;
+                    }): _154.QueryChannelClientStateResponse;
                 };
                 QueryChannelConsensusStateRequest: {
-                    encode(message: _153.QueryChannelConsensusStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryChannelConsensusStateRequest;
+                    encode(message: _154.QueryChannelConsensusStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryChannelConsensusStateRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -5026,11 +5026,11 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
-                    }): _153.QueryChannelConsensusStateRequest;
+                    }): _154.QueryChannelConsensusStateRequest;
                 };
                 QueryChannelConsensusStateResponse: {
-                    encode(message: _153.QueryChannelConsensusStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryChannelConsensusStateResponse;
+                    encode(message: _154.QueryChannelConsensusStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryChannelConsensusStateResponse;
                     fromPartial(object: {
                         consensusState?: {
                             typeUrl?: string;
@@ -5184,11 +5184,11 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _153.QueryChannelConsensusStateResponse;
+                    }): _154.QueryChannelConsensusStateResponse;
                 };
                 QueryPacketCommitmentRequest: {
-                    encode(message: _153.QueryPacketCommitmentRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryPacketCommitmentRequest;
+                    encode(message: _154.QueryPacketCommitmentRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryPacketCommitmentRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -5264,11 +5264,11 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
-                    }): _153.QueryPacketCommitmentRequest;
+                    }): _154.QueryPacketCommitmentRequest;
                 };
                 QueryPacketCommitmentResponse: {
-                    encode(message: _153.QueryPacketCommitmentResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryPacketCommitmentResponse;
+                    encode(message: _154.QueryPacketCommitmentResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryPacketCommitmentResponse;
                     fromPartial(object: {
                         commitment?: Uint8Array;
                         proof?: Uint8Array;
@@ -5418,11 +5418,11 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _153.QueryPacketCommitmentResponse;
+                    }): _154.QueryPacketCommitmentResponse;
                 };
                 QueryPacketCommitmentsRequest: {
-                    encode(message: _153.QueryPacketCommitmentsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryPacketCommitmentsRequest;
+                    encode(message: _154.QueryPacketCommitmentsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryPacketCommitmentsRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -5575,11 +5575,11 @@ export declare namespace ibc {
                             countTotal?: boolean;
                             reverse?: boolean;
                         };
-                    }): _153.QueryPacketCommitmentsRequest;
+                    }): _154.QueryPacketCommitmentsRequest;
                 };
                 QueryPacketCommitmentsResponse: {
-                    encode(message: _153.QueryPacketCommitmentsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryPacketCommitmentsResponse;
+                    encode(message: _154.QueryPacketCommitmentsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryPacketCommitmentsResponse;
                     fromPartial(object: {
                         commitments?: {
                             portId?: string;
@@ -5879,11 +5879,11 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _153.QueryPacketCommitmentsResponse;
+                    }): _154.QueryPacketCommitmentsResponse;
                 };
                 QueryPacketReceiptRequest: {
-                    encode(message: _153.QueryPacketReceiptRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryPacketReceiptRequest;
+                    encode(message: _154.QueryPacketReceiptRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryPacketReceiptRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -5959,11 +5959,11 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
-                    }): _153.QueryPacketReceiptRequest;
+                    }): _154.QueryPacketReceiptRequest;
                 };
                 QueryPacketReceiptResponse: {
-                    encode(message: _153.QueryPacketReceiptResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryPacketReceiptResponse;
+                    encode(message: _154.QueryPacketReceiptResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryPacketReceiptResponse;
                     fromPartial(object: {
                         received?: boolean;
                         proof?: Uint8Array;
@@ -6113,11 +6113,11 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _153.QueryPacketReceiptResponse;
+                    }): _154.QueryPacketReceiptResponse;
                 };
                 QueryPacketAcknowledgementRequest: {
-                    encode(message: _153.QueryPacketAcknowledgementRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryPacketAcknowledgementRequest;
+                    encode(message: _154.QueryPacketAcknowledgementRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryPacketAcknowledgementRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -6193,11 +6193,11 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
-                    }): _153.QueryPacketAcknowledgementRequest;
+                    }): _154.QueryPacketAcknowledgementRequest;
                 };
                 QueryPacketAcknowledgementResponse: {
-                    encode(message: _153.QueryPacketAcknowledgementResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryPacketAcknowledgementResponse;
+                    encode(message: _154.QueryPacketAcknowledgementResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryPacketAcknowledgementResponse;
                     fromPartial(object: {
                         acknowledgement?: Uint8Array;
                         proof?: Uint8Array;
@@ -6347,11 +6347,11 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _153.QueryPacketAcknowledgementResponse;
+                    }): _154.QueryPacketAcknowledgementResponse;
                 };
                 QueryPacketAcknowledgementsRequest: {
-                    encode(message: _153.QueryPacketAcknowledgementsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryPacketAcknowledgementsRequest;
+                    encode(message: _154.QueryPacketAcknowledgementsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryPacketAcknowledgementsRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -6576,11 +6576,11 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         }[];
-                    }): _153.QueryPacketAcknowledgementsRequest;
+                    }): _154.QueryPacketAcknowledgementsRequest;
                 };
                 QueryPacketAcknowledgementsResponse: {
-                    encode(message: _153.QueryPacketAcknowledgementsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryPacketAcknowledgementsResponse;
+                    encode(message: _154.QueryPacketAcknowledgementsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryPacketAcknowledgementsResponse;
                     fromPartial(object: {
                         acknowledgements?: {
                             portId?: string;
@@ -6880,11 +6880,11 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _153.QueryPacketAcknowledgementsResponse;
+                    }): _154.QueryPacketAcknowledgementsResponse;
                 };
                 QueryUnreceivedPacketsRequest: {
-                    encode(message: _153.QueryUnreceivedPacketsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryUnreceivedPacketsRequest;
+                    encode(message: _154.QueryUnreceivedPacketsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryUnreceivedPacketsRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -6960,11 +6960,11 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         }[];
-                    }): _153.QueryUnreceivedPacketsRequest;
+                    }): _154.QueryUnreceivedPacketsRequest;
                 };
                 QueryUnreceivedPacketsResponse: {
-                    encode(message: _153.QueryUnreceivedPacketsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryUnreceivedPacketsResponse;
+                    encode(message: _154.QueryUnreceivedPacketsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryUnreceivedPacketsResponse;
                     fromPartial(object: {
                         sequences?: {
                             high?: number;
@@ -7184,11 +7184,11 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _153.QueryUnreceivedPacketsResponse;
+                    }): _154.QueryUnreceivedPacketsResponse;
                 };
                 QueryUnreceivedAcksRequest: {
-                    encode(message: _153.QueryUnreceivedAcksRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryUnreceivedAcksRequest;
+                    encode(message: _154.QueryUnreceivedAcksRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryUnreceivedAcksRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -7264,11 +7264,11 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         }[];
-                    }): _153.QueryUnreceivedAcksRequest;
+                    }): _154.QueryUnreceivedAcksRequest;
                 };
                 QueryUnreceivedAcksResponse: {
-                    encode(message: _153.QueryUnreceivedAcksResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryUnreceivedAcksResponse;
+                    encode(message: _154.QueryUnreceivedAcksResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryUnreceivedAcksResponse;
                     fromPartial(object: {
                         sequences?: {
                             high?: number;
@@ -7488,19 +7488,19 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _153.QueryUnreceivedAcksResponse;
+                    }): _154.QueryUnreceivedAcksResponse;
                 };
                 QueryNextSequenceReceiveRequest: {
-                    encode(message: _153.QueryNextSequenceReceiveRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryNextSequenceReceiveRequest;
+                    encode(message: _154.QueryNextSequenceReceiveRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryNextSequenceReceiveRequest;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
-                    }): _153.QueryNextSequenceReceiveRequest;
+                    }): _154.QueryNextSequenceReceiveRequest;
                 };
                 QueryNextSequenceReceiveResponse: {
-                    encode(message: _153.QueryNextSequenceReceiveResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.QueryNextSequenceReceiveResponse;
+                    encode(message: _154.QueryNextSequenceReceiveResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _154.QueryNextSequenceReceiveResponse;
                     fromPartial(object: {
                         nextSequenceReceive?: {
                             high?: number;
@@ -7721,15 +7721,15 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _153.QueryNextSequenceReceiveResponse;
+                    }): _154.QueryNextSequenceReceiveResponse;
                 };
                 GenesisState: {
-                    encode(message: _152.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _152.GenesisState;
+                    encode(message: _153.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.GenesisState;
                     fromPartial(object: {
                         channels?: {
-                            state?: _151.State;
-                            ordering?: _151.Order;
+                            state?: _152.State;
+                            ordering?: _152.Order;
                             counterparty?: {
                                 portId?: string;
                                 channelId?: string;
@@ -8270,11 +8270,11 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
-                    }): _152.GenesisState;
+                    }): _153.GenesisState;
                 };
                 PacketSequence: {
-                    encode(message: _152.PacketSequence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _152.PacketSequence;
+                    encode(message: _153.PacketSequence, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _153.PacketSequence;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -8350,36 +8350,36 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
-                    }): _152.PacketSequence;
+                    }): _153.PacketSequence;
                 };
-                stateFromJSON(object: any): _151.State;
-                stateToJSON(object: _151.State): string;
-                orderFromJSON(object: any): _151.Order;
-                orderToJSON(object: _151.Order): string;
-                State: typeof _151.State;
-                StateSDKType: typeof _151.StateSDKType;
-                Order: typeof _151.Order;
-                OrderSDKType: typeof _151.OrderSDKType;
+                stateFromJSON(object: any): _152.State;
+                stateToJSON(object: _152.State): string;
+                orderFromJSON(object: any): _152.Order;
+                orderToJSON(object: _152.Order): string;
+                State: typeof _152.State;
+                StateSDKType: typeof _152.StateSDKType;
+                Order: typeof _152.Order;
+                OrderSDKType: typeof _152.OrderSDKType;
                 Channel: {
-                    encode(message: _151.Channel, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _151.Channel;
+                    encode(message: _152.Channel, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _152.Channel;
                     fromPartial(object: {
-                        state?: _151.State;
-                        ordering?: _151.Order;
+                        state?: _152.State;
+                        ordering?: _152.Order;
                         counterparty?: {
                             portId?: string;
                             channelId?: string;
                         };
                         connectionHops?: string[];
                         version?: string;
-                    }): _151.Channel;
+                    }): _152.Channel;
                 };
                 IdentifiedChannel: {
-                    encode(message: _151.IdentifiedChannel, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _151.IdentifiedChannel;
+                    encode(message: _152.IdentifiedChannel, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _152.IdentifiedChannel;
                     fromPartial(object: {
-                        state?: _151.State;
-                        ordering?: _151.Order;
+                        state?: _152.State;
+                        ordering?: _152.Order;
                         counterparty?: {
                             portId?: string;
                             channelId?: string;
@@ -8388,19 +8388,19 @@ export declare namespace ibc {
                         version?: string;
                         portId?: string;
                         channelId?: string;
-                    }): _151.IdentifiedChannel;
+                    }): _152.IdentifiedChannel;
                 };
                 Counterparty: {
-                    encode(message: _151.Counterparty, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _151.Counterparty;
+                    encode(message: _152.Counterparty, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _152.Counterparty;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
-                    }): _151.Counterparty;
+                    }): _152.Counterparty;
                 };
                 Packet: {
-                    encode(message: _151.Packet, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _151.Packet;
+                    encode(message: _152.Packet, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _152.Packet;
                     fromPartial(object: {
                         sequence?: {
                             high?: number;
@@ -8697,11 +8697,11 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
-                    }): _151.Packet;
+                    }): _152.Packet;
                 };
                 PacketState: {
-                    encode(message: _151.PacketState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _151.PacketState;
+                    encode(message: _152.PacketState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _152.PacketState;
                     fromPartial(object: {
                         portId?: string;
                         channelId?: string;
@@ -8778,95 +8778,95 @@ export declare namespace ibc {
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
                         data?: Uint8Array;
-                    }): _151.PacketState;
+                    }): _152.PacketState;
                 };
                 Acknowledgement: {
-                    encode(message: _151.Acknowledgement, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _151.Acknowledgement;
+                    encode(message: _152.Acknowledgement, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _152.Acknowledgement;
                     fromPartial(object: {
                         result?: Uint8Array;
                         error?: string;
-                    }): _151.Acknowledgement;
+                    }): _152.Acknowledgement;
                 };
             };
         }
         namespace client {
             const v1: {
-                MsgClientImpl: typeof _304.MsgClientImpl;
-                QueryClientImpl: typeof _299.QueryClientImpl;
+                MsgClientImpl: typeof _305.MsgClientImpl;
+                QueryClientImpl: typeof _300.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                    clientState(request: _157.QueryClientStateRequest): Promise<_157.QueryClientStateResponse>;
-                    clientStates(request?: _157.QueryClientStatesRequest): Promise<_157.QueryClientStatesResponse>;
-                    consensusState(request: _157.QueryConsensusStateRequest): Promise<_157.QueryConsensusStateResponse>;
-                    consensusStates(request: _157.QueryConsensusStatesRequest): Promise<_157.QueryConsensusStatesResponse>;
-                    clientStatus(request: _157.QueryClientStatusRequest): Promise<_157.QueryClientStatusResponse>;
-                    clientParams(request?: _157.QueryClientParamsRequest): Promise<_157.QueryClientParamsResponse>;
-                    upgradedClientState(request?: _157.QueryUpgradedClientStateRequest): Promise<_157.QueryUpgradedClientStateResponse>;
-                    upgradedConsensusState(request?: _157.QueryUpgradedConsensusStateRequest): Promise<_157.QueryUpgradedConsensusStateResponse>;
+                    clientState(request: _158.QueryClientStateRequest): Promise<_158.QueryClientStateResponse>;
+                    clientStates(request?: _158.QueryClientStatesRequest): Promise<_158.QueryClientStatesResponse>;
+                    consensusState(request: _158.QueryConsensusStateRequest): Promise<_158.QueryConsensusStateResponse>;
+                    consensusStates(request: _158.QueryConsensusStatesRequest): Promise<_158.QueryConsensusStatesResponse>;
+                    clientStatus(request: _158.QueryClientStatusRequest): Promise<_158.QueryClientStatusResponse>;
+                    clientParams(request?: _158.QueryClientParamsRequest): Promise<_158.QueryClientParamsResponse>;
+                    upgradedClientState(request?: _158.QueryUpgradedClientStateRequest): Promise<_158.QueryUpgradedClientStateResponse>;
+                    upgradedConsensusState(request?: _158.QueryUpgradedConsensusStateRequest): Promise<_158.QueryUpgradedConsensusStateResponse>;
                 };
-                LCDQueryClient: typeof _295.LCDQueryClient;
+                LCDQueryClient: typeof _296.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
                     encoded: {
-                        createClient(value: _158.MsgCreateClient): {
+                        createClient(value: _159.MsgCreateClient): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        updateClient(value: _158.MsgUpdateClient): {
+                        updateClient(value: _159.MsgUpdateClient): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        upgradeClient(value: _158.MsgUpgradeClient): {
+                        upgradeClient(value: _159.MsgUpgradeClient): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        submitMisbehaviour(value: _158.MsgSubmitMisbehaviour): {
+                        submitMisbehaviour(value: _159.MsgSubmitMisbehaviour): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
                     };
                     withTypeUrl: {
-                        createClient(value: _158.MsgCreateClient): {
+                        createClient(value: _159.MsgCreateClient): {
                             typeUrl: string;
-                            value: _158.MsgCreateClient;
+                            value: _159.MsgCreateClient;
                         };
-                        updateClient(value: _158.MsgUpdateClient): {
+                        updateClient(value: _159.MsgUpdateClient): {
                             typeUrl: string;
-                            value: _158.MsgUpdateClient;
+                            value: _159.MsgUpdateClient;
                         };
-                        upgradeClient(value: _158.MsgUpgradeClient): {
+                        upgradeClient(value: _159.MsgUpgradeClient): {
                             typeUrl: string;
-                            value: _158.MsgUpgradeClient;
+                            value: _159.MsgUpgradeClient;
                         };
-                        submitMisbehaviour(value: _158.MsgSubmitMisbehaviour): {
+                        submitMisbehaviour(value: _159.MsgSubmitMisbehaviour): {
                             typeUrl: string;
-                            value: _158.MsgSubmitMisbehaviour;
+                            value: _159.MsgSubmitMisbehaviour;
                         };
                     };
                     fromPartial: {
-                        createClient(value: _158.MsgCreateClient): {
+                        createClient(value: _159.MsgCreateClient): {
                             typeUrl: string;
-                            value: _158.MsgCreateClient;
+                            value: _159.MsgCreateClient;
                         };
-                        updateClient(value: _158.MsgUpdateClient): {
+                        updateClient(value: _159.MsgUpdateClient): {
                             typeUrl: string;
-                            value: _158.MsgUpdateClient;
+                            value: _159.MsgUpdateClient;
                         };
-                        upgradeClient(value: _158.MsgUpgradeClient): {
+                        upgradeClient(value: _159.MsgUpgradeClient): {
                             typeUrl: string;
-                            value: _158.MsgUpgradeClient;
+                            value: _159.MsgUpgradeClient;
                         };
-                        submitMisbehaviour(value: _158.MsgSubmitMisbehaviour): {
+                        submitMisbehaviour(value: _159.MsgSubmitMisbehaviour): {
                             typeUrl: string;
-                            value: _158.MsgSubmitMisbehaviour;
+                            value: _159.MsgSubmitMisbehaviour;
                         };
                     };
                 };
                 AminoConverter: {
                     "/ibc.core.client.v1.MsgCreateClient": {
                         aminoType: string;
-                        toAmino: ({ clientState, consensusState, signer }: _158.MsgCreateClient) => {
+                        toAmino: ({ clientState, consensusState, signer }: _159.MsgCreateClient) => {
                             client_state: {
                                 type_url: string;
                                 value: Uint8Array;
@@ -8887,11 +8887,11 @@ export declare namespace ibc {
                                 value: Uint8Array;
                             };
                             signer: string;
-                        }) => _158.MsgCreateClient;
+                        }) => _159.MsgCreateClient;
                     };
                     "/ibc.core.client.v1.MsgUpdateClient": {
                         aminoType: string;
-                        toAmino: ({ clientId, header, signer }: _158.MsgUpdateClient) => {
+                        toAmino: ({ clientId, header, signer }: _159.MsgUpdateClient) => {
                             client_id: string;
                             header: {
                                 type_url: string;
@@ -8906,11 +8906,11 @@ export declare namespace ibc {
                                 value: Uint8Array;
                             };
                             signer: string;
-                        }) => _158.MsgUpdateClient;
+                        }) => _159.MsgUpdateClient;
                     };
                     "/ibc.core.client.v1.MsgUpgradeClient": {
                         aminoType: string;
-                        toAmino: ({ clientId, clientState, consensusState, proofUpgradeClient, proofUpgradeConsensusState, signer }: _158.MsgUpgradeClient) => {
+                        toAmino: ({ clientId, clientState, consensusState, proofUpgradeClient, proofUpgradeConsensusState, signer }: _159.MsgUpgradeClient) => {
                             client_id: string;
                             client_state: {
                                 type_url: string;
@@ -8937,11 +8937,11 @@ export declare namespace ibc {
                             proof_upgrade_client: Uint8Array;
                             proof_upgrade_consensus_state: Uint8Array;
                             signer: string;
-                        }) => _158.MsgUpgradeClient;
+                        }) => _159.MsgUpgradeClient;
                     };
                     "/ibc.core.client.v1.MsgSubmitMisbehaviour": {
                         aminoType: string;
-                        toAmino: ({ clientId, misbehaviour, signer }: _158.MsgSubmitMisbehaviour) => {
+                        toAmino: ({ clientId, misbehaviour, signer }: _159.MsgSubmitMisbehaviour) => {
                             client_id: string;
                             misbehaviour: {
                                 type_url: string;
@@ -8956,12 +8956,12 @@ export declare namespace ibc {
                                 value: Uint8Array;
                             };
                             signer: string;
-                        }) => _158.MsgSubmitMisbehaviour;
+                        }) => _159.MsgSubmitMisbehaviour;
                     };
                 };
                 MsgCreateClient: {
-                    encode(message: _158.MsgCreateClient, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.MsgCreateClient;
+                    encode(message: _159.MsgCreateClient, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.MsgCreateClient;
                     fromPartial(object: {
                         clientState?: {
                             typeUrl?: string;
@@ -8972,16 +8972,16 @@ export declare namespace ibc {
                             value?: Uint8Array;
                         };
                         signer?: string;
-                    }): _158.MsgCreateClient;
+                    }): _159.MsgCreateClient;
                 };
                 MsgCreateClientResponse: {
-                    encode(_: _158.MsgCreateClientResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.MsgCreateClientResponse;
-                    fromPartial(_: {}): _158.MsgCreateClientResponse;
+                    encode(_: _159.MsgCreateClientResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.MsgCreateClientResponse;
+                    fromPartial(_: {}): _159.MsgCreateClientResponse;
                 };
                 MsgUpdateClient: {
-                    encode(message: _158.MsgUpdateClient, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.MsgUpdateClient;
+                    encode(message: _159.MsgUpdateClient, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.MsgUpdateClient;
                     fromPartial(object: {
                         clientId?: string;
                         header?: {
@@ -8989,16 +8989,16 @@ export declare namespace ibc {
                             value?: Uint8Array;
                         };
                         signer?: string;
-                    }): _158.MsgUpdateClient;
+                    }): _159.MsgUpdateClient;
                 };
                 MsgUpdateClientResponse: {
-                    encode(_: _158.MsgUpdateClientResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.MsgUpdateClientResponse;
-                    fromPartial(_: {}): _158.MsgUpdateClientResponse;
+                    encode(_: _159.MsgUpdateClientResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.MsgUpdateClientResponse;
+                    fromPartial(_: {}): _159.MsgUpdateClientResponse;
                 };
                 MsgUpgradeClient: {
-                    encode(message: _158.MsgUpgradeClient, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.MsgUpgradeClient;
+                    encode(message: _159.MsgUpgradeClient, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.MsgUpgradeClient;
                     fromPartial(object: {
                         clientId?: string;
                         clientState?: {
@@ -9012,16 +9012,16 @@ export declare namespace ibc {
                         proofUpgradeClient?: Uint8Array;
                         proofUpgradeConsensusState?: Uint8Array;
                         signer?: string;
-                    }): _158.MsgUpgradeClient;
+                    }): _159.MsgUpgradeClient;
                 };
                 MsgUpgradeClientResponse: {
-                    encode(_: _158.MsgUpgradeClientResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.MsgUpgradeClientResponse;
-                    fromPartial(_: {}): _158.MsgUpgradeClientResponse;
+                    encode(_: _159.MsgUpgradeClientResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.MsgUpgradeClientResponse;
+                    fromPartial(_: {}): _159.MsgUpgradeClientResponse;
                 };
                 MsgSubmitMisbehaviour: {
-                    encode(message: _158.MsgSubmitMisbehaviour, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.MsgSubmitMisbehaviour;
+                    encode(message: _159.MsgSubmitMisbehaviour, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.MsgSubmitMisbehaviour;
                     fromPartial(object: {
                         clientId?: string;
                         misbehaviour?: {
@@ -9029,23 +9029,23 @@ export declare namespace ibc {
                             value?: Uint8Array;
                         };
                         signer?: string;
-                    }): _158.MsgSubmitMisbehaviour;
+                    }): _159.MsgSubmitMisbehaviour;
                 };
                 MsgSubmitMisbehaviourResponse: {
-                    encode(_: _158.MsgSubmitMisbehaviourResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.MsgSubmitMisbehaviourResponse;
-                    fromPartial(_: {}): _158.MsgSubmitMisbehaviourResponse;
+                    encode(_: _159.MsgSubmitMisbehaviourResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.MsgSubmitMisbehaviourResponse;
+                    fromPartial(_: {}): _159.MsgSubmitMisbehaviourResponse;
                 };
                 QueryClientStateRequest: {
-                    encode(message: _157.QueryClientStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.QueryClientStateRequest;
+                    encode(message: _158.QueryClientStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryClientStateRequest;
                     fromPartial(object: {
                         clientId?: string;
-                    }): _157.QueryClientStateRequest;
+                    }): _158.QueryClientStateRequest;
                 };
                 QueryClientStateResponse: {
-                    encode(message: _157.QueryClientStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.QueryClientStateResponse;
+                    encode(message: _158.QueryClientStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryClientStateResponse;
                     fromPartial(object: {
                         clientState?: {
                             typeUrl?: string;
@@ -9198,11 +9198,11 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _157.QueryClientStateResponse;
+                    }): _158.QueryClientStateResponse;
                 };
                 QueryClientStatesRequest: {
-                    encode(message: _157.QueryClientStatesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.QueryClientStatesRequest;
+                    encode(message: _158.QueryClientStatesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryClientStatesRequest;
                     fromPartial(object: {
                         pagination?: {
                             key?: Uint8Array;
@@ -9353,11 +9353,11 @@ export declare namespace ibc {
                             countTotal?: boolean;
                             reverse?: boolean;
                         };
-                    }): _157.QueryClientStatesRequest;
+                    }): _158.QueryClientStatesRequest;
                 };
                 QueryClientStatesResponse: {
-                    encode(message: _157.QueryClientStatesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.QueryClientStatesResponse;
+                    encode(message: _158.QueryClientStatesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryClientStatesResponse;
                     fromPartial(object: {
                         clientStates?: {
                             clientId?: string;
@@ -9441,11 +9441,11 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _157.QueryClientStatesResponse;
+                    }): _158.QueryClientStatesResponse;
                 };
                 QueryConsensusStateRequest: {
-                    encode(message: _157.QueryConsensusStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.QueryConsensusStateRequest;
+                    encode(message: _158.QueryConsensusStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryConsensusStateRequest;
                     fromPartial(object: {
                         clientId?: string;
                         revisionNumber?: {
@@ -9593,11 +9593,11 @@ export declare namespace ibc {
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
                         latestHeight?: boolean;
-                    }): _157.QueryConsensusStateRequest;
+                    }): _158.QueryConsensusStateRequest;
                 };
                 QueryConsensusStateResponse: {
-                    encode(message: _157.QueryConsensusStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.QueryConsensusStateResponse;
+                    encode(message: _158.QueryConsensusStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryConsensusStateResponse;
                     fromPartial(object: {
                         consensusState?: {
                             typeUrl?: string;
@@ -9750,11 +9750,11 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _157.QueryConsensusStateResponse;
+                    }): _158.QueryConsensusStateResponse;
                 };
                 QueryConsensusStatesRequest: {
-                    encode(message: _157.QueryConsensusStatesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.QueryConsensusStatesRequest;
+                    encode(message: _158.QueryConsensusStatesRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryConsensusStatesRequest;
                     fromPartial(object: {
                         clientId?: string;
                         pagination?: {
@@ -9906,11 +9906,11 @@ export declare namespace ibc {
                             countTotal?: boolean;
                             reverse?: boolean;
                         };
-                    }): _157.QueryConsensusStatesRequest;
+                    }): _158.QueryConsensusStatesRequest;
                 };
                 QueryConsensusStatesResponse: {
-                    encode(message: _157.QueryConsensusStatesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.QueryConsensusStatesResponse;
+                    encode(message: _158.QueryConsensusStatesResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryConsensusStatesResponse;
                     fromPartial(object: {
                         consensusStates?: {
                             height?: {
@@ -10139,69 +10139,69 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _157.QueryConsensusStatesResponse;
+                    }): _158.QueryConsensusStatesResponse;
                 };
                 QueryClientStatusRequest: {
-                    encode(message: _157.QueryClientStatusRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.QueryClientStatusRequest;
+                    encode(message: _158.QueryClientStatusRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryClientStatusRequest;
                     fromPartial(object: {
                         clientId?: string;
-                    }): _157.QueryClientStatusRequest;
+                    }): _158.QueryClientStatusRequest;
                 };
                 QueryClientStatusResponse: {
-                    encode(message: _157.QueryClientStatusResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.QueryClientStatusResponse;
+                    encode(message: _158.QueryClientStatusResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryClientStatusResponse;
                     fromPartial(object: {
                         status?: string;
-                    }): _157.QueryClientStatusResponse;
+                    }): _158.QueryClientStatusResponse;
                 };
                 QueryClientParamsRequest: {
-                    encode(_: _157.QueryClientParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.QueryClientParamsRequest;
-                    fromPartial(_: {}): _157.QueryClientParamsRequest;
+                    encode(_: _158.QueryClientParamsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryClientParamsRequest;
+                    fromPartial(_: {}): _158.QueryClientParamsRequest;
                 };
                 QueryClientParamsResponse: {
-                    encode(message: _157.QueryClientParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.QueryClientParamsResponse;
+                    encode(message: _158.QueryClientParamsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryClientParamsResponse;
                     fromPartial(object: {
                         params?: {
                             allowedClients?: string[];
                         };
-                    }): _157.QueryClientParamsResponse;
+                    }): _158.QueryClientParamsResponse;
                 };
                 QueryUpgradedClientStateRequest: {
-                    encode(_: _157.QueryUpgradedClientStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.QueryUpgradedClientStateRequest;
-                    fromPartial(_: {}): _157.QueryUpgradedClientStateRequest;
+                    encode(_: _158.QueryUpgradedClientStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryUpgradedClientStateRequest;
+                    fromPartial(_: {}): _158.QueryUpgradedClientStateRequest;
                 };
                 QueryUpgradedClientStateResponse: {
-                    encode(message: _157.QueryUpgradedClientStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.QueryUpgradedClientStateResponse;
+                    encode(message: _158.QueryUpgradedClientStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryUpgradedClientStateResponse;
                     fromPartial(object: {
                         upgradedClientState?: {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                    }): _157.QueryUpgradedClientStateResponse;
+                    }): _158.QueryUpgradedClientStateResponse;
                 };
                 QueryUpgradedConsensusStateRequest: {
-                    encode(_: _157.QueryUpgradedConsensusStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.QueryUpgradedConsensusStateRequest;
-                    fromPartial(_: {}): _157.QueryUpgradedConsensusStateRequest;
+                    encode(_: _158.QueryUpgradedConsensusStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryUpgradedConsensusStateRequest;
+                    fromPartial(_: {}): _158.QueryUpgradedConsensusStateRequest;
                 };
                 QueryUpgradedConsensusStateResponse: {
-                    encode(message: _157.QueryUpgradedConsensusStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.QueryUpgradedConsensusStateResponse;
+                    encode(message: _158.QueryUpgradedConsensusStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _158.QueryUpgradedConsensusStateResponse;
                     fromPartial(object: {
                         upgradedConsensusState?: {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                    }): _157.QueryUpgradedConsensusStateResponse;
+                    }): _158.QueryUpgradedConsensusStateResponse;
                 };
                 GenesisState: {
-                    encode(message: _156.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.GenesisState;
+                    encode(message: _157.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.GenesisState;
                     fromPartial(object: {
                         clients?: {
                             clientId?: string;
@@ -10448,41 +10448,41 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
-                    }): _156.GenesisState;
+                    }): _157.GenesisState;
                 };
                 GenesisMetadata: {
-                    encode(message: _156.GenesisMetadata, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.GenesisMetadata;
+                    encode(message: _157.GenesisMetadata, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.GenesisMetadata;
                     fromPartial(object: {
                         key?: Uint8Array;
                         value?: Uint8Array;
-                    }): _156.GenesisMetadata;
+                    }): _157.GenesisMetadata;
                 };
                 IdentifiedGenesisMetadata: {
-                    encode(message: _156.IdentifiedGenesisMetadata, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.IdentifiedGenesisMetadata;
+                    encode(message: _157.IdentifiedGenesisMetadata, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _157.IdentifiedGenesisMetadata;
                     fromPartial(object: {
                         clientId?: string;
                         clientMetadata?: {
                             key?: Uint8Array;
                             value?: Uint8Array;
                         }[];
-                    }): _156.IdentifiedGenesisMetadata;
+                    }): _157.IdentifiedGenesisMetadata;
                 };
                 IdentifiedClientState: {
-                    encode(message: _155.IdentifiedClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.IdentifiedClientState;
+                    encode(message: _156.IdentifiedClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.IdentifiedClientState;
                     fromPartial(object: {
                         clientId?: string;
                         clientState?: {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                    }): _155.IdentifiedClientState;
+                    }): _156.IdentifiedClientState;
                 };
                 ConsensusStateWithHeight: {
-                    encode(message: _155.ConsensusStateWithHeight, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.ConsensusStateWithHeight;
+                    encode(message: _156.ConsensusStateWithHeight, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.ConsensusStateWithHeight;
                     fromPartial(object: {
                         height?: {
                             revisionNumber?: {
@@ -10634,11 +10634,11 @@ export declare namespace ibc {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                    }): _155.ConsensusStateWithHeight;
+                    }): _156.ConsensusStateWithHeight;
                 };
                 ClientConsensusStates: {
-                    encode(message: _155.ClientConsensusStates, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.ClientConsensusStates;
+                    encode(message: _156.ClientConsensusStates, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.ClientConsensusStates;
                     fromPartial(object: {
                         clientId?: string;
                         consensusStates?: {
@@ -10793,21 +10793,21 @@ export declare namespace ibc {
                                 value?: Uint8Array;
                             };
                         }[];
-                    }): _155.ClientConsensusStates;
+                    }): _156.ClientConsensusStates;
                 };
                 ClientUpdateProposal: {
-                    encode(message: _155.ClientUpdateProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.ClientUpdateProposal;
+                    encode(message: _156.ClientUpdateProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.ClientUpdateProposal;
                     fromPartial(object: {
                         title?: string;
                         description?: string;
                         subjectClientId?: string;
                         substituteClientId?: string;
-                    }): _155.ClientUpdateProposal;
+                    }): _156.ClientUpdateProposal;
                 };
                 UpgradeProposal: {
-                    encode(message: _155.UpgradeProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.UpgradeProposal;
+                    encode(message: _156.UpgradeProposal, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.UpgradeProposal;
                     fromPartial(object: {
                         title?: string;
                         description?: string;
@@ -10896,11 +10896,11 @@ export declare namespace ibc {
                             typeUrl?: string;
                             value?: Uint8Array;
                         };
-                    }): _155.UpgradeProposal;
+                    }): _156.UpgradeProposal;
                 };
                 Height: {
-                    encode(message: _155.Height, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.Height;
+                    encode(message: _156.Height, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.Height;
                     fromPartial(object: {
                         revisionNumber?: {
                             high?: number;
@@ -11046,43 +11046,43 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
-                    }): _155.Height;
+                    }): _156.Height;
                 };
                 Params: {
-                    encode(message: _155.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _155.Params;
+                    encode(message: _156.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _156.Params;
                     fromPartial(object: {
                         allowedClients?: string[];
-                    }): _155.Params;
+                    }): _156.Params;
                 };
             };
         }
         namespace commitment {
             const v1: {
                 MerkleRoot: {
-                    encode(message: _159.MerkleRoot, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.MerkleRoot;
+                    encode(message: _160.MerkleRoot, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MerkleRoot;
                     fromPartial(object: {
                         hash?: Uint8Array;
-                    }): _159.MerkleRoot;
+                    }): _160.MerkleRoot;
                 };
                 MerklePrefix: {
-                    encode(message: _159.MerklePrefix, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.MerklePrefix;
+                    encode(message: _160.MerklePrefix, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MerklePrefix;
                     fromPartial(object: {
                         keyPrefix?: Uint8Array;
-                    }): _159.MerklePrefix;
+                    }): _160.MerklePrefix;
                 };
                 MerklePath: {
-                    encode(message: _159.MerklePath, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.MerklePath;
+                    encode(message: _160.MerklePath, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MerklePath;
                     fromPartial(object: {
                         keyPath?: string[];
-                    }): _159.MerklePath;
+                    }): _160.MerklePath;
                 };
                 MerkleProof: {
-                    encode(message: _159.MerkleProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _159.MerkleProof;
+                    encode(message: _160.MerkleProof, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.MerkleProof;
                     fromPartial(object: {
                         proofs?: {
                             exist?: {
@@ -11240,84 +11240,84 @@ export declare namespace ibc {
                                 }[];
                             };
                         }[];
-                    }): _159.MerkleProof;
+                    }): _160.MerkleProof;
                 };
             };
         }
         namespace connection {
             const v1: {
-                MsgClientImpl: typeof _305.MsgClientImpl;
-                QueryClientImpl: typeof _300.QueryClientImpl;
+                MsgClientImpl: typeof _306.MsgClientImpl;
+                QueryClientImpl: typeof _301.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                    connection(request: _162.QueryConnectionRequest): Promise<_162.QueryConnectionResponse>;
-                    connections(request?: _162.QueryConnectionsRequest): Promise<_162.QueryConnectionsResponse>;
-                    clientConnections(request: _162.QueryClientConnectionsRequest): Promise<_162.QueryClientConnectionsResponse>;
-                    connectionClientState(request: _162.QueryConnectionClientStateRequest): Promise<_162.QueryConnectionClientStateResponse>;
-                    connectionConsensusState(request: _162.QueryConnectionConsensusStateRequest): Promise<_162.QueryConnectionConsensusStateResponse>;
+                    connection(request: _163.QueryConnectionRequest): Promise<_163.QueryConnectionResponse>;
+                    connections(request?: _163.QueryConnectionsRequest): Promise<_163.QueryConnectionsResponse>;
+                    clientConnections(request: _163.QueryClientConnectionsRequest): Promise<_163.QueryClientConnectionsResponse>;
+                    connectionClientState(request: _163.QueryConnectionClientStateRequest): Promise<_163.QueryConnectionClientStateResponse>;
+                    connectionConsensusState(request: _163.QueryConnectionConsensusStateRequest): Promise<_163.QueryConnectionConsensusStateResponse>;
                 };
-                LCDQueryClient: typeof _296.LCDQueryClient;
+                LCDQueryClient: typeof _297.LCDQueryClient;
                 registry: readonly [string, import("@cosmjs/proto-signing").GeneratedType][];
                 load: (protoRegistry: import("@cosmjs/proto-signing").Registry) => void;
                 MessageComposer: {
                     encoded: {
-                        connectionOpenInit(value: _163.MsgConnectionOpenInit): {
+                        connectionOpenInit(value: _164.MsgConnectionOpenInit): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        connectionOpenTry(value: _163.MsgConnectionOpenTry): {
+                        connectionOpenTry(value: _164.MsgConnectionOpenTry): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        connectionOpenAck(value: _163.MsgConnectionOpenAck): {
+                        connectionOpenAck(value: _164.MsgConnectionOpenAck): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
-                        connectionOpenConfirm(value: _163.MsgConnectionOpenConfirm): {
+                        connectionOpenConfirm(value: _164.MsgConnectionOpenConfirm): {
                             typeUrl: string;
                             value: Uint8Array;
                         };
                     };
                     withTypeUrl: {
-                        connectionOpenInit(value: _163.MsgConnectionOpenInit): {
+                        connectionOpenInit(value: _164.MsgConnectionOpenInit): {
                             typeUrl: string;
-                            value: _163.MsgConnectionOpenInit;
+                            value: _164.MsgConnectionOpenInit;
                         };
-                        connectionOpenTry(value: _163.MsgConnectionOpenTry): {
+                        connectionOpenTry(value: _164.MsgConnectionOpenTry): {
                             typeUrl: string;
-                            value: _163.MsgConnectionOpenTry;
+                            value: _164.MsgConnectionOpenTry;
                         };
-                        connectionOpenAck(value: _163.MsgConnectionOpenAck): {
+                        connectionOpenAck(value: _164.MsgConnectionOpenAck): {
                             typeUrl: string;
-                            value: _163.MsgConnectionOpenAck;
+                            value: _164.MsgConnectionOpenAck;
                         };
-                        connectionOpenConfirm(value: _163.MsgConnectionOpenConfirm): {
+                        connectionOpenConfirm(value: _164.MsgConnectionOpenConfirm): {
                             typeUrl: string;
-                            value: _163.MsgConnectionOpenConfirm;
+                            value: _164.MsgConnectionOpenConfirm;
                         };
                     };
                     fromPartial: {
-                        connectionOpenInit(value: _163.MsgConnectionOpenInit): {
+                        connectionOpenInit(value: _164.MsgConnectionOpenInit): {
                             typeUrl: string;
-                            value: _163.MsgConnectionOpenInit;
+                            value: _164.MsgConnectionOpenInit;
                         };
-                        connectionOpenTry(value: _163.MsgConnectionOpenTry): {
+                        connectionOpenTry(value: _164.MsgConnectionOpenTry): {
                             typeUrl: string;
-                            value: _163.MsgConnectionOpenTry;
+                            value: _164.MsgConnectionOpenTry;
                         };
-                        connectionOpenAck(value: _163.MsgConnectionOpenAck): {
+                        connectionOpenAck(value: _164.MsgConnectionOpenAck): {
                             typeUrl: string;
-                            value: _163.MsgConnectionOpenAck;
+                            value: _164.MsgConnectionOpenAck;
                         };
-                        connectionOpenConfirm(value: _163.MsgConnectionOpenConfirm): {
+                        connectionOpenConfirm(value: _164.MsgConnectionOpenConfirm): {
                             typeUrl: string;
-                            value: _163.MsgConnectionOpenConfirm;
+                            value: _164.MsgConnectionOpenConfirm;
                         };
                     };
                 };
                 AminoConverter: {
                     "/ibc.core.connection.v1.MsgConnectionOpenInit": {
                         aminoType: string;
-                        toAmino: ({ clientId, counterparty, version, delayPeriod, signer }: _163.MsgConnectionOpenInit) => {
+                        toAmino: ({ clientId, counterparty, version, delayPeriod, signer }: _164.MsgConnectionOpenInit) => {
                             client_id: string;
                             counterparty: {
                                 client_id: string;
@@ -11348,11 +11348,11 @@ export declare namespace ibc {
                             };
                             delay_period: string;
                             signer: string;
-                        }) => _163.MsgConnectionOpenInit;
+                        }) => _164.MsgConnectionOpenInit;
                     };
                     "/ibc.core.connection.v1.MsgConnectionOpenTry": {
                         aminoType: string;
-                        toAmino: ({ clientId, previousConnectionId, clientState, counterparty, delayPeriod, counterpartyVersions, proofHeight, proofInit, proofClient, proofConsensus, consensusHeight, signer }: _163.MsgConnectionOpenTry) => {
+                        toAmino: ({ clientId, previousConnectionId, clientState, counterparty, delayPeriod, counterpartyVersions, proofHeight, proofInit, proofClient, proofConsensus, consensusHeight, signer }: _164.MsgConnectionOpenTry) => {
                             client_id: string;
                             previous_connection_id: string;
                             client_state: {
@@ -11403,11 +11403,11 @@ export declare namespace ibc {
                             proof_consensus: Uint8Array;
                             consensus_height: import("../helpers").AminoHeight;
                             signer: string;
-                        }) => _163.MsgConnectionOpenTry;
+                        }) => _164.MsgConnectionOpenTry;
                     };
                     "/ibc.core.connection.v1.MsgConnectionOpenAck": {
                         aminoType: string;
-                        toAmino: ({ connectionId, counterpartyConnectionId, version, clientState, proofHeight, proofTry, proofClient, proofConsensus, consensusHeight, signer }: _163.MsgConnectionOpenAck) => {
+                        toAmino: ({ connectionId, counterpartyConnectionId, version, clientState, proofHeight, proofTry, proofClient, proofConsensus, consensusHeight, signer }: _164.MsgConnectionOpenAck) => {
                             connection_id: string;
                             counterparty_connection_id: string;
                             version: {
@@ -11442,11 +11442,11 @@ export declare namespace ibc {
                             proof_consensus: Uint8Array;
                             consensus_height: import("../helpers").AminoHeight;
                             signer: string;
-                        }) => _163.MsgConnectionOpenAck;
+                        }) => _164.MsgConnectionOpenAck;
                     };
                     "/ibc.core.connection.v1.MsgConnectionOpenConfirm": {
                         aminoType: string;
-                        toAmino: ({ connectionId, proofAck, proofHeight, signer }: _163.MsgConnectionOpenConfirm) => {
+                        toAmino: ({ connectionId, proofAck, proofHeight, signer }: _164.MsgConnectionOpenConfirm) => {
                             connection_id: string;
                             proof_ack: Uint8Array;
                             proof_height: import("../helpers").AminoHeight;
@@ -11457,12 +11457,12 @@ export declare namespace ibc {
                             proof_ack: Uint8Array;
                             proof_height: import("../helpers").AminoHeight;
                             signer: string;
-                        }) => _163.MsgConnectionOpenConfirm;
+                        }) => _164.MsgConnectionOpenConfirm;
                     };
                 };
                 MsgConnectionOpenInit: {
-                    encode(message: _163.MsgConnectionOpenInit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.MsgConnectionOpenInit;
+                    encode(message: _164.MsgConnectionOpenInit, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.MsgConnectionOpenInit;
                     fromPartial(object: {
                         clientId?: string;
                         counterparty?: {
@@ -11549,16 +11549,16 @@ export declare namespace ibc {
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
                         signer?: string;
-                    }): _163.MsgConnectionOpenInit;
+                    }): _164.MsgConnectionOpenInit;
                 };
                 MsgConnectionOpenInitResponse: {
-                    encode(_: _163.MsgConnectionOpenInitResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.MsgConnectionOpenInitResponse;
-                    fromPartial(_: {}): _163.MsgConnectionOpenInitResponse;
+                    encode(_: _164.MsgConnectionOpenInitResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.MsgConnectionOpenInitResponse;
+                    fromPartial(_: {}): _164.MsgConnectionOpenInitResponse;
                 };
                 MsgConnectionOpenTry: {
-                    encode(message: _163.MsgConnectionOpenTry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.MsgConnectionOpenTry;
+                    encode(message: _164.MsgConnectionOpenTry, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.MsgConnectionOpenTry;
                     fromPartial(object: {
                         clientId?: string;
                         previousConnectionId?: string;
@@ -11945,16 +11945,16 @@ export declare namespace ibc {
                             };
                         };
                         signer?: string;
-                    }): _163.MsgConnectionOpenTry;
+                    }): _164.MsgConnectionOpenTry;
                 };
                 MsgConnectionOpenTryResponse: {
-                    encode(_: _163.MsgConnectionOpenTryResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.MsgConnectionOpenTryResponse;
-                    fromPartial(_: {}): _163.MsgConnectionOpenTryResponse;
+                    encode(_: _164.MsgConnectionOpenTryResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.MsgConnectionOpenTryResponse;
+                    fromPartial(_: {}): _164.MsgConnectionOpenTryResponse;
                 };
                 MsgConnectionOpenAck: {
-                    encode(message: _163.MsgConnectionOpenAck, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.MsgConnectionOpenAck;
+                    encode(message: _164.MsgConnectionOpenAck, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.MsgConnectionOpenAck;
                     fromPartial(object: {
                         connectionId?: string;
                         counterpartyConnectionId?: string;
@@ -12262,16 +12262,16 @@ export declare namespace ibc {
                             };
                         };
                         signer?: string;
-                    }): _163.MsgConnectionOpenAck;
+                    }): _164.MsgConnectionOpenAck;
                 };
                 MsgConnectionOpenAckResponse: {
-                    encode(_: _163.MsgConnectionOpenAckResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.MsgConnectionOpenAckResponse;
-                    fromPartial(_: {}): _163.MsgConnectionOpenAckResponse;
+                    encode(_: _164.MsgConnectionOpenAckResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.MsgConnectionOpenAckResponse;
+                    fromPartial(_: {}): _164.MsgConnectionOpenAckResponse;
                 };
                 MsgConnectionOpenConfirm: {
-                    encode(message: _163.MsgConnectionOpenConfirm, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.MsgConnectionOpenConfirm;
+                    encode(message: _164.MsgConnectionOpenConfirm, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.MsgConnectionOpenConfirm;
                     fromPartial(object: {
                         connectionId?: string;
                         proofAck?: Uint8Array;
@@ -12422,23 +12422,23 @@ export declare namespace ibc {
                             };
                         };
                         signer?: string;
-                    }): _163.MsgConnectionOpenConfirm;
+                    }): _164.MsgConnectionOpenConfirm;
                 };
                 MsgConnectionOpenConfirmResponse: {
-                    encode(_: _163.MsgConnectionOpenConfirmResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.MsgConnectionOpenConfirmResponse;
-                    fromPartial(_: {}): _163.MsgConnectionOpenConfirmResponse;
+                    encode(_: _164.MsgConnectionOpenConfirmResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.MsgConnectionOpenConfirmResponse;
+                    fromPartial(_: {}): _164.MsgConnectionOpenConfirmResponse;
                 };
                 QueryConnectionRequest: {
-                    encode(message: _162.QueryConnectionRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.QueryConnectionRequest;
+                    encode(message: _163.QueryConnectionRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.QueryConnectionRequest;
                     fromPartial(object: {
                         connectionId?: string;
-                    }): _162.QueryConnectionRequest;
+                    }): _163.QueryConnectionRequest;
                 };
                 QueryConnectionResponse: {
-                    encode(message: _162.QueryConnectionResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.QueryConnectionResponse;
+                    encode(message: _163.QueryConnectionResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.QueryConnectionResponse;
                     fromPartial(object: {
                         connection?: {
                             clientId?: string;
@@ -12446,7 +12446,7 @@ export declare namespace ibc {
                                 identifier?: string;
                                 features?: string[];
                             }[];
-                            state?: _160.State;
+                            state?: _161.State;
                             counterparty?: {
                                 clientId?: string;
                                 connectionId?: string;
@@ -12674,11 +12674,11 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _162.QueryConnectionResponse;
+                    }): _163.QueryConnectionResponse;
                 };
                 QueryConnectionsRequest: {
-                    encode(message: _162.QueryConnectionsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.QueryConnectionsRequest;
+                    encode(message: _163.QueryConnectionsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.QueryConnectionsRequest;
                     fromPartial(object: {
                         pagination?: {
                             key?: Uint8Array;
@@ -12829,11 +12829,11 @@ export declare namespace ibc {
                             countTotal?: boolean;
                             reverse?: boolean;
                         };
-                    }): _162.QueryConnectionsRequest;
+                    }): _163.QueryConnectionsRequest;
                 };
                 QueryConnectionsResponse: {
-                    encode(message: _162.QueryConnectionsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.QueryConnectionsResponse;
+                    encode(message: _163.QueryConnectionsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.QueryConnectionsResponse;
                     fromPartial(object: {
                         connections?: {
                             id?: string;
@@ -12842,7 +12842,7 @@ export declare namespace ibc {
                                 identifier?: string;
                                 features?: string[];
                             }[];
-                            state?: _160.State;
+                            state?: _161.State;
                             counterparty?: {
                                 clientId?: string;
                                 connectionId?: string;
@@ -13144,18 +13144,18 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _162.QueryConnectionsResponse;
+                    }): _163.QueryConnectionsResponse;
                 };
                 QueryClientConnectionsRequest: {
-                    encode(message: _162.QueryClientConnectionsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.QueryClientConnectionsRequest;
+                    encode(message: _163.QueryClientConnectionsRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.QueryClientConnectionsRequest;
                     fromPartial(object: {
                         clientId?: string;
-                    }): _162.QueryClientConnectionsRequest;
+                    }): _163.QueryClientConnectionsRequest;
                 };
                 QueryClientConnectionsResponse: {
-                    encode(message: _162.QueryClientConnectionsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.QueryClientConnectionsResponse;
+                    encode(message: _163.QueryClientConnectionsResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.QueryClientConnectionsResponse;
                     fromPartial(object: {
                         connectionPaths?: string[];
                         proof?: Uint8Array;
@@ -13305,18 +13305,18 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _162.QueryClientConnectionsResponse;
+                    }): _163.QueryClientConnectionsResponse;
                 };
                 QueryConnectionClientStateRequest: {
-                    encode(message: _162.QueryConnectionClientStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.QueryConnectionClientStateRequest;
+                    encode(message: _163.QueryConnectionClientStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.QueryConnectionClientStateRequest;
                     fromPartial(object: {
                         connectionId?: string;
-                    }): _162.QueryConnectionClientStateRequest;
+                    }): _163.QueryConnectionClientStateRequest;
                 };
                 QueryConnectionClientStateResponse: {
-                    encode(message: _162.QueryConnectionClientStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.QueryConnectionClientStateResponse;
+                    encode(message: _163.QueryConnectionClientStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.QueryConnectionClientStateResponse;
                     fromPartial(object: {
                         identifiedClientState?: {
                             clientId?: string;
@@ -13472,11 +13472,11 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _162.QueryConnectionClientStateResponse;
+                    }): _163.QueryConnectionClientStateResponse;
                 };
                 QueryConnectionConsensusStateRequest: {
-                    encode(message: _162.QueryConnectionConsensusStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.QueryConnectionConsensusStateRequest;
+                    encode(message: _163.QueryConnectionConsensusStateRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.QueryConnectionConsensusStateRequest;
                     fromPartial(object: {
                         connectionId?: string;
                         revisionNumber?: {
@@ -13623,11 +13623,11 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
-                    }): _162.QueryConnectionConsensusStateRequest;
+                    }): _163.QueryConnectionConsensusStateRequest;
                 };
                 QueryConnectionConsensusStateResponse: {
-                    encode(message: _162.QueryConnectionConsensusStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.QueryConnectionConsensusStateResponse;
+                    encode(message: _163.QueryConnectionConsensusStateResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _163.QueryConnectionConsensusStateResponse;
                     fromPartial(object: {
                         consensusState?: {
                             typeUrl?: string;
@@ -13781,11 +13781,11 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _162.QueryConnectionConsensusStateResponse;
+                    }): _163.QueryConnectionConsensusStateResponse;
                 };
                 GenesisState: {
-                    encode(message: _161.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.GenesisState;
+                    encode(message: _162.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _162.GenesisState;
                     fromPartial(object: {
                         connections?: {
                             id?: string;
@@ -13794,7 +13794,7 @@ export declare namespace ibc {
                                 identifier?: string;
                                 features?: string[];
                             }[];
-                            state?: _160.State;
+                            state?: _161.State;
                             counterparty?: {
                                 clientId?: string;
                                 connectionId?: string;
@@ -14025,22 +14025,22 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _161.GenesisState;
+                    }): _162.GenesisState;
                 };
-                stateFromJSON(object: any): _160.State;
-                stateToJSON(object: _160.State): string;
-                State: typeof _160.State;
-                StateSDKType: typeof _160.StateSDKType;
+                stateFromJSON(object: any): _161.State;
+                stateToJSON(object: _161.State): string;
+                State: typeof _161.State;
+                StateSDKType: typeof _161.StateSDKType;
                 ConnectionEnd: {
-                    encode(message: _160.ConnectionEnd, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.ConnectionEnd;
+                    encode(message: _161.ConnectionEnd, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.ConnectionEnd;
                     fromPartial(object: {
                         clientId?: string;
                         versions?: {
                             identifier?: string;
                             features?: string[];
                         }[];
-                        state?: _160.State;
+                        state?: _161.State;
                         counterparty?: {
                             clientId?: string;
                             connectionId?: string;
@@ -14120,11 +14120,11 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
-                    }): _160.ConnectionEnd;
+                    }): _161.ConnectionEnd;
                 };
                 IdentifiedConnection: {
-                    encode(message: _160.IdentifiedConnection, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.IdentifiedConnection;
+                    encode(message: _161.IdentifiedConnection, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.IdentifiedConnection;
                     fromPartial(object: {
                         id?: string;
                         clientId?: string;
@@ -14132,7 +14132,7 @@ export declare namespace ibc {
                             identifier?: string;
                             features?: string[];
                         }[];
-                        state?: _160.State;
+                        state?: _161.State;
                         counterparty?: {
                             clientId?: string;
                             connectionId?: string;
@@ -14212,45 +14212,45 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
-                    }): _160.IdentifiedConnection;
+                    }): _161.IdentifiedConnection;
                 };
                 Counterparty: {
-                    encode(message: _160.Counterparty, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.Counterparty;
+                    encode(message: _161.Counterparty, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.Counterparty;
                     fromPartial(object: {
                         clientId?: string;
                         connectionId?: string;
                         prefix?: {
                             keyPrefix?: Uint8Array;
                         };
-                    }): _160.Counterparty;
+                    }): _161.Counterparty;
                 };
                 ClientPaths: {
-                    encode(message: _160.ClientPaths, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.ClientPaths;
+                    encode(message: _161.ClientPaths, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.ClientPaths;
                     fromPartial(object: {
                         paths?: string[];
-                    }): _160.ClientPaths;
+                    }): _161.ClientPaths;
                 };
                 ConnectionPaths: {
-                    encode(message: _160.ConnectionPaths, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.ConnectionPaths;
+                    encode(message: _161.ConnectionPaths, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.ConnectionPaths;
                     fromPartial(object: {
                         clientId?: string;
                         paths?: string[];
-                    }): _160.ConnectionPaths;
+                    }): _161.ConnectionPaths;
                 };
                 Version: {
-                    encode(message: _160.Version, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.Version;
+                    encode(message: _161.Version, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.Version;
                     fromPartial(object: {
                         identifier?: string;
                         features?: string[];
-                    }): _160.Version;
+                    }): _161.Version;
                 };
                 Params: {
-                    encode(message: _160.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _160.Params;
+                    encode(message: _161.Params, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _161.Params;
                     fromPartial(object: {
                         maxExpectedTimePerBlock?: {
                             high?: number;
@@ -14324,45 +14324,45 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
-                    }): _160.Params;
+                    }): _161.Params;
                 };
             };
         }
         namespace port {
             const v1: {
-                QueryClientImpl: typeof _301.QueryClientImpl;
+                QueryClientImpl: typeof _302.QueryClientImpl;
                 createRpcQueryExtension: (base: import("@cosmjs/stargate").QueryClient) => {
-                    appVersion(request: _164.QueryAppVersionRequest): Promise<_164.QueryAppVersionResponse>;
+                    appVersion(request: _165.QueryAppVersionRequest): Promise<_165.QueryAppVersionResponse>;
                 };
                 QueryAppVersionRequest: {
-                    encode(message: _164.QueryAppVersionRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.QueryAppVersionRequest;
+                    encode(message: _165.QueryAppVersionRequest, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.QueryAppVersionRequest;
                     fromPartial(object: {
                         portId?: string;
                         connectionId?: string;
-                        ordering?: _151.Order;
+                        ordering?: _152.Order;
                         counterparty?: {
                             portId?: string;
                             channelId?: string;
                         };
                         proposedVersion?: string;
-                    }): _164.QueryAppVersionRequest;
+                    }): _165.QueryAppVersionRequest;
                 };
                 QueryAppVersionResponse: {
-                    encode(message: _164.QueryAppVersionResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _164.QueryAppVersionResponse;
+                    encode(message: _165.QueryAppVersionResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.QueryAppVersionResponse;
                     fromPartial(object: {
                         portId?: string;
                         version?: string;
-                    }): _164.QueryAppVersionResponse;
+                    }): _165.QueryAppVersionResponse;
                 };
             };
         }
         namespace types {
             const v1: {
                 GenesisState: {
-                    encode(message: _165.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _165.GenesisState;
+                    encode(message: _166.GenesisState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _166.GenesisState;
                     fromPartial(object: {
                         clientGenesis?: {
                             clients?: {
@@ -14619,7 +14619,7 @@ export declare namespace ibc {
                                     identifier?: string;
                                     features?: string[];
                                 }[];
-                                state?: _160.State;
+                                state?: _161.State;
                                 counterparty?: {
                                     clientId?: string;
                                     connectionId?: string;
@@ -14853,8 +14853,8 @@ export declare namespace ibc {
                         };
                         channelGenesis?: {
                             channels?: {
-                                state?: _151.State;
-                                ordering?: _151.Order;
+                                state?: _152.State;
+                                ordering?: _152.Order;
                                 counterparty?: {
                                     portId?: string;
                                     channelId?: string;
@@ -15396,7 +15396,7 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _165.GenesisState;
+                    }): _166.GenesisState;
                 };
             };
         }
@@ -15405,8 +15405,8 @@ export declare namespace ibc {
         namespace localhost {
             const v1: {
                 ClientState: {
-                    encode(message: _166.ClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _166.ClientState;
+                    encode(message: _167.ClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.ClientState;
                     fromPartial(object: {
                         chainId?: string;
                         height?: {
@@ -15555,19 +15555,19 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _166.ClientState;
+                    }): _167.ClientState;
                 };
             };
         }
         namespace solomachine {
             const v1: {
-                dataTypeFromJSON(object: any): _167.DataType;
-                dataTypeToJSON(object: _167.DataType): string;
-                DataType: typeof _167.DataType;
-                DataTypeSDKType: typeof _167.DataTypeSDKType;
+                dataTypeFromJSON(object: any): _168.DataType;
+                dataTypeToJSON(object: _168.DataType): string;
+                DataType: typeof _168.DataType;
+                DataTypeSDKType: typeof _168.DataTypeSDKType;
                 ClientState: {
-                    encode(message: _167.ClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.ClientState;
+                    encode(message: _168.ClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _168.ClientState;
                     fromPartial(object: {
                         sequence?: {
                             high?: number;
@@ -15713,1202 +15713,6 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
-                        consensusState?: {
-                            publicKey?: {
-                                typeUrl?: string;
-                                value?: Uint8Array;
-                            };
-                            diversifier?: string;
-                            timestamp?: {
-                                high?: number;
-                                low?: number;
-                                unsigned?: boolean;
-                                add?: (addend: string | number | import("long").default) => import("long").default;
-                                and?: (other: string | number | import("long").default) => import("long").default;
-                                compare?: (other: string | number | import("long").default) => number;
-                                comp?: (other: string | number | import("long").default) => number;
-                                divide?: (divisor: string | number | import("long").default) => import("long").default;
-                                div?: (divisor: string | number | import("long").default) => import("long").default;
-                                equals?: (other: string | number | import("long").default) => boolean;
-                                eq?: (other: string | number | import("long").default) => boolean;
-                                getHighBits?: () => number;
-                                getHighBitsUnsigned?: () => number;
-                                getLowBits?: () => number;
-                                getLowBitsUnsigned?: () => number;
-                                getNumBitsAbs?: () => number;
-                                greaterThan?: (other: string | number | import("long").default) => boolean;
-                                gt?: (other: string | number | import("long").default) => boolean;
-                                greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                                gte?: (other: string | number | import("long").default) => boolean;
-                                ge?: (other: string | number | import("long").default) => boolean;
-                                isEven?: () => boolean;
-                                isNegative?: () => boolean;
-                                isOdd?: () => boolean;
-                                isPositive?: () => boolean;
-                                isZero?: () => boolean;
-                                eqz?: () => boolean;
-                                lessThan?: (other: string | number | import("long").default) => boolean;
-                                lt?: (other: string | number | import("long").default) => boolean;
-                                lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                                lte?: (other: string | number | import("long").default) => boolean;
-                                le?: (other: string | number | import("long").default) => boolean;
-                                modulo?: (other: string | number | import("long").default) => import("long").default;
-                                mod?: (other: string | number | import("long").default) => import("long").default;
-                                rem?: (other: string | number | import("long").default) => import("long").default;
-                                multiply?: (multiplier: string | number | import("long").default) => import("long").default;
-                                mul?: (multiplier: string | number | import("long").default) => import("long").default;
-                                negate?: () => import("long").default;
-                                neg?: () => import("long").default;
-                                not?: () => import("long").default;
-                                countLeadingZeros?: () => number;
-                                clz?: () => number;
-                                countTrailingZeros?: () => number;
-                                ctz?: () => number;
-                                notEquals?: (other: string | number | import("long").default) => boolean;
-                                neq?: (other: string | number | import("long").default) => boolean;
-                                ne?: (other: string | number | import("long").default) => boolean;
-                                or?: (other: string | number | import("long").default) => import("long").default;
-                                shiftLeft?: (numBits: number | import("long").default) => import("long").default;
-                                shl?: (numBits: number | import("long").default) => import("long").default;
-                                shiftRight?: (numBits: number | import("long").default) => import("long").default;
-                                shr?: (numBits: number | import("long").default) => import("long").default;
-                                shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
-                                shru?: (numBits: number | import("long").default) => import("long").default;
-                                shr_u?: (numBits: number | import("long").default) => import("long").default;
-                                rotateLeft?: (numBits: number | import("long").default) => import("long").default;
-                                rotl?: (numBits: number | import("long").default) => import("long").default;
-                                rotateRight?: (numBits: number | import("long").default) => import("long").default;
-                                rotr?: (numBits: number | import("long").default) => import("long").default;
-                                subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
-                                sub?: (subtrahend: string | number | import("long").default) => import("long").default;
-                                toInt?: () => number;
-                                toNumber?: () => number;
-                                toBytes?: (le?: boolean) => number[];
-                                toBytesLE?: () => number[];
-                                toBytesBE?: () => number[];
-                                toSigned?: () => import("long").default;
-                                toString?: (radix?: number) => string;
-                                toUnsigned?: () => import("long").default;
-                                xor?: (other: string | number | import("long").default) => import("long").default;
-                            };
-                        };
-                        allowUpdateAfterProposal?: boolean;
-                    }): _167.ClientState;
-                };
-                ConsensusState: {
-                    encode(message: _167.ConsensusState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.ConsensusState;
-                    fromPartial(object: {
-                        publicKey?: {
-                            typeUrl?: string;
-                            value?: Uint8Array;
-                        };
-                        diversifier?: string;
-                        timestamp?: {
-                            high?: number;
-                            low?: number;
-                            unsigned?: boolean;
-                            add?: (addend: string | number | import("long").default) => import("long").default;
-                            and?: (other: string | number | import("long").default) => import("long").default;
-                            compare?: (other: string | number | import("long").default) => number;
-                            comp?: (other: string | number | import("long").default) => number;
-                            divide?: (divisor: string | number | import("long").default) => import("long").default;
-                            div?: (divisor: string | number | import("long").default) => import("long").default;
-                            equals?: (other: string | number | import("long").default) => boolean;
-                            eq?: (other: string | number | import("long").default) => boolean;
-                            getHighBits?: () => number;
-                            getHighBitsUnsigned?: () => number;
-                            getLowBits?: () => number;
-                            getLowBitsUnsigned?: () => number;
-                            getNumBitsAbs?: () => number;
-                            greaterThan?: (other: string | number | import("long").default) => boolean;
-                            gt?: (other: string | number | import("long").default) => boolean;
-                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            gte?: (other: string | number | import("long").default) => boolean;
-                            ge?: (other: string | number | import("long").default) => boolean;
-                            isEven?: () => boolean;
-                            isNegative?: () => boolean;
-                            isOdd?: () => boolean;
-                            isPositive?: () => boolean;
-                            isZero?: () => boolean;
-                            eqz?: () => boolean;
-                            lessThan?: (other: string | number | import("long").default) => boolean;
-                            lt?: (other: string | number | import("long").default) => boolean;
-                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            lte?: (other: string | number | import("long").default) => boolean;
-                            le?: (other: string | number | import("long").default) => boolean;
-                            modulo?: (other: string | number | import("long").default) => import("long").default;
-                            mod?: (other: string | number | import("long").default) => import("long").default;
-                            rem?: (other: string | number | import("long").default) => import("long").default;
-                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
-                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
-                            negate?: () => import("long").default;
-                            neg?: () => import("long").default;
-                            not?: () => import("long").default;
-                            countLeadingZeros?: () => number;
-                            clz?: () => number;
-                            countTrailingZeros?: () => number;
-                            ctz?: () => number;
-                            notEquals?: (other: string | number | import("long").default) => boolean;
-                            neq?: (other: string | number | import("long").default) => boolean;
-                            ne?: (other: string | number | import("long").default) => boolean;
-                            or?: (other: string | number | import("long").default) => import("long").default;
-                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
-                            shl?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
-                            shr?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
-                            shru?: (numBits: number | import("long").default) => import("long").default;
-                            shr_u?: (numBits: number | import("long").default) => import("long").default;
-                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
-                            rotl?: (numBits: number | import("long").default) => import("long").default;
-                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
-                            rotr?: (numBits: number | import("long").default) => import("long").default;
-                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            toInt?: () => number;
-                            toNumber?: () => number;
-                            toBytes?: (le?: boolean) => number[];
-                            toBytesLE?: () => number[];
-                            toBytesBE?: () => number[];
-                            toSigned?: () => import("long").default;
-                            toString?: (radix?: number) => string;
-                            toUnsigned?: () => import("long").default;
-                            xor?: (other: string | number | import("long").default) => import("long").default;
-                        };
-                    }): _167.ConsensusState;
-                };
-                Header: {
-                    encode(message: _167.Header, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.Header;
-                    fromPartial(object: {
-                        sequence?: {
-                            high?: number;
-                            low?: number;
-                            unsigned?: boolean;
-                            add?: (addend: string | number | import("long").default) => import("long").default;
-                            and?: (other: string | number | import("long").default) => import("long").default;
-                            compare?: (other: string | number | import("long").default) => number;
-                            comp?: (other: string | number | import("long").default) => number;
-                            divide?: (divisor: string | number | import("long").default) => import("long").default;
-                            div?: (divisor: string | number | import("long").default) => import("long").default;
-                            equals?: (other: string | number | import("long").default) => boolean;
-                            eq?: (other: string | number | import("long").default) => boolean;
-                            getHighBits?: () => number;
-                            getHighBitsUnsigned?: () => number;
-                            getLowBits?: () => number;
-                            getLowBitsUnsigned?: () => number;
-                            getNumBitsAbs?: () => number;
-                            greaterThan?: (other: string | number | import("long").default) => boolean;
-                            gt?: (other: string | number | import("long").default) => boolean;
-                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            gte?: (other: string | number | import("long").default) => boolean;
-                            ge?: (other: string | number | import("long").default) => boolean;
-                            isEven?: () => boolean;
-                            isNegative?: () => boolean;
-                            isOdd?: () => boolean;
-                            isPositive?: () => boolean;
-                            isZero?: () => boolean;
-                            eqz?: () => boolean;
-                            lessThan?: (other: string | number | import("long").default) => boolean;
-                            lt?: (other: string | number | import("long").default) => boolean;
-                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            lte?: (other: string | number | import("long").default) => boolean;
-                            le?: (other: string | number | import("long").default) => boolean;
-                            modulo?: (other: string | number | import("long").default) => import("long").default;
-                            mod?: (other: string | number | import("long").default) => import("long").default;
-                            rem?: (other: string | number | import("long").default) => import("long").default;
-                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
-                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
-                            negate?: () => import("long").default;
-                            neg?: () => import("long").default;
-                            not?: () => import("long").default;
-                            countLeadingZeros?: () => number;
-                            clz?: () => number;
-                            countTrailingZeros?: () => number;
-                            ctz?: () => number;
-                            notEquals?: (other: string | number | import("long").default) => boolean;
-                            neq?: (other: string | number | import("long").default) => boolean;
-                            ne?: (other: string | number | import("long").default) => boolean;
-                            or?: (other: string | number | import("long").default) => import("long").default;
-                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
-                            shl?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
-                            shr?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
-                            shru?: (numBits: number | import("long").default) => import("long").default;
-                            shr_u?: (numBits: number | import("long").default) => import("long").default;
-                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
-                            rotl?: (numBits: number | import("long").default) => import("long").default;
-                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
-                            rotr?: (numBits: number | import("long").default) => import("long").default;
-                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            toInt?: () => number;
-                            toNumber?: () => number;
-                            toBytes?: (le?: boolean) => number[];
-                            toBytesLE?: () => number[];
-                            toBytesBE?: () => number[];
-                            toSigned?: () => import("long").default;
-                            toString?: (radix?: number) => string;
-                            toUnsigned?: () => import("long").default;
-                            xor?: (other: string | number | import("long").default) => import("long").default;
-                        };
-                        timestamp?: {
-                            high?: number;
-                            low?: number;
-                            unsigned?: boolean;
-                            add?: (addend: string | number | import("long").default) => import("long").default;
-                            and?: (other: string | number | import("long").default) => import("long").default;
-                            compare?: (other: string | number | import("long").default) => number;
-                            comp?: (other: string | number | import("long").default) => number;
-                            divide?: (divisor: string | number | import("long").default) => import("long").default;
-                            div?: (divisor: string | number | import("long").default) => import("long").default;
-                            equals?: (other: string | number | import("long").default) => boolean;
-                            eq?: (other: string | number | import("long").default) => boolean;
-                            getHighBits?: () => number;
-                            getHighBitsUnsigned?: () => number;
-                            getLowBits?: () => number;
-                            getLowBitsUnsigned?: () => number;
-                            getNumBitsAbs?: () => number;
-                            greaterThan?: (other: string | number | import("long").default) => boolean;
-                            gt?: (other: string | number | import("long").default) => boolean;
-                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            gte?: (other: string | number | import("long").default) => boolean;
-                            ge?: (other: string | number | import("long").default) => boolean;
-                            isEven?: () => boolean;
-                            isNegative?: () => boolean;
-                            isOdd?: () => boolean;
-                            isPositive?: () => boolean;
-                            isZero?: () => boolean;
-                            eqz?: () => boolean;
-                            lessThan?: (other: string | number | import("long").default) => boolean;
-                            lt?: (other: string | number | import("long").default) => boolean;
-                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            lte?: (other: string | number | import("long").default) => boolean;
-                            le?: (other: string | number | import("long").default) => boolean;
-                            modulo?: (other: string | number | import("long").default) => import("long").default;
-                            mod?: (other: string | number | import("long").default) => import("long").default;
-                            rem?: (other: string | number | import("long").default) => import("long").default;
-                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
-                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
-                            negate?: () => import("long").default;
-                            neg?: () => import("long").default;
-                            not?: () => import("long").default;
-                            countLeadingZeros?: () => number;
-                            clz?: () => number;
-                            countTrailingZeros?: () => number;
-                            ctz?: () => number;
-                            notEquals?: (other: string | number | import("long").default) => boolean;
-                            neq?: (other: string | number | import("long").default) => boolean;
-                            ne?: (other: string | number | import("long").default) => boolean;
-                            or?: (other: string | number | import("long").default) => import("long").default;
-                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
-                            shl?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
-                            shr?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
-                            shru?: (numBits: number | import("long").default) => import("long").default;
-                            shr_u?: (numBits: number | import("long").default) => import("long").default;
-                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
-                            rotl?: (numBits: number | import("long").default) => import("long").default;
-                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
-                            rotr?: (numBits: number | import("long").default) => import("long").default;
-                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            toInt?: () => number;
-                            toNumber?: () => number;
-                            toBytes?: (le?: boolean) => number[];
-                            toBytesLE?: () => number[];
-                            toBytesBE?: () => number[];
-                            toSigned?: () => import("long").default;
-                            toString?: (radix?: number) => string;
-                            toUnsigned?: () => import("long").default;
-                            xor?: (other: string | number | import("long").default) => import("long").default;
-                        };
-                        signature?: Uint8Array;
-                        newPublicKey?: {
-                            typeUrl?: string;
-                            value?: Uint8Array;
-                        };
-                        newDiversifier?: string;
-                    }): _167.Header;
-                };
-                Misbehaviour: {
-                    encode(message: _167.Misbehaviour, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.Misbehaviour;
-                    fromPartial(object: {
-                        clientId?: string;
-                        sequence?: {
-                            high?: number;
-                            low?: number;
-                            unsigned?: boolean;
-                            add?: (addend: string | number | import("long").default) => import("long").default;
-                            and?: (other: string | number | import("long").default) => import("long").default;
-                            compare?: (other: string | number | import("long").default) => number;
-                            comp?: (other: string | number | import("long").default) => number;
-                            divide?: (divisor: string | number | import("long").default) => import("long").default;
-                            div?: (divisor: string | number | import("long").default) => import("long").default;
-                            equals?: (other: string | number | import("long").default) => boolean;
-                            eq?: (other: string | number | import("long").default) => boolean;
-                            getHighBits?: () => number;
-                            getHighBitsUnsigned?: () => number;
-                            getLowBits?: () => number;
-                            getLowBitsUnsigned?: () => number;
-                            getNumBitsAbs?: () => number;
-                            greaterThan?: (other: string | number | import("long").default) => boolean;
-                            gt?: (other: string | number | import("long").default) => boolean;
-                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            gte?: (other: string | number | import("long").default) => boolean;
-                            ge?: (other: string | number | import("long").default) => boolean;
-                            isEven?: () => boolean;
-                            isNegative?: () => boolean;
-                            isOdd?: () => boolean;
-                            isPositive?: () => boolean;
-                            isZero?: () => boolean;
-                            eqz?: () => boolean;
-                            lessThan?: (other: string | number | import("long").default) => boolean;
-                            lt?: (other: string | number | import("long").default) => boolean;
-                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            lte?: (other: string | number | import("long").default) => boolean;
-                            le?: (other: string | number | import("long").default) => boolean;
-                            modulo?: (other: string | number | import("long").default) => import("long").default;
-                            mod?: (other: string | number | import("long").default) => import("long").default;
-                            rem?: (other: string | number | import("long").default) => import("long").default;
-                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
-                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
-                            negate?: () => import("long").default;
-                            neg?: () => import("long").default;
-                            not?: () => import("long").default;
-                            countLeadingZeros?: () => number;
-                            clz?: () => number;
-                            countTrailingZeros?: () => number;
-                            ctz?: () => number;
-                            notEquals?: (other: string | number | import("long").default) => boolean;
-                            neq?: (other: string | number | import("long").default) => boolean;
-                            ne?: (other: string | number | import("long").default) => boolean;
-                            or?: (other: string | number | import("long").default) => import("long").default;
-                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
-                            shl?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
-                            shr?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
-                            shru?: (numBits: number | import("long").default) => import("long").default;
-                            shr_u?: (numBits: number | import("long").default) => import("long").default;
-                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
-                            rotl?: (numBits: number | import("long").default) => import("long").default;
-                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
-                            rotr?: (numBits: number | import("long").default) => import("long").default;
-                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            toInt?: () => number;
-                            toNumber?: () => number;
-                            toBytes?: (le?: boolean) => number[];
-                            toBytesLE?: () => number[];
-                            toBytesBE?: () => number[];
-                            toSigned?: () => import("long").default;
-                            toString?: (radix?: number) => string;
-                            toUnsigned?: () => import("long").default;
-                            xor?: (other: string | number | import("long").default) => import("long").default;
-                        };
-                        signatureOne?: {
-                            signature?: Uint8Array;
-                            dataType?: _167.DataType;
-                            data?: Uint8Array;
-                            timestamp?: {
-                                high?: number;
-                                low?: number;
-                                unsigned?: boolean;
-                                add?: (addend: string | number | import("long").default) => import("long").default;
-                                and?: (other: string | number | import("long").default) => import("long").default;
-                                compare?: (other: string | number | import("long").default) => number;
-                                comp?: (other: string | number | import("long").default) => number;
-                                divide?: (divisor: string | number | import("long").default) => import("long").default;
-                                div?: (divisor: string | number | import("long").default) => import("long").default;
-                                equals?: (other: string | number | import("long").default) => boolean;
-                                eq?: (other: string | number | import("long").default) => boolean;
-                                getHighBits?: () => number;
-                                getHighBitsUnsigned?: () => number;
-                                getLowBits?: () => number;
-                                getLowBitsUnsigned?: () => number;
-                                getNumBitsAbs?: () => number;
-                                greaterThan?: (other: string | number | import("long").default) => boolean;
-                                gt?: (other: string | number | import("long").default) => boolean;
-                                greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                                gte?: (other: string | number | import("long").default) => boolean;
-                                ge?: (other: string | number | import("long").default) => boolean;
-                                isEven?: () => boolean;
-                                isNegative?: () => boolean;
-                                isOdd?: () => boolean;
-                                isPositive?: () => boolean;
-                                isZero?: () => boolean;
-                                eqz?: () => boolean;
-                                lessThan?: (other: string | number | import("long").default) => boolean;
-                                lt?: (other: string | number | import("long").default) => boolean;
-                                lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                                lte?: (other: string | number | import("long").default) => boolean;
-                                le?: (other: string | number | import("long").default) => boolean;
-                                modulo?: (other: string | number | import("long").default) => import("long").default;
-                                mod?: (other: string | number | import("long").default) => import("long").default;
-                                rem?: (other: string | number | import("long").default) => import("long").default;
-                                multiply?: (multiplier: string | number | import("long").default) => import("long").default;
-                                mul?: (multiplier: string | number | import("long").default) => import("long").default;
-                                negate?: () => import("long").default;
-                                neg?: () => import("long").default;
-                                not?: () => import("long").default;
-                                countLeadingZeros?: () => number;
-                                clz?: () => number;
-                                countTrailingZeros?: () => number;
-                                ctz?: () => number;
-                                notEquals?: (other: string | number | import("long").default) => boolean;
-                                neq?: (other: string | number | import("long").default) => boolean;
-                                ne?: (other: string | number | import("long").default) => boolean;
-                                or?: (other: string | number | import("long").default) => import("long").default;
-                                shiftLeft?: (numBits: number | import("long").default) => import("long").default;
-                                shl?: (numBits: number | import("long").default) => import("long").default;
-                                shiftRight?: (numBits: number | import("long").default) => import("long").default;
-                                shr?: (numBits: number | import("long").default) => import("long").default;
-                                shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
-                                shru?: (numBits: number | import("long").default) => import("long").default;
-                                shr_u?: (numBits: number | import("long").default) => import("long").default;
-                                rotateLeft?: (numBits: number | import("long").default) => import("long").default;
-                                rotl?: (numBits: number | import("long").default) => import("long").default;
-                                rotateRight?: (numBits: number | import("long").default) => import("long").default;
-                                rotr?: (numBits: number | import("long").default) => import("long").default;
-                                subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
-                                sub?: (subtrahend: string | number | import("long").default) => import("long").default;
-                                toInt?: () => number;
-                                toNumber?: () => number;
-                                toBytes?: (le?: boolean) => number[];
-                                toBytesLE?: () => number[];
-                                toBytesBE?: () => number[];
-                                toSigned?: () => import("long").default;
-                                toString?: (radix?: number) => string;
-                                toUnsigned?: () => import("long").default;
-                                xor?: (other: string | number | import("long").default) => import("long").default;
-                            };
-                        };
-                        signatureTwo?: {
-                            signature?: Uint8Array;
-                            dataType?: _167.DataType;
-                            data?: Uint8Array;
-                            timestamp?: {
-                                high?: number;
-                                low?: number;
-                                unsigned?: boolean;
-                                add?: (addend: string | number | import("long").default) => import("long").default;
-                                and?: (other: string | number | import("long").default) => import("long").default;
-                                compare?: (other: string | number | import("long").default) => number;
-                                comp?: (other: string | number | import("long").default) => number;
-                                divide?: (divisor: string | number | import("long").default) => import("long").default;
-                                div?: (divisor: string | number | import("long").default) => import("long").default;
-                                equals?: (other: string | number | import("long").default) => boolean;
-                                eq?: (other: string | number | import("long").default) => boolean;
-                                getHighBits?: () => number;
-                                getHighBitsUnsigned?: () => number;
-                                getLowBits?: () => number;
-                                getLowBitsUnsigned?: () => number;
-                                getNumBitsAbs?: () => number;
-                                greaterThan?: (other: string | number | import("long").default) => boolean;
-                                gt?: (other: string | number | import("long").default) => boolean;
-                                greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                                gte?: (other: string | number | import("long").default) => boolean;
-                                ge?: (other: string | number | import("long").default) => boolean;
-                                isEven?: () => boolean;
-                                isNegative?: () => boolean;
-                                isOdd?: () => boolean;
-                                isPositive?: () => boolean;
-                                isZero?: () => boolean;
-                                eqz?: () => boolean;
-                                lessThan?: (other: string | number | import("long").default) => boolean;
-                                lt?: (other: string | number | import("long").default) => boolean;
-                                lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                                lte?: (other: string | number | import("long").default) => boolean;
-                                le?: (other: string | number | import("long").default) => boolean;
-                                modulo?: (other: string | number | import("long").default) => import("long").default;
-                                mod?: (other: string | number | import("long").default) => import("long").default;
-                                rem?: (other: string | number | import("long").default) => import("long").default;
-                                multiply?: (multiplier: string | number | import("long").default) => import("long").default;
-                                mul?: (multiplier: string | number | import("long").default) => import("long").default;
-                                negate?: () => import("long").default;
-                                neg?: () => import("long").default;
-                                not?: () => import("long").default;
-                                countLeadingZeros?: () => number;
-                                clz?: () => number;
-                                countTrailingZeros?: () => number;
-                                ctz?: () => number;
-                                notEquals?: (other: string | number | import("long").default) => boolean;
-                                neq?: (other: string | number | import("long").default) => boolean;
-                                ne?: (other: string | number | import("long").default) => boolean;
-                                or?: (other: string | number | import("long").default) => import("long").default;
-                                shiftLeft?: (numBits: number | import("long").default) => import("long").default;
-                                shl?: (numBits: number | import("long").default) => import("long").default;
-                                shiftRight?: (numBits: number | import("long").default) => import("long").default;
-                                shr?: (numBits: number | import("long").default) => import("long").default;
-                                shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
-                                shru?: (numBits: number | import("long").default) => import("long").default;
-                                shr_u?: (numBits: number | import("long").default) => import("long").default;
-                                rotateLeft?: (numBits: number | import("long").default) => import("long").default;
-                                rotl?: (numBits: number | import("long").default) => import("long").default;
-                                rotateRight?: (numBits: number | import("long").default) => import("long").default;
-                                rotr?: (numBits: number | import("long").default) => import("long").default;
-                                subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
-                                sub?: (subtrahend: string | number | import("long").default) => import("long").default;
-                                toInt?: () => number;
-                                toNumber?: () => number;
-                                toBytes?: (le?: boolean) => number[];
-                                toBytesLE?: () => number[];
-                                toBytesBE?: () => number[];
-                                toSigned?: () => import("long").default;
-                                toString?: (radix?: number) => string;
-                                toUnsigned?: () => import("long").default;
-                                xor?: (other: string | number | import("long").default) => import("long").default;
-                            };
-                        };
-                    }): _167.Misbehaviour;
-                };
-                SignatureAndData: {
-                    encode(message: _167.SignatureAndData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.SignatureAndData;
-                    fromPartial(object: {
-                        signature?: Uint8Array;
-                        dataType?: _167.DataType;
-                        data?: Uint8Array;
-                        timestamp?: {
-                            high?: number;
-                            low?: number;
-                            unsigned?: boolean;
-                            add?: (addend: string | number | import("long").default) => import("long").default;
-                            and?: (other: string | number | import("long").default) => import("long").default;
-                            compare?: (other: string | number | import("long").default) => number;
-                            comp?: (other: string | number | import("long").default) => number;
-                            divide?: (divisor: string | number | import("long").default) => import("long").default;
-                            div?: (divisor: string | number | import("long").default) => import("long").default;
-                            equals?: (other: string | number | import("long").default) => boolean;
-                            eq?: (other: string | number | import("long").default) => boolean;
-                            getHighBits?: () => number;
-                            getHighBitsUnsigned?: () => number;
-                            getLowBits?: () => number;
-                            getLowBitsUnsigned?: () => number;
-                            getNumBitsAbs?: () => number;
-                            greaterThan?: (other: string | number | import("long").default) => boolean;
-                            gt?: (other: string | number | import("long").default) => boolean;
-                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            gte?: (other: string | number | import("long").default) => boolean;
-                            ge?: (other: string | number | import("long").default) => boolean;
-                            isEven?: () => boolean;
-                            isNegative?: () => boolean;
-                            isOdd?: () => boolean;
-                            isPositive?: () => boolean;
-                            isZero?: () => boolean;
-                            eqz?: () => boolean;
-                            lessThan?: (other: string | number | import("long").default) => boolean;
-                            lt?: (other: string | number | import("long").default) => boolean;
-                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            lte?: (other: string | number | import("long").default) => boolean;
-                            le?: (other: string | number | import("long").default) => boolean;
-                            modulo?: (other: string | number | import("long").default) => import("long").default;
-                            mod?: (other: string | number | import("long").default) => import("long").default;
-                            rem?: (other: string | number | import("long").default) => import("long").default;
-                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
-                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
-                            negate?: () => import("long").default;
-                            neg?: () => import("long").default;
-                            not?: () => import("long").default;
-                            countLeadingZeros?: () => number;
-                            clz?: () => number;
-                            countTrailingZeros?: () => number;
-                            ctz?: () => number;
-                            notEquals?: (other: string | number | import("long").default) => boolean;
-                            neq?: (other: string | number | import("long").default) => boolean;
-                            ne?: (other: string | number | import("long").default) => boolean;
-                            or?: (other: string | number | import("long").default) => import("long").default;
-                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
-                            shl?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
-                            shr?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
-                            shru?: (numBits: number | import("long").default) => import("long").default;
-                            shr_u?: (numBits: number | import("long").default) => import("long").default;
-                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
-                            rotl?: (numBits: number | import("long").default) => import("long").default;
-                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
-                            rotr?: (numBits: number | import("long").default) => import("long").default;
-                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            toInt?: () => number;
-                            toNumber?: () => number;
-                            toBytes?: (le?: boolean) => number[];
-                            toBytesLE?: () => number[];
-                            toBytesBE?: () => number[];
-                            toSigned?: () => import("long").default;
-                            toString?: (radix?: number) => string;
-                            toUnsigned?: () => import("long").default;
-                            xor?: (other: string | number | import("long").default) => import("long").default;
-                        };
-                    }): _167.SignatureAndData;
-                };
-                TimestampedSignatureData: {
-                    encode(message: _167.TimestampedSignatureData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.TimestampedSignatureData;
-                    fromPartial(object: {
-                        signatureData?: Uint8Array;
-                        timestamp?: {
-                            high?: number;
-                            low?: number;
-                            unsigned?: boolean;
-                            add?: (addend: string | number | import("long").default) => import("long").default;
-                            and?: (other: string | number | import("long").default) => import("long").default;
-                            compare?: (other: string | number | import("long").default) => number;
-                            comp?: (other: string | number | import("long").default) => number;
-                            divide?: (divisor: string | number | import("long").default) => import("long").default;
-                            div?: (divisor: string | number | import("long").default) => import("long").default;
-                            equals?: (other: string | number | import("long").default) => boolean;
-                            eq?: (other: string | number | import("long").default) => boolean;
-                            getHighBits?: () => number;
-                            getHighBitsUnsigned?: () => number;
-                            getLowBits?: () => number;
-                            getLowBitsUnsigned?: () => number;
-                            getNumBitsAbs?: () => number;
-                            greaterThan?: (other: string | number | import("long").default) => boolean;
-                            gt?: (other: string | number | import("long").default) => boolean;
-                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            gte?: (other: string | number | import("long").default) => boolean;
-                            ge?: (other: string | number | import("long").default) => boolean;
-                            isEven?: () => boolean;
-                            isNegative?: () => boolean;
-                            isOdd?: () => boolean;
-                            isPositive?: () => boolean;
-                            isZero?: () => boolean;
-                            eqz?: () => boolean;
-                            lessThan?: (other: string | number | import("long").default) => boolean;
-                            lt?: (other: string | number | import("long").default) => boolean;
-                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            lte?: (other: string | number | import("long").default) => boolean;
-                            le?: (other: string | number | import("long").default) => boolean;
-                            modulo?: (other: string | number | import("long").default) => import("long").default;
-                            mod?: (other: string | number | import("long").default) => import("long").default;
-                            rem?: (other: string | number | import("long").default) => import("long").default;
-                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
-                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
-                            negate?: () => import("long").default;
-                            neg?: () => import("long").default;
-                            not?: () => import("long").default;
-                            countLeadingZeros?: () => number;
-                            clz?: () => number;
-                            countTrailingZeros?: () => number;
-                            ctz?: () => number;
-                            notEquals?: (other: string | number | import("long").default) => boolean;
-                            neq?: (other: string | number | import("long").default) => boolean;
-                            ne?: (other: string | number | import("long").default) => boolean;
-                            or?: (other: string | number | import("long").default) => import("long").default;
-                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
-                            shl?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
-                            shr?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
-                            shru?: (numBits: number | import("long").default) => import("long").default;
-                            shr_u?: (numBits: number | import("long").default) => import("long").default;
-                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
-                            rotl?: (numBits: number | import("long").default) => import("long").default;
-                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
-                            rotr?: (numBits: number | import("long").default) => import("long").default;
-                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            toInt?: () => number;
-                            toNumber?: () => number;
-                            toBytes?: (le?: boolean) => number[];
-                            toBytesLE?: () => number[];
-                            toBytesBE?: () => number[];
-                            toSigned?: () => import("long").default;
-                            toString?: (radix?: number) => string;
-                            toUnsigned?: () => import("long").default;
-                            xor?: (other: string | number | import("long").default) => import("long").default;
-                        };
-                    }): _167.TimestampedSignatureData;
-                };
-                SignBytes: {
-                    encode(message: _167.SignBytes, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.SignBytes;
-                    fromPartial(object: {
-                        sequence?: {
-                            high?: number;
-                            low?: number;
-                            unsigned?: boolean;
-                            add?: (addend: string | number | import("long").default) => import("long").default;
-                            and?: (other: string | number | import("long").default) => import("long").default;
-                            compare?: (other: string | number | import("long").default) => number;
-                            comp?: (other: string | number | import("long").default) => number;
-                            divide?: (divisor: string | number | import("long").default) => import("long").default;
-                            div?: (divisor: string | number | import("long").default) => import("long").default;
-                            equals?: (other: string | number | import("long").default) => boolean;
-                            eq?: (other: string | number | import("long").default) => boolean;
-                            getHighBits?: () => number;
-                            getHighBitsUnsigned?: () => number;
-                            getLowBits?: () => number;
-                            getLowBitsUnsigned?: () => number;
-                            getNumBitsAbs?: () => number;
-                            greaterThan?: (other: string | number | import("long").default) => boolean;
-                            gt?: (other: string | number | import("long").default) => boolean;
-                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            gte?: (other: string | number | import("long").default) => boolean;
-                            ge?: (other: string | number | import("long").default) => boolean;
-                            isEven?: () => boolean;
-                            isNegative?: () => boolean;
-                            isOdd?: () => boolean;
-                            isPositive?: () => boolean;
-                            isZero?: () => boolean;
-                            eqz?: () => boolean;
-                            lessThan?: (other: string | number | import("long").default) => boolean;
-                            lt?: (other: string | number | import("long").default) => boolean;
-                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            lte?: (other: string | number | import("long").default) => boolean;
-                            le?: (other: string | number | import("long").default) => boolean;
-                            modulo?: (other: string | number | import("long").default) => import("long").default;
-                            mod?: (other: string | number | import("long").default) => import("long").default;
-                            rem?: (other: string | number | import("long").default) => import("long").default;
-                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
-                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
-                            negate?: () => import("long").default;
-                            neg?: () => import("long").default;
-                            not?: () => import("long").default;
-                            countLeadingZeros?: () => number;
-                            clz?: () => number;
-                            countTrailingZeros?: () => number;
-                            ctz?: () => number;
-                            notEquals?: (other: string | number | import("long").default) => boolean;
-                            neq?: (other: string | number | import("long").default) => boolean;
-                            ne?: (other: string | number | import("long").default) => boolean;
-                            or?: (other: string | number | import("long").default) => import("long").default;
-                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
-                            shl?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
-                            shr?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
-                            shru?: (numBits: number | import("long").default) => import("long").default;
-                            shr_u?: (numBits: number | import("long").default) => import("long").default;
-                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
-                            rotl?: (numBits: number | import("long").default) => import("long").default;
-                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
-                            rotr?: (numBits: number | import("long").default) => import("long").default;
-                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            toInt?: () => number;
-                            toNumber?: () => number;
-                            toBytes?: (le?: boolean) => number[];
-                            toBytesLE?: () => number[];
-                            toBytesBE?: () => number[];
-                            toSigned?: () => import("long").default;
-                            toString?: (radix?: number) => string;
-                            toUnsigned?: () => import("long").default;
-                            xor?: (other: string | number | import("long").default) => import("long").default;
-                        };
-                        timestamp?: {
-                            high?: number;
-                            low?: number;
-                            unsigned?: boolean;
-                            add?: (addend: string | number | import("long").default) => import("long").default;
-                            and?: (other: string | number | import("long").default) => import("long").default;
-                            compare?: (other: string | number | import("long").default) => number;
-                            comp?: (other: string | number | import("long").default) => number;
-                            divide?: (divisor: string | number | import("long").default) => import("long").default;
-                            div?: (divisor: string | number | import("long").default) => import("long").default;
-                            equals?: (other: string | number | import("long").default) => boolean;
-                            eq?: (other: string | number | import("long").default) => boolean;
-                            getHighBits?: () => number;
-                            getHighBitsUnsigned?: () => number;
-                            getLowBits?: () => number;
-                            getLowBitsUnsigned?: () => number;
-                            getNumBitsAbs?: () => number;
-                            greaterThan?: (other: string | number | import("long").default) => boolean;
-                            gt?: (other: string | number | import("long").default) => boolean;
-                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            gte?: (other: string | number | import("long").default) => boolean;
-                            ge?: (other: string | number | import("long").default) => boolean;
-                            isEven?: () => boolean;
-                            isNegative?: () => boolean;
-                            isOdd?: () => boolean;
-                            isPositive?: () => boolean;
-                            isZero?: () => boolean;
-                            eqz?: () => boolean;
-                            lessThan?: (other: string | number | import("long").default) => boolean;
-                            lt?: (other: string | number | import("long").default) => boolean;
-                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            lte?: (other: string | number | import("long").default) => boolean;
-                            le?: (other: string | number | import("long").default) => boolean;
-                            modulo?: (other: string | number | import("long").default) => import("long").default;
-                            mod?: (other: string | number | import("long").default) => import("long").default;
-                            rem?: (other: string | number | import("long").default) => import("long").default;
-                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
-                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
-                            negate?: () => import("long").default;
-                            neg?: () => import("long").default;
-                            not?: () => import("long").default;
-                            countLeadingZeros?: () => number;
-                            clz?: () => number;
-                            countTrailingZeros?: () => number;
-                            ctz?: () => number;
-                            notEquals?: (other: string | number | import("long").default) => boolean;
-                            neq?: (other: string | number | import("long").default) => boolean;
-                            ne?: (other: string | number | import("long").default) => boolean;
-                            or?: (other: string | number | import("long").default) => import("long").default;
-                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
-                            shl?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
-                            shr?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
-                            shru?: (numBits: number | import("long").default) => import("long").default;
-                            shr_u?: (numBits: number | import("long").default) => import("long").default;
-                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
-                            rotl?: (numBits: number | import("long").default) => import("long").default;
-                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
-                            rotr?: (numBits: number | import("long").default) => import("long").default;
-                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            toInt?: () => number;
-                            toNumber?: () => number;
-                            toBytes?: (le?: boolean) => number[];
-                            toBytesLE?: () => number[];
-                            toBytesBE?: () => number[];
-                            toSigned?: () => import("long").default;
-                            toString?: (radix?: number) => string;
-                            toUnsigned?: () => import("long").default;
-                            xor?: (other: string | number | import("long").default) => import("long").default;
-                        };
-                        diversifier?: string;
-                        dataType?: _167.DataType;
-                        data?: Uint8Array;
-                    }): _167.SignBytes;
-                };
-                HeaderData: {
-                    encode(message: _167.HeaderData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.HeaderData;
-                    fromPartial(object: {
-                        newPubKey?: {
-                            typeUrl?: string;
-                            value?: Uint8Array;
-                        };
-                        newDiversifier?: string;
-                    }): _167.HeaderData;
-                };
-                ClientStateData: {
-                    encode(message: _167.ClientStateData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.ClientStateData;
-                    fromPartial(object: {
-                        path?: Uint8Array;
-                        clientState?: {
-                            typeUrl?: string;
-                            value?: Uint8Array;
-                        };
-                    }): _167.ClientStateData;
-                };
-                ConsensusStateData: {
-                    encode(message: _167.ConsensusStateData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.ConsensusStateData;
-                    fromPartial(object: {
-                        path?: Uint8Array;
-                        consensusState?: {
-                            typeUrl?: string;
-                            value?: Uint8Array;
-                        };
-                    }): _167.ConsensusStateData;
-                };
-                ConnectionStateData: {
-                    encode(message: _167.ConnectionStateData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.ConnectionStateData;
-                    fromPartial(object: {
-                        path?: Uint8Array;
-                        connection?: {
-                            clientId?: string;
-                            versions?: {
-                                identifier?: string;
-                                features?: string[];
-                            }[];
-                            state?: _160.State;
-                            counterparty?: {
-                                clientId?: string;
-                                connectionId?: string;
-                                prefix?: {
-                                    keyPrefix?: Uint8Array;
-                                };
-                            };
-                            delayPeriod?: {
-                                high?: number;
-                                low?: number;
-                                unsigned?: boolean;
-                                add?: (addend: string | number | import("long").default) => import("long").default;
-                                and?: (other: string | number | import("long").default) => import("long").default;
-                                compare?: (other: string | number | import("long").default) => number;
-                                comp?: (other: string | number | import("long").default) => number;
-                                divide?: (divisor: string | number | import("long").default) => import("long").default;
-                                div?: (divisor: string | number | import("long").default) => import("long").default;
-                                equals?: (other: string | number | import("long").default) => boolean;
-                                eq?: (other: string | number | import("long").default) => boolean;
-                                getHighBits?: () => number;
-                                getHighBitsUnsigned?: () => number;
-                                getLowBits?: () => number;
-                                getLowBitsUnsigned?: () => number;
-                                getNumBitsAbs?: () => number;
-                                greaterThan?: (other: string | number | import("long").default) => boolean;
-                                gt?: (other: string | number | import("long").default) => boolean;
-                                greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                                gte?: (other: string | number | import("long").default) => boolean;
-                                ge?: (other: string | number | import("long").default) => boolean;
-                                isEven?: () => boolean;
-                                isNegative?: () => boolean;
-                                isOdd?: () => boolean;
-                                isPositive?: () => boolean;
-                                isZero?: () => boolean;
-                                eqz?: () => boolean;
-                                lessThan?: (other: string | number | import("long").default) => boolean;
-                                lt?: (other: string | number | import("long").default) => boolean;
-                                lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                                lte?: (other: string | number | import("long").default) => boolean;
-                                le?: (other: string | number | import("long").default) => boolean;
-                                modulo?: (other: string | number | import("long").default) => import("long").default;
-                                mod?: (other: string | number | import("long").default) => import("long").default;
-                                rem?: (other: string | number | import("long").default) => import("long").default;
-                                multiply?: (multiplier: string | number | import("long").default) => import("long").default;
-                                mul?: (multiplier: string | number | import("long").default) => import("long").default;
-                                negate?: () => import("long").default;
-                                neg?: () => import("long").default;
-                                not?: () => import("long").default;
-                                countLeadingZeros?: () => number;
-                                clz?: () => number;
-                                countTrailingZeros?: () => number;
-                                ctz?: () => number;
-                                notEquals?: (other: string | number | import("long").default) => boolean;
-                                neq?: (other: string | number | import("long").default) => boolean;
-                                ne?: (other: string | number | import("long").default) => boolean;
-                                or?: (other: string | number | import("long").default) => import("long").default;
-                                shiftLeft?: (numBits: number | import("long").default) => import("long").default;
-                                shl?: (numBits: number | import("long").default) => import("long").default;
-                                shiftRight?: (numBits: number | import("long").default) => import("long").default;
-                                shr?: (numBits: number | import("long").default) => import("long").default;
-                                shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
-                                shru?: (numBits: number | import("long").default) => import("long").default;
-                                shr_u?: (numBits: number | import("long").default) => import("long").default;
-                                rotateLeft?: (numBits: number | import("long").default) => import("long").default;
-                                rotl?: (numBits: number | import("long").default) => import("long").default;
-                                rotateRight?: (numBits: number | import("long").default) => import("long").default;
-                                rotr?: (numBits: number | import("long").default) => import("long").default;
-                                subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
-                                sub?: (subtrahend: string | number | import("long").default) => import("long").default;
-                                toInt?: () => number;
-                                toNumber?: () => number;
-                                toBytes?: (le?: boolean) => number[];
-                                toBytesLE?: () => number[];
-                                toBytesBE?: () => number[];
-                                toSigned?: () => import("long").default;
-                                toString?: (radix?: number) => string;
-                                toUnsigned?: () => import("long").default;
-                                xor?: (other: string | number | import("long").default) => import("long").default;
-                            };
-                        };
-                    }): _167.ConnectionStateData;
-                };
-                ChannelStateData: {
-                    encode(message: _167.ChannelStateData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.ChannelStateData;
-                    fromPartial(object: {
-                        path?: Uint8Array;
-                        channel?: {
-                            state?: _151.State;
-                            ordering?: _151.Order;
-                            counterparty?: {
-                                portId?: string;
-                                channelId?: string;
-                            };
-                            connectionHops?: string[];
-                            version?: string;
-                        };
-                    }): _167.ChannelStateData;
-                };
-                PacketCommitmentData: {
-                    encode(message: _167.PacketCommitmentData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.PacketCommitmentData;
-                    fromPartial(object: {
-                        path?: Uint8Array;
-                        commitment?: Uint8Array;
-                    }): _167.PacketCommitmentData;
-                };
-                PacketAcknowledgementData: {
-                    encode(message: _167.PacketAcknowledgementData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.PacketAcknowledgementData;
-                    fromPartial(object: {
-                        path?: Uint8Array;
-                        acknowledgement?: Uint8Array;
-                    }): _167.PacketAcknowledgementData;
-                };
-                PacketReceiptAbsenceData: {
-                    encode(message: _167.PacketReceiptAbsenceData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.PacketReceiptAbsenceData;
-                    fromPartial(object: {
-                        path?: Uint8Array;
-                    }): _167.PacketReceiptAbsenceData;
-                };
-                NextSequenceRecvData: {
-                    encode(message: _167.NextSequenceRecvData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _167.NextSequenceRecvData;
-                    fromPartial(object: {
-                        path?: Uint8Array;
-                        nextSeqRecv?: {
-                            high?: number;
-                            low?: number;
-                            unsigned?: boolean;
-                            add?: (addend: string | number | import("long").default) => import("long").default;
-                            and?: (other: string | number | import("long").default) => import("long").default;
-                            compare?: (other: string | number | import("long").default) => number;
-                            comp?: (other: string | number | import("long").default) => number;
-                            divide?: (divisor: string | number | import("long").default) => import("long").default;
-                            div?: (divisor: string | number | import("long").default) => import("long").default;
-                            equals?: (other: string | number | import("long").default) => boolean;
-                            eq?: (other: string | number | import("long").default) => boolean;
-                            getHighBits?: () => number;
-                            getHighBitsUnsigned?: () => number;
-                            getLowBits?: () => number;
-                            getLowBitsUnsigned?: () => number;
-                            getNumBitsAbs?: () => number;
-                            greaterThan?: (other: string | number | import("long").default) => boolean;
-                            gt?: (other: string | number | import("long").default) => boolean;
-                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            gte?: (other: string | number | import("long").default) => boolean;
-                            ge?: (other: string | number | import("long").default) => boolean;
-                            isEven?: () => boolean;
-                            isNegative?: () => boolean;
-                            isOdd?: () => boolean;
-                            isPositive?: () => boolean;
-                            isZero?: () => boolean;
-                            eqz?: () => boolean;
-                            lessThan?: (other: string | number | import("long").default) => boolean;
-                            lt?: (other: string | number | import("long").default) => boolean;
-                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            lte?: (other: string | number | import("long").default) => boolean;
-                            le?: (other: string | number | import("long").default) => boolean;
-                            modulo?: (other: string | number | import("long").default) => import("long").default;
-                            mod?: (other: string | number | import("long").default) => import("long").default;
-                            rem?: (other: string | number | import("long").default) => import("long").default;
-                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
-                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
-                            negate?: () => import("long").default;
-                            neg?: () => import("long").default;
-                            not?: () => import("long").default;
-                            countLeadingZeros?: () => number;
-                            clz?: () => number;
-                            countTrailingZeros?: () => number;
-                            ctz?: () => number;
-                            notEquals?: (other: string | number | import("long").default) => boolean;
-                            neq?: (other: string | number | import("long").default) => boolean;
-                            ne?: (other: string | number | import("long").default) => boolean;
-                            or?: (other: string | number | import("long").default) => import("long").default;
-                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
-                            shl?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
-                            shr?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
-                            shru?: (numBits: number | import("long").default) => import("long").default;
-                            shr_u?: (numBits: number | import("long").default) => import("long").default;
-                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
-                            rotl?: (numBits: number | import("long").default) => import("long").default;
-                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
-                            rotr?: (numBits: number | import("long").default) => import("long").default;
-                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            toInt?: () => number;
-                            toNumber?: () => number;
-                            toBytes?: (le?: boolean) => number[];
-                            toBytesLE?: () => number[];
-                            toBytesBE?: () => number[];
-                            toSigned?: () => import("long").default;
-                            toString?: (radix?: number) => string;
-                            toUnsigned?: () => import("long").default;
-                            xor?: (other: string | number | import("long").default) => import("long").default;
-                        };
-                    }): _167.NextSequenceRecvData;
-                };
-            };
-            const v2: {
-                dataTypeFromJSON(object: any): _168.DataType;
-                dataTypeToJSON(object: _168.DataType): string;
-                DataType: typeof _168.DataType;
-                DataTypeSDKType: typeof _168.DataTypeSDKType;
-                ClientState: {
-                    encode(message: _168.ClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _168.ClientState;
-                    fromPartial(object: {
-                        sequence?: {
-                            high?: number;
-                            low?: number;
-                            unsigned?: boolean;
-                            add?: (addend: string | number | import("long").default) => import("long").default;
-                            and?: (other: string | number | import("long").default) => import("long").default;
-                            compare?: (other: string | number | import("long").default) => number;
-                            comp?: (other: string | number | import("long").default) => number;
-                            divide?: (divisor: string | number | import("long").default) => import("long").default;
-                            div?: (divisor: string | number | import("long").default) => import("long").default;
-                            equals?: (other: string | number | import("long").default) => boolean;
-                            eq?: (other: string | number | import("long").default) => boolean;
-                            getHighBits?: () => number;
-                            getHighBitsUnsigned?: () => number;
-                            getLowBits?: () => number;
-                            getLowBitsUnsigned?: () => number;
-                            getNumBitsAbs?: () => number;
-                            greaterThan?: (other: string | number | import("long").default) => boolean;
-                            gt?: (other: string | number | import("long").default) => boolean;
-                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            gte?: (other: string | number | import("long").default) => boolean;
-                            ge?: (other: string | number | import("long").default) => boolean;
-                            isEven?: () => boolean;
-                            isNegative?: () => boolean;
-                            isOdd?: () => boolean;
-                            isPositive?: () => boolean;
-                            isZero?: () => boolean;
-                            eqz?: () => boolean;
-                            lessThan?: (other: string | number | import("long").default) => boolean;
-                            lt?: (other: string | number | import("long").default) => boolean;
-                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
-                            lte?: (other: string | number | import("long").default) => boolean;
-                            le?: (other: string | number | import("long").default) => boolean;
-                            modulo?: (other: string | number | import("long").default) => import("long").default;
-                            mod?: (other: string | number | import("long").default) => import("long").default;
-                            rem?: (other: string | number | import("long").default) => import("long").default;
-                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
-                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
-                            negate?: () => import("long").default;
-                            neg?: () => import("long").default;
-                            not?: () => import("long").default;
-                            countLeadingZeros?: () => number;
-                            clz?: () => number;
-                            countTrailingZeros?: () => number;
-                            ctz?: () => number;
-                            notEquals?: (other: string | number | import("long").default) => boolean;
-                            neq?: (other: string | number | import("long").default) => boolean;
-                            ne?: (other: string | number | import("long").default) => boolean;
-                            or?: (other: string | number | import("long").default) => import("long").default;
-                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
-                            shl?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
-                            shr?: (numBits: number | import("long").default) => import("long").default;
-                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
-                            shru?: (numBits: number | import("long").default) => import("long").default;
-                            shr_u?: (numBits: number | import("long").default) => import("long").default;
-                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
-                            rotl?: (numBits: number | import("long").default) => import("long").default;
-                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
-                            rotr?: (numBits: number | import("long").default) => import("long").default;
-                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
-                            toInt?: () => number;
-                            toNumber?: () => number;
-                            toBytes?: (le?: boolean) => number[];
-                            toBytesLE?: () => number[];
-                            toBytesBE?: () => number[];
-                            toSigned?: () => import("long").default;
-                            toString?: (radix?: number) => string;
-                            toUnsigned?: () => import("long").default;
-                            xor?: (other: string | number | import("long").default) => import("long").default;
-                        };
-                        isFrozen?: boolean;
                         consensusState?: {
                             publicKey?: {
                                 typeUrl?: string;
@@ -17820,7 +16624,7 @@ export declare namespace ibc {
                                 identifier?: string;
                                 features?: string[];
                             }[];
-                            state?: _160.State;
+                            state?: _161.State;
                             counterparty?: {
                                 clientId?: string;
                                 connectionId?: string;
@@ -17909,8 +16713,8 @@ export declare namespace ibc {
                     fromPartial(object: {
                         path?: Uint8Array;
                         channel?: {
-                            state?: _151.State;
-                            ordering?: _151.Order;
+                            state?: _152.State;
+                            ordering?: _152.Order;
                             counterparty?: {
                                 portId?: string;
                                 channelId?: string;
@@ -18023,12 +16827,1208 @@ export declare namespace ibc {
                     }): _168.NextSequenceRecvData;
                 };
             };
+            const v2: {
+                dataTypeFromJSON(object: any): _169.DataType;
+                dataTypeToJSON(object: _169.DataType): string;
+                DataType: typeof _169.DataType;
+                DataTypeSDKType: typeof _169.DataTypeSDKType;
+                ClientState: {
+                    encode(message: _169.ClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.ClientState;
+                    fromPartial(object: {
+                        sequence?: {
+                            high?: number;
+                            low?: number;
+                            unsigned?: boolean;
+                            add?: (addend: string | number | import("long").default) => import("long").default;
+                            and?: (other: string | number | import("long").default) => import("long").default;
+                            compare?: (other: string | number | import("long").default) => number;
+                            comp?: (other: string | number | import("long").default) => number;
+                            divide?: (divisor: string | number | import("long").default) => import("long").default;
+                            div?: (divisor: string | number | import("long").default) => import("long").default;
+                            equals?: (other: string | number | import("long").default) => boolean;
+                            eq?: (other: string | number | import("long").default) => boolean;
+                            getHighBits?: () => number;
+                            getHighBitsUnsigned?: () => number;
+                            getLowBits?: () => number;
+                            getLowBitsUnsigned?: () => number;
+                            getNumBitsAbs?: () => number;
+                            greaterThan?: (other: string | number | import("long").default) => boolean;
+                            gt?: (other: string | number | import("long").default) => boolean;
+                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            gte?: (other: string | number | import("long").default) => boolean;
+                            ge?: (other: string | number | import("long").default) => boolean;
+                            isEven?: () => boolean;
+                            isNegative?: () => boolean;
+                            isOdd?: () => boolean;
+                            isPositive?: () => boolean;
+                            isZero?: () => boolean;
+                            eqz?: () => boolean;
+                            lessThan?: (other: string | number | import("long").default) => boolean;
+                            lt?: (other: string | number | import("long").default) => boolean;
+                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            lte?: (other: string | number | import("long").default) => boolean;
+                            le?: (other: string | number | import("long").default) => boolean;
+                            modulo?: (other: string | number | import("long").default) => import("long").default;
+                            mod?: (other: string | number | import("long").default) => import("long").default;
+                            rem?: (other: string | number | import("long").default) => import("long").default;
+                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
+                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
+                            negate?: () => import("long").default;
+                            neg?: () => import("long").default;
+                            not?: () => import("long").default;
+                            countLeadingZeros?: () => number;
+                            clz?: () => number;
+                            countTrailingZeros?: () => number;
+                            ctz?: () => number;
+                            notEquals?: (other: string | number | import("long").default) => boolean;
+                            neq?: (other: string | number | import("long").default) => boolean;
+                            ne?: (other: string | number | import("long").default) => boolean;
+                            or?: (other: string | number | import("long").default) => import("long").default;
+                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
+                            shl?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
+                            shr?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
+                            shru?: (numBits: number | import("long").default) => import("long").default;
+                            shr_u?: (numBits: number | import("long").default) => import("long").default;
+                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
+                            rotl?: (numBits: number | import("long").default) => import("long").default;
+                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
+                            rotr?: (numBits: number | import("long").default) => import("long").default;
+                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            toInt?: () => number;
+                            toNumber?: () => number;
+                            toBytes?: (le?: boolean) => number[];
+                            toBytesLE?: () => number[];
+                            toBytesBE?: () => number[];
+                            toSigned?: () => import("long").default;
+                            toString?: (radix?: number) => string;
+                            toUnsigned?: () => import("long").default;
+                            xor?: (other: string | number | import("long").default) => import("long").default;
+                        };
+                        isFrozen?: boolean;
+                        consensusState?: {
+                            publicKey?: {
+                                typeUrl?: string;
+                                value?: Uint8Array;
+                            };
+                            diversifier?: string;
+                            timestamp?: {
+                                high?: number;
+                                low?: number;
+                                unsigned?: boolean;
+                                add?: (addend: string | number | import("long").default) => import("long").default;
+                                and?: (other: string | number | import("long").default) => import("long").default;
+                                compare?: (other: string | number | import("long").default) => number;
+                                comp?: (other: string | number | import("long").default) => number;
+                                divide?: (divisor: string | number | import("long").default) => import("long").default;
+                                div?: (divisor: string | number | import("long").default) => import("long").default;
+                                equals?: (other: string | number | import("long").default) => boolean;
+                                eq?: (other: string | number | import("long").default) => boolean;
+                                getHighBits?: () => number;
+                                getHighBitsUnsigned?: () => number;
+                                getLowBits?: () => number;
+                                getLowBitsUnsigned?: () => number;
+                                getNumBitsAbs?: () => number;
+                                greaterThan?: (other: string | number | import("long").default) => boolean;
+                                gt?: (other: string | number | import("long").default) => boolean;
+                                greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                                gte?: (other: string | number | import("long").default) => boolean;
+                                ge?: (other: string | number | import("long").default) => boolean;
+                                isEven?: () => boolean;
+                                isNegative?: () => boolean;
+                                isOdd?: () => boolean;
+                                isPositive?: () => boolean;
+                                isZero?: () => boolean;
+                                eqz?: () => boolean;
+                                lessThan?: (other: string | number | import("long").default) => boolean;
+                                lt?: (other: string | number | import("long").default) => boolean;
+                                lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                                lte?: (other: string | number | import("long").default) => boolean;
+                                le?: (other: string | number | import("long").default) => boolean;
+                                modulo?: (other: string | number | import("long").default) => import("long").default;
+                                mod?: (other: string | number | import("long").default) => import("long").default;
+                                rem?: (other: string | number | import("long").default) => import("long").default;
+                                multiply?: (multiplier: string | number | import("long").default) => import("long").default;
+                                mul?: (multiplier: string | number | import("long").default) => import("long").default;
+                                negate?: () => import("long").default;
+                                neg?: () => import("long").default;
+                                not?: () => import("long").default;
+                                countLeadingZeros?: () => number;
+                                clz?: () => number;
+                                countTrailingZeros?: () => number;
+                                ctz?: () => number;
+                                notEquals?: (other: string | number | import("long").default) => boolean;
+                                neq?: (other: string | number | import("long").default) => boolean;
+                                ne?: (other: string | number | import("long").default) => boolean;
+                                or?: (other: string | number | import("long").default) => import("long").default;
+                                shiftLeft?: (numBits: number | import("long").default) => import("long").default;
+                                shl?: (numBits: number | import("long").default) => import("long").default;
+                                shiftRight?: (numBits: number | import("long").default) => import("long").default;
+                                shr?: (numBits: number | import("long").default) => import("long").default;
+                                shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
+                                shru?: (numBits: number | import("long").default) => import("long").default;
+                                shr_u?: (numBits: number | import("long").default) => import("long").default;
+                                rotateLeft?: (numBits: number | import("long").default) => import("long").default;
+                                rotl?: (numBits: number | import("long").default) => import("long").default;
+                                rotateRight?: (numBits: number | import("long").default) => import("long").default;
+                                rotr?: (numBits: number | import("long").default) => import("long").default;
+                                subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
+                                sub?: (subtrahend: string | number | import("long").default) => import("long").default;
+                                toInt?: () => number;
+                                toNumber?: () => number;
+                                toBytes?: (le?: boolean) => number[];
+                                toBytesLE?: () => number[];
+                                toBytesBE?: () => number[];
+                                toSigned?: () => import("long").default;
+                                toString?: (radix?: number) => string;
+                                toUnsigned?: () => import("long").default;
+                                xor?: (other: string | number | import("long").default) => import("long").default;
+                            };
+                        };
+                        allowUpdateAfterProposal?: boolean;
+                    }): _169.ClientState;
+                };
+                ConsensusState: {
+                    encode(message: _169.ConsensusState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.ConsensusState;
+                    fromPartial(object: {
+                        publicKey?: {
+                            typeUrl?: string;
+                            value?: Uint8Array;
+                        };
+                        diversifier?: string;
+                        timestamp?: {
+                            high?: number;
+                            low?: number;
+                            unsigned?: boolean;
+                            add?: (addend: string | number | import("long").default) => import("long").default;
+                            and?: (other: string | number | import("long").default) => import("long").default;
+                            compare?: (other: string | number | import("long").default) => number;
+                            comp?: (other: string | number | import("long").default) => number;
+                            divide?: (divisor: string | number | import("long").default) => import("long").default;
+                            div?: (divisor: string | number | import("long").default) => import("long").default;
+                            equals?: (other: string | number | import("long").default) => boolean;
+                            eq?: (other: string | number | import("long").default) => boolean;
+                            getHighBits?: () => number;
+                            getHighBitsUnsigned?: () => number;
+                            getLowBits?: () => number;
+                            getLowBitsUnsigned?: () => number;
+                            getNumBitsAbs?: () => number;
+                            greaterThan?: (other: string | number | import("long").default) => boolean;
+                            gt?: (other: string | number | import("long").default) => boolean;
+                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            gte?: (other: string | number | import("long").default) => boolean;
+                            ge?: (other: string | number | import("long").default) => boolean;
+                            isEven?: () => boolean;
+                            isNegative?: () => boolean;
+                            isOdd?: () => boolean;
+                            isPositive?: () => boolean;
+                            isZero?: () => boolean;
+                            eqz?: () => boolean;
+                            lessThan?: (other: string | number | import("long").default) => boolean;
+                            lt?: (other: string | number | import("long").default) => boolean;
+                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            lte?: (other: string | number | import("long").default) => boolean;
+                            le?: (other: string | number | import("long").default) => boolean;
+                            modulo?: (other: string | number | import("long").default) => import("long").default;
+                            mod?: (other: string | number | import("long").default) => import("long").default;
+                            rem?: (other: string | number | import("long").default) => import("long").default;
+                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
+                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
+                            negate?: () => import("long").default;
+                            neg?: () => import("long").default;
+                            not?: () => import("long").default;
+                            countLeadingZeros?: () => number;
+                            clz?: () => number;
+                            countTrailingZeros?: () => number;
+                            ctz?: () => number;
+                            notEquals?: (other: string | number | import("long").default) => boolean;
+                            neq?: (other: string | number | import("long").default) => boolean;
+                            ne?: (other: string | number | import("long").default) => boolean;
+                            or?: (other: string | number | import("long").default) => import("long").default;
+                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
+                            shl?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
+                            shr?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
+                            shru?: (numBits: number | import("long").default) => import("long").default;
+                            shr_u?: (numBits: number | import("long").default) => import("long").default;
+                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
+                            rotl?: (numBits: number | import("long").default) => import("long").default;
+                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
+                            rotr?: (numBits: number | import("long").default) => import("long").default;
+                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            toInt?: () => number;
+                            toNumber?: () => number;
+                            toBytes?: (le?: boolean) => number[];
+                            toBytesLE?: () => number[];
+                            toBytesBE?: () => number[];
+                            toSigned?: () => import("long").default;
+                            toString?: (radix?: number) => string;
+                            toUnsigned?: () => import("long").default;
+                            xor?: (other: string | number | import("long").default) => import("long").default;
+                        };
+                    }): _169.ConsensusState;
+                };
+                Header: {
+                    encode(message: _169.Header, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.Header;
+                    fromPartial(object: {
+                        sequence?: {
+                            high?: number;
+                            low?: number;
+                            unsigned?: boolean;
+                            add?: (addend: string | number | import("long").default) => import("long").default;
+                            and?: (other: string | number | import("long").default) => import("long").default;
+                            compare?: (other: string | number | import("long").default) => number;
+                            comp?: (other: string | number | import("long").default) => number;
+                            divide?: (divisor: string | number | import("long").default) => import("long").default;
+                            div?: (divisor: string | number | import("long").default) => import("long").default;
+                            equals?: (other: string | number | import("long").default) => boolean;
+                            eq?: (other: string | number | import("long").default) => boolean;
+                            getHighBits?: () => number;
+                            getHighBitsUnsigned?: () => number;
+                            getLowBits?: () => number;
+                            getLowBitsUnsigned?: () => number;
+                            getNumBitsAbs?: () => number;
+                            greaterThan?: (other: string | number | import("long").default) => boolean;
+                            gt?: (other: string | number | import("long").default) => boolean;
+                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            gte?: (other: string | number | import("long").default) => boolean;
+                            ge?: (other: string | number | import("long").default) => boolean;
+                            isEven?: () => boolean;
+                            isNegative?: () => boolean;
+                            isOdd?: () => boolean;
+                            isPositive?: () => boolean;
+                            isZero?: () => boolean;
+                            eqz?: () => boolean;
+                            lessThan?: (other: string | number | import("long").default) => boolean;
+                            lt?: (other: string | number | import("long").default) => boolean;
+                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            lte?: (other: string | number | import("long").default) => boolean;
+                            le?: (other: string | number | import("long").default) => boolean;
+                            modulo?: (other: string | number | import("long").default) => import("long").default;
+                            mod?: (other: string | number | import("long").default) => import("long").default;
+                            rem?: (other: string | number | import("long").default) => import("long").default;
+                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
+                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
+                            negate?: () => import("long").default;
+                            neg?: () => import("long").default;
+                            not?: () => import("long").default;
+                            countLeadingZeros?: () => number;
+                            clz?: () => number;
+                            countTrailingZeros?: () => number;
+                            ctz?: () => number;
+                            notEquals?: (other: string | number | import("long").default) => boolean;
+                            neq?: (other: string | number | import("long").default) => boolean;
+                            ne?: (other: string | number | import("long").default) => boolean;
+                            or?: (other: string | number | import("long").default) => import("long").default;
+                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
+                            shl?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
+                            shr?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
+                            shru?: (numBits: number | import("long").default) => import("long").default;
+                            shr_u?: (numBits: number | import("long").default) => import("long").default;
+                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
+                            rotl?: (numBits: number | import("long").default) => import("long").default;
+                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
+                            rotr?: (numBits: number | import("long").default) => import("long").default;
+                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            toInt?: () => number;
+                            toNumber?: () => number;
+                            toBytes?: (le?: boolean) => number[];
+                            toBytesLE?: () => number[];
+                            toBytesBE?: () => number[];
+                            toSigned?: () => import("long").default;
+                            toString?: (radix?: number) => string;
+                            toUnsigned?: () => import("long").default;
+                            xor?: (other: string | number | import("long").default) => import("long").default;
+                        };
+                        timestamp?: {
+                            high?: number;
+                            low?: number;
+                            unsigned?: boolean;
+                            add?: (addend: string | number | import("long").default) => import("long").default;
+                            and?: (other: string | number | import("long").default) => import("long").default;
+                            compare?: (other: string | number | import("long").default) => number;
+                            comp?: (other: string | number | import("long").default) => number;
+                            divide?: (divisor: string | number | import("long").default) => import("long").default;
+                            div?: (divisor: string | number | import("long").default) => import("long").default;
+                            equals?: (other: string | number | import("long").default) => boolean;
+                            eq?: (other: string | number | import("long").default) => boolean;
+                            getHighBits?: () => number;
+                            getHighBitsUnsigned?: () => number;
+                            getLowBits?: () => number;
+                            getLowBitsUnsigned?: () => number;
+                            getNumBitsAbs?: () => number;
+                            greaterThan?: (other: string | number | import("long").default) => boolean;
+                            gt?: (other: string | number | import("long").default) => boolean;
+                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            gte?: (other: string | number | import("long").default) => boolean;
+                            ge?: (other: string | number | import("long").default) => boolean;
+                            isEven?: () => boolean;
+                            isNegative?: () => boolean;
+                            isOdd?: () => boolean;
+                            isPositive?: () => boolean;
+                            isZero?: () => boolean;
+                            eqz?: () => boolean;
+                            lessThan?: (other: string | number | import("long").default) => boolean;
+                            lt?: (other: string | number | import("long").default) => boolean;
+                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            lte?: (other: string | number | import("long").default) => boolean;
+                            le?: (other: string | number | import("long").default) => boolean;
+                            modulo?: (other: string | number | import("long").default) => import("long").default;
+                            mod?: (other: string | number | import("long").default) => import("long").default;
+                            rem?: (other: string | number | import("long").default) => import("long").default;
+                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
+                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
+                            negate?: () => import("long").default;
+                            neg?: () => import("long").default;
+                            not?: () => import("long").default;
+                            countLeadingZeros?: () => number;
+                            clz?: () => number;
+                            countTrailingZeros?: () => number;
+                            ctz?: () => number;
+                            notEquals?: (other: string | number | import("long").default) => boolean;
+                            neq?: (other: string | number | import("long").default) => boolean;
+                            ne?: (other: string | number | import("long").default) => boolean;
+                            or?: (other: string | number | import("long").default) => import("long").default;
+                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
+                            shl?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
+                            shr?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
+                            shru?: (numBits: number | import("long").default) => import("long").default;
+                            shr_u?: (numBits: number | import("long").default) => import("long").default;
+                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
+                            rotl?: (numBits: number | import("long").default) => import("long").default;
+                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
+                            rotr?: (numBits: number | import("long").default) => import("long").default;
+                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            toInt?: () => number;
+                            toNumber?: () => number;
+                            toBytes?: (le?: boolean) => number[];
+                            toBytesLE?: () => number[];
+                            toBytesBE?: () => number[];
+                            toSigned?: () => import("long").default;
+                            toString?: (radix?: number) => string;
+                            toUnsigned?: () => import("long").default;
+                            xor?: (other: string | number | import("long").default) => import("long").default;
+                        };
+                        signature?: Uint8Array;
+                        newPublicKey?: {
+                            typeUrl?: string;
+                            value?: Uint8Array;
+                        };
+                        newDiversifier?: string;
+                    }): _169.Header;
+                };
+                Misbehaviour: {
+                    encode(message: _169.Misbehaviour, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.Misbehaviour;
+                    fromPartial(object: {
+                        clientId?: string;
+                        sequence?: {
+                            high?: number;
+                            low?: number;
+                            unsigned?: boolean;
+                            add?: (addend: string | number | import("long").default) => import("long").default;
+                            and?: (other: string | number | import("long").default) => import("long").default;
+                            compare?: (other: string | number | import("long").default) => number;
+                            comp?: (other: string | number | import("long").default) => number;
+                            divide?: (divisor: string | number | import("long").default) => import("long").default;
+                            div?: (divisor: string | number | import("long").default) => import("long").default;
+                            equals?: (other: string | number | import("long").default) => boolean;
+                            eq?: (other: string | number | import("long").default) => boolean;
+                            getHighBits?: () => number;
+                            getHighBitsUnsigned?: () => number;
+                            getLowBits?: () => number;
+                            getLowBitsUnsigned?: () => number;
+                            getNumBitsAbs?: () => number;
+                            greaterThan?: (other: string | number | import("long").default) => boolean;
+                            gt?: (other: string | number | import("long").default) => boolean;
+                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            gte?: (other: string | number | import("long").default) => boolean;
+                            ge?: (other: string | number | import("long").default) => boolean;
+                            isEven?: () => boolean;
+                            isNegative?: () => boolean;
+                            isOdd?: () => boolean;
+                            isPositive?: () => boolean;
+                            isZero?: () => boolean;
+                            eqz?: () => boolean;
+                            lessThan?: (other: string | number | import("long").default) => boolean;
+                            lt?: (other: string | number | import("long").default) => boolean;
+                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            lte?: (other: string | number | import("long").default) => boolean;
+                            le?: (other: string | number | import("long").default) => boolean;
+                            modulo?: (other: string | number | import("long").default) => import("long").default;
+                            mod?: (other: string | number | import("long").default) => import("long").default;
+                            rem?: (other: string | number | import("long").default) => import("long").default;
+                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
+                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
+                            negate?: () => import("long").default;
+                            neg?: () => import("long").default;
+                            not?: () => import("long").default;
+                            countLeadingZeros?: () => number;
+                            clz?: () => number;
+                            countTrailingZeros?: () => number;
+                            ctz?: () => number;
+                            notEquals?: (other: string | number | import("long").default) => boolean;
+                            neq?: (other: string | number | import("long").default) => boolean;
+                            ne?: (other: string | number | import("long").default) => boolean;
+                            or?: (other: string | number | import("long").default) => import("long").default;
+                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
+                            shl?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
+                            shr?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
+                            shru?: (numBits: number | import("long").default) => import("long").default;
+                            shr_u?: (numBits: number | import("long").default) => import("long").default;
+                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
+                            rotl?: (numBits: number | import("long").default) => import("long").default;
+                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
+                            rotr?: (numBits: number | import("long").default) => import("long").default;
+                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            toInt?: () => number;
+                            toNumber?: () => number;
+                            toBytes?: (le?: boolean) => number[];
+                            toBytesLE?: () => number[];
+                            toBytesBE?: () => number[];
+                            toSigned?: () => import("long").default;
+                            toString?: (radix?: number) => string;
+                            toUnsigned?: () => import("long").default;
+                            xor?: (other: string | number | import("long").default) => import("long").default;
+                        };
+                        signatureOne?: {
+                            signature?: Uint8Array;
+                            dataType?: _169.DataType;
+                            data?: Uint8Array;
+                            timestamp?: {
+                                high?: number;
+                                low?: number;
+                                unsigned?: boolean;
+                                add?: (addend: string | number | import("long").default) => import("long").default;
+                                and?: (other: string | number | import("long").default) => import("long").default;
+                                compare?: (other: string | number | import("long").default) => number;
+                                comp?: (other: string | number | import("long").default) => number;
+                                divide?: (divisor: string | number | import("long").default) => import("long").default;
+                                div?: (divisor: string | number | import("long").default) => import("long").default;
+                                equals?: (other: string | number | import("long").default) => boolean;
+                                eq?: (other: string | number | import("long").default) => boolean;
+                                getHighBits?: () => number;
+                                getHighBitsUnsigned?: () => number;
+                                getLowBits?: () => number;
+                                getLowBitsUnsigned?: () => number;
+                                getNumBitsAbs?: () => number;
+                                greaterThan?: (other: string | number | import("long").default) => boolean;
+                                gt?: (other: string | number | import("long").default) => boolean;
+                                greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                                gte?: (other: string | number | import("long").default) => boolean;
+                                ge?: (other: string | number | import("long").default) => boolean;
+                                isEven?: () => boolean;
+                                isNegative?: () => boolean;
+                                isOdd?: () => boolean;
+                                isPositive?: () => boolean;
+                                isZero?: () => boolean;
+                                eqz?: () => boolean;
+                                lessThan?: (other: string | number | import("long").default) => boolean;
+                                lt?: (other: string | number | import("long").default) => boolean;
+                                lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                                lte?: (other: string | number | import("long").default) => boolean;
+                                le?: (other: string | number | import("long").default) => boolean;
+                                modulo?: (other: string | number | import("long").default) => import("long").default;
+                                mod?: (other: string | number | import("long").default) => import("long").default;
+                                rem?: (other: string | number | import("long").default) => import("long").default;
+                                multiply?: (multiplier: string | number | import("long").default) => import("long").default;
+                                mul?: (multiplier: string | number | import("long").default) => import("long").default;
+                                negate?: () => import("long").default;
+                                neg?: () => import("long").default;
+                                not?: () => import("long").default;
+                                countLeadingZeros?: () => number;
+                                clz?: () => number;
+                                countTrailingZeros?: () => number;
+                                ctz?: () => number;
+                                notEquals?: (other: string | number | import("long").default) => boolean;
+                                neq?: (other: string | number | import("long").default) => boolean;
+                                ne?: (other: string | number | import("long").default) => boolean;
+                                or?: (other: string | number | import("long").default) => import("long").default;
+                                shiftLeft?: (numBits: number | import("long").default) => import("long").default;
+                                shl?: (numBits: number | import("long").default) => import("long").default;
+                                shiftRight?: (numBits: number | import("long").default) => import("long").default;
+                                shr?: (numBits: number | import("long").default) => import("long").default;
+                                shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
+                                shru?: (numBits: number | import("long").default) => import("long").default;
+                                shr_u?: (numBits: number | import("long").default) => import("long").default;
+                                rotateLeft?: (numBits: number | import("long").default) => import("long").default;
+                                rotl?: (numBits: number | import("long").default) => import("long").default;
+                                rotateRight?: (numBits: number | import("long").default) => import("long").default;
+                                rotr?: (numBits: number | import("long").default) => import("long").default;
+                                subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
+                                sub?: (subtrahend: string | number | import("long").default) => import("long").default;
+                                toInt?: () => number;
+                                toNumber?: () => number;
+                                toBytes?: (le?: boolean) => number[];
+                                toBytesLE?: () => number[];
+                                toBytesBE?: () => number[];
+                                toSigned?: () => import("long").default;
+                                toString?: (radix?: number) => string;
+                                toUnsigned?: () => import("long").default;
+                                xor?: (other: string | number | import("long").default) => import("long").default;
+                            };
+                        };
+                        signatureTwo?: {
+                            signature?: Uint8Array;
+                            dataType?: _169.DataType;
+                            data?: Uint8Array;
+                            timestamp?: {
+                                high?: number;
+                                low?: number;
+                                unsigned?: boolean;
+                                add?: (addend: string | number | import("long").default) => import("long").default;
+                                and?: (other: string | number | import("long").default) => import("long").default;
+                                compare?: (other: string | number | import("long").default) => number;
+                                comp?: (other: string | number | import("long").default) => number;
+                                divide?: (divisor: string | number | import("long").default) => import("long").default;
+                                div?: (divisor: string | number | import("long").default) => import("long").default;
+                                equals?: (other: string | number | import("long").default) => boolean;
+                                eq?: (other: string | number | import("long").default) => boolean;
+                                getHighBits?: () => number;
+                                getHighBitsUnsigned?: () => number;
+                                getLowBits?: () => number;
+                                getLowBitsUnsigned?: () => number;
+                                getNumBitsAbs?: () => number;
+                                greaterThan?: (other: string | number | import("long").default) => boolean;
+                                gt?: (other: string | number | import("long").default) => boolean;
+                                greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                                gte?: (other: string | number | import("long").default) => boolean;
+                                ge?: (other: string | number | import("long").default) => boolean;
+                                isEven?: () => boolean;
+                                isNegative?: () => boolean;
+                                isOdd?: () => boolean;
+                                isPositive?: () => boolean;
+                                isZero?: () => boolean;
+                                eqz?: () => boolean;
+                                lessThan?: (other: string | number | import("long").default) => boolean;
+                                lt?: (other: string | number | import("long").default) => boolean;
+                                lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                                lte?: (other: string | number | import("long").default) => boolean;
+                                le?: (other: string | number | import("long").default) => boolean;
+                                modulo?: (other: string | number | import("long").default) => import("long").default;
+                                mod?: (other: string | number | import("long").default) => import("long").default;
+                                rem?: (other: string | number | import("long").default) => import("long").default;
+                                multiply?: (multiplier: string | number | import("long").default) => import("long").default;
+                                mul?: (multiplier: string | number | import("long").default) => import("long").default;
+                                negate?: () => import("long").default;
+                                neg?: () => import("long").default;
+                                not?: () => import("long").default;
+                                countLeadingZeros?: () => number;
+                                clz?: () => number;
+                                countTrailingZeros?: () => number;
+                                ctz?: () => number;
+                                notEquals?: (other: string | number | import("long").default) => boolean;
+                                neq?: (other: string | number | import("long").default) => boolean;
+                                ne?: (other: string | number | import("long").default) => boolean;
+                                or?: (other: string | number | import("long").default) => import("long").default;
+                                shiftLeft?: (numBits: number | import("long").default) => import("long").default;
+                                shl?: (numBits: number | import("long").default) => import("long").default;
+                                shiftRight?: (numBits: number | import("long").default) => import("long").default;
+                                shr?: (numBits: number | import("long").default) => import("long").default;
+                                shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
+                                shru?: (numBits: number | import("long").default) => import("long").default;
+                                shr_u?: (numBits: number | import("long").default) => import("long").default;
+                                rotateLeft?: (numBits: number | import("long").default) => import("long").default;
+                                rotl?: (numBits: number | import("long").default) => import("long").default;
+                                rotateRight?: (numBits: number | import("long").default) => import("long").default;
+                                rotr?: (numBits: number | import("long").default) => import("long").default;
+                                subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
+                                sub?: (subtrahend: string | number | import("long").default) => import("long").default;
+                                toInt?: () => number;
+                                toNumber?: () => number;
+                                toBytes?: (le?: boolean) => number[];
+                                toBytesLE?: () => number[];
+                                toBytesBE?: () => number[];
+                                toSigned?: () => import("long").default;
+                                toString?: (radix?: number) => string;
+                                toUnsigned?: () => import("long").default;
+                                xor?: (other: string | number | import("long").default) => import("long").default;
+                            };
+                        };
+                    }): _169.Misbehaviour;
+                };
+                SignatureAndData: {
+                    encode(message: _169.SignatureAndData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.SignatureAndData;
+                    fromPartial(object: {
+                        signature?: Uint8Array;
+                        dataType?: _169.DataType;
+                        data?: Uint8Array;
+                        timestamp?: {
+                            high?: number;
+                            low?: number;
+                            unsigned?: boolean;
+                            add?: (addend: string | number | import("long").default) => import("long").default;
+                            and?: (other: string | number | import("long").default) => import("long").default;
+                            compare?: (other: string | number | import("long").default) => number;
+                            comp?: (other: string | number | import("long").default) => number;
+                            divide?: (divisor: string | number | import("long").default) => import("long").default;
+                            div?: (divisor: string | number | import("long").default) => import("long").default;
+                            equals?: (other: string | number | import("long").default) => boolean;
+                            eq?: (other: string | number | import("long").default) => boolean;
+                            getHighBits?: () => number;
+                            getHighBitsUnsigned?: () => number;
+                            getLowBits?: () => number;
+                            getLowBitsUnsigned?: () => number;
+                            getNumBitsAbs?: () => number;
+                            greaterThan?: (other: string | number | import("long").default) => boolean;
+                            gt?: (other: string | number | import("long").default) => boolean;
+                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            gte?: (other: string | number | import("long").default) => boolean;
+                            ge?: (other: string | number | import("long").default) => boolean;
+                            isEven?: () => boolean;
+                            isNegative?: () => boolean;
+                            isOdd?: () => boolean;
+                            isPositive?: () => boolean;
+                            isZero?: () => boolean;
+                            eqz?: () => boolean;
+                            lessThan?: (other: string | number | import("long").default) => boolean;
+                            lt?: (other: string | number | import("long").default) => boolean;
+                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            lte?: (other: string | number | import("long").default) => boolean;
+                            le?: (other: string | number | import("long").default) => boolean;
+                            modulo?: (other: string | number | import("long").default) => import("long").default;
+                            mod?: (other: string | number | import("long").default) => import("long").default;
+                            rem?: (other: string | number | import("long").default) => import("long").default;
+                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
+                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
+                            negate?: () => import("long").default;
+                            neg?: () => import("long").default;
+                            not?: () => import("long").default;
+                            countLeadingZeros?: () => number;
+                            clz?: () => number;
+                            countTrailingZeros?: () => number;
+                            ctz?: () => number;
+                            notEquals?: (other: string | number | import("long").default) => boolean;
+                            neq?: (other: string | number | import("long").default) => boolean;
+                            ne?: (other: string | number | import("long").default) => boolean;
+                            or?: (other: string | number | import("long").default) => import("long").default;
+                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
+                            shl?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
+                            shr?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
+                            shru?: (numBits: number | import("long").default) => import("long").default;
+                            shr_u?: (numBits: number | import("long").default) => import("long").default;
+                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
+                            rotl?: (numBits: number | import("long").default) => import("long").default;
+                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
+                            rotr?: (numBits: number | import("long").default) => import("long").default;
+                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            toInt?: () => number;
+                            toNumber?: () => number;
+                            toBytes?: (le?: boolean) => number[];
+                            toBytesLE?: () => number[];
+                            toBytesBE?: () => number[];
+                            toSigned?: () => import("long").default;
+                            toString?: (radix?: number) => string;
+                            toUnsigned?: () => import("long").default;
+                            xor?: (other: string | number | import("long").default) => import("long").default;
+                        };
+                    }): _169.SignatureAndData;
+                };
+                TimestampedSignatureData: {
+                    encode(message: _169.TimestampedSignatureData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.TimestampedSignatureData;
+                    fromPartial(object: {
+                        signatureData?: Uint8Array;
+                        timestamp?: {
+                            high?: number;
+                            low?: number;
+                            unsigned?: boolean;
+                            add?: (addend: string | number | import("long").default) => import("long").default;
+                            and?: (other: string | number | import("long").default) => import("long").default;
+                            compare?: (other: string | number | import("long").default) => number;
+                            comp?: (other: string | number | import("long").default) => number;
+                            divide?: (divisor: string | number | import("long").default) => import("long").default;
+                            div?: (divisor: string | number | import("long").default) => import("long").default;
+                            equals?: (other: string | number | import("long").default) => boolean;
+                            eq?: (other: string | number | import("long").default) => boolean;
+                            getHighBits?: () => number;
+                            getHighBitsUnsigned?: () => number;
+                            getLowBits?: () => number;
+                            getLowBitsUnsigned?: () => number;
+                            getNumBitsAbs?: () => number;
+                            greaterThan?: (other: string | number | import("long").default) => boolean;
+                            gt?: (other: string | number | import("long").default) => boolean;
+                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            gte?: (other: string | number | import("long").default) => boolean;
+                            ge?: (other: string | number | import("long").default) => boolean;
+                            isEven?: () => boolean;
+                            isNegative?: () => boolean;
+                            isOdd?: () => boolean;
+                            isPositive?: () => boolean;
+                            isZero?: () => boolean;
+                            eqz?: () => boolean;
+                            lessThan?: (other: string | number | import("long").default) => boolean;
+                            lt?: (other: string | number | import("long").default) => boolean;
+                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            lte?: (other: string | number | import("long").default) => boolean;
+                            le?: (other: string | number | import("long").default) => boolean;
+                            modulo?: (other: string | number | import("long").default) => import("long").default;
+                            mod?: (other: string | number | import("long").default) => import("long").default;
+                            rem?: (other: string | number | import("long").default) => import("long").default;
+                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
+                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
+                            negate?: () => import("long").default;
+                            neg?: () => import("long").default;
+                            not?: () => import("long").default;
+                            countLeadingZeros?: () => number;
+                            clz?: () => number;
+                            countTrailingZeros?: () => number;
+                            ctz?: () => number;
+                            notEquals?: (other: string | number | import("long").default) => boolean;
+                            neq?: (other: string | number | import("long").default) => boolean;
+                            ne?: (other: string | number | import("long").default) => boolean;
+                            or?: (other: string | number | import("long").default) => import("long").default;
+                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
+                            shl?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
+                            shr?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
+                            shru?: (numBits: number | import("long").default) => import("long").default;
+                            shr_u?: (numBits: number | import("long").default) => import("long").default;
+                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
+                            rotl?: (numBits: number | import("long").default) => import("long").default;
+                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
+                            rotr?: (numBits: number | import("long").default) => import("long").default;
+                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            toInt?: () => number;
+                            toNumber?: () => number;
+                            toBytes?: (le?: boolean) => number[];
+                            toBytesLE?: () => number[];
+                            toBytesBE?: () => number[];
+                            toSigned?: () => import("long").default;
+                            toString?: (radix?: number) => string;
+                            toUnsigned?: () => import("long").default;
+                            xor?: (other: string | number | import("long").default) => import("long").default;
+                        };
+                    }): _169.TimestampedSignatureData;
+                };
+                SignBytes: {
+                    encode(message: _169.SignBytes, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.SignBytes;
+                    fromPartial(object: {
+                        sequence?: {
+                            high?: number;
+                            low?: number;
+                            unsigned?: boolean;
+                            add?: (addend: string | number | import("long").default) => import("long").default;
+                            and?: (other: string | number | import("long").default) => import("long").default;
+                            compare?: (other: string | number | import("long").default) => number;
+                            comp?: (other: string | number | import("long").default) => number;
+                            divide?: (divisor: string | number | import("long").default) => import("long").default;
+                            div?: (divisor: string | number | import("long").default) => import("long").default;
+                            equals?: (other: string | number | import("long").default) => boolean;
+                            eq?: (other: string | number | import("long").default) => boolean;
+                            getHighBits?: () => number;
+                            getHighBitsUnsigned?: () => number;
+                            getLowBits?: () => number;
+                            getLowBitsUnsigned?: () => number;
+                            getNumBitsAbs?: () => number;
+                            greaterThan?: (other: string | number | import("long").default) => boolean;
+                            gt?: (other: string | number | import("long").default) => boolean;
+                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            gte?: (other: string | number | import("long").default) => boolean;
+                            ge?: (other: string | number | import("long").default) => boolean;
+                            isEven?: () => boolean;
+                            isNegative?: () => boolean;
+                            isOdd?: () => boolean;
+                            isPositive?: () => boolean;
+                            isZero?: () => boolean;
+                            eqz?: () => boolean;
+                            lessThan?: (other: string | number | import("long").default) => boolean;
+                            lt?: (other: string | number | import("long").default) => boolean;
+                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            lte?: (other: string | number | import("long").default) => boolean;
+                            le?: (other: string | number | import("long").default) => boolean;
+                            modulo?: (other: string | number | import("long").default) => import("long").default;
+                            mod?: (other: string | number | import("long").default) => import("long").default;
+                            rem?: (other: string | number | import("long").default) => import("long").default;
+                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
+                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
+                            negate?: () => import("long").default;
+                            neg?: () => import("long").default;
+                            not?: () => import("long").default;
+                            countLeadingZeros?: () => number;
+                            clz?: () => number;
+                            countTrailingZeros?: () => number;
+                            ctz?: () => number;
+                            notEquals?: (other: string | number | import("long").default) => boolean;
+                            neq?: (other: string | number | import("long").default) => boolean;
+                            ne?: (other: string | number | import("long").default) => boolean;
+                            or?: (other: string | number | import("long").default) => import("long").default;
+                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
+                            shl?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
+                            shr?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
+                            shru?: (numBits: number | import("long").default) => import("long").default;
+                            shr_u?: (numBits: number | import("long").default) => import("long").default;
+                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
+                            rotl?: (numBits: number | import("long").default) => import("long").default;
+                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
+                            rotr?: (numBits: number | import("long").default) => import("long").default;
+                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            toInt?: () => number;
+                            toNumber?: () => number;
+                            toBytes?: (le?: boolean) => number[];
+                            toBytesLE?: () => number[];
+                            toBytesBE?: () => number[];
+                            toSigned?: () => import("long").default;
+                            toString?: (radix?: number) => string;
+                            toUnsigned?: () => import("long").default;
+                            xor?: (other: string | number | import("long").default) => import("long").default;
+                        };
+                        timestamp?: {
+                            high?: number;
+                            low?: number;
+                            unsigned?: boolean;
+                            add?: (addend: string | number | import("long").default) => import("long").default;
+                            and?: (other: string | number | import("long").default) => import("long").default;
+                            compare?: (other: string | number | import("long").default) => number;
+                            comp?: (other: string | number | import("long").default) => number;
+                            divide?: (divisor: string | number | import("long").default) => import("long").default;
+                            div?: (divisor: string | number | import("long").default) => import("long").default;
+                            equals?: (other: string | number | import("long").default) => boolean;
+                            eq?: (other: string | number | import("long").default) => boolean;
+                            getHighBits?: () => number;
+                            getHighBitsUnsigned?: () => number;
+                            getLowBits?: () => number;
+                            getLowBitsUnsigned?: () => number;
+                            getNumBitsAbs?: () => number;
+                            greaterThan?: (other: string | number | import("long").default) => boolean;
+                            gt?: (other: string | number | import("long").default) => boolean;
+                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            gte?: (other: string | number | import("long").default) => boolean;
+                            ge?: (other: string | number | import("long").default) => boolean;
+                            isEven?: () => boolean;
+                            isNegative?: () => boolean;
+                            isOdd?: () => boolean;
+                            isPositive?: () => boolean;
+                            isZero?: () => boolean;
+                            eqz?: () => boolean;
+                            lessThan?: (other: string | number | import("long").default) => boolean;
+                            lt?: (other: string | number | import("long").default) => boolean;
+                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            lte?: (other: string | number | import("long").default) => boolean;
+                            le?: (other: string | number | import("long").default) => boolean;
+                            modulo?: (other: string | number | import("long").default) => import("long").default;
+                            mod?: (other: string | number | import("long").default) => import("long").default;
+                            rem?: (other: string | number | import("long").default) => import("long").default;
+                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
+                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
+                            negate?: () => import("long").default;
+                            neg?: () => import("long").default;
+                            not?: () => import("long").default;
+                            countLeadingZeros?: () => number;
+                            clz?: () => number;
+                            countTrailingZeros?: () => number;
+                            ctz?: () => number;
+                            notEquals?: (other: string | number | import("long").default) => boolean;
+                            neq?: (other: string | number | import("long").default) => boolean;
+                            ne?: (other: string | number | import("long").default) => boolean;
+                            or?: (other: string | number | import("long").default) => import("long").default;
+                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
+                            shl?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
+                            shr?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
+                            shru?: (numBits: number | import("long").default) => import("long").default;
+                            shr_u?: (numBits: number | import("long").default) => import("long").default;
+                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
+                            rotl?: (numBits: number | import("long").default) => import("long").default;
+                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
+                            rotr?: (numBits: number | import("long").default) => import("long").default;
+                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            toInt?: () => number;
+                            toNumber?: () => number;
+                            toBytes?: (le?: boolean) => number[];
+                            toBytesLE?: () => number[];
+                            toBytesBE?: () => number[];
+                            toSigned?: () => import("long").default;
+                            toString?: (radix?: number) => string;
+                            toUnsigned?: () => import("long").default;
+                            xor?: (other: string | number | import("long").default) => import("long").default;
+                        };
+                        diversifier?: string;
+                        dataType?: _169.DataType;
+                        data?: Uint8Array;
+                    }): _169.SignBytes;
+                };
+                HeaderData: {
+                    encode(message: _169.HeaderData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.HeaderData;
+                    fromPartial(object: {
+                        newPubKey?: {
+                            typeUrl?: string;
+                            value?: Uint8Array;
+                        };
+                        newDiversifier?: string;
+                    }): _169.HeaderData;
+                };
+                ClientStateData: {
+                    encode(message: _169.ClientStateData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.ClientStateData;
+                    fromPartial(object: {
+                        path?: Uint8Array;
+                        clientState?: {
+                            typeUrl?: string;
+                            value?: Uint8Array;
+                        };
+                    }): _169.ClientStateData;
+                };
+                ConsensusStateData: {
+                    encode(message: _169.ConsensusStateData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.ConsensusStateData;
+                    fromPartial(object: {
+                        path?: Uint8Array;
+                        consensusState?: {
+                            typeUrl?: string;
+                            value?: Uint8Array;
+                        };
+                    }): _169.ConsensusStateData;
+                };
+                ConnectionStateData: {
+                    encode(message: _169.ConnectionStateData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.ConnectionStateData;
+                    fromPartial(object: {
+                        path?: Uint8Array;
+                        connection?: {
+                            clientId?: string;
+                            versions?: {
+                                identifier?: string;
+                                features?: string[];
+                            }[];
+                            state?: _161.State;
+                            counterparty?: {
+                                clientId?: string;
+                                connectionId?: string;
+                                prefix?: {
+                                    keyPrefix?: Uint8Array;
+                                };
+                            };
+                            delayPeriod?: {
+                                high?: number;
+                                low?: number;
+                                unsigned?: boolean;
+                                add?: (addend: string | number | import("long").default) => import("long").default;
+                                and?: (other: string | number | import("long").default) => import("long").default;
+                                compare?: (other: string | number | import("long").default) => number;
+                                comp?: (other: string | number | import("long").default) => number;
+                                divide?: (divisor: string | number | import("long").default) => import("long").default;
+                                div?: (divisor: string | number | import("long").default) => import("long").default;
+                                equals?: (other: string | number | import("long").default) => boolean;
+                                eq?: (other: string | number | import("long").default) => boolean;
+                                getHighBits?: () => number;
+                                getHighBitsUnsigned?: () => number;
+                                getLowBits?: () => number;
+                                getLowBitsUnsigned?: () => number;
+                                getNumBitsAbs?: () => number;
+                                greaterThan?: (other: string | number | import("long").default) => boolean;
+                                gt?: (other: string | number | import("long").default) => boolean;
+                                greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                                gte?: (other: string | number | import("long").default) => boolean;
+                                ge?: (other: string | number | import("long").default) => boolean;
+                                isEven?: () => boolean;
+                                isNegative?: () => boolean;
+                                isOdd?: () => boolean;
+                                isPositive?: () => boolean;
+                                isZero?: () => boolean;
+                                eqz?: () => boolean;
+                                lessThan?: (other: string | number | import("long").default) => boolean;
+                                lt?: (other: string | number | import("long").default) => boolean;
+                                lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                                lte?: (other: string | number | import("long").default) => boolean;
+                                le?: (other: string | number | import("long").default) => boolean;
+                                modulo?: (other: string | number | import("long").default) => import("long").default;
+                                mod?: (other: string | number | import("long").default) => import("long").default;
+                                rem?: (other: string | number | import("long").default) => import("long").default;
+                                multiply?: (multiplier: string | number | import("long").default) => import("long").default;
+                                mul?: (multiplier: string | number | import("long").default) => import("long").default;
+                                negate?: () => import("long").default;
+                                neg?: () => import("long").default;
+                                not?: () => import("long").default;
+                                countLeadingZeros?: () => number;
+                                clz?: () => number;
+                                countTrailingZeros?: () => number;
+                                ctz?: () => number;
+                                notEquals?: (other: string | number | import("long").default) => boolean;
+                                neq?: (other: string | number | import("long").default) => boolean;
+                                ne?: (other: string | number | import("long").default) => boolean;
+                                or?: (other: string | number | import("long").default) => import("long").default;
+                                shiftLeft?: (numBits: number | import("long").default) => import("long").default;
+                                shl?: (numBits: number | import("long").default) => import("long").default;
+                                shiftRight?: (numBits: number | import("long").default) => import("long").default;
+                                shr?: (numBits: number | import("long").default) => import("long").default;
+                                shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
+                                shru?: (numBits: number | import("long").default) => import("long").default;
+                                shr_u?: (numBits: number | import("long").default) => import("long").default;
+                                rotateLeft?: (numBits: number | import("long").default) => import("long").default;
+                                rotl?: (numBits: number | import("long").default) => import("long").default;
+                                rotateRight?: (numBits: number | import("long").default) => import("long").default;
+                                rotr?: (numBits: number | import("long").default) => import("long").default;
+                                subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
+                                sub?: (subtrahend: string | number | import("long").default) => import("long").default;
+                                toInt?: () => number;
+                                toNumber?: () => number;
+                                toBytes?: (le?: boolean) => number[];
+                                toBytesLE?: () => number[];
+                                toBytesBE?: () => number[];
+                                toSigned?: () => import("long").default;
+                                toString?: (radix?: number) => string;
+                                toUnsigned?: () => import("long").default;
+                                xor?: (other: string | number | import("long").default) => import("long").default;
+                            };
+                        };
+                    }): _169.ConnectionStateData;
+                };
+                ChannelStateData: {
+                    encode(message: _169.ChannelStateData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.ChannelStateData;
+                    fromPartial(object: {
+                        path?: Uint8Array;
+                        channel?: {
+                            state?: _152.State;
+                            ordering?: _152.Order;
+                            counterparty?: {
+                                portId?: string;
+                                channelId?: string;
+                            };
+                            connectionHops?: string[];
+                            version?: string;
+                        };
+                    }): _169.ChannelStateData;
+                };
+                PacketCommitmentData: {
+                    encode(message: _169.PacketCommitmentData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.PacketCommitmentData;
+                    fromPartial(object: {
+                        path?: Uint8Array;
+                        commitment?: Uint8Array;
+                    }): _169.PacketCommitmentData;
+                };
+                PacketAcknowledgementData: {
+                    encode(message: _169.PacketAcknowledgementData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.PacketAcknowledgementData;
+                    fromPartial(object: {
+                        path?: Uint8Array;
+                        acknowledgement?: Uint8Array;
+                    }): _169.PacketAcknowledgementData;
+                };
+                PacketReceiptAbsenceData: {
+                    encode(message: _169.PacketReceiptAbsenceData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.PacketReceiptAbsenceData;
+                    fromPartial(object: {
+                        path?: Uint8Array;
+                    }): _169.PacketReceiptAbsenceData;
+                };
+                NextSequenceRecvData: {
+                    encode(message: _169.NextSequenceRecvData, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.NextSequenceRecvData;
+                    fromPartial(object: {
+                        path?: Uint8Array;
+                        nextSeqRecv?: {
+                            high?: number;
+                            low?: number;
+                            unsigned?: boolean;
+                            add?: (addend: string | number | import("long").default) => import("long").default;
+                            and?: (other: string | number | import("long").default) => import("long").default;
+                            compare?: (other: string | number | import("long").default) => number;
+                            comp?: (other: string | number | import("long").default) => number;
+                            divide?: (divisor: string | number | import("long").default) => import("long").default;
+                            div?: (divisor: string | number | import("long").default) => import("long").default;
+                            equals?: (other: string | number | import("long").default) => boolean;
+                            eq?: (other: string | number | import("long").default) => boolean;
+                            getHighBits?: () => number;
+                            getHighBitsUnsigned?: () => number;
+                            getLowBits?: () => number;
+                            getLowBitsUnsigned?: () => number;
+                            getNumBitsAbs?: () => number;
+                            greaterThan?: (other: string | number | import("long").default) => boolean;
+                            gt?: (other: string | number | import("long").default) => boolean;
+                            greaterThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            gte?: (other: string | number | import("long").default) => boolean;
+                            ge?: (other: string | number | import("long").default) => boolean;
+                            isEven?: () => boolean;
+                            isNegative?: () => boolean;
+                            isOdd?: () => boolean;
+                            isPositive?: () => boolean;
+                            isZero?: () => boolean;
+                            eqz?: () => boolean;
+                            lessThan?: (other: string | number | import("long").default) => boolean;
+                            lt?: (other: string | number | import("long").default) => boolean;
+                            lessThanOrEqual?: (other: string | number | import("long").default) => boolean;
+                            lte?: (other: string | number | import("long").default) => boolean;
+                            le?: (other: string | number | import("long").default) => boolean;
+                            modulo?: (other: string | number | import("long").default) => import("long").default;
+                            mod?: (other: string | number | import("long").default) => import("long").default;
+                            rem?: (other: string | number | import("long").default) => import("long").default;
+                            multiply?: (multiplier: string | number | import("long").default) => import("long").default;
+                            mul?: (multiplier: string | number | import("long").default) => import("long").default;
+                            negate?: () => import("long").default;
+                            neg?: () => import("long").default;
+                            not?: () => import("long").default;
+                            countLeadingZeros?: () => number;
+                            clz?: () => number;
+                            countTrailingZeros?: () => number;
+                            ctz?: () => number;
+                            notEquals?: (other: string | number | import("long").default) => boolean;
+                            neq?: (other: string | number | import("long").default) => boolean;
+                            ne?: (other: string | number | import("long").default) => boolean;
+                            or?: (other: string | number | import("long").default) => import("long").default;
+                            shiftLeft?: (numBits: number | import("long").default) => import("long").default;
+                            shl?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRight?: (numBits: number | import("long").default) => import("long").default;
+                            shr?: (numBits: number | import("long").default) => import("long").default;
+                            shiftRightUnsigned?: (numBits: number | import("long").default) => import("long").default;
+                            shru?: (numBits: number | import("long").default) => import("long").default;
+                            shr_u?: (numBits: number | import("long").default) => import("long").default;
+                            rotateLeft?: (numBits: number | import("long").default) => import("long").default;
+                            rotl?: (numBits: number | import("long").default) => import("long").default;
+                            rotateRight?: (numBits: number | import("long").default) => import("long").default;
+                            rotr?: (numBits: number | import("long").default) => import("long").default;
+                            subtract?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            sub?: (subtrahend: string | number | import("long").default) => import("long").default;
+                            toInt?: () => number;
+                            toNumber?: () => number;
+                            toBytes?: (le?: boolean) => number[];
+                            toBytesLE?: () => number[];
+                            toBytesBE?: () => number[];
+                            toSigned?: () => import("long").default;
+                            toString?: (radix?: number) => string;
+                            toUnsigned?: () => import("long").default;
+                            xor?: (other: string | number | import("long").default) => import("long").default;
+                        };
+                    }): _169.NextSequenceRecvData;
+                };
+            };
         }
         namespace tendermint {
             const v1: {
                 ClientState: {
-                    encode(message: _169.ClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.ClientState;
+                    encode(message: _170.ClientState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.ClientState;
                     fromPartial(object: {
                         chainId?: string;
                         trustLevel?: {
@@ -18716,22 +18716,22 @@ export declare namespace ibc {
                         upgradePath?: string[];
                         allowUpdateAfterExpiry?: boolean;
                         allowUpdateAfterMisbehaviour?: boolean;
-                    }): _169.ClientState;
+                    }): _170.ClientState;
                 };
                 ConsensusState: {
-                    encode(message: _169.ConsensusState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.ConsensusState;
+                    encode(message: _170.ConsensusState, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.ConsensusState;
                     fromPartial(object: {
                         timestamp?: Date;
                         root?: {
                             hash?: Uint8Array;
                         };
                         nextValidatorsHash?: Uint8Array;
-                    }): _169.ConsensusState;
+                    }): _170.ConsensusState;
                 };
                 Misbehaviour: {
-                    encode(message: _169.Misbehaviour, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.Misbehaviour;
+                    encode(message: _170.Misbehaviour, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.Misbehaviour;
                     fromPartial(object: {
                         clientId?: string;
                         header1?: {
@@ -21190,11 +21190,11 @@ export declare namespace ibc {
                                 };
                             };
                         };
-                    }): _169.Misbehaviour;
+                    }): _170.Misbehaviour;
                 };
                 Header: {
-                    encode(message: _169.Header, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.Header;
+                    encode(message: _170.Header, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.Header;
                     fromPartial(object: {
                         signedHeader?: {
                             header?: {
@@ -22422,11 +22422,11 @@ export declare namespace ibc {
                                 xor?: (other: string | number | import("long").default) => import("long").default;
                             };
                         };
-                    }): _169.Header;
+                    }): _170.Header;
                 };
                 Fraction: {
-                    encode(message: _169.Fraction, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
-                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _169.Fraction;
+                    encode(message: _170.Fraction, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                    decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _170.Fraction;
                     fromPartial(object: {
                         numerator?: {
                             high?: number;
@@ -22572,7 +22572,7 @@ export declare namespace ibc {
                             toUnsigned?: () => import("long").default;
                             xor?: (other: string | number | import("long").default) => import("long").default;
                         };
-                    }): _169.Fraction;
+                    }): _170.Fraction;
                 };
             };
         }
@@ -22626,18 +22626,18 @@ export declare namespace ibc {
             ibc: {
                 applications: {
                     transfer: {
-                        v1: _302.MsgClientImpl;
+                        v1: _303.MsgClientImpl;
                     };
                 };
                 core: {
                     channel: {
-                        v1: _303.MsgClientImpl;
-                    };
-                    client: {
                         v1: _304.MsgClientImpl;
                     };
-                    connection: {
+                    client: {
                         v1: _305.MsgClientImpl;
+                    };
+                    connection: {
+                        v1: _306.MsgClientImpl;
                     };
                 };
             };
@@ -22831,54 +22831,54 @@ export declare namespace ibc {
                 applications: {
                     transfer: {
                         v1: {
-                            denomTrace(request: _147.QueryDenomTraceRequest): Promise<_147.QueryDenomTraceResponse>;
-                            denomTraces(request?: _147.QueryDenomTracesRequest): Promise<_147.QueryDenomTracesResponse>;
-                            params(request?: _147.QueryParamsRequest): Promise<_147.QueryParamsResponse>;
+                            denomTrace(request: _148.QueryDenomTraceRequest): Promise<_148.QueryDenomTraceResponse>;
+                            denomTraces(request?: _148.QueryDenomTracesRequest): Promise<_148.QueryDenomTracesResponse>;
+                            params(request?: _148.QueryParamsRequest): Promise<_148.QueryParamsResponse>;
                         };
                     };
                 };
                 core: {
                     channel: {
                         v1: {
-                            channel(request: _153.QueryChannelRequest): Promise<_153.QueryChannelResponse>;
-                            channels(request?: _153.QueryChannelsRequest): Promise<_153.QueryChannelsResponse>;
-                            connectionChannels(request: _153.QueryConnectionChannelsRequest): Promise<_153.QueryConnectionChannelsResponse>;
-                            channelClientState(request: _153.QueryChannelClientStateRequest): Promise<_153.QueryChannelClientStateResponse>;
-                            channelConsensusState(request: _153.QueryChannelConsensusStateRequest): Promise<_153.QueryChannelConsensusStateResponse>;
-                            packetCommitment(request: _153.QueryPacketCommitmentRequest): Promise<_153.QueryPacketCommitmentResponse>;
-                            packetCommitments(request: _153.QueryPacketCommitmentsRequest): Promise<_153.QueryPacketCommitmentsResponse>;
-                            packetReceipt(request: _153.QueryPacketReceiptRequest): Promise<_153.QueryPacketReceiptResponse>;
-                            packetAcknowledgement(request: _153.QueryPacketAcknowledgementRequest): Promise<_153.QueryPacketAcknowledgementResponse>;
-                            packetAcknowledgements(request: _153.QueryPacketAcknowledgementsRequest): Promise<_153.QueryPacketAcknowledgementsResponse>;
-                            unreceivedPackets(request: _153.QueryUnreceivedPacketsRequest): Promise<_153.QueryUnreceivedPacketsResponse>;
-                            unreceivedAcks(request: _153.QueryUnreceivedAcksRequest): Promise<_153.QueryUnreceivedAcksResponse>;
-                            nextSequenceReceive(request: _153.QueryNextSequenceReceiveRequest): Promise<_153.QueryNextSequenceReceiveResponse>;
+                            channel(request: _154.QueryChannelRequest): Promise<_154.QueryChannelResponse>;
+                            channels(request?: _154.QueryChannelsRequest): Promise<_154.QueryChannelsResponse>;
+                            connectionChannels(request: _154.QueryConnectionChannelsRequest): Promise<_154.QueryConnectionChannelsResponse>;
+                            channelClientState(request: _154.QueryChannelClientStateRequest): Promise<_154.QueryChannelClientStateResponse>;
+                            channelConsensusState(request: _154.QueryChannelConsensusStateRequest): Promise<_154.QueryChannelConsensusStateResponse>;
+                            packetCommitment(request: _154.QueryPacketCommitmentRequest): Promise<_154.QueryPacketCommitmentResponse>;
+                            packetCommitments(request: _154.QueryPacketCommitmentsRequest): Promise<_154.QueryPacketCommitmentsResponse>;
+                            packetReceipt(request: _154.QueryPacketReceiptRequest): Promise<_154.QueryPacketReceiptResponse>;
+                            packetAcknowledgement(request: _154.QueryPacketAcknowledgementRequest): Promise<_154.QueryPacketAcknowledgementResponse>;
+                            packetAcknowledgements(request: _154.QueryPacketAcknowledgementsRequest): Promise<_154.QueryPacketAcknowledgementsResponse>;
+                            unreceivedPackets(request: _154.QueryUnreceivedPacketsRequest): Promise<_154.QueryUnreceivedPacketsResponse>;
+                            unreceivedAcks(request: _154.QueryUnreceivedAcksRequest): Promise<_154.QueryUnreceivedAcksResponse>;
+                            nextSequenceReceive(request: _154.QueryNextSequenceReceiveRequest): Promise<_154.QueryNextSequenceReceiveResponse>;
                         };
                     };
                     client: {
                         v1: {
-                            clientState(request: _157.QueryClientStateRequest): Promise<_157.QueryClientStateResponse>;
-                            clientStates(request?: _157.QueryClientStatesRequest): Promise<_157.QueryClientStatesResponse>;
-                            consensusState(request: _157.QueryConsensusStateRequest): Promise<_157.QueryConsensusStateResponse>;
-                            consensusStates(request: _157.QueryConsensusStatesRequest): Promise<_157.QueryConsensusStatesResponse>;
-                            clientStatus(request: _157.QueryClientStatusRequest): Promise<_157.QueryClientStatusResponse>;
-                            clientParams(request?: _157.QueryClientParamsRequest): Promise<_157.QueryClientParamsResponse>;
-                            upgradedClientState(request?: _157.QueryUpgradedClientStateRequest): Promise<_157.QueryUpgradedClientStateResponse>;
-                            upgradedConsensusState(request?: _157.QueryUpgradedConsensusStateRequest): Promise<_157.QueryUpgradedConsensusStateResponse>;
+                            clientState(request: _158.QueryClientStateRequest): Promise<_158.QueryClientStateResponse>;
+                            clientStates(request?: _158.QueryClientStatesRequest): Promise<_158.QueryClientStatesResponse>;
+                            consensusState(request: _158.QueryConsensusStateRequest): Promise<_158.QueryConsensusStateResponse>;
+                            consensusStates(request: _158.QueryConsensusStatesRequest): Promise<_158.QueryConsensusStatesResponse>;
+                            clientStatus(request: _158.QueryClientStatusRequest): Promise<_158.QueryClientStatusResponse>;
+                            clientParams(request?: _158.QueryClientParamsRequest): Promise<_158.QueryClientParamsResponse>;
+                            upgradedClientState(request?: _158.QueryUpgradedClientStateRequest): Promise<_158.QueryUpgradedClientStateResponse>;
+                            upgradedConsensusState(request?: _158.QueryUpgradedConsensusStateRequest): Promise<_158.QueryUpgradedConsensusStateResponse>;
                         };
                     };
                     connection: {
                         v1: {
-                            connection(request: _162.QueryConnectionRequest): Promise<_162.QueryConnectionResponse>;
-                            connections(request?: _162.QueryConnectionsRequest): Promise<_162.QueryConnectionsResponse>;
-                            clientConnections(request: _162.QueryClientConnectionsRequest): Promise<_162.QueryClientConnectionsResponse>;
-                            connectionClientState(request: _162.QueryConnectionClientStateRequest): Promise<_162.QueryConnectionClientStateResponse>;
-                            connectionConsensusState(request: _162.QueryConnectionConsensusStateRequest): Promise<_162.QueryConnectionConsensusStateResponse>;
+                            connection(request: _163.QueryConnectionRequest): Promise<_163.QueryConnectionResponse>;
+                            connections(request?: _163.QueryConnectionsRequest): Promise<_163.QueryConnectionsResponse>;
+                            clientConnections(request: _163.QueryClientConnectionsRequest): Promise<_163.QueryClientConnectionsResponse>;
+                            connectionClientState(request: _163.QueryConnectionClientStateRequest): Promise<_163.QueryConnectionClientStateResponse>;
+                            connectionConsensusState(request: _163.QueryConnectionConsensusStateRequest): Promise<_163.QueryConnectionConsensusStateResponse>;
                         };
                     };
                     port: {
                         v1: {
-                            appVersion(request: _164.QueryAppVersionRequest): Promise<_164.QueryAppVersionResponse>;
+                            appVersion(request: _165.QueryAppVersionRequest): Promise<_165.QueryAppVersionResponse>;
                         };
                     };
                 };
@@ -22943,18 +22943,18 @@ export declare namespace ibc {
             ibc: {
                 applications: {
                     transfer: {
-                        v1: _293.LCDQueryClient;
+                        v1: _294.LCDQueryClient;
                     };
                 };
                 core: {
                     channel: {
-                        v1: _294.LCDQueryClient;
-                    };
-                    client: {
                         v1: _295.LCDQueryClient;
                     };
-                    connection: {
+                    client: {
                         v1: _296.LCDQueryClient;
+                    };
+                    connection: {
+                        v1: _297.LCDQueryClient;
                     };
                 };
             };
