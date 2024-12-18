@@ -2,7 +2,7 @@ import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } fr
 import { Params, ParamsSDKType } from "./params";
 import { StakingReward, StakingRewardSDKType } from "./staking_reward";
 import { TradingReward, TradingRewardSDKType, TradingRewardLeaderboard, TradingRewardLeaderboardSDKType, MarketIdTradingRewardId, MarketIdTradingRewardIdSDKType } from "./trading_reward";
-import { StakingRewardParticipant, StakingRewardParticipantSDKType } from "./staking_reward_participant";
+import { StakingRewardParticipant, StakingRewardParticipantSDKType, PendingUnlockParticipant, PendingUnlockParticipantSDKType } from "./staking_reward_participant";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "../../helpers";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
@@ -129,6 +129,20 @@ export interface QueryGetMarketIdTradingRewardIdHandlerResponse {
 export interface QueryGetMarketIdTradingRewardIdHandlerResponseSDKType {
     market_id_reward_id?: MarketIdTradingRewardIdSDKType;
 }
+export interface QueryAllPendingUnlockParticipantRequest {
+    pagination?: PageRequest;
+}
+export interface QueryAllPendingUnlockParticipantRequestSDKType {
+    pagination?: PageRequestSDKType;
+}
+export interface QueryAllPendingUnlockParticipantResponse {
+    list: PendingUnlockParticipant[];
+    pagination?: PageResponse;
+}
+export interface QueryAllPendingUnlockParticipantResponseSDKType {
+    list: PendingUnlockParticipantSDKType[];
+    pagination?: PageResponseSDKType;
+}
 export declare const QueryParamsRequest: {
     encode(_: QueryParamsRequest, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryParamsRequest;
@@ -218,4 +232,14 @@ export declare const QueryGetMarketIdTradingRewardIdHandlerResponse: {
     encode(message: QueryGetMarketIdTradingRewardIdHandlerResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): QueryGetMarketIdTradingRewardIdHandlerResponse;
     fromPartial(object: DeepPartial<QueryGetMarketIdTradingRewardIdHandlerResponse>): QueryGetMarketIdTradingRewardIdHandlerResponse;
+};
+export declare const QueryAllPendingUnlockParticipantRequest: {
+    encode(message: QueryAllPendingUnlockParticipantRequest, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllPendingUnlockParticipantRequest;
+    fromPartial(object: DeepPartial<QueryAllPendingUnlockParticipantRequest>): QueryAllPendingUnlockParticipantRequest;
+};
+export declare const QueryAllPendingUnlockParticipantResponse: {
+    encode(message: QueryAllPendingUnlockParticipantResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllPendingUnlockParticipantResponse;
+    fromPartial(object: DeepPartial<QueryAllPendingUnlockParticipantResponse>): QueryAllPendingUnlockParticipantResponse;
 };

@@ -1,6 +1,6 @@
 import { setPaginationParams } from "../../helpers";
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryParamsRequest, QueryParamsResponseSDKType, QueryGetStakingRewardRequest, QueryGetStakingRewardResponseSDKType, QueryAllStakingRewardRequest, QueryAllStakingRewardResponseSDKType, QueryGetTradingRewardRequest, QueryGetTradingRewardResponseSDKType, QueryAllTradingRewardRequest, QueryAllTradingRewardResponseSDKType, QueryGetStakingRewardParticipantRequest, QueryGetStakingRewardParticipantResponseSDKType, QueryAllStakingRewardParticipantRequest, QueryAllStakingRewardParticipantResponseSDKType, QueryGetTradingRewardLeaderboardRequest, QueryGetTradingRewardLeaderboardResponseSDKType, QueryGetMarketIdTradingRewardIdHandlerRequest, QueryGetMarketIdTradingRewardIdHandlerResponseSDKType } from "./query";
+import { QueryParamsRequest, QueryParamsResponseSDKType, QueryGetStakingRewardRequest, QueryGetStakingRewardResponseSDKType, QueryAllStakingRewardRequest, QueryAllStakingRewardResponseSDKType, QueryGetTradingRewardRequest, QueryGetTradingRewardResponseSDKType, QueryAllTradingRewardRequest, QueryAllTradingRewardResponseSDKType, QueryGetStakingRewardParticipantRequest, QueryGetStakingRewardParticipantResponseSDKType, QueryAllStakingRewardParticipantRequest, QueryAllStakingRewardParticipantResponseSDKType, QueryGetTradingRewardLeaderboardRequest, QueryGetTradingRewardLeaderboardResponseSDKType, QueryGetMarketIdTradingRewardIdHandlerRequest, QueryGetMarketIdTradingRewardIdHandlerResponseSDKType, QueryAllPendingUnlockParticipantRequest, QueryAllPendingUnlockParticipantResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
 
@@ -19,6 +19,7 @@ export class LCDQueryClient {
     this.stakingRewardParticipantAll = this.stakingRewardParticipantAll.bind(this);
     this.getTradingRewardLeaderboardHandler = this.getTradingRewardLeaderboardHandler.bind(this);
     this.getMarketIdTradingRewardIdHandler = this.getMarketIdTradingRewardIdHandler.bind(this);
+    this.allPendingUnlockParticipant = this.allPendingUnlockParticipant.bind(this);
   }
   /* Parameters queries the parameters of the module. */
 
@@ -126,6 +127,23 @@ export class LCDQueryClient {
 
     const endpoint = `bze/rewards/v1/market_id_trading_reward_id`;
     return await this.req.get<QueryGetMarketIdTradingRewardIdHandlerResponseSDKType>(endpoint, options);
+  }
+  /* Queries a list of AllPendingUnlockParticipant items. */
+
+
+  async allPendingUnlockParticipant(params: QueryAllPendingUnlockParticipantRequest = {
+    pagination: undefined
+  }): Promise<QueryAllPendingUnlockParticipantResponseSDKType> {
+    const options: any = {
+      params: {}
+    };
+
+    if (typeof params?.pagination !== "undefined") {
+      setPaginationParams(options, params.pagination);
+    }
+
+    const endpoint = `bze/rewards/v1/all_pending_unlock_participant`;
+    return await this.req.get<QueryAllPendingUnlockParticipantResponseSDKType>(endpoint, options);
   }
 
 }

@@ -1,5 +1,5 @@
 import { LCDClient } from "@osmonauts/lcd";
-import { QueryParamsRequest, QueryParamsResponseSDKType, QueryGetStakingRewardRequest, QueryGetStakingRewardResponseSDKType, QueryAllStakingRewardRequest, QueryAllStakingRewardResponseSDKType, QueryGetTradingRewardRequest, QueryGetTradingRewardResponseSDKType, QueryAllTradingRewardRequest, QueryAllTradingRewardResponseSDKType, QueryGetStakingRewardParticipantRequest, QueryGetStakingRewardParticipantResponseSDKType, QueryAllStakingRewardParticipantRequest, QueryAllStakingRewardParticipantResponseSDKType, QueryGetTradingRewardLeaderboardRequest, QueryGetTradingRewardLeaderboardResponseSDKType, QueryGetMarketIdTradingRewardIdHandlerRequest, QueryGetMarketIdTradingRewardIdHandlerResponseSDKType } from "./query";
+import { QueryParamsRequest, QueryParamsResponseSDKType, QueryGetStakingRewardRequest, QueryGetStakingRewardResponseSDKType, QueryAllStakingRewardRequest, QueryAllStakingRewardResponseSDKType, QueryGetTradingRewardRequest, QueryGetTradingRewardResponseSDKType, QueryAllTradingRewardRequest, QueryAllTradingRewardResponseSDKType, QueryGetStakingRewardParticipantRequest, QueryGetStakingRewardParticipantResponseSDKType, QueryAllStakingRewardParticipantRequest, QueryAllStakingRewardParticipantResponseSDKType, QueryGetTradingRewardLeaderboardRequest, QueryGetTradingRewardLeaderboardResponseSDKType, QueryGetMarketIdTradingRewardIdHandlerRequest, QueryGetMarketIdTradingRewardIdHandlerResponseSDKType, QueryAllPendingUnlockParticipantRequest, QueryAllPendingUnlockParticipantResponseSDKType } from "./query";
 export declare class LCDQueryClient {
     req: LCDClient;
     constructor({ requestClient }: {
@@ -14,4 +14,5 @@ export declare class LCDQueryClient {
     stakingRewardParticipantAll(params?: QueryAllStakingRewardParticipantRequest): Promise<QueryAllStakingRewardParticipantResponseSDKType>;
     getTradingRewardLeaderboardHandler(params: QueryGetTradingRewardLeaderboardRequest): Promise<QueryGetTradingRewardLeaderboardResponseSDKType>;
     getMarketIdTradingRewardIdHandler(params: QueryGetMarketIdTradingRewardIdHandlerRequest): Promise<QueryGetMarketIdTradingRewardIdHandlerResponseSDKType>;
+    allPendingUnlockParticipant(params?: QueryAllPendingUnlockParticipantRequest): Promise<QueryAllPendingUnlockParticipantResponseSDKType>;
 }

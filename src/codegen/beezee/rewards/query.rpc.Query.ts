@@ -1,7 +1,7 @@
 import { Rpc } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
 import { QueryClient, createProtobufRpcClient } from "@cosmjs/stargate";
-import { QueryParamsRequest, QueryParamsResponse, QueryGetStakingRewardRequest, QueryGetStakingRewardResponse, QueryAllStakingRewardRequest, QueryAllStakingRewardResponse, QueryGetTradingRewardRequest, QueryGetTradingRewardResponse, QueryAllTradingRewardRequest, QueryAllTradingRewardResponse, QueryGetStakingRewardParticipantRequest, QueryGetStakingRewardParticipantResponse, QueryAllStakingRewardParticipantRequest, QueryAllStakingRewardParticipantResponse, QueryGetTradingRewardLeaderboardRequest, QueryGetTradingRewardLeaderboardResponse, QueryGetMarketIdTradingRewardIdHandlerRequest, QueryGetMarketIdTradingRewardIdHandlerResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, QueryGetStakingRewardRequest, QueryGetStakingRewardResponse, QueryAllStakingRewardRequest, QueryAllStakingRewardResponse, QueryGetTradingRewardRequest, QueryGetTradingRewardResponse, QueryAllTradingRewardRequest, QueryAllTradingRewardResponse, QueryGetStakingRewardParticipantRequest, QueryGetStakingRewardParticipantResponse, QueryAllStakingRewardParticipantRequest, QueryAllStakingRewardParticipantResponse, QueryGetTradingRewardLeaderboardRequest, QueryGetTradingRewardLeaderboardResponse, QueryGetMarketIdTradingRewardIdHandlerRequest, QueryGetMarketIdTradingRewardIdHandlerResponse, QueryAllPendingUnlockParticipantRequest, QueryAllPendingUnlockParticipantResponse } from "./query";
 /** Query defines the gRPC querier service. */
 
 export interface Query {
@@ -31,6 +31,9 @@ export interface Query {
   /** Queries a list of GetMarketIdTradingRewardIdHandler items. */
 
   getMarketIdTradingRewardIdHandler(request: QueryGetMarketIdTradingRewardIdHandlerRequest): Promise<QueryGetMarketIdTradingRewardIdHandlerResponse>;
+  /** Queries a list of AllPendingUnlockParticipant items. */
+
+  allPendingUnlockParticipant(request?: QueryAllPendingUnlockParticipantRequest): Promise<QueryAllPendingUnlockParticipantResponse>;
 }
 export class QueryClientImpl implements Query {
   private readonly rpc: Rpc;
@@ -46,6 +49,7 @@ export class QueryClientImpl implements Query {
     this.stakingRewardParticipantAll = this.stakingRewardParticipantAll.bind(this);
     this.getTradingRewardLeaderboardHandler = this.getTradingRewardLeaderboardHandler.bind(this);
     this.getMarketIdTradingRewardIdHandler = this.getMarketIdTradingRewardIdHandler.bind(this);
+    this.allPendingUnlockParticipant = this.allPendingUnlockParticipant.bind(this);
   }
 
   params(request: QueryParamsRequest = {}): Promise<QueryParamsResponse> {
@@ -106,6 +110,14 @@ export class QueryClientImpl implements Query {
     return promise.then(data => QueryGetMarketIdTradingRewardIdHandlerResponse.decode(new _m0.Reader(data)));
   }
 
+  allPendingUnlockParticipant(request: QueryAllPendingUnlockParticipantRequest = {
+    pagination: undefined
+  }): Promise<QueryAllPendingUnlockParticipantResponse> {
+    const data = QueryAllPendingUnlockParticipantRequest.encode(request).finish();
+    const promise = this.rpc.request("bze.v1.rewards.Query", "AllPendingUnlockParticipant", data);
+    return promise.then(data => QueryAllPendingUnlockParticipantResponse.decode(new _m0.Reader(data)));
+  }
+
 }
 export const createRpcQueryExtension = (base: QueryClient) => {
   const rpc = createProtobufRpcClient(base);
@@ -145,6 +157,10 @@ export const createRpcQueryExtension = (base: QueryClient) => {
 
     getMarketIdTradingRewardIdHandler(request: QueryGetMarketIdTradingRewardIdHandlerRequest): Promise<QueryGetMarketIdTradingRewardIdHandlerResponse> {
       return queryService.getMarketIdTradingRewardIdHandler(request);
+    },
+
+    allPendingUnlockParticipant(request?: QueryAllPendingUnlockParticipantRequest): Promise<QueryAllPendingUnlockParticipantResponse> {
+      return queryService.allPendingUnlockParticipant(request);
     }
 
   };

@@ -2,7 +2,7 @@ import { PageRequest, PageRequestSDKType, PageResponse, PageResponseSDKType } fr
 import { Params, ParamsSDKType } from "./params";
 import { StakingReward, StakingRewardSDKType } from "./staking_reward";
 import { TradingReward, TradingRewardSDKType, TradingRewardLeaderboard, TradingRewardLeaderboardSDKType, MarketIdTradingRewardId, MarketIdTradingRewardIdSDKType } from "./trading_reward";
-import { StakingRewardParticipant, StakingRewardParticipantSDKType } from "./staking_reward_participant";
+import { StakingRewardParticipant, StakingRewardParticipantSDKType, PendingUnlockParticipant, PendingUnlockParticipantSDKType } from "./staking_reward_participant";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "../../helpers";
 /** QueryParamsRequest is request type for the Query/Params RPC method. */
@@ -130,6 +130,20 @@ export interface QueryGetMarketIdTradingRewardIdHandlerResponse {
 }
 export interface QueryGetMarketIdTradingRewardIdHandlerResponseSDKType {
   market_id_reward_id?: MarketIdTradingRewardIdSDKType;
+}
+export interface QueryAllPendingUnlockParticipantRequest {
+  pagination?: PageRequest;
+}
+export interface QueryAllPendingUnlockParticipantRequestSDKType {
+  pagination?: PageRequestSDKType;
+}
+export interface QueryAllPendingUnlockParticipantResponse {
+  list: PendingUnlockParticipant[];
+  pagination?: PageResponse;
+}
+export interface QueryAllPendingUnlockParticipantResponseSDKType {
+  list: PendingUnlockParticipantSDKType[];
+  pagination?: PageResponseSDKType;
 }
 
 function createBaseQueryParamsRequest(): QueryParamsRequest {
@@ -986,6 +1000,106 @@ export const QueryGetMarketIdTradingRewardIdHandlerResponse = {
   fromPartial(object: DeepPartial<QueryGetMarketIdTradingRewardIdHandlerResponse>): QueryGetMarketIdTradingRewardIdHandlerResponse {
     const message = createBaseQueryGetMarketIdTradingRewardIdHandlerResponse();
     message.marketIdRewardId = object.marketIdRewardId !== undefined && object.marketIdRewardId !== null ? MarketIdTradingRewardId.fromPartial(object.marketIdRewardId) : undefined;
+    return message;
+  }
+
+};
+
+function createBaseQueryAllPendingUnlockParticipantRequest(): QueryAllPendingUnlockParticipantRequest {
+  return {
+    pagination: undefined
+  };
+}
+
+export const QueryAllPendingUnlockParticipantRequest = {
+  encode(message: QueryAllPendingUnlockParticipantRequest, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllPendingUnlockParticipantRequest {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryAllPendingUnlockParticipantRequest();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<QueryAllPendingUnlockParticipantRequest>): QueryAllPendingUnlockParticipantRequest {
+    const message = createBaseQueryAllPendingUnlockParticipantRequest();
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    return message;
+  }
+
+};
+
+function createBaseQueryAllPendingUnlockParticipantResponse(): QueryAllPendingUnlockParticipantResponse {
+  return {
+    list: [],
+    pagination: undefined
+  };
+}
+
+export const QueryAllPendingUnlockParticipantResponse = {
+  encode(message: QueryAllPendingUnlockParticipantResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    for (const v of message.list) {
+      PendingUnlockParticipant.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): QueryAllPendingUnlockParticipantResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryAllPendingUnlockParticipantResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.list.push(PendingUnlockParticipant.decode(reader, reader.uint32()));
+          break;
+
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<QueryAllPendingUnlockParticipantResponse>): QueryAllPendingUnlockParticipantResponse {
+    const message = createBaseQueryAllPendingUnlockParticipantResponse();
+    message.list = object.list?.map(e => PendingUnlockParticipant.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
     return message;
   }
 

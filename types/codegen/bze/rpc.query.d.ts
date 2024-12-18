@@ -38,6 +38,7 @@ export declare const createRPCQueryClient: ({ rpcEndpoint }: {
                 stakingRewardParticipantAll(request?: import("../beezee/rewards/query").QueryAllStakingRewardParticipantRequest): Promise<import("../beezee/rewards/query").QueryAllStakingRewardParticipantResponse>;
                 getTradingRewardLeaderboardHandler(request: import("../beezee/rewards/query").QueryGetTradingRewardLeaderboardRequest): Promise<import("../beezee/rewards/query").QueryGetTradingRewardLeaderboardResponse>;
                 getMarketIdTradingRewardIdHandler(request: import("../beezee/rewards/query").QueryGetMarketIdTradingRewardIdHandlerRequest): Promise<import("../beezee/rewards/query").QueryGetMarketIdTradingRewardIdHandlerResponse>;
+                allPendingUnlockParticipant(request?: import("../beezee/rewards/query").QueryAllPendingUnlockParticipantRequest): Promise<import("../beezee/rewards/query").QueryAllPendingUnlockParticipantResponse>;
             };
         };
         tokenfactory: {
