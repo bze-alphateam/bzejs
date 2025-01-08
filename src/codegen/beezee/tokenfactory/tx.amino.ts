@@ -1,28 +1,28 @@
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata } from "./tx";
 export interface AminoMsgCreateDenom extends AminoMsg {
-  type: "/bze.tokenfactory.v1.MsgCreateDenom";
+  type: "tokenfactory/CreateDenom";
   value: {
     creator: string;
     subdenom: string;
   };
 }
 export interface AminoMsgMint extends AminoMsg {
-  type: "/bze.tokenfactory.v1.MsgMint";
+  type: "tokenfactory/Mint";
   value: {
     creator: string;
     coins: string;
   };
 }
 export interface AminoMsgBurn extends AminoMsg {
-  type: "/bze.tokenfactory.v1.MsgBurn";
+  type: "tokenfactory/Burn";
   value: {
     creator: string;
     coins: string;
   };
 }
 export interface AminoMsgChangeAdmin extends AminoMsg {
-  type: "/bze.tokenfactory.v1.MsgChangeAdmin";
+  type: "tokenfactory/ChangeAdmin";
   value: {
     creator: string;
     denom: string;
@@ -51,7 +51,7 @@ export interface AminoMsgSetDenomMetadata extends AminoMsg {
 }
 export const AminoConverter = {
   "/bze.tokenfactory.v1.MsgCreateDenom": {
-    aminoType: "/bze.tokenfactory.v1.MsgCreateDenom",
+    aminoType: "tokenfactory/CreateDenom",
     toAmino: ({
       creator,
       subdenom
@@ -72,7 +72,7 @@ export const AminoConverter = {
     }
   },
   "/bze.tokenfactory.v1.MsgMint": {
-    aminoType: "/bze.tokenfactory.v1.MsgMint",
+    aminoType: "tokenfactory/Mint",
     toAmino: ({
       creator,
       coins
@@ -93,7 +93,7 @@ export const AminoConverter = {
     }
   },
   "/bze.tokenfactory.v1.MsgBurn": {
-    aminoType: "/bze.tokenfactory.v1.MsgBurn",
+    aminoType: "tokenfactory/Burn",
     toAmino: ({
       creator,
       coins
@@ -114,7 +114,7 @@ export const AminoConverter = {
     }
   },
   "/bze.tokenfactory.v1.MsgChangeAdmin": {
-    aminoType: "/bze.tokenfactory.v1.MsgChangeAdmin",
+    aminoType: "tokenfactory/ChangeAdmin",
     toAmino: ({
       creator,
       denom,

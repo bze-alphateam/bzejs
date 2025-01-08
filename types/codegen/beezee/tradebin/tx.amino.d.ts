@@ -1,7 +1,7 @@
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgCreateMarket, MsgCreateOrder, MsgCancelOrder } from "./tx";
 export interface AminoMsgCreateMarket extends AminoMsg {
-    type: "/bze.tradebin.v1.MsgCreateMarket";
+    type: "tradebin/CreateMarket";
     value: {
         creator: string;
         base: string;
@@ -9,7 +9,7 @@ export interface AminoMsgCreateMarket extends AminoMsg {
     };
 }
 export interface AminoMsgCreateOrder extends AminoMsg {
-    type: "/bze.tradebin.v1.MsgCreateOrder";
+    type: "tradebin/CreateOrder";
     value: {
         creator: string;
         order_type: string;
@@ -19,7 +19,7 @@ export interface AminoMsgCreateOrder extends AminoMsg {
     };
 }
 export interface AminoMsgCancelOrder extends AminoMsg {
-    type: "/bze.tradebin.v1.MsgCancelOrder";
+    type: "tradebin/CancelOrder";
     value: {
         creator: string;
         marketId: string;

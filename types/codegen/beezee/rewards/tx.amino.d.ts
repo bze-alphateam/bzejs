@@ -1,7 +1,7 @@
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgCreateStakingReward, MsgUpdateStakingReward, MsgCreateTradingReward, MsgJoinStaking, MsgExitStaking, MsgClaimStakingRewards, MsgDistributeStakingRewards } from "./tx";
 export interface AminoMsgCreateStakingReward extends AminoMsg {
-    type: "/bze.v1.rewards.MsgCreateStakingReward";
+    type: "rewards/CreateStakingReward";
     value: {
         creator: string;
         prize_amount: string;
@@ -13,7 +13,7 @@ export interface AminoMsgCreateStakingReward extends AminoMsg {
     };
 }
 export interface AminoMsgUpdateStakingReward extends AminoMsg {
-    type: "/bze.v1.rewards.MsgUpdateStakingReward";
+    type: "rewards/UpdateStakingReward";
     value: {
         creator: string;
         reward_id: string;
@@ -21,7 +21,7 @@ export interface AminoMsgUpdateStakingReward extends AminoMsg {
     };
 }
 export interface AminoMsgCreateTradingReward extends AminoMsg {
-    type: "/bze.v1.rewards.MsgCreateTradingReward";
+    type: "rewards/CreateTradingReward";
     value: {
         creator: string;
         prize_amount: string;
@@ -32,7 +32,7 @@ export interface AminoMsgCreateTradingReward extends AminoMsg {
     };
 }
 export interface AminoMsgJoinStaking extends AminoMsg {
-    type: "/bze.v1.rewards.MsgJoinStaking";
+    type: "rewards/JoinStaking";
     value: {
         creator: string;
         reward_id: string;
@@ -40,21 +40,21 @@ export interface AminoMsgJoinStaking extends AminoMsg {
     };
 }
 export interface AminoMsgExitStaking extends AminoMsg {
-    type: "/bze.v1.rewards.MsgExitStaking";
+    type: "rewards/ExitStaking";
     value: {
         creator: string;
         rewardId: string;
     };
 }
 export interface AminoMsgClaimStakingRewards extends AminoMsg {
-    type: "/bze.v1.rewards.MsgClaimStakingRewards";
+    type: "rewards/ClaimStakingRewards";
     value: {
         creator: string;
         rewardId: string;
     };
 }
 export interface AminoMsgDistributeStakingRewards extends AminoMsg {
-    type: "/bze.v1.rewards.MsgDistributeStakingRewards";
+    type: "rewards/DistributeStakingRewards";
     value: {
         creator: string;
         rewardId: string;

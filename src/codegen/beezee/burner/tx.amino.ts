@@ -1,14 +1,14 @@
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgFundBurner, MsgStartRaffle, MsgJoinRaffle } from "./tx";
 export interface AminoMsgFundBurner extends AminoMsg {
-  type: "/bze.burner.v1.MsgFundBurner";
+  type: "burner/FundBurner";
   value: {
     creator: string;
     amount: string;
   };
 }
 export interface AminoMsgStartRaffle extends AminoMsg {
-  type: "/bze.burner.v1.MsgStartRaffle";
+  type: "burner/StartRaffle";
   value: {
     creator: string;
     pot: string;
@@ -20,7 +20,7 @@ export interface AminoMsgStartRaffle extends AminoMsg {
   };
 }
 export interface AminoMsgJoinRaffle extends AminoMsg {
-  type: "/bze.burner.v1.MsgJoinRaffle";
+  type: "burner/JoinRaffle";
   value: {
     creator: string;
     denom: string;
@@ -28,7 +28,7 @@ export interface AminoMsgJoinRaffle extends AminoMsg {
 }
 export const AminoConverter = {
   "/bze.burner.v1.MsgFundBurner": {
-    aminoType: "/bze.burner.v1.MsgFundBurner",
+    aminoType: "burner/FundBurner",
     toAmino: ({
       creator,
       amount
@@ -49,7 +49,7 @@ export const AminoConverter = {
     }
   },
   "/bze.burner.v1.MsgStartRaffle": {
-    aminoType: "/bze.burner.v1.MsgStartRaffle",
+    aminoType: "burner/StartRaffle",
     toAmino: ({
       creator,
       pot,
@@ -90,7 +90,7 @@ export const AminoConverter = {
     }
   },
   "/bze.burner.v1.MsgJoinRaffle": {
-    aminoType: "/bze.burner.v1.MsgJoinRaffle",
+    aminoType: "burner/JoinRaffle",
     toAmino: ({
       creator,
       denom

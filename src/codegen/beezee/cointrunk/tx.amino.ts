@@ -1,7 +1,7 @@
 import { AminoMsg } from "@cosmjs/amino";
 import { MsgAddArticle, MsgPayPublisherRespect } from "./tx";
 export interface AminoMsgAddArticle extends AminoMsg {
-  type: "/bze.cointrunk.v1.MsgAddArticle";
+  type: "cointrunk/AddArticle";
   value: {
     publisher: string;
     title: string;
@@ -10,7 +10,7 @@ export interface AminoMsgAddArticle extends AminoMsg {
   };
 }
 export interface AminoMsgPayPublisherRespect extends AminoMsg {
-  type: "/bze.cointrunk.v1.MsgPayPublisherRespect";
+  type: "cointrunk/PayPublisherRespect";
   value: {
     creator: string;
     address: string;
@@ -19,7 +19,7 @@ export interface AminoMsgPayPublisherRespect extends AminoMsg {
 }
 export const AminoConverter = {
   "/bze.cointrunk.v1.MsgAddArticle": {
-    aminoType: "/bze.cointrunk.v1.MsgAddArticle",
+    aminoType: "cointrunk/AddArticle",
     toAmino: ({
       publisher,
       title,
@@ -48,7 +48,7 @@ export const AminoConverter = {
     }
   },
   "/bze.cointrunk.v1.MsgPayPublisherRespect": {
-    aminoType: "/bze.cointrunk.v1.MsgPayPublisherRespect",
+    aminoType: "cointrunk/PayPublisherRespect",
     toAmino: ({
       creator,
       address,
