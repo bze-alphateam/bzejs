@@ -30,7 +30,7 @@ export interface AminoMsgChangeAdmin extends AminoMsg {
     };
 }
 export interface AminoMsgSetDenomMetadata extends AminoMsg {
-    type: "/bze.tokenfactory.v1.MsgSetDenomMetadata";
+    type: "tokenfactory/SetDenomMetadata";
     value: {
         creator: string;
         metadata: {
