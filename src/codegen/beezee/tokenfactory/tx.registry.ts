@@ -1,6 +1,6 @@
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata } from "./tx";
-export const registry: ReadonlyArray<[string, GeneratedType]> = [["/bze.tokenfactory.v1.MsgCreateDenom", MsgCreateDenom], ["/bze.tokenfactory.v1.MsgMint", MsgMint], ["/bze.tokenfactory.v1.MsgBurn", MsgBurn], ["/bze.tokenfactory.v1.MsgChangeAdmin", MsgChangeAdmin], ["/bze.tokenfactory.v1.MsgSetDenomMetadata", MsgSetDenomMetadata]];
+import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata, MsgSetDenomMetadataAmino } from "./tx";
+export const registry: ReadonlyArray<[string, GeneratedType]> = [["/bze.tokenfactory.v1.MsgCreateDenom", MsgCreateDenom], ["/bze.tokenfactory.v1.MsgMint", MsgMint], ["/bze.tokenfactory.v1.MsgBurn", MsgBurn], ["/bze.tokenfactory.v1.MsgChangeAdmin", MsgChangeAdmin], ["/bze.tokenfactory.v1.MsgSetDenomMetadata", MsgSetDenomMetadata], ["/bze.tokenfactory.v1.MsgSetDenomMetadataAmino", MsgSetDenomMetadataAmino]];
 export const load = (protoRegistry: Registry) => {
   registry.forEach(([typeUrl, mod]) => {
     protoRegistry.register(typeUrl, mod);
@@ -41,6 +41,13 @@ export const MessageComposer = {
         typeUrl: "/bze.tokenfactory.v1.MsgSetDenomMetadata",
         value: MsgSetDenomMetadata.encode(value).finish()
       };
+    },
+
+    setDenomMetadataAmino(value: MsgSetDenomMetadataAmino) {
+      return {
+        typeUrl: "/bze.tokenfactory.v1.MsgSetDenomMetadataAmino",
+        value: MsgSetDenomMetadataAmino.encode(value).finish()
+      };
     }
 
   },
@@ -76,6 +83,13 @@ export const MessageComposer = {
     setDenomMetadata(value: MsgSetDenomMetadata) {
       return {
         typeUrl: "/bze.tokenfactory.v1.MsgSetDenomMetadata",
+        value
+      };
+    },
+
+    setDenomMetadataAmino(value: MsgSetDenomMetadataAmino) {
+      return {
+        typeUrl: "/bze.tokenfactory.v1.MsgSetDenomMetadataAmino",
         value
       };
     }
@@ -114,6 +128,13 @@ export const MessageComposer = {
       return {
         typeUrl: "/bze.tokenfactory.v1.MsgSetDenomMetadata",
         value: MsgSetDenomMetadata.fromPartial(value)
+      };
+    },
+
+    setDenomMetadataAmino(value: MsgSetDenomMetadataAmino) {
+      return {
+        typeUrl: "/bze.tokenfactory.v1.MsgSetDenomMetadataAmino",
+        value: MsgSetDenomMetadataAmino.fromPartial(value)
       };
     }
 

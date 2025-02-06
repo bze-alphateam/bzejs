@@ -15,6 +15,7 @@ service Msg {
   rpc Burn(MsgBurn) returns (MsgBurnResponse);
   rpc ChangeAdmin(MsgChangeAdmin) returns (MsgChangeAdminResponse);
   rpc SetDenomMetadata(MsgSetDenomMetadata) returns (MsgSetDenomMetadataResponse);
+  rpc SetDenomMetadataAmino(MsgSetDenomMetadataAmino) returns (MsgSetDenomMetadataResponse);
 // this line is used by starport scaffolding # proto/tx/rpc
 }
 
@@ -55,6 +56,14 @@ message MsgChangeAdminResponse {
 message MsgSetDenomMetadata {
   string creator = 1;
   cosmos.bank.v1beta1.Metadata metadata = 2 [
+    (gogoproto.moretags) = "yaml:\"metadata\"",
+    (gogoproto.nullable) = false
+  ];
+}
+
+message MsgSetDenomMetadataAmino {
+  string creator = 1;
+  string metadata = 2 [
     (gogoproto.moretags) = "yaml:\"metadata\"",
     (gogoproto.nullable) = false
   ];

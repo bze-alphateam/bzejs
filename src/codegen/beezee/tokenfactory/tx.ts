@@ -55,6 +55,14 @@ export interface MsgSetDenomMetadataSDKType {
   creator: string;
   metadata?: MetadataSDKType;
 }
+export interface MsgSetDenomMetadataAmino {
+  creator: string;
+  metadata: string;
+}
+export interface MsgSetDenomMetadataAminoSDKType {
+  creator: string;
+  metadata: string;
+}
 export interface MsgSetDenomMetadataResponse {}
 export interface MsgSetDenomMetadataResponseSDKType {}
 
@@ -485,6 +493,61 @@ export const MsgSetDenomMetadata = {
     const message = createBaseMsgSetDenomMetadata();
     message.creator = object.creator ?? "";
     message.metadata = object.metadata !== undefined && object.metadata !== null ? Metadata.fromPartial(object.metadata) : undefined;
+    return message;
+  }
+
+};
+
+function createBaseMsgSetDenomMetadataAmino(): MsgSetDenomMetadataAmino {
+  return {
+    creator: "",
+    metadata: ""
+  };
+}
+
+export const MsgSetDenomMetadataAmino = {
+  encode(message: MsgSetDenomMetadataAmino, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+
+    if (message.metadata !== "") {
+      writer.uint32(18).string(message.metadata);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadataAmino {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetDenomMetadataAmino();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+
+        case 2:
+          message.metadata = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<MsgSetDenomMetadataAmino>): MsgSetDenomMetadataAmino {
+    const message = createBaseMsgSetDenomMetadataAmino();
+    message.creator = object.creator ?? "";
+    message.metadata = object.metadata ?? "";
     return message;
   }
 

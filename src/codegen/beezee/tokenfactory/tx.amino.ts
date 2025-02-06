@@ -1,5 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
-import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata } from "./tx";
+import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata, MsgSetDenomMetadataAmino } from "./tx";
 export interface AminoMsgCreateDenom extends AminoMsg {
   type: "tokenfactory/CreateDenom";
   value: {
@@ -47,6 +47,13 @@ export interface AminoMsgSetDenomMetadata extends AminoMsg {
       uri: string;
       uri_hash: string;
     };
+  };
+}
+export interface AminoMsgSetDenomMetadataAmino extends AminoMsg {
+  type: "/bze.tokenfactory.v1.MsgSetDenomMetadataAmino";
+  value: {
+    creator: string;
+    metadata: string;
   };
 }
 export const AminoConverter = {
@@ -182,6 +189,27 @@ export const AminoConverter = {
           uri: metadata.uri,
           uriHash: metadata.uri_hash
         }
+      };
+    }
+  },
+  "/bze.tokenfactory.v1.MsgSetDenomMetadataAmino": {
+    aminoType: "/bze.tokenfactory.v1.MsgSetDenomMetadataAmino",
+    toAmino: ({
+      creator,
+      metadata
+    }: MsgSetDenomMetadataAmino): AminoMsgSetDenomMetadataAmino["value"] => {
+      return {
+        creator,
+        metadata
+      };
+    },
+    fromAmino: ({
+      creator,
+      metadata
+    }: AminoMsgSetDenomMetadataAmino["value"]): MsgSetDenomMetadataAmino => {
+      return {
+        creator,
+        metadata
       };
     }
   }
