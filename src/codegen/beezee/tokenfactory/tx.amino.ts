@@ -1,5 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
-import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata, MsgSetDenomMetadataAmino } from "./tx";
+import { MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata } from "./tx";
 export interface AminoMsgCreateDenom extends AminoMsg {
   type: "tokenfactory/CreateDenom";
   value: {
@@ -31,26 +31,6 @@ export interface AminoMsgChangeAdmin extends AminoMsg {
 }
 export interface AminoMsgSetDenomMetadata extends AminoMsg {
   type: "tokenfactory/SetDenomMetadata";
-  value: {
-    creator: string;
-    metadata: {
-      description: string;
-      denom_units: {
-        denom: string;
-        exponent: number;
-        aliases: string[];
-      }[];
-      base: string;
-      display: string;
-      name: string;
-      symbol: string;
-      uri: string;
-      uri_hash: string;
-    };
-  };
-}
-export interface AminoMsgSetDenomMetadataAmino extends AminoMsg {
-  type: "/bze.tokenfactory.v1.MsgSetDenomMetadataAmino";
   value: {
     creator: string;
     metadata: string;
@@ -153,60 +133,13 @@ export const AminoConverter = {
     }: MsgSetDenomMetadata): AminoMsgSetDenomMetadata["value"] => {
       return {
         creator,
-        metadata: {
-          description: metadata.description,
-          denom_units: metadata.denomUnits.map(el0 => ({
-            denom: el0.denom,
-            exponent: el0.exponent,
-            aliases: el0.aliases
-          })),
-          base: metadata.base,
-          display: metadata.display,
-          name: metadata.name,
-          symbol: metadata.symbol,
-          uri: metadata.uri,
-          uri_hash: metadata.uriHash
-        }
-      };
-    },
-    fromAmino: ({
-      creator,
-      metadata
-    }: AminoMsgSetDenomMetadata["value"]): MsgSetDenomMetadata => {
-      return {
-        creator,
-        metadata: {
-          description: metadata.description,
-          denomUnits: metadata.denom_units.map(el1 => ({
-            denom: el1.denom,
-            exponent: el1.exponent,
-            aliases: el1.aliases
-          })),
-          base: metadata.base,
-          display: metadata.display,
-          name: metadata.name,
-          symbol: metadata.symbol,
-          uri: metadata.uri,
-          uriHash: metadata.uri_hash
-        }
-      };
-    }
-  },
-  "/bze.tokenfactory.v1.MsgSetDenomMetadataAmino": {
-    aminoType: "/bze.tokenfactory.v1.MsgSetDenomMetadataAmino",
-    toAmino: ({
-      creator,
-      metadata
-    }: MsgSetDenomMetadataAmino): AminoMsgSetDenomMetadataAmino["value"] => {
-      return {
-        creator,
         metadata
       };
     },
     fromAmino: ({
       creator,
       metadata
-    }: AminoMsgSetDenomMetadataAmino["value"]): MsgSetDenomMetadataAmino => {
+    }: AminoMsgSetDenomMetadata["value"]): MsgSetDenomMetadata => {
       return {
         creator,
         metadata

@@ -97,37 +97,11 @@ export declare const bzeAminoConverters: {
         aminoType: string;
         toAmino: ({ creator, metadata }: import("../beezee/tokenfactory/tx").MsgSetDenomMetadata) => {
             creator: string;
-            metadata: {
-                description: string;
-                denom_units: {
-                    denom: string;
-                    exponent: number;
-                    aliases: string[];
-                }[];
-                base: string;
-                display: string;
-                name: string;
-                symbol: string;
-                uri: string;
-                uri_hash: string;
-            };
+            metadata: string;
         };
         fromAmino: ({ creator, metadata }: {
             creator: string;
-            metadata: {
-                description: string;
-                denom_units: {
-                    denom: string;
-                    exponent: number;
-                    aliases: string[];
-                }[];
-                base: string;
-                display: string;
-                name: string;
-                symbol: string;
-                uri: string;
-                uri_hash: string;
-            };
+            metadata: string;
         }) => import("../beezee/tokenfactory/tx").MsgSetDenomMetadata;
     };
     "/bze.v1.rewards.MsgCreateStakingReward": {

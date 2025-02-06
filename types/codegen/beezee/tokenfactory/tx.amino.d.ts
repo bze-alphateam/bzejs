@@ -33,20 +33,7 @@ export interface AminoMsgSetDenomMetadata extends AminoMsg {
     type: "tokenfactory/SetDenomMetadata";
     value: {
         creator: string;
-        metadata: {
-            description: string;
-            denom_units: {
-                denom: string;
-                exponent: number;
-                aliases: string[];
-            }[];
-            base: string;
-            display: string;
-            name: string;
-            symbol: string;
-            uri: string;
-            uri_hash: string;
-        };
+        metadata: string;
     };
 }
 export declare const AminoConverter: {

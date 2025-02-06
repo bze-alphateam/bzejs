@@ -1,4 +1,3 @@
-import { Metadata, MetadataSDKType } from "../../cosmos/bank/v1beta1/bank";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "../../helpers";
 export interface MsgCreateDenom {
@@ -49,17 +48,9 @@ export interface MsgChangeAdminResponse {}
 export interface MsgChangeAdminResponseSDKType {}
 export interface MsgSetDenomMetadata {
   creator: string;
-  metadata?: Metadata;
-}
-export interface MsgSetDenomMetadataSDKType {
-  creator: string;
-  metadata?: MetadataSDKType;
-}
-export interface MsgSetDenomMetadataAmino {
-  creator: string;
   metadata: string;
 }
-export interface MsgSetDenomMetadataAminoSDKType {
+export interface MsgSetDenomMetadataSDKType {
   creator: string;
   metadata: string;
 }
@@ -446,67 +437,12 @@ export const MsgChangeAdminResponse = {
 function createBaseMsgSetDenomMetadata(): MsgSetDenomMetadata {
   return {
     creator: "",
-    metadata: undefined
+    metadata: ""
   };
 }
 
 export const MsgSetDenomMetadata = {
   encode(message: MsgSetDenomMetadata, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
-    if (message.creator !== "") {
-      writer.uint32(10).string(message.creator);
-    }
-
-    if (message.metadata !== undefined) {
-      Metadata.encode(message.metadata, writer.uint32(18).fork()).ldelim();
-    }
-
-    return writer;
-  },
-
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadata {
-    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgSetDenomMetadata();
-
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-
-      switch (tag >>> 3) {
-        case 1:
-          message.creator = reader.string();
-          break;
-
-        case 2:
-          message.metadata = Metadata.decode(reader, reader.uint32());
-          break;
-
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-
-    return message;
-  },
-
-  fromPartial(object: DeepPartial<MsgSetDenomMetadata>): MsgSetDenomMetadata {
-    const message = createBaseMsgSetDenomMetadata();
-    message.creator = object.creator ?? "";
-    message.metadata = object.metadata !== undefined && object.metadata !== null ? Metadata.fromPartial(object.metadata) : undefined;
-    return message;
-  }
-
-};
-
-function createBaseMsgSetDenomMetadataAmino(): MsgSetDenomMetadataAmino {
-  return {
-    creator: "",
-    metadata: ""
-  };
-}
-
-export const MsgSetDenomMetadataAmino = {
-  encode(message: MsgSetDenomMetadataAmino, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
     if (message.creator !== "") {
       writer.uint32(10).string(message.creator);
     }
@@ -518,10 +454,10 @@ export const MsgSetDenomMetadataAmino = {
     return writer;
   },
 
-  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadataAmino {
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgSetDenomMetadata {
     const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
     let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseMsgSetDenomMetadataAmino();
+    const message = createBaseMsgSetDenomMetadata();
 
     while (reader.pos < end) {
       const tag = reader.uint32();
@@ -544,8 +480,8 @@ export const MsgSetDenomMetadataAmino = {
     return message;
   },
 
-  fromPartial(object: DeepPartial<MsgSetDenomMetadataAmino>): MsgSetDenomMetadataAmino {
-    const message = createBaseMsgSetDenomMetadataAmino();
+  fromPartial(object: DeepPartial<MsgSetDenomMetadata>): MsgSetDenomMetadata {
+    const message = createBaseMsgSetDenomMetadata();
     message.creator = object.creator ?? "";
     message.metadata = object.metadata ?? "";
     return message;

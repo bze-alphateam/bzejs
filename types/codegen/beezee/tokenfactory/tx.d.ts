@@ -1,4 +1,3 @@
-import { Metadata, MetadataSDKType } from "../../cosmos/bank/v1beta1/bank";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "../../helpers";
 export interface MsgCreateDenom {
@@ -55,11 +54,11 @@ export interface MsgChangeAdminResponseSDKType {
 }
 export interface MsgSetDenomMetadata {
     creator: string;
-    metadata?: Metadata;
+    metadata: string;
 }
 export interface MsgSetDenomMetadataSDKType {
     creator: string;
-    metadata?: MetadataSDKType;
+    metadata: string;
 }
 export interface MsgSetDenomMetadataResponse {
 }

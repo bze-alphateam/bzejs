@@ -49,7 +49,7 @@ export const AMINO_MAP = {
   '/bze.tokenfactory.v1.MsgChangeAdmin': {
     aminoType: 'tokenfactory/ChangeAdmin'
   },
-  '/bze.tokenfactory.v1.MsgSetDenomMetadataAmino': {
+  '/bze.tokenfactory.v1.MsgSetDenomMetadata': {
     aminoType: 'tokenfactory/SetDenomMetadata'
   },
   '/bze.v1.rewards.MsgUpdateStakingReward': {

@@ -1,6 +1,6 @@
 import { Rpc } from "../../helpers";
 import * as _m0 from "protobufjs/minimal";
-import { MsgCreateDenom, MsgCreateDenomResponse, MsgMint, MsgMintResponse, MsgBurn, MsgBurnResponse, MsgChangeAdmin, MsgChangeAdminResponse, MsgSetDenomMetadata, MsgSetDenomMetadataResponse, MsgSetDenomMetadataAmino } from "./tx";
+import { MsgCreateDenom, MsgCreateDenomResponse, MsgMint, MsgMintResponse, MsgBurn, MsgBurnResponse, MsgChangeAdmin, MsgChangeAdminResponse, MsgSetDenomMetadata, MsgSetDenomMetadataResponse } from "./tx";
 /** Msg defines the Msg service. */
 
 export interface Msg {
@@ -9,7 +9,6 @@ export interface Msg {
   burn(request: MsgBurn): Promise<MsgBurnResponse>;
   changeAdmin(request: MsgChangeAdmin): Promise<MsgChangeAdminResponse>;
   setDenomMetadata(request: MsgSetDenomMetadata): Promise<MsgSetDenomMetadataResponse>;
-  setDenomMetadataAmino(request: MsgSetDenomMetadataAmino): Promise<MsgSetDenomMetadataResponse>;
 }
 export class MsgClientImpl implements Msg {
   private readonly rpc: Rpc;
@@ -21,7 +20,6 @@ export class MsgClientImpl implements Msg {
     this.burn = this.burn.bind(this);
     this.changeAdmin = this.changeAdmin.bind(this);
     this.setDenomMetadata = this.setDenomMetadata.bind(this);
-    this.setDenomMetadataAmino = this.setDenomMetadataAmino.bind(this);
   }
 
   createDenom(request: MsgCreateDenom): Promise<MsgCreateDenomResponse> {
@@ -51,12 +49,6 @@ export class MsgClientImpl implements Msg {
   setDenomMetadata(request: MsgSetDenomMetadata): Promise<MsgSetDenomMetadataResponse> {
     const data = MsgSetDenomMetadata.encode(request).finish();
     const promise = this.rpc.request("bze.tokenfactory.v1.Msg", "SetDenomMetadata", data);
-    return promise.then(data => MsgSetDenomMetadataResponse.decode(new _m0.Reader(data)));
-  }
-
-  setDenomMetadataAmino(request: MsgSetDenomMetadataAmino): Promise<MsgSetDenomMetadataResponse> {
-    const data = MsgSetDenomMetadataAmino.encode(request).finish();
-    const promise = this.rpc.request("bze.tokenfactory.v1.Msg", "SetDenomMetadataAmino", data);
     return promise.then(data => MsgSetDenomMetadataResponse.decode(new _m0.Reader(data)));
   }
 
