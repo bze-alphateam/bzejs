@@ -50,7 +50,28 @@ export const AMINO_MAP = {
     aminoType: 'tokenfactory/ChangeAdmin'
   },
   '/bze.tokenfactory.v1.MsgSetDenomMetadata': {
-    aminoType: 'tokenfactory/SetDenomMetadata'
+    aminoType: 'tokenfactory/SetDenomMetadata',
+    toAmino: (creator, metadata) => {
+      return {
+        creator: creator,
+        metadata: {
+          description: metadata.description,
+          denom_units: metadata.denom_units.map((unit) => {
+            return {
+              denom: unit.denom,
+              exponent: unit.exponent,
+              aliases: unit.aliases,
+            };
+          }),
+          base: metadata.base,
+          display: metadata.display,
+          name: metadata.name,
+          symbol: metadata.symbol,
+          uri: metadata.uri,
+          uri_hash: metadata.uri_hash
+        }
+      };
+    }
   },
   '/bze.v1.rewards.MsgUpdateStakingReward': {
     aminoType: 'rewards/UpdateStakingReward'
