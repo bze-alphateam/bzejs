@@ -54,7 +54,7 @@ message MsgChangeAdminResponse {
 
 message MsgSetDenomMetadata {
   string creator = 1;
-  string metadata = 2 [
+  cosmos.bank.v1beta1.Metadata metadata = 2 [
     (gogoproto.moretags) = "yaml:\"metadata\"",
     (gogoproto.nullable) = false
   ];

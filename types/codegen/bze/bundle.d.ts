@@ -9540,11 +9540,37 @@ export declare namespace bze {
                     aminoType: string;
                     toAmino: ({ creator, metadata }: _36.MsgSetDenomMetadata) => {
                         creator: string;
-                        metadata: string;
+                        metadata: {
+                            description: string;
+                            denom_units: {
+                                denom: string;
+                                exponent: number;
+                                aliases: string[];
+                            }[];
+                            base: string;
+                            display: string;
+                            name: string;
+                            symbol: string;
+                            uri: string;
+                            uri_hash: string;
+                        };
                     };
                     fromAmino: ({ creator, metadata }: {
                         creator: string;
-                        metadata: string;
+                        metadata: {
+                            description: string;
+                            denom_units: {
+                                denom: string;
+                                exponent: number;
+                                aliases: string[];
+                            }[];
+                            base: string;
+                            display: string;
+                            name: string;
+                            symbol: string;
+                            uri: string;
+                            uri_hash: string;
+                        };
                     }) => _36.MsgSetDenomMetadata;
                 };
             };
@@ -9608,7 +9634,20 @@ export declare namespace bze {
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _36.MsgSetDenomMetadata;
                 fromPartial(object: {
                     creator?: string;
-                    metadata?: string;
+                    metadata?: {
+                        description?: string;
+                        denomUnits?: {
+                            denom?: string;
+                            exponent?: number;
+                            aliases?: string[];
+                        }[];
+                        base?: string;
+                        display?: string;
+                        name?: string;
+                        symbol?: string;
+                        uri?: string;
+                        uriHash?: string;
+                    };
                 }): _36.MsgSetDenomMetadata;
             };
             MsgSetDenomMetadataResponse: {

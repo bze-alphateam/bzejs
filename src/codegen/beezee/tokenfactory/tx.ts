@@ -1,3 +1,4 @@
+import { Metadata, MetadataSDKType } from "../../cosmos/bank/v1beta1/bank";
 import * as _m0 from "protobufjs/minimal";
 import { DeepPartial } from "../../helpers";
 export interface MsgCreateDenom {
@@ -48,11 +49,11 @@ export interface MsgChangeAdminResponse {}
 export interface MsgChangeAdminResponseSDKType {}
 export interface MsgSetDenomMetadata {
   creator: string;
-  metadata: string;
+  metadata?: Metadata;
 }
 export interface MsgSetDenomMetadataSDKType {
   creator: string;
-  metadata: string;
+  metadata?: MetadataSDKType;
 }
 export interface MsgSetDenomMetadataResponse {}
 export interface MsgSetDenomMetadataResponseSDKType {}
@@ -437,7 +438,7 @@ export const MsgChangeAdminResponse = {
 function createBaseMsgSetDenomMetadata(): MsgSetDenomMetadata {
   return {
     creator: "",
-    metadata: ""
+    metadata: undefined
   };
 }
 
@@ -447,8 +448,8 @@ export const MsgSetDenomMetadata = {
       writer.uint32(10).string(message.creator);
     }
 
-    if (message.metadata !== "") {
-      writer.uint32(18).string(message.metadata);
+    if (message.metadata !== undefined) {
+      Metadata.encode(message.metadata, writer.uint32(18).fork()).ldelim();
     }
 
     return writer;
@@ -468,7 +469,7 @@ export const MsgSetDenomMetadata = {
           break;
 
         case 2:
-          message.metadata = reader.string();
+          message.metadata = Metadata.decode(reader, reader.uint32());
           break;
 
         default:
@@ -483,7 +484,7 @@ export const MsgSetDenomMetadata = {
   fromPartial(object: DeepPartial<MsgSetDenomMetadata>): MsgSetDenomMetadata {
     const message = createBaseMsgSetDenomMetadata();
     message.creator = object.creator ?? "";
-    message.metadata = object.metadata ?? "";
+    message.metadata = object.metadata !== undefined && object.metadata !== null ? Metadata.fromPartial(object.metadata) : undefined;
     return message;
   }
 
