@@ -9757,6 +9757,10 @@ export declare namespace bze {
                         typeUrl: string;
                         value: Uint8Array;
                     };
+                    fillOrders(value: _44.MsgFillOrders): {
+                        typeUrl: string;
+                        value: Uint8Array;
+                    };
                 };
                 withTypeUrl: {
                     createMarket(value: _44.MsgCreateMarket): {
@@ -9771,6 +9775,10 @@ export declare namespace bze {
                         typeUrl: string;
                         value: _44.MsgCancelOrder;
                     };
+                    fillOrders(value: _44.MsgFillOrders): {
+                        typeUrl: string;
+                        value: _44.MsgFillOrders;
+                    };
                 };
                 fromPartial: {
                     createMarket(value: _44.MsgCreateMarket): {
@@ -9784,6 +9792,10 @@ export declare namespace bze {
                     cancelOrder(value: _44.MsgCancelOrder): {
                         typeUrl: string;
                         value: _44.MsgCancelOrder;
+                    };
+                    fillOrders(value: _44.MsgFillOrders): {
+                        typeUrl: string;
+                        value: _44.MsgFillOrders;
                     };
                 };
             };
@@ -9833,6 +9845,27 @@ export declare namespace bze {
                         order_type: string;
                     }) => _44.MsgCancelOrder;
                 };
+                "/bze.tradebin.v1.MsgFillOrders": {
+                    aminoType: string;
+                    toAmino: ({ creator, marketId, orderType, orders }: _44.MsgFillOrders) => {
+                        creator: string;
+                        marketId: string;
+                        order_type: string;
+                        orders: {
+                            price: string;
+                            amount: string;
+                        }[];
+                    };
+                    fromAmino: ({ creator, marketId, order_type, orders }: {
+                        creator: string;
+                        marketId: string;
+                        order_type: string;
+                        orders: {
+                            price: string;
+                            amount: string;
+                        }[];
+                    }) => _44.MsgFillOrders;
+                };
             };
             MsgCreateMarket: {
                 encode(message: _44.MsgCreateMarket, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -9878,6 +9911,32 @@ export declare namespace bze {
                 encode(_: _44.MsgCancelOrderResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
                 decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _44.MsgCancelOrderResponse;
                 fromPartial(_: {}): _44.MsgCancelOrderResponse;
+            };
+            FillOrderItem: {
+                encode(message: _44.FillOrderItem, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _44.FillOrderItem;
+                fromPartial(object: {
+                    price?: string;
+                    amount?: string;
+                }): _44.FillOrderItem;
+            };
+            MsgFillOrders: {
+                encode(message: _44.MsgFillOrders, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _44.MsgFillOrders;
+                fromPartial(object: {
+                    creator?: string;
+                    marketId?: string;
+                    orderType?: string;
+                    orders?: {
+                        price?: string;
+                        amount?: string;
+                    }[];
+                }): _44.MsgFillOrders;
+            };
+            MsgFillOrdersResponse: {
+                encode(_: _44.MsgFillOrdersResponse, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
+                decode(input: Uint8Array | import("protobufjs").Reader, length?: number): _44.MsgFillOrdersResponse;
+                fromPartial(_: {}): _44.MsgFillOrdersResponse;
             };
             QueueMessage: {
                 encode(message: _43.QueueMessage, writer?: import("protobufjs").Writer): import("protobufjs").Writer;
@@ -11749,6 +11808,8 @@ export declare namespace bze {
                     orderType?: string;
                     amount?: string;
                     price?: string;
+                    maker?: string;
+                    taker?: string;
                 }): _37.OrderExecutedEvent;
             };
             OrderCanceledEvent: {
@@ -11760,6 +11821,7 @@ export declare namespace bze {
                     orderType?: string;
                     amount?: string;
                     price?: string;
+                    owner?: string;
                 }): _37.OrderCanceledEvent;
             };
             OrderSavedEvent: {
@@ -11771,6 +11833,7 @@ export declare namespace bze {
                     orderType?: string;
                     amount?: string;
                     price?: string;
+                    owner?: string;
                 }): _37.OrderSavedEvent;
             };
         };

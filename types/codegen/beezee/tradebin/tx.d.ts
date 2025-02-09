@@ -48,6 +48,30 @@ export interface MsgCancelOrderResponse {
 }
 export interface MsgCancelOrderResponseSDKType {
 }
+export interface FillOrderItem {
+    price: string;
+    amount: string;
+}
+export interface FillOrderItemSDKType {
+    price: string;
+    amount: string;
+}
+export interface MsgFillOrders {
+    creator: string;
+    marketId: string;
+    orderType: string;
+    orders: FillOrderItem[];
+}
+export interface MsgFillOrdersSDKType {
+    creator: string;
+    marketId: string;
+    order_type: string;
+    orders: FillOrderItemSDKType[];
+}
+export interface MsgFillOrdersResponse {
+}
+export interface MsgFillOrdersResponseSDKType {
+}
 export declare const MsgCreateMarket: {
     encode(message: MsgCreateMarket, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCreateMarket;
@@ -77,4 +101,19 @@ export declare const MsgCancelOrderResponse: {
     encode(_: MsgCancelOrderResponse, writer?: _m0.Writer): _m0.Writer;
     decode(input: _m0.Reader | Uint8Array, length?: number): MsgCancelOrderResponse;
     fromPartial(_: DeepPartial<MsgCancelOrderResponse>): MsgCancelOrderResponse;
+};
+export declare const FillOrderItem: {
+    encode(message: FillOrderItem, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): FillOrderItem;
+    fromPartial(object: DeepPartial<FillOrderItem>): FillOrderItem;
+};
+export declare const MsgFillOrders: {
+    encode(message: MsgFillOrders, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgFillOrders;
+    fromPartial(object: DeepPartial<MsgFillOrders>): MsgFillOrders;
+};
+export declare const MsgFillOrdersResponse: {
+    encode(_: MsgFillOrdersResponse, writer?: _m0.Writer): _m0.Writer;
+    decode(input: _m0.Reader | Uint8Array, length?: number): MsgFillOrdersResponse;
+    fromPartial(_: DeepPartial<MsgFillOrdersResponse>): MsgFillOrdersResponse;
 };

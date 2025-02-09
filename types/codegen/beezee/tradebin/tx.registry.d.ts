@@ -1,5 +1,5 @@
 import { GeneratedType, Registry } from "@cosmjs/proto-signing";
-import { MsgCreateMarket, MsgCreateOrder, MsgCancelOrder } from "./tx";
+import { MsgCreateMarket, MsgCreateOrder, MsgCancelOrder, MsgFillOrders } from "./tx";
 export declare const registry: ReadonlyArray<[string, GeneratedType]>;
 export declare const load: (protoRegistry: Registry) => void;
 export declare const MessageComposer: {
@@ -13,6 +13,10 @@ export declare const MessageComposer: {
             value: Uint8Array;
         };
         cancelOrder(value: MsgCancelOrder): {
+            typeUrl: string;
+            value: Uint8Array;
+        };
+        fillOrders(value: MsgFillOrders): {
             typeUrl: string;
             value: Uint8Array;
         };
@@ -30,6 +34,10 @@ export declare const MessageComposer: {
             typeUrl: string;
             value: MsgCancelOrder;
         };
+        fillOrders(value: MsgFillOrders): {
+            typeUrl: string;
+            value: MsgFillOrders;
+        };
     };
     fromPartial: {
         createMarket(value: MsgCreateMarket): {
@@ -43,6 +51,10 @@ export declare const MessageComposer: {
         cancelOrder(value: MsgCancelOrder): {
             typeUrl: string;
             value: MsgCancelOrder;
+        };
+        fillOrders(value: MsgFillOrders): {
+            typeUrl: string;
+            value: MsgFillOrders;
         };
     };
 };

@@ -1,5 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
-import { MsgCreateMarket, MsgCreateOrder, MsgCancelOrder } from "./tx";
+import { MsgCreateMarket, MsgCreateOrder, MsgCancelOrder, MsgFillOrders } from "./tx";
 export interface AminoMsgCreateMarket extends AminoMsg {
     type: "tradebin/CreateMarket";
     value: {
@@ -27,6 +27,18 @@ export interface AminoMsgCancelOrder extends AminoMsg {
         order_type: string;
     };
 }
+export interface AminoMsgFillOrders extends AminoMsg {
+    type: "/bze.tradebin.v1.MsgFillOrders";
+    value: {
+        creator: string;
+        marketId: string;
+        order_type: string;
+        orders: {
+            price: string;
+            amount: string;
+        }[];
+    };
+}
 export declare const AminoConverter: {
     "/bze.tradebin.v1.MsgCreateMarket": {
         aminoType: string;
@@ -42,5 +54,10 @@ export declare const AminoConverter: {
         aminoType: string;
         toAmino: ({ creator, marketId, orderId, orderType }: MsgCancelOrder) => AminoMsgCancelOrder["value"];
         fromAmino: ({ creator, marketId, orderId, order_type }: AminoMsgCancelOrder["value"]) => MsgCancelOrder;
+    };
+    "/bze.tradebin.v1.MsgFillOrders": {
+        aminoType: string;
+        toAmino: ({ creator, marketId, orderType, orders }: MsgFillOrders) => AminoMsgFillOrders["value"];
+        fromAmino: ({ creator, marketId, order_type, orders }: AminoMsgFillOrders["value"]) => MsgFillOrders;
     };
 };

@@ -47,6 +47,27 @@ export declare const bzeAminoConverters: {
             order_type: string;
         }) => import("../beezee/tradebin/tx").MsgCancelOrder;
     };
+    "/bze.tradebin.v1.MsgFillOrders": {
+        aminoType: string;
+        toAmino: ({ creator, marketId, orderType, orders }: import("../beezee/tradebin/tx").MsgFillOrders) => {
+            creator: string;
+            marketId: string;
+            order_type: string;
+            orders: {
+                price: string;
+                amount: string;
+            }[];
+        };
+        fromAmino: ({ creator, marketId, order_type, orders }: {
+            creator: string;
+            marketId: string;
+            order_type: string;
+            orders: {
+                price: string;
+                amount: string;
+            }[];
+        }) => import("../beezee/tradebin/tx").MsgFillOrders;
+    };
     "/bze.tokenfactory.v1.MsgCreateDenom": {
         aminoType: string;
         toAmino: ({ creator, subdenom }: import("../beezee/tokenfactory/tx").MsgCreateDenom) => {

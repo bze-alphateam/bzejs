@@ -42,6 +42,28 @@ export interface MsgCancelOrderSDKType {
 }
 export interface MsgCancelOrderResponse {}
 export interface MsgCancelOrderResponseSDKType {}
+export interface FillOrderItem {
+  price: string;
+  amount: string;
+}
+export interface FillOrderItemSDKType {
+  price: string;
+  amount: string;
+}
+export interface MsgFillOrders {
+  creator: string;
+  marketId: string;
+  orderType: string;
+  orders: FillOrderItem[];
+}
+export interface MsgFillOrdersSDKType {
+  creator: string;
+  marketId: string;
+  order_type: string;
+  orders: FillOrderItemSDKType[];
+}
+export interface MsgFillOrdersResponse {}
+export interface MsgFillOrdersResponseSDKType {}
 
 function createBaseMsgCreateMarket(): MsgCreateMarket {
   return {
@@ -365,6 +387,170 @@ export const MsgCancelOrderResponse = {
 
   fromPartial(_: DeepPartial<MsgCancelOrderResponse>): MsgCancelOrderResponse {
     const message = createBaseMsgCancelOrderResponse();
+    return message;
+  }
+
+};
+
+function createBaseFillOrderItem(): FillOrderItem {
+  return {
+    price: "",
+    amount: ""
+  };
+}
+
+export const FillOrderItem = {
+  encode(message: FillOrderItem, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.price !== "") {
+      writer.uint32(10).string(message.price);
+    }
+
+    if (message.amount !== "") {
+      writer.uint32(18).string(message.amount);
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): FillOrderItem {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseFillOrderItem();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.price = reader.string();
+          break;
+
+        case 2:
+          message.amount = reader.string();
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<FillOrderItem>): FillOrderItem {
+    const message = createBaseFillOrderItem();
+    message.price = object.price ?? "";
+    message.amount = object.amount ?? "";
+    return message;
+  }
+
+};
+
+function createBaseMsgFillOrders(): MsgFillOrders {
+  return {
+    creator: "",
+    marketId: "",
+    orderType: "",
+    orders: []
+  };
+}
+
+export const MsgFillOrders = {
+  encode(message: MsgFillOrders, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+
+    if (message.marketId !== "") {
+      writer.uint32(18).string(message.marketId);
+    }
+
+    if (message.orderType !== "") {
+      writer.uint32(26).string(message.orderType);
+    }
+
+    for (const v of message.orders) {
+      FillOrderItem.encode(v!, writer.uint32(34).fork()).ldelim();
+    }
+
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgFillOrders {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgFillOrders();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+
+        case 2:
+          message.marketId = reader.string();
+          break;
+
+        case 3:
+          message.orderType = reader.string();
+          break;
+
+        case 4:
+          message.orders.push(FillOrderItem.decode(reader, reader.uint32()));
+          break;
+
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(object: DeepPartial<MsgFillOrders>): MsgFillOrders {
+    const message = createBaseMsgFillOrders();
+    message.creator = object.creator ?? "";
+    message.marketId = object.marketId ?? "";
+    message.orderType = object.orderType ?? "";
+    message.orders = object.orders?.map(e => FillOrderItem.fromPartial(e)) || [];
+    return message;
+  }
+
+};
+
+function createBaseMsgFillOrdersResponse(): MsgFillOrdersResponse {
+  return {};
+}
+
+export const MsgFillOrdersResponse = {
+  encode(_: MsgFillOrdersResponse, writer: _m0.Writer = _m0.Writer.create()): _m0.Writer {
+    return writer;
+  },
+
+  decode(input: _m0.Reader | Uint8Array, length?: number): MsgFillOrdersResponse {
+    const reader = input instanceof _m0.Reader ? input : new _m0.Reader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgFillOrdersResponse();
+
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+
+    return message;
+  },
+
+  fromPartial(_: DeepPartial<MsgFillOrdersResponse>): MsgFillOrdersResponse {
+    const message = createBaseMsgFillOrdersResponse();
     return message;
   }
 

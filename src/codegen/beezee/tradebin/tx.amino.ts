@@ -1,5 +1,5 @@
 import { AminoMsg } from "@cosmjs/amino";
-import { MsgCreateMarket, MsgCreateOrder, MsgCancelOrder } from "./tx";
+import { MsgCreateMarket, MsgCreateOrder, MsgCancelOrder, MsgFillOrders } from "./tx";
 export interface AminoMsgCreateMarket extends AminoMsg {
   type: "tradebin/CreateMarket";
   value: {
@@ -25,6 +25,18 @@ export interface AminoMsgCancelOrder extends AminoMsg {
     marketId: string;
     orderId: string;
     order_type: string;
+  };
+}
+export interface AminoMsgFillOrders extends AminoMsg {
+  type: "/bze.tradebin.v1.MsgFillOrders";
+  value: {
+    creator: string;
+    marketId: string;
+    order_type: string;
+    orders: {
+      price: string;
+      amount: string;
+    }[];
   };
 }
 export const AminoConverter = {
@@ -112,6 +124,41 @@ export const AminoConverter = {
         marketId,
         orderId,
         orderType: order_type
+      };
+    }
+  },
+  "/bze.tradebin.v1.MsgFillOrders": {
+    aminoType: "/bze.tradebin.v1.MsgFillOrders",
+    toAmino: ({
+      creator,
+      marketId,
+      orderType,
+      orders
+    }: MsgFillOrders): AminoMsgFillOrders["value"] => {
+      return {
+        creator,
+        marketId,
+        order_type: orderType,
+        orders: orders.map(el0 => ({
+          price: el0.price,
+          amount: el0.amount
+        }))
+      };
+    },
+    fromAmino: ({
+      creator,
+      marketId,
+      order_type,
+      orders
+    }: AminoMsgFillOrders["value"]): MsgFillOrders => {
+      return {
+        creator,
+        marketId,
+        orderType: order_type,
+        orders: orders.map(el0 => ({
+          price: el0.price,
+          amount: el0.amount
+        }))
       };
     }
   }

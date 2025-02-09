@@ -42,6 +42,8 @@ export interface OrderExecutedEvent {
     orderType: string;
     amount: string;
     price: string;
+    maker: string;
+    taker: string;
 }
 export interface OrderExecutedEventSDKType {
     id: string;
@@ -49,6 +51,8 @@ export interface OrderExecutedEventSDKType {
     order_type: string;
     amount: string;
     price: string;
+    maker: string;
+    taker: string;
 }
 export interface OrderCanceledEvent {
     id: string;
@@ -56,6 +60,7 @@ export interface OrderCanceledEvent {
     orderType: string;
     amount: string;
     price: string;
+    owner: string;
 }
 export interface OrderCanceledEventSDKType {
     id: string;
@@ -63,6 +68,7 @@ export interface OrderCanceledEventSDKType {
     order_type: string;
     amount: string;
     price: string;
+    owner: string;
 }
 export interface OrderSavedEvent {
     id: string;
@@ -70,6 +76,7 @@ export interface OrderSavedEvent {
     orderType: string;
     amount: string;
     price: string;
+    owner: string;
 }
 export interface OrderSavedEventSDKType {
     id: string;
@@ -77,6 +84,7 @@ export interface OrderSavedEventSDKType {
     order_type: string;
     amount: string;
     price: string;
+    owner: string;
 }
 export declare const OrderCreateMessageEvent: {
     encode(message: OrderCreateMessageEvent, writer?: _m0.Writer): _m0.Writer;

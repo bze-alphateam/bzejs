@@ -42,6 +42,8 @@ export interface OrderExecutedEvent {
   orderType: string;
   amount: string;
   price: string;
+  maker: string;
+  taker: string;
 }
 export interface OrderExecutedEventSDKType {
   id: string;
@@ -49,6 +51,8 @@ export interface OrderExecutedEventSDKType {
   order_type: string;
   amount: string;
   price: string;
+  maker: string;
+  taker: string;
 }
 export interface OrderCanceledEvent {
   id: string;
@@ -56,6 +60,7 @@ export interface OrderCanceledEvent {
   orderType: string;
   amount: string;
   price: string;
+  owner: string;
 }
 export interface OrderCanceledEventSDKType {
   id: string;
@@ -63,6 +68,7 @@ export interface OrderCanceledEventSDKType {
   order_type: string;
   amount: string;
   price: string;
+  owner: string;
 }
 export interface OrderSavedEvent {
   id: string;
@@ -70,6 +76,7 @@ export interface OrderSavedEvent {
   orderType: string;
   amount: string;
   price: string;
+  owner: string;
 }
 export interface OrderSavedEventSDKType {
   id: string;
@@ -77,6 +84,7 @@ export interface OrderSavedEventSDKType {
   order_type: string;
   amount: string;
   price: string;
+  owner: string;
 }
 
 function createBaseOrderCreateMessageEvent(): OrderCreateMessageEvent {
@@ -310,7 +318,9 @@ function createBaseOrderExecutedEvent(): OrderExecutedEvent {
     marketId: "",
     orderType: "",
     amount: "",
-    price: ""
+    price: "",
+    maker: "",
+    taker: ""
   };
 }
 
@@ -334,6 +344,14 @@ export const OrderExecutedEvent = {
 
     if (message.price !== "") {
       writer.uint32(42).string(message.price);
+    }
+
+    if (message.maker !== "") {
+      writer.uint32(50).string(message.maker);
+    }
+
+    if (message.taker !== "") {
+      writer.uint32(58).string(message.taker);
     }
 
     return writer;
@@ -368,6 +386,14 @@ export const OrderExecutedEvent = {
           message.price = reader.string();
           break;
 
+        case 6:
+          message.maker = reader.string();
+          break;
+
+        case 7:
+          message.taker = reader.string();
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -384,6 +410,8 @@ export const OrderExecutedEvent = {
     message.orderType = object.orderType ?? "";
     message.amount = object.amount ?? "";
     message.price = object.price ?? "";
+    message.maker = object.maker ?? "";
+    message.taker = object.taker ?? "";
     return message;
   }
 
@@ -395,7 +423,8 @@ function createBaseOrderCanceledEvent(): OrderCanceledEvent {
     marketId: "",
     orderType: "",
     amount: "",
-    price: ""
+    price: "",
+    owner: ""
   };
 }
 
@@ -419,6 +448,10 @@ export const OrderCanceledEvent = {
 
     if (message.price !== "") {
       writer.uint32(42).string(message.price);
+    }
+
+    if (message.owner !== "") {
+      writer.uint32(50).string(message.owner);
     }
 
     return writer;
@@ -453,6 +486,10 @@ export const OrderCanceledEvent = {
           message.price = reader.string();
           break;
 
+        case 6:
+          message.owner = reader.string();
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -469,6 +506,7 @@ export const OrderCanceledEvent = {
     message.orderType = object.orderType ?? "";
     message.amount = object.amount ?? "";
     message.price = object.price ?? "";
+    message.owner = object.owner ?? "";
     return message;
   }
 
@@ -480,7 +518,8 @@ function createBaseOrderSavedEvent(): OrderSavedEvent {
     marketId: "",
     orderType: "",
     amount: "",
-    price: ""
+    price: "",
+    owner: ""
   };
 }
 
@@ -504,6 +543,10 @@ export const OrderSavedEvent = {
 
     if (message.price !== "") {
       writer.uint32(42).string(message.price);
+    }
+
+    if (message.owner !== "") {
+      writer.uint32(50).string(message.owner);
     }
 
     return writer;
@@ -538,6 +581,10 @@ export const OrderSavedEvent = {
           message.price = reader.string();
           break;
 
+        case 6:
+          message.owner = reader.string();
+          break;
+
         default:
           reader.skipType(tag & 7);
           break;
@@ -554,6 +601,7 @@ export const OrderSavedEvent = {
     message.orderType = object.orderType ?? "";
     message.amount = object.amount ?? "";
     message.price = object.price ?? "";
+    message.owner = object.owner ?? "";
     return message;
   }
 
