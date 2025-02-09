@@ -28,7 +28,7 @@ export interface AminoMsgCancelOrder extends AminoMsg {
   };
 }
 export interface AminoMsgFillOrders extends AminoMsg {
-  type: "/bze.tradebin.v1.MsgFillOrders";
+  type: "tradebin/FillOrders";
   value: {
     creator: string;
     marketId: string;
@@ -128,7 +128,7 @@ export const AminoConverter = {
     }
   },
   "/bze.tradebin.v1.MsgFillOrders": {
-    aminoType: "/bze.tradebin.v1.MsgFillOrders",
+    aminoType: "tradebin/FillOrders",
     toAmino: ({
       creator,
       marketId,

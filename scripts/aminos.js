@@ -37,6 +37,9 @@ export const AMINO_MAP = {
   '/bze.tradebin.v1.MsgCreateOrder': {
     aminoType: 'tradebin/CreateOrder'
   },
+  '/bze.tradebin.v1.MsgFillOrders': {
+    aminoType: 'tradebin/FillOrders'
+  },
   '/bze.tokenfactory.v1.MsgCreateDenom': {
     aminoType: 'tokenfactory/CreateDenom'
   },

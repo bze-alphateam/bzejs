@@ -28,7 +28,7 @@ export interface AminoMsgCancelOrder extends AminoMsg {
     };
 }
 export interface AminoMsgFillOrders extends AminoMsg {
-    type: "/bze.tradebin.v1.MsgFillOrders";
+    type: "tradebin/FillOrders";
     value: {
         creator: string;
         marketId: string;
