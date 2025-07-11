@@ -1,0 +1,28 @@
+name: Buf-Push
+# Protobuf runs buf (https://buf.build/) push updated proto files to https://buf.build/cosmos/ibc
+# This workflow is only run when a .proto file has been changed
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "proto/**"
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  push:
+    runs-on: depot-ubuntu-22.04-4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: bufbuild/buf-action@v1
+        with:
+          token: ${{ secrets.BUF_TOKEN }}
+          setup_only: false
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          input: "proto"
+          push: true
+          lint: false
+          format: false
+          breaking: false
