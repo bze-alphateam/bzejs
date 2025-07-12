@@ -1,3 +1,6 @@
+```shell
+yarn codegen
+```
 
 ```shell
 cd packages/bzejs

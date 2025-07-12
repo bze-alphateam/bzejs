@@ -38,41 +38,41 @@ import * as _36 from "./txfeecollector/genesis";
 import * as _37 from "./txfeecollector/params";
 import * as _38 from "./txfeecollector/query";
 import * as _39 from "./txfeecollector/tx";
-import * as _226 from "./burner/tx.amino";
-import * as _227 from "./cointrunk/tx.amino";
-import * as _228 from "./rewards/tx.amino";
-import * as _229 from "./tokenfactory/tx.amino";
-import * as _230 from "./tradebin/tx.amino";
-import * as _231 from "./txfeecollector/tx.amino";
-import * as _232 from "./burner/tx.registry";
-import * as _233 from "./cointrunk/tx.registry";
-import * as _234 from "./rewards/tx.registry";
-import * as _235 from "./tokenfactory/tx.registry";
-import * as _236 from "./tradebin/tx.registry";
-import * as _237 from "./txfeecollector/tx.registry";
-import * as _238 from "./burner/query.lcd";
-import * as _239 from "./cointrunk/query.lcd";
-import * as _240 from "./epochs/query.lcd";
-import * as _241 from "./rewards/query.lcd";
-import * as _242 from "./tokenfactory/query.lcd";
-import * as _243 from "./tradebin/query.lcd";
-import * as _244 from "./txfeecollector/query.lcd";
-import * as _245 from "./burner/query.rpc.Query";
-import * as _246 from "./cointrunk/query.rpc.Query";
-import * as _247 from "./epochs/query.rpc.Query";
-import * as _248 from "./rewards/query.rpc.Query";
-import * as _249 from "./tokenfactory/query.rpc.Query";
-import * as _250 from "./tradebin/query.rpc.Query";
-import * as _251 from "./txfeecollector/query.rpc.Query";
-import * as _252 from "./burner/tx.rpc.msg";
-import * as _253 from "./cointrunk/tx.rpc.msg";
-import * as _254 from "./rewards/tx.rpc.msg";
-import * as _255 from "./tokenfactory/tx.rpc.msg";
-import * as _256 from "./tradebin/tx.rpc.msg";
-import * as _257 from "./txfeecollector/tx.rpc.msg";
-import * as _397 from "./lcd";
-import * as _398 from "./rpc.query";
-import * as _399 from "./rpc.tx";
+import * as _228 from "./burner/tx.amino";
+import * as _229 from "./cointrunk/tx.amino";
+import * as _230 from "./rewards/tx.amino";
+import * as _231 from "./tokenfactory/tx.amino";
+import * as _232 from "./tradebin/tx.amino";
+import * as _233 from "./txfeecollector/tx.amino";
+import * as _234 from "./burner/tx.registry";
+import * as _235 from "./cointrunk/tx.registry";
+import * as _236 from "./rewards/tx.registry";
+import * as _237 from "./tokenfactory/tx.registry";
+import * as _238 from "./tradebin/tx.registry";
+import * as _239 from "./txfeecollector/tx.registry";
+import * as _240 from "./burner/query.lcd";
+import * as _241 from "./cointrunk/query.lcd";
+import * as _242 from "./epochs/query.lcd";
+import * as _243 from "./rewards/query.lcd";
+import * as _244 from "./tokenfactory/query.lcd";
+import * as _245 from "./tradebin/query.lcd";
+import * as _246 from "./txfeecollector/query.lcd";
+import * as _247 from "./burner/query.rpc.Query";
+import * as _248 from "./cointrunk/query.rpc.Query";
+import * as _249 from "./epochs/query.rpc.Query";
+import * as _250 from "./rewards/query.rpc.Query";
+import * as _251 from "./tokenfactory/query.rpc.Query";
+import * as _252 from "./tradebin/query.rpc.Query";
+import * as _253 from "./txfeecollector/query.rpc.Query";
+import * as _254 from "./burner/tx.rpc.msg";
+import * as _255 from "./cointrunk/tx.rpc.msg";
+import * as _256 from "./rewards/tx.rpc.msg";
+import * as _257 from "./tokenfactory/tx.rpc.msg";
+import * as _258 from "./tradebin/tx.rpc.msg";
+import * as _259 from "./txfeecollector/tx.rpc.msg";
+import * as _401 from "./lcd";
+import * as _402 from "./rpc.query";
+import * as _403 from "./rpc.tx";
 export namespace bze {
   export const burner = {
     ..._1,
@@ -82,11 +82,11 @@ export namespace bze {
     ..._5,
     ..._6,
     ..._7,
-    ..._226,
-    ..._232,
-    ..._238,
-    ..._245,
-    ..._252
+    ..._228,
+    ..._234,
+    ..._240,
+    ..._247,
+    ..._254
   };
   export const cointrunk = {
     ..._8,
@@ -95,19 +95,19 @@ export namespace bze {
     ..._11,
     ..._12,
     ..._13,
-    ..._227,
-    ..._233,
-    ..._239,
-    ..._246,
-    ..._253
+    ..._229,
+    ..._235,
+    ..._241,
+    ..._248,
+    ..._255
   };
   export const epochs = {
     ..._14,
     ..._15,
     ..._16,
     ..._17,
-    ..._240,
-    ..._247
+    ..._242,
+    ..._249
   };
   export const rewards = {
     ..._18,
@@ -116,11 +116,11 @@ export namespace bze {
     ..._21,
     ..._22,
     ..._23,
-    ..._228,
-    ..._234,
-    ..._241,
-    ..._248,
-    ..._254
+    ..._230,
+    ..._236,
+    ..._243,
+    ..._250,
+    ..._256
   };
   export const tokenfactory = {
     ..._24,
@@ -129,11 +129,11 @@ export namespace bze {
     ..._27,
     ..._28,
     ..._29,
-    ..._229,
-    ..._235,
-    ..._242,
-    ..._249,
-    ..._255
+    ..._231,
+    ..._237,
+    ..._244,
+    ..._251,
+    ..._257
   };
   export const tradebin = {
     ..._30,
@@ -142,26 +142,26 @@ export namespace bze {
     ..._33,
     ..._34,
     ..._35,
-    ..._230,
-    ..._236,
-    ..._243,
-    ..._250,
-    ..._256
+    ..._232,
+    ..._238,
+    ..._245,
+    ..._252,
+    ..._258
   };
   export const txfeecollector = {
     ..._36,
     ..._37,
     ..._38,
     ..._39,
-    ..._231,
-    ..._237,
-    ..._244,
-    ..._251,
-    ..._257
+    ..._233,
+    ..._239,
+    ..._246,
+    ..._253,
+    ..._259
   };
   export const ClientFactory = {
-    ..._397,
-    ..._398,
-    ..._399
+    ..._401,
+    ..._402,
+    ..._403
   };
 }

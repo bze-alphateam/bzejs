@@ -22,6 +22,9 @@ export const createRPCQueryClient = async ({
       base: {
         node: {
           v1beta1: (await import("./base/node/v1beta1/query.rpc.Service")).createRpcQueryExtension(client)
+        },
+        tendermint: {
+          v1beta1: (await import("./base/tendermint/v1beta1/query.rpc.Service")).createRpcQueryExtension(client)
         }
       },
       circuit: {
