@@ -1,6 +1,6 @@
 {
   "name": "@bze/bzejs",
-  "version": "1.8.0",
+  "version": "1.8.2",
   "author": "faneaatiku <alphateam@getbze.com>",
   "description": "BeeZee JS library",
   "main": "index.js",
@@ -20,7 +20,7 @@
     "url": "https://github.com/bze-alphateam/bzejs/issues"
   },
   "scripts": {
-    "copy": "copyfiles -f ../../LICENSE README.md package.json dist",
+    "copy": "copyfiles -f ../../LICENSE README.md dist-package.json dist && cd dist && mv dist-package.json package.json",
     "clean": "rimraf dist",
     "prepare": "npm run build",
     "download-protos": "ts-node scripts/download-protos.ts",
@@ -29,7 +29,8 @@
     "build:dev": "npm run clean && npm run codegen && tsc --declarationMap && tsc -p tsconfig.esm.json && npm run copy",
     "lint": "eslint . --fix",
     "test": "jest",
-    "test:watch": "jest --watch"
+    "test:watch": "jest --watch",
+    "publish": "npm run build && cd dist && npm publish"
   },
   "devDependencies": {
     "@types/node": "^22.14.1",

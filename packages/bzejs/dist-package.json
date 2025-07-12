@@ -1,0 +1,32 @@
+{
+  "name": "@bze/bzejs",
+  "version": "1.8.3",
+  "author": "faneaatiku <alphateam@getbze.com>",
+  "description": "BeeZee JS library",
+  "main": "index.js",
+  "module": "esm/index.js",
+  "types": "index.d.ts",
+  "homepage": "https://github.com/bze-alphateam/bzejs",
+  "license": "SEE LICENSE IN LICENSE",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bze-alphateam/bzejs"
+  },
+  "bugs": {
+    "url": "https://github.com/bze-alphateam/bzejs/issues"
+  },
+  "dependencies": {
+    "@interchainjs/cosmos": "1.11.5",
+    "@interchainjs/cosmos-types": "1.11.5",
+    "@interchainjs/encoding": "1.11.5",
+    "@interchainjs/pubkey": "1.11.5",
+    "@interchainjs/types": "1.11.5",
+    "@interchainjs/utils": "1.11.5",
+    "@cosmology/lcd": "^0.14.0",
+    "@cosmology/telescope": "^1.12.8"
+  },
+  "keywords": []
+}

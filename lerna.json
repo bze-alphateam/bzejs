@@ -12,7 +12,7 @@
   "registry": "https://registry.npmjs.org",
   "command": {
     "create": {
-      "homepage": "https://github.com/faneaatiku/bzejs",
+      "homepage": "https://github.com/bze-alphateam/bzejs",
       "license": "SEE LICENSE IN LICENSE",
       "access": "restricted"
     },
@@ -20,5 +20,6 @@
       "allowBranch": "main",
       "message": "chore(release): publish"
     }
-  }
+  },
+  "useWorkspaces": true
 }
