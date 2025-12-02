@@ -18,6 +18,19 @@
 ```sh
 npm install bzejs
 ```
+
+## Security Note
+
+If you're using **npm** (not yarn), you may need to add the following to your `package.json` to ensure secure dependency versions:
+
+```json
+"overrides": {
+  "axios": "^1.13.2"
+}
+```
+
+This prevents the vulnerable `axios@1.8.2` from being installed via `@cosmology/lcd`. Yarn users are protected automatically via the workspace resolutions.
+
 ## Table of contents
 
 - [bzejs](#bzejs)
