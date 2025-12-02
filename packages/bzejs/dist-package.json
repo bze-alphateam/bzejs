@@ -1,6 +1,6 @@
 {
   "name": "@bze/bzejs",
-  "version": "1.8.4",
+  "version": "1.9.1",
   "author": "faneaatiku <alphateam@getbze.com>",
   "description": "BeeZee JS library",
   "main": "index.js",
@@ -25,8 +25,8 @@
     "@interchainjs/pubkey": "1.11.5",
     "@interchainjs/types": "1.11.5",
     "@interchainjs/utils": "1.11.5",
-    "@cosmology/lcd": "^0.14.0",
-    "@cosmology/telescope": "^1.12.8"
+    "@cosmology/lcd": "^0.14.5",
+    "axios": "^1.11.1"
   },
   "keywords": []
 }
