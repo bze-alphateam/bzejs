@@ -28,17 +28,14 @@ npm run build            # Rebuild
 
 ## Publishing to npm
 
-Both `package.json` and `dist-package.json` must have matching versions and dependencies.
-`dist-package.json` is copied into `dist/` as `package.json` during build — it is the actual
-package.json that gets published to npm.
-
 ```bash
-# 1. Update version in BOTH package.json and dist-package.json
-# 2. Build
+# 1. Update version in package.json
+# 2. Build and publish
 npm run build
-# 3. Publish from dist/
-cd dist && npm publish
+npm publish
 ```
+
+Only `dist/`, `LICENSE`, and `README.md` are included in the published package (configured via `"files"` in package.json).
 
 ## Architecture
 
@@ -94,8 +91,7 @@ import { Coin } from '@bze/bzejs/cosmos/base/v1beta1/coin';
 
 ```
 bzejs-v2/
-├── package.json          # Dev package (not published)
-├── dist-package.json     # Published to npm as package.json
+├── package.json          # Package config (single source of truth)
 ├── tsconfig.json         # CJS compilation
 ├── tsconfig.esm.json     # ESM compilation
 ├── scripts/

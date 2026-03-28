@@ -6,11 +6,11 @@
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
+  "files": ["dist/", "LICENSE", "README.md"],
   "homepage": "https://github.com/bze-alphateam/bzejs",
   "license": "SEE LICENSE IN LICENSE",
   "publishConfig": {
-    "access": "public",
-    "directory": "dist"
+    "access": "public"
   },
   "repository": {
     "type": "git",
@@ -21,14 +21,13 @@
   },
   "scripts": {
     "clean": "rimraf dist",
-    "copy": "copyfiles -f LICENSE README.md dist-package.json dist && cd dist && mv dist-package.json package.json",
     "download-protos": "ts-node scripts/download-protos.ts",
     "codegen": "ts-node scripts/codegen.ts",
-    "build": "npm run clean && tsc && tsc -p tsconfig.esm.json && npm run copy",
-    "build:dev": "npm run clean && npm run codegen && tsc --declarationMap && tsc -p tsconfig.esm.json && npm run copy",
+    "build": "npm run clean && tsc && tsc -p tsconfig.esm.json",
+    "build:dev": "npm run clean && npm run codegen && tsc --declarationMap && tsc -p tsconfig.esm.json",
     "lint": "eslint . --fix",
     "test": "jest",
-    "publish:npm": "npm run build && cd dist && npm publish"
+    "publish:npm": "npm run build && npm publish"
   },
   "dependencies": {
     "@interchainjs/cosmos": "1.21.0",
@@ -43,7 +42,7 @@
   "devDependencies": {
     "@hyperweb/telescope": "^2.2.1",
     "@types/node": "^22.14.1",
-    "copyfiles": "^2.4.1",
+
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
