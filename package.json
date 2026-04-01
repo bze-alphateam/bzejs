@@ -1,6 +1,6 @@
 {
   "name": "@bze/bzejs",
-  "version": "2.0.2",
+  "version": "3.0.0",
   "author": "faneaatiku <alphateam@getbze.com>",
   "description": "BeeZee JS library",
   "main": "dist/index.js",
@@ -54,7 +54,7 @@
     "@interchainjs/types": "1.21.0",
     "@interchainjs/utils": "1.21.0",
     "@cosmology/lcd": "^0.16.0",
-    "axios": "^1.14.0"
+    "axios": "1.14.0"
   },
   "devDependencies": {
     "@hyperweb/telescope": "^2.2.1",
@@ -65,7 +65,7 @@
     "typescript": "^5.8.3"
   },
   "overrides": {
-    "axios": "^1.14.0"
+    "axios": "1.14.0"
   },
   "keywords": []
 }

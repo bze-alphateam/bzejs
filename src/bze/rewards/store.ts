@@ -167,6 +167,38 @@ export interface PendingUnlockParticipantSDKType {
   denom: string;
 }
 /**
+ * @name UnlockParticipantsQueue
+ * @package bze.rewards
+ * @see proto type: bze.rewards.UnlockParticipantsQueue
+ */
+export interface UnlockParticipantsQueue {
+  unlockEpochs: bigint[];
+}
+export interface UnlockParticipantsQueueProtoMsg {
+  typeUrl: "/bze.rewards.UnlockParticipantsQueue";
+  value: Uint8Array;
+}
+/**
+ * @name UnlockParticipantsQueueAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.UnlockParticipantsQueue
+ */
+export interface UnlockParticipantsQueueAmino {
+  unlockEpochs?: string[];
+}
+export interface UnlockParticipantsQueueAminoMsg {
+  type: "/bze.rewards.UnlockParticipantsQueue";
+  value: UnlockParticipantsQueueAmino;
+}
+/**
+ * @name UnlockParticipantsQueueSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.UnlockParticipantsQueue
+ */
+export interface UnlockParticipantsQueueSDKType {
+  unlockEpochs: bigint[];
+}
+/**
  * @name TradingReward
  * @package bze.rewards
  * @see proto type: bze.rewards.TradingReward
@@ -396,6 +428,73 @@ export interface MarketIdTradingRewardIdAminoMsg {
 export interface MarketIdTradingRewardIdSDKType {
   reward_id: string;
   market_id: string;
+}
+/**
+ * @name StakingRewardsDistributionQueue
+ * @package bze.rewards
+ * @see proto type: bze.rewards.StakingRewardsDistributionQueue
+ */
+export interface StakingRewardsDistributionQueue {
+  pending: boolean;
+  cursor: string;
+}
+export interface StakingRewardsDistributionQueueProtoMsg {
+  typeUrl: "/bze.rewards.StakingRewardsDistributionQueue";
+  value: Uint8Array;
+}
+/**
+ * @name StakingRewardsDistributionQueueAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.StakingRewardsDistributionQueue
+ */
+export interface StakingRewardsDistributionQueueAmino {
+  pending?: boolean;
+  cursor?: string;
+}
+export interface StakingRewardsDistributionQueueAminoMsg {
+  type: "/bze.rewards.StakingRewardsDistributionQueue";
+  value: StakingRewardsDistributionQueueAmino;
+}
+/**
+ * @name StakingRewardsDistributionQueueSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.StakingRewardsDistributionQueue
+ */
+export interface StakingRewardsDistributionQueueSDKType {
+  pending: boolean;
+  cursor: string;
+}
+/**
+ * @name TradingRewardExpirationQueue
+ * @package bze.rewards
+ * @see proto type: bze.rewards.TradingRewardExpirationQueue
+ */
+export interface TradingRewardExpirationQueue {
+  removalEpochs: number[];
+}
+export interface TradingRewardExpirationQueueProtoMsg {
+  typeUrl: "/bze.rewards.TradingRewardExpirationQueue";
+  value: Uint8Array;
+}
+/**
+ * @name TradingRewardExpirationQueueAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.TradingRewardExpirationQueue
+ */
+export interface TradingRewardExpirationQueueAmino {
+  removal_epochs?: number[];
+}
+export interface TradingRewardExpirationQueueAminoMsg {
+  type: "/bze.rewards.TradingRewardExpirationQueue";
+  value: TradingRewardExpirationQueueAmino;
+}
+/**
+ * @name TradingRewardExpirationQueueSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.TradingRewardExpirationQueue
+ */
+export interface TradingRewardExpirationQueueSDKType {
+  removal_epochs: number[];
 }
 function createBaseStakingReward(): StakingReward {
   return {
@@ -807,6 +906,95 @@ export const PendingUnlockParticipant = {
     return {
       typeUrl: "/bze.rewards.PendingUnlockParticipant",
       value: PendingUnlockParticipant.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseUnlockParticipantsQueue(): UnlockParticipantsQueue {
+  return {
+    unlockEpochs: []
+  };
+}
+/**
+ * @name UnlockParticipantsQueue
+ * @package bze.rewards
+ * @see proto type: bze.rewards.UnlockParticipantsQueue
+ */
+export const UnlockParticipantsQueue = {
+  typeUrl: "/bze.rewards.UnlockParticipantsQueue",
+  is(o: any): o is UnlockParticipantsQueue {
+    return o && (o.$typeUrl === UnlockParticipantsQueue.typeUrl || Array.isArray(o.unlockEpochs) && (!o.unlockEpochs.length || typeof o.unlockEpochs[0] === "bigint"));
+  },
+  isSDK(o: any): o is UnlockParticipantsQueueSDKType {
+    return o && (o.$typeUrl === UnlockParticipantsQueue.typeUrl || Array.isArray(o.unlockEpochs) && (!o.unlockEpochs.length || typeof o.unlockEpochs[0] === "bigint"));
+  },
+  isAmino(o: any): o is UnlockParticipantsQueueAmino {
+    return o && (o.$typeUrl === UnlockParticipantsQueue.typeUrl || Array.isArray(o.unlockEpochs) && (!o.unlockEpochs.length || typeof o.unlockEpochs[0] === "bigint"));
+  },
+  encode(message: UnlockParticipantsQueue, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    writer.uint32(10).fork();
+    for (const v of message.unlockEpochs) {
+      writer.uint64(v);
+    }
+    writer.ldelim();
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): UnlockParticipantsQueue {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseUnlockParticipantsQueue();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if ((tag & 7) === 2) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.unlockEpochs.push(reader.uint64());
+            }
+          } else {
+            message.unlockEpochs.push(reader.uint64());
+          }
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<UnlockParticipantsQueue>): UnlockParticipantsQueue {
+    const message = createBaseUnlockParticipantsQueue();
+    message.unlockEpochs = object.unlockEpochs?.map(e => BigInt(e.toString())) || [];
+    return message;
+  },
+  fromAmino(object: UnlockParticipantsQueueAmino): UnlockParticipantsQueue {
+    const message = createBaseUnlockParticipantsQueue();
+    message.unlockEpochs = object.unlockEpochs?.map(e => BigInt(e)) || [];
+    return message;
+  },
+  toAmino(message: UnlockParticipantsQueue): UnlockParticipantsQueueAmino {
+    const obj: any = {};
+    if (message.unlockEpochs) {
+      obj.unlockEpochs = message.unlockEpochs.map(e => e.toString());
+    } else {
+      obj.unlockEpochs = message.unlockEpochs;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: UnlockParticipantsQueueAminoMsg): UnlockParticipantsQueue {
+    return UnlockParticipantsQueue.fromAmino(object.value);
+  },
+  fromProtoMsg(message: UnlockParticipantsQueueProtoMsg): UnlockParticipantsQueue {
+    return UnlockParticipantsQueue.decode(message.value);
+  },
+  toProto(message: UnlockParticipantsQueue): Uint8Array {
+    return UnlockParticipantsQueue.encode(message).finish();
+  },
+  toProtoMsg(message: UnlockParticipantsQueue): UnlockParticipantsQueueProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.UnlockParticipantsQueue",
+      value: UnlockParticipantsQueue.encode(message).finish()
     };
   },
   registerTypeUrl() {}
@@ -1438,6 +1626,185 @@ export const MarketIdTradingRewardId = {
     return {
       typeUrl: "/bze.rewards.MarketIdTradingRewardId",
       value: MarketIdTradingRewardId.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseStakingRewardsDistributionQueue(): StakingRewardsDistributionQueue {
+  return {
+    pending: false,
+    cursor: ""
+  };
+}
+/**
+ * @name StakingRewardsDistributionQueue
+ * @package bze.rewards
+ * @see proto type: bze.rewards.StakingRewardsDistributionQueue
+ */
+export const StakingRewardsDistributionQueue = {
+  typeUrl: "/bze.rewards.StakingRewardsDistributionQueue",
+  is(o: any): o is StakingRewardsDistributionQueue {
+    return o && (o.$typeUrl === StakingRewardsDistributionQueue.typeUrl || typeof o.pending === "boolean" && typeof o.cursor === "string");
+  },
+  isSDK(o: any): o is StakingRewardsDistributionQueueSDKType {
+    return o && (o.$typeUrl === StakingRewardsDistributionQueue.typeUrl || typeof o.pending === "boolean" && typeof o.cursor === "string");
+  },
+  isAmino(o: any): o is StakingRewardsDistributionQueueAmino {
+    return o && (o.$typeUrl === StakingRewardsDistributionQueue.typeUrl || typeof o.pending === "boolean" && typeof o.cursor === "string");
+  },
+  encode(message: StakingRewardsDistributionQueue, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.pending === true) {
+      writer.uint32(8).bool(message.pending);
+    }
+    if (message.cursor !== "") {
+      writer.uint32(18).string(message.cursor);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): StakingRewardsDistributionQueue {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseStakingRewardsDistributionQueue();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.pending = reader.bool();
+          break;
+        case 2:
+          message.cursor = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<StakingRewardsDistributionQueue>): StakingRewardsDistributionQueue {
+    const message = createBaseStakingRewardsDistributionQueue();
+    message.pending = object.pending ?? false;
+    message.cursor = object.cursor ?? "";
+    return message;
+  },
+  fromAmino(object: StakingRewardsDistributionQueueAmino): StakingRewardsDistributionQueue {
+    const message = createBaseStakingRewardsDistributionQueue();
+    if (object.pending !== undefined && object.pending !== null) {
+      message.pending = object.pending;
+    }
+    if (object.cursor !== undefined && object.cursor !== null) {
+      message.cursor = object.cursor;
+    }
+    return message;
+  },
+  toAmino(message: StakingRewardsDistributionQueue): StakingRewardsDistributionQueueAmino {
+    const obj: any = {};
+    obj.pending = message.pending === false ? undefined : message.pending;
+    obj.cursor = message.cursor === "" ? undefined : message.cursor;
+    return obj;
+  },
+  fromAminoMsg(object: StakingRewardsDistributionQueueAminoMsg): StakingRewardsDistributionQueue {
+    return StakingRewardsDistributionQueue.fromAmino(object.value);
+  },
+  fromProtoMsg(message: StakingRewardsDistributionQueueProtoMsg): StakingRewardsDistributionQueue {
+    return StakingRewardsDistributionQueue.decode(message.value);
+  },
+  toProto(message: StakingRewardsDistributionQueue): Uint8Array {
+    return StakingRewardsDistributionQueue.encode(message).finish();
+  },
+  toProtoMsg(message: StakingRewardsDistributionQueue): StakingRewardsDistributionQueueProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.StakingRewardsDistributionQueue",
+      value: StakingRewardsDistributionQueue.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseTradingRewardExpirationQueue(): TradingRewardExpirationQueue {
+  return {
+    removalEpochs: []
+  };
+}
+/**
+ * @name TradingRewardExpirationQueue
+ * @package bze.rewards
+ * @see proto type: bze.rewards.TradingRewardExpirationQueue
+ */
+export const TradingRewardExpirationQueue = {
+  typeUrl: "/bze.rewards.TradingRewardExpirationQueue",
+  is(o: any): o is TradingRewardExpirationQueue {
+    return o && (o.$typeUrl === TradingRewardExpirationQueue.typeUrl || Array.isArray(o.removalEpochs) && (!o.removalEpochs.length || typeof o.removalEpochs[0] === "number"));
+  },
+  isSDK(o: any): o is TradingRewardExpirationQueueSDKType {
+    return o && (o.$typeUrl === TradingRewardExpirationQueue.typeUrl || Array.isArray(o.removal_epochs) && (!o.removal_epochs.length || typeof o.removal_epochs[0] === "number"));
+  },
+  isAmino(o: any): o is TradingRewardExpirationQueueAmino {
+    return o && (o.$typeUrl === TradingRewardExpirationQueue.typeUrl || Array.isArray(o.removal_epochs) && (!o.removal_epochs.length || typeof o.removal_epochs[0] === "number"));
+  },
+  encode(message: TradingRewardExpirationQueue, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    writer.uint32(10).fork();
+    for (const v of message.removalEpochs) {
+      writer.uint32(v);
+    }
+    writer.ldelim();
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): TradingRewardExpirationQueue {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseTradingRewardExpirationQueue();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          if ((tag & 7) === 2) {
+            const end2 = reader.uint32() + reader.pos;
+            while (reader.pos < end2) {
+              message.removalEpochs.push(reader.uint32());
+            }
+          } else {
+            message.removalEpochs.push(reader.uint32());
+          }
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<TradingRewardExpirationQueue>): TradingRewardExpirationQueue {
+    const message = createBaseTradingRewardExpirationQueue();
+    message.removalEpochs = object.removalEpochs?.map(e => e) || [];
+    return message;
+  },
+  fromAmino(object: TradingRewardExpirationQueueAmino): TradingRewardExpirationQueue {
+    const message = createBaseTradingRewardExpirationQueue();
+    message.removalEpochs = object.removal_epochs?.map(e => e) || [];
+    return message;
+  },
+  toAmino(message: TradingRewardExpirationQueue): TradingRewardExpirationQueueAmino {
+    const obj: any = {};
+    if (message.removalEpochs) {
+      obj.removal_epochs = message.removalEpochs.map(e => e);
+    } else {
+      obj.removal_epochs = message.removalEpochs;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: TradingRewardExpirationQueueAminoMsg): TradingRewardExpirationQueue {
+    return TradingRewardExpirationQueue.fromAmino(object.value);
+  },
+  fromProtoMsg(message: TradingRewardExpirationQueueProtoMsg): TradingRewardExpirationQueue {
+    return TradingRewardExpirationQueue.decode(message.value);
+  },
+  toProto(message: TradingRewardExpirationQueue): Uint8Array {
+    return TradingRewardExpirationQueue.encode(message).finish();
+  },
+  toProtoMsg(message: TradingRewardExpirationQueue): TradingRewardExpirationQueueProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.TradingRewardExpirationQueue",
+      value: TradingRewardExpirationQueue.encode(message).finish()
     };
   },
   registerTypeUrl() {}

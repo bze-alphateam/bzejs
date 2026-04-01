@@ -289,6 +289,76 @@ export interface MsgJoinRaffleResponseAminoMsg {
  * @see proto type: bze.burner.MsgJoinRaffleResponse
  */
 export interface MsgJoinRaffleResponseSDKType {}
+/**
+ * @name MsgMoveIbcLockedCoins
+ * @package bze.burner
+ * @see proto type: bze.burner.MsgMoveIbcLockedCoins
+ */
+export interface MsgMoveIbcLockedCoins {
+  creator: string;
+  denom: string;
+}
+export interface MsgMoveIbcLockedCoinsProtoMsg {
+  typeUrl: "/bze.burner.MsgMoveIbcLockedCoins";
+  value: Uint8Array;
+}
+/**
+ * @name MsgMoveIbcLockedCoinsAmino
+ * @package bze.burner
+ * @see proto type: bze.burner.MsgMoveIbcLockedCoins
+ */
+export interface MsgMoveIbcLockedCoinsAmino {
+  creator?: string;
+  denom?: string;
+}
+export interface MsgMoveIbcLockedCoinsAminoMsg {
+  type: "/bze.burner.MsgMoveIbcLockedCoins";
+  value: MsgMoveIbcLockedCoinsAmino;
+}
+/**
+ * @name MsgMoveIbcLockedCoinsSDKType
+ * @package bze.burner
+ * @see proto type: bze.burner.MsgMoveIbcLockedCoins
+ */
+export interface MsgMoveIbcLockedCoinsSDKType {
+  creator: string;
+  denom: string;
+}
+/**
+ * @name MsgMoveIbcLockedCoinsResponse
+ * @package bze.burner
+ * @see proto type: bze.burner.MsgMoveIbcLockedCoinsResponse
+ */
+export interface MsgMoveIbcLockedCoinsResponse {
+  added: string;
+  refunded: string;
+}
+export interface MsgMoveIbcLockedCoinsResponseProtoMsg {
+  typeUrl: "/bze.burner.MsgMoveIbcLockedCoinsResponse";
+  value: Uint8Array;
+}
+/**
+ * @name MsgMoveIbcLockedCoinsResponseAmino
+ * @package bze.burner
+ * @see proto type: bze.burner.MsgMoveIbcLockedCoinsResponse
+ */
+export interface MsgMoveIbcLockedCoinsResponseAmino {
+  added?: string;
+  refunded?: string;
+}
+export interface MsgMoveIbcLockedCoinsResponseAminoMsg {
+  type: "/bze.burner.MsgMoveIbcLockedCoinsResponse";
+  value: MsgMoveIbcLockedCoinsResponseAmino;
+}
+/**
+ * @name MsgMoveIbcLockedCoinsResponseSDKType
+ * @package bze.burner
+ * @see proto type: bze.burner.MsgMoveIbcLockedCoinsResponse
+ */
+export interface MsgMoveIbcLockedCoinsResponseSDKType {
+  added: string;
+  refunded: string;
+}
 function createBaseMsgUpdateParams(): MsgUpdateParams {
   return {
     authority: "",
@@ -1013,6 +1083,186 @@ export const MsgJoinRaffleResponse = {
     return {
       typeUrl: "/bze.burner.MsgJoinRaffleResponse",
       value: MsgJoinRaffleResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgMoveIbcLockedCoins(): MsgMoveIbcLockedCoins {
+  return {
+    creator: "",
+    denom: ""
+  };
+}
+/**
+ * @name MsgMoveIbcLockedCoins
+ * @package bze.burner
+ * @see proto type: bze.burner.MsgMoveIbcLockedCoins
+ */
+export const MsgMoveIbcLockedCoins = {
+  typeUrl: "/bze.burner.MsgMoveIbcLockedCoins",
+  is(o: any): o is MsgMoveIbcLockedCoins {
+    return o && (o.$typeUrl === MsgMoveIbcLockedCoins.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  isSDK(o: any): o is MsgMoveIbcLockedCoinsSDKType {
+    return o && (o.$typeUrl === MsgMoveIbcLockedCoins.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  isAmino(o: any): o is MsgMoveIbcLockedCoinsAmino {
+    return o && (o.$typeUrl === MsgMoveIbcLockedCoins.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  encode(message: MsgMoveIbcLockedCoins, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.denom !== "") {
+      writer.uint32(18).string(message.denom);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgMoveIbcLockedCoins {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgMoveIbcLockedCoins();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.denom = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgMoveIbcLockedCoins>): MsgMoveIbcLockedCoins {
+    const message = createBaseMsgMoveIbcLockedCoins();
+    message.creator = object.creator ?? "";
+    message.denom = object.denom ?? "";
+    return message;
+  },
+  fromAmino(object: MsgMoveIbcLockedCoinsAmino): MsgMoveIbcLockedCoins {
+    const message = createBaseMsgMoveIbcLockedCoins();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    return message;
+  },
+  toAmino(message: MsgMoveIbcLockedCoins): MsgMoveIbcLockedCoinsAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    return obj;
+  },
+  fromAminoMsg(object: MsgMoveIbcLockedCoinsAminoMsg): MsgMoveIbcLockedCoins {
+    return MsgMoveIbcLockedCoins.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgMoveIbcLockedCoinsProtoMsg): MsgMoveIbcLockedCoins {
+    return MsgMoveIbcLockedCoins.decode(message.value);
+  },
+  toProto(message: MsgMoveIbcLockedCoins): Uint8Array {
+    return MsgMoveIbcLockedCoins.encode(message).finish();
+  },
+  toProtoMsg(message: MsgMoveIbcLockedCoins): MsgMoveIbcLockedCoinsProtoMsg {
+    return {
+      typeUrl: "/bze.burner.MsgMoveIbcLockedCoins",
+      value: MsgMoveIbcLockedCoins.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgMoveIbcLockedCoinsResponse(): MsgMoveIbcLockedCoinsResponse {
+  return {
+    added: "",
+    refunded: ""
+  };
+}
+/**
+ * @name MsgMoveIbcLockedCoinsResponse
+ * @package bze.burner
+ * @see proto type: bze.burner.MsgMoveIbcLockedCoinsResponse
+ */
+export const MsgMoveIbcLockedCoinsResponse = {
+  typeUrl: "/bze.burner.MsgMoveIbcLockedCoinsResponse",
+  is(o: any): o is MsgMoveIbcLockedCoinsResponse {
+    return o && (o.$typeUrl === MsgMoveIbcLockedCoinsResponse.typeUrl || typeof o.added === "string" && typeof o.refunded === "string");
+  },
+  isSDK(o: any): o is MsgMoveIbcLockedCoinsResponseSDKType {
+    return o && (o.$typeUrl === MsgMoveIbcLockedCoinsResponse.typeUrl || typeof o.added === "string" && typeof o.refunded === "string");
+  },
+  isAmino(o: any): o is MsgMoveIbcLockedCoinsResponseAmino {
+    return o && (o.$typeUrl === MsgMoveIbcLockedCoinsResponse.typeUrl || typeof o.added === "string" && typeof o.refunded === "string");
+  },
+  encode(message: MsgMoveIbcLockedCoinsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.added !== "") {
+      writer.uint32(10).string(message.added);
+    }
+    if (message.refunded !== "") {
+      writer.uint32(18).string(message.refunded);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgMoveIbcLockedCoinsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgMoveIbcLockedCoinsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.added = reader.string();
+          break;
+        case 2:
+          message.refunded = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgMoveIbcLockedCoinsResponse>): MsgMoveIbcLockedCoinsResponse {
+    const message = createBaseMsgMoveIbcLockedCoinsResponse();
+    message.added = object.added ?? "";
+    message.refunded = object.refunded ?? "";
+    return message;
+  },
+  fromAmino(object: MsgMoveIbcLockedCoinsResponseAmino): MsgMoveIbcLockedCoinsResponse {
+    const message = createBaseMsgMoveIbcLockedCoinsResponse();
+    if (object.added !== undefined && object.added !== null) {
+      message.added = object.added;
+    }
+    if (object.refunded !== undefined && object.refunded !== null) {
+      message.refunded = object.refunded;
+    }
+    return message;
+  },
+  toAmino(message: MsgMoveIbcLockedCoinsResponse): MsgMoveIbcLockedCoinsResponseAmino {
+    const obj: any = {};
+    obj.added = message.added === "" ? undefined : message.added;
+    obj.refunded = message.refunded === "" ? undefined : message.refunded;
+    return obj;
+  },
+  fromAminoMsg(object: MsgMoveIbcLockedCoinsResponseAminoMsg): MsgMoveIbcLockedCoinsResponse {
+    return MsgMoveIbcLockedCoinsResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgMoveIbcLockedCoinsResponseProtoMsg): MsgMoveIbcLockedCoinsResponse {
+    return MsgMoveIbcLockedCoinsResponse.decode(message.value);
+  },
+  toProto(message: MsgMoveIbcLockedCoinsResponse): Uint8Array {
+    return MsgMoveIbcLockedCoinsResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgMoveIbcLockedCoinsResponse): MsgMoveIbcLockedCoinsResponseProtoMsg {
+    return {
+      typeUrl: "/bze.burner.MsgMoveIbcLockedCoinsResponse",
+      value: MsgMoveIbcLockedCoinsResponse.encode(message).finish()
     };
   },
   registerTypeUrl() {}

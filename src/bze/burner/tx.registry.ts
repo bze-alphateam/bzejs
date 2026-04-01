@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { TelescopeGeneratedType } from "../../types";
-import { MsgUpdateParams, MsgFundBurner, MsgStartRaffle, MsgJoinRaffle } from "./tx";
-export const registry: ReadonlyArray<[string, TelescopeGeneratedType<any, any, any>]> = [["/bze.burner.MsgUpdateParams", MsgUpdateParams], ["/bze.burner.MsgFundBurner", MsgFundBurner], ["/bze.burner.MsgStartRaffle", MsgStartRaffle], ["/bze.burner.MsgJoinRaffle", MsgJoinRaffle]];
+import { MsgUpdateParams, MsgFundBurner, MsgStartRaffle, MsgJoinRaffle, MsgMoveIbcLockedCoins } from "./tx";
+export const registry: ReadonlyArray<[string, TelescopeGeneratedType<any, any, any>]> = [["/bze.burner.MsgUpdateParams", MsgUpdateParams], ["/bze.burner.MsgFundBurner", MsgFundBurner], ["/bze.burner.MsgStartRaffle", MsgStartRaffle], ["/bze.burner.MsgJoinRaffle", MsgJoinRaffle], ["/bze.burner.MsgMoveIbcLockedCoins", MsgMoveIbcLockedCoins]];
 export const MessageComposer = {
   encoded: {
     updateParams(value: MsgUpdateParams) {
@@ -26,6 +26,12 @@ export const MessageComposer = {
       return {
         typeUrl: "/bze.burner.MsgJoinRaffle",
         value: MsgJoinRaffle.encode(value).finish()
+      };
+    },
+    moveIbcLockedCoins(value: MsgMoveIbcLockedCoins) {
+      return {
+        typeUrl: "/bze.burner.MsgMoveIbcLockedCoins",
+        value: MsgMoveIbcLockedCoins.encode(value).finish()
       };
     }
   },
@@ -53,6 +59,12 @@ export const MessageComposer = {
         typeUrl: "/bze.burner.MsgJoinRaffle",
         value
       };
+    },
+    moveIbcLockedCoins(value: MsgMoveIbcLockedCoins) {
+      return {
+        typeUrl: "/bze.burner.MsgMoveIbcLockedCoins",
+        value
+      };
     }
   },
   fromPartial: {
@@ -78,6 +90,12 @@ export const MessageComposer = {
       return {
         typeUrl: "/bze.burner.MsgJoinRaffle",
         value: MsgJoinRaffle.fromPartial(value)
+      };
+    },
+    moveIbcLockedCoins(value: MsgMoveIbcLockedCoins) {
+      return {
+        typeUrl: "/bze.burner.MsgMoveIbcLockedCoins",
+        value: MsgMoveIbcLockedCoins.fromPartial(value)
       };
     }
   }

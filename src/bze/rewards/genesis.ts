@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { StakingReward, StakingRewardAmino, StakingRewardSDKType, TradingReward, TradingRewardAmino, TradingRewardSDKType, StakingRewardParticipant, StakingRewardParticipantAmino, StakingRewardParticipantSDKType, PendingUnlockParticipant, PendingUnlockParticipantAmino, PendingUnlockParticipantSDKType, TradingRewardLeaderboard, TradingRewardLeaderboardAmino, TradingRewardLeaderboardSDKType, TradingRewardCandidate, TradingRewardCandidateAmino, TradingRewardCandidateSDKType, MarketIdTradingRewardId, MarketIdTradingRewardIdAmino, MarketIdTradingRewardIdSDKType, TradingRewardExpiration, TradingRewardExpirationAmino, TradingRewardExpirationSDKType } from "./store";
+import { StakingReward, StakingRewardAmino, StakingRewardSDKType, TradingReward, TradingRewardAmino, TradingRewardSDKType, StakingRewardParticipant, StakingRewardParticipantAmino, StakingRewardParticipantSDKType, PendingUnlockParticipant, PendingUnlockParticipantAmino, PendingUnlockParticipantSDKType, TradingRewardLeaderboard, TradingRewardLeaderboardAmino, TradingRewardLeaderboardSDKType, TradingRewardCandidate, TradingRewardCandidateAmino, TradingRewardCandidateSDKType, MarketIdTradingRewardId, MarketIdTradingRewardIdAmino, MarketIdTradingRewardIdSDKType, TradingRewardExpiration, TradingRewardExpirationAmino, TradingRewardExpirationSDKType, UnlockParticipantsQueue, UnlockParticipantsQueueAmino, UnlockParticipantsQueueSDKType, StakingRewardsDistributionQueue, StakingRewardsDistributionQueueAmino, StakingRewardsDistributionQueueSDKType, TradingRewardExpirationQueue, TradingRewardExpirationQueueAmino, TradingRewardExpirationQueueSDKType } from "./store";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { GlobalDecoderRegistry } from "../../registry";
 /**
@@ -26,6 +26,9 @@ export interface GenesisState {
   marketIdTradingRewardIdList: MarketIdTradingRewardId[];
   pendingTradingRewardExpirationList: TradingRewardExpiration[];
   activeTradingRewardExpirationList: TradingRewardExpiration[];
+  unlockParticipantsQueue?: UnlockParticipantsQueue;
+  stakingRewardsDistributionQueue?: StakingRewardsDistributionQueue;
+  tradingRewardExpirationQueue?: TradingRewardExpirationQueue;
 }
 export interface GenesisStateProtoMsg {
   typeUrl: "/bze.rewards.GenesisState";
@@ -54,6 +57,9 @@ export interface GenesisStateAmino {
   market_id_trading_reward_id_list?: MarketIdTradingRewardIdAmino[];
   pending_trading_reward_expiration_list?: TradingRewardExpirationAmino[];
   active_trading_reward_expiration_list?: TradingRewardExpirationAmino[];
+  unlock_participants_queue?: UnlockParticipantsQueueAmino;
+  staking_rewards_distribution_queue?: StakingRewardsDistributionQueueAmino;
+  trading_reward_expiration_queue?: TradingRewardExpirationQueueAmino;
 }
 export interface GenesisStateAminoMsg {
   type: "/bze.rewards.GenesisState";
@@ -79,6 +85,9 @@ export interface GenesisStateSDKType {
   market_id_trading_reward_id_list: MarketIdTradingRewardIdSDKType[];
   pending_trading_reward_expiration_list: TradingRewardExpirationSDKType[];
   active_trading_reward_expiration_list: TradingRewardExpirationSDKType[];
+  unlock_participants_queue?: UnlockParticipantsQueueSDKType;
+  staking_rewards_distribution_queue?: StakingRewardsDistributionQueueSDKType;
+  trading_reward_expiration_queue?: TradingRewardExpirationQueueSDKType;
 }
 function createBaseGenesisState(): GenesisState {
   return {
@@ -94,7 +103,10 @@ function createBaseGenesisState(): GenesisState {
     tradingRewardCandidateList: [],
     marketIdTradingRewardIdList: [],
     pendingTradingRewardExpirationList: [],
-    activeTradingRewardExpirationList: []
+    activeTradingRewardExpirationList: [],
+    unlockParticipantsQueue: undefined,
+    stakingRewardsDistributionQueue: undefined,
+    tradingRewardExpirationQueue: undefined
   };
 }
 /**
@@ -154,6 +166,15 @@ export const GenesisState = {
     for (const v of message.activeTradingRewardExpirationList) {
       TradingRewardExpiration.encode(v!, writer.uint32(106).fork()).ldelim();
     }
+    if (message.unlockParticipantsQueue !== undefined) {
+      UnlockParticipantsQueue.encode(message.unlockParticipantsQueue, writer.uint32(114).fork()).ldelim();
+    }
+    if (message.stakingRewardsDistributionQueue !== undefined) {
+      StakingRewardsDistributionQueue.encode(message.stakingRewardsDistributionQueue, writer.uint32(122).fork()).ldelim();
+    }
+    if (message.tradingRewardExpirationQueue !== undefined) {
+      TradingRewardExpirationQueue.encode(message.tradingRewardExpirationQueue, writer.uint32(130).fork()).ldelim();
+    }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): GenesisState {
@@ -202,6 +223,15 @@ export const GenesisState = {
         case 13:
           message.activeTradingRewardExpirationList.push(TradingRewardExpiration.decode(reader, reader.uint32()));
           break;
+        case 14:
+          message.unlockParticipantsQueue = UnlockParticipantsQueue.decode(reader, reader.uint32());
+          break;
+        case 15:
+          message.stakingRewardsDistributionQueue = StakingRewardsDistributionQueue.decode(reader, reader.uint32());
+          break;
+        case 16:
+          message.tradingRewardExpirationQueue = TradingRewardExpirationQueue.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -224,6 +254,9 @@ export const GenesisState = {
     message.marketIdTradingRewardIdList = object.marketIdTradingRewardIdList?.map(e => MarketIdTradingRewardId.fromPartial(e)) || [];
     message.pendingTradingRewardExpirationList = object.pendingTradingRewardExpirationList?.map(e => TradingRewardExpiration.fromPartial(e)) || [];
     message.activeTradingRewardExpirationList = object.activeTradingRewardExpirationList?.map(e => TradingRewardExpiration.fromPartial(e)) || [];
+    message.unlockParticipantsQueue = object.unlockParticipantsQueue !== undefined && object.unlockParticipantsQueue !== null ? UnlockParticipantsQueue.fromPartial(object.unlockParticipantsQueue) : undefined;
+    message.stakingRewardsDistributionQueue = object.stakingRewardsDistributionQueue !== undefined && object.stakingRewardsDistributionQueue !== null ? StakingRewardsDistributionQueue.fromPartial(object.stakingRewardsDistributionQueue) : undefined;
+    message.tradingRewardExpirationQueue = object.tradingRewardExpirationQueue !== undefined && object.tradingRewardExpirationQueue !== null ? TradingRewardExpirationQueue.fromPartial(object.tradingRewardExpirationQueue) : undefined;
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -247,6 +280,15 @@ export const GenesisState = {
     message.marketIdTradingRewardIdList = object.market_id_trading_reward_id_list?.map(e => MarketIdTradingRewardId.fromAmino(e)) || [];
     message.pendingTradingRewardExpirationList = object.pending_trading_reward_expiration_list?.map(e => TradingRewardExpiration.fromAmino(e)) || [];
     message.activeTradingRewardExpirationList = object.active_trading_reward_expiration_list?.map(e => TradingRewardExpiration.fromAmino(e)) || [];
+    if (object.unlock_participants_queue !== undefined && object.unlock_participants_queue !== null) {
+      message.unlockParticipantsQueue = UnlockParticipantsQueue.fromAmino(object.unlock_participants_queue);
+    }
+    if (object.staking_rewards_distribution_queue !== undefined && object.staking_rewards_distribution_queue !== null) {
+      message.stakingRewardsDistributionQueue = StakingRewardsDistributionQueue.fromAmino(object.staking_rewards_distribution_queue);
+    }
+    if (object.trading_reward_expiration_queue !== undefined && object.trading_reward_expiration_queue !== null) {
+      message.tradingRewardExpirationQueue = TradingRewardExpirationQueue.fromAmino(object.trading_reward_expiration_queue);
+    }
     return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
@@ -304,6 +346,9 @@ export const GenesisState = {
     } else {
       obj.active_trading_reward_expiration_list = message.activeTradingRewardExpirationList;
     }
+    obj.unlock_participants_queue = message.unlockParticipantsQueue ? UnlockParticipantsQueue.toAmino(message.unlockParticipantsQueue) : undefined;
+    obj.staking_rewards_distribution_queue = message.stakingRewardsDistributionQueue ? StakingRewardsDistributionQueue.toAmino(message.stakingRewardsDistributionQueue) : undefined;
+    obj.trading_reward_expiration_queue = message.tradingRewardExpirationQueue ? TradingRewardExpirationQueue.toAmino(message.tradingRewardExpirationQueue) : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -334,5 +379,8 @@ export const GenesisState = {
     TradingRewardCandidate.registerTypeUrl();
     MarketIdTradingRewardId.registerTypeUrl();
     TradingRewardExpiration.registerTypeUrl();
+    UnlockParticipantsQueue.registerTypeUrl();
+    StakingRewardsDistributionQueue.registerTypeUrl();
+    TradingRewardExpirationQueue.registerTypeUrl();
   }
 };

@@ -1,15 +1,18 @@
 //@ts-nocheck
-import { BinaryReader, BinaryWriter } from "../../binary";
+import { Coin, CoinAmino, CoinSDKType } from "../../../cosmos/base/v1beta1/coin";
+import { BinaryReader, BinaryWriter } from "../../../binary";
+import { GlobalDecoderRegistry } from "../../../registry";
 /**
- * Params defines the parameters for the module.
+ * Params defines the parameters for the module with proper types
+ * for fee fields (migrated from string to cosmos.base.v1beta1.Coin).
  * @name Params
- * @package bze.tradebin
- * @see proto type: bze.tradebin.Params
+ * @package bze.tradebin.v2
+ * @see proto type: bze.tradebin.v2.Params
  */
 export interface Params {
-  createMarketFee: string;
-  marketMakerFee: string;
-  marketTakerFee: string;
+  createMarketFee: Coin;
+  marketMakerFee: Coin;
+  marketTakerFee: Coin;
   makerFeeDestination: string;
   takerFeeDestination: string;
   nativeDenom: string;
@@ -21,19 +24,20 @@ export interface Params {
   orderBookQueueMessageScanExtraGas: bigint;
 }
 export interface ParamsProtoMsg {
-  typeUrl: "/bze.tradebin.Params";
+  typeUrl: "/bze.tradebin.v2.Params";
   value: Uint8Array;
 }
 /**
- * Params defines the parameters for the module.
+ * Params defines the parameters for the module with proper types
+ * for fee fields (migrated from string to cosmos.base.v1beta1.Coin).
  * @name ParamsAmino
- * @package bze.tradebin
- * @see proto type: bze.tradebin.Params
+ * @package bze.tradebin.v2
+ * @see proto type: bze.tradebin.v2.Params
  */
 export interface ParamsAmino {
-  createMarketFee?: string;
-  marketMakerFee?: string;
-  marketTakerFee?: string;
+  createMarketFee?: CoinAmino;
+  marketMakerFee?: CoinAmino;
+  marketTakerFee?: CoinAmino;
   makerFeeDestination?: string;
   takerFeeDestination?: string;
   native_denom?: string;
@@ -45,19 +49,20 @@ export interface ParamsAmino {
   orderBookQueueMessageScanExtraGas?: string;
 }
 export interface ParamsAminoMsg {
-  type: "bze/x/tradebin/Params";
+  type: "/bze.tradebin.v2.Params";
   value: ParamsAmino;
 }
 /**
- * Params defines the parameters for the module.
+ * Params defines the parameters for the module with proper types
+ * for fee fields (migrated from string to cosmos.base.v1beta1.Coin).
  * @name ParamsSDKType
- * @package bze.tradebin
- * @see proto type: bze.tradebin.Params
+ * @package bze.tradebin.v2
+ * @see proto type: bze.tradebin.v2.Params
  */
 export interface ParamsSDKType {
-  createMarketFee: string;
-  marketMakerFee: string;
-  marketTakerFee: string;
+  createMarketFee: CoinSDKType;
+  marketMakerFee: CoinSDKType;
+  marketTakerFee: CoinSDKType;
   makerFeeDestination: string;
   takerFeeDestination: string;
   native_denom: string;
@@ -70,9 +75,9 @@ export interface ParamsSDKType {
 }
 function createBaseParams(): Params {
   return {
-    createMarketFee: "",
-    marketMakerFee: "",
-    marketTakerFee: "",
+    createMarketFee: Coin.fromPartial({}),
+    marketMakerFee: Coin.fromPartial({}),
+    marketTakerFee: Coin.fromPartial({}),
     makerFeeDestination: "",
     takerFeeDestination: "",
     nativeDenom: "",
@@ -85,32 +90,32 @@ function createBaseParams(): Params {
   };
 }
 /**
- * Params defines the parameters for the module.
+ * Params defines the parameters for the module with proper types
+ * for fee fields (migrated from string to cosmos.base.v1beta1.Coin).
  * @name Params
- * @package bze.tradebin
- * @see proto type: bze.tradebin.Params
+ * @package bze.tradebin.v2
+ * @see proto type: bze.tradebin.v2.Params
  */
 export const Params = {
-  typeUrl: "/bze.tradebin.Params",
-  aminoType: "bze/x/tradebin/Params",
+  typeUrl: "/bze.tradebin.v2.Params",
   is(o: any): o is Params {
-    return o && (o.$typeUrl === Params.typeUrl || typeof o.createMarketFee === "string" && typeof o.marketMakerFee === "string" && typeof o.marketTakerFee === "string" && typeof o.makerFeeDestination === "string" && typeof o.takerFeeDestination === "string" && typeof o.nativeDenom === "string" && typeof o.orderBookExtraGasWindow === "bigint" && typeof o.orderBookQueueExtraGas === "bigint" && typeof o.fillOrdersExtraGas === "bigint" && typeof o.minNativeLiquidityForModuleSwap === "string" && typeof o.orderBookPerBlockMessages === "bigint" && typeof o.orderBookQueueMessageScanExtraGas === "bigint");
+    return o && (o.$typeUrl === Params.typeUrl || Coin.is(o.createMarketFee) && Coin.is(o.marketMakerFee) && Coin.is(o.marketTakerFee) && typeof o.makerFeeDestination === "string" && typeof o.takerFeeDestination === "string" && typeof o.nativeDenom === "string" && typeof o.orderBookExtraGasWindow === "bigint" && typeof o.orderBookQueueExtraGas === "bigint" && typeof o.fillOrdersExtraGas === "bigint" && typeof o.minNativeLiquidityForModuleSwap === "string" && typeof o.orderBookPerBlockMessages === "bigint" && typeof o.orderBookQueueMessageScanExtraGas === "bigint");
   },
   isSDK(o: any): o is ParamsSDKType {
-    return o && (o.$typeUrl === Params.typeUrl || typeof o.createMarketFee === "string" && typeof o.marketMakerFee === "string" && typeof o.marketTakerFee === "string" && typeof o.makerFeeDestination === "string" && typeof o.takerFeeDestination === "string" && typeof o.native_denom === "string" && typeof o.orderBookExtraGasWindow === "bigint" && typeof o.orderBookQueueExtraGas === "bigint" && typeof o.fillOrdersExtraGas === "bigint" && typeof o.minNativeLiquidityForModuleSwap === "string" && typeof o.orderBookPerBlockMessages === "bigint" && typeof o.orderBookQueueMessageScanExtraGas === "bigint");
+    return o && (o.$typeUrl === Params.typeUrl || Coin.isSDK(o.createMarketFee) && Coin.isSDK(o.marketMakerFee) && Coin.isSDK(o.marketTakerFee) && typeof o.makerFeeDestination === "string" && typeof o.takerFeeDestination === "string" && typeof o.native_denom === "string" && typeof o.orderBookExtraGasWindow === "bigint" && typeof o.orderBookQueueExtraGas === "bigint" && typeof o.fillOrdersExtraGas === "bigint" && typeof o.minNativeLiquidityForModuleSwap === "string" && typeof o.orderBookPerBlockMessages === "bigint" && typeof o.orderBookQueueMessageScanExtraGas === "bigint");
   },
   isAmino(o: any): o is ParamsAmino {
-    return o && (o.$typeUrl === Params.typeUrl || typeof o.createMarketFee === "string" && typeof o.marketMakerFee === "string" && typeof o.marketTakerFee === "string" && typeof o.makerFeeDestination === "string" && typeof o.takerFeeDestination === "string" && typeof o.native_denom === "string" && typeof o.orderBookExtraGasWindow === "bigint" && typeof o.orderBookQueueExtraGas === "bigint" && typeof o.fillOrdersExtraGas === "bigint" && typeof o.minNativeLiquidityForModuleSwap === "string" && typeof o.orderBookPerBlockMessages === "bigint" && typeof o.orderBookQueueMessageScanExtraGas === "bigint");
+    return o && (o.$typeUrl === Params.typeUrl || Coin.isAmino(o.createMarketFee) && Coin.isAmino(o.marketMakerFee) && Coin.isAmino(o.marketTakerFee) && typeof o.makerFeeDestination === "string" && typeof o.takerFeeDestination === "string" && typeof o.native_denom === "string" && typeof o.orderBookExtraGasWindow === "bigint" && typeof o.orderBookQueueExtraGas === "bigint" && typeof o.fillOrdersExtraGas === "bigint" && typeof o.minNativeLiquidityForModuleSwap === "string" && typeof o.orderBookPerBlockMessages === "bigint" && typeof o.orderBookQueueMessageScanExtraGas === "bigint");
   },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.createMarketFee !== "") {
-      writer.uint32(10).string(message.createMarketFee);
+    if (message.createMarketFee !== undefined) {
+      Coin.encode(message.createMarketFee, writer.uint32(10).fork()).ldelim();
     }
-    if (message.marketMakerFee !== "") {
-      writer.uint32(18).string(message.marketMakerFee);
+    if (message.marketMakerFee !== undefined) {
+      Coin.encode(message.marketMakerFee, writer.uint32(18).fork()).ldelim();
     }
-    if (message.marketTakerFee !== "") {
-      writer.uint32(26).string(message.marketTakerFee);
+    if (message.marketTakerFee !== undefined) {
+      Coin.encode(message.marketTakerFee, writer.uint32(26).fork()).ldelim();
     }
     if (message.makerFeeDestination !== "") {
       writer.uint32(34).string(message.makerFeeDestination);
@@ -149,13 +154,13 @@ export const Params = {
       const tag = reader.uint32();
       switch (tag >>> 3) {
         case 1:
-          message.createMarketFee = reader.string();
+          message.createMarketFee = Coin.decode(reader, reader.uint32());
           break;
         case 2:
-          message.marketMakerFee = reader.string();
+          message.marketMakerFee = Coin.decode(reader, reader.uint32());
           break;
         case 3:
-          message.marketTakerFee = reader.string();
+          message.marketTakerFee = Coin.decode(reader, reader.uint32());
           break;
         case 4:
           message.makerFeeDestination = reader.string();
@@ -193,9 +198,9 @@ export const Params = {
   },
   fromPartial(object: Partial<Params>): Params {
     const message = createBaseParams();
-    message.createMarketFee = object.createMarketFee ?? "";
-    message.marketMakerFee = object.marketMakerFee ?? "";
-    message.marketTakerFee = object.marketTakerFee ?? "";
+    message.createMarketFee = object.createMarketFee !== undefined && object.createMarketFee !== null ? Coin.fromPartial(object.createMarketFee) : undefined;
+    message.marketMakerFee = object.marketMakerFee !== undefined && object.marketMakerFee !== null ? Coin.fromPartial(object.marketMakerFee) : undefined;
+    message.marketTakerFee = object.marketTakerFee !== undefined && object.marketTakerFee !== null ? Coin.fromPartial(object.marketTakerFee) : undefined;
     message.makerFeeDestination = object.makerFeeDestination ?? "";
     message.takerFeeDestination = object.takerFeeDestination ?? "";
     message.nativeDenom = object.nativeDenom ?? "";
@@ -210,13 +215,13 @@ export const Params = {
   fromAmino(object: ParamsAmino): Params {
     const message = createBaseParams();
     if (object.createMarketFee !== undefined && object.createMarketFee !== null) {
-      message.createMarketFee = object.createMarketFee;
+      message.createMarketFee = Coin.fromAmino(object.createMarketFee);
     }
     if (object.marketMakerFee !== undefined && object.marketMakerFee !== null) {
-      message.marketMakerFee = object.marketMakerFee;
+      message.marketMakerFee = Coin.fromAmino(object.marketMakerFee);
     }
     if (object.marketTakerFee !== undefined && object.marketTakerFee !== null) {
-      message.marketTakerFee = object.marketTakerFee;
+      message.marketTakerFee = Coin.fromAmino(object.marketTakerFee);
     }
     if (object.makerFeeDestination !== undefined && object.makerFeeDestination !== null) {
       message.makerFeeDestination = object.makerFeeDestination;
@@ -249,9 +254,9 @@ export const Params = {
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
-    obj.createMarketFee = message.createMarketFee === "" ? undefined : message.createMarketFee;
-    obj.marketMakerFee = message.marketMakerFee === "" ? undefined : message.marketMakerFee;
-    obj.marketTakerFee = message.marketTakerFee === "" ? undefined : message.marketTakerFee;
+    obj.createMarketFee = message.createMarketFee ? Coin.toAmino(message.createMarketFee) : undefined;
+    obj.marketMakerFee = message.marketMakerFee ? Coin.toAmino(message.marketMakerFee) : undefined;
+    obj.marketTakerFee = message.marketTakerFee ? Coin.toAmino(message.marketTakerFee) : undefined;
     obj.makerFeeDestination = message.makerFeeDestination === "" ? undefined : message.makerFeeDestination;
     obj.takerFeeDestination = message.takerFeeDestination === "" ? undefined : message.takerFeeDestination;
     obj.native_denom = message.nativeDenom === "" ? undefined : message.nativeDenom;
@@ -266,12 +271,6 @@ export const Params = {
   fromAminoMsg(object: ParamsAminoMsg): Params {
     return Params.fromAmino(object.value);
   },
-  toAminoMsg(message: Params): ParamsAminoMsg {
-    return {
-      type: "bze/x/tradebin/Params",
-      value: Params.toAmino(message)
-    };
-  },
   fromProtoMsg(message: ParamsProtoMsg): Params {
     return Params.decode(message.value);
   },
@@ -280,9 +279,14 @@ export const Params = {
   },
   toProtoMsg(message: Params): ParamsProtoMsg {
     return {
-      typeUrl: "/bze.tradebin.Params",
+      typeUrl: "/bze.tradebin.v2.Params",
       value: Params.encode(message).finish()
     };
   },
-  registerTypeUrl() {}
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(Params.typeUrl)) {
+      return;
+    }
+    Coin.registerTypeUrl();
+  }
 };

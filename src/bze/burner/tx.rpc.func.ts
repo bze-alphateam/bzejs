@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { buildTx } from "../../helper-func-types";
-import { MsgUpdateParams, MsgFundBurner, MsgStartRaffle, MsgJoinRaffle } from "./tx";
+import { MsgUpdateParams, MsgFundBurner, MsgStartRaffle, MsgJoinRaffle, MsgMoveIbcLockedCoins } from "./tx";
 /**
  * UpdateParams defines a (governance) operation for updating the module
  * parameters. The authority defaults to the x/gov module account.
@@ -34,4 +34,12 @@ export const startRaffle = buildTx<MsgStartRaffle>({
  */
 export const joinRaffle = buildTx<MsgJoinRaffle>({
   msg: MsgJoinRaffle
+});
+/**
+ * @name moveIbcLockedCoins
+ * @package bze.burner
+ * @see proto service: bze.burner.MoveIbcLockedCoins
+ */
+export const moveIbcLockedCoins = buildTx<MsgMoveIbcLockedCoins>({
+  msg: MsgMoveIbcLockedCoins
 });

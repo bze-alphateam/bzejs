@@ -11,6 +11,7 @@ import { GlobalDecoderRegistry } from "../../registry";
 export interface Params {
   createStakingRewardFee: Coin;
   createTradingRewardFee: Coin;
+  extraGasForExitStake: bigint;
 }
 export interface ParamsProtoMsg {
   typeUrl: "/bze.rewards.Params";
@@ -25,6 +26,7 @@ export interface ParamsProtoMsg {
 export interface ParamsAmino {
   createStakingRewardFee?: CoinAmino;
   createTradingRewardFee?: CoinAmino;
+  extraGasForExitStake?: string;
 }
 export interface ParamsAminoMsg {
   type: "bze/x/rewards/Params";
@@ -39,11 +41,13 @@ export interface ParamsAminoMsg {
 export interface ParamsSDKType {
   createStakingRewardFee: CoinSDKType;
   createTradingRewardFee: CoinSDKType;
+  extraGasForExitStake: bigint;
 }
 function createBaseParams(): Params {
   return {
     createStakingRewardFee: Coin.fromPartial({}),
-    createTradingRewardFee: Coin.fromPartial({})
+    createTradingRewardFee: Coin.fromPartial({}),
+    extraGasForExitStake: BigInt(0)
   };
 }
 /**
@@ -56,13 +60,13 @@ export const Params = {
   typeUrl: "/bze.rewards.Params",
   aminoType: "bze/x/rewards/Params",
   is(o: any): o is Params {
-    return o && (o.$typeUrl === Params.typeUrl || Coin.is(o.createStakingRewardFee) && Coin.is(o.createTradingRewardFee));
+    return o && (o.$typeUrl === Params.typeUrl || Coin.is(o.createStakingRewardFee) && Coin.is(o.createTradingRewardFee) && typeof o.extraGasForExitStake === "bigint");
   },
   isSDK(o: any): o is ParamsSDKType {
-    return o && (o.$typeUrl === Params.typeUrl || Coin.isSDK(o.createStakingRewardFee) && Coin.isSDK(o.createTradingRewardFee));
+    return o && (o.$typeUrl === Params.typeUrl || Coin.isSDK(o.createStakingRewardFee) && Coin.isSDK(o.createTradingRewardFee) && typeof o.extraGasForExitStake === "bigint");
   },
   isAmino(o: any): o is ParamsAmino {
-    return o && (o.$typeUrl === Params.typeUrl || Coin.isAmino(o.createStakingRewardFee) && Coin.isAmino(o.createTradingRewardFee));
+    return o && (o.$typeUrl === Params.typeUrl || Coin.isAmino(o.createStakingRewardFee) && Coin.isAmino(o.createTradingRewardFee) && typeof o.extraGasForExitStake === "bigint");
   },
   encode(message: Params, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.createStakingRewardFee !== undefined) {
@@ -70,6 +74,9 @@ export const Params = {
     }
     if (message.createTradingRewardFee !== undefined) {
       Coin.encode(message.createTradingRewardFee, writer.uint32(18).fork()).ldelim();
+    }
+    if (message.extraGasForExitStake !== BigInt(0)) {
+      writer.uint32(24).uint64(message.extraGasForExitStake);
     }
     return writer;
   },
@@ -86,6 +93,9 @@ export const Params = {
         case 2:
           message.createTradingRewardFee = Coin.decode(reader, reader.uint32());
           break;
+        case 3:
+          message.extraGasForExitStake = reader.uint64();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -97,6 +107,7 @@ export const Params = {
     const message = createBaseParams();
     message.createStakingRewardFee = object.createStakingRewardFee !== undefined && object.createStakingRewardFee !== null ? Coin.fromPartial(object.createStakingRewardFee) : undefined;
     message.createTradingRewardFee = object.createTradingRewardFee !== undefined && object.createTradingRewardFee !== null ? Coin.fromPartial(object.createTradingRewardFee) : undefined;
+    message.extraGasForExitStake = object.extraGasForExitStake !== undefined && object.extraGasForExitStake !== null ? BigInt(object.extraGasForExitStake.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: ParamsAmino): Params {
@@ -107,12 +118,16 @@ export const Params = {
     if (object.createTradingRewardFee !== undefined && object.createTradingRewardFee !== null) {
       message.createTradingRewardFee = Coin.fromAmino(object.createTradingRewardFee);
     }
+    if (object.extraGasForExitStake !== undefined && object.extraGasForExitStake !== null) {
+      message.extraGasForExitStake = BigInt(object.extraGasForExitStake);
+    }
     return message;
   },
   toAmino(message: Params): ParamsAmino {
     const obj: any = {};
     obj.createStakingRewardFee = message.createStakingRewardFee ? Coin.toAmino(message.createStakingRewardFee) : undefined;
     obj.createTradingRewardFee = message.createTradingRewardFee ? Coin.toAmino(message.createTradingRewardFee) : undefined;
+    obj.extraGasForExitStake = message.extraGasForExitStake !== BigInt(0) ? message.extraGasForExitStake?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: ParamsAminoMsg): Params {

@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { BurnedCoins, BurnedCoinsAmino, BurnedCoinsSDKType } from "./burned_coins";
+import { BurnedCoins, BurnedCoinsAmino, BurnedCoinsSDKType, PeriodicBurnQueue, PeriodicBurnQueueAmino, PeriodicBurnQueueSDKType, RaffleCleanupQueue, RaffleCleanupQueueAmino, RaffleCleanupQueueSDKType } from "./burned_coins";
 import { Raffle, RaffleAmino, RaffleSDKType, RaffleWinner, RaffleWinnerAmino, RaffleWinnerSDKType, RaffleParticipant, RaffleParticipantAmino, RaffleParticipantSDKType } from "./raffle";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { GlobalDecoderRegistry } from "../../registry";
@@ -20,6 +20,8 @@ export interface GenesisState {
   raffleWinnersList: RaffleWinner[];
   raffleParticipantsList: RaffleParticipant[];
   raffleParticipantCounter: bigint;
+  periodicBurnQueue?: PeriodicBurnQueue;
+  raffleCleanupQueue?: RaffleCleanupQueue;
 }
 export interface GenesisStateProtoMsg {
   typeUrl: "/bze.burner.GenesisState";
@@ -41,6 +43,8 @@ export interface GenesisStateAmino {
   raffle_winners_list?: RaffleWinnerAmino[];
   raffle_participants_list?: RaffleParticipantAmino[];
   raffle_participant_counter: string;
+  periodic_burn_queue?: PeriodicBurnQueueAmino;
+  raffle_cleanup_queue?: RaffleCleanupQueueAmino;
 }
 export interface GenesisStateAminoMsg {
   type: "/bze.burner.GenesisState";
@@ -59,6 +63,8 @@ export interface GenesisStateSDKType {
   raffle_winners_list: RaffleWinnerSDKType[];
   raffle_participants_list: RaffleParticipantSDKType[];
   raffle_participant_counter: bigint;
+  periodic_burn_queue?: PeriodicBurnQueueSDKType;
+  raffle_cleanup_queue?: RaffleCleanupQueueSDKType;
 }
 function createBaseGenesisState(): GenesisState {
   return {
@@ -67,7 +73,9 @@ function createBaseGenesisState(): GenesisState {
     raffleList: [],
     raffleWinnersList: [],
     raffleParticipantsList: [],
-    raffleParticipantCounter: BigInt(0)
+    raffleParticipantCounter: BigInt(0),
+    periodicBurnQueue: undefined,
+    raffleCleanupQueue: undefined
   };
 }
 /**
@@ -106,6 +114,12 @@ export const GenesisState = {
     if (message.raffleParticipantCounter !== BigInt(0)) {
       writer.uint32(48).uint64(message.raffleParticipantCounter);
     }
+    if (message.periodicBurnQueue !== undefined) {
+      PeriodicBurnQueue.encode(message.periodicBurnQueue, writer.uint32(58).fork()).ldelim();
+    }
+    if (message.raffleCleanupQueue !== undefined) {
+      RaffleCleanupQueue.encode(message.raffleCleanupQueue, writer.uint32(66).fork()).ldelim();
+    }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): GenesisState {
@@ -133,6 +147,12 @@ export const GenesisState = {
         case 6:
           message.raffleParticipantCounter = reader.uint64();
           break;
+        case 7:
+          message.periodicBurnQueue = PeriodicBurnQueue.decode(reader, reader.uint32());
+          break;
+        case 8:
+          message.raffleCleanupQueue = RaffleCleanupQueue.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -148,6 +168,8 @@ export const GenesisState = {
     message.raffleWinnersList = object.raffleWinnersList?.map(e => RaffleWinner.fromPartial(e)) || [];
     message.raffleParticipantsList = object.raffleParticipantsList?.map(e => RaffleParticipant.fromPartial(e)) || [];
     message.raffleParticipantCounter = object.raffleParticipantCounter !== undefined && object.raffleParticipantCounter !== null ? BigInt(object.raffleParticipantCounter.toString()) : BigInt(0);
+    message.periodicBurnQueue = object.periodicBurnQueue !== undefined && object.periodicBurnQueue !== null ? PeriodicBurnQueue.fromPartial(object.periodicBurnQueue) : undefined;
+    message.raffleCleanupQueue = object.raffleCleanupQueue !== undefined && object.raffleCleanupQueue !== null ? RaffleCleanupQueue.fromPartial(object.raffleCleanupQueue) : undefined;
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -161,6 +183,12 @@ export const GenesisState = {
     message.raffleParticipantsList = object.raffle_participants_list?.map(e => RaffleParticipant.fromAmino(e)) || [];
     if (object.raffle_participant_counter !== undefined && object.raffle_participant_counter !== null) {
       message.raffleParticipantCounter = BigInt(object.raffle_participant_counter);
+    }
+    if (object.periodic_burn_queue !== undefined && object.periodic_burn_queue !== null) {
+      message.periodicBurnQueue = PeriodicBurnQueue.fromAmino(object.periodic_burn_queue);
+    }
+    if (object.raffle_cleanup_queue !== undefined && object.raffle_cleanup_queue !== null) {
+      message.raffleCleanupQueue = RaffleCleanupQueue.fromAmino(object.raffle_cleanup_queue);
     }
     return message;
   },
@@ -188,6 +216,8 @@ export const GenesisState = {
       obj.raffle_participants_list = message.raffleParticipantsList;
     }
     obj.raffle_participant_counter = message.raffleParticipantCounter ? message.raffleParticipantCounter?.toString() : "0";
+    obj.periodic_burn_queue = message.periodicBurnQueue ? PeriodicBurnQueue.toAmino(message.periodicBurnQueue) : undefined;
+    obj.raffle_cleanup_queue = message.raffleCleanupQueue ? RaffleCleanupQueue.toAmino(message.raffleCleanupQueue) : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -214,5 +244,7 @@ export const GenesisState = {
     Raffle.registerTypeUrl();
     RaffleWinner.registerTypeUrl();
     RaffleParticipant.registerTypeUrl();
+    PeriodicBurnQueue.registerTypeUrl();
+    RaffleCleanupQueue.registerTypeUrl();
   }
 };

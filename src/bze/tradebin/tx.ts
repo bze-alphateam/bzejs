@@ -1,5 +1,5 @@
 //@ts-nocheck
-import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { Params, ParamsAmino, ParamsSDKType } from "./v2/params";
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { GlobalDecoderRegistry } from "../../registry";

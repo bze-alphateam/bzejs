@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../cosmos/base/query/v1beta1/pagination";
-import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { Params, ParamsAmino, ParamsSDKType } from "./v2/params";
 import { Market, MarketAmino, MarketSDKType, OrderReference, OrderReferenceAmino, OrderReferenceSDKType, AggregatedOrder, AggregatedOrderAmino, AggregatedOrderSDKType, HistoryOrder, HistoryOrderAmino, HistoryOrderSDKType, Order, OrderAmino, OrderSDKType, UserDust, UserDustAmino, UserDustSDKType, LiquidityPool, LiquidityPoolAmino, LiquidityPoolSDKType } from "./store";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { GlobalDecoderRegistry } from "../../registry";
