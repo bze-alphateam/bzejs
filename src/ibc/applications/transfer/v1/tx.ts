@@ -442,11 +442,11 @@ export const MsgTransfer = {
     obj.token = message.token ? Coin.toAmino(message.token) : Coin.toAmino(Coin.fromPartial({}));
     obj.sender = message.sender === "" ? undefined : message.sender;
     obj.receiver = message.receiver === "" ? undefined : message.receiver;
-    obj.timeout_height = message.timeoutHeight ? Height.toAmino(message.timeoutHeight) : {};
+    obj.timeout_height = message.timeoutHeight ? Height.toAmino(message.timeoutHeight) : undefined;
     obj.timeout_timestamp = message.timeoutTimestamp !== BigInt(0) ? message.timeoutTimestamp?.toString() : undefined;
     obj.memo = message.memo === "" ? undefined : message.memo;
     obj.encoding = message.encoding === "" ? undefined : message.encoding;
-    obj.use_aliasing = message.useAliasing ?? false;
+    obj.use_aliasing = message.useAliasing || undefined;
     return obj;
   },
   fromAminoMsg(object: MsgTransferAminoMsg): MsgTransfer {

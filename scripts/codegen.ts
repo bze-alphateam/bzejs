@@ -4,6 +4,7 @@ import { join } from 'path';
 import { rimrafSync as rimraf } from 'rimraf';
 
 import { AMINO_MAP } from './aminos';
+import { patchAmino } from './patch-amino';
 
 const protoDirs: string[] = [join(__dirname, '/../protos')];
 const outPath: string = join(__dirname, '../src');
@@ -104,6 +105,7 @@ export const options: TelescopeInput = {
 
 telescope(options)
   .then(() => {
+    patchAmino();
     console.log('✨ all done!');
   })
   .catch((e) => {

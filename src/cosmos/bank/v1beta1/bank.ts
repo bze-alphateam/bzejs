@@ -1011,11 +1011,7 @@ export const DenomUnit = {
     const obj: any = {};
     obj.denom = message.denom === "" ? undefined : message.denom;
     obj.exponent = message.exponent === 0 ? undefined : message.exponent;
-    if (message.aliases) {
-      obj.aliases = message.aliases.map(e => e);
-    } else {
-      obj.aliases = message.aliases;
-    }
+    obj.aliases = message.aliases?.length ? message.aliases.map(e => e) : undefined;
     return obj;
   },
   fromAminoMsg(object: DenomUnitAminoMsg): DenomUnit {
