@@ -312,7 +312,7 @@ export interface MsgMoveIbcLockedCoinsAmino {
   denom?: string;
 }
 export interface MsgMoveIbcLockedCoinsAminoMsg {
-  type: "/bze.burner.MsgMoveIbcLockedCoins";
+  type: "bze/x/burner/MsgMoveIbcLockedCoins";
   value: MsgMoveIbcLockedCoinsAmino;
 }
 /**
@@ -1100,6 +1100,7 @@ function createBaseMsgMoveIbcLockedCoins(): MsgMoveIbcLockedCoins {
  */
 export const MsgMoveIbcLockedCoins = {
   typeUrl: "/bze.burner.MsgMoveIbcLockedCoins",
+  aminoType: "bze/x/burner/MsgMoveIbcLockedCoins",
   is(o: any): o is MsgMoveIbcLockedCoins {
     return o && (o.$typeUrl === MsgMoveIbcLockedCoins.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
   },
@@ -1162,6 +1163,12 @@ export const MsgMoveIbcLockedCoins = {
   },
   fromAminoMsg(object: MsgMoveIbcLockedCoinsAminoMsg): MsgMoveIbcLockedCoins {
     return MsgMoveIbcLockedCoins.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgMoveIbcLockedCoins): MsgMoveIbcLockedCoinsAminoMsg {
+    return {
+      type: "bze/x/burner/MsgMoveIbcLockedCoins",
+      value: MsgMoveIbcLockedCoins.toAmino(message)
+    };
   },
   fromProtoMsg(message: MsgMoveIbcLockedCoinsProtoMsg): MsgMoveIbcLockedCoins {
     return MsgMoveIbcLockedCoins.decode(message.value);
