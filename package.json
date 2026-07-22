@@ -1,6 +1,6 @@
 {
   "name": "@bze/bzejs",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "author": "faneaatiku <alphateam@getbze.com>",
   "description": "BeeZee JS library",
   "main": "dist/index.js",
