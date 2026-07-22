@@ -1,12 +1,16 @@
 {
   "name": "@bze/bzejs",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "author": "faneaatiku <alphateam@getbze.com>",
   "description": "BeeZee JS library",
   "main": "dist/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
-  "files": ["dist/", "LICENSE", "README.md"],
+  "files": [
+    "dist/",
+    "LICENSE",
+    "README.md"
+  ],
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
@@ -21,7 +25,9 @@
   },
   "typesVersions": {
     "*": {
-      "*": ["dist/*"]
+      "*": [
+        "dist/*"
+      ]
     }
   },
   "homepage": "https://github.com/bze-alphateam/bzejs",
@@ -59,7 +65,6 @@
   "devDependencies": {
     "@hyperweb/telescope": "^2.2.1",
     "@types/node": "^22.14.1",
-
     "rimraf": "^6.0.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3"
