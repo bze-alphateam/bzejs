@@ -1,5 +1,6 @@
 //@ts-nocheck
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { GlobalDecoderRegistry } from "../../registry";
 /**
@@ -626,6 +627,542 @@ export interface MsgActivateTradingRewardResponseAminoMsg {
  * @see proto type: bze.rewards.MsgActivateTradingRewardResponse
  */
 export interface MsgActivateTradingRewardResponseSDKType {}
+/**
+ * MsgDeleteStakingReward - permissionless cleanup of a finished, emptied
+ * staking reward record whose deletion was previously suppressed by a hook.
+ * @name MsgDeleteStakingReward
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgDeleteStakingReward
+ */
+export interface MsgDeleteStakingReward {
+  creator: string;
+  rewardId: string;
+}
+export interface MsgDeleteStakingRewardProtoMsg {
+  typeUrl: "/bze.rewards.MsgDeleteStakingReward";
+  value: Uint8Array;
+}
+/**
+ * MsgDeleteStakingReward - permissionless cleanup of a finished, emptied
+ * staking reward record whose deletion was previously suppressed by a hook.
+ * @name MsgDeleteStakingRewardAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgDeleteStakingReward
+ */
+export interface MsgDeleteStakingRewardAmino {
+  creator?: string;
+  reward_id?: string;
+}
+export interface MsgDeleteStakingRewardAminoMsg {
+  type: "bze/x/rewards/MsgDeleteStakingReward";
+  value: MsgDeleteStakingRewardAmino;
+}
+/**
+ * MsgDeleteStakingReward - permissionless cleanup of a finished, emptied
+ * staking reward record whose deletion was previously suppressed by a hook.
+ * @name MsgDeleteStakingRewardSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgDeleteStakingReward
+ */
+export interface MsgDeleteStakingRewardSDKType {
+  creator: string;
+  reward_id: string;
+}
+/**
+ * @name MsgDeleteStakingRewardResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgDeleteStakingRewardResponse
+ */
+export interface MsgDeleteStakingRewardResponse {}
+export interface MsgDeleteStakingRewardResponseProtoMsg {
+  typeUrl: "/bze.rewards.MsgDeleteStakingRewardResponse";
+  value: Uint8Array;
+}
+/**
+ * @name MsgDeleteStakingRewardResponseAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgDeleteStakingRewardResponse
+ */
+export interface MsgDeleteStakingRewardResponseAmino {}
+export interface MsgDeleteStakingRewardResponseAminoMsg {
+  type: "/bze.rewards.MsgDeleteStakingRewardResponse";
+  value: MsgDeleteStakingRewardResponseAmino;
+}
+/**
+ * @name MsgDeleteStakingRewardResponseSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgDeleteStakingRewardResponse
+ */
+export interface MsgDeleteStakingRewardResponseSDKType {}
+/**
+ * Denom Rewards messages. Service RPCs are added in the handler stories
+ * (alongside autocli), mirroring how the module was built so far.
+ * @name MsgCreateDenomReward
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgCreateDenomReward
+ */
+export interface MsgCreateDenomReward {
+  creator: string;
+  denom: string;
+}
+export interface MsgCreateDenomRewardProtoMsg {
+  typeUrl: "/bze.rewards.MsgCreateDenomReward";
+  value: Uint8Array;
+}
+/**
+ * Denom Rewards messages. Service RPCs are added in the handler stories
+ * (alongside autocli), mirroring how the module was built so far.
+ * @name MsgCreateDenomRewardAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgCreateDenomReward
+ */
+export interface MsgCreateDenomRewardAmino {
+  creator?: string;
+  denom?: string;
+}
+export interface MsgCreateDenomRewardAminoMsg {
+  type: "bze/x/rewards/MsgCreateDenomReward";
+  value: MsgCreateDenomRewardAmino;
+}
+/**
+ * Denom Rewards messages. Service RPCs are added in the handler stories
+ * (alongside autocli), mirroring how the module was built so far.
+ * @name MsgCreateDenomRewardSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgCreateDenomReward
+ */
+export interface MsgCreateDenomRewardSDKType {
+  creator: string;
+  denom: string;
+}
+/**
+ * @name MsgCreateDenomRewardResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgCreateDenomRewardResponse
+ */
+export interface MsgCreateDenomRewardResponse {}
+export interface MsgCreateDenomRewardResponseProtoMsg {
+  typeUrl: "/bze.rewards.MsgCreateDenomRewardResponse";
+  value: Uint8Array;
+}
+/**
+ * @name MsgCreateDenomRewardResponseAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgCreateDenomRewardResponse
+ */
+export interface MsgCreateDenomRewardResponseAmino {}
+export interface MsgCreateDenomRewardResponseAminoMsg {
+  type: "/bze.rewards.MsgCreateDenomRewardResponse";
+  value: MsgCreateDenomRewardResponseAmino;
+}
+/**
+ * @name MsgCreateDenomRewardResponseSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgCreateDenomRewardResponse
+ */
+export interface MsgCreateDenomRewardResponseSDKType {}
+/**
+ * @name MsgJoinDenomReward
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgJoinDenomReward
+ */
+export interface MsgJoinDenomReward {
+  creator: string;
+  denom: string;
+  amount: string;
+}
+export interface MsgJoinDenomRewardProtoMsg {
+  typeUrl: "/bze.rewards.MsgJoinDenomReward";
+  value: Uint8Array;
+}
+/**
+ * @name MsgJoinDenomRewardAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgJoinDenomReward
+ */
+export interface MsgJoinDenomRewardAmino {
+  creator?: string;
+  denom?: string;
+  amount?: string;
+}
+export interface MsgJoinDenomRewardAminoMsg {
+  type: "bze/x/rewards/MsgJoinDenomReward";
+  value: MsgJoinDenomRewardAmino;
+}
+/**
+ * @name MsgJoinDenomRewardSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgJoinDenomReward
+ */
+export interface MsgJoinDenomRewardSDKType {
+  creator: string;
+  denom: string;
+  amount: string;
+}
+/**
+ * @name MsgJoinDenomRewardResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgJoinDenomRewardResponse
+ */
+export interface MsgJoinDenomRewardResponse {}
+export interface MsgJoinDenomRewardResponseProtoMsg {
+  typeUrl: "/bze.rewards.MsgJoinDenomRewardResponse";
+  value: Uint8Array;
+}
+/**
+ * @name MsgJoinDenomRewardResponseAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgJoinDenomRewardResponse
+ */
+export interface MsgJoinDenomRewardResponseAmino {}
+export interface MsgJoinDenomRewardResponseAminoMsg {
+  type: "/bze.rewards.MsgJoinDenomRewardResponse";
+  value: MsgJoinDenomRewardResponseAmino;
+}
+/**
+ * @name MsgJoinDenomRewardResponseSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgJoinDenomRewardResponse
+ */
+export interface MsgJoinDenomRewardResponseSDKType {}
+/**
+ * @name MsgExitDenomReward
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgExitDenomReward
+ */
+export interface MsgExitDenomReward {
+  creator: string;
+  denom: string;
+}
+export interface MsgExitDenomRewardProtoMsg {
+  typeUrl: "/bze.rewards.MsgExitDenomReward";
+  value: Uint8Array;
+}
+/**
+ * @name MsgExitDenomRewardAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgExitDenomReward
+ */
+export interface MsgExitDenomRewardAmino {
+  creator?: string;
+  denom?: string;
+}
+export interface MsgExitDenomRewardAminoMsg {
+  type: "bze/x/rewards/MsgExitDenomReward";
+  value: MsgExitDenomRewardAmino;
+}
+/**
+ * @name MsgExitDenomRewardSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgExitDenomReward
+ */
+export interface MsgExitDenomRewardSDKType {
+  creator: string;
+  denom: string;
+}
+/**
+ * @name MsgExitDenomRewardResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgExitDenomRewardResponse
+ */
+export interface MsgExitDenomRewardResponse {}
+export interface MsgExitDenomRewardResponseProtoMsg {
+  typeUrl: "/bze.rewards.MsgExitDenomRewardResponse";
+  value: Uint8Array;
+}
+/**
+ * @name MsgExitDenomRewardResponseAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgExitDenomRewardResponse
+ */
+export interface MsgExitDenomRewardResponseAmino {}
+export interface MsgExitDenomRewardResponseAminoMsg {
+  type: "/bze.rewards.MsgExitDenomRewardResponse";
+  value: MsgExitDenomRewardResponseAmino;
+}
+/**
+ * @name MsgExitDenomRewardResponseSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgExitDenomRewardResponse
+ */
+export interface MsgExitDenomRewardResponseSDKType {}
+/**
+ * @name MsgClaimDenomRewards
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgClaimDenomRewards
+ */
+export interface MsgClaimDenomRewards {
+  creator: string;
+  denom: string;
+}
+export interface MsgClaimDenomRewardsProtoMsg {
+  typeUrl: "/bze.rewards.MsgClaimDenomRewards";
+  value: Uint8Array;
+}
+/**
+ * @name MsgClaimDenomRewardsAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgClaimDenomRewards
+ */
+export interface MsgClaimDenomRewardsAmino {
+  creator?: string;
+  denom?: string;
+}
+export interface MsgClaimDenomRewardsAminoMsg {
+  type: "bze/x/rewards/MsgClaimDenomRewards";
+  value: MsgClaimDenomRewardsAmino;
+}
+/**
+ * @name MsgClaimDenomRewardsSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgClaimDenomRewards
+ */
+export interface MsgClaimDenomRewardsSDKType {
+  creator: string;
+  denom: string;
+}
+/**
+ * @name MsgClaimDenomRewardsResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgClaimDenomRewardsResponse
+ */
+export interface MsgClaimDenomRewardsResponse {
+  amounts: Coin[];
+}
+export interface MsgClaimDenomRewardsResponseProtoMsg {
+  typeUrl: "/bze.rewards.MsgClaimDenomRewardsResponse";
+  value: Uint8Array;
+}
+/**
+ * @name MsgClaimDenomRewardsResponseAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgClaimDenomRewardsResponse
+ */
+export interface MsgClaimDenomRewardsResponseAmino {
+  amounts?: CoinAmino[];
+}
+export interface MsgClaimDenomRewardsResponseAminoMsg {
+  type: "/bze.rewards.MsgClaimDenomRewardsResponse";
+  value: MsgClaimDenomRewardsResponseAmino;
+}
+/**
+ * @name MsgClaimDenomRewardsResponseSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgClaimDenomRewardsResponse
+ */
+export interface MsgClaimDenomRewardsResponseSDKType {
+  amounts: CoinSDKType[];
+}
+/**
+ * @name MsgCreateDenomRewardSchedule
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgCreateDenomRewardSchedule
+ */
+export interface MsgCreateDenomRewardSchedule {
+  creator: string;
+  denom: string;
+  prizeDenom: string;
+  dailyAmount: string;
+  duration: string;
+}
+export interface MsgCreateDenomRewardScheduleProtoMsg {
+  typeUrl: "/bze.rewards.MsgCreateDenomRewardSchedule";
+  value: Uint8Array;
+}
+/**
+ * @name MsgCreateDenomRewardScheduleAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgCreateDenomRewardSchedule
+ */
+export interface MsgCreateDenomRewardScheduleAmino {
+  creator?: string;
+  denom?: string;
+  prize_denom?: string;
+  daily_amount?: string;
+  duration?: string;
+}
+export interface MsgCreateDenomRewardScheduleAminoMsg {
+  type: "bze/x/rewards/MsgCreateDenomRewardSchedule";
+  value: MsgCreateDenomRewardScheduleAmino;
+}
+/**
+ * @name MsgCreateDenomRewardScheduleSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgCreateDenomRewardSchedule
+ */
+export interface MsgCreateDenomRewardScheduleSDKType {
+  creator: string;
+  denom: string;
+  prize_denom: string;
+  daily_amount: string;
+  duration: string;
+}
+/**
+ * @name MsgCreateDenomRewardScheduleResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgCreateDenomRewardScheduleResponse
+ */
+export interface MsgCreateDenomRewardScheduleResponse {
+  scheduleId: string;
+}
+export interface MsgCreateDenomRewardScheduleResponseProtoMsg {
+  typeUrl: "/bze.rewards.MsgCreateDenomRewardScheduleResponse";
+  value: Uint8Array;
+}
+/**
+ * @name MsgCreateDenomRewardScheduleResponseAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgCreateDenomRewardScheduleResponse
+ */
+export interface MsgCreateDenomRewardScheduleResponseAmino {
+  schedule_id?: string;
+}
+export interface MsgCreateDenomRewardScheduleResponseAminoMsg {
+  type: "/bze.rewards.MsgCreateDenomRewardScheduleResponse";
+  value: MsgCreateDenomRewardScheduleResponseAmino;
+}
+/**
+ * @name MsgCreateDenomRewardScheduleResponseSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgCreateDenomRewardScheduleResponse
+ */
+export interface MsgCreateDenomRewardScheduleResponseSDKType {
+  schedule_id: string;
+}
+/**
+ * @name MsgUpdateDenomRewardSchedule
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgUpdateDenomRewardSchedule
+ */
+export interface MsgUpdateDenomRewardSchedule {
+  creator: string;
+  denom: string;
+  scheduleId: string;
+  duration: string;
+}
+export interface MsgUpdateDenomRewardScheduleProtoMsg {
+  typeUrl: "/bze.rewards.MsgUpdateDenomRewardSchedule";
+  value: Uint8Array;
+}
+/**
+ * @name MsgUpdateDenomRewardScheduleAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgUpdateDenomRewardSchedule
+ */
+export interface MsgUpdateDenomRewardScheduleAmino {
+  creator?: string;
+  denom?: string;
+  schedule_id?: string;
+  duration?: string;
+}
+export interface MsgUpdateDenomRewardScheduleAminoMsg {
+  type: "bze/x/rewards/MsgUpdateDenomRewardSchedule";
+  value: MsgUpdateDenomRewardScheduleAmino;
+}
+/**
+ * @name MsgUpdateDenomRewardScheduleSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgUpdateDenomRewardSchedule
+ */
+export interface MsgUpdateDenomRewardScheduleSDKType {
+  creator: string;
+  denom: string;
+  schedule_id: string;
+  duration: string;
+}
+/**
+ * @name MsgUpdateDenomRewardScheduleResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgUpdateDenomRewardScheduleResponse
+ */
+export interface MsgUpdateDenomRewardScheduleResponse {}
+export interface MsgUpdateDenomRewardScheduleResponseProtoMsg {
+  typeUrl: "/bze.rewards.MsgUpdateDenomRewardScheduleResponse";
+  value: Uint8Array;
+}
+/**
+ * @name MsgUpdateDenomRewardScheduleResponseAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgUpdateDenomRewardScheduleResponse
+ */
+export interface MsgUpdateDenomRewardScheduleResponseAmino {}
+export interface MsgUpdateDenomRewardScheduleResponseAminoMsg {
+  type: "/bze.rewards.MsgUpdateDenomRewardScheduleResponse";
+  value: MsgUpdateDenomRewardScheduleResponseAmino;
+}
+/**
+ * @name MsgUpdateDenomRewardScheduleResponseSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgUpdateDenomRewardScheduleResponse
+ */
+export interface MsgUpdateDenomRewardScheduleResponseSDKType {}
+/**
+ * @name MsgDistributeDenomRewards
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgDistributeDenomRewards
+ */
+export interface MsgDistributeDenomRewards {
+  creator: string;
+  denom: string;
+  prizeDenom: string;
+  amount: string;
+}
+export interface MsgDistributeDenomRewardsProtoMsg {
+  typeUrl: "/bze.rewards.MsgDistributeDenomRewards";
+  value: Uint8Array;
+}
+/**
+ * @name MsgDistributeDenomRewardsAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgDistributeDenomRewards
+ */
+export interface MsgDistributeDenomRewardsAmino {
+  creator?: string;
+  denom?: string;
+  prize_denom?: string;
+  amount?: string;
+}
+export interface MsgDistributeDenomRewardsAminoMsg {
+  type: "bze/x/rewards/MsgDistributeDenomRewards";
+  value: MsgDistributeDenomRewardsAmino;
+}
+/**
+ * @name MsgDistributeDenomRewardsSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgDistributeDenomRewards
+ */
+export interface MsgDistributeDenomRewardsSDKType {
+  creator: string;
+  denom: string;
+  prize_denom: string;
+  amount: string;
+}
+/**
+ * @name MsgDistributeDenomRewardsResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgDistributeDenomRewardsResponse
+ */
+export interface MsgDistributeDenomRewardsResponse {}
+export interface MsgDistributeDenomRewardsResponseProtoMsg {
+  typeUrl: "/bze.rewards.MsgDistributeDenomRewardsResponse";
+  value: Uint8Array;
+}
+/**
+ * @name MsgDistributeDenomRewardsResponseAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgDistributeDenomRewardsResponse
+ */
+export interface MsgDistributeDenomRewardsResponseAmino {}
+export interface MsgDistributeDenomRewardsResponseAminoMsg {
+  type: "/bze.rewards.MsgDistributeDenomRewardsResponse";
+  value: MsgDistributeDenomRewardsResponseAmino;
+}
+/**
+ * @name MsgDistributeDenomRewardsResponseSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgDistributeDenomRewardsResponse
+ */
+export interface MsgDistributeDenomRewardsResponseSDKType {}
 function createBaseMsgUpdateParams(): MsgUpdateParams {
   return {
     authority: "",
@@ -2271,6 +2808,1435 @@ export const MsgActivateTradingRewardResponse = {
     return {
       typeUrl: "/bze.rewards.MsgActivateTradingRewardResponse",
       value: MsgActivateTradingRewardResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgDeleteStakingReward(): MsgDeleteStakingReward {
+  return {
+    creator: "",
+    rewardId: ""
+  };
+}
+/**
+ * MsgDeleteStakingReward - permissionless cleanup of a finished, emptied
+ * staking reward record whose deletion was previously suppressed by a hook.
+ * @name MsgDeleteStakingReward
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgDeleteStakingReward
+ */
+export const MsgDeleteStakingReward = {
+  typeUrl: "/bze.rewards.MsgDeleteStakingReward",
+  aminoType: "bze/x/rewards/MsgDeleteStakingReward",
+  is(o: any): o is MsgDeleteStakingReward {
+    return o && (o.$typeUrl === MsgDeleteStakingReward.typeUrl || typeof o.creator === "string" && typeof o.rewardId === "string");
+  },
+  isSDK(o: any): o is MsgDeleteStakingRewardSDKType {
+    return o && (o.$typeUrl === MsgDeleteStakingReward.typeUrl || typeof o.creator === "string" && typeof o.reward_id === "string");
+  },
+  isAmino(o: any): o is MsgDeleteStakingRewardAmino {
+    return o && (o.$typeUrl === MsgDeleteStakingReward.typeUrl || typeof o.creator === "string" && typeof o.reward_id === "string");
+  },
+  encode(message: MsgDeleteStakingReward, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.rewardId !== "") {
+      writer.uint32(18).string(message.rewardId);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgDeleteStakingReward {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgDeleteStakingReward();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.rewardId = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgDeleteStakingReward>): MsgDeleteStakingReward {
+    const message = createBaseMsgDeleteStakingReward();
+    message.creator = object.creator ?? "";
+    message.rewardId = object.rewardId ?? "";
+    return message;
+  },
+  fromAmino(object: MsgDeleteStakingRewardAmino): MsgDeleteStakingReward {
+    const message = createBaseMsgDeleteStakingReward();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.reward_id !== undefined && object.reward_id !== null) {
+      message.rewardId = object.reward_id;
+    }
+    return message;
+  },
+  toAmino(message: MsgDeleteStakingReward): MsgDeleteStakingRewardAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.reward_id = message.rewardId === "" ? undefined : message.rewardId;
+    return obj;
+  },
+  fromAminoMsg(object: MsgDeleteStakingRewardAminoMsg): MsgDeleteStakingReward {
+    return MsgDeleteStakingReward.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgDeleteStakingReward): MsgDeleteStakingRewardAminoMsg {
+    return {
+      type: "bze/x/rewards/MsgDeleteStakingReward",
+      value: MsgDeleteStakingReward.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgDeleteStakingRewardProtoMsg): MsgDeleteStakingReward {
+    return MsgDeleteStakingReward.decode(message.value);
+  },
+  toProto(message: MsgDeleteStakingReward): Uint8Array {
+    return MsgDeleteStakingReward.encode(message).finish();
+  },
+  toProtoMsg(message: MsgDeleteStakingReward): MsgDeleteStakingRewardProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.MsgDeleteStakingReward",
+      value: MsgDeleteStakingReward.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgDeleteStakingRewardResponse(): MsgDeleteStakingRewardResponse {
+  return {};
+}
+/**
+ * @name MsgDeleteStakingRewardResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgDeleteStakingRewardResponse
+ */
+export const MsgDeleteStakingRewardResponse = {
+  typeUrl: "/bze.rewards.MsgDeleteStakingRewardResponse",
+  is(o: any): o is MsgDeleteStakingRewardResponse {
+    return o && o.$typeUrl === MsgDeleteStakingRewardResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgDeleteStakingRewardResponseSDKType {
+    return o && o.$typeUrl === MsgDeleteStakingRewardResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgDeleteStakingRewardResponseAmino {
+    return o && o.$typeUrl === MsgDeleteStakingRewardResponse.typeUrl;
+  },
+  encode(_: MsgDeleteStakingRewardResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgDeleteStakingRewardResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgDeleteStakingRewardResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgDeleteStakingRewardResponse>): MsgDeleteStakingRewardResponse {
+    const message = createBaseMsgDeleteStakingRewardResponse();
+    return message;
+  },
+  fromAmino(_: MsgDeleteStakingRewardResponseAmino): MsgDeleteStakingRewardResponse {
+    const message = createBaseMsgDeleteStakingRewardResponse();
+    return message;
+  },
+  toAmino(_: MsgDeleteStakingRewardResponse): MsgDeleteStakingRewardResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgDeleteStakingRewardResponseAminoMsg): MsgDeleteStakingRewardResponse {
+    return MsgDeleteStakingRewardResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgDeleteStakingRewardResponseProtoMsg): MsgDeleteStakingRewardResponse {
+    return MsgDeleteStakingRewardResponse.decode(message.value);
+  },
+  toProto(message: MsgDeleteStakingRewardResponse): Uint8Array {
+    return MsgDeleteStakingRewardResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgDeleteStakingRewardResponse): MsgDeleteStakingRewardResponseProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.MsgDeleteStakingRewardResponse",
+      value: MsgDeleteStakingRewardResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgCreateDenomReward(): MsgCreateDenomReward {
+  return {
+    creator: "",
+    denom: ""
+  };
+}
+/**
+ * Denom Rewards messages. Service RPCs are added in the handler stories
+ * (alongside autocli), mirroring how the module was built so far.
+ * @name MsgCreateDenomReward
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgCreateDenomReward
+ */
+export const MsgCreateDenomReward = {
+  typeUrl: "/bze.rewards.MsgCreateDenomReward",
+  aminoType: "bze/x/rewards/MsgCreateDenomReward",
+  is(o: any): o is MsgCreateDenomReward {
+    return o && (o.$typeUrl === MsgCreateDenomReward.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  isSDK(o: any): o is MsgCreateDenomRewardSDKType {
+    return o && (o.$typeUrl === MsgCreateDenomReward.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  isAmino(o: any): o is MsgCreateDenomRewardAmino {
+    return o && (o.$typeUrl === MsgCreateDenomReward.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  encode(message: MsgCreateDenomReward, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.denom !== "") {
+      writer.uint32(18).string(message.denom);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateDenomReward {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateDenomReward();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.denom = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgCreateDenomReward>): MsgCreateDenomReward {
+    const message = createBaseMsgCreateDenomReward();
+    message.creator = object.creator ?? "";
+    message.denom = object.denom ?? "";
+    return message;
+  },
+  fromAmino(object: MsgCreateDenomRewardAmino): MsgCreateDenomReward {
+    const message = createBaseMsgCreateDenomReward();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    return message;
+  },
+  toAmino(message: MsgCreateDenomReward): MsgCreateDenomRewardAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateDenomRewardAminoMsg): MsgCreateDenomReward {
+    return MsgCreateDenomReward.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgCreateDenomReward): MsgCreateDenomRewardAminoMsg {
+    return {
+      type: "bze/x/rewards/MsgCreateDenomReward",
+      value: MsgCreateDenomReward.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgCreateDenomRewardProtoMsg): MsgCreateDenomReward {
+    return MsgCreateDenomReward.decode(message.value);
+  },
+  toProto(message: MsgCreateDenomReward): Uint8Array {
+    return MsgCreateDenomReward.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateDenomReward): MsgCreateDenomRewardProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.MsgCreateDenomReward",
+      value: MsgCreateDenomReward.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgCreateDenomRewardResponse(): MsgCreateDenomRewardResponse {
+  return {};
+}
+/**
+ * @name MsgCreateDenomRewardResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgCreateDenomRewardResponse
+ */
+export const MsgCreateDenomRewardResponse = {
+  typeUrl: "/bze.rewards.MsgCreateDenomRewardResponse",
+  is(o: any): o is MsgCreateDenomRewardResponse {
+    return o && o.$typeUrl === MsgCreateDenomRewardResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgCreateDenomRewardResponseSDKType {
+    return o && o.$typeUrl === MsgCreateDenomRewardResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgCreateDenomRewardResponseAmino {
+    return o && o.$typeUrl === MsgCreateDenomRewardResponse.typeUrl;
+  },
+  encode(_: MsgCreateDenomRewardResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateDenomRewardResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateDenomRewardResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgCreateDenomRewardResponse>): MsgCreateDenomRewardResponse {
+    const message = createBaseMsgCreateDenomRewardResponse();
+    return message;
+  },
+  fromAmino(_: MsgCreateDenomRewardResponseAmino): MsgCreateDenomRewardResponse {
+    const message = createBaseMsgCreateDenomRewardResponse();
+    return message;
+  },
+  toAmino(_: MsgCreateDenomRewardResponse): MsgCreateDenomRewardResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateDenomRewardResponseAminoMsg): MsgCreateDenomRewardResponse {
+    return MsgCreateDenomRewardResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgCreateDenomRewardResponseProtoMsg): MsgCreateDenomRewardResponse {
+    return MsgCreateDenomRewardResponse.decode(message.value);
+  },
+  toProto(message: MsgCreateDenomRewardResponse): Uint8Array {
+    return MsgCreateDenomRewardResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateDenomRewardResponse): MsgCreateDenomRewardResponseProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.MsgCreateDenomRewardResponse",
+      value: MsgCreateDenomRewardResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgJoinDenomReward(): MsgJoinDenomReward {
+  return {
+    creator: "",
+    denom: "",
+    amount: ""
+  };
+}
+/**
+ * @name MsgJoinDenomReward
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgJoinDenomReward
+ */
+export const MsgJoinDenomReward = {
+  typeUrl: "/bze.rewards.MsgJoinDenomReward",
+  aminoType: "bze/x/rewards/MsgJoinDenomReward",
+  is(o: any): o is MsgJoinDenomReward {
+    return o && (o.$typeUrl === MsgJoinDenomReward.typeUrl || typeof o.creator === "string" && typeof o.denom === "string" && typeof o.amount === "string");
+  },
+  isSDK(o: any): o is MsgJoinDenomRewardSDKType {
+    return o && (o.$typeUrl === MsgJoinDenomReward.typeUrl || typeof o.creator === "string" && typeof o.denom === "string" && typeof o.amount === "string");
+  },
+  isAmino(o: any): o is MsgJoinDenomRewardAmino {
+    return o && (o.$typeUrl === MsgJoinDenomReward.typeUrl || typeof o.creator === "string" && typeof o.denom === "string" && typeof o.amount === "string");
+  },
+  encode(message: MsgJoinDenomReward, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.denom !== "") {
+      writer.uint32(18).string(message.denom);
+    }
+    if (message.amount !== "") {
+      writer.uint32(26).string(message.amount);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgJoinDenomReward {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgJoinDenomReward();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.denom = reader.string();
+          break;
+        case 3:
+          message.amount = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgJoinDenomReward>): MsgJoinDenomReward {
+    const message = createBaseMsgJoinDenomReward();
+    message.creator = object.creator ?? "";
+    message.denom = object.denom ?? "";
+    message.amount = object.amount ?? "";
+    return message;
+  },
+  fromAmino(object: MsgJoinDenomRewardAmino): MsgJoinDenomReward {
+    const message = createBaseMsgJoinDenomReward();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = object.amount;
+    }
+    return message;
+  },
+  toAmino(message: MsgJoinDenomReward): MsgJoinDenomRewardAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    obj.amount = message.amount === "" ? undefined : message.amount;
+    return obj;
+  },
+  fromAminoMsg(object: MsgJoinDenomRewardAminoMsg): MsgJoinDenomReward {
+    return MsgJoinDenomReward.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgJoinDenomReward): MsgJoinDenomRewardAminoMsg {
+    return {
+      type: "bze/x/rewards/MsgJoinDenomReward",
+      value: MsgJoinDenomReward.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgJoinDenomRewardProtoMsg): MsgJoinDenomReward {
+    return MsgJoinDenomReward.decode(message.value);
+  },
+  toProto(message: MsgJoinDenomReward): Uint8Array {
+    return MsgJoinDenomReward.encode(message).finish();
+  },
+  toProtoMsg(message: MsgJoinDenomReward): MsgJoinDenomRewardProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.MsgJoinDenomReward",
+      value: MsgJoinDenomReward.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgJoinDenomRewardResponse(): MsgJoinDenomRewardResponse {
+  return {};
+}
+/**
+ * @name MsgJoinDenomRewardResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgJoinDenomRewardResponse
+ */
+export const MsgJoinDenomRewardResponse = {
+  typeUrl: "/bze.rewards.MsgJoinDenomRewardResponse",
+  is(o: any): o is MsgJoinDenomRewardResponse {
+    return o && o.$typeUrl === MsgJoinDenomRewardResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgJoinDenomRewardResponseSDKType {
+    return o && o.$typeUrl === MsgJoinDenomRewardResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgJoinDenomRewardResponseAmino {
+    return o && o.$typeUrl === MsgJoinDenomRewardResponse.typeUrl;
+  },
+  encode(_: MsgJoinDenomRewardResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgJoinDenomRewardResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgJoinDenomRewardResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgJoinDenomRewardResponse>): MsgJoinDenomRewardResponse {
+    const message = createBaseMsgJoinDenomRewardResponse();
+    return message;
+  },
+  fromAmino(_: MsgJoinDenomRewardResponseAmino): MsgJoinDenomRewardResponse {
+    const message = createBaseMsgJoinDenomRewardResponse();
+    return message;
+  },
+  toAmino(_: MsgJoinDenomRewardResponse): MsgJoinDenomRewardResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgJoinDenomRewardResponseAminoMsg): MsgJoinDenomRewardResponse {
+    return MsgJoinDenomRewardResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgJoinDenomRewardResponseProtoMsg): MsgJoinDenomRewardResponse {
+    return MsgJoinDenomRewardResponse.decode(message.value);
+  },
+  toProto(message: MsgJoinDenomRewardResponse): Uint8Array {
+    return MsgJoinDenomRewardResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgJoinDenomRewardResponse): MsgJoinDenomRewardResponseProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.MsgJoinDenomRewardResponse",
+      value: MsgJoinDenomRewardResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgExitDenomReward(): MsgExitDenomReward {
+  return {
+    creator: "",
+    denom: ""
+  };
+}
+/**
+ * @name MsgExitDenomReward
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgExitDenomReward
+ */
+export const MsgExitDenomReward = {
+  typeUrl: "/bze.rewards.MsgExitDenomReward",
+  aminoType: "bze/x/rewards/MsgExitDenomReward",
+  is(o: any): o is MsgExitDenomReward {
+    return o && (o.$typeUrl === MsgExitDenomReward.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  isSDK(o: any): o is MsgExitDenomRewardSDKType {
+    return o && (o.$typeUrl === MsgExitDenomReward.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  isAmino(o: any): o is MsgExitDenomRewardAmino {
+    return o && (o.$typeUrl === MsgExitDenomReward.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  encode(message: MsgExitDenomReward, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.denom !== "") {
+      writer.uint32(18).string(message.denom);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgExitDenomReward {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgExitDenomReward();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.denom = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgExitDenomReward>): MsgExitDenomReward {
+    const message = createBaseMsgExitDenomReward();
+    message.creator = object.creator ?? "";
+    message.denom = object.denom ?? "";
+    return message;
+  },
+  fromAmino(object: MsgExitDenomRewardAmino): MsgExitDenomReward {
+    const message = createBaseMsgExitDenomReward();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    return message;
+  },
+  toAmino(message: MsgExitDenomReward): MsgExitDenomRewardAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    return obj;
+  },
+  fromAminoMsg(object: MsgExitDenomRewardAminoMsg): MsgExitDenomReward {
+    return MsgExitDenomReward.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgExitDenomReward): MsgExitDenomRewardAminoMsg {
+    return {
+      type: "bze/x/rewards/MsgExitDenomReward",
+      value: MsgExitDenomReward.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgExitDenomRewardProtoMsg): MsgExitDenomReward {
+    return MsgExitDenomReward.decode(message.value);
+  },
+  toProto(message: MsgExitDenomReward): Uint8Array {
+    return MsgExitDenomReward.encode(message).finish();
+  },
+  toProtoMsg(message: MsgExitDenomReward): MsgExitDenomRewardProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.MsgExitDenomReward",
+      value: MsgExitDenomReward.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgExitDenomRewardResponse(): MsgExitDenomRewardResponse {
+  return {};
+}
+/**
+ * @name MsgExitDenomRewardResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgExitDenomRewardResponse
+ */
+export const MsgExitDenomRewardResponse = {
+  typeUrl: "/bze.rewards.MsgExitDenomRewardResponse",
+  is(o: any): o is MsgExitDenomRewardResponse {
+    return o && o.$typeUrl === MsgExitDenomRewardResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgExitDenomRewardResponseSDKType {
+    return o && o.$typeUrl === MsgExitDenomRewardResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgExitDenomRewardResponseAmino {
+    return o && o.$typeUrl === MsgExitDenomRewardResponse.typeUrl;
+  },
+  encode(_: MsgExitDenomRewardResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgExitDenomRewardResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgExitDenomRewardResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgExitDenomRewardResponse>): MsgExitDenomRewardResponse {
+    const message = createBaseMsgExitDenomRewardResponse();
+    return message;
+  },
+  fromAmino(_: MsgExitDenomRewardResponseAmino): MsgExitDenomRewardResponse {
+    const message = createBaseMsgExitDenomRewardResponse();
+    return message;
+  },
+  toAmino(_: MsgExitDenomRewardResponse): MsgExitDenomRewardResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgExitDenomRewardResponseAminoMsg): MsgExitDenomRewardResponse {
+    return MsgExitDenomRewardResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgExitDenomRewardResponseProtoMsg): MsgExitDenomRewardResponse {
+    return MsgExitDenomRewardResponse.decode(message.value);
+  },
+  toProto(message: MsgExitDenomRewardResponse): Uint8Array {
+    return MsgExitDenomRewardResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgExitDenomRewardResponse): MsgExitDenomRewardResponseProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.MsgExitDenomRewardResponse",
+      value: MsgExitDenomRewardResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgClaimDenomRewards(): MsgClaimDenomRewards {
+  return {
+    creator: "",
+    denom: ""
+  };
+}
+/**
+ * @name MsgClaimDenomRewards
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgClaimDenomRewards
+ */
+export const MsgClaimDenomRewards = {
+  typeUrl: "/bze.rewards.MsgClaimDenomRewards",
+  aminoType: "bze/x/rewards/MsgClaimDenomRewards",
+  is(o: any): o is MsgClaimDenomRewards {
+    return o && (o.$typeUrl === MsgClaimDenomRewards.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  isSDK(o: any): o is MsgClaimDenomRewardsSDKType {
+    return o && (o.$typeUrl === MsgClaimDenomRewards.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  isAmino(o: any): o is MsgClaimDenomRewardsAmino {
+    return o && (o.$typeUrl === MsgClaimDenomRewards.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  encode(message: MsgClaimDenomRewards, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.denom !== "") {
+      writer.uint32(18).string(message.denom);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgClaimDenomRewards {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgClaimDenomRewards();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.denom = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgClaimDenomRewards>): MsgClaimDenomRewards {
+    const message = createBaseMsgClaimDenomRewards();
+    message.creator = object.creator ?? "";
+    message.denom = object.denom ?? "";
+    return message;
+  },
+  fromAmino(object: MsgClaimDenomRewardsAmino): MsgClaimDenomRewards {
+    const message = createBaseMsgClaimDenomRewards();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    return message;
+  },
+  toAmino(message: MsgClaimDenomRewards): MsgClaimDenomRewardsAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    return obj;
+  },
+  fromAminoMsg(object: MsgClaimDenomRewardsAminoMsg): MsgClaimDenomRewards {
+    return MsgClaimDenomRewards.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgClaimDenomRewards): MsgClaimDenomRewardsAminoMsg {
+    return {
+      type: "bze/x/rewards/MsgClaimDenomRewards",
+      value: MsgClaimDenomRewards.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgClaimDenomRewardsProtoMsg): MsgClaimDenomRewards {
+    return MsgClaimDenomRewards.decode(message.value);
+  },
+  toProto(message: MsgClaimDenomRewards): Uint8Array {
+    return MsgClaimDenomRewards.encode(message).finish();
+  },
+  toProtoMsg(message: MsgClaimDenomRewards): MsgClaimDenomRewardsProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.MsgClaimDenomRewards",
+      value: MsgClaimDenomRewards.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgClaimDenomRewardsResponse(): MsgClaimDenomRewardsResponse {
+  return {
+    amounts: []
+  };
+}
+/**
+ * @name MsgClaimDenomRewardsResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgClaimDenomRewardsResponse
+ */
+export const MsgClaimDenomRewardsResponse = {
+  typeUrl: "/bze.rewards.MsgClaimDenomRewardsResponse",
+  is(o: any): o is MsgClaimDenomRewardsResponse {
+    return o && (o.$typeUrl === MsgClaimDenomRewardsResponse.typeUrl || Array.isArray(o.amounts) && (!o.amounts.length || Coin.is(o.amounts[0])));
+  },
+  isSDK(o: any): o is MsgClaimDenomRewardsResponseSDKType {
+    return o && (o.$typeUrl === MsgClaimDenomRewardsResponse.typeUrl || Array.isArray(o.amounts) && (!o.amounts.length || Coin.isSDK(o.amounts[0])));
+  },
+  isAmino(o: any): o is MsgClaimDenomRewardsResponseAmino {
+    return o && (o.$typeUrl === MsgClaimDenomRewardsResponse.typeUrl || Array.isArray(o.amounts) && (!o.amounts.length || Coin.isAmino(o.amounts[0])));
+  },
+  encode(message: MsgClaimDenomRewardsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    for (const v of message.amounts) {
+      Coin.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgClaimDenomRewardsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgClaimDenomRewardsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.amounts.push(Coin.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgClaimDenomRewardsResponse>): MsgClaimDenomRewardsResponse {
+    const message = createBaseMsgClaimDenomRewardsResponse();
+    message.amounts = object.amounts?.map(e => Coin.fromPartial(e)) || [];
+    return message;
+  },
+  fromAmino(object: MsgClaimDenomRewardsResponseAmino): MsgClaimDenomRewardsResponse {
+    const message = createBaseMsgClaimDenomRewardsResponse();
+    message.amounts = object.amounts?.map(e => Coin.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: MsgClaimDenomRewardsResponse): MsgClaimDenomRewardsResponseAmino {
+    const obj: any = {};
+    if (message.amounts) {
+      obj.amounts = message.amounts.map(e => e ? Coin.toAmino(e) : undefined);
+    } else {
+      obj.amounts = message.amounts;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgClaimDenomRewardsResponseAminoMsg): MsgClaimDenomRewardsResponse {
+    return MsgClaimDenomRewardsResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgClaimDenomRewardsResponseProtoMsg): MsgClaimDenomRewardsResponse {
+    return MsgClaimDenomRewardsResponse.decode(message.value);
+  },
+  toProto(message: MsgClaimDenomRewardsResponse): Uint8Array {
+    return MsgClaimDenomRewardsResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgClaimDenomRewardsResponse): MsgClaimDenomRewardsResponseProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.MsgClaimDenomRewardsResponse",
+      value: MsgClaimDenomRewardsResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(MsgClaimDenomRewardsResponse.typeUrl)) {
+      return;
+    }
+    Coin.registerTypeUrl();
+  }
+};
+function createBaseMsgCreateDenomRewardSchedule(): MsgCreateDenomRewardSchedule {
+  return {
+    creator: "",
+    denom: "",
+    prizeDenom: "",
+    dailyAmount: "",
+    duration: ""
+  };
+}
+/**
+ * @name MsgCreateDenomRewardSchedule
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgCreateDenomRewardSchedule
+ */
+export const MsgCreateDenomRewardSchedule = {
+  typeUrl: "/bze.rewards.MsgCreateDenomRewardSchedule",
+  aminoType: "bze/x/rewards/MsgCreateDenomRewardSchedule",
+  is(o: any): o is MsgCreateDenomRewardSchedule {
+    return o && (o.$typeUrl === MsgCreateDenomRewardSchedule.typeUrl || typeof o.creator === "string" && typeof o.denom === "string" && typeof o.prizeDenom === "string" && typeof o.dailyAmount === "string" && typeof o.duration === "string");
+  },
+  isSDK(o: any): o is MsgCreateDenomRewardScheduleSDKType {
+    return o && (o.$typeUrl === MsgCreateDenomRewardSchedule.typeUrl || typeof o.creator === "string" && typeof o.denom === "string" && typeof o.prize_denom === "string" && typeof o.daily_amount === "string" && typeof o.duration === "string");
+  },
+  isAmino(o: any): o is MsgCreateDenomRewardScheduleAmino {
+    return o && (o.$typeUrl === MsgCreateDenomRewardSchedule.typeUrl || typeof o.creator === "string" && typeof o.denom === "string" && typeof o.prize_denom === "string" && typeof o.daily_amount === "string" && typeof o.duration === "string");
+  },
+  encode(message: MsgCreateDenomRewardSchedule, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.denom !== "") {
+      writer.uint32(18).string(message.denom);
+    }
+    if (message.prizeDenom !== "") {
+      writer.uint32(26).string(message.prizeDenom);
+    }
+    if (message.dailyAmount !== "") {
+      writer.uint32(34).string(message.dailyAmount);
+    }
+    if (message.duration !== "") {
+      writer.uint32(42).string(message.duration);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateDenomRewardSchedule {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateDenomRewardSchedule();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.denom = reader.string();
+          break;
+        case 3:
+          message.prizeDenom = reader.string();
+          break;
+        case 4:
+          message.dailyAmount = reader.string();
+          break;
+        case 5:
+          message.duration = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgCreateDenomRewardSchedule>): MsgCreateDenomRewardSchedule {
+    const message = createBaseMsgCreateDenomRewardSchedule();
+    message.creator = object.creator ?? "";
+    message.denom = object.denom ?? "";
+    message.prizeDenom = object.prizeDenom ?? "";
+    message.dailyAmount = object.dailyAmount ?? "";
+    message.duration = object.duration ?? "";
+    return message;
+  },
+  fromAmino(object: MsgCreateDenomRewardScheduleAmino): MsgCreateDenomRewardSchedule {
+    const message = createBaseMsgCreateDenomRewardSchedule();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    if (object.prize_denom !== undefined && object.prize_denom !== null) {
+      message.prizeDenom = object.prize_denom;
+    }
+    if (object.daily_amount !== undefined && object.daily_amount !== null) {
+      message.dailyAmount = object.daily_amount;
+    }
+    if (object.duration !== undefined && object.duration !== null) {
+      message.duration = object.duration;
+    }
+    return message;
+  },
+  toAmino(message: MsgCreateDenomRewardSchedule): MsgCreateDenomRewardScheduleAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    obj.prize_denom = message.prizeDenom === "" ? undefined : message.prizeDenom;
+    obj.daily_amount = message.dailyAmount === "" ? undefined : message.dailyAmount;
+    obj.duration = message.duration === "" ? undefined : message.duration;
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateDenomRewardScheduleAminoMsg): MsgCreateDenomRewardSchedule {
+    return MsgCreateDenomRewardSchedule.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgCreateDenomRewardSchedule): MsgCreateDenomRewardScheduleAminoMsg {
+    return {
+      type: "bze/x/rewards/MsgCreateDenomRewardSchedule",
+      value: MsgCreateDenomRewardSchedule.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgCreateDenomRewardScheduleProtoMsg): MsgCreateDenomRewardSchedule {
+    return MsgCreateDenomRewardSchedule.decode(message.value);
+  },
+  toProto(message: MsgCreateDenomRewardSchedule): Uint8Array {
+    return MsgCreateDenomRewardSchedule.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateDenomRewardSchedule): MsgCreateDenomRewardScheduleProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.MsgCreateDenomRewardSchedule",
+      value: MsgCreateDenomRewardSchedule.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgCreateDenomRewardScheduleResponse(): MsgCreateDenomRewardScheduleResponse {
+  return {
+    scheduleId: ""
+  };
+}
+/**
+ * @name MsgCreateDenomRewardScheduleResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgCreateDenomRewardScheduleResponse
+ */
+export const MsgCreateDenomRewardScheduleResponse = {
+  typeUrl: "/bze.rewards.MsgCreateDenomRewardScheduleResponse",
+  is(o: any): o is MsgCreateDenomRewardScheduleResponse {
+    return o && (o.$typeUrl === MsgCreateDenomRewardScheduleResponse.typeUrl || typeof o.scheduleId === "string");
+  },
+  isSDK(o: any): o is MsgCreateDenomRewardScheduleResponseSDKType {
+    return o && (o.$typeUrl === MsgCreateDenomRewardScheduleResponse.typeUrl || typeof o.schedule_id === "string");
+  },
+  isAmino(o: any): o is MsgCreateDenomRewardScheduleResponseAmino {
+    return o && (o.$typeUrl === MsgCreateDenomRewardScheduleResponse.typeUrl || typeof o.schedule_id === "string");
+  },
+  encode(message: MsgCreateDenomRewardScheduleResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.scheduleId !== "") {
+      writer.uint32(10).string(message.scheduleId);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgCreateDenomRewardScheduleResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgCreateDenomRewardScheduleResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.scheduleId = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgCreateDenomRewardScheduleResponse>): MsgCreateDenomRewardScheduleResponse {
+    const message = createBaseMsgCreateDenomRewardScheduleResponse();
+    message.scheduleId = object.scheduleId ?? "";
+    return message;
+  },
+  fromAmino(object: MsgCreateDenomRewardScheduleResponseAmino): MsgCreateDenomRewardScheduleResponse {
+    const message = createBaseMsgCreateDenomRewardScheduleResponse();
+    if (object.schedule_id !== undefined && object.schedule_id !== null) {
+      message.scheduleId = object.schedule_id;
+    }
+    return message;
+  },
+  toAmino(message: MsgCreateDenomRewardScheduleResponse): MsgCreateDenomRewardScheduleResponseAmino {
+    const obj: any = {};
+    obj.schedule_id = message.scheduleId === "" ? undefined : message.scheduleId;
+    return obj;
+  },
+  fromAminoMsg(object: MsgCreateDenomRewardScheduleResponseAminoMsg): MsgCreateDenomRewardScheduleResponse {
+    return MsgCreateDenomRewardScheduleResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgCreateDenomRewardScheduleResponseProtoMsg): MsgCreateDenomRewardScheduleResponse {
+    return MsgCreateDenomRewardScheduleResponse.decode(message.value);
+  },
+  toProto(message: MsgCreateDenomRewardScheduleResponse): Uint8Array {
+    return MsgCreateDenomRewardScheduleResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgCreateDenomRewardScheduleResponse): MsgCreateDenomRewardScheduleResponseProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.MsgCreateDenomRewardScheduleResponse",
+      value: MsgCreateDenomRewardScheduleResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgUpdateDenomRewardSchedule(): MsgUpdateDenomRewardSchedule {
+  return {
+    creator: "",
+    denom: "",
+    scheduleId: "",
+    duration: ""
+  };
+}
+/**
+ * @name MsgUpdateDenomRewardSchedule
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgUpdateDenomRewardSchedule
+ */
+export const MsgUpdateDenomRewardSchedule = {
+  typeUrl: "/bze.rewards.MsgUpdateDenomRewardSchedule",
+  aminoType: "bze/x/rewards/MsgUpdateDenomRewardSchedule",
+  is(o: any): o is MsgUpdateDenomRewardSchedule {
+    return o && (o.$typeUrl === MsgUpdateDenomRewardSchedule.typeUrl || typeof o.creator === "string" && typeof o.denom === "string" && typeof o.scheduleId === "string" && typeof o.duration === "string");
+  },
+  isSDK(o: any): o is MsgUpdateDenomRewardScheduleSDKType {
+    return o && (o.$typeUrl === MsgUpdateDenomRewardSchedule.typeUrl || typeof o.creator === "string" && typeof o.denom === "string" && typeof o.schedule_id === "string" && typeof o.duration === "string");
+  },
+  isAmino(o: any): o is MsgUpdateDenomRewardScheduleAmino {
+    return o && (o.$typeUrl === MsgUpdateDenomRewardSchedule.typeUrl || typeof o.creator === "string" && typeof o.denom === "string" && typeof o.schedule_id === "string" && typeof o.duration === "string");
+  },
+  encode(message: MsgUpdateDenomRewardSchedule, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.denom !== "") {
+      writer.uint32(18).string(message.denom);
+    }
+    if (message.scheduleId !== "") {
+      writer.uint32(26).string(message.scheduleId);
+    }
+    if (message.duration !== "") {
+      writer.uint32(34).string(message.duration);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateDenomRewardSchedule {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdateDenomRewardSchedule();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.denom = reader.string();
+          break;
+        case 3:
+          message.scheduleId = reader.string();
+          break;
+        case 4:
+          message.duration = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgUpdateDenomRewardSchedule>): MsgUpdateDenomRewardSchedule {
+    const message = createBaseMsgUpdateDenomRewardSchedule();
+    message.creator = object.creator ?? "";
+    message.denom = object.denom ?? "";
+    message.scheduleId = object.scheduleId ?? "";
+    message.duration = object.duration ?? "";
+    return message;
+  },
+  fromAmino(object: MsgUpdateDenomRewardScheduleAmino): MsgUpdateDenomRewardSchedule {
+    const message = createBaseMsgUpdateDenomRewardSchedule();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    if (object.schedule_id !== undefined && object.schedule_id !== null) {
+      message.scheduleId = object.schedule_id;
+    }
+    if (object.duration !== undefined && object.duration !== null) {
+      message.duration = object.duration;
+    }
+    return message;
+  },
+  toAmino(message: MsgUpdateDenomRewardSchedule): MsgUpdateDenomRewardScheduleAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    obj.schedule_id = message.scheduleId === "" ? undefined : message.scheduleId;
+    obj.duration = message.duration === "" ? undefined : message.duration;
+    return obj;
+  },
+  fromAminoMsg(object: MsgUpdateDenomRewardScheduleAminoMsg): MsgUpdateDenomRewardSchedule {
+    return MsgUpdateDenomRewardSchedule.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgUpdateDenomRewardSchedule): MsgUpdateDenomRewardScheduleAminoMsg {
+    return {
+      type: "bze/x/rewards/MsgUpdateDenomRewardSchedule",
+      value: MsgUpdateDenomRewardSchedule.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgUpdateDenomRewardScheduleProtoMsg): MsgUpdateDenomRewardSchedule {
+    return MsgUpdateDenomRewardSchedule.decode(message.value);
+  },
+  toProto(message: MsgUpdateDenomRewardSchedule): Uint8Array {
+    return MsgUpdateDenomRewardSchedule.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUpdateDenomRewardSchedule): MsgUpdateDenomRewardScheduleProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.MsgUpdateDenomRewardSchedule",
+      value: MsgUpdateDenomRewardSchedule.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgUpdateDenomRewardScheduleResponse(): MsgUpdateDenomRewardScheduleResponse {
+  return {};
+}
+/**
+ * @name MsgUpdateDenomRewardScheduleResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgUpdateDenomRewardScheduleResponse
+ */
+export const MsgUpdateDenomRewardScheduleResponse = {
+  typeUrl: "/bze.rewards.MsgUpdateDenomRewardScheduleResponse",
+  is(o: any): o is MsgUpdateDenomRewardScheduleResponse {
+    return o && o.$typeUrl === MsgUpdateDenomRewardScheduleResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgUpdateDenomRewardScheduleResponseSDKType {
+    return o && o.$typeUrl === MsgUpdateDenomRewardScheduleResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgUpdateDenomRewardScheduleResponseAmino {
+    return o && o.$typeUrl === MsgUpdateDenomRewardScheduleResponse.typeUrl;
+  },
+  encode(_: MsgUpdateDenomRewardScheduleResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdateDenomRewardScheduleResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdateDenomRewardScheduleResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgUpdateDenomRewardScheduleResponse>): MsgUpdateDenomRewardScheduleResponse {
+    const message = createBaseMsgUpdateDenomRewardScheduleResponse();
+    return message;
+  },
+  fromAmino(_: MsgUpdateDenomRewardScheduleResponseAmino): MsgUpdateDenomRewardScheduleResponse {
+    const message = createBaseMsgUpdateDenomRewardScheduleResponse();
+    return message;
+  },
+  toAmino(_: MsgUpdateDenomRewardScheduleResponse): MsgUpdateDenomRewardScheduleResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgUpdateDenomRewardScheduleResponseAminoMsg): MsgUpdateDenomRewardScheduleResponse {
+    return MsgUpdateDenomRewardScheduleResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgUpdateDenomRewardScheduleResponseProtoMsg): MsgUpdateDenomRewardScheduleResponse {
+    return MsgUpdateDenomRewardScheduleResponse.decode(message.value);
+  },
+  toProto(message: MsgUpdateDenomRewardScheduleResponse): Uint8Array {
+    return MsgUpdateDenomRewardScheduleResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUpdateDenomRewardScheduleResponse): MsgUpdateDenomRewardScheduleResponseProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.MsgUpdateDenomRewardScheduleResponse",
+      value: MsgUpdateDenomRewardScheduleResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgDistributeDenomRewards(): MsgDistributeDenomRewards {
+  return {
+    creator: "",
+    denom: "",
+    prizeDenom: "",
+    amount: ""
+  };
+}
+/**
+ * @name MsgDistributeDenomRewards
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgDistributeDenomRewards
+ */
+export const MsgDistributeDenomRewards = {
+  typeUrl: "/bze.rewards.MsgDistributeDenomRewards",
+  aminoType: "bze/x/rewards/MsgDistributeDenomRewards",
+  is(o: any): o is MsgDistributeDenomRewards {
+    return o && (o.$typeUrl === MsgDistributeDenomRewards.typeUrl || typeof o.creator === "string" && typeof o.denom === "string" && typeof o.prizeDenom === "string" && typeof o.amount === "string");
+  },
+  isSDK(o: any): o is MsgDistributeDenomRewardsSDKType {
+    return o && (o.$typeUrl === MsgDistributeDenomRewards.typeUrl || typeof o.creator === "string" && typeof o.denom === "string" && typeof o.prize_denom === "string" && typeof o.amount === "string");
+  },
+  isAmino(o: any): o is MsgDistributeDenomRewardsAmino {
+    return o && (o.$typeUrl === MsgDistributeDenomRewards.typeUrl || typeof o.creator === "string" && typeof o.denom === "string" && typeof o.prize_denom === "string" && typeof o.amount === "string");
+  },
+  encode(message: MsgDistributeDenomRewards, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.denom !== "") {
+      writer.uint32(18).string(message.denom);
+    }
+    if (message.prizeDenom !== "") {
+      writer.uint32(26).string(message.prizeDenom);
+    }
+    if (message.amount !== "") {
+      writer.uint32(34).string(message.amount);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgDistributeDenomRewards {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgDistributeDenomRewards();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.denom = reader.string();
+          break;
+        case 3:
+          message.prizeDenom = reader.string();
+          break;
+        case 4:
+          message.amount = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgDistributeDenomRewards>): MsgDistributeDenomRewards {
+    const message = createBaseMsgDistributeDenomRewards();
+    message.creator = object.creator ?? "";
+    message.denom = object.denom ?? "";
+    message.prizeDenom = object.prizeDenom ?? "";
+    message.amount = object.amount ?? "";
+    return message;
+  },
+  fromAmino(object: MsgDistributeDenomRewardsAmino): MsgDistributeDenomRewards {
+    const message = createBaseMsgDistributeDenomRewards();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    if (object.prize_denom !== undefined && object.prize_denom !== null) {
+      message.prizeDenom = object.prize_denom;
+    }
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = object.amount;
+    }
+    return message;
+  },
+  toAmino(message: MsgDistributeDenomRewards): MsgDistributeDenomRewardsAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    obj.prize_denom = message.prizeDenom === "" ? undefined : message.prizeDenom;
+    obj.amount = message.amount === "" ? undefined : message.amount;
+    return obj;
+  },
+  fromAminoMsg(object: MsgDistributeDenomRewardsAminoMsg): MsgDistributeDenomRewards {
+    return MsgDistributeDenomRewards.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgDistributeDenomRewards): MsgDistributeDenomRewardsAminoMsg {
+    return {
+      type: "bze/x/rewards/MsgDistributeDenomRewards",
+      value: MsgDistributeDenomRewards.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgDistributeDenomRewardsProtoMsg): MsgDistributeDenomRewards {
+    return MsgDistributeDenomRewards.decode(message.value);
+  },
+  toProto(message: MsgDistributeDenomRewards): Uint8Array {
+    return MsgDistributeDenomRewards.encode(message).finish();
+  },
+  toProtoMsg(message: MsgDistributeDenomRewards): MsgDistributeDenomRewardsProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.MsgDistributeDenomRewards",
+      value: MsgDistributeDenomRewards.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgDistributeDenomRewardsResponse(): MsgDistributeDenomRewardsResponse {
+  return {};
+}
+/**
+ * @name MsgDistributeDenomRewardsResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.MsgDistributeDenomRewardsResponse
+ */
+export const MsgDistributeDenomRewardsResponse = {
+  typeUrl: "/bze.rewards.MsgDistributeDenomRewardsResponse",
+  is(o: any): o is MsgDistributeDenomRewardsResponse {
+    return o && o.$typeUrl === MsgDistributeDenomRewardsResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgDistributeDenomRewardsResponseSDKType {
+    return o && o.$typeUrl === MsgDistributeDenomRewardsResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgDistributeDenomRewardsResponseAmino {
+    return o && o.$typeUrl === MsgDistributeDenomRewardsResponse.typeUrl;
+  },
+  encode(_: MsgDistributeDenomRewardsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgDistributeDenomRewardsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgDistributeDenomRewardsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgDistributeDenomRewardsResponse>): MsgDistributeDenomRewardsResponse {
+    const message = createBaseMsgDistributeDenomRewardsResponse();
+    return message;
+  },
+  fromAmino(_: MsgDistributeDenomRewardsResponseAmino): MsgDistributeDenomRewardsResponse {
+    const message = createBaseMsgDistributeDenomRewardsResponse();
+    return message;
+  },
+  toAmino(_: MsgDistributeDenomRewardsResponse): MsgDistributeDenomRewardsResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgDistributeDenomRewardsResponseAminoMsg): MsgDistributeDenomRewardsResponse {
+    return MsgDistributeDenomRewardsResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgDistributeDenomRewardsResponseProtoMsg): MsgDistributeDenomRewardsResponse {
+    return MsgDistributeDenomRewardsResponse.decode(message.value);
+  },
+  toProto(message: MsgDistributeDenomRewardsResponse): Uint8Array {
+    return MsgDistributeDenomRewardsResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgDistributeDenomRewardsResponse): MsgDistributeDenomRewardsResponseProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.MsgDistributeDenomRewardsResponse",
+      value: MsgDistributeDenomRewardsResponse.encode(message).finish()
     };
   },
   registerTypeUrl() {}

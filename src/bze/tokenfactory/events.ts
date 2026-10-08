@@ -70,6 +70,38 @@ export interface DenomMetadataChangeEventAminoMsg {
 export interface DenomMetadataChangeEventSDKType {
   denom: string;
 }
+/**
+ * @name DenomBrandingChangeEvent
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.DenomBrandingChangeEvent
+ */
+export interface DenomBrandingChangeEvent {
+  denom: string;
+}
+export interface DenomBrandingChangeEventProtoMsg {
+  typeUrl: "/bze.tokenfactory.DenomBrandingChangeEvent";
+  value: Uint8Array;
+}
+/**
+ * @name DenomBrandingChangeEventAmino
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.DenomBrandingChangeEvent
+ */
+export interface DenomBrandingChangeEventAmino {
+  denom?: string;
+}
+export interface DenomBrandingChangeEventAminoMsg {
+  type: "/bze.tokenfactory.DenomBrandingChangeEvent";
+  value: DenomBrandingChangeEventAmino;
+}
+/**
+ * @name DenomBrandingChangeEventSDKType
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.DenomBrandingChangeEvent
+ */
+export interface DenomBrandingChangeEventSDKType {
+  denom: string;
+}
 function createBaseDenomAdminChangeEvent(): DenomAdminChangeEvent {
   return {
     admin: "",
@@ -246,6 +278,84 @@ export const DenomMetadataChangeEvent = {
     return {
       typeUrl: "/bze.tokenfactory.DenomMetadataChangeEvent",
       value: DenomMetadataChangeEvent.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseDenomBrandingChangeEvent(): DenomBrandingChangeEvent {
+  return {
+    denom: ""
+  };
+}
+/**
+ * @name DenomBrandingChangeEvent
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.DenomBrandingChangeEvent
+ */
+export const DenomBrandingChangeEvent = {
+  typeUrl: "/bze.tokenfactory.DenomBrandingChangeEvent",
+  is(o: any): o is DenomBrandingChangeEvent {
+    return o && (o.$typeUrl === DenomBrandingChangeEvent.typeUrl || typeof o.denom === "string");
+  },
+  isSDK(o: any): o is DenomBrandingChangeEventSDKType {
+    return o && (o.$typeUrl === DenomBrandingChangeEvent.typeUrl || typeof o.denom === "string");
+  },
+  isAmino(o: any): o is DenomBrandingChangeEventAmino {
+    return o && (o.$typeUrl === DenomBrandingChangeEvent.typeUrl || typeof o.denom === "string");
+  },
+  encode(message: DenomBrandingChangeEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.denom !== "") {
+      writer.uint32(10).string(message.denom);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): DenomBrandingChangeEvent {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDenomBrandingChangeEvent();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.denom = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<DenomBrandingChangeEvent>): DenomBrandingChangeEvent {
+    const message = createBaseDenomBrandingChangeEvent();
+    message.denom = object.denom ?? "";
+    return message;
+  },
+  fromAmino(object: DenomBrandingChangeEventAmino): DenomBrandingChangeEvent {
+    const message = createBaseDenomBrandingChangeEvent();
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    return message;
+  },
+  toAmino(message: DenomBrandingChangeEvent): DenomBrandingChangeEventAmino {
+    const obj: any = {};
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    return obj;
+  },
+  fromAminoMsg(object: DenomBrandingChangeEventAminoMsg): DenomBrandingChangeEvent {
+    return DenomBrandingChangeEvent.fromAmino(object.value);
+  },
+  fromProtoMsg(message: DenomBrandingChangeEventProtoMsg): DenomBrandingChangeEvent {
+    return DenomBrandingChangeEvent.decode(message.value);
+  },
+  toProto(message: DenomBrandingChangeEvent): Uint8Array {
+    return DenomBrandingChangeEvent.encode(message).finish();
+  },
+  toProtoMsg(message: DenomBrandingChangeEvent): DenomBrandingChangeEventProtoMsg {
+    return {
+      typeUrl: "/bze.tokenfactory.DenomBrandingChangeEvent",
+      value: DenomBrandingChangeEvent.encode(message).finish()
     };
   },
   registerTypeUrl() {}

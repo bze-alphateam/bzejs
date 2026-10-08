@@ -1,7 +1,8 @@
 //@ts-nocheck
 import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageResponseAmino, PageResponseSDKType } from "../../cosmos/base/query/v1beta1/pagination";
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { StakingReward, StakingRewardAmino, StakingRewardSDKType, TradingReward, TradingRewardAmino, TradingRewardSDKType, StakingRewardParticipant, StakingRewardParticipantAmino, StakingRewardParticipantSDKType, TradingRewardLeaderboard, TradingRewardLeaderboardAmino, TradingRewardLeaderboardSDKType, MarketIdTradingRewardId, MarketIdTradingRewardIdAmino, MarketIdTradingRewardIdSDKType, PendingUnlockParticipant, PendingUnlockParticipantAmino, PendingUnlockParticipantSDKType } from "./store";
+import { StakingReward, StakingRewardAmino, StakingRewardSDKType, TradingReward, TradingRewardAmino, TradingRewardSDKType, StakingRewardParticipant, StakingRewardParticipantAmino, StakingRewardParticipantSDKType, TradingRewardLeaderboard, TradingRewardLeaderboardAmino, TradingRewardLeaderboardSDKType, MarketIdTradingRewardId, MarketIdTradingRewardIdAmino, MarketIdTradingRewardIdSDKType, PendingUnlockParticipant, PendingUnlockParticipantAmino, PendingUnlockParticipantSDKType, DenomReward, DenomRewardAmino, DenomRewardSDKType, DenomRewardPrize, DenomRewardPrizeAmino, DenomRewardPrizeSDKType, DenomRewardSchedule, DenomRewardScheduleAmino, DenomRewardScheduleSDKType, DenomRewardParticipant, DenomRewardParticipantAmino, DenomRewardParticipantSDKType } from "./store";
+import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { GlobalDecoderRegistry } from "../../registry";
 /**
@@ -669,6 +670,419 @@ export interface QueryAllPendingUnlockParticipantsResponseAminoMsg {
  */
 export interface QueryAllPendingUnlockParticipantsResponseSDKType {
   list: PendingUnlockParticipantSDKType[];
+  pagination?: PageResponseSDKType;
+}
+/**
+ * @name QueryDenomRewardRequest
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardRequest
+ */
+export interface QueryDenomRewardRequest {
+  denom: string;
+}
+export interface QueryDenomRewardRequestProtoMsg {
+  typeUrl: "/bze.rewards.QueryDenomRewardRequest";
+  value: Uint8Array;
+}
+/**
+ * @name QueryDenomRewardRequestAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardRequest
+ */
+export interface QueryDenomRewardRequestAmino {
+  denom?: string;
+}
+export interface QueryDenomRewardRequestAminoMsg {
+  type: "/bze.rewards.QueryDenomRewardRequest";
+  value: QueryDenomRewardRequestAmino;
+}
+/**
+ * @name QueryDenomRewardRequestSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardRequest
+ */
+export interface QueryDenomRewardRequestSDKType {
+  denom: string;
+}
+/**
+ * @name QueryDenomRewardResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardResponse
+ */
+export interface QueryDenomRewardResponse {
+  denomReward: DenomReward;
+}
+export interface QueryDenomRewardResponseProtoMsg {
+  typeUrl: "/bze.rewards.QueryDenomRewardResponse";
+  value: Uint8Array;
+}
+/**
+ * @name QueryDenomRewardResponseAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardResponse
+ */
+export interface QueryDenomRewardResponseAmino {
+  denom_reward?: DenomRewardAmino;
+}
+export interface QueryDenomRewardResponseAminoMsg {
+  type: "/bze.rewards.QueryDenomRewardResponse";
+  value: QueryDenomRewardResponseAmino;
+}
+/**
+ * @name QueryDenomRewardResponseSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardResponse
+ */
+export interface QueryDenomRewardResponseSDKType {
+  denom_reward: DenomRewardSDKType;
+}
+/**
+ * @name QueryDenomRewardAllRequest
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardAllRequest
+ */
+export interface QueryDenomRewardAllRequest {
+  pagination?: PageRequest;
+}
+export interface QueryDenomRewardAllRequestProtoMsg {
+  typeUrl: "/bze.rewards.QueryDenomRewardAllRequest";
+  value: Uint8Array;
+}
+/**
+ * @name QueryDenomRewardAllRequestAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardAllRequest
+ */
+export interface QueryDenomRewardAllRequestAmino {
+  pagination?: PageRequestAmino;
+}
+export interface QueryDenomRewardAllRequestAminoMsg {
+  type: "/bze.rewards.QueryDenomRewardAllRequest";
+  value: QueryDenomRewardAllRequestAmino;
+}
+/**
+ * @name QueryDenomRewardAllRequestSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardAllRequest
+ */
+export interface QueryDenomRewardAllRequestSDKType {
+  pagination?: PageRequestSDKType;
+}
+/**
+ * @name QueryDenomRewardAllResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardAllResponse
+ */
+export interface QueryDenomRewardAllResponse {
+  list: DenomReward[];
+  pagination?: PageResponse;
+}
+export interface QueryDenomRewardAllResponseProtoMsg {
+  typeUrl: "/bze.rewards.QueryDenomRewardAllResponse";
+  value: Uint8Array;
+}
+/**
+ * @name QueryDenomRewardAllResponseAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardAllResponse
+ */
+export interface QueryDenomRewardAllResponseAmino {
+  list?: DenomRewardAmino[];
+  pagination?: PageResponseAmino;
+}
+export interface QueryDenomRewardAllResponseAminoMsg {
+  type: "/bze.rewards.QueryDenomRewardAllResponse";
+  value: QueryDenomRewardAllResponseAmino;
+}
+/**
+ * @name QueryDenomRewardAllResponseSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardAllResponse
+ */
+export interface QueryDenomRewardAllResponseSDKType {
+  list: DenomRewardSDKType[];
+  pagination?: PageResponseSDKType;
+}
+/**
+ * @name QueryDenomRewardPrizesRequest
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardPrizesRequest
+ */
+export interface QueryDenomRewardPrizesRequest {
+  denom: string;
+}
+export interface QueryDenomRewardPrizesRequestProtoMsg {
+  typeUrl: "/bze.rewards.QueryDenomRewardPrizesRequest";
+  value: Uint8Array;
+}
+/**
+ * @name QueryDenomRewardPrizesRequestAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardPrizesRequest
+ */
+export interface QueryDenomRewardPrizesRequestAmino {
+  denom?: string;
+}
+export interface QueryDenomRewardPrizesRequestAminoMsg {
+  type: "/bze.rewards.QueryDenomRewardPrizesRequest";
+  value: QueryDenomRewardPrizesRequestAmino;
+}
+/**
+ * @name QueryDenomRewardPrizesRequestSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardPrizesRequest
+ */
+export interface QueryDenomRewardPrizesRequestSDKType {
+  denom: string;
+}
+/**
+ * @name QueryDenomRewardPrizesResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardPrizesResponse
+ */
+export interface QueryDenomRewardPrizesResponse {
+  list: DenomRewardPrize[];
+}
+export interface QueryDenomRewardPrizesResponseProtoMsg {
+  typeUrl: "/bze.rewards.QueryDenomRewardPrizesResponse";
+  value: Uint8Array;
+}
+/**
+ * @name QueryDenomRewardPrizesResponseAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardPrizesResponse
+ */
+export interface QueryDenomRewardPrizesResponseAmino {
+  list?: DenomRewardPrizeAmino[];
+}
+export interface QueryDenomRewardPrizesResponseAminoMsg {
+  type: "/bze.rewards.QueryDenomRewardPrizesResponse";
+  value: QueryDenomRewardPrizesResponseAmino;
+}
+/**
+ * @name QueryDenomRewardPrizesResponseSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardPrizesResponse
+ */
+export interface QueryDenomRewardPrizesResponseSDKType {
+  list: DenomRewardPrizeSDKType[];
+}
+/**
+ * @name QueryDenomRewardSchedulesRequest
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardSchedulesRequest
+ */
+export interface QueryDenomRewardSchedulesRequest {
+  denom: string;
+  pagination?: PageRequest;
+}
+export interface QueryDenomRewardSchedulesRequestProtoMsg {
+  typeUrl: "/bze.rewards.QueryDenomRewardSchedulesRequest";
+  value: Uint8Array;
+}
+/**
+ * @name QueryDenomRewardSchedulesRequestAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardSchedulesRequest
+ */
+export interface QueryDenomRewardSchedulesRequestAmino {
+  denom?: string;
+  pagination?: PageRequestAmino;
+}
+export interface QueryDenomRewardSchedulesRequestAminoMsg {
+  type: "/bze.rewards.QueryDenomRewardSchedulesRequest";
+  value: QueryDenomRewardSchedulesRequestAmino;
+}
+/**
+ * @name QueryDenomRewardSchedulesRequestSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardSchedulesRequest
+ */
+export interface QueryDenomRewardSchedulesRequestSDKType {
+  denom: string;
+  pagination?: PageRequestSDKType;
+}
+/**
+ * @name QueryDenomRewardSchedulesResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardSchedulesResponse
+ */
+export interface QueryDenomRewardSchedulesResponse {
+  list: DenomRewardSchedule[];
+  pagination?: PageResponse;
+}
+export interface QueryDenomRewardSchedulesResponseProtoMsg {
+  typeUrl: "/bze.rewards.QueryDenomRewardSchedulesResponse";
+  value: Uint8Array;
+}
+/**
+ * @name QueryDenomRewardSchedulesResponseAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardSchedulesResponse
+ */
+export interface QueryDenomRewardSchedulesResponseAmino {
+  list?: DenomRewardScheduleAmino[];
+  pagination?: PageResponseAmino;
+}
+export interface QueryDenomRewardSchedulesResponseAminoMsg {
+  type: "/bze.rewards.QueryDenomRewardSchedulesResponse";
+  value: QueryDenomRewardSchedulesResponseAmino;
+}
+/**
+ * @name QueryDenomRewardSchedulesResponseSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardSchedulesResponse
+ */
+export interface QueryDenomRewardSchedulesResponseSDKType {
+  list: DenomRewardScheduleSDKType[];
+  pagination?: PageResponseSDKType;
+}
+/**
+ * @name QueryDenomRewardParticipantRequest
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardParticipantRequest
+ */
+export interface QueryDenomRewardParticipantRequest {
+  address: string;
+  denom: string;
+}
+export interface QueryDenomRewardParticipantRequestProtoMsg {
+  typeUrl: "/bze.rewards.QueryDenomRewardParticipantRequest";
+  value: Uint8Array;
+}
+/**
+ * @name QueryDenomRewardParticipantRequestAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardParticipantRequest
+ */
+export interface QueryDenomRewardParticipantRequestAmino {
+  address?: string;
+  denom?: string;
+}
+export interface QueryDenomRewardParticipantRequestAminoMsg {
+  type: "/bze.rewards.QueryDenomRewardParticipantRequest";
+  value: QueryDenomRewardParticipantRequestAmino;
+}
+/**
+ * @name QueryDenomRewardParticipantRequestSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardParticipantRequest
+ */
+export interface QueryDenomRewardParticipantRequestSDKType {
+  address: string;
+  denom: string;
+}
+/**
+ * @name QueryDenomRewardParticipantResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardParticipantResponse
+ */
+export interface QueryDenomRewardParticipantResponse {
+  participant: DenomRewardParticipant;
+  /**
+   * pending holds the coins a claim would pay right now, one per prize denom
+   * (computed read-only; sub-unit dust is excluded, exactly like a real claim).
+   */
+  pending: Coin[];
+}
+export interface QueryDenomRewardParticipantResponseProtoMsg {
+  typeUrl: "/bze.rewards.QueryDenomRewardParticipantResponse";
+  value: Uint8Array;
+}
+/**
+ * @name QueryDenomRewardParticipantResponseAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardParticipantResponse
+ */
+export interface QueryDenomRewardParticipantResponseAmino {
+  participant?: DenomRewardParticipantAmino;
+  /**
+   * pending holds the coins a claim would pay right now, one per prize denom
+   * (computed read-only; sub-unit dust is excluded, exactly like a real claim).
+   */
+  pending?: CoinAmino[];
+}
+export interface QueryDenomRewardParticipantResponseAminoMsg {
+  type: "/bze.rewards.QueryDenomRewardParticipantResponse";
+  value: QueryDenomRewardParticipantResponseAmino;
+}
+/**
+ * @name QueryDenomRewardParticipantResponseSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardParticipantResponse
+ */
+export interface QueryDenomRewardParticipantResponseSDKType {
+  participant: DenomRewardParticipantSDKType;
+  pending: CoinSDKType[];
+}
+/**
+ * @name QueryDenomRewardParticipationsRequest
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardParticipationsRequest
+ */
+export interface QueryDenomRewardParticipationsRequest {
+  address: string;
+  pagination?: PageRequest;
+}
+export interface QueryDenomRewardParticipationsRequestProtoMsg {
+  typeUrl: "/bze.rewards.QueryDenomRewardParticipationsRequest";
+  value: Uint8Array;
+}
+/**
+ * @name QueryDenomRewardParticipationsRequestAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardParticipationsRequest
+ */
+export interface QueryDenomRewardParticipationsRequestAmino {
+  address?: string;
+  pagination?: PageRequestAmino;
+}
+export interface QueryDenomRewardParticipationsRequestAminoMsg {
+  type: "/bze.rewards.QueryDenomRewardParticipationsRequest";
+  value: QueryDenomRewardParticipationsRequestAmino;
+}
+/**
+ * @name QueryDenomRewardParticipationsRequestSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardParticipationsRequest
+ */
+export interface QueryDenomRewardParticipationsRequestSDKType {
+  address: string;
+  pagination?: PageRequestSDKType;
+}
+/**
+ * @name QueryDenomRewardParticipationsResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardParticipationsResponse
+ */
+export interface QueryDenomRewardParticipationsResponse {
+  list: DenomRewardParticipant[];
+  pagination?: PageResponse;
+}
+export interface QueryDenomRewardParticipationsResponseProtoMsg {
+  typeUrl: "/bze.rewards.QueryDenomRewardParticipationsResponse";
+  value: Uint8Array;
+}
+/**
+ * @name QueryDenomRewardParticipationsResponseAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardParticipationsResponse
+ */
+export interface QueryDenomRewardParticipationsResponseAmino {
+  list?: DenomRewardParticipantAmino[];
+  pagination?: PageResponseAmino;
+}
+export interface QueryDenomRewardParticipationsResponseAminoMsg {
+  type: "/bze.rewards.QueryDenomRewardParticipationsResponse";
+  value: QueryDenomRewardParticipationsResponseAmino;
+}
+/**
+ * @name QueryDenomRewardParticipationsResponseSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardParticipationsResponse
+ */
+export interface QueryDenomRewardParticipationsResponseSDKType {
+  list: DenomRewardParticipantSDKType[];
   pagination?: PageResponseSDKType;
 }
 function createBaseQueryParamsRequest(): QueryParamsRequest {
@@ -2391,6 +2805,1085 @@ export const QueryAllPendingUnlockParticipantsResponse = {
       return;
     }
     PendingUnlockParticipant.registerTypeUrl();
+    PageResponse.registerTypeUrl();
+  }
+};
+function createBaseQueryDenomRewardRequest(): QueryDenomRewardRequest {
+  return {
+    denom: ""
+  };
+}
+/**
+ * @name QueryDenomRewardRequest
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardRequest
+ */
+export const QueryDenomRewardRequest = {
+  typeUrl: "/bze.rewards.QueryDenomRewardRequest",
+  is(o: any): o is QueryDenomRewardRequest {
+    return o && (o.$typeUrl === QueryDenomRewardRequest.typeUrl || typeof o.denom === "string");
+  },
+  isSDK(o: any): o is QueryDenomRewardRequestSDKType {
+    return o && (o.$typeUrl === QueryDenomRewardRequest.typeUrl || typeof o.denom === "string");
+  },
+  isAmino(o: any): o is QueryDenomRewardRequestAmino {
+    return o && (o.$typeUrl === QueryDenomRewardRequest.typeUrl || typeof o.denom === "string");
+  },
+  encode(message: QueryDenomRewardRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.denom !== "") {
+      writer.uint32(10).string(message.denom);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomRewardRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomRewardRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.denom = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryDenomRewardRequest>): QueryDenomRewardRequest {
+    const message = createBaseQueryDenomRewardRequest();
+    message.denom = object.denom ?? "";
+    return message;
+  },
+  fromAmino(object: QueryDenomRewardRequestAmino): QueryDenomRewardRequest {
+    const message = createBaseQueryDenomRewardRequest();
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    return message;
+  },
+  toAmino(message: QueryDenomRewardRequest): QueryDenomRewardRequestAmino {
+    const obj: any = {};
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    return obj;
+  },
+  fromAminoMsg(object: QueryDenomRewardRequestAminoMsg): QueryDenomRewardRequest {
+    return QueryDenomRewardRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryDenomRewardRequestProtoMsg): QueryDenomRewardRequest {
+    return QueryDenomRewardRequest.decode(message.value);
+  },
+  toProto(message: QueryDenomRewardRequest): Uint8Array {
+    return QueryDenomRewardRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryDenomRewardRequest): QueryDenomRewardRequestProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.QueryDenomRewardRequest",
+      value: QueryDenomRewardRequest.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseQueryDenomRewardResponse(): QueryDenomRewardResponse {
+  return {
+    denomReward: DenomReward.fromPartial({})
+  };
+}
+/**
+ * @name QueryDenomRewardResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardResponse
+ */
+export const QueryDenomRewardResponse = {
+  typeUrl: "/bze.rewards.QueryDenomRewardResponse",
+  is(o: any): o is QueryDenomRewardResponse {
+    return o && (o.$typeUrl === QueryDenomRewardResponse.typeUrl || DenomReward.is(o.denomReward));
+  },
+  isSDK(o: any): o is QueryDenomRewardResponseSDKType {
+    return o && (o.$typeUrl === QueryDenomRewardResponse.typeUrl || DenomReward.isSDK(o.denom_reward));
+  },
+  isAmino(o: any): o is QueryDenomRewardResponseAmino {
+    return o && (o.$typeUrl === QueryDenomRewardResponse.typeUrl || DenomReward.isAmino(o.denom_reward));
+  },
+  encode(message: QueryDenomRewardResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.denomReward !== undefined) {
+      DenomReward.encode(message.denomReward, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomRewardResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomRewardResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.denomReward = DenomReward.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryDenomRewardResponse>): QueryDenomRewardResponse {
+    const message = createBaseQueryDenomRewardResponse();
+    message.denomReward = object.denomReward !== undefined && object.denomReward !== null ? DenomReward.fromPartial(object.denomReward) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryDenomRewardResponseAmino): QueryDenomRewardResponse {
+    const message = createBaseQueryDenomRewardResponse();
+    if (object.denom_reward !== undefined && object.denom_reward !== null) {
+      message.denomReward = DenomReward.fromAmino(object.denom_reward);
+    }
+    return message;
+  },
+  toAmino(message: QueryDenomRewardResponse): QueryDenomRewardResponseAmino {
+    const obj: any = {};
+    obj.denom_reward = message.denomReward ? DenomReward.toAmino(message.denomReward) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryDenomRewardResponseAminoMsg): QueryDenomRewardResponse {
+    return QueryDenomRewardResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryDenomRewardResponseProtoMsg): QueryDenomRewardResponse {
+    return QueryDenomRewardResponse.decode(message.value);
+  },
+  toProto(message: QueryDenomRewardResponse): Uint8Array {
+    return QueryDenomRewardResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryDenomRewardResponse): QueryDenomRewardResponseProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.QueryDenomRewardResponse",
+      value: QueryDenomRewardResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(QueryDenomRewardResponse.typeUrl)) {
+      return;
+    }
+    DenomReward.registerTypeUrl();
+  }
+};
+function createBaseQueryDenomRewardAllRequest(): QueryDenomRewardAllRequest {
+  return {
+    pagination: undefined
+  };
+}
+/**
+ * @name QueryDenomRewardAllRequest
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardAllRequest
+ */
+export const QueryDenomRewardAllRequest = {
+  typeUrl: "/bze.rewards.QueryDenomRewardAllRequest",
+  is(o: any): o is QueryDenomRewardAllRequest {
+    return o && o.$typeUrl === QueryDenomRewardAllRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryDenomRewardAllRequestSDKType {
+    return o && o.$typeUrl === QueryDenomRewardAllRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryDenomRewardAllRequestAmino {
+    return o && o.$typeUrl === QueryDenomRewardAllRequest.typeUrl;
+  },
+  encode(message: QueryDenomRewardAllRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomRewardAllRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomRewardAllRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryDenomRewardAllRequest>): QueryDenomRewardAllRequest {
+    const message = createBaseQueryDenomRewardAllRequest();
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryDenomRewardAllRequestAmino): QueryDenomRewardAllRequest {
+    const message = createBaseQueryDenomRewardAllRequest();
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryDenomRewardAllRequest): QueryDenomRewardAllRequestAmino {
+    const obj: any = {};
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryDenomRewardAllRequestAminoMsg): QueryDenomRewardAllRequest {
+    return QueryDenomRewardAllRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryDenomRewardAllRequestProtoMsg): QueryDenomRewardAllRequest {
+    return QueryDenomRewardAllRequest.decode(message.value);
+  },
+  toProto(message: QueryDenomRewardAllRequest): Uint8Array {
+    return QueryDenomRewardAllRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryDenomRewardAllRequest): QueryDenomRewardAllRequestProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.QueryDenomRewardAllRequest",
+      value: QueryDenomRewardAllRequest.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(QueryDenomRewardAllRequest.typeUrl)) {
+      return;
+    }
+    PageRequest.registerTypeUrl();
+  }
+};
+function createBaseQueryDenomRewardAllResponse(): QueryDenomRewardAllResponse {
+  return {
+    list: [],
+    pagination: undefined
+  };
+}
+/**
+ * @name QueryDenomRewardAllResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardAllResponse
+ */
+export const QueryDenomRewardAllResponse = {
+  typeUrl: "/bze.rewards.QueryDenomRewardAllResponse",
+  is(o: any): o is QueryDenomRewardAllResponse {
+    return o && (o.$typeUrl === QueryDenomRewardAllResponse.typeUrl || Array.isArray(o.list) && (!o.list.length || DenomReward.is(o.list[0])));
+  },
+  isSDK(o: any): o is QueryDenomRewardAllResponseSDKType {
+    return o && (o.$typeUrl === QueryDenomRewardAllResponse.typeUrl || Array.isArray(o.list) && (!o.list.length || DenomReward.isSDK(o.list[0])));
+  },
+  isAmino(o: any): o is QueryDenomRewardAllResponseAmino {
+    return o && (o.$typeUrl === QueryDenomRewardAllResponse.typeUrl || Array.isArray(o.list) && (!o.list.length || DenomReward.isAmino(o.list[0])));
+  },
+  encode(message: QueryDenomRewardAllResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    for (const v of message.list) {
+      DenomReward.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomRewardAllResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomRewardAllResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.list.push(DenomReward.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryDenomRewardAllResponse>): QueryDenomRewardAllResponse {
+    const message = createBaseQueryDenomRewardAllResponse();
+    message.list = object.list?.map(e => DenomReward.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryDenomRewardAllResponseAmino): QueryDenomRewardAllResponse {
+    const message = createBaseQueryDenomRewardAllResponse();
+    message.list = object.list?.map(e => DenomReward.fromAmino(e)) || [];
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryDenomRewardAllResponse): QueryDenomRewardAllResponseAmino {
+    const obj: any = {};
+    if (message.list) {
+      obj.list = message.list.map(e => e ? DenomReward.toAmino(e) : undefined);
+    } else {
+      obj.list = message.list;
+    }
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryDenomRewardAllResponseAminoMsg): QueryDenomRewardAllResponse {
+    return QueryDenomRewardAllResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryDenomRewardAllResponseProtoMsg): QueryDenomRewardAllResponse {
+    return QueryDenomRewardAllResponse.decode(message.value);
+  },
+  toProto(message: QueryDenomRewardAllResponse): Uint8Array {
+    return QueryDenomRewardAllResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryDenomRewardAllResponse): QueryDenomRewardAllResponseProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.QueryDenomRewardAllResponse",
+      value: QueryDenomRewardAllResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(QueryDenomRewardAllResponse.typeUrl)) {
+      return;
+    }
+    DenomReward.registerTypeUrl();
+    PageResponse.registerTypeUrl();
+  }
+};
+function createBaseQueryDenomRewardPrizesRequest(): QueryDenomRewardPrizesRequest {
+  return {
+    denom: ""
+  };
+}
+/**
+ * @name QueryDenomRewardPrizesRequest
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardPrizesRequest
+ */
+export const QueryDenomRewardPrizesRequest = {
+  typeUrl: "/bze.rewards.QueryDenomRewardPrizesRequest",
+  is(o: any): o is QueryDenomRewardPrizesRequest {
+    return o && (o.$typeUrl === QueryDenomRewardPrizesRequest.typeUrl || typeof o.denom === "string");
+  },
+  isSDK(o: any): o is QueryDenomRewardPrizesRequestSDKType {
+    return o && (o.$typeUrl === QueryDenomRewardPrizesRequest.typeUrl || typeof o.denom === "string");
+  },
+  isAmino(o: any): o is QueryDenomRewardPrizesRequestAmino {
+    return o && (o.$typeUrl === QueryDenomRewardPrizesRequest.typeUrl || typeof o.denom === "string");
+  },
+  encode(message: QueryDenomRewardPrizesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.denom !== "") {
+      writer.uint32(10).string(message.denom);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomRewardPrizesRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomRewardPrizesRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.denom = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryDenomRewardPrizesRequest>): QueryDenomRewardPrizesRequest {
+    const message = createBaseQueryDenomRewardPrizesRequest();
+    message.denom = object.denom ?? "";
+    return message;
+  },
+  fromAmino(object: QueryDenomRewardPrizesRequestAmino): QueryDenomRewardPrizesRequest {
+    const message = createBaseQueryDenomRewardPrizesRequest();
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    return message;
+  },
+  toAmino(message: QueryDenomRewardPrizesRequest): QueryDenomRewardPrizesRequestAmino {
+    const obj: any = {};
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    return obj;
+  },
+  fromAminoMsg(object: QueryDenomRewardPrizesRequestAminoMsg): QueryDenomRewardPrizesRequest {
+    return QueryDenomRewardPrizesRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryDenomRewardPrizesRequestProtoMsg): QueryDenomRewardPrizesRequest {
+    return QueryDenomRewardPrizesRequest.decode(message.value);
+  },
+  toProto(message: QueryDenomRewardPrizesRequest): Uint8Array {
+    return QueryDenomRewardPrizesRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryDenomRewardPrizesRequest): QueryDenomRewardPrizesRequestProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.QueryDenomRewardPrizesRequest",
+      value: QueryDenomRewardPrizesRequest.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseQueryDenomRewardPrizesResponse(): QueryDenomRewardPrizesResponse {
+  return {
+    list: []
+  };
+}
+/**
+ * @name QueryDenomRewardPrizesResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardPrizesResponse
+ */
+export const QueryDenomRewardPrizesResponse = {
+  typeUrl: "/bze.rewards.QueryDenomRewardPrizesResponse",
+  is(o: any): o is QueryDenomRewardPrizesResponse {
+    return o && (o.$typeUrl === QueryDenomRewardPrizesResponse.typeUrl || Array.isArray(o.list) && (!o.list.length || DenomRewardPrize.is(o.list[0])));
+  },
+  isSDK(o: any): o is QueryDenomRewardPrizesResponseSDKType {
+    return o && (o.$typeUrl === QueryDenomRewardPrizesResponse.typeUrl || Array.isArray(o.list) && (!o.list.length || DenomRewardPrize.isSDK(o.list[0])));
+  },
+  isAmino(o: any): o is QueryDenomRewardPrizesResponseAmino {
+    return o && (o.$typeUrl === QueryDenomRewardPrizesResponse.typeUrl || Array.isArray(o.list) && (!o.list.length || DenomRewardPrize.isAmino(o.list[0])));
+  },
+  encode(message: QueryDenomRewardPrizesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    for (const v of message.list) {
+      DenomRewardPrize.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomRewardPrizesResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomRewardPrizesResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.list.push(DenomRewardPrize.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryDenomRewardPrizesResponse>): QueryDenomRewardPrizesResponse {
+    const message = createBaseQueryDenomRewardPrizesResponse();
+    message.list = object.list?.map(e => DenomRewardPrize.fromPartial(e)) || [];
+    return message;
+  },
+  fromAmino(object: QueryDenomRewardPrizesResponseAmino): QueryDenomRewardPrizesResponse {
+    const message = createBaseQueryDenomRewardPrizesResponse();
+    message.list = object.list?.map(e => DenomRewardPrize.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: QueryDenomRewardPrizesResponse): QueryDenomRewardPrizesResponseAmino {
+    const obj: any = {};
+    if (message.list) {
+      obj.list = message.list.map(e => e ? DenomRewardPrize.toAmino(e) : undefined);
+    } else {
+      obj.list = message.list;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: QueryDenomRewardPrizesResponseAminoMsg): QueryDenomRewardPrizesResponse {
+    return QueryDenomRewardPrizesResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryDenomRewardPrizesResponseProtoMsg): QueryDenomRewardPrizesResponse {
+    return QueryDenomRewardPrizesResponse.decode(message.value);
+  },
+  toProto(message: QueryDenomRewardPrizesResponse): Uint8Array {
+    return QueryDenomRewardPrizesResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryDenomRewardPrizesResponse): QueryDenomRewardPrizesResponseProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.QueryDenomRewardPrizesResponse",
+      value: QueryDenomRewardPrizesResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(QueryDenomRewardPrizesResponse.typeUrl)) {
+      return;
+    }
+    DenomRewardPrize.registerTypeUrl();
+  }
+};
+function createBaseQueryDenomRewardSchedulesRequest(): QueryDenomRewardSchedulesRequest {
+  return {
+    denom: "",
+    pagination: undefined
+  };
+}
+/**
+ * @name QueryDenomRewardSchedulesRequest
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardSchedulesRequest
+ */
+export const QueryDenomRewardSchedulesRequest = {
+  typeUrl: "/bze.rewards.QueryDenomRewardSchedulesRequest",
+  is(o: any): o is QueryDenomRewardSchedulesRequest {
+    return o && (o.$typeUrl === QueryDenomRewardSchedulesRequest.typeUrl || typeof o.denom === "string");
+  },
+  isSDK(o: any): o is QueryDenomRewardSchedulesRequestSDKType {
+    return o && (o.$typeUrl === QueryDenomRewardSchedulesRequest.typeUrl || typeof o.denom === "string");
+  },
+  isAmino(o: any): o is QueryDenomRewardSchedulesRequestAmino {
+    return o && (o.$typeUrl === QueryDenomRewardSchedulesRequest.typeUrl || typeof o.denom === "string");
+  },
+  encode(message: QueryDenomRewardSchedulesRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.denom !== "") {
+      writer.uint32(10).string(message.denom);
+    }
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomRewardSchedulesRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomRewardSchedulesRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.denom = reader.string();
+          break;
+        case 2:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryDenomRewardSchedulesRequest>): QueryDenomRewardSchedulesRequest {
+    const message = createBaseQueryDenomRewardSchedulesRequest();
+    message.denom = object.denom ?? "";
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryDenomRewardSchedulesRequestAmino): QueryDenomRewardSchedulesRequest {
+    const message = createBaseQueryDenomRewardSchedulesRequest();
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryDenomRewardSchedulesRequest): QueryDenomRewardSchedulesRequestAmino {
+    const obj: any = {};
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryDenomRewardSchedulesRequestAminoMsg): QueryDenomRewardSchedulesRequest {
+    return QueryDenomRewardSchedulesRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryDenomRewardSchedulesRequestProtoMsg): QueryDenomRewardSchedulesRequest {
+    return QueryDenomRewardSchedulesRequest.decode(message.value);
+  },
+  toProto(message: QueryDenomRewardSchedulesRequest): Uint8Array {
+    return QueryDenomRewardSchedulesRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryDenomRewardSchedulesRequest): QueryDenomRewardSchedulesRequestProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.QueryDenomRewardSchedulesRequest",
+      value: QueryDenomRewardSchedulesRequest.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(QueryDenomRewardSchedulesRequest.typeUrl)) {
+      return;
+    }
+    PageRequest.registerTypeUrl();
+  }
+};
+function createBaseQueryDenomRewardSchedulesResponse(): QueryDenomRewardSchedulesResponse {
+  return {
+    list: [],
+    pagination: undefined
+  };
+}
+/**
+ * @name QueryDenomRewardSchedulesResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardSchedulesResponse
+ */
+export const QueryDenomRewardSchedulesResponse = {
+  typeUrl: "/bze.rewards.QueryDenomRewardSchedulesResponse",
+  is(o: any): o is QueryDenomRewardSchedulesResponse {
+    return o && (o.$typeUrl === QueryDenomRewardSchedulesResponse.typeUrl || Array.isArray(o.list) && (!o.list.length || DenomRewardSchedule.is(o.list[0])));
+  },
+  isSDK(o: any): o is QueryDenomRewardSchedulesResponseSDKType {
+    return o && (o.$typeUrl === QueryDenomRewardSchedulesResponse.typeUrl || Array.isArray(o.list) && (!o.list.length || DenomRewardSchedule.isSDK(o.list[0])));
+  },
+  isAmino(o: any): o is QueryDenomRewardSchedulesResponseAmino {
+    return o && (o.$typeUrl === QueryDenomRewardSchedulesResponse.typeUrl || Array.isArray(o.list) && (!o.list.length || DenomRewardSchedule.isAmino(o.list[0])));
+  },
+  encode(message: QueryDenomRewardSchedulesResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    for (const v of message.list) {
+      DenomRewardSchedule.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomRewardSchedulesResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomRewardSchedulesResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.list.push(DenomRewardSchedule.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryDenomRewardSchedulesResponse>): QueryDenomRewardSchedulesResponse {
+    const message = createBaseQueryDenomRewardSchedulesResponse();
+    message.list = object.list?.map(e => DenomRewardSchedule.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryDenomRewardSchedulesResponseAmino): QueryDenomRewardSchedulesResponse {
+    const message = createBaseQueryDenomRewardSchedulesResponse();
+    message.list = object.list?.map(e => DenomRewardSchedule.fromAmino(e)) || [];
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryDenomRewardSchedulesResponse): QueryDenomRewardSchedulesResponseAmino {
+    const obj: any = {};
+    if (message.list) {
+      obj.list = message.list.map(e => e ? DenomRewardSchedule.toAmino(e) : undefined);
+    } else {
+      obj.list = message.list;
+    }
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryDenomRewardSchedulesResponseAminoMsg): QueryDenomRewardSchedulesResponse {
+    return QueryDenomRewardSchedulesResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryDenomRewardSchedulesResponseProtoMsg): QueryDenomRewardSchedulesResponse {
+    return QueryDenomRewardSchedulesResponse.decode(message.value);
+  },
+  toProto(message: QueryDenomRewardSchedulesResponse): Uint8Array {
+    return QueryDenomRewardSchedulesResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryDenomRewardSchedulesResponse): QueryDenomRewardSchedulesResponseProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.QueryDenomRewardSchedulesResponse",
+      value: QueryDenomRewardSchedulesResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(QueryDenomRewardSchedulesResponse.typeUrl)) {
+      return;
+    }
+    DenomRewardSchedule.registerTypeUrl();
+    PageResponse.registerTypeUrl();
+  }
+};
+function createBaseQueryDenomRewardParticipantRequest(): QueryDenomRewardParticipantRequest {
+  return {
+    address: "",
+    denom: ""
+  };
+}
+/**
+ * @name QueryDenomRewardParticipantRequest
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardParticipantRequest
+ */
+export const QueryDenomRewardParticipantRequest = {
+  typeUrl: "/bze.rewards.QueryDenomRewardParticipantRequest",
+  is(o: any): o is QueryDenomRewardParticipantRequest {
+    return o && (o.$typeUrl === QueryDenomRewardParticipantRequest.typeUrl || typeof o.address === "string" && typeof o.denom === "string");
+  },
+  isSDK(o: any): o is QueryDenomRewardParticipantRequestSDKType {
+    return o && (o.$typeUrl === QueryDenomRewardParticipantRequest.typeUrl || typeof o.address === "string" && typeof o.denom === "string");
+  },
+  isAmino(o: any): o is QueryDenomRewardParticipantRequestAmino {
+    return o && (o.$typeUrl === QueryDenomRewardParticipantRequest.typeUrl || typeof o.address === "string" && typeof o.denom === "string");
+  },
+  encode(message: QueryDenomRewardParticipantRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.address !== "") {
+      writer.uint32(10).string(message.address);
+    }
+    if (message.denom !== "") {
+      writer.uint32(18).string(message.denom);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomRewardParticipantRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomRewardParticipantRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.address = reader.string();
+          break;
+        case 2:
+          message.denom = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryDenomRewardParticipantRequest>): QueryDenomRewardParticipantRequest {
+    const message = createBaseQueryDenomRewardParticipantRequest();
+    message.address = object.address ?? "";
+    message.denom = object.denom ?? "";
+    return message;
+  },
+  fromAmino(object: QueryDenomRewardParticipantRequestAmino): QueryDenomRewardParticipantRequest {
+    const message = createBaseQueryDenomRewardParticipantRequest();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    return message;
+  },
+  toAmino(message: QueryDenomRewardParticipantRequest): QueryDenomRewardParticipantRequestAmino {
+    const obj: any = {};
+    obj.address = message.address === "" ? undefined : message.address;
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    return obj;
+  },
+  fromAminoMsg(object: QueryDenomRewardParticipantRequestAminoMsg): QueryDenomRewardParticipantRequest {
+    return QueryDenomRewardParticipantRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryDenomRewardParticipantRequestProtoMsg): QueryDenomRewardParticipantRequest {
+    return QueryDenomRewardParticipantRequest.decode(message.value);
+  },
+  toProto(message: QueryDenomRewardParticipantRequest): Uint8Array {
+    return QueryDenomRewardParticipantRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryDenomRewardParticipantRequest): QueryDenomRewardParticipantRequestProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.QueryDenomRewardParticipantRequest",
+      value: QueryDenomRewardParticipantRequest.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseQueryDenomRewardParticipantResponse(): QueryDenomRewardParticipantResponse {
+  return {
+    participant: DenomRewardParticipant.fromPartial({}),
+    pending: []
+  };
+}
+/**
+ * @name QueryDenomRewardParticipantResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardParticipantResponse
+ */
+export const QueryDenomRewardParticipantResponse = {
+  typeUrl: "/bze.rewards.QueryDenomRewardParticipantResponse",
+  is(o: any): o is QueryDenomRewardParticipantResponse {
+    return o && (o.$typeUrl === QueryDenomRewardParticipantResponse.typeUrl || DenomRewardParticipant.is(o.participant) && Array.isArray(o.pending) && (!o.pending.length || Coin.is(o.pending[0])));
+  },
+  isSDK(o: any): o is QueryDenomRewardParticipantResponseSDKType {
+    return o && (o.$typeUrl === QueryDenomRewardParticipantResponse.typeUrl || DenomRewardParticipant.isSDK(o.participant) && Array.isArray(o.pending) && (!o.pending.length || Coin.isSDK(o.pending[0])));
+  },
+  isAmino(o: any): o is QueryDenomRewardParticipantResponseAmino {
+    return o && (o.$typeUrl === QueryDenomRewardParticipantResponse.typeUrl || DenomRewardParticipant.isAmino(o.participant) && Array.isArray(o.pending) && (!o.pending.length || Coin.isAmino(o.pending[0])));
+  },
+  encode(message: QueryDenomRewardParticipantResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.participant !== undefined) {
+      DenomRewardParticipant.encode(message.participant, writer.uint32(10).fork()).ldelim();
+    }
+    for (const v of message.pending) {
+      Coin.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomRewardParticipantResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomRewardParticipantResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.participant = DenomRewardParticipant.decode(reader, reader.uint32());
+          break;
+        case 2:
+          message.pending.push(Coin.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryDenomRewardParticipantResponse>): QueryDenomRewardParticipantResponse {
+    const message = createBaseQueryDenomRewardParticipantResponse();
+    message.participant = object.participant !== undefined && object.participant !== null ? DenomRewardParticipant.fromPartial(object.participant) : undefined;
+    message.pending = object.pending?.map(e => Coin.fromPartial(e)) || [];
+    return message;
+  },
+  fromAmino(object: QueryDenomRewardParticipantResponseAmino): QueryDenomRewardParticipantResponse {
+    const message = createBaseQueryDenomRewardParticipantResponse();
+    if (object.participant !== undefined && object.participant !== null) {
+      message.participant = DenomRewardParticipant.fromAmino(object.participant);
+    }
+    message.pending = object.pending?.map(e => Coin.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: QueryDenomRewardParticipantResponse): QueryDenomRewardParticipantResponseAmino {
+    const obj: any = {};
+    obj.participant = message.participant ? DenomRewardParticipant.toAmino(message.participant) : undefined;
+    if (message.pending) {
+      obj.pending = message.pending.map(e => e ? Coin.toAmino(e) : undefined);
+    } else {
+      obj.pending = message.pending;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: QueryDenomRewardParticipantResponseAminoMsg): QueryDenomRewardParticipantResponse {
+    return QueryDenomRewardParticipantResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryDenomRewardParticipantResponseProtoMsg): QueryDenomRewardParticipantResponse {
+    return QueryDenomRewardParticipantResponse.decode(message.value);
+  },
+  toProto(message: QueryDenomRewardParticipantResponse): Uint8Array {
+    return QueryDenomRewardParticipantResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryDenomRewardParticipantResponse): QueryDenomRewardParticipantResponseProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.QueryDenomRewardParticipantResponse",
+      value: QueryDenomRewardParticipantResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(QueryDenomRewardParticipantResponse.typeUrl)) {
+      return;
+    }
+    DenomRewardParticipant.registerTypeUrl();
+    Coin.registerTypeUrl();
+  }
+};
+function createBaseQueryDenomRewardParticipationsRequest(): QueryDenomRewardParticipationsRequest {
+  return {
+    address: "",
+    pagination: undefined
+  };
+}
+/**
+ * @name QueryDenomRewardParticipationsRequest
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardParticipationsRequest
+ */
+export const QueryDenomRewardParticipationsRequest = {
+  typeUrl: "/bze.rewards.QueryDenomRewardParticipationsRequest",
+  is(o: any): o is QueryDenomRewardParticipationsRequest {
+    return o && (o.$typeUrl === QueryDenomRewardParticipationsRequest.typeUrl || typeof o.address === "string");
+  },
+  isSDK(o: any): o is QueryDenomRewardParticipationsRequestSDKType {
+    return o && (o.$typeUrl === QueryDenomRewardParticipationsRequest.typeUrl || typeof o.address === "string");
+  },
+  isAmino(o: any): o is QueryDenomRewardParticipationsRequestAmino {
+    return o && (o.$typeUrl === QueryDenomRewardParticipationsRequest.typeUrl || typeof o.address === "string");
+  },
+  encode(message: QueryDenomRewardParticipationsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.address !== "") {
+      writer.uint32(10).string(message.address);
+    }
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomRewardParticipationsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomRewardParticipationsRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.address = reader.string();
+          break;
+        case 2:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryDenomRewardParticipationsRequest>): QueryDenomRewardParticipationsRequest {
+    const message = createBaseQueryDenomRewardParticipationsRequest();
+    message.address = object.address ?? "";
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryDenomRewardParticipationsRequestAmino): QueryDenomRewardParticipationsRequest {
+    const message = createBaseQueryDenomRewardParticipationsRequest();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryDenomRewardParticipationsRequest): QueryDenomRewardParticipationsRequestAmino {
+    const obj: any = {};
+    obj.address = message.address === "" ? undefined : message.address;
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryDenomRewardParticipationsRequestAminoMsg): QueryDenomRewardParticipationsRequest {
+    return QueryDenomRewardParticipationsRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryDenomRewardParticipationsRequestProtoMsg): QueryDenomRewardParticipationsRequest {
+    return QueryDenomRewardParticipationsRequest.decode(message.value);
+  },
+  toProto(message: QueryDenomRewardParticipationsRequest): Uint8Array {
+    return QueryDenomRewardParticipationsRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryDenomRewardParticipationsRequest): QueryDenomRewardParticipationsRequestProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.QueryDenomRewardParticipationsRequest",
+      value: QueryDenomRewardParticipationsRequest.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(QueryDenomRewardParticipationsRequest.typeUrl)) {
+      return;
+    }
+    PageRequest.registerTypeUrl();
+  }
+};
+function createBaseQueryDenomRewardParticipationsResponse(): QueryDenomRewardParticipationsResponse {
+  return {
+    list: [],
+    pagination: undefined
+  };
+}
+/**
+ * @name QueryDenomRewardParticipationsResponse
+ * @package bze.rewards
+ * @see proto type: bze.rewards.QueryDenomRewardParticipationsResponse
+ */
+export const QueryDenomRewardParticipationsResponse = {
+  typeUrl: "/bze.rewards.QueryDenomRewardParticipationsResponse",
+  is(o: any): o is QueryDenomRewardParticipationsResponse {
+    return o && (o.$typeUrl === QueryDenomRewardParticipationsResponse.typeUrl || Array.isArray(o.list) && (!o.list.length || DenomRewardParticipant.is(o.list[0])));
+  },
+  isSDK(o: any): o is QueryDenomRewardParticipationsResponseSDKType {
+    return o && (o.$typeUrl === QueryDenomRewardParticipationsResponse.typeUrl || Array.isArray(o.list) && (!o.list.length || DenomRewardParticipant.isSDK(o.list[0])));
+  },
+  isAmino(o: any): o is QueryDenomRewardParticipationsResponseAmino {
+    return o && (o.$typeUrl === QueryDenomRewardParticipationsResponse.typeUrl || Array.isArray(o.list) && (!o.list.length || DenomRewardParticipant.isAmino(o.list[0])));
+  },
+  encode(message: QueryDenomRewardParticipationsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    for (const v of message.list) {
+      DenomRewardParticipant.encode(v!, writer.uint32(10).fork()).ldelim();
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomRewardParticipationsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomRewardParticipationsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.list.push(DenomRewardParticipant.decode(reader, reader.uint32()));
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryDenomRewardParticipationsResponse>): QueryDenomRewardParticipationsResponse {
+    const message = createBaseQueryDenomRewardParticipationsResponse();
+    message.list = object.list?.map(e => DenomRewardParticipant.fromPartial(e)) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryDenomRewardParticipationsResponseAmino): QueryDenomRewardParticipationsResponse {
+    const message = createBaseQueryDenomRewardParticipationsResponse();
+    message.list = object.list?.map(e => DenomRewardParticipant.fromAmino(e)) || [];
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryDenomRewardParticipationsResponse): QueryDenomRewardParticipationsResponseAmino {
+    const obj: any = {};
+    if (message.list) {
+      obj.list = message.list.map(e => e ? DenomRewardParticipant.toAmino(e) : undefined);
+    } else {
+      obj.list = message.list;
+    }
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryDenomRewardParticipationsResponseAminoMsg): QueryDenomRewardParticipationsResponse {
+    return QueryDenomRewardParticipationsResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryDenomRewardParticipationsResponseProtoMsg): QueryDenomRewardParticipationsResponse {
+    return QueryDenomRewardParticipationsResponse.decode(message.value);
+  },
+  toProto(message: QueryDenomRewardParticipationsResponse): Uint8Array {
+    return QueryDenomRewardParticipationsResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryDenomRewardParticipationsResponse): QueryDenomRewardParticipationsResponseProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.QueryDenomRewardParticipationsResponse",
+      value: QueryDenomRewardParticipationsResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(QueryDenomRewardParticipationsResponse.typeUrl)) {
+      return;
+    }
+    DenomRewardParticipant.registerTypeUrl();
     PageResponse.registerTypeUrl();
   }
 };

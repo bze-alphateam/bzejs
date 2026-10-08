@@ -448,6 +448,10 @@ export interface MsgCreateLiquidityPoolSDKType {
  */
 export interface MsgCreateLiquidityPoolResponse {
   id: string;
+  /**
+   * lp_denom is the denom of the created pool's LP token ("ulp/<hash>").
+   */
+  lpDenom: string;
 }
 export interface MsgCreateLiquidityPoolResponseProtoMsg {
   typeUrl: "/bze.tradebin.MsgCreateLiquidityPoolResponse";
@@ -460,6 +464,10 @@ export interface MsgCreateLiquidityPoolResponseProtoMsg {
  */
 export interface MsgCreateLiquidityPoolResponseAmino {
   id?: string;
+  /**
+   * lp_denom is the denom of the created pool's LP token ("ulp/<hash>").
+   */
+  lp_denom?: string;
 }
 export interface MsgCreateLiquidityPoolResponseAminoMsg {
   type: "/bze.tradebin.MsgCreateLiquidityPoolResponse";
@@ -472,6 +480,7 @@ export interface MsgCreateLiquidityPoolResponseAminoMsg {
  */
 export interface MsgCreateLiquidityPoolResponseSDKType {
   id: string;
+  lp_denom: string;
 }
 /**
  * @name MsgAddLiquidity
@@ -701,6 +710,170 @@ export interface MsgMultiSwapResponseAminoMsg {
 export interface MsgMultiSwapResponseSDKType {
   output: CoinSDKType;
 }
+/**
+ * MsgHaltDenoms is the governance message that halts denoms on the DEX: no new order, fill, market, pool
+ * or liquidity add touching a halted denom, no AMM swap involving it (user routes, module swaps, fee
+ * swaps) and no tx fee paid in it. Exits — cancel order, remove liquidity, bank sends, IBC — keep working.
+ * Idempotent: a denom that is already halted is left as is. The native denom cannot be halted.
+ * @name MsgHaltDenoms
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgHaltDenoms
+ */
+export interface MsgHaltDenoms {
+  /**
+   * authority is the address that controls the module (defaults to x/gov unless overwritten).
+   */
+  authority: string;
+  /**
+   * denoms to halt: valid denoms, no duplicates, at most 1000 per message.
+   */
+  denoms: string[];
+}
+export interface MsgHaltDenomsProtoMsg {
+  typeUrl: "/bze.tradebin.MsgHaltDenoms";
+  value: Uint8Array;
+}
+/**
+ * MsgHaltDenoms is the governance message that halts denoms on the DEX: no new order, fill, market, pool
+ * or liquidity add touching a halted denom, no AMM swap involving it (user routes, module swaps, fee
+ * swaps) and no tx fee paid in it. Exits — cancel order, remove liquidity, bank sends, IBC — keep working.
+ * Idempotent: a denom that is already halted is left as is. The native denom cannot be halted.
+ * @name MsgHaltDenomsAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgHaltDenoms
+ */
+export interface MsgHaltDenomsAmino {
+  /**
+   * authority is the address that controls the module (defaults to x/gov unless overwritten).
+   */
+  authority?: string;
+  /**
+   * denoms to halt: valid denoms, no duplicates, at most 1000 per message.
+   */
+  denoms?: string[];
+}
+export interface MsgHaltDenomsAminoMsg {
+  type: "bze/x/tradebin/MsgHaltDenoms";
+  value: MsgHaltDenomsAmino;
+}
+/**
+ * MsgHaltDenoms is the governance message that halts denoms on the DEX: no new order, fill, market, pool
+ * or liquidity add touching a halted denom, no AMM swap involving it (user routes, module swaps, fee
+ * swaps) and no tx fee paid in it. Exits — cancel order, remove liquidity, bank sends, IBC — keep working.
+ * Idempotent: a denom that is already halted is left as is. The native denom cannot be halted.
+ * @name MsgHaltDenomsSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgHaltDenoms
+ */
+export interface MsgHaltDenomsSDKType {
+  authority: string;
+  denoms: string[];
+}
+/**
+ * @name MsgHaltDenomsResponse
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgHaltDenomsResponse
+ */
+export interface MsgHaltDenomsResponse {}
+export interface MsgHaltDenomsResponseProtoMsg {
+  typeUrl: "/bze.tradebin.MsgHaltDenomsResponse";
+  value: Uint8Array;
+}
+/**
+ * @name MsgHaltDenomsResponseAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgHaltDenomsResponse
+ */
+export interface MsgHaltDenomsResponseAmino {}
+export interface MsgHaltDenomsResponseAminoMsg {
+  type: "/bze.tradebin.MsgHaltDenomsResponse";
+  value: MsgHaltDenomsResponseAmino;
+}
+/**
+ * @name MsgHaltDenomsResponseSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgHaltDenomsResponse
+ */
+export interface MsgHaltDenomsResponseSDKType {}
+/**
+ * MsgUnhaltDenoms is the governance message that lifts the halt on denoms: resting orders resume
+ * matching and pools resume swapping. Idempotent: a denom that is not halted is left as is.
+ * @name MsgUnhaltDenoms
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgUnhaltDenoms
+ */
+export interface MsgUnhaltDenoms {
+  /**
+   * authority is the address that controls the module (defaults to x/gov unless overwritten).
+   */
+  authority: string;
+  /**
+   * denoms to un-halt: valid denoms, no duplicates, at most 1000 per message.
+   */
+  denoms: string[];
+}
+export interface MsgUnhaltDenomsProtoMsg {
+  typeUrl: "/bze.tradebin.MsgUnhaltDenoms";
+  value: Uint8Array;
+}
+/**
+ * MsgUnhaltDenoms is the governance message that lifts the halt on denoms: resting orders resume
+ * matching and pools resume swapping. Idempotent: a denom that is not halted is left as is.
+ * @name MsgUnhaltDenomsAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgUnhaltDenoms
+ */
+export interface MsgUnhaltDenomsAmino {
+  /**
+   * authority is the address that controls the module (defaults to x/gov unless overwritten).
+   */
+  authority?: string;
+  /**
+   * denoms to un-halt: valid denoms, no duplicates, at most 1000 per message.
+   */
+  denoms?: string[];
+}
+export interface MsgUnhaltDenomsAminoMsg {
+  type: "bze/x/tradebin/MsgUnhaltDenoms";
+  value: MsgUnhaltDenomsAmino;
+}
+/**
+ * MsgUnhaltDenoms is the governance message that lifts the halt on denoms: resting orders resume
+ * matching and pools resume swapping. Idempotent: a denom that is not halted is left as is.
+ * @name MsgUnhaltDenomsSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgUnhaltDenoms
+ */
+export interface MsgUnhaltDenomsSDKType {
+  authority: string;
+  denoms: string[];
+}
+/**
+ * @name MsgUnhaltDenomsResponse
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgUnhaltDenomsResponse
+ */
+export interface MsgUnhaltDenomsResponse {}
+export interface MsgUnhaltDenomsResponseProtoMsg {
+  typeUrl: "/bze.tradebin.MsgUnhaltDenomsResponse";
+  value: Uint8Array;
+}
+/**
+ * @name MsgUnhaltDenomsResponseAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgUnhaltDenomsResponse
+ */
+export interface MsgUnhaltDenomsResponseAmino {}
+export interface MsgUnhaltDenomsResponseAminoMsg {
+  type: "/bze.tradebin.MsgUnhaltDenomsResponse";
+  value: MsgUnhaltDenomsResponseAmino;
+}
+/**
+ * @name MsgUnhaltDenomsResponseSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgUnhaltDenomsResponse
+ */
+export interface MsgUnhaltDenomsResponseSDKType {}
 function createBaseMsgUpdateParams(): MsgUpdateParams {
   return {
     authority: "",
@@ -1883,7 +2056,8 @@ export const MsgCreateLiquidityPool = {
 };
 function createBaseMsgCreateLiquidityPoolResponse(): MsgCreateLiquidityPoolResponse {
   return {
-    id: ""
+    id: "",
+    lpDenom: ""
   };
 }
 /**
@@ -1894,17 +2068,20 @@ function createBaseMsgCreateLiquidityPoolResponse(): MsgCreateLiquidityPoolRespo
 export const MsgCreateLiquidityPoolResponse = {
   typeUrl: "/bze.tradebin.MsgCreateLiquidityPoolResponse",
   is(o: any): o is MsgCreateLiquidityPoolResponse {
-    return o && (o.$typeUrl === MsgCreateLiquidityPoolResponse.typeUrl || typeof o.id === "string");
+    return o && (o.$typeUrl === MsgCreateLiquidityPoolResponse.typeUrl || typeof o.id === "string" && typeof o.lpDenom === "string");
   },
   isSDK(o: any): o is MsgCreateLiquidityPoolResponseSDKType {
-    return o && (o.$typeUrl === MsgCreateLiquidityPoolResponse.typeUrl || typeof o.id === "string");
+    return o && (o.$typeUrl === MsgCreateLiquidityPoolResponse.typeUrl || typeof o.id === "string" && typeof o.lp_denom === "string");
   },
   isAmino(o: any): o is MsgCreateLiquidityPoolResponseAmino {
-    return o && (o.$typeUrl === MsgCreateLiquidityPoolResponse.typeUrl || typeof o.id === "string");
+    return o && (o.$typeUrl === MsgCreateLiquidityPoolResponse.typeUrl || typeof o.id === "string" && typeof o.lp_denom === "string");
   },
   encode(message: MsgCreateLiquidityPoolResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.id !== "") {
       writer.uint32(10).string(message.id);
+    }
+    if (message.lpDenom !== "") {
+      writer.uint32(18).string(message.lpDenom);
     }
     return writer;
   },
@@ -1918,6 +2095,9 @@ export const MsgCreateLiquidityPoolResponse = {
         case 1:
           message.id = reader.string();
           break;
+        case 2:
+          message.lpDenom = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1928,6 +2108,7 @@ export const MsgCreateLiquidityPoolResponse = {
   fromPartial(object: Partial<MsgCreateLiquidityPoolResponse>): MsgCreateLiquidityPoolResponse {
     const message = createBaseMsgCreateLiquidityPoolResponse();
     message.id = object.id ?? "";
+    message.lpDenom = object.lpDenom ?? "";
     return message;
   },
   fromAmino(object: MsgCreateLiquidityPoolResponseAmino): MsgCreateLiquidityPoolResponse {
@@ -1935,11 +2116,15 @@ export const MsgCreateLiquidityPoolResponse = {
     if (object.id !== undefined && object.id !== null) {
       message.id = object.id;
     }
+    if (object.lp_denom !== undefined && object.lp_denom !== null) {
+      message.lpDenom = object.lp_denom;
+    }
     return message;
   },
   toAmino(message: MsgCreateLiquidityPoolResponse): MsgCreateLiquidityPoolResponseAmino {
     const obj: any = {};
     obj.id = message.id === "" ? undefined : message.id;
+    obj.lp_denom = message.lpDenom === "" ? undefined : message.lpDenom;
     return obj;
   },
   fromAminoMsg(object: MsgCreateLiquidityPoolResponseAminoMsg): MsgCreateLiquidityPoolResponse {
@@ -2603,4 +2788,338 @@ export const MsgMultiSwapResponse = {
     }
     Coin.registerTypeUrl();
   }
+};
+function createBaseMsgHaltDenoms(): MsgHaltDenoms {
+  return {
+    authority: "",
+    denoms: []
+  };
+}
+/**
+ * MsgHaltDenoms is the governance message that halts denoms on the DEX: no new order, fill, market, pool
+ * or liquidity add touching a halted denom, no AMM swap involving it (user routes, module swaps, fee
+ * swaps) and no tx fee paid in it. Exits — cancel order, remove liquidity, bank sends, IBC — keep working.
+ * Idempotent: a denom that is already halted is left as is. The native denom cannot be halted.
+ * @name MsgHaltDenoms
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgHaltDenoms
+ */
+export const MsgHaltDenoms = {
+  typeUrl: "/bze.tradebin.MsgHaltDenoms",
+  aminoType: "bze/x/tradebin/MsgHaltDenoms",
+  is(o: any): o is MsgHaltDenoms {
+    return o && (o.$typeUrl === MsgHaltDenoms.typeUrl || typeof o.authority === "string" && Array.isArray(o.denoms) && (!o.denoms.length || typeof o.denoms[0] === "string"));
+  },
+  isSDK(o: any): o is MsgHaltDenomsSDKType {
+    return o && (o.$typeUrl === MsgHaltDenoms.typeUrl || typeof o.authority === "string" && Array.isArray(o.denoms) && (!o.denoms.length || typeof o.denoms[0] === "string"));
+  },
+  isAmino(o: any): o is MsgHaltDenomsAmino {
+    return o && (o.$typeUrl === MsgHaltDenoms.typeUrl || typeof o.authority === "string" && Array.isArray(o.denoms) && (!o.denoms.length || typeof o.denoms[0] === "string"));
+  },
+  encode(message: MsgHaltDenoms, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.authority !== "") {
+      writer.uint32(10).string(message.authority);
+    }
+    for (const v of message.denoms) {
+      writer.uint32(18).string(v!);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgHaltDenoms {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgHaltDenoms();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.authority = reader.string();
+          break;
+        case 2:
+          message.denoms.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgHaltDenoms>): MsgHaltDenoms {
+    const message = createBaseMsgHaltDenoms();
+    message.authority = object.authority ?? "";
+    message.denoms = object.denoms?.map(e => e) || [];
+    return message;
+  },
+  fromAmino(object: MsgHaltDenomsAmino): MsgHaltDenoms {
+    const message = createBaseMsgHaltDenoms();
+    if (object.authority !== undefined && object.authority !== null) {
+      message.authority = object.authority;
+    }
+    message.denoms = object.denoms?.map(e => e) || [];
+    return message;
+  },
+  toAmino(message: MsgHaltDenoms): MsgHaltDenomsAmino {
+    const obj: any = {};
+    obj.authority = message.authority === "" ? undefined : message.authority;
+    if (message.denoms) {
+      obj.denoms = message.denoms.map(e => e);
+    } else {
+      obj.denoms = message.denoms;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgHaltDenomsAminoMsg): MsgHaltDenoms {
+    return MsgHaltDenoms.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgHaltDenoms): MsgHaltDenomsAminoMsg {
+    return {
+      type: "bze/x/tradebin/MsgHaltDenoms",
+      value: MsgHaltDenoms.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgHaltDenomsProtoMsg): MsgHaltDenoms {
+    return MsgHaltDenoms.decode(message.value);
+  },
+  toProto(message: MsgHaltDenoms): Uint8Array {
+    return MsgHaltDenoms.encode(message).finish();
+  },
+  toProtoMsg(message: MsgHaltDenoms): MsgHaltDenomsProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.MsgHaltDenoms",
+      value: MsgHaltDenoms.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgHaltDenomsResponse(): MsgHaltDenomsResponse {
+  return {};
+}
+/**
+ * @name MsgHaltDenomsResponse
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgHaltDenomsResponse
+ */
+export const MsgHaltDenomsResponse = {
+  typeUrl: "/bze.tradebin.MsgHaltDenomsResponse",
+  is(o: any): o is MsgHaltDenomsResponse {
+    return o && o.$typeUrl === MsgHaltDenomsResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgHaltDenomsResponseSDKType {
+    return o && o.$typeUrl === MsgHaltDenomsResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgHaltDenomsResponseAmino {
+    return o && o.$typeUrl === MsgHaltDenomsResponse.typeUrl;
+  },
+  encode(_: MsgHaltDenomsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgHaltDenomsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgHaltDenomsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgHaltDenomsResponse>): MsgHaltDenomsResponse {
+    const message = createBaseMsgHaltDenomsResponse();
+    return message;
+  },
+  fromAmino(_: MsgHaltDenomsResponseAmino): MsgHaltDenomsResponse {
+    const message = createBaseMsgHaltDenomsResponse();
+    return message;
+  },
+  toAmino(_: MsgHaltDenomsResponse): MsgHaltDenomsResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgHaltDenomsResponseAminoMsg): MsgHaltDenomsResponse {
+    return MsgHaltDenomsResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgHaltDenomsResponseProtoMsg): MsgHaltDenomsResponse {
+    return MsgHaltDenomsResponse.decode(message.value);
+  },
+  toProto(message: MsgHaltDenomsResponse): Uint8Array {
+    return MsgHaltDenomsResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgHaltDenomsResponse): MsgHaltDenomsResponseProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.MsgHaltDenomsResponse",
+      value: MsgHaltDenomsResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgUnhaltDenoms(): MsgUnhaltDenoms {
+  return {
+    authority: "",
+    denoms: []
+  };
+}
+/**
+ * MsgUnhaltDenoms is the governance message that lifts the halt on denoms: resting orders resume
+ * matching and pools resume swapping. Idempotent: a denom that is not halted is left as is.
+ * @name MsgUnhaltDenoms
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgUnhaltDenoms
+ */
+export const MsgUnhaltDenoms = {
+  typeUrl: "/bze.tradebin.MsgUnhaltDenoms",
+  aminoType: "bze/x/tradebin/MsgUnhaltDenoms",
+  is(o: any): o is MsgUnhaltDenoms {
+    return o && (o.$typeUrl === MsgUnhaltDenoms.typeUrl || typeof o.authority === "string" && Array.isArray(o.denoms) && (!o.denoms.length || typeof o.denoms[0] === "string"));
+  },
+  isSDK(o: any): o is MsgUnhaltDenomsSDKType {
+    return o && (o.$typeUrl === MsgUnhaltDenoms.typeUrl || typeof o.authority === "string" && Array.isArray(o.denoms) && (!o.denoms.length || typeof o.denoms[0] === "string"));
+  },
+  isAmino(o: any): o is MsgUnhaltDenomsAmino {
+    return o && (o.$typeUrl === MsgUnhaltDenoms.typeUrl || typeof o.authority === "string" && Array.isArray(o.denoms) && (!o.denoms.length || typeof o.denoms[0] === "string"));
+  },
+  encode(message: MsgUnhaltDenoms, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.authority !== "") {
+      writer.uint32(10).string(message.authority);
+    }
+    for (const v of message.denoms) {
+      writer.uint32(18).string(v!);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUnhaltDenoms {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUnhaltDenoms();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.authority = reader.string();
+          break;
+        case 2:
+          message.denoms.push(reader.string());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgUnhaltDenoms>): MsgUnhaltDenoms {
+    const message = createBaseMsgUnhaltDenoms();
+    message.authority = object.authority ?? "";
+    message.denoms = object.denoms?.map(e => e) || [];
+    return message;
+  },
+  fromAmino(object: MsgUnhaltDenomsAmino): MsgUnhaltDenoms {
+    const message = createBaseMsgUnhaltDenoms();
+    if (object.authority !== undefined && object.authority !== null) {
+      message.authority = object.authority;
+    }
+    message.denoms = object.denoms?.map(e => e) || [];
+    return message;
+  },
+  toAmino(message: MsgUnhaltDenoms): MsgUnhaltDenomsAmino {
+    const obj: any = {};
+    obj.authority = message.authority === "" ? undefined : message.authority;
+    if (message.denoms) {
+      obj.denoms = message.denoms.map(e => e);
+    } else {
+      obj.denoms = message.denoms;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgUnhaltDenomsAminoMsg): MsgUnhaltDenoms {
+    return MsgUnhaltDenoms.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgUnhaltDenoms): MsgUnhaltDenomsAminoMsg {
+    return {
+      type: "bze/x/tradebin/MsgUnhaltDenoms",
+      value: MsgUnhaltDenoms.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgUnhaltDenomsProtoMsg): MsgUnhaltDenoms {
+    return MsgUnhaltDenoms.decode(message.value);
+  },
+  toProto(message: MsgUnhaltDenoms): Uint8Array {
+    return MsgUnhaltDenoms.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUnhaltDenoms): MsgUnhaltDenomsProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.MsgUnhaltDenoms",
+      value: MsgUnhaltDenoms.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgUnhaltDenomsResponse(): MsgUnhaltDenomsResponse {
+  return {};
+}
+/**
+ * @name MsgUnhaltDenomsResponse
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgUnhaltDenomsResponse
+ */
+export const MsgUnhaltDenomsResponse = {
+  typeUrl: "/bze.tradebin.MsgUnhaltDenomsResponse",
+  is(o: any): o is MsgUnhaltDenomsResponse {
+    return o && o.$typeUrl === MsgUnhaltDenomsResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgUnhaltDenomsResponseSDKType {
+    return o && o.$typeUrl === MsgUnhaltDenomsResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgUnhaltDenomsResponseAmino {
+    return o && o.$typeUrl === MsgUnhaltDenomsResponse.typeUrl;
+  },
+  encode(_: MsgUnhaltDenomsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUnhaltDenomsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUnhaltDenomsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgUnhaltDenomsResponse>): MsgUnhaltDenomsResponse {
+    const message = createBaseMsgUnhaltDenomsResponse();
+    return message;
+  },
+  fromAmino(_: MsgUnhaltDenomsResponseAmino): MsgUnhaltDenomsResponse {
+    const message = createBaseMsgUnhaltDenomsResponse();
+    return message;
+  },
+  toAmino(_: MsgUnhaltDenomsResponse): MsgUnhaltDenomsResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgUnhaltDenomsResponseAminoMsg): MsgUnhaltDenomsResponse {
+    return MsgUnhaltDenomsResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgUnhaltDenomsResponseProtoMsg): MsgUnhaltDenomsResponse {
+    return MsgUnhaltDenomsResponse.decode(message.value);
+  },
+  toProto(message: MsgUnhaltDenomsResponse): Uint8Array {
+    return MsgUnhaltDenomsResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUnhaltDenomsResponse): MsgUnhaltDenomsResponseProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.MsgUnhaltDenomsResponse",
+      value: MsgUnhaltDenomsResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
 };

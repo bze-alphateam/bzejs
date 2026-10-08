@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { GlobalDecoderRegistry } from "../../registry";
+import { Decimal } from "@interchainjs/math";
 /**
  * @name StakingReward
  * @package bze.rewards
@@ -495,6 +496,351 @@ export interface TradingRewardExpirationQueueAminoMsg {
  */
 export interface TradingRewardExpirationQueueSDKType {
   removal_epochs: number[];
+}
+/**
+ * DenomReward is a generic per-denom staking pool. One DenomReward exists per
+ * staking denom (unique chain-wide). lock and min_stake are snapshotted from the
+ * module params at creation time and never change afterwards.
+ * @name DenomReward
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomReward
+ */
+export interface DenomReward {
+  /**
+   * identity - one DenomReward per denom
+   */
+  stakingDenom: string;
+  /**
+   * days; snapshot from params at creation
+   */
+  lock: number;
+  /**
+   * snapshot from params at creation
+   */
+  minStake: bigint;
+  /**
+   * total staked T
+   */
+  stakedAmount: string;
+}
+export interface DenomRewardProtoMsg {
+  typeUrl: "/bze.rewards.DenomReward";
+  value: Uint8Array;
+}
+/**
+ * DenomReward is a generic per-denom staking pool. One DenomReward exists per
+ * staking denom (unique chain-wide). lock and min_stake are snapshotted from the
+ * module params at creation time and never change afterwards.
+ * @name DenomRewardAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomReward
+ */
+export interface DenomRewardAmino {
+  /**
+   * identity - one DenomReward per denom
+   */
+  staking_denom?: string;
+  /**
+   * days; snapshot from params at creation
+   */
+  lock?: number;
+  /**
+   * snapshot from params at creation
+   */
+  min_stake?: string;
+  /**
+   * total staked T
+   */
+  staked_amount?: string;
+}
+export interface DenomRewardAminoMsg {
+  type: "/bze.rewards.DenomReward";
+  value: DenomRewardAmino;
+}
+/**
+ * DenomReward is a generic per-denom staking pool. One DenomReward exists per
+ * staking denom (unique chain-wide). lock and min_stake are snapshotted from the
+ * module params at creation time and never change afterwards.
+ * @name DenomRewardSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomReward
+ */
+export interface DenomRewardSDKType {
+  staking_denom: string;
+  lock: number;
+  min_stake: bigint;
+  staked_amount: string;
+}
+/**
+ * DenomRewardPrize is the accumulator for a (staking_denom, prize_denom) pair.
+ * @name DenomRewardPrize
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardPrize
+ */
+export interface DenomRewardPrize {
+  stakingDenom: string;
+  prizeDenom: string;
+  /**
+   * S, starts at 0
+   */
+  distributedStake: string;
+  /**
+   * day-epoch count of last distribution
+   */
+  lastDistributionEpoch: bigint;
+}
+export interface DenomRewardPrizeProtoMsg {
+  typeUrl: "/bze.rewards.DenomRewardPrize";
+  value: Uint8Array;
+}
+/**
+ * DenomRewardPrize is the accumulator for a (staking_denom, prize_denom) pair.
+ * @name DenomRewardPrizeAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardPrize
+ */
+export interface DenomRewardPrizeAmino {
+  staking_denom?: string;
+  prize_denom?: string;
+  /**
+   * S, starts at 0
+   */
+  distributed_stake?: string;
+  /**
+   * day-epoch count of last distribution
+   */
+  last_distribution_epoch?: string;
+}
+export interface DenomRewardPrizeAminoMsg {
+  type: "/bze.rewards.DenomRewardPrize";
+  value: DenomRewardPrizeAmino;
+}
+/**
+ * DenomRewardPrize is the accumulator for a (staking_denom, prize_denom) pair.
+ * @name DenomRewardPrizeSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardPrize
+ */
+export interface DenomRewardPrizeSDKType {
+  staking_denom: string;
+  prize_denom: string;
+  distributed_stake: string;
+  last_distribution_epoch: bigint;
+}
+/**
+ * DenomRewardParticipant is a staker's position in a DenomReward.
+ * @name DenomRewardParticipant
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardParticipant
+ */
+export interface DenomRewardParticipant {
+  address: string;
+  stakingDenom: string;
+  /**
+   * stake[address]
+   */
+  amount: string;
+}
+export interface DenomRewardParticipantProtoMsg {
+  typeUrl: "/bze.rewards.DenomRewardParticipant";
+  value: Uint8Array;
+}
+/**
+ * DenomRewardParticipant is a staker's position in a DenomReward.
+ * @name DenomRewardParticipantAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardParticipant
+ */
+export interface DenomRewardParticipantAmino {
+  address?: string;
+  staking_denom?: string;
+  /**
+   * stake[address]
+   */
+  amount?: string;
+}
+export interface DenomRewardParticipantAminoMsg {
+  type: "/bze.rewards.DenomRewardParticipant";
+  value: DenomRewardParticipantAmino;
+}
+/**
+ * DenomRewardParticipant is a staker's position in a DenomReward.
+ * @name DenomRewardParticipantSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardParticipant
+ */
+export interface DenomRewardParticipantSDKType {
+  address: string;
+  staking_denom: string;
+  amount: string;
+}
+/**
+ * DenomRewardParticipantIndex records the accumulator value S seen at the
+ * participant's last settlement for a given prize denom.
+ * @name DenomRewardParticipantIndex
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardParticipantIndex
+ */
+export interface DenomRewardParticipantIndex {
+  address: string;
+  stakingDenom: string;
+  prizeDenom: string;
+  /**
+   * S at last settlement
+   */
+  index: string;
+}
+export interface DenomRewardParticipantIndexProtoMsg {
+  typeUrl: "/bze.rewards.DenomRewardParticipantIndex";
+  value: Uint8Array;
+}
+/**
+ * DenomRewardParticipantIndex records the accumulator value S seen at the
+ * participant's last settlement for a given prize denom.
+ * @name DenomRewardParticipantIndexAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardParticipantIndex
+ */
+export interface DenomRewardParticipantIndexAmino {
+  address?: string;
+  staking_denom?: string;
+  prize_denom?: string;
+  /**
+   * S at last settlement
+   */
+  index?: string;
+}
+export interface DenomRewardParticipantIndexAminoMsg {
+  type: "/bze.rewards.DenomRewardParticipantIndex";
+  value: DenomRewardParticipantIndexAmino;
+}
+/**
+ * DenomRewardParticipantIndex records the accumulator value S seen at the
+ * participant's last settlement for a given prize denom.
+ * @name DenomRewardParticipantIndexSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardParticipantIndex
+ */
+export interface DenomRewardParticipantIndexSDKType {
+  address: string;
+  staking_denom: string;
+  prize_denom: string;
+  index: string;
+}
+/**
+ * DenomRewardSchedule is an SR-style reward campaign attached to a DenomReward.
+ * @name DenomRewardSchedule
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardSchedule
+ */
+export interface DenomRewardSchedule {
+  /**
+   * zero-filled global counter
+   */
+  scheduleId: string;
+  stakingDenom: string;
+  prizeDenom: string;
+  dailyAmount: string;
+  /**
+   * days
+   */
+  duration: number;
+  /**
+   * days already distributed
+   */
+  payouts: number;
+}
+export interface DenomRewardScheduleProtoMsg {
+  typeUrl: "/bze.rewards.DenomRewardSchedule";
+  value: Uint8Array;
+}
+/**
+ * DenomRewardSchedule is an SR-style reward campaign attached to a DenomReward.
+ * @name DenomRewardScheduleAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardSchedule
+ */
+export interface DenomRewardScheduleAmino {
+  /**
+   * zero-filled global counter
+   */
+  schedule_id?: string;
+  staking_denom?: string;
+  prize_denom?: string;
+  daily_amount?: string;
+  /**
+   * days
+   */
+  duration?: number;
+  /**
+   * days already distributed
+   */
+  payouts?: number;
+}
+export interface DenomRewardScheduleAminoMsg {
+  type: "/bze.rewards.DenomRewardSchedule";
+  value: DenomRewardScheduleAmino;
+}
+/**
+ * DenomRewardSchedule is an SR-style reward campaign attached to a DenomReward.
+ * @name DenomRewardScheduleSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardSchedule
+ */
+export interface DenomRewardScheduleSDKType {
+  schedule_id: string;
+  staking_denom: string;
+  prize_denom: string;
+  daily_amount: string;
+  duration: number;
+  payouts: number;
+}
+/**
+ * DenomRewardsDistributionQueue mirrors StakingRewardsDistributionQueue for the
+ * daily distribution of denom reward schedules.
+ * @name DenomRewardsDistributionQueue
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardsDistributionQueue
+ */
+export interface DenomRewardsDistributionQueue {
+  pending: boolean;
+  /**
+   * last processed schedule composite key
+   */
+  cursor: string;
+}
+export interface DenomRewardsDistributionQueueProtoMsg {
+  typeUrl: "/bze.rewards.DenomRewardsDistributionQueue";
+  value: Uint8Array;
+}
+/**
+ * DenomRewardsDistributionQueue mirrors StakingRewardsDistributionQueue for the
+ * daily distribution of denom reward schedules.
+ * @name DenomRewardsDistributionQueueAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardsDistributionQueue
+ */
+export interface DenomRewardsDistributionQueueAmino {
+  pending?: boolean;
+  /**
+   * last processed schedule composite key
+   */
+  cursor?: string;
+}
+export interface DenomRewardsDistributionQueueAminoMsg {
+  type: "/bze.rewards.DenomRewardsDistributionQueue";
+  value: DenomRewardsDistributionQueueAmino;
+}
+/**
+ * DenomRewardsDistributionQueue mirrors StakingRewardsDistributionQueue for the
+ * daily distribution of denom reward schedules.
+ * @name DenomRewardsDistributionQueueSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardsDistributionQueue
+ */
+export interface DenomRewardsDistributionQueueSDKType {
+  pending: boolean;
+  cursor: string;
 }
 function createBaseStakingReward(): StakingReward {
   return {
@@ -1805,6 +2151,688 @@ export const TradingRewardExpirationQueue = {
     return {
       typeUrl: "/bze.rewards.TradingRewardExpirationQueue",
       value: TradingRewardExpirationQueue.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseDenomReward(): DenomReward {
+  return {
+    stakingDenom: "",
+    lock: 0,
+    minStake: BigInt(0),
+    stakedAmount: ""
+  };
+}
+/**
+ * DenomReward is a generic per-denom staking pool. One DenomReward exists per
+ * staking denom (unique chain-wide). lock and min_stake are snapshotted from the
+ * module params at creation time and never change afterwards.
+ * @name DenomReward
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomReward
+ */
+export const DenomReward = {
+  typeUrl: "/bze.rewards.DenomReward",
+  is(o: any): o is DenomReward {
+    return o && (o.$typeUrl === DenomReward.typeUrl || typeof o.stakingDenom === "string" && typeof o.lock === "number" && typeof o.minStake === "bigint" && typeof o.stakedAmount === "string");
+  },
+  isSDK(o: any): o is DenomRewardSDKType {
+    return o && (o.$typeUrl === DenomReward.typeUrl || typeof o.staking_denom === "string" && typeof o.lock === "number" && typeof o.min_stake === "bigint" && typeof o.staked_amount === "string");
+  },
+  isAmino(o: any): o is DenomRewardAmino {
+    return o && (o.$typeUrl === DenomReward.typeUrl || typeof o.staking_denom === "string" && typeof o.lock === "number" && typeof o.min_stake === "bigint" && typeof o.staked_amount === "string");
+  },
+  encode(message: DenomReward, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.stakingDenom !== "") {
+      writer.uint32(10).string(message.stakingDenom);
+    }
+    if (message.lock !== 0) {
+      writer.uint32(16).uint32(message.lock);
+    }
+    if (message.minStake !== BigInt(0)) {
+      writer.uint32(24).uint64(message.minStake);
+    }
+    if (message.stakedAmount !== "") {
+      writer.uint32(34).string(message.stakedAmount);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): DenomReward {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDenomReward();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.stakingDenom = reader.string();
+          break;
+        case 2:
+          message.lock = reader.uint32();
+          break;
+        case 3:
+          message.minStake = reader.uint64();
+          break;
+        case 4:
+          message.stakedAmount = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<DenomReward>): DenomReward {
+    const message = createBaseDenomReward();
+    message.stakingDenom = object.stakingDenom ?? "";
+    message.lock = object.lock ?? 0;
+    message.minStake = object.minStake !== undefined && object.minStake !== null ? BigInt(object.minStake.toString()) : BigInt(0);
+    message.stakedAmount = object.stakedAmount ?? "";
+    return message;
+  },
+  fromAmino(object: DenomRewardAmino): DenomReward {
+    const message = createBaseDenomReward();
+    if (object.staking_denom !== undefined && object.staking_denom !== null) {
+      message.stakingDenom = object.staking_denom;
+    }
+    if (object.lock !== undefined && object.lock !== null) {
+      message.lock = object.lock;
+    }
+    if (object.min_stake !== undefined && object.min_stake !== null) {
+      message.minStake = BigInt(object.min_stake);
+    }
+    if (object.staked_amount !== undefined && object.staked_amount !== null) {
+      message.stakedAmount = object.staked_amount;
+    }
+    return message;
+  },
+  toAmino(message: DenomReward): DenomRewardAmino {
+    const obj: any = {};
+    obj.staking_denom = message.stakingDenom === "" ? undefined : message.stakingDenom;
+    obj.lock = message.lock === 0 ? undefined : message.lock;
+    obj.min_stake = message.minStake !== BigInt(0) ? message.minStake?.toString() : undefined;
+    obj.staked_amount = message.stakedAmount === "" ? undefined : message.stakedAmount;
+    return obj;
+  },
+  fromAminoMsg(object: DenomRewardAminoMsg): DenomReward {
+    return DenomReward.fromAmino(object.value);
+  },
+  fromProtoMsg(message: DenomRewardProtoMsg): DenomReward {
+    return DenomReward.decode(message.value);
+  },
+  toProto(message: DenomReward): Uint8Array {
+    return DenomReward.encode(message).finish();
+  },
+  toProtoMsg(message: DenomReward): DenomRewardProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.DenomReward",
+      value: DenomReward.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseDenomRewardPrize(): DenomRewardPrize {
+  return {
+    stakingDenom: "",
+    prizeDenom: "",
+    distributedStake: "",
+    lastDistributionEpoch: BigInt(0)
+  };
+}
+/**
+ * DenomRewardPrize is the accumulator for a (staking_denom, prize_denom) pair.
+ * @name DenomRewardPrize
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardPrize
+ */
+export const DenomRewardPrize = {
+  typeUrl: "/bze.rewards.DenomRewardPrize",
+  is(o: any): o is DenomRewardPrize {
+    return o && (o.$typeUrl === DenomRewardPrize.typeUrl || typeof o.stakingDenom === "string" && typeof o.prizeDenom === "string" && typeof o.distributedStake === "string" && typeof o.lastDistributionEpoch === "bigint");
+  },
+  isSDK(o: any): o is DenomRewardPrizeSDKType {
+    return o && (o.$typeUrl === DenomRewardPrize.typeUrl || typeof o.staking_denom === "string" && typeof o.prize_denom === "string" && typeof o.distributed_stake === "string" && typeof o.last_distribution_epoch === "bigint");
+  },
+  isAmino(o: any): o is DenomRewardPrizeAmino {
+    return o && (o.$typeUrl === DenomRewardPrize.typeUrl || typeof o.staking_denom === "string" && typeof o.prize_denom === "string" && typeof o.distributed_stake === "string" && typeof o.last_distribution_epoch === "bigint");
+  },
+  encode(message: DenomRewardPrize, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.stakingDenom !== "") {
+      writer.uint32(10).string(message.stakingDenom);
+    }
+    if (message.prizeDenom !== "") {
+      writer.uint32(18).string(message.prizeDenom);
+    }
+    if (message.distributedStake !== "") {
+      writer.uint32(26).string(Decimal.fromUserInput(message.distributedStake, 18).atomics);
+    }
+    if (message.lastDistributionEpoch !== BigInt(0)) {
+      writer.uint32(32).int64(message.lastDistributionEpoch);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): DenomRewardPrize {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDenomRewardPrize();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.stakingDenom = reader.string();
+          break;
+        case 2:
+          message.prizeDenom = reader.string();
+          break;
+        case 3:
+          message.distributedStake = Decimal.fromAtomics(reader.string(), 18).toString();
+          break;
+        case 4:
+          message.lastDistributionEpoch = reader.int64();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<DenomRewardPrize>): DenomRewardPrize {
+    const message = createBaseDenomRewardPrize();
+    message.stakingDenom = object.stakingDenom ?? "";
+    message.prizeDenom = object.prizeDenom ?? "";
+    message.distributedStake = object.distributedStake ?? "";
+    message.lastDistributionEpoch = object.lastDistributionEpoch !== undefined && object.lastDistributionEpoch !== null ? BigInt(object.lastDistributionEpoch.toString()) : BigInt(0);
+    return message;
+  },
+  fromAmino(object: DenomRewardPrizeAmino): DenomRewardPrize {
+    const message = createBaseDenomRewardPrize();
+    if (object.staking_denom !== undefined && object.staking_denom !== null) {
+      message.stakingDenom = object.staking_denom;
+    }
+    if (object.prize_denom !== undefined && object.prize_denom !== null) {
+      message.prizeDenom = object.prize_denom;
+    }
+    if (object.distributed_stake !== undefined && object.distributed_stake !== null) {
+      message.distributedStake = object.distributed_stake;
+    }
+    if (object.last_distribution_epoch !== undefined && object.last_distribution_epoch !== null) {
+      message.lastDistributionEpoch = BigInt(object.last_distribution_epoch);
+    }
+    return message;
+  },
+  toAmino(message: DenomRewardPrize): DenomRewardPrizeAmino {
+    const obj: any = {};
+    obj.staking_denom = message.stakingDenom === "" ? undefined : message.stakingDenom;
+    obj.prize_denom = message.prizeDenom === "" ? undefined : message.prizeDenom;
+    obj.distributed_stake = message.distributedStake === "" ? undefined : Decimal.fromUserInput(message.distributedStake, 18).atomics;
+    obj.last_distribution_epoch = message.lastDistributionEpoch !== BigInt(0) ? message.lastDistributionEpoch?.toString() : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: DenomRewardPrizeAminoMsg): DenomRewardPrize {
+    return DenomRewardPrize.fromAmino(object.value);
+  },
+  fromProtoMsg(message: DenomRewardPrizeProtoMsg): DenomRewardPrize {
+    return DenomRewardPrize.decode(message.value);
+  },
+  toProto(message: DenomRewardPrize): Uint8Array {
+    return DenomRewardPrize.encode(message).finish();
+  },
+  toProtoMsg(message: DenomRewardPrize): DenomRewardPrizeProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.DenomRewardPrize",
+      value: DenomRewardPrize.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseDenomRewardParticipant(): DenomRewardParticipant {
+  return {
+    address: "",
+    stakingDenom: "",
+    amount: ""
+  };
+}
+/**
+ * DenomRewardParticipant is a staker's position in a DenomReward.
+ * @name DenomRewardParticipant
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardParticipant
+ */
+export const DenomRewardParticipant = {
+  typeUrl: "/bze.rewards.DenomRewardParticipant",
+  is(o: any): o is DenomRewardParticipant {
+    return o && (o.$typeUrl === DenomRewardParticipant.typeUrl || typeof o.address === "string" && typeof o.stakingDenom === "string" && typeof o.amount === "string");
+  },
+  isSDK(o: any): o is DenomRewardParticipantSDKType {
+    return o && (o.$typeUrl === DenomRewardParticipant.typeUrl || typeof o.address === "string" && typeof o.staking_denom === "string" && typeof o.amount === "string");
+  },
+  isAmino(o: any): o is DenomRewardParticipantAmino {
+    return o && (o.$typeUrl === DenomRewardParticipant.typeUrl || typeof o.address === "string" && typeof o.staking_denom === "string" && typeof o.amount === "string");
+  },
+  encode(message: DenomRewardParticipant, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.address !== "") {
+      writer.uint32(10).string(message.address);
+    }
+    if (message.stakingDenom !== "") {
+      writer.uint32(18).string(message.stakingDenom);
+    }
+    if (message.amount !== "") {
+      writer.uint32(26).string(message.amount);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): DenomRewardParticipant {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDenomRewardParticipant();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.address = reader.string();
+          break;
+        case 2:
+          message.stakingDenom = reader.string();
+          break;
+        case 3:
+          message.amount = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<DenomRewardParticipant>): DenomRewardParticipant {
+    const message = createBaseDenomRewardParticipant();
+    message.address = object.address ?? "";
+    message.stakingDenom = object.stakingDenom ?? "";
+    message.amount = object.amount ?? "";
+    return message;
+  },
+  fromAmino(object: DenomRewardParticipantAmino): DenomRewardParticipant {
+    const message = createBaseDenomRewardParticipant();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    if (object.staking_denom !== undefined && object.staking_denom !== null) {
+      message.stakingDenom = object.staking_denom;
+    }
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = object.amount;
+    }
+    return message;
+  },
+  toAmino(message: DenomRewardParticipant): DenomRewardParticipantAmino {
+    const obj: any = {};
+    obj.address = message.address === "" ? undefined : message.address;
+    obj.staking_denom = message.stakingDenom === "" ? undefined : message.stakingDenom;
+    obj.amount = message.amount === "" ? undefined : message.amount;
+    return obj;
+  },
+  fromAminoMsg(object: DenomRewardParticipantAminoMsg): DenomRewardParticipant {
+    return DenomRewardParticipant.fromAmino(object.value);
+  },
+  fromProtoMsg(message: DenomRewardParticipantProtoMsg): DenomRewardParticipant {
+    return DenomRewardParticipant.decode(message.value);
+  },
+  toProto(message: DenomRewardParticipant): Uint8Array {
+    return DenomRewardParticipant.encode(message).finish();
+  },
+  toProtoMsg(message: DenomRewardParticipant): DenomRewardParticipantProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.DenomRewardParticipant",
+      value: DenomRewardParticipant.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseDenomRewardParticipantIndex(): DenomRewardParticipantIndex {
+  return {
+    address: "",
+    stakingDenom: "",
+    prizeDenom: "",
+    index: ""
+  };
+}
+/**
+ * DenomRewardParticipantIndex records the accumulator value S seen at the
+ * participant's last settlement for a given prize denom.
+ * @name DenomRewardParticipantIndex
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardParticipantIndex
+ */
+export const DenomRewardParticipantIndex = {
+  typeUrl: "/bze.rewards.DenomRewardParticipantIndex",
+  is(o: any): o is DenomRewardParticipantIndex {
+    return o && (o.$typeUrl === DenomRewardParticipantIndex.typeUrl || typeof o.address === "string" && typeof o.stakingDenom === "string" && typeof o.prizeDenom === "string" && typeof o.index === "string");
+  },
+  isSDK(o: any): o is DenomRewardParticipantIndexSDKType {
+    return o && (o.$typeUrl === DenomRewardParticipantIndex.typeUrl || typeof o.address === "string" && typeof o.staking_denom === "string" && typeof o.prize_denom === "string" && typeof o.index === "string");
+  },
+  isAmino(o: any): o is DenomRewardParticipantIndexAmino {
+    return o && (o.$typeUrl === DenomRewardParticipantIndex.typeUrl || typeof o.address === "string" && typeof o.staking_denom === "string" && typeof o.prize_denom === "string" && typeof o.index === "string");
+  },
+  encode(message: DenomRewardParticipantIndex, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.address !== "") {
+      writer.uint32(10).string(message.address);
+    }
+    if (message.stakingDenom !== "") {
+      writer.uint32(18).string(message.stakingDenom);
+    }
+    if (message.prizeDenom !== "") {
+      writer.uint32(26).string(message.prizeDenom);
+    }
+    if (message.index !== "") {
+      writer.uint32(34).string(Decimal.fromUserInput(message.index, 18).atomics);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): DenomRewardParticipantIndex {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDenomRewardParticipantIndex();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.address = reader.string();
+          break;
+        case 2:
+          message.stakingDenom = reader.string();
+          break;
+        case 3:
+          message.prizeDenom = reader.string();
+          break;
+        case 4:
+          message.index = Decimal.fromAtomics(reader.string(), 18).toString();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<DenomRewardParticipantIndex>): DenomRewardParticipantIndex {
+    const message = createBaseDenomRewardParticipantIndex();
+    message.address = object.address ?? "";
+    message.stakingDenom = object.stakingDenom ?? "";
+    message.prizeDenom = object.prizeDenom ?? "";
+    message.index = object.index ?? "";
+    return message;
+  },
+  fromAmino(object: DenomRewardParticipantIndexAmino): DenomRewardParticipantIndex {
+    const message = createBaseDenomRewardParticipantIndex();
+    if (object.address !== undefined && object.address !== null) {
+      message.address = object.address;
+    }
+    if (object.staking_denom !== undefined && object.staking_denom !== null) {
+      message.stakingDenom = object.staking_denom;
+    }
+    if (object.prize_denom !== undefined && object.prize_denom !== null) {
+      message.prizeDenom = object.prize_denom;
+    }
+    if (object.index !== undefined && object.index !== null) {
+      message.index = object.index;
+    }
+    return message;
+  },
+  toAmino(message: DenomRewardParticipantIndex): DenomRewardParticipantIndexAmino {
+    const obj: any = {};
+    obj.address = message.address === "" ? undefined : message.address;
+    obj.staking_denom = message.stakingDenom === "" ? undefined : message.stakingDenom;
+    obj.prize_denom = message.prizeDenom === "" ? undefined : message.prizeDenom;
+    obj.index = message.index === "" ? undefined : Decimal.fromUserInput(message.index, 18).atomics;
+    return obj;
+  },
+  fromAminoMsg(object: DenomRewardParticipantIndexAminoMsg): DenomRewardParticipantIndex {
+    return DenomRewardParticipantIndex.fromAmino(object.value);
+  },
+  fromProtoMsg(message: DenomRewardParticipantIndexProtoMsg): DenomRewardParticipantIndex {
+    return DenomRewardParticipantIndex.decode(message.value);
+  },
+  toProto(message: DenomRewardParticipantIndex): Uint8Array {
+    return DenomRewardParticipantIndex.encode(message).finish();
+  },
+  toProtoMsg(message: DenomRewardParticipantIndex): DenomRewardParticipantIndexProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.DenomRewardParticipantIndex",
+      value: DenomRewardParticipantIndex.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseDenomRewardSchedule(): DenomRewardSchedule {
+  return {
+    scheduleId: "",
+    stakingDenom: "",
+    prizeDenom: "",
+    dailyAmount: "",
+    duration: 0,
+    payouts: 0
+  };
+}
+/**
+ * DenomRewardSchedule is an SR-style reward campaign attached to a DenomReward.
+ * @name DenomRewardSchedule
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardSchedule
+ */
+export const DenomRewardSchedule = {
+  typeUrl: "/bze.rewards.DenomRewardSchedule",
+  is(o: any): o is DenomRewardSchedule {
+    return o && (o.$typeUrl === DenomRewardSchedule.typeUrl || typeof o.scheduleId === "string" && typeof o.stakingDenom === "string" && typeof o.prizeDenom === "string" && typeof o.dailyAmount === "string" && typeof o.duration === "number" && typeof o.payouts === "number");
+  },
+  isSDK(o: any): o is DenomRewardScheduleSDKType {
+    return o && (o.$typeUrl === DenomRewardSchedule.typeUrl || typeof o.schedule_id === "string" && typeof o.staking_denom === "string" && typeof o.prize_denom === "string" && typeof o.daily_amount === "string" && typeof o.duration === "number" && typeof o.payouts === "number");
+  },
+  isAmino(o: any): o is DenomRewardScheduleAmino {
+    return o && (o.$typeUrl === DenomRewardSchedule.typeUrl || typeof o.schedule_id === "string" && typeof o.staking_denom === "string" && typeof o.prize_denom === "string" && typeof o.daily_amount === "string" && typeof o.duration === "number" && typeof o.payouts === "number");
+  },
+  encode(message: DenomRewardSchedule, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.scheduleId !== "") {
+      writer.uint32(10).string(message.scheduleId);
+    }
+    if (message.stakingDenom !== "") {
+      writer.uint32(18).string(message.stakingDenom);
+    }
+    if (message.prizeDenom !== "") {
+      writer.uint32(26).string(message.prizeDenom);
+    }
+    if (message.dailyAmount !== "") {
+      writer.uint32(34).string(message.dailyAmount);
+    }
+    if (message.duration !== 0) {
+      writer.uint32(40).uint32(message.duration);
+    }
+    if (message.payouts !== 0) {
+      writer.uint32(48).uint32(message.payouts);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): DenomRewardSchedule {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDenomRewardSchedule();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.scheduleId = reader.string();
+          break;
+        case 2:
+          message.stakingDenom = reader.string();
+          break;
+        case 3:
+          message.prizeDenom = reader.string();
+          break;
+        case 4:
+          message.dailyAmount = reader.string();
+          break;
+        case 5:
+          message.duration = reader.uint32();
+          break;
+        case 6:
+          message.payouts = reader.uint32();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<DenomRewardSchedule>): DenomRewardSchedule {
+    const message = createBaseDenomRewardSchedule();
+    message.scheduleId = object.scheduleId ?? "";
+    message.stakingDenom = object.stakingDenom ?? "";
+    message.prizeDenom = object.prizeDenom ?? "";
+    message.dailyAmount = object.dailyAmount ?? "";
+    message.duration = object.duration ?? 0;
+    message.payouts = object.payouts ?? 0;
+    return message;
+  },
+  fromAmino(object: DenomRewardScheduleAmino): DenomRewardSchedule {
+    const message = createBaseDenomRewardSchedule();
+    if (object.schedule_id !== undefined && object.schedule_id !== null) {
+      message.scheduleId = object.schedule_id;
+    }
+    if (object.staking_denom !== undefined && object.staking_denom !== null) {
+      message.stakingDenom = object.staking_denom;
+    }
+    if (object.prize_denom !== undefined && object.prize_denom !== null) {
+      message.prizeDenom = object.prize_denom;
+    }
+    if (object.daily_amount !== undefined && object.daily_amount !== null) {
+      message.dailyAmount = object.daily_amount;
+    }
+    if (object.duration !== undefined && object.duration !== null) {
+      message.duration = object.duration;
+    }
+    if (object.payouts !== undefined && object.payouts !== null) {
+      message.payouts = object.payouts;
+    }
+    return message;
+  },
+  toAmino(message: DenomRewardSchedule): DenomRewardScheduleAmino {
+    const obj: any = {};
+    obj.schedule_id = message.scheduleId === "" ? undefined : message.scheduleId;
+    obj.staking_denom = message.stakingDenom === "" ? undefined : message.stakingDenom;
+    obj.prize_denom = message.prizeDenom === "" ? undefined : message.prizeDenom;
+    obj.daily_amount = message.dailyAmount === "" ? undefined : message.dailyAmount;
+    obj.duration = message.duration === 0 ? undefined : message.duration;
+    obj.payouts = message.payouts === 0 ? undefined : message.payouts;
+    return obj;
+  },
+  fromAminoMsg(object: DenomRewardScheduleAminoMsg): DenomRewardSchedule {
+    return DenomRewardSchedule.fromAmino(object.value);
+  },
+  fromProtoMsg(message: DenomRewardScheduleProtoMsg): DenomRewardSchedule {
+    return DenomRewardSchedule.decode(message.value);
+  },
+  toProto(message: DenomRewardSchedule): Uint8Array {
+    return DenomRewardSchedule.encode(message).finish();
+  },
+  toProtoMsg(message: DenomRewardSchedule): DenomRewardScheduleProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.DenomRewardSchedule",
+      value: DenomRewardSchedule.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseDenomRewardsDistributionQueue(): DenomRewardsDistributionQueue {
+  return {
+    pending: false,
+    cursor: ""
+  };
+}
+/**
+ * DenomRewardsDistributionQueue mirrors StakingRewardsDistributionQueue for the
+ * daily distribution of denom reward schedules.
+ * @name DenomRewardsDistributionQueue
+ * @package bze.rewards
+ * @see proto type: bze.rewards.DenomRewardsDistributionQueue
+ */
+export const DenomRewardsDistributionQueue = {
+  typeUrl: "/bze.rewards.DenomRewardsDistributionQueue",
+  is(o: any): o is DenomRewardsDistributionQueue {
+    return o && (o.$typeUrl === DenomRewardsDistributionQueue.typeUrl || typeof o.pending === "boolean" && typeof o.cursor === "string");
+  },
+  isSDK(o: any): o is DenomRewardsDistributionQueueSDKType {
+    return o && (o.$typeUrl === DenomRewardsDistributionQueue.typeUrl || typeof o.pending === "boolean" && typeof o.cursor === "string");
+  },
+  isAmino(o: any): o is DenomRewardsDistributionQueueAmino {
+    return o && (o.$typeUrl === DenomRewardsDistributionQueue.typeUrl || typeof o.pending === "boolean" && typeof o.cursor === "string");
+  },
+  encode(message: DenomRewardsDistributionQueue, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.pending === true) {
+      writer.uint32(8).bool(message.pending);
+    }
+    if (message.cursor !== "") {
+      writer.uint32(18).string(message.cursor);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): DenomRewardsDistributionQueue {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDenomRewardsDistributionQueue();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.pending = reader.bool();
+          break;
+        case 2:
+          message.cursor = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<DenomRewardsDistributionQueue>): DenomRewardsDistributionQueue {
+    const message = createBaseDenomRewardsDistributionQueue();
+    message.pending = object.pending ?? false;
+    message.cursor = object.cursor ?? "";
+    return message;
+  },
+  fromAmino(object: DenomRewardsDistributionQueueAmino): DenomRewardsDistributionQueue {
+    const message = createBaseDenomRewardsDistributionQueue();
+    if (object.pending !== undefined && object.pending !== null) {
+      message.pending = object.pending;
+    }
+    if (object.cursor !== undefined && object.cursor !== null) {
+      message.cursor = object.cursor;
+    }
+    return message;
+  },
+  toAmino(message: DenomRewardsDistributionQueue): DenomRewardsDistributionQueueAmino {
+    const obj: any = {};
+    obj.pending = message.pending === false ? undefined : message.pending;
+    obj.cursor = message.cursor === "" ? undefined : message.cursor;
+    return obj;
+  },
+  fromAminoMsg(object: DenomRewardsDistributionQueueAminoMsg): DenomRewardsDistributionQueue {
+    return DenomRewardsDistributionQueue.fromAmino(object.value);
+  },
+  fromProtoMsg(message: DenomRewardsDistributionQueueProtoMsg): DenomRewardsDistributionQueue {
+    return DenomRewardsDistributionQueue.decode(message.value);
+  },
+  toProto(message: DenomRewardsDistributionQueue): Uint8Array {
+    return DenomRewardsDistributionQueue.encode(message).finish();
+  },
+  toProtoMsg(message: DenomRewardsDistributionQueue): DenomRewardsDistributionQueueProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.DenomRewardsDistributionQueue",
+      value: DenomRewardsDistributionQueue.encode(message).finish()
     };
   },
   registerTypeUrl() {}

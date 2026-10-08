@@ -756,6 +756,137 @@ export interface QueryLiquidityPoolResponseAminoMsg {
 export interface QueryLiquidityPoolResponseSDKType {
   pool?: LiquidityPoolSDKType;
 }
+/**
+ * @name QueryHaltedDenomsRequest
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryHaltedDenomsRequest
+ */
+export interface QueryHaltedDenomsRequest {
+  pagination?: PageRequest;
+}
+export interface QueryHaltedDenomsRequestProtoMsg {
+  typeUrl: "/bze.tradebin.QueryHaltedDenomsRequest";
+  value: Uint8Array;
+}
+/**
+ * @name QueryHaltedDenomsRequestAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryHaltedDenomsRequest
+ */
+export interface QueryHaltedDenomsRequestAmino {
+  pagination?: PageRequestAmino;
+}
+export interface QueryHaltedDenomsRequestAminoMsg {
+  type: "/bze.tradebin.QueryHaltedDenomsRequest";
+  value: QueryHaltedDenomsRequestAmino;
+}
+/**
+ * @name QueryHaltedDenomsRequestSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryHaltedDenomsRequest
+ */
+export interface QueryHaltedDenomsRequestSDKType {
+  pagination?: PageRequestSDKType;
+}
+/**
+ * @name QueryHaltedDenomsResponse
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryHaltedDenomsResponse
+ */
+export interface QueryHaltedDenomsResponse {
+  denoms: string[];
+  pagination?: PageResponse;
+}
+export interface QueryHaltedDenomsResponseProtoMsg {
+  typeUrl: "/bze.tradebin.QueryHaltedDenomsResponse";
+  value: Uint8Array;
+}
+/**
+ * @name QueryHaltedDenomsResponseAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryHaltedDenomsResponse
+ */
+export interface QueryHaltedDenomsResponseAmino {
+  denoms?: string[];
+  pagination?: PageResponseAmino;
+}
+export interface QueryHaltedDenomsResponseAminoMsg {
+  type: "/bze.tradebin.QueryHaltedDenomsResponse";
+  value: QueryHaltedDenomsResponseAmino;
+}
+/**
+ * @name QueryHaltedDenomsResponseSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryHaltedDenomsResponse
+ */
+export interface QueryHaltedDenomsResponseSDKType {
+  denoms: string[];
+  pagination?: PageResponseSDKType;
+}
+/**
+ * @name QueryDenomHaltedRequest
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryDenomHaltedRequest
+ */
+export interface QueryDenomHaltedRequest {
+  denom: string;
+}
+export interface QueryDenomHaltedRequestProtoMsg {
+  typeUrl: "/bze.tradebin.QueryDenomHaltedRequest";
+  value: Uint8Array;
+}
+/**
+ * @name QueryDenomHaltedRequestAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryDenomHaltedRequest
+ */
+export interface QueryDenomHaltedRequestAmino {
+  denom?: string;
+}
+export interface QueryDenomHaltedRequestAminoMsg {
+  type: "/bze.tradebin.QueryDenomHaltedRequest";
+  value: QueryDenomHaltedRequestAmino;
+}
+/**
+ * @name QueryDenomHaltedRequestSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryDenomHaltedRequest
+ */
+export interface QueryDenomHaltedRequestSDKType {
+  denom: string;
+}
+/**
+ * @name QueryDenomHaltedResponse
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryDenomHaltedResponse
+ */
+export interface QueryDenomHaltedResponse {
+  halted: boolean;
+}
+export interface QueryDenomHaltedResponseProtoMsg {
+  typeUrl: "/bze.tradebin.QueryDenomHaltedResponse";
+  value: Uint8Array;
+}
+/**
+ * @name QueryDenomHaltedResponseAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryDenomHaltedResponse
+ */
+export interface QueryDenomHaltedResponseAmino {
+  halted?: boolean;
+}
+export interface QueryDenomHaltedResponseAminoMsg {
+  type: "/bze.tradebin.QueryDenomHaltedResponse";
+  value: QueryDenomHaltedResponseAmino;
+}
+/**
+ * @name QueryDenomHaltedResponseSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryDenomHaltedResponse
+ */
+export interface QueryDenomHaltedResponseSDKType {
+  halted: boolean;
+}
 function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
 }
@@ -2729,4 +2860,340 @@ export const QueryLiquidityPoolResponse = {
     }
     LiquidityPool.registerTypeUrl();
   }
+};
+function createBaseQueryHaltedDenomsRequest(): QueryHaltedDenomsRequest {
+  return {
+    pagination: undefined
+  };
+}
+/**
+ * @name QueryHaltedDenomsRequest
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryHaltedDenomsRequest
+ */
+export const QueryHaltedDenomsRequest = {
+  typeUrl: "/bze.tradebin.QueryHaltedDenomsRequest",
+  is(o: any): o is QueryHaltedDenomsRequest {
+    return o && o.$typeUrl === QueryHaltedDenomsRequest.typeUrl;
+  },
+  isSDK(o: any): o is QueryHaltedDenomsRequestSDKType {
+    return o && o.$typeUrl === QueryHaltedDenomsRequest.typeUrl;
+  },
+  isAmino(o: any): o is QueryHaltedDenomsRequestAmino {
+    return o && o.$typeUrl === QueryHaltedDenomsRequest.typeUrl;
+  },
+  encode(message: QueryHaltedDenomsRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.pagination !== undefined) {
+      PageRequest.encode(message.pagination, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryHaltedDenomsRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryHaltedDenomsRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.pagination = PageRequest.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryHaltedDenomsRequest>): QueryHaltedDenomsRequest {
+    const message = createBaseQueryHaltedDenomsRequest();
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageRequest.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryHaltedDenomsRequestAmino): QueryHaltedDenomsRequest {
+    const message = createBaseQueryHaltedDenomsRequest();
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageRequest.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryHaltedDenomsRequest): QueryHaltedDenomsRequestAmino {
+    const obj: any = {};
+    obj.pagination = message.pagination ? PageRequest.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryHaltedDenomsRequestAminoMsg): QueryHaltedDenomsRequest {
+    return QueryHaltedDenomsRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryHaltedDenomsRequestProtoMsg): QueryHaltedDenomsRequest {
+    return QueryHaltedDenomsRequest.decode(message.value);
+  },
+  toProto(message: QueryHaltedDenomsRequest): Uint8Array {
+    return QueryHaltedDenomsRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryHaltedDenomsRequest): QueryHaltedDenomsRequestProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.QueryHaltedDenomsRequest",
+      value: QueryHaltedDenomsRequest.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(QueryHaltedDenomsRequest.typeUrl)) {
+      return;
+    }
+    PageRequest.registerTypeUrl();
+  }
+};
+function createBaseQueryHaltedDenomsResponse(): QueryHaltedDenomsResponse {
+  return {
+    denoms: [],
+    pagination: undefined
+  };
+}
+/**
+ * @name QueryHaltedDenomsResponse
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryHaltedDenomsResponse
+ */
+export const QueryHaltedDenomsResponse = {
+  typeUrl: "/bze.tradebin.QueryHaltedDenomsResponse",
+  is(o: any): o is QueryHaltedDenomsResponse {
+    return o && (o.$typeUrl === QueryHaltedDenomsResponse.typeUrl || Array.isArray(o.denoms) && (!o.denoms.length || typeof o.denoms[0] === "string"));
+  },
+  isSDK(o: any): o is QueryHaltedDenomsResponseSDKType {
+    return o && (o.$typeUrl === QueryHaltedDenomsResponse.typeUrl || Array.isArray(o.denoms) && (!o.denoms.length || typeof o.denoms[0] === "string"));
+  },
+  isAmino(o: any): o is QueryHaltedDenomsResponseAmino {
+    return o && (o.$typeUrl === QueryHaltedDenomsResponse.typeUrl || Array.isArray(o.denoms) && (!o.denoms.length || typeof o.denoms[0] === "string"));
+  },
+  encode(message: QueryHaltedDenomsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    for (const v of message.denoms) {
+      writer.uint32(10).string(v!);
+    }
+    if (message.pagination !== undefined) {
+      PageResponse.encode(message.pagination, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryHaltedDenomsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryHaltedDenomsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.denoms.push(reader.string());
+          break;
+        case 2:
+          message.pagination = PageResponse.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryHaltedDenomsResponse>): QueryHaltedDenomsResponse {
+    const message = createBaseQueryHaltedDenomsResponse();
+    message.denoms = object.denoms?.map(e => e) || [];
+    message.pagination = object.pagination !== undefined && object.pagination !== null ? PageResponse.fromPartial(object.pagination) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryHaltedDenomsResponseAmino): QueryHaltedDenomsResponse {
+    const message = createBaseQueryHaltedDenomsResponse();
+    message.denoms = object.denoms?.map(e => e) || [];
+    if (object.pagination !== undefined && object.pagination !== null) {
+      message.pagination = PageResponse.fromAmino(object.pagination);
+    }
+    return message;
+  },
+  toAmino(message: QueryHaltedDenomsResponse): QueryHaltedDenomsResponseAmino {
+    const obj: any = {};
+    if (message.denoms) {
+      obj.denoms = message.denoms.map(e => e);
+    } else {
+      obj.denoms = message.denoms;
+    }
+    obj.pagination = message.pagination ? PageResponse.toAmino(message.pagination) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryHaltedDenomsResponseAminoMsg): QueryHaltedDenomsResponse {
+    return QueryHaltedDenomsResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryHaltedDenomsResponseProtoMsg): QueryHaltedDenomsResponse {
+    return QueryHaltedDenomsResponse.decode(message.value);
+  },
+  toProto(message: QueryHaltedDenomsResponse): Uint8Array {
+    return QueryHaltedDenomsResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryHaltedDenomsResponse): QueryHaltedDenomsResponseProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.QueryHaltedDenomsResponse",
+      value: QueryHaltedDenomsResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(QueryHaltedDenomsResponse.typeUrl)) {
+      return;
+    }
+    PageResponse.registerTypeUrl();
+  }
+};
+function createBaseQueryDenomHaltedRequest(): QueryDenomHaltedRequest {
+  return {
+    denom: ""
+  };
+}
+/**
+ * @name QueryDenomHaltedRequest
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryDenomHaltedRequest
+ */
+export const QueryDenomHaltedRequest = {
+  typeUrl: "/bze.tradebin.QueryDenomHaltedRequest",
+  is(o: any): o is QueryDenomHaltedRequest {
+    return o && (o.$typeUrl === QueryDenomHaltedRequest.typeUrl || typeof o.denom === "string");
+  },
+  isSDK(o: any): o is QueryDenomHaltedRequestSDKType {
+    return o && (o.$typeUrl === QueryDenomHaltedRequest.typeUrl || typeof o.denom === "string");
+  },
+  isAmino(o: any): o is QueryDenomHaltedRequestAmino {
+    return o && (o.$typeUrl === QueryDenomHaltedRequest.typeUrl || typeof o.denom === "string");
+  },
+  encode(message: QueryDenomHaltedRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.denom !== "") {
+      writer.uint32(10).string(message.denom);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomHaltedRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomHaltedRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.denom = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryDenomHaltedRequest>): QueryDenomHaltedRequest {
+    const message = createBaseQueryDenomHaltedRequest();
+    message.denom = object.denom ?? "";
+    return message;
+  },
+  fromAmino(object: QueryDenomHaltedRequestAmino): QueryDenomHaltedRequest {
+    const message = createBaseQueryDenomHaltedRequest();
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    return message;
+  },
+  toAmino(message: QueryDenomHaltedRequest): QueryDenomHaltedRequestAmino {
+    const obj: any = {};
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    return obj;
+  },
+  fromAminoMsg(object: QueryDenomHaltedRequestAminoMsg): QueryDenomHaltedRequest {
+    return QueryDenomHaltedRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryDenomHaltedRequestProtoMsg): QueryDenomHaltedRequest {
+    return QueryDenomHaltedRequest.decode(message.value);
+  },
+  toProto(message: QueryDenomHaltedRequest): Uint8Array {
+    return QueryDenomHaltedRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryDenomHaltedRequest): QueryDenomHaltedRequestProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.QueryDenomHaltedRequest",
+      value: QueryDenomHaltedRequest.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseQueryDenomHaltedResponse(): QueryDenomHaltedResponse {
+  return {
+    halted: false
+  };
+}
+/**
+ * @name QueryDenomHaltedResponse
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryDenomHaltedResponse
+ */
+export const QueryDenomHaltedResponse = {
+  typeUrl: "/bze.tradebin.QueryDenomHaltedResponse",
+  is(o: any): o is QueryDenomHaltedResponse {
+    return o && (o.$typeUrl === QueryDenomHaltedResponse.typeUrl || typeof o.halted === "boolean");
+  },
+  isSDK(o: any): o is QueryDenomHaltedResponseSDKType {
+    return o && (o.$typeUrl === QueryDenomHaltedResponse.typeUrl || typeof o.halted === "boolean");
+  },
+  isAmino(o: any): o is QueryDenomHaltedResponseAmino {
+    return o && (o.$typeUrl === QueryDenomHaltedResponse.typeUrl || typeof o.halted === "boolean");
+  },
+  encode(message: QueryDenomHaltedResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.halted === true) {
+      writer.uint32(8).bool(message.halted);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomHaltedResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomHaltedResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.halted = reader.bool();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryDenomHaltedResponse>): QueryDenomHaltedResponse {
+    const message = createBaseQueryDenomHaltedResponse();
+    message.halted = object.halted ?? false;
+    return message;
+  },
+  fromAmino(object: QueryDenomHaltedResponseAmino): QueryDenomHaltedResponse {
+    const message = createBaseQueryDenomHaltedResponse();
+    if (object.halted !== undefined && object.halted !== null) {
+      message.halted = object.halted;
+    }
+    return message;
+  },
+  toAmino(message: QueryDenomHaltedResponse): QueryDenomHaltedResponseAmino {
+    const obj: any = {};
+    obj.halted = message.halted === false ? undefined : message.halted;
+    return obj;
+  },
+  fromAminoMsg(object: QueryDenomHaltedResponseAminoMsg): QueryDenomHaltedResponse {
+    return QueryDenomHaltedResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryDenomHaltedResponseProtoMsg): QueryDenomHaltedResponse {
+    return QueryDenomHaltedResponse.decode(message.value);
+  },
+  toProto(message: QueryDenomHaltedResponse): Uint8Array {
+    return QueryDenomHaltedResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryDenomHaltedResponse): QueryDenomHaltedResponseProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.QueryDenomHaltedResponse",
+      value: QueryDenomHaltedResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
 };

@@ -22,6 +22,10 @@ export interface GenesisState {
   orderCounter: bigint;
   allUsersDust: UserDust[];
   liquidityPools: LiquidityPool[];
+  /**
+   * denoms governance halted on the DEX (one store key per denom, see MsgHaltDenoms).
+   */
+  haltedDenoms: string[];
 }
 export interface GenesisStateProtoMsg {
   typeUrl: "/bze.tradebin.GenesisState";
@@ -46,6 +50,10 @@ export interface GenesisStateAmino {
   order_counter: string;
   all_users_dust?: UserDustAmino[];
   liquidity_pools?: LiquidityPoolAmino[];
+  /**
+   * denoms governance halted on the DEX (one store key per denom, see MsgHaltDenoms).
+   */
+  halted_denoms?: string[];
 }
 export interface GenesisStateAminoMsg {
   type: "/bze.tradebin.GenesisState";
@@ -67,6 +75,7 @@ export interface GenesisStateSDKType {
   order_counter: bigint;
   all_users_dust: UserDustSDKType[];
   liquidity_pools: LiquidityPoolSDKType[];
+  halted_denoms: string[];
 }
 function createBaseGenesisState(): GenesisState {
   return {
@@ -78,7 +87,8 @@ function createBaseGenesisState(): GenesisState {
     historyOrderList: [],
     orderCounter: BigInt(0),
     allUsersDust: [],
-    liquidityPools: []
+    liquidityPools: [],
+    haltedDenoms: []
   };
 }
 /**
@@ -90,13 +100,13 @@ function createBaseGenesisState(): GenesisState {
 export const GenesisState = {
   typeUrl: "/bze.tradebin.GenesisState",
   is(o: any): o is GenesisState {
-    return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.marketList) && (!o.marketList.length || Market.is(o.marketList[0])) && Array.isArray(o.queueMessageList) && (!o.queueMessageList.length || QueueMessage.is(o.queueMessageList[0])) && Array.isArray(o.orderList) && (!o.orderList.length || Order.is(o.orderList[0])) && Array.isArray(o.aggregatedOrderList) && (!o.aggregatedOrderList.length || AggregatedOrder.is(o.aggregatedOrderList[0])) && Array.isArray(o.historyOrderList) && (!o.historyOrderList.length || HistoryOrder.is(o.historyOrderList[0])) && typeof o.orderCounter === "bigint" && Array.isArray(o.allUsersDust) && (!o.allUsersDust.length || UserDust.is(o.allUsersDust[0])) && Array.isArray(o.liquidityPools) && (!o.liquidityPools.length || LiquidityPool.is(o.liquidityPools[0])));
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.marketList) && (!o.marketList.length || Market.is(o.marketList[0])) && Array.isArray(o.queueMessageList) && (!o.queueMessageList.length || QueueMessage.is(o.queueMessageList[0])) && Array.isArray(o.orderList) && (!o.orderList.length || Order.is(o.orderList[0])) && Array.isArray(o.aggregatedOrderList) && (!o.aggregatedOrderList.length || AggregatedOrder.is(o.aggregatedOrderList[0])) && Array.isArray(o.historyOrderList) && (!o.historyOrderList.length || HistoryOrder.is(o.historyOrderList[0])) && typeof o.orderCounter === "bigint" && Array.isArray(o.allUsersDust) && (!o.allUsersDust.length || UserDust.is(o.allUsersDust[0])) && Array.isArray(o.liquidityPools) && (!o.liquidityPools.length || LiquidityPool.is(o.liquidityPools[0])) && Array.isArray(o.haltedDenoms) && (!o.haltedDenoms.length || typeof o.haltedDenoms[0] === "string"));
   },
   isSDK(o: any): o is GenesisStateSDKType {
-    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.market_list) && (!o.market_list.length || Market.isSDK(o.market_list[0])) && Array.isArray(o.queue_message_list) && (!o.queue_message_list.length || QueueMessage.isSDK(o.queue_message_list[0])) && Array.isArray(o.order_list) && (!o.order_list.length || Order.isSDK(o.order_list[0])) && Array.isArray(o.aggregated_order_list) && (!o.aggregated_order_list.length || AggregatedOrder.isSDK(o.aggregated_order_list[0])) && Array.isArray(o.history_order_list) && (!o.history_order_list.length || HistoryOrder.isSDK(o.history_order_list[0])) && typeof o.order_counter === "bigint" && Array.isArray(o.all_users_dust) && (!o.all_users_dust.length || UserDust.isSDK(o.all_users_dust[0])) && Array.isArray(o.liquidity_pools) && (!o.liquidity_pools.length || LiquidityPool.isSDK(o.liquidity_pools[0])));
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.market_list) && (!o.market_list.length || Market.isSDK(o.market_list[0])) && Array.isArray(o.queue_message_list) && (!o.queue_message_list.length || QueueMessage.isSDK(o.queue_message_list[0])) && Array.isArray(o.order_list) && (!o.order_list.length || Order.isSDK(o.order_list[0])) && Array.isArray(o.aggregated_order_list) && (!o.aggregated_order_list.length || AggregatedOrder.isSDK(o.aggregated_order_list[0])) && Array.isArray(o.history_order_list) && (!o.history_order_list.length || HistoryOrder.isSDK(o.history_order_list[0])) && typeof o.order_counter === "bigint" && Array.isArray(o.all_users_dust) && (!o.all_users_dust.length || UserDust.isSDK(o.all_users_dust[0])) && Array.isArray(o.liquidity_pools) && (!o.liquidity_pools.length || LiquidityPool.isSDK(o.liquidity_pools[0])) && Array.isArray(o.halted_denoms) && (!o.halted_denoms.length || typeof o.halted_denoms[0] === "string"));
   },
   isAmino(o: any): o is GenesisStateAmino {
-    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.market_list) && (!o.market_list.length || Market.isAmino(o.market_list[0])) && Array.isArray(o.queue_message_list) && (!o.queue_message_list.length || QueueMessage.isAmino(o.queue_message_list[0])) && Array.isArray(o.order_list) && (!o.order_list.length || Order.isAmino(o.order_list[0])) && Array.isArray(o.aggregated_order_list) && (!o.aggregated_order_list.length || AggregatedOrder.isAmino(o.aggregated_order_list[0])) && Array.isArray(o.history_order_list) && (!o.history_order_list.length || HistoryOrder.isAmino(o.history_order_list[0])) && typeof o.order_counter === "bigint" && Array.isArray(o.all_users_dust) && (!o.all_users_dust.length || UserDust.isAmino(o.all_users_dust[0])) && Array.isArray(o.liquidity_pools) && (!o.liquidity_pools.length || LiquidityPool.isAmino(o.liquidity_pools[0])));
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.market_list) && (!o.market_list.length || Market.isAmino(o.market_list[0])) && Array.isArray(o.queue_message_list) && (!o.queue_message_list.length || QueueMessage.isAmino(o.queue_message_list[0])) && Array.isArray(o.order_list) && (!o.order_list.length || Order.isAmino(o.order_list[0])) && Array.isArray(o.aggregated_order_list) && (!o.aggregated_order_list.length || AggregatedOrder.isAmino(o.aggregated_order_list[0])) && Array.isArray(o.history_order_list) && (!o.history_order_list.length || HistoryOrder.isAmino(o.history_order_list[0])) && typeof o.order_counter === "bigint" && Array.isArray(o.all_users_dust) && (!o.all_users_dust.length || UserDust.isAmino(o.all_users_dust[0])) && Array.isArray(o.liquidity_pools) && (!o.liquidity_pools.length || LiquidityPool.isAmino(o.liquidity_pools[0])) && Array.isArray(o.halted_denoms) && (!o.halted_denoms.length || typeof o.halted_denoms[0] === "string"));
   },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
@@ -125,6 +135,9 @@ export const GenesisState = {
     }
     for (const v of message.liquidityPools) {
       LiquidityPool.encode(v!, writer.uint32(74).fork()).ldelim();
+    }
+    for (const v of message.haltedDenoms) {
+      writer.uint32(82).string(v!);
     }
     return writer;
   },
@@ -162,6 +175,9 @@ export const GenesisState = {
         case 9:
           message.liquidityPools.push(LiquidityPool.decode(reader, reader.uint32()));
           break;
+        case 10:
+          message.haltedDenoms.push(reader.string());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -180,6 +196,7 @@ export const GenesisState = {
     message.orderCounter = object.orderCounter !== undefined && object.orderCounter !== null ? BigInt(object.orderCounter.toString()) : BigInt(0);
     message.allUsersDust = object.allUsersDust?.map(e => UserDust.fromPartial(e)) || [];
     message.liquidityPools = object.liquidityPools?.map(e => LiquidityPool.fromPartial(e)) || [];
+    message.haltedDenoms = object.haltedDenoms?.map(e => e) || [];
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -197,6 +214,7 @@ export const GenesisState = {
     }
     message.allUsersDust = object.all_users_dust?.map(e => UserDust.fromAmino(e)) || [];
     message.liquidityPools = object.liquidity_pools?.map(e => LiquidityPool.fromAmino(e)) || [];
+    message.haltedDenoms = object.halted_denoms?.map(e => e) || [];
     return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
@@ -237,6 +255,11 @@ export const GenesisState = {
       obj.liquidity_pools = message.liquidityPools.map(e => e ? LiquidityPool.toAmino(e) : undefined);
     } else {
       obj.liquidity_pools = message.liquidityPools;
+    }
+    if (message.haltedDenoms) {
+      obj.halted_denoms = message.haltedDenoms.map(e => e);
+    } else {
+      obj.halted_denoms = message.haltedDenoms;
     }
     return obj;
   },

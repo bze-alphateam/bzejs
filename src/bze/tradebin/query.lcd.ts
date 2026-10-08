@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { setPaginationParams } from "../../helpers";
 import { LCDClient } from "@cosmology/lcd";
-import { QueryParamsRequest, QueryParamsResponseSDKType, QueryMarketRequest, QueryMarketResponseSDKType, QueryAllMarketsRequest, QueryAllMarketsResponseSDKType, QueryAssetMarketsRequest, QueryAssetMarketsResponseSDKType, QueryUserMarketOrdersRequest, QueryUserMarketOrdersResponseSDKType, QueryMarketAggregatedOrdersRequest, QueryMarketAggregatedOrdersResponseSDKType, QueryMarketHistoryRequest, QueryMarketHistoryResponseSDKType, QueryMarketOrderRequest, QueryMarketOrderResponseSDKType, QueryAllUserDustRequest, QueryAllUserDustResponseSDKType, QueryAllLiquidityPoolsRequest, QueryAllLiquidityPoolsResponseSDKType, QueryLiquidityPoolRequest, QueryLiquidityPoolResponseSDKType } from "./query";
+import { QueryParamsRequest, QueryParamsResponseSDKType, QueryMarketRequest, QueryMarketResponseSDKType, QueryAllMarketsRequest, QueryAllMarketsResponseSDKType, QueryAssetMarketsRequest, QueryAssetMarketsResponseSDKType, QueryUserMarketOrdersRequest, QueryUserMarketOrdersResponseSDKType, QueryMarketAggregatedOrdersRequest, QueryMarketAggregatedOrdersResponseSDKType, QueryMarketHistoryRequest, QueryMarketHistoryResponseSDKType, QueryMarketOrderRequest, QueryMarketOrderResponseSDKType, QueryAllUserDustRequest, QueryAllUserDustResponseSDKType, QueryAllLiquidityPoolsRequest, QueryAllLiquidityPoolsResponseSDKType, QueryLiquidityPoolRequest, QueryLiquidityPoolResponseSDKType, QueryHaltedDenomsRequest, QueryHaltedDenomsResponseSDKType, QueryDenomHaltedRequest, QueryDenomHaltedResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -21,6 +21,8 @@ export class LCDQueryClient {
     this.allUserDust = this.allUserDust.bind(this);
     this.allLiquidityPools = this.allLiquidityPools.bind(this);
     this.liquidityPool = this.liquidityPool.bind(this);
+    this.haltedDenoms = this.haltedDenoms.bind(this);
+    this.denomHalted = this.denomHalted.bind(this);
   }
   /* Parameters queries the parameters of the module. */
   async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
@@ -161,5 +163,30 @@ export class LCDQueryClient {
     }
     const endpoint = `bze/tradebin/liquidity_pool`;
     return await this.req.get<QueryLiquidityPoolResponseSDKType>(endpoint, options);
+  }
+  /* Queries the denoms governance halted on the DEX, paginated, in store (byte) order. */
+  async haltedDenoms(params: QueryHaltedDenomsRequest = {
+    pagination: undefined
+  }): Promise<QueryHaltedDenomsResponseSDKType> {
+    const options: any = {
+      params: {}
+    };
+    if (typeof params?.pagination !== "undefined") {
+      setPaginationParams(options, params.pagination);
+    }
+    const endpoint = `bze/tradebin/halted_denoms`;
+    return await this.req.get<QueryHaltedDenomsResponseSDKType>(endpoint, options);
+  }
+  /* Queries whether one denom is halted. Over REST the denom is passed as the `denom` query
+   parameter (factory/ibc denoms contain "/", so it cannot be a path segment). */
+  async denomHalted(params: QueryDenomHaltedRequest): Promise<QueryDenomHaltedResponseSDKType> {
+    const options: any = {
+      params: {}
+    };
+    if (typeof params?.denom !== "undefined") {
+      options.params.denom = params.denom;
+    }
+    const endpoint = `bze/tradebin/denom_halted`;
+    return await this.req.get<QueryDenomHaltedResponseSDKType>(endpoint, options);
   }
 }

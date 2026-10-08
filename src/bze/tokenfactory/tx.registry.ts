@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { TelescopeGeneratedType } from "../../types";
-import { MsgUpdateParams, MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata } from "./tx";
-export const registry: ReadonlyArray<[string, TelescopeGeneratedType<any, any, any>]> = [["/bze.tokenfactory.MsgUpdateParams", MsgUpdateParams], ["/bze.tokenfactory.MsgCreateDenom", MsgCreateDenom], ["/bze.tokenfactory.MsgMint", MsgMint], ["/bze.tokenfactory.MsgBurn", MsgBurn], ["/bze.tokenfactory.MsgChangeAdmin", MsgChangeAdmin], ["/bze.tokenfactory.MsgSetDenomMetadata", MsgSetDenomMetadata]];
+import { MsgUpdateParams, MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata, MsgSetDenomBranding } from "./tx";
+export const registry: ReadonlyArray<[string, TelescopeGeneratedType<any, any, any>]> = [["/bze.tokenfactory.MsgUpdateParams", MsgUpdateParams], ["/bze.tokenfactory.MsgCreateDenom", MsgCreateDenom], ["/bze.tokenfactory.MsgMint", MsgMint], ["/bze.tokenfactory.MsgBurn", MsgBurn], ["/bze.tokenfactory.MsgChangeAdmin", MsgChangeAdmin], ["/bze.tokenfactory.MsgSetDenomMetadata", MsgSetDenomMetadata], ["/bze.tokenfactory.MsgSetDenomBranding", MsgSetDenomBranding]];
 export const MessageComposer = {
   encoded: {
     updateParams(value: MsgUpdateParams) {
@@ -38,6 +38,12 @@ export const MessageComposer = {
       return {
         typeUrl: "/bze.tokenfactory.MsgSetDenomMetadata",
         value: MsgSetDenomMetadata.encode(value).finish()
+      };
+    },
+    setDenomBranding(value: MsgSetDenomBranding) {
+      return {
+        typeUrl: "/bze.tokenfactory.MsgSetDenomBranding",
+        value: MsgSetDenomBranding.encode(value).finish()
       };
     }
   },
@@ -77,6 +83,12 @@ export const MessageComposer = {
         typeUrl: "/bze.tokenfactory.MsgSetDenomMetadata",
         value
       };
+    },
+    setDenomBranding(value: MsgSetDenomBranding) {
+      return {
+        typeUrl: "/bze.tokenfactory.MsgSetDenomBranding",
+        value
+      };
     }
   },
   fromPartial: {
@@ -114,6 +126,12 @@ export const MessageComposer = {
       return {
         typeUrl: "/bze.tokenfactory.MsgSetDenomMetadata",
         value: MsgSetDenomMetadata.fromPartial(value)
+      };
+    },
+    setDenomBranding(value: MsgSetDenomBranding) {
+      return {
+        typeUrl: "/bze.tokenfactory.MsgSetDenomBranding",
+        value: MsgSetDenomBranding.fromPartial(value)
       };
     }
   }
