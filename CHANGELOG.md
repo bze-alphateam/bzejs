@@ -1,5 +1,31 @@
 # Changelog
 
+## v3.2.0
+
+Protobuf files compatible with **BZE v8.2.0**. Additive release: no existing type or field changed meaning, so v3.1.0 consumers upgrade without code changes.
+
+### New Features
+
+#### Rewards module: Denom Rewards
+- New messages: `MsgCreateDenomReward`, `MsgCreateDenomRewardSchedule`, `MsgUpdateDenomRewardSchedule`, `MsgDistributeDenomRewards`, `MsgJoinDenomReward`, `MsgClaimDenomRewards`, `MsgExitDenomReward`
+- New message: `MsgDeleteStakingReward` (delete a finished, emptied staking reward)
+- New queries: `DenomReward`, `DenomRewardAll`, `DenomRewardPrizes`, `DenomRewardSchedules`, `DenomRewardParticipant`, `DenomRewardParticipations`. Over REST the denom is passed as the `denom` query parameter
+- New store types: `DenomReward`, `DenomRewardPrize`, `DenomRewardParticipant`, `DenomRewardParticipantIndex`, `DenomRewardSchedule` (+ genesis lists, fields 17-21)
+- New params: `createDenomRewardFee`, `createDenomRewardPrizeFee`, `addDenomRewardScheduleFee`, `maxPrizeDenomsPerDr`, `extraGasForDenomExit`, `denomRewardLock`, `denomRewardMinStake`
+- New events: `DenomRewardCreateEvent`, `DenomRewardJoinEvent`, `DenomRewardExitEvent`, `DenomRewardClaimEvent`, `DenomRewardPrizeCreateEvent`, `DenomRewardScheduleCreateEvent`, `DenomRewardScheduleUpdateEvent`, `DenomRewardScheduleFinishEvent`, `DenomRewardDistributionEvent`
+
+#### TokenFactory module: denom branding
+- New file `bze/tokenfactory/denom_branding.proto` (`DenomBranding`, `DenomBrandingRecord`, `BrandingColors`)
+- New message: `MsgSetDenomBranding`; new queries: `DenomBranding`, `AllDenomBranding`; new event: `DenomBrandingChangeEvent`; genesis field `denom_brandings`
+
+#### TradeBin module: halted denoms
+- New governance messages: `MsgHaltDenoms`, `MsgUnhaltDenoms`; new queries: `HaltedDenoms`, `DenomHalted`; new events: `DenomHaltedEvent`, `DenomUnhaltedEvent`; genesis field `halted_denoms`
+- Order events (`OrderCreateMessageEvent`, `OrderCancelMessageEvent`, `OrderExecutedEvent`, `OrderCanceledEvent`, `OrderSavedEvent`) carry a new `message_id` field
+
+#### TxFeeCollector module
+- New param `BlockedIbcInbound` (list of `BlockedIbcTransfer{channel_id, base_denom}`)
+- New file `bze/txfeecollector/events.proto` with `BlockedIbcInboundEvent`
+
 ## v3.0.0
 
 Protobuf files compatible with **BZE v8.1.0**. This is a breaking change release.
