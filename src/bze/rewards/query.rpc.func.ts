@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { buildQuery } from "../../helper-func-types";
-import { QueryParamsRequest, QueryParamsResponse, QueryGetStakingRewardRequest, QueryGetStakingRewardResponse, QueryAllStakingRewardsRequest, QueryAllStakingRewardsResponse, QueryTradingRewardRequest, QueryTradingRewardResponse, QueryAllTradingRewardsRequest, QueryAllTradingRewardsResponse, QueryStakingRewardParticipantRequest, QueryStakingRewardParticipantResponse, QueryAllStakingRewardParticipantsRequest, QueryAllStakingRewardParticipantsResponse, QueryTradingRewardLeaderboardRequest, QueryTradingRewardLeaderboardResponse, QueryMarketTradingRewardRequest, QueryMarketTradingRewardResponse, QueryAllPendingUnlockParticipantsRequest, QueryAllPendingUnlockParticipantsResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, QueryGetStakingRewardRequest, QueryGetStakingRewardResponse, QueryAllStakingRewardsRequest, QueryAllStakingRewardsResponse, QueryTradingRewardRequest, QueryTradingRewardResponse, QueryAllTradingRewardsRequest, QueryAllTradingRewardsResponse, QueryStakingRewardParticipantRequest, QueryStakingRewardParticipantResponse, QueryAllStakingRewardParticipantsRequest, QueryAllStakingRewardParticipantsResponse, QueryTradingRewardLeaderboardRequest, QueryTradingRewardLeaderboardResponse, QueryMarketTradingRewardRequest, QueryMarketTradingRewardResponse, QueryAllPendingUnlockParticipantsRequest, QueryAllPendingUnlockParticipantsResponse, QueryDenomRewardRequest, QueryDenomRewardResponse, QueryDenomRewardAllRequest, QueryDenomRewardAllResponse, QueryDenomRewardPrizesRequest, QueryDenomRewardPrizesResponse, QueryDenomRewardSchedulesRequest, QueryDenomRewardSchedulesResponse, QueryDenomRewardParticipantRequest, QueryDenomRewardParticipantResponse, QueryDenomRewardParticipationsRequest, QueryDenomRewardParticipationsResponse } from "./query";
 /**
  * Parameters queries the parameters of the module.
  * @name getParams
@@ -130,4 +130,87 @@ export const getAllPendingUnlockParticipants = buildQuery<QueryAllPendingUnlockP
   service: "bze.rewards.Query",
   method: "AllPendingUnlockParticipants",
   deps: [QueryAllPendingUnlockParticipantsRequest, QueryAllPendingUnlockParticipantsResponse]
+});
+/**
+ * Queries a DenomReward by its staking denom. Over REST the denom is passed as the
+ * `denom` query parameter (factory/ibc denoms contain "/", so it cannot be a path segment).
+ * @name getDenomReward
+ * @package bze.rewards
+ * @see proto service: bze.rewards.DenomReward
+ */
+export const getDenomReward = buildQuery<QueryDenomRewardRequest, QueryDenomRewardResponse>({
+  encode: QueryDenomRewardRequest.encode,
+  decode: QueryDenomRewardResponse.decode,
+  service: "bze.rewards.Query",
+  method: "DenomReward",
+  deps: [QueryDenomRewardRequest, QueryDenomRewardResponse]
+});
+/**
+ * Queries all DenomReward records.
+ * @name getDenomRewardAll
+ * @package bze.rewards
+ * @see proto service: bze.rewards.DenomRewardAll
+ */
+export const getDenomRewardAll = buildQuery<QueryDenomRewardAllRequest, QueryDenomRewardAllResponse>({
+  encode: QueryDenomRewardAllRequest.encode,
+  decode: QueryDenomRewardAllResponse.decode,
+  service: "bze.rewards.Query",
+  method: "DenomRewardAll",
+  deps: [QueryDenomRewardAllRequest, QueryDenomRewardAllResponse]
+});
+/**
+ * Queries every prize accumulator of a DenomReward (bounded by max_prize_denoms_per_dr).
+ * Over REST the denom is passed as the `denom` query parameter.
+ * @name getDenomRewardPrizes
+ * @package bze.rewards
+ * @see proto service: bze.rewards.DenomRewardPrizes
+ */
+export const getDenomRewardPrizes = buildQuery<QueryDenomRewardPrizesRequest, QueryDenomRewardPrizesResponse>({
+  encode: QueryDenomRewardPrizesRequest.encode,
+  decode: QueryDenomRewardPrizesResponse.decode,
+  service: "bze.rewards.Query",
+  method: "DenomRewardPrizes",
+  deps: [QueryDenomRewardPrizesRequest, QueryDenomRewardPrizesResponse]
+});
+/**
+ * Queries the schedules of a DenomReward. Over REST the denom is passed as the
+ * `denom` query parameter.
+ * @name getDenomRewardSchedules
+ * @package bze.rewards
+ * @see proto service: bze.rewards.DenomRewardSchedules
+ */
+export const getDenomRewardSchedules = buildQuery<QueryDenomRewardSchedulesRequest, QueryDenomRewardSchedulesResponse>({
+  encode: QueryDenomRewardSchedulesRequest.encode,
+  decode: QueryDenomRewardSchedulesResponse.decode,
+  service: "bze.rewards.Query",
+  method: "DenomRewardSchedules",
+  deps: [QueryDenomRewardSchedulesRequest, QueryDenomRewardSchedulesResponse]
+});
+/**
+ * Queries a participant's position in a DenomReward, including the pending
+ * (claimable) amount per prize denom. Over REST the address is a path segment and the
+ * denom is passed as the `denom` query parameter.
+ * @name getDenomRewardParticipant
+ * @package bze.rewards
+ * @see proto service: bze.rewards.DenomRewardParticipant
+ */
+export const getDenomRewardParticipant = buildQuery<QueryDenomRewardParticipantRequest, QueryDenomRewardParticipantResponse>({
+  encode: QueryDenomRewardParticipantRequest.encode,
+  decode: QueryDenomRewardParticipantResponse.decode,
+  service: "bze.rewards.Query",
+  method: "DenomRewardParticipant",
+  deps: [QueryDenomRewardParticipantRequest, QueryDenomRewardParticipantResponse]
+});
+/**
+ * Queries every DenomReward participation of an address.
+ * @name getDenomRewardParticipations
+ * @package bze.rewards
+ * @see proto service: bze.rewards.DenomRewardParticipations
+ */
+export const getDenomRewardParticipations = buildQuery<QueryDenomRewardParticipationsRequest, QueryDenomRewardParticipationsResponse>({
+  encode: QueryDenomRewardParticipationsRequest.encode,
+  decode: QueryDenomRewardParticipationsResponse.decode,
+  service: "bze.rewards.Query",
+  method: "DenomRewardParticipations",
+  deps: [QueryDenomRewardParticipationsRequest, QueryDenomRewardParticipationsResponse]
 });

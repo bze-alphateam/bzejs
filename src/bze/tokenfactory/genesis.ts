@@ -1,5 +1,6 @@
 //@ts-nocheck
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
+import { DenomBrandingRecord, DenomBrandingRecordAmino, DenomBrandingRecordSDKType } from "./denom_branding";
 import { DenomAuthority, DenomAuthorityAmino, DenomAuthoritySDKType } from "./denom_authority";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { GlobalDecoderRegistry } from "../../registry";
@@ -15,6 +16,7 @@ export interface GenesisState {
    */
   params: Params;
   factoryDenoms: GenesisDenom[];
+  denomBrandings: DenomBrandingRecord[];
 }
 export interface GenesisStateProtoMsg {
   typeUrl: "/bze.tokenfactory.GenesisState";
@@ -32,6 +34,7 @@ export interface GenesisStateAmino {
    */
   params: ParamsAmino;
   factory_denoms?: GenesisDenomAmino[];
+  denom_brandings?: DenomBrandingRecordAmino[];
 }
 export interface GenesisStateAminoMsg {
   type: "/bze.tokenfactory.GenesisState";
@@ -46,6 +49,7 @@ export interface GenesisStateAminoMsg {
 export interface GenesisStateSDKType {
   params: ParamsSDKType;
   factory_denoms: GenesisDenomSDKType[];
+  denom_brandings: DenomBrandingRecordSDKType[];
 }
 /**
  * GenesisDenom defines a tokenfactory denom that is defined within genesis
@@ -94,7 +98,8 @@ export interface GenesisDenomSDKType {
 function createBaseGenesisState(): GenesisState {
   return {
     params: Params.fromPartial({}),
-    factoryDenoms: []
+    factoryDenoms: [],
+    denomBrandings: []
   };
 }
 /**
@@ -106,13 +111,13 @@ function createBaseGenesisState(): GenesisState {
 export const GenesisState = {
   typeUrl: "/bze.tokenfactory.GenesisState",
   is(o: any): o is GenesisState {
-    return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.factoryDenoms) && (!o.factoryDenoms.length || GenesisDenom.is(o.factoryDenoms[0])));
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.factoryDenoms) && (!o.factoryDenoms.length || GenesisDenom.is(o.factoryDenoms[0])) && Array.isArray(o.denomBrandings) && (!o.denomBrandings.length || DenomBrandingRecord.is(o.denomBrandings[0])));
   },
   isSDK(o: any): o is GenesisStateSDKType {
-    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.factory_denoms) && (!o.factory_denoms.length || GenesisDenom.isSDK(o.factory_denoms[0])));
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.factory_denoms) && (!o.factory_denoms.length || GenesisDenom.isSDK(o.factory_denoms[0])) && Array.isArray(o.denom_brandings) && (!o.denom_brandings.length || DenomBrandingRecord.isSDK(o.denom_brandings[0])));
   },
   isAmino(o: any): o is GenesisStateAmino {
-    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.factory_denoms) && (!o.factory_denoms.length || GenesisDenom.isAmino(o.factory_denoms[0])));
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.factory_denoms) && (!o.factory_denoms.length || GenesisDenom.isAmino(o.factory_denoms[0])) && Array.isArray(o.denom_brandings) && (!o.denom_brandings.length || DenomBrandingRecord.isAmino(o.denom_brandings[0])));
   },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
@@ -120,6 +125,9 @@ export const GenesisState = {
     }
     for (const v of message.factoryDenoms) {
       GenesisDenom.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+    for (const v of message.denomBrandings) {
+      DenomBrandingRecord.encode(v!, writer.uint32(26).fork()).ldelim();
     }
     return writer;
   },
@@ -136,6 +144,9 @@ export const GenesisState = {
         case 2:
           message.factoryDenoms.push(GenesisDenom.decode(reader, reader.uint32()));
           break;
+        case 3:
+          message.denomBrandings.push(DenomBrandingRecord.decode(reader, reader.uint32()));
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -147,6 +158,7 @@ export const GenesisState = {
     const message = createBaseGenesisState();
     message.params = object.params !== undefined && object.params !== null ? Params.fromPartial(object.params) : undefined;
     message.factoryDenoms = object.factoryDenoms?.map(e => GenesisDenom.fromPartial(e)) || [];
+    message.denomBrandings = object.denomBrandings?.map(e => DenomBrandingRecord.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -155,6 +167,7 @@ export const GenesisState = {
       message.params = Params.fromAmino(object.params);
     }
     message.factoryDenoms = object.factory_denoms?.map(e => GenesisDenom.fromAmino(e)) || [];
+    message.denomBrandings = object.denom_brandings?.map(e => DenomBrandingRecord.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
@@ -164,6 +177,11 @@ export const GenesisState = {
       obj.factory_denoms = message.factoryDenoms.map(e => e ? GenesisDenom.toAmino(e) : undefined);
     } else {
       obj.factory_denoms = message.factoryDenoms;
+    }
+    if (message.denomBrandings) {
+      obj.denom_brandings = message.denomBrandings.map(e => e ? DenomBrandingRecord.toAmino(e) : undefined);
+    } else {
+      obj.denom_brandings = message.denomBrandings;
     }
     return obj;
   },
@@ -188,6 +206,7 @@ export const GenesisState = {
     }
     Params.registerTypeUrl();
     GenesisDenom.registerTypeUrl();
+    DenomBrandingRecord.registerTypeUrl();
   }
 };
 function createBaseGenesisDenom(): GenesisDenom {

@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { buildTx } from "../../helper-func-types";
-import { MsgUpdateParams, MsgCreateMarket, MsgCreateOrder, MsgCancelOrder, MsgFillOrders, MsgCreateLiquidityPool, MsgAddLiquidity, MsgRemoveLiquidity, MsgMultiSwap } from "./tx";
+import { MsgUpdateParams, MsgCreateMarket, MsgCreateOrder, MsgCancelOrder, MsgFillOrders, MsgCreateLiquidityPool, MsgAddLiquidity, MsgRemoveLiquidity, MsgMultiSwap, MsgHaltDenoms, MsgUnhaltDenoms } from "./tx";
 /**
  * UpdateParams defines a (governance) operation for updating the module
  * parameters. The authority defaults to the x/gov module account.
@@ -74,4 +74,22 @@ export const removeLiquidity = buildTx<MsgRemoveLiquidity>({
  */
 export const multiSwap = buildTx<MsgMultiSwap>({
   msg: MsgMultiSwap
+});
+/**
+ * HaltDenoms halts denoms on the DEX. Governance only (authority = the x/gov module account).
+ * @name haltDenoms
+ * @package bze.tradebin
+ * @see proto service: bze.tradebin.HaltDenoms
+ */
+export const haltDenoms = buildTx<MsgHaltDenoms>({
+  msg: MsgHaltDenoms
+});
+/**
+ * UnhaltDenoms lifts the halt on denoms. Governance only.
+ * @name unhaltDenoms
+ * @package bze.tradebin
+ * @see proto service: bze.tradebin.UnhaltDenoms
+ */
+export const unhaltDenoms = buildTx<MsgUnhaltDenoms>({
+  msg: MsgUnhaltDenoms
 });

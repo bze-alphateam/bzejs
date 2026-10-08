@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { TelescopeGeneratedType } from "../../types";
-import { MsgUpdateParams, MsgCreateMarket, MsgCreateOrder, MsgCancelOrder, MsgFillOrders, MsgCreateLiquidityPool, MsgAddLiquidity, MsgRemoveLiquidity, MsgMultiSwap } from "./tx";
-export const registry: ReadonlyArray<[string, TelescopeGeneratedType<any, any, any>]> = [["/bze.tradebin.MsgUpdateParams", MsgUpdateParams], ["/bze.tradebin.MsgCreateMarket", MsgCreateMarket], ["/bze.tradebin.MsgCreateOrder", MsgCreateOrder], ["/bze.tradebin.MsgCancelOrder", MsgCancelOrder], ["/bze.tradebin.MsgFillOrders", MsgFillOrders], ["/bze.tradebin.MsgCreateLiquidityPool", MsgCreateLiquidityPool], ["/bze.tradebin.MsgAddLiquidity", MsgAddLiquidity], ["/bze.tradebin.MsgRemoveLiquidity", MsgRemoveLiquidity], ["/bze.tradebin.MsgMultiSwap", MsgMultiSwap]];
+import { MsgUpdateParams, MsgCreateMarket, MsgCreateOrder, MsgCancelOrder, MsgFillOrders, MsgCreateLiquidityPool, MsgAddLiquidity, MsgRemoveLiquidity, MsgMultiSwap, MsgHaltDenoms, MsgUnhaltDenoms } from "./tx";
+export const registry: ReadonlyArray<[string, TelescopeGeneratedType<any, any, any>]> = [["/bze.tradebin.MsgUpdateParams", MsgUpdateParams], ["/bze.tradebin.MsgCreateMarket", MsgCreateMarket], ["/bze.tradebin.MsgCreateOrder", MsgCreateOrder], ["/bze.tradebin.MsgCancelOrder", MsgCancelOrder], ["/bze.tradebin.MsgFillOrders", MsgFillOrders], ["/bze.tradebin.MsgCreateLiquidityPool", MsgCreateLiquidityPool], ["/bze.tradebin.MsgAddLiquidity", MsgAddLiquidity], ["/bze.tradebin.MsgRemoveLiquidity", MsgRemoveLiquidity], ["/bze.tradebin.MsgMultiSwap", MsgMultiSwap], ["/bze.tradebin.MsgHaltDenoms", MsgHaltDenoms], ["/bze.tradebin.MsgUnhaltDenoms", MsgUnhaltDenoms]];
 export const MessageComposer = {
   encoded: {
     updateParams(value: MsgUpdateParams) {
@@ -56,6 +56,18 @@ export const MessageComposer = {
       return {
         typeUrl: "/bze.tradebin.MsgMultiSwap",
         value: MsgMultiSwap.encode(value).finish()
+      };
+    },
+    haltDenoms(value: MsgHaltDenoms) {
+      return {
+        typeUrl: "/bze.tradebin.MsgHaltDenoms",
+        value: MsgHaltDenoms.encode(value).finish()
+      };
+    },
+    unhaltDenoms(value: MsgUnhaltDenoms) {
+      return {
+        typeUrl: "/bze.tradebin.MsgUnhaltDenoms",
+        value: MsgUnhaltDenoms.encode(value).finish()
       };
     }
   },
@@ -113,6 +125,18 @@ export const MessageComposer = {
         typeUrl: "/bze.tradebin.MsgMultiSwap",
         value
       };
+    },
+    haltDenoms(value: MsgHaltDenoms) {
+      return {
+        typeUrl: "/bze.tradebin.MsgHaltDenoms",
+        value
+      };
+    },
+    unhaltDenoms(value: MsgUnhaltDenoms) {
+      return {
+        typeUrl: "/bze.tradebin.MsgUnhaltDenoms",
+        value
+      };
     }
   },
   fromPartial: {
@@ -168,6 +192,18 @@ export const MessageComposer = {
       return {
         typeUrl: "/bze.tradebin.MsgMultiSwap",
         value: MsgMultiSwap.fromPartial(value)
+      };
+    },
+    haltDenoms(value: MsgHaltDenoms) {
+      return {
+        typeUrl: "/bze.tradebin.MsgHaltDenoms",
+        value: MsgHaltDenoms.fromPartial(value)
+      };
+    },
+    unhaltDenoms(value: MsgUnhaltDenoms) {
+      return {
+        typeUrl: "/bze.tradebin.MsgUnhaltDenoms",
+        value: MsgUnhaltDenoms.fromPartial(value)
       };
     }
   }

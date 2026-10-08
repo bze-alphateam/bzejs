@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { StakingReward, StakingRewardAmino, StakingRewardSDKType, TradingReward, TradingRewardAmino, TradingRewardSDKType, StakingRewardParticipant, StakingRewardParticipantAmino, StakingRewardParticipantSDKType, PendingUnlockParticipant, PendingUnlockParticipantAmino, PendingUnlockParticipantSDKType, TradingRewardLeaderboard, TradingRewardLeaderboardAmino, TradingRewardLeaderboardSDKType, TradingRewardCandidate, TradingRewardCandidateAmino, TradingRewardCandidateSDKType, MarketIdTradingRewardId, MarketIdTradingRewardIdAmino, MarketIdTradingRewardIdSDKType, TradingRewardExpiration, TradingRewardExpirationAmino, TradingRewardExpirationSDKType, UnlockParticipantsQueue, UnlockParticipantsQueueAmino, UnlockParticipantsQueueSDKType, StakingRewardsDistributionQueue, StakingRewardsDistributionQueueAmino, StakingRewardsDistributionQueueSDKType, TradingRewardExpirationQueue, TradingRewardExpirationQueueAmino, TradingRewardExpirationQueueSDKType } from "./store";
+import { StakingReward, StakingRewardAmino, StakingRewardSDKType, TradingReward, TradingRewardAmino, TradingRewardSDKType, StakingRewardParticipant, StakingRewardParticipantAmino, StakingRewardParticipantSDKType, PendingUnlockParticipant, PendingUnlockParticipantAmino, PendingUnlockParticipantSDKType, TradingRewardLeaderboard, TradingRewardLeaderboardAmino, TradingRewardLeaderboardSDKType, TradingRewardCandidate, TradingRewardCandidateAmino, TradingRewardCandidateSDKType, MarketIdTradingRewardId, MarketIdTradingRewardIdAmino, MarketIdTradingRewardIdSDKType, TradingRewardExpiration, TradingRewardExpirationAmino, TradingRewardExpirationSDKType, UnlockParticipantsQueue, UnlockParticipantsQueueAmino, UnlockParticipantsQueueSDKType, StakingRewardsDistributionQueue, StakingRewardsDistributionQueueAmino, StakingRewardsDistributionQueueSDKType, TradingRewardExpirationQueue, TradingRewardExpirationQueueAmino, TradingRewardExpirationQueueSDKType, DenomReward, DenomRewardAmino, DenomRewardSDKType, DenomRewardPrize, DenomRewardPrizeAmino, DenomRewardPrizeSDKType, DenomRewardParticipant, DenomRewardParticipantAmino, DenomRewardParticipantSDKType, DenomRewardParticipantIndex, DenomRewardParticipantIndexAmino, DenomRewardParticipantIndexSDKType, DenomRewardSchedule, DenomRewardScheduleAmino, DenomRewardScheduleSDKType, DenomRewardsDistributionQueue, DenomRewardsDistributionQueueAmino, DenomRewardsDistributionQueueSDKType } from "./store";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { GlobalDecoderRegistry } from "../../registry";
 /**
@@ -29,6 +29,16 @@ export interface GenesisState {
   unlockParticipantsQueue?: UnlockParticipantsQueue;
   stakingRewardsDistributionQueue?: StakingRewardsDistributionQueue;
   tradingRewardExpirationQueue?: TradingRewardExpirationQueue;
+  /**
+   * Denom Rewards genesis (additive)
+   */
+  denomRewardList: DenomReward[];
+  denomRewardPrizeList: DenomRewardPrize[];
+  denomRewardParticipantList: DenomRewardParticipant[];
+  denomRewardParticipantIndexList: DenomRewardParticipantIndex[];
+  denomRewardScheduleList: DenomRewardSchedule[];
+  denomRewardScheduleCounter: bigint;
+  denomRewardsDistributionQueue?: DenomRewardsDistributionQueue;
 }
 export interface GenesisStateProtoMsg {
   typeUrl: "/bze.rewards.GenesisState";
@@ -60,6 +70,16 @@ export interface GenesisStateAmino {
   unlock_participants_queue?: UnlockParticipantsQueueAmino;
   staking_rewards_distribution_queue?: StakingRewardsDistributionQueueAmino;
   trading_reward_expiration_queue?: TradingRewardExpirationQueueAmino;
+  /**
+   * Denom Rewards genesis (additive)
+   */
+  denom_reward_list?: DenomRewardAmino[];
+  denom_reward_prize_list?: DenomRewardPrizeAmino[];
+  denom_reward_participant_list?: DenomRewardParticipantAmino[];
+  denom_reward_participant_index_list?: DenomRewardParticipantIndexAmino[];
+  denom_reward_schedule_list?: DenomRewardScheduleAmino[];
+  denom_reward_schedule_counter?: string;
+  denom_rewards_distribution_queue?: DenomRewardsDistributionQueueAmino;
 }
 export interface GenesisStateAminoMsg {
   type: "/bze.rewards.GenesisState";
@@ -88,6 +108,13 @@ export interface GenesisStateSDKType {
   unlock_participants_queue?: UnlockParticipantsQueueSDKType;
   staking_rewards_distribution_queue?: StakingRewardsDistributionQueueSDKType;
   trading_reward_expiration_queue?: TradingRewardExpirationQueueSDKType;
+  denom_reward_list: DenomRewardSDKType[];
+  denom_reward_prize_list: DenomRewardPrizeSDKType[];
+  denom_reward_participant_list: DenomRewardParticipantSDKType[];
+  denom_reward_participant_index_list: DenomRewardParticipantIndexSDKType[];
+  denom_reward_schedule_list: DenomRewardScheduleSDKType[];
+  denom_reward_schedule_counter: bigint;
+  denom_rewards_distribution_queue?: DenomRewardsDistributionQueueSDKType;
 }
 function createBaseGenesisState(): GenesisState {
   return {
@@ -106,7 +133,14 @@ function createBaseGenesisState(): GenesisState {
     activeTradingRewardExpirationList: [],
     unlockParticipantsQueue: undefined,
     stakingRewardsDistributionQueue: undefined,
-    tradingRewardExpirationQueue: undefined
+    tradingRewardExpirationQueue: undefined,
+    denomRewardList: [],
+    denomRewardPrizeList: [],
+    denomRewardParticipantList: [],
+    denomRewardParticipantIndexList: [],
+    denomRewardScheduleList: [],
+    denomRewardScheduleCounter: BigInt(0),
+    denomRewardsDistributionQueue: undefined
   };
 }
 /**
@@ -118,13 +152,13 @@ function createBaseGenesisState(): GenesisState {
 export const GenesisState = {
   typeUrl: "/bze.rewards.GenesisState",
   is(o: any): o is GenesisState {
-    return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.stakingRewardList) && (!o.stakingRewardList.length || StakingReward.is(o.stakingRewardList[0])) && typeof o.stakingRewardsCounter === "bigint" && typeof o.tradingRewardsCounter === "bigint" && Array.isArray(o.activeTradingRewardList) && (!o.activeTradingRewardList.length || TradingReward.is(o.activeTradingRewardList[0])) && Array.isArray(o.pendingTradingRewardList) && (!o.pendingTradingRewardList.length || TradingReward.is(o.pendingTradingRewardList[0])) && Array.isArray(o.stakingRewardParticipantList) && (!o.stakingRewardParticipantList.length || StakingRewardParticipant.is(o.stakingRewardParticipantList[0])) && Array.isArray(o.pendingUnlockParticipantList) && (!o.pendingUnlockParticipantList.length || PendingUnlockParticipant.is(o.pendingUnlockParticipantList[0])) && Array.isArray(o.tradingRewardLeaderboardList) && (!o.tradingRewardLeaderboardList.length || TradingRewardLeaderboard.is(o.tradingRewardLeaderboardList[0])) && Array.isArray(o.tradingRewardCandidateList) && (!o.tradingRewardCandidateList.length || TradingRewardCandidate.is(o.tradingRewardCandidateList[0])) && Array.isArray(o.marketIdTradingRewardIdList) && (!o.marketIdTradingRewardIdList.length || MarketIdTradingRewardId.is(o.marketIdTradingRewardIdList[0])) && Array.isArray(o.pendingTradingRewardExpirationList) && (!o.pendingTradingRewardExpirationList.length || TradingRewardExpiration.is(o.pendingTradingRewardExpirationList[0])) && Array.isArray(o.activeTradingRewardExpirationList) && (!o.activeTradingRewardExpirationList.length || TradingRewardExpiration.is(o.activeTradingRewardExpirationList[0])));
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.stakingRewardList) && (!o.stakingRewardList.length || StakingReward.is(o.stakingRewardList[0])) && typeof o.stakingRewardsCounter === "bigint" && typeof o.tradingRewardsCounter === "bigint" && Array.isArray(o.activeTradingRewardList) && (!o.activeTradingRewardList.length || TradingReward.is(o.activeTradingRewardList[0])) && Array.isArray(o.pendingTradingRewardList) && (!o.pendingTradingRewardList.length || TradingReward.is(o.pendingTradingRewardList[0])) && Array.isArray(o.stakingRewardParticipantList) && (!o.stakingRewardParticipantList.length || StakingRewardParticipant.is(o.stakingRewardParticipantList[0])) && Array.isArray(o.pendingUnlockParticipantList) && (!o.pendingUnlockParticipantList.length || PendingUnlockParticipant.is(o.pendingUnlockParticipantList[0])) && Array.isArray(o.tradingRewardLeaderboardList) && (!o.tradingRewardLeaderboardList.length || TradingRewardLeaderboard.is(o.tradingRewardLeaderboardList[0])) && Array.isArray(o.tradingRewardCandidateList) && (!o.tradingRewardCandidateList.length || TradingRewardCandidate.is(o.tradingRewardCandidateList[0])) && Array.isArray(o.marketIdTradingRewardIdList) && (!o.marketIdTradingRewardIdList.length || MarketIdTradingRewardId.is(o.marketIdTradingRewardIdList[0])) && Array.isArray(o.pendingTradingRewardExpirationList) && (!o.pendingTradingRewardExpirationList.length || TradingRewardExpiration.is(o.pendingTradingRewardExpirationList[0])) && Array.isArray(o.activeTradingRewardExpirationList) && (!o.activeTradingRewardExpirationList.length || TradingRewardExpiration.is(o.activeTradingRewardExpirationList[0])) && Array.isArray(o.denomRewardList) && (!o.denomRewardList.length || DenomReward.is(o.denomRewardList[0])) && Array.isArray(o.denomRewardPrizeList) && (!o.denomRewardPrizeList.length || DenomRewardPrize.is(o.denomRewardPrizeList[0])) && Array.isArray(o.denomRewardParticipantList) && (!o.denomRewardParticipantList.length || DenomRewardParticipant.is(o.denomRewardParticipantList[0])) && Array.isArray(o.denomRewardParticipantIndexList) && (!o.denomRewardParticipantIndexList.length || DenomRewardParticipantIndex.is(o.denomRewardParticipantIndexList[0])) && Array.isArray(o.denomRewardScheduleList) && (!o.denomRewardScheduleList.length || DenomRewardSchedule.is(o.denomRewardScheduleList[0])) && typeof o.denomRewardScheduleCounter === "bigint");
   },
   isSDK(o: any): o is GenesisStateSDKType {
-    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.staking_reward_list) && (!o.staking_reward_list.length || StakingReward.isSDK(o.staking_reward_list[0])) && typeof o.staking_rewards_counter === "bigint" && typeof o.trading_rewards_counter === "bigint" && Array.isArray(o.active_trading_reward_list) && (!o.active_trading_reward_list.length || TradingReward.isSDK(o.active_trading_reward_list[0])) && Array.isArray(o.pending_trading_reward_list) && (!o.pending_trading_reward_list.length || TradingReward.isSDK(o.pending_trading_reward_list[0])) && Array.isArray(o.staking_reward_participant_list) && (!o.staking_reward_participant_list.length || StakingRewardParticipant.isSDK(o.staking_reward_participant_list[0])) && Array.isArray(o.pending_unlock_participant_list) && (!o.pending_unlock_participant_list.length || PendingUnlockParticipant.isSDK(o.pending_unlock_participant_list[0])) && Array.isArray(o.trading_reward_leaderboard_list) && (!o.trading_reward_leaderboard_list.length || TradingRewardLeaderboard.isSDK(o.trading_reward_leaderboard_list[0])) && Array.isArray(o.trading_reward_candidate_list) && (!o.trading_reward_candidate_list.length || TradingRewardCandidate.isSDK(o.trading_reward_candidate_list[0])) && Array.isArray(o.market_id_trading_reward_id_list) && (!o.market_id_trading_reward_id_list.length || MarketIdTradingRewardId.isSDK(o.market_id_trading_reward_id_list[0])) && Array.isArray(o.pending_trading_reward_expiration_list) && (!o.pending_trading_reward_expiration_list.length || TradingRewardExpiration.isSDK(o.pending_trading_reward_expiration_list[0])) && Array.isArray(o.active_trading_reward_expiration_list) && (!o.active_trading_reward_expiration_list.length || TradingRewardExpiration.isSDK(o.active_trading_reward_expiration_list[0])));
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.staking_reward_list) && (!o.staking_reward_list.length || StakingReward.isSDK(o.staking_reward_list[0])) && typeof o.staking_rewards_counter === "bigint" && typeof o.trading_rewards_counter === "bigint" && Array.isArray(o.active_trading_reward_list) && (!o.active_trading_reward_list.length || TradingReward.isSDK(o.active_trading_reward_list[0])) && Array.isArray(o.pending_trading_reward_list) && (!o.pending_trading_reward_list.length || TradingReward.isSDK(o.pending_trading_reward_list[0])) && Array.isArray(o.staking_reward_participant_list) && (!o.staking_reward_participant_list.length || StakingRewardParticipant.isSDK(o.staking_reward_participant_list[0])) && Array.isArray(o.pending_unlock_participant_list) && (!o.pending_unlock_participant_list.length || PendingUnlockParticipant.isSDK(o.pending_unlock_participant_list[0])) && Array.isArray(o.trading_reward_leaderboard_list) && (!o.trading_reward_leaderboard_list.length || TradingRewardLeaderboard.isSDK(o.trading_reward_leaderboard_list[0])) && Array.isArray(o.trading_reward_candidate_list) && (!o.trading_reward_candidate_list.length || TradingRewardCandidate.isSDK(o.trading_reward_candidate_list[0])) && Array.isArray(o.market_id_trading_reward_id_list) && (!o.market_id_trading_reward_id_list.length || MarketIdTradingRewardId.isSDK(o.market_id_trading_reward_id_list[0])) && Array.isArray(o.pending_trading_reward_expiration_list) && (!o.pending_trading_reward_expiration_list.length || TradingRewardExpiration.isSDK(o.pending_trading_reward_expiration_list[0])) && Array.isArray(o.active_trading_reward_expiration_list) && (!o.active_trading_reward_expiration_list.length || TradingRewardExpiration.isSDK(o.active_trading_reward_expiration_list[0])) && Array.isArray(o.denom_reward_list) && (!o.denom_reward_list.length || DenomReward.isSDK(o.denom_reward_list[0])) && Array.isArray(o.denom_reward_prize_list) && (!o.denom_reward_prize_list.length || DenomRewardPrize.isSDK(o.denom_reward_prize_list[0])) && Array.isArray(o.denom_reward_participant_list) && (!o.denom_reward_participant_list.length || DenomRewardParticipant.isSDK(o.denom_reward_participant_list[0])) && Array.isArray(o.denom_reward_participant_index_list) && (!o.denom_reward_participant_index_list.length || DenomRewardParticipantIndex.isSDK(o.denom_reward_participant_index_list[0])) && Array.isArray(o.denom_reward_schedule_list) && (!o.denom_reward_schedule_list.length || DenomRewardSchedule.isSDK(o.denom_reward_schedule_list[0])) && typeof o.denom_reward_schedule_counter === "bigint");
   },
   isAmino(o: any): o is GenesisStateAmino {
-    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.staking_reward_list) && (!o.staking_reward_list.length || StakingReward.isAmino(o.staking_reward_list[0])) && typeof o.staking_rewards_counter === "bigint" && typeof o.trading_rewards_counter === "bigint" && Array.isArray(o.active_trading_reward_list) && (!o.active_trading_reward_list.length || TradingReward.isAmino(o.active_trading_reward_list[0])) && Array.isArray(o.pending_trading_reward_list) && (!o.pending_trading_reward_list.length || TradingReward.isAmino(o.pending_trading_reward_list[0])) && Array.isArray(o.staking_reward_participant_list) && (!o.staking_reward_participant_list.length || StakingRewardParticipant.isAmino(o.staking_reward_participant_list[0])) && Array.isArray(o.pending_unlock_participant_list) && (!o.pending_unlock_participant_list.length || PendingUnlockParticipant.isAmino(o.pending_unlock_participant_list[0])) && Array.isArray(o.trading_reward_leaderboard_list) && (!o.trading_reward_leaderboard_list.length || TradingRewardLeaderboard.isAmino(o.trading_reward_leaderboard_list[0])) && Array.isArray(o.trading_reward_candidate_list) && (!o.trading_reward_candidate_list.length || TradingRewardCandidate.isAmino(o.trading_reward_candidate_list[0])) && Array.isArray(o.market_id_trading_reward_id_list) && (!o.market_id_trading_reward_id_list.length || MarketIdTradingRewardId.isAmino(o.market_id_trading_reward_id_list[0])) && Array.isArray(o.pending_trading_reward_expiration_list) && (!o.pending_trading_reward_expiration_list.length || TradingRewardExpiration.isAmino(o.pending_trading_reward_expiration_list[0])) && Array.isArray(o.active_trading_reward_expiration_list) && (!o.active_trading_reward_expiration_list.length || TradingRewardExpiration.isAmino(o.active_trading_reward_expiration_list[0])));
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.staking_reward_list) && (!o.staking_reward_list.length || StakingReward.isAmino(o.staking_reward_list[0])) && typeof o.staking_rewards_counter === "bigint" && typeof o.trading_rewards_counter === "bigint" && Array.isArray(o.active_trading_reward_list) && (!o.active_trading_reward_list.length || TradingReward.isAmino(o.active_trading_reward_list[0])) && Array.isArray(o.pending_trading_reward_list) && (!o.pending_trading_reward_list.length || TradingReward.isAmino(o.pending_trading_reward_list[0])) && Array.isArray(o.staking_reward_participant_list) && (!o.staking_reward_participant_list.length || StakingRewardParticipant.isAmino(o.staking_reward_participant_list[0])) && Array.isArray(o.pending_unlock_participant_list) && (!o.pending_unlock_participant_list.length || PendingUnlockParticipant.isAmino(o.pending_unlock_participant_list[0])) && Array.isArray(o.trading_reward_leaderboard_list) && (!o.trading_reward_leaderboard_list.length || TradingRewardLeaderboard.isAmino(o.trading_reward_leaderboard_list[0])) && Array.isArray(o.trading_reward_candidate_list) && (!o.trading_reward_candidate_list.length || TradingRewardCandidate.isAmino(o.trading_reward_candidate_list[0])) && Array.isArray(o.market_id_trading_reward_id_list) && (!o.market_id_trading_reward_id_list.length || MarketIdTradingRewardId.isAmino(o.market_id_trading_reward_id_list[0])) && Array.isArray(o.pending_trading_reward_expiration_list) && (!o.pending_trading_reward_expiration_list.length || TradingRewardExpiration.isAmino(o.pending_trading_reward_expiration_list[0])) && Array.isArray(o.active_trading_reward_expiration_list) && (!o.active_trading_reward_expiration_list.length || TradingRewardExpiration.isAmino(o.active_trading_reward_expiration_list[0])) && Array.isArray(o.denom_reward_list) && (!o.denom_reward_list.length || DenomReward.isAmino(o.denom_reward_list[0])) && Array.isArray(o.denom_reward_prize_list) && (!o.denom_reward_prize_list.length || DenomRewardPrize.isAmino(o.denom_reward_prize_list[0])) && Array.isArray(o.denom_reward_participant_list) && (!o.denom_reward_participant_list.length || DenomRewardParticipant.isAmino(o.denom_reward_participant_list[0])) && Array.isArray(o.denom_reward_participant_index_list) && (!o.denom_reward_participant_index_list.length || DenomRewardParticipantIndex.isAmino(o.denom_reward_participant_index_list[0])) && Array.isArray(o.denom_reward_schedule_list) && (!o.denom_reward_schedule_list.length || DenomRewardSchedule.isAmino(o.denom_reward_schedule_list[0])) && typeof o.denom_reward_schedule_counter === "bigint");
   },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
@@ -174,6 +208,27 @@ export const GenesisState = {
     }
     if (message.tradingRewardExpirationQueue !== undefined) {
       TradingRewardExpirationQueue.encode(message.tradingRewardExpirationQueue, writer.uint32(130).fork()).ldelim();
+    }
+    for (const v of message.denomRewardList) {
+      DenomReward.encode(v!, writer.uint32(138).fork()).ldelim();
+    }
+    for (const v of message.denomRewardPrizeList) {
+      DenomRewardPrize.encode(v!, writer.uint32(146).fork()).ldelim();
+    }
+    for (const v of message.denomRewardParticipantList) {
+      DenomRewardParticipant.encode(v!, writer.uint32(154).fork()).ldelim();
+    }
+    for (const v of message.denomRewardParticipantIndexList) {
+      DenomRewardParticipantIndex.encode(v!, writer.uint32(162).fork()).ldelim();
+    }
+    for (const v of message.denomRewardScheduleList) {
+      DenomRewardSchedule.encode(v!, writer.uint32(170).fork()).ldelim();
+    }
+    if (message.denomRewardScheduleCounter !== BigInt(0)) {
+      writer.uint32(176).uint64(message.denomRewardScheduleCounter);
+    }
+    if (message.denomRewardsDistributionQueue !== undefined) {
+      DenomRewardsDistributionQueue.encode(message.denomRewardsDistributionQueue, writer.uint32(186).fork()).ldelim();
     }
     return writer;
   },
@@ -232,6 +287,27 @@ export const GenesisState = {
         case 16:
           message.tradingRewardExpirationQueue = TradingRewardExpirationQueue.decode(reader, reader.uint32());
           break;
+        case 17:
+          message.denomRewardList.push(DenomReward.decode(reader, reader.uint32()));
+          break;
+        case 18:
+          message.denomRewardPrizeList.push(DenomRewardPrize.decode(reader, reader.uint32()));
+          break;
+        case 19:
+          message.denomRewardParticipantList.push(DenomRewardParticipant.decode(reader, reader.uint32()));
+          break;
+        case 20:
+          message.denomRewardParticipantIndexList.push(DenomRewardParticipantIndex.decode(reader, reader.uint32()));
+          break;
+        case 21:
+          message.denomRewardScheduleList.push(DenomRewardSchedule.decode(reader, reader.uint32()));
+          break;
+        case 22:
+          message.denomRewardScheduleCounter = reader.uint64();
+          break;
+        case 23:
+          message.denomRewardsDistributionQueue = DenomRewardsDistributionQueue.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -257,6 +333,13 @@ export const GenesisState = {
     message.unlockParticipantsQueue = object.unlockParticipantsQueue !== undefined && object.unlockParticipantsQueue !== null ? UnlockParticipantsQueue.fromPartial(object.unlockParticipantsQueue) : undefined;
     message.stakingRewardsDistributionQueue = object.stakingRewardsDistributionQueue !== undefined && object.stakingRewardsDistributionQueue !== null ? StakingRewardsDistributionQueue.fromPartial(object.stakingRewardsDistributionQueue) : undefined;
     message.tradingRewardExpirationQueue = object.tradingRewardExpirationQueue !== undefined && object.tradingRewardExpirationQueue !== null ? TradingRewardExpirationQueue.fromPartial(object.tradingRewardExpirationQueue) : undefined;
+    message.denomRewardList = object.denomRewardList?.map(e => DenomReward.fromPartial(e)) || [];
+    message.denomRewardPrizeList = object.denomRewardPrizeList?.map(e => DenomRewardPrize.fromPartial(e)) || [];
+    message.denomRewardParticipantList = object.denomRewardParticipantList?.map(e => DenomRewardParticipant.fromPartial(e)) || [];
+    message.denomRewardParticipantIndexList = object.denomRewardParticipantIndexList?.map(e => DenomRewardParticipantIndex.fromPartial(e)) || [];
+    message.denomRewardScheduleList = object.denomRewardScheduleList?.map(e => DenomRewardSchedule.fromPartial(e)) || [];
+    message.denomRewardScheduleCounter = object.denomRewardScheduleCounter !== undefined && object.denomRewardScheduleCounter !== null ? BigInt(object.denomRewardScheduleCounter.toString()) : BigInt(0);
+    message.denomRewardsDistributionQueue = object.denomRewardsDistributionQueue !== undefined && object.denomRewardsDistributionQueue !== null ? DenomRewardsDistributionQueue.fromPartial(object.denomRewardsDistributionQueue) : undefined;
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -288,6 +371,17 @@ export const GenesisState = {
     }
     if (object.trading_reward_expiration_queue !== undefined && object.trading_reward_expiration_queue !== null) {
       message.tradingRewardExpirationQueue = TradingRewardExpirationQueue.fromAmino(object.trading_reward_expiration_queue);
+    }
+    message.denomRewardList = object.denom_reward_list?.map(e => DenomReward.fromAmino(e)) || [];
+    message.denomRewardPrizeList = object.denom_reward_prize_list?.map(e => DenomRewardPrize.fromAmino(e)) || [];
+    message.denomRewardParticipantList = object.denom_reward_participant_list?.map(e => DenomRewardParticipant.fromAmino(e)) || [];
+    message.denomRewardParticipantIndexList = object.denom_reward_participant_index_list?.map(e => DenomRewardParticipantIndex.fromAmino(e)) || [];
+    message.denomRewardScheduleList = object.denom_reward_schedule_list?.map(e => DenomRewardSchedule.fromAmino(e)) || [];
+    if (object.denom_reward_schedule_counter !== undefined && object.denom_reward_schedule_counter !== null) {
+      message.denomRewardScheduleCounter = BigInt(object.denom_reward_schedule_counter);
+    }
+    if (object.denom_rewards_distribution_queue !== undefined && object.denom_rewards_distribution_queue !== null) {
+      message.denomRewardsDistributionQueue = DenomRewardsDistributionQueue.fromAmino(object.denom_rewards_distribution_queue);
     }
     return message;
   },
@@ -349,6 +443,33 @@ export const GenesisState = {
     obj.unlock_participants_queue = message.unlockParticipantsQueue ? UnlockParticipantsQueue.toAmino(message.unlockParticipantsQueue) : undefined;
     obj.staking_rewards_distribution_queue = message.stakingRewardsDistributionQueue ? StakingRewardsDistributionQueue.toAmino(message.stakingRewardsDistributionQueue) : undefined;
     obj.trading_reward_expiration_queue = message.tradingRewardExpirationQueue ? TradingRewardExpirationQueue.toAmino(message.tradingRewardExpirationQueue) : undefined;
+    if (message.denomRewardList) {
+      obj.denom_reward_list = message.denomRewardList.map(e => e ? DenomReward.toAmino(e) : undefined);
+    } else {
+      obj.denom_reward_list = message.denomRewardList;
+    }
+    if (message.denomRewardPrizeList) {
+      obj.denom_reward_prize_list = message.denomRewardPrizeList.map(e => e ? DenomRewardPrize.toAmino(e) : undefined);
+    } else {
+      obj.denom_reward_prize_list = message.denomRewardPrizeList;
+    }
+    if (message.denomRewardParticipantList) {
+      obj.denom_reward_participant_list = message.denomRewardParticipantList.map(e => e ? DenomRewardParticipant.toAmino(e) : undefined);
+    } else {
+      obj.denom_reward_participant_list = message.denomRewardParticipantList;
+    }
+    if (message.denomRewardParticipantIndexList) {
+      obj.denom_reward_participant_index_list = message.denomRewardParticipantIndexList.map(e => e ? DenomRewardParticipantIndex.toAmino(e) : undefined);
+    } else {
+      obj.denom_reward_participant_index_list = message.denomRewardParticipantIndexList;
+    }
+    if (message.denomRewardScheduleList) {
+      obj.denom_reward_schedule_list = message.denomRewardScheduleList.map(e => e ? DenomRewardSchedule.toAmino(e) : undefined);
+    } else {
+      obj.denom_reward_schedule_list = message.denomRewardScheduleList;
+    }
+    obj.denom_reward_schedule_counter = message.denomRewardScheduleCounter !== BigInt(0) ? message.denomRewardScheduleCounter?.toString() : undefined;
+    obj.denom_rewards_distribution_queue = message.denomRewardsDistributionQueue ? DenomRewardsDistributionQueue.toAmino(message.denomRewardsDistributionQueue) : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -382,5 +503,11 @@ export const GenesisState = {
     UnlockParticipantsQueue.registerTypeUrl();
     StakingRewardsDistributionQueue.registerTypeUrl();
     TradingRewardExpirationQueue.registerTypeUrl();
+    DenomReward.registerTypeUrl();
+    DenomRewardPrize.registerTypeUrl();
+    DenomRewardParticipant.registerTypeUrl();
+    DenomRewardParticipantIndex.registerTypeUrl();
+    DenomRewardSchedule.registerTypeUrl();
+    DenomRewardsDistributionQueue.registerTypeUrl();
   }
 };

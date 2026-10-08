@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { buildQuery } from "../../helper-func-types";
-import { QueryParamsRequest, QueryParamsResponse, QueryMarketRequest, QueryMarketResponse, QueryAllMarketsRequest, QueryAllMarketsResponse, QueryAssetMarketsRequest, QueryAssetMarketsResponse, QueryUserMarketOrdersRequest, QueryUserMarketOrdersResponse, QueryMarketAggregatedOrdersRequest, QueryMarketAggregatedOrdersResponse, QueryMarketHistoryRequest, QueryMarketHistoryResponse, QueryMarketOrderRequest, QueryMarketOrderResponse, QueryAllUserDustRequest, QueryAllUserDustResponse, QueryAllLiquidityPoolsRequest, QueryAllLiquidityPoolsResponse, QueryLiquidityPoolRequest, QueryLiquidityPoolResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, QueryMarketRequest, QueryMarketResponse, QueryAllMarketsRequest, QueryAllMarketsResponse, QueryAssetMarketsRequest, QueryAssetMarketsResponse, QueryUserMarketOrdersRequest, QueryUserMarketOrdersResponse, QueryMarketAggregatedOrdersRequest, QueryMarketAggregatedOrdersResponse, QueryMarketHistoryRequest, QueryMarketHistoryResponse, QueryMarketOrderRequest, QueryMarketOrderResponse, QueryAllUserDustRequest, QueryAllUserDustResponse, QueryAllLiquidityPoolsRequest, QueryAllLiquidityPoolsResponse, QueryLiquidityPoolRequest, QueryLiquidityPoolResponse, QueryHaltedDenomsRequest, QueryHaltedDenomsResponse, QueryDenomHaltedRequest, QueryDenomHaltedResponse } from "./query";
 /**
  * Parameters queries the parameters of the module.
  * @name getParams
@@ -143,4 +143,31 @@ export const getLiquidityPool = buildQuery<QueryLiquidityPoolRequest, QueryLiqui
   service: "bze.tradebin.Query",
   method: "LiquidityPool",
   deps: [QueryLiquidityPoolRequest, QueryLiquidityPoolResponse]
+});
+/**
+ * Queries the denoms governance halted on the DEX, paginated, in store (byte) order.
+ * @name getHaltedDenoms
+ * @package bze.tradebin
+ * @see proto service: bze.tradebin.HaltedDenoms
+ */
+export const getHaltedDenoms = buildQuery<QueryHaltedDenomsRequest, QueryHaltedDenomsResponse>({
+  encode: QueryHaltedDenomsRequest.encode,
+  decode: QueryHaltedDenomsResponse.decode,
+  service: "bze.tradebin.Query",
+  method: "HaltedDenoms",
+  deps: [QueryHaltedDenomsRequest, QueryHaltedDenomsResponse]
+});
+/**
+ * Queries whether one denom is halted. Over REST the denom is passed as the `denom` query
+ * parameter (factory/ibc denoms contain "/", so it cannot be a path segment).
+ * @name getDenomHalted
+ * @package bze.tradebin
+ * @see proto service: bze.tradebin.DenomHalted
+ */
+export const getDenomHalted = buildQuery<QueryDenomHaltedRequest, QueryDenomHaltedResponse>({
+  encode: QueryDenomHaltedRequest.encode,
+  decode: QueryDenomHaltedResponse.decode,
+  service: "bze.tradebin.Query",
+  method: "DenomHalted",
+  deps: [QueryDenomHaltedRequest, QueryDenomHaltedResponse]
 });

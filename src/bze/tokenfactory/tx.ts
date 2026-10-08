@@ -1,5 +1,6 @@
 //@ts-nocheck
 import { Params, ParamsAmino, ParamsSDKType, Metadata, MetadataAmino, MetadataSDKType } from "../../cosmos/bank/v1beta1/bank";
+import { DenomBranding, DenomBrandingAmino, DenomBrandingSDKType } from "./denom_branding";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { GlobalDecoderRegistry } from "../../registry";
 /**
@@ -398,6 +399,78 @@ export interface MsgSetDenomMetadataResponseAminoMsg {
  * @see proto type: bze.tokenfactory.MsgSetDenomMetadataResponse
  */
 export interface MsgSetDenomMetadataResponseSDKType {}
+/**
+ * @name MsgSetDenomBranding
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomBranding
+ */
+export interface MsgSetDenomBranding {
+  creator: string;
+  denom: string;
+  /**
+   * branding is the full package to store. A nil/empty branding clears any
+   * stored branding for the denom.
+   */
+  branding?: DenomBranding;
+}
+export interface MsgSetDenomBrandingProtoMsg {
+  typeUrl: "/bze.tokenfactory.MsgSetDenomBranding";
+  value: Uint8Array;
+}
+/**
+ * @name MsgSetDenomBrandingAmino
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomBranding
+ */
+export interface MsgSetDenomBrandingAmino {
+  creator?: string;
+  denom?: string;
+  /**
+   * branding is the full package to store. A nil/empty branding clears any
+   * stored branding for the denom.
+   */
+  branding?: DenomBrandingAmino;
+}
+export interface MsgSetDenomBrandingAminoMsg {
+  type: "bze/x/tokenfactory/MsgSetDenomBranding";
+  value: MsgSetDenomBrandingAmino;
+}
+/**
+ * @name MsgSetDenomBrandingSDKType
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomBranding
+ */
+export interface MsgSetDenomBrandingSDKType {
+  creator: string;
+  denom: string;
+  branding?: DenomBrandingSDKType;
+}
+/**
+ * @name MsgSetDenomBrandingResponse
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomBrandingResponse
+ */
+export interface MsgSetDenomBrandingResponse {}
+export interface MsgSetDenomBrandingResponseProtoMsg {
+  typeUrl: "/bze.tokenfactory.MsgSetDenomBrandingResponse";
+  value: Uint8Array;
+}
+/**
+ * @name MsgSetDenomBrandingResponseAmino
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomBrandingResponse
+ */
+export interface MsgSetDenomBrandingResponseAmino {}
+export interface MsgSetDenomBrandingResponseAminoMsg {
+  type: "/bze.tokenfactory.MsgSetDenomBrandingResponse";
+  value: MsgSetDenomBrandingResponseAmino;
+}
+/**
+ * @name MsgSetDenomBrandingResponseSDKType
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomBrandingResponse
+ */
+export interface MsgSetDenomBrandingResponseSDKType {}
 function createBaseMsgUpdateParams(): MsgUpdateParams {
   return {
     authority: "",
@@ -1404,6 +1477,185 @@ export const MsgSetDenomMetadataResponse = {
     return {
       typeUrl: "/bze.tokenfactory.MsgSetDenomMetadataResponse",
       value: MsgSetDenomMetadataResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgSetDenomBranding(): MsgSetDenomBranding {
+  return {
+    creator: "",
+    denom: "",
+    branding: undefined
+  };
+}
+/**
+ * @name MsgSetDenomBranding
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomBranding
+ */
+export const MsgSetDenomBranding = {
+  typeUrl: "/bze.tokenfactory.MsgSetDenomBranding",
+  aminoType: "bze/x/tokenfactory/MsgSetDenomBranding",
+  is(o: any): o is MsgSetDenomBranding {
+    return o && (o.$typeUrl === MsgSetDenomBranding.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  isSDK(o: any): o is MsgSetDenomBrandingSDKType {
+    return o && (o.$typeUrl === MsgSetDenomBranding.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  isAmino(o: any): o is MsgSetDenomBrandingAmino {
+    return o && (o.$typeUrl === MsgSetDenomBranding.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  encode(message: MsgSetDenomBranding, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.denom !== "") {
+      writer.uint32(18).string(message.denom);
+    }
+    if (message.branding !== undefined) {
+      DenomBranding.encode(message.branding, writer.uint32(26).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetDenomBranding {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetDenomBranding();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.denom = reader.string();
+          break;
+        case 3:
+          message.branding = DenomBranding.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSetDenomBranding>): MsgSetDenomBranding {
+    const message = createBaseMsgSetDenomBranding();
+    message.creator = object.creator ?? "";
+    message.denom = object.denom ?? "";
+    message.branding = object.branding !== undefined && object.branding !== null ? DenomBranding.fromPartial(object.branding) : undefined;
+    return message;
+  },
+  fromAmino(object: MsgSetDenomBrandingAmino): MsgSetDenomBranding {
+    const message = createBaseMsgSetDenomBranding();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    if (object.branding !== undefined && object.branding !== null) {
+      message.branding = DenomBranding.fromAmino(object.branding);
+    }
+    return message;
+  },
+  toAmino(message: MsgSetDenomBranding): MsgSetDenomBrandingAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    obj.branding = message.branding ? DenomBranding.toAmino(message.branding) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetDenomBrandingAminoMsg): MsgSetDenomBranding {
+    return MsgSetDenomBranding.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgSetDenomBranding): MsgSetDenomBrandingAminoMsg {
+    return {
+      type: "bze/x/tokenfactory/MsgSetDenomBranding",
+      value: MsgSetDenomBranding.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgSetDenomBrandingProtoMsg): MsgSetDenomBranding {
+    return MsgSetDenomBranding.decode(message.value);
+  },
+  toProto(message: MsgSetDenomBranding): Uint8Array {
+    return MsgSetDenomBranding.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetDenomBranding): MsgSetDenomBrandingProtoMsg {
+    return {
+      typeUrl: "/bze.tokenfactory.MsgSetDenomBranding",
+      value: MsgSetDenomBranding.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(MsgSetDenomBranding.typeUrl)) {
+      return;
+    }
+    DenomBranding.registerTypeUrl();
+  }
+};
+function createBaseMsgSetDenomBrandingResponse(): MsgSetDenomBrandingResponse {
+  return {};
+}
+/**
+ * @name MsgSetDenomBrandingResponse
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomBrandingResponse
+ */
+export const MsgSetDenomBrandingResponse = {
+  typeUrl: "/bze.tokenfactory.MsgSetDenomBrandingResponse",
+  is(o: any): o is MsgSetDenomBrandingResponse {
+    return o && o.$typeUrl === MsgSetDenomBrandingResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSetDenomBrandingResponseSDKType {
+    return o && o.$typeUrl === MsgSetDenomBrandingResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSetDenomBrandingResponseAmino {
+    return o && o.$typeUrl === MsgSetDenomBrandingResponse.typeUrl;
+  },
+  encode(_: MsgSetDenomBrandingResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetDenomBrandingResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetDenomBrandingResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgSetDenomBrandingResponse>): MsgSetDenomBrandingResponse {
+    const message = createBaseMsgSetDenomBrandingResponse();
+    return message;
+  },
+  fromAmino(_: MsgSetDenomBrandingResponseAmino): MsgSetDenomBrandingResponse {
+    const message = createBaseMsgSetDenomBrandingResponse();
+    return message;
+  },
+  toAmino(_: MsgSetDenomBrandingResponse): MsgSetDenomBrandingResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetDenomBrandingResponseAminoMsg): MsgSetDenomBrandingResponse {
+    return MsgSetDenomBrandingResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgSetDenomBrandingResponseProtoMsg): MsgSetDenomBrandingResponse {
+    return MsgSetDenomBrandingResponse.decode(message.value);
+  },
+  toProto(message: MsgSetDenomBrandingResponse): Uint8Array {
+    return MsgSetDenomBrandingResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetDenomBrandingResponse): MsgSetDenomBrandingResponseProtoMsg {
+    return {
+      typeUrl: "/bze.tokenfactory.MsgSetDenomBrandingResponse",
+      value: MsgSetDenomBrandingResponse.encode(message).finish()
     };
   },
   registerTypeUrl() {}

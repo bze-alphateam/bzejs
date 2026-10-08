@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { buildTx } from "../../helper-func-types";
-import { MsgUpdateParams, MsgCreateStakingReward, MsgUpdateStakingReward, MsgJoinStaking, MsgExitStaking, MsgClaimStakingRewards, MsgDistributeStakingRewards, MsgCreateTradingReward, MsgActivateTradingReward } from "./tx";
+import { MsgUpdateParams, MsgCreateStakingReward, MsgUpdateStakingReward, MsgJoinStaking, MsgExitStaking, MsgClaimStakingRewards, MsgDistributeStakingRewards, MsgCreateTradingReward, MsgActivateTradingReward, MsgDeleteStakingReward, MsgCreateDenomReward, MsgJoinDenomReward, MsgExitDenomReward, MsgClaimDenomRewards, MsgCreateDenomRewardSchedule, MsgUpdateDenomRewardSchedule, MsgDistributeDenomRewards } from "./tx";
 /**
  * UpdateParams defines a (governance) operation for updating the module
  * parameters. The authority defaults to the x/gov module account.
@@ -74,4 +74,68 @@ export const createTradingReward = buildTx<MsgCreateTradingReward>({
  */
 export const activateTradingReward = buildTx<MsgActivateTradingReward>({
   msg: MsgActivateTradingReward
+});
+/**
+ * @name deleteStakingReward
+ * @package bze.rewards
+ * @see proto service: bze.rewards.DeleteStakingReward
+ */
+export const deleteStakingReward = buildTx<MsgDeleteStakingReward>({
+  msg: MsgDeleteStakingReward
+});
+/**
+ * @name createDenomReward
+ * @package bze.rewards
+ * @see proto service: bze.rewards.CreateDenomReward
+ */
+export const createDenomReward = buildTx<MsgCreateDenomReward>({
+  msg: MsgCreateDenomReward
+});
+/**
+ * @name joinDenomReward
+ * @package bze.rewards
+ * @see proto service: bze.rewards.JoinDenomReward
+ */
+export const joinDenomReward = buildTx<MsgJoinDenomReward>({
+  msg: MsgJoinDenomReward
+});
+/**
+ * @name exitDenomReward
+ * @package bze.rewards
+ * @see proto service: bze.rewards.ExitDenomReward
+ */
+export const exitDenomReward = buildTx<MsgExitDenomReward>({
+  msg: MsgExitDenomReward
+});
+/**
+ * @name claimDenomRewards
+ * @package bze.rewards
+ * @see proto service: bze.rewards.ClaimDenomRewards
+ */
+export const claimDenomRewards = buildTx<MsgClaimDenomRewards>({
+  msg: MsgClaimDenomRewards
+});
+/**
+ * @name createDenomRewardSchedule
+ * @package bze.rewards
+ * @see proto service: bze.rewards.CreateDenomRewardSchedule
+ */
+export const createDenomRewardSchedule = buildTx<MsgCreateDenomRewardSchedule>({
+  msg: MsgCreateDenomRewardSchedule
+});
+/**
+ * @name updateDenomRewardSchedule
+ * @package bze.rewards
+ * @see proto service: bze.rewards.UpdateDenomRewardSchedule
+ */
+export const updateDenomRewardSchedule = buildTx<MsgUpdateDenomRewardSchedule>({
+  msg: MsgUpdateDenomRewardSchedule
+});
+/**
+ * @name distributeDenomRewards
+ * @package bze.rewards
+ * @see proto service: bze.rewards.DistributeDenomRewards
+ */
+export const distributeDenomRewards = buildTx<MsgDistributeDenomRewards>({
+  msg: MsgDistributeDenomRewards
 });

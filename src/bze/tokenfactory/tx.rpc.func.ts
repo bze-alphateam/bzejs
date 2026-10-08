@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { buildTx } from "../../helper-func-types";
-import { MsgUpdateParams, MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata } from "./tx";
+import { MsgUpdateParams, MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata, MsgSetDenomBranding } from "./tx";
 /**
  * UpdateParams defines a (governance) operation for updating the module
  * parameters. The authority defaults to the x/gov module account.
@@ -50,4 +50,12 @@ export const changeAdmin = buildTx<MsgChangeAdmin>({
  */
 export const setDenomMetadata = buildTx<MsgSetDenomMetadata>({
   msg: MsgSetDenomMetadata
+});
+/**
+ * @name setDenomBranding
+ * @package bze.tokenfactory
+ * @see proto service: bze.tokenfactory.SetDenomBranding
+ */
+export const setDenomBranding = buildTx<MsgSetDenomBranding>({
+  msg: MsgSetDenomBranding
 });

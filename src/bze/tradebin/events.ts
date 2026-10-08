@@ -13,6 +13,12 @@ export interface OrderCreateMessageEvent {
   orderType: string;
   amount: string;
   price: string;
+  /**
+   * queue message id, zero-filled 24 digits. Not reused while the message is
+   * queued: the counter resets only once the queue is empty, and a message can
+   * be processed in a later block than its tx (per-block limit, retry on error).
+   */
+  messageId: string;
 }
 export interface OrderCreateMessageEventProtoMsg {
   typeUrl: "/bze.tradebin.OrderCreateMessageEvent";
@@ -29,6 +35,12 @@ export interface OrderCreateMessageEventAmino {
   order_type?: string;
   amount?: string;
   price?: string;
+  /**
+   * queue message id, zero-filled 24 digits. Not reused while the message is
+   * queued: the counter resets only once the queue is empty, and a message can
+   * be processed in a later block than its tx (per-block limit, retry on error).
+   */
+  message_id?: string;
 }
 export interface OrderCreateMessageEventAminoMsg {
   type: "/bze.tradebin.OrderCreateMessageEvent";
@@ -45,6 +57,7 @@ export interface OrderCreateMessageEventSDKType {
   order_type: string;
   amount: string;
   price: string;
+  message_id: string;
 }
 /**
  * @name OrderCancelMessageEvent
@@ -56,6 +69,12 @@ export interface OrderCancelMessageEvent {
   marketId: string;
   orderId: string;
   orderType: string;
+  /**
+   * queue message id, zero-filled 24 digits. Not reused while the message is
+   * queued: the counter resets only once the queue is empty, and a message can
+   * be processed in a later block than its tx (per-block limit, retry on error).
+   */
+  messageId: string;
 }
 export interface OrderCancelMessageEventProtoMsg {
   typeUrl: "/bze.tradebin.OrderCancelMessageEvent";
@@ -71,6 +90,12 @@ export interface OrderCancelMessageEventAmino {
   marketId?: string;
   orderId?: string;
   order_type?: string;
+  /**
+   * queue message id, zero-filled 24 digits. Not reused while the message is
+   * queued: the counter resets only once the queue is empty, and a message can
+   * be processed in a later block than its tx (per-block limit, retry on error).
+   */
+  message_id?: string;
 }
 export interface OrderCancelMessageEventAminoMsg {
   type: "/bze.tradebin.OrderCancelMessageEvent";
@@ -86,6 +111,7 @@ export interface OrderCancelMessageEventSDKType {
   marketId: string;
   orderId: string;
   order_type: string;
+  message_id: string;
 }
 /**
  * @name MarketCreatedEvent
@@ -138,6 +164,12 @@ export interface OrderExecutedEvent {
   price: string;
   maker: string;
   taker: string;
+  /**
+   * queue message id, zero-filled 24 digits. Not reused while the message is
+   * queued: the counter resets only once the queue is empty, and a message can
+   * be processed in a later block than its tx (per-block limit, retry on error).
+   */
+  messageId: string;
 }
 export interface OrderExecutedEventProtoMsg {
   typeUrl: "/bze.tradebin.OrderExecutedEvent";
@@ -156,6 +188,12 @@ export interface OrderExecutedEventAmino {
   price?: string;
   maker?: string;
   taker?: string;
+  /**
+   * queue message id, zero-filled 24 digits. Not reused while the message is
+   * queued: the counter resets only once the queue is empty, and a message can
+   * be processed in a later block than its tx (per-block limit, retry on error).
+   */
+  message_id?: string;
 }
 export interface OrderExecutedEventAminoMsg {
   type: "/bze.tradebin.OrderExecutedEvent";
@@ -174,6 +212,7 @@ export interface OrderExecutedEventSDKType {
   price: string;
   maker: string;
   taker: string;
+  message_id: string;
 }
 /**
  * @name OrderCanceledEvent
@@ -187,6 +226,12 @@ export interface OrderCanceledEvent {
   amount: string;
   price: string;
   owner: string;
+  /**
+   * queue message id, zero-filled 24 digits. Not reused while the message is
+   * queued: the counter resets only once the queue is empty, and a message can
+   * be processed in a later block than its tx (per-block limit, retry on error).
+   */
+  messageId: string;
 }
 export interface OrderCanceledEventProtoMsg {
   typeUrl: "/bze.tradebin.OrderCanceledEvent";
@@ -204,6 +249,12 @@ export interface OrderCanceledEventAmino {
   amount?: string;
   price?: string;
   owner?: string;
+  /**
+   * queue message id, zero-filled 24 digits. Not reused while the message is
+   * queued: the counter resets only once the queue is empty, and a message can
+   * be processed in a later block than its tx (per-block limit, retry on error).
+   */
+  message_id?: string;
 }
 export interface OrderCanceledEventAminoMsg {
   type: "/bze.tradebin.OrderCanceledEvent";
@@ -221,6 +272,7 @@ export interface OrderCanceledEventSDKType {
   amount: string;
   price: string;
   owner: string;
+  message_id: string;
 }
 /**
  * @name OrderSavedEvent
@@ -234,6 +286,12 @@ export interface OrderSavedEvent {
   amount: string;
   price: string;
   owner: string;
+  /**
+   * queue message id, zero-filled 24 digits. Not reused while the message is
+   * queued: the counter resets only once the queue is empty, and a message can
+   * be processed in a later block than its tx (per-block limit, retry on error).
+   */
+  messageId: string;
 }
 export interface OrderSavedEventProtoMsg {
   typeUrl: "/bze.tradebin.OrderSavedEvent";
@@ -251,6 +309,12 @@ export interface OrderSavedEventAmino {
   amount?: string;
   price?: string;
   owner?: string;
+  /**
+   * queue message id, zero-filled 24 digits. Not reused while the message is
+   * queued: the counter resets only once the queue is empty, and a message can
+   * be processed in a later block than its tx (per-block limit, retry on error).
+   */
+  message_id?: string;
 }
 export interface OrderSavedEventAminoMsg {
   type: "/bze.tradebin.OrderSavedEvent";
@@ -268,6 +332,7 @@ export interface OrderSavedEventSDKType {
   amount: string;
   price: string;
   owner: string;
+  message_id: string;
 }
 /**
  * @name PoolCreatedEvent
@@ -278,6 +343,11 @@ export interface PoolCreatedEvent {
   creator: string;
   base: string;
   quote: string;
+  /**
+   * lp_denom is the denom of the pool's LP token ("ulp/<hash>"). Emitted so
+   * off-chain consumers don't have to derive it from base/quote.
+   */
+  lpDenom: string;
 }
 export interface PoolCreatedEventProtoMsg {
   typeUrl: "/bze.tradebin.PoolCreatedEvent";
@@ -292,6 +362,11 @@ export interface PoolCreatedEventAmino {
   creator?: string;
   base?: string;
   quote?: string;
+  /**
+   * lp_denom is the denom of the pool's LP token ("ulp/<hash>"). Emitted so
+   * off-chain consumers don't have to derive it from base/quote.
+   */
+  lp_denom?: string;
 }
 export interface PoolCreatedEventAminoMsg {
   type: "/bze.tradebin.PoolCreatedEvent";
@@ -306,6 +381,7 @@ export interface PoolCreatedEventSDKType {
   creator: string;
   base: string;
   quote: string;
+  lp_denom: string;
 }
 /**
  * @name LiquidityAddedEvent
@@ -445,13 +521,90 @@ export interface SwapEventSDKType {
   out: CoinSDKType;
   pool_id: string;
 }
+/**
+ * DenomHaltedEvent is emitted for every denom a MsgHaltDenoms proposal actually halts (not for denoms
+ * that were already halted).
+ * @name DenomHaltedEvent
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.DenomHaltedEvent
+ */
+export interface DenomHaltedEvent {
+  denom: string;
+}
+export interface DenomHaltedEventProtoMsg {
+  typeUrl: "/bze.tradebin.DenomHaltedEvent";
+  value: Uint8Array;
+}
+/**
+ * DenomHaltedEvent is emitted for every denom a MsgHaltDenoms proposal actually halts (not for denoms
+ * that were already halted).
+ * @name DenomHaltedEventAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.DenomHaltedEvent
+ */
+export interface DenomHaltedEventAmino {
+  denom?: string;
+}
+export interface DenomHaltedEventAminoMsg {
+  type: "/bze.tradebin.DenomHaltedEvent";
+  value: DenomHaltedEventAmino;
+}
+/**
+ * DenomHaltedEvent is emitted for every denom a MsgHaltDenoms proposal actually halts (not for denoms
+ * that were already halted).
+ * @name DenomHaltedEventSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.DenomHaltedEvent
+ */
+export interface DenomHaltedEventSDKType {
+  denom: string;
+}
+/**
+ * DenomUnhaltedEvent is emitted for every denom a MsgUnhaltDenoms proposal actually un-halts (not for
+ * denoms that were not halted).
+ * @name DenomUnhaltedEvent
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.DenomUnhaltedEvent
+ */
+export interface DenomUnhaltedEvent {
+  denom: string;
+}
+export interface DenomUnhaltedEventProtoMsg {
+  typeUrl: "/bze.tradebin.DenomUnhaltedEvent";
+  value: Uint8Array;
+}
+/**
+ * DenomUnhaltedEvent is emitted for every denom a MsgUnhaltDenoms proposal actually un-halts (not for
+ * denoms that were not halted).
+ * @name DenomUnhaltedEventAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.DenomUnhaltedEvent
+ */
+export interface DenomUnhaltedEventAmino {
+  denom?: string;
+}
+export interface DenomUnhaltedEventAminoMsg {
+  type: "/bze.tradebin.DenomUnhaltedEvent";
+  value: DenomUnhaltedEventAmino;
+}
+/**
+ * DenomUnhaltedEvent is emitted for every denom a MsgUnhaltDenoms proposal actually un-halts (not for
+ * denoms that were not halted).
+ * @name DenomUnhaltedEventSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.DenomUnhaltedEvent
+ */
+export interface DenomUnhaltedEventSDKType {
+  denom: string;
+}
 function createBaseOrderCreateMessageEvent(): OrderCreateMessageEvent {
   return {
     creator: "",
     marketId: "",
     orderType: "",
     amount: "",
-    price: ""
+    price: "",
+    messageId: ""
   };
 }
 /**
@@ -462,13 +615,13 @@ function createBaseOrderCreateMessageEvent(): OrderCreateMessageEvent {
 export const OrderCreateMessageEvent = {
   typeUrl: "/bze.tradebin.OrderCreateMessageEvent",
   is(o: any): o is OrderCreateMessageEvent {
-    return o && (o.$typeUrl === OrderCreateMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.amount === "string" && typeof o.price === "string");
+    return o && (o.$typeUrl === OrderCreateMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.messageId === "string");
   },
   isSDK(o: any): o is OrderCreateMessageEventSDKType {
-    return o && (o.$typeUrl === OrderCreateMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string");
+    return o && (o.$typeUrl === OrderCreateMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.message_id === "string");
   },
   isAmino(o: any): o is OrderCreateMessageEventAmino {
-    return o && (o.$typeUrl === OrderCreateMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string");
+    return o && (o.$typeUrl === OrderCreateMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.message_id === "string");
   },
   encode(message: OrderCreateMessageEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.creator !== "") {
@@ -485,6 +638,9 @@ export const OrderCreateMessageEvent = {
     }
     if (message.price !== "") {
       writer.uint32(42).string(message.price);
+    }
+    if (message.messageId !== "") {
+      writer.uint32(50).string(message.messageId);
     }
     return writer;
   },
@@ -510,6 +666,9 @@ export const OrderCreateMessageEvent = {
         case 5:
           message.price = reader.string();
           break;
+        case 6:
+          message.messageId = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -524,6 +683,7 @@ export const OrderCreateMessageEvent = {
     message.orderType = object.orderType ?? "";
     message.amount = object.amount ?? "";
     message.price = object.price ?? "";
+    message.messageId = object.messageId ?? "";
     return message;
   },
   fromAmino(object: OrderCreateMessageEventAmino): OrderCreateMessageEvent {
@@ -543,6 +703,9 @@ export const OrderCreateMessageEvent = {
     if (object.price !== undefined && object.price !== null) {
       message.price = object.price;
     }
+    if (object.message_id !== undefined && object.message_id !== null) {
+      message.messageId = object.message_id;
+    }
     return message;
   },
   toAmino(message: OrderCreateMessageEvent): OrderCreateMessageEventAmino {
@@ -552,6 +715,7 @@ export const OrderCreateMessageEvent = {
     obj.order_type = message.orderType === "" ? undefined : message.orderType;
     obj.amount = message.amount === "" ? undefined : message.amount;
     obj.price = message.price === "" ? undefined : message.price;
+    obj.message_id = message.messageId === "" ? undefined : message.messageId;
     return obj;
   },
   fromAminoMsg(object: OrderCreateMessageEventAminoMsg): OrderCreateMessageEvent {
@@ -576,7 +740,8 @@ function createBaseOrderCancelMessageEvent(): OrderCancelMessageEvent {
     creator: "",
     marketId: "",
     orderId: "",
-    orderType: ""
+    orderType: "",
+    messageId: ""
   };
 }
 /**
@@ -587,13 +752,13 @@ function createBaseOrderCancelMessageEvent(): OrderCancelMessageEvent {
 export const OrderCancelMessageEvent = {
   typeUrl: "/bze.tradebin.OrderCancelMessageEvent",
   is(o: any): o is OrderCancelMessageEvent {
-    return o && (o.$typeUrl === OrderCancelMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.marketId === "string" && typeof o.orderId === "string" && typeof o.orderType === "string");
+    return o && (o.$typeUrl === OrderCancelMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.marketId === "string" && typeof o.orderId === "string" && typeof o.orderType === "string" && typeof o.messageId === "string");
   },
   isSDK(o: any): o is OrderCancelMessageEventSDKType {
-    return o && (o.$typeUrl === OrderCancelMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.marketId === "string" && typeof o.orderId === "string" && typeof o.order_type === "string");
+    return o && (o.$typeUrl === OrderCancelMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.marketId === "string" && typeof o.orderId === "string" && typeof o.order_type === "string" && typeof o.message_id === "string");
   },
   isAmino(o: any): o is OrderCancelMessageEventAmino {
-    return o && (o.$typeUrl === OrderCancelMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.marketId === "string" && typeof o.orderId === "string" && typeof o.order_type === "string");
+    return o && (o.$typeUrl === OrderCancelMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.marketId === "string" && typeof o.orderId === "string" && typeof o.order_type === "string" && typeof o.message_id === "string");
   },
   encode(message: OrderCancelMessageEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.creator !== "") {
@@ -607,6 +772,9 @@ export const OrderCancelMessageEvent = {
     }
     if (message.orderType !== "") {
       writer.uint32(34).string(message.orderType);
+    }
+    if (message.messageId !== "") {
+      writer.uint32(42).string(message.messageId);
     }
     return writer;
   },
@@ -629,6 +797,9 @@ export const OrderCancelMessageEvent = {
         case 4:
           message.orderType = reader.string();
           break;
+        case 5:
+          message.messageId = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -642,6 +813,7 @@ export const OrderCancelMessageEvent = {
     message.marketId = object.marketId ?? "";
     message.orderId = object.orderId ?? "";
     message.orderType = object.orderType ?? "";
+    message.messageId = object.messageId ?? "";
     return message;
   },
   fromAmino(object: OrderCancelMessageEventAmino): OrderCancelMessageEvent {
@@ -658,6 +830,9 @@ export const OrderCancelMessageEvent = {
     if (object.order_type !== undefined && object.order_type !== null) {
       message.orderType = object.order_type;
     }
+    if (object.message_id !== undefined && object.message_id !== null) {
+      message.messageId = object.message_id;
+    }
     return message;
   },
   toAmino(message: OrderCancelMessageEvent): OrderCancelMessageEventAmino {
@@ -666,6 +841,7 @@ export const OrderCancelMessageEvent = {
     obj.marketId = message.marketId === "" ? undefined : message.marketId;
     obj.orderId = message.orderId === "" ? undefined : message.orderId;
     obj.order_type = message.orderType === "" ? undefined : message.orderType;
+    obj.message_id = message.messageId === "" ? undefined : message.messageId;
     return obj;
   },
   fromAminoMsg(object: OrderCancelMessageEventAminoMsg): OrderCancelMessageEvent {
@@ -795,7 +971,8 @@ function createBaseOrderExecutedEvent(): OrderExecutedEvent {
     amount: "",
     price: "",
     maker: "",
-    taker: ""
+    taker: "",
+    messageId: ""
   };
 }
 /**
@@ -806,13 +983,13 @@ function createBaseOrderExecutedEvent(): OrderExecutedEvent {
 export const OrderExecutedEvent = {
   typeUrl: "/bze.tradebin.OrderExecutedEvent",
   is(o: any): o is OrderExecutedEvent {
-    return o && (o.$typeUrl === OrderExecutedEvent.typeUrl || typeof o.id === "string" && typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.maker === "string" && typeof o.taker === "string");
+    return o && (o.$typeUrl === OrderExecutedEvent.typeUrl || typeof o.id === "string" && typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.maker === "string" && typeof o.taker === "string" && typeof o.messageId === "string");
   },
   isSDK(o: any): o is OrderExecutedEventSDKType {
-    return o && (o.$typeUrl === OrderExecutedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.maker === "string" && typeof o.taker === "string");
+    return o && (o.$typeUrl === OrderExecutedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.maker === "string" && typeof o.taker === "string" && typeof o.message_id === "string");
   },
   isAmino(o: any): o is OrderExecutedEventAmino {
-    return o && (o.$typeUrl === OrderExecutedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.maker === "string" && typeof o.taker === "string");
+    return o && (o.$typeUrl === OrderExecutedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.maker === "string" && typeof o.taker === "string" && typeof o.message_id === "string");
   },
   encode(message: OrderExecutedEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.id !== "") {
@@ -835,6 +1012,9 @@ export const OrderExecutedEvent = {
     }
     if (message.taker !== "") {
       writer.uint32(58).string(message.taker);
+    }
+    if (message.messageId !== "") {
+      writer.uint32(66).string(message.messageId);
     }
     return writer;
   },
@@ -866,6 +1046,9 @@ export const OrderExecutedEvent = {
         case 7:
           message.taker = reader.string();
           break;
+        case 8:
+          message.messageId = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -882,6 +1065,7 @@ export const OrderExecutedEvent = {
     message.price = object.price ?? "";
     message.maker = object.maker ?? "";
     message.taker = object.taker ?? "";
+    message.messageId = object.messageId ?? "";
     return message;
   },
   fromAmino(object: OrderExecutedEventAmino): OrderExecutedEvent {
@@ -907,6 +1091,9 @@ export const OrderExecutedEvent = {
     if (object.taker !== undefined && object.taker !== null) {
       message.taker = object.taker;
     }
+    if (object.message_id !== undefined && object.message_id !== null) {
+      message.messageId = object.message_id;
+    }
     return message;
   },
   toAmino(message: OrderExecutedEvent): OrderExecutedEventAmino {
@@ -918,6 +1105,7 @@ export const OrderExecutedEvent = {
     obj.price = message.price === "" ? undefined : message.price;
     obj.maker = message.maker === "" ? undefined : message.maker;
     obj.taker = message.taker === "" ? undefined : message.taker;
+    obj.message_id = message.messageId === "" ? undefined : message.messageId;
     return obj;
   },
   fromAminoMsg(object: OrderExecutedEventAminoMsg): OrderExecutedEvent {
@@ -944,7 +1132,8 @@ function createBaseOrderCanceledEvent(): OrderCanceledEvent {
     orderType: "",
     amount: "",
     price: "",
-    owner: ""
+    owner: "",
+    messageId: ""
   };
 }
 /**
@@ -955,13 +1144,13 @@ function createBaseOrderCanceledEvent(): OrderCanceledEvent {
 export const OrderCanceledEvent = {
   typeUrl: "/bze.tradebin.OrderCanceledEvent",
   is(o: any): o is OrderCanceledEvent {
-    return o && (o.$typeUrl === OrderCanceledEvent.typeUrl || typeof o.id === "string" && typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string");
+    return o && (o.$typeUrl === OrderCanceledEvent.typeUrl || typeof o.id === "string" && typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.messageId === "string");
   },
   isSDK(o: any): o is OrderCanceledEventSDKType {
-    return o && (o.$typeUrl === OrderCanceledEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string");
+    return o && (o.$typeUrl === OrderCanceledEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.message_id === "string");
   },
   isAmino(o: any): o is OrderCanceledEventAmino {
-    return o && (o.$typeUrl === OrderCanceledEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string");
+    return o && (o.$typeUrl === OrderCanceledEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.message_id === "string");
   },
   encode(message: OrderCanceledEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.id !== "") {
@@ -981,6 +1170,9 @@ export const OrderCanceledEvent = {
     }
     if (message.owner !== "") {
       writer.uint32(50).string(message.owner);
+    }
+    if (message.messageId !== "") {
+      writer.uint32(58).string(message.messageId);
     }
     return writer;
   },
@@ -1009,6 +1201,9 @@ export const OrderCanceledEvent = {
         case 6:
           message.owner = reader.string();
           break;
+        case 7:
+          message.messageId = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1024,6 +1219,7 @@ export const OrderCanceledEvent = {
     message.amount = object.amount ?? "";
     message.price = object.price ?? "";
     message.owner = object.owner ?? "";
+    message.messageId = object.messageId ?? "";
     return message;
   },
   fromAmino(object: OrderCanceledEventAmino): OrderCanceledEvent {
@@ -1046,6 +1242,9 @@ export const OrderCanceledEvent = {
     if (object.owner !== undefined && object.owner !== null) {
       message.owner = object.owner;
     }
+    if (object.message_id !== undefined && object.message_id !== null) {
+      message.messageId = object.message_id;
+    }
     return message;
   },
   toAmino(message: OrderCanceledEvent): OrderCanceledEventAmino {
@@ -1056,6 +1255,7 @@ export const OrderCanceledEvent = {
     obj.amount = message.amount === "" ? undefined : message.amount;
     obj.price = message.price === "" ? undefined : message.price;
     obj.owner = message.owner === "" ? undefined : message.owner;
+    obj.message_id = message.messageId === "" ? undefined : message.messageId;
     return obj;
   },
   fromAminoMsg(object: OrderCanceledEventAminoMsg): OrderCanceledEvent {
@@ -1082,7 +1282,8 @@ function createBaseOrderSavedEvent(): OrderSavedEvent {
     orderType: "",
     amount: "",
     price: "",
-    owner: ""
+    owner: "",
+    messageId: ""
   };
 }
 /**
@@ -1093,13 +1294,13 @@ function createBaseOrderSavedEvent(): OrderSavedEvent {
 export const OrderSavedEvent = {
   typeUrl: "/bze.tradebin.OrderSavedEvent",
   is(o: any): o is OrderSavedEvent {
-    return o && (o.$typeUrl === OrderSavedEvent.typeUrl || typeof o.id === "string" && typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string");
+    return o && (o.$typeUrl === OrderSavedEvent.typeUrl || typeof o.id === "string" && typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.messageId === "string");
   },
   isSDK(o: any): o is OrderSavedEventSDKType {
-    return o && (o.$typeUrl === OrderSavedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string");
+    return o && (o.$typeUrl === OrderSavedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.message_id === "string");
   },
   isAmino(o: any): o is OrderSavedEventAmino {
-    return o && (o.$typeUrl === OrderSavedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string");
+    return o && (o.$typeUrl === OrderSavedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.message_id === "string");
   },
   encode(message: OrderSavedEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.id !== "") {
@@ -1119,6 +1320,9 @@ export const OrderSavedEvent = {
     }
     if (message.owner !== "") {
       writer.uint32(50).string(message.owner);
+    }
+    if (message.messageId !== "") {
+      writer.uint32(58).string(message.messageId);
     }
     return writer;
   },
@@ -1147,6 +1351,9 @@ export const OrderSavedEvent = {
         case 6:
           message.owner = reader.string();
           break;
+        case 7:
+          message.messageId = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1162,6 +1369,7 @@ export const OrderSavedEvent = {
     message.amount = object.amount ?? "";
     message.price = object.price ?? "";
     message.owner = object.owner ?? "";
+    message.messageId = object.messageId ?? "";
     return message;
   },
   fromAmino(object: OrderSavedEventAmino): OrderSavedEvent {
@@ -1184,6 +1392,9 @@ export const OrderSavedEvent = {
     if (object.owner !== undefined && object.owner !== null) {
       message.owner = object.owner;
     }
+    if (object.message_id !== undefined && object.message_id !== null) {
+      message.messageId = object.message_id;
+    }
     return message;
   },
   toAmino(message: OrderSavedEvent): OrderSavedEventAmino {
@@ -1194,6 +1405,7 @@ export const OrderSavedEvent = {
     obj.amount = message.amount === "" ? undefined : message.amount;
     obj.price = message.price === "" ? undefined : message.price;
     obj.owner = message.owner === "" ? undefined : message.owner;
+    obj.message_id = message.messageId === "" ? undefined : message.messageId;
     return obj;
   },
   fromAminoMsg(object: OrderSavedEventAminoMsg): OrderSavedEvent {
@@ -1217,7 +1429,8 @@ function createBasePoolCreatedEvent(): PoolCreatedEvent {
   return {
     creator: "",
     base: "",
-    quote: ""
+    quote: "",
+    lpDenom: ""
   };
 }
 /**
@@ -1228,13 +1441,13 @@ function createBasePoolCreatedEvent(): PoolCreatedEvent {
 export const PoolCreatedEvent = {
   typeUrl: "/bze.tradebin.PoolCreatedEvent",
   is(o: any): o is PoolCreatedEvent {
-    return o && (o.$typeUrl === PoolCreatedEvent.typeUrl || typeof o.creator === "string" && typeof o.base === "string" && typeof o.quote === "string");
+    return o && (o.$typeUrl === PoolCreatedEvent.typeUrl || typeof o.creator === "string" && typeof o.base === "string" && typeof o.quote === "string" && typeof o.lpDenom === "string");
   },
   isSDK(o: any): o is PoolCreatedEventSDKType {
-    return o && (o.$typeUrl === PoolCreatedEvent.typeUrl || typeof o.creator === "string" && typeof o.base === "string" && typeof o.quote === "string");
+    return o && (o.$typeUrl === PoolCreatedEvent.typeUrl || typeof o.creator === "string" && typeof o.base === "string" && typeof o.quote === "string" && typeof o.lp_denom === "string");
   },
   isAmino(o: any): o is PoolCreatedEventAmino {
-    return o && (o.$typeUrl === PoolCreatedEvent.typeUrl || typeof o.creator === "string" && typeof o.base === "string" && typeof o.quote === "string");
+    return o && (o.$typeUrl === PoolCreatedEvent.typeUrl || typeof o.creator === "string" && typeof o.base === "string" && typeof o.quote === "string" && typeof o.lp_denom === "string");
   },
   encode(message: PoolCreatedEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.creator !== "") {
@@ -1245,6 +1458,9 @@ export const PoolCreatedEvent = {
     }
     if (message.quote !== "") {
       writer.uint32(26).string(message.quote);
+    }
+    if (message.lpDenom !== "") {
+      writer.uint32(34).string(message.lpDenom);
     }
     return writer;
   },
@@ -1264,6 +1480,9 @@ export const PoolCreatedEvent = {
         case 3:
           message.quote = reader.string();
           break;
+        case 4:
+          message.lpDenom = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1276,6 +1495,7 @@ export const PoolCreatedEvent = {
     message.creator = object.creator ?? "";
     message.base = object.base ?? "";
     message.quote = object.quote ?? "";
+    message.lpDenom = object.lpDenom ?? "";
     return message;
   },
   fromAmino(object: PoolCreatedEventAmino): PoolCreatedEvent {
@@ -1289,6 +1509,9 @@ export const PoolCreatedEvent = {
     if (object.quote !== undefined && object.quote !== null) {
       message.quote = object.quote;
     }
+    if (object.lp_denom !== undefined && object.lp_denom !== null) {
+      message.lpDenom = object.lp_denom;
+    }
     return message;
   },
   toAmino(message: PoolCreatedEvent): PoolCreatedEventAmino {
@@ -1296,6 +1519,7 @@ export const PoolCreatedEvent = {
     obj.creator = message.creator === "" ? undefined : message.creator;
     obj.base = message.base === "" ? undefined : message.base;
     obj.quote = message.quote === "" ? undefined : message.quote;
+    obj.lp_denom = message.lpDenom === "" ? undefined : message.lpDenom;
     return obj;
   },
   fromAminoMsg(object: PoolCreatedEventAminoMsg): PoolCreatedEvent {
@@ -1673,4 +1897,164 @@ export const SwapEvent = {
     }
     Coin.registerTypeUrl();
   }
+};
+function createBaseDenomHaltedEvent(): DenomHaltedEvent {
+  return {
+    denom: ""
+  };
+}
+/**
+ * DenomHaltedEvent is emitted for every denom a MsgHaltDenoms proposal actually halts (not for denoms
+ * that were already halted).
+ * @name DenomHaltedEvent
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.DenomHaltedEvent
+ */
+export const DenomHaltedEvent = {
+  typeUrl: "/bze.tradebin.DenomHaltedEvent",
+  is(o: any): o is DenomHaltedEvent {
+    return o && (o.$typeUrl === DenomHaltedEvent.typeUrl || typeof o.denom === "string");
+  },
+  isSDK(o: any): o is DenomHaltedEventSDKType {
+    return o && (o.$typeUrl === DenomHaltedEvent.typeUrl || typeof o.denom === "string");
+  },
+  isAmino(o: any): o is DenomHaltedEventAmino {
+    return o && (o.$typeUrl === DenomHaltedEvent.typeUrl || typeof o.denom === "string");
+  },
+  encode(message: DenomHaltedEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.denom !== "") {
+      writer.uint32(10).string(message.denom);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): DenomHaltedEvent {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDenomHaltedEvent();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.denom = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<DenomHaltedEvent>): DenomHaltedEvent {
+    const message = createBaseDenomHaltedEvent();
+    message.denom = object.denom ?? "";
+    return message;
+  },
+  fromAmino(object: DenomHaltedEventAmino): DenomHaltedEvent {
+    const message = createBaseDenomHaltedEvent();
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    return message;
+  },
+  toAmino(message: DenomHaltedEvent): DenomHaltedEventAmino {
+    const obj: any = {};
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    return obj;
+  },
+  fromAminoMsg(object: DenomHaltedEventAminoMsg): DenomHaltedEvent {
+    return DenomHaltedEvent.fromAmino(object.value);
+  },
+  fromProtoMsg(message: DenomHaltedEventProtoMsg): DenomHaltedEvent {
+    return DenomHaltedEvent.decode(message.value);
+  },
+  toProto(message: DenomHaltedEvent): Uint8Array {
+    return DenomHaltedEvent.encode(message).finish();
+  },
+  toProtoMsg(message: DenomHaltedEvent): DenomHaltedEventProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.DenomHaltedEvent",
+      value: DenomHaltedEvent.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseDenomUnhaltedEvent(): DenomUnhaltedEvent {
+  return {
+    denom: ""
+  };
+}
+/**
+ * DenomUnhaltedEvent is emitted for every denom a MsgUnhaltDenoms proposal actually un-halts (not for
+ * denoms that were not halted).
+ * @name DenomUnhaltedEvent
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.DenomUnhaltedEvent
+ */
+export const DenomUnhaltedEvent = {
+  typeUrl: "/bze.tradebin.DenomUnhaltedEvent",
+  is(o: any): o is DenomUnhaltedEvent {
+    return o && (o.$typeUrl === DenomUnhaltedEvent.typeUrl || typeof o.denom === "string");
+  },
+  isSDK(o: any): o is DenomUnhaltedEventSDKType {
+    return o && (o.$typeUrl === DenomUnhaltedEvent.typeUrl || typeof o.denom === "string");
+  },
+  isAmino(o: any): o is DenomUnhaltedEventAmino {
+    return o && (o.$typeUrl === DenomUnhaltedEvent.typeUrl || typeof o.denom === "string");
+  },
+  encode(message: DenomUnhaltedEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.denom !== "") {
+      writer.uint32(10).string(message.denom);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): DenomUnhaltedEvent {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDenomUnhaltedEvent();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.denom = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<DenomUnhaltedEvent>): DenomUnhaltedEvent {
+    const message = createBaseDenomUnhaltedEvent();
+    message.denom = object.denom ?? "";
+    return message;
+  },
+  fromAmino(object: DenomUnhaltedEventAmino): DenomUnhaltedEvent {
+    const message = createBaseDenomUnhaltedEvent();
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    return message;
+  },
+  toAmino(message: DenomUnhaltedEvent): DenomUnhaltedEventAmino {
+    const obj: any = {};
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    return obj;
+  },
+  fromAminoMsg(object: DenomUnhaltedEventAminoMsg): DenomUnhaltedEvent {
+    return DenomUnhaltedEvent.fromAmino(object.value);
+  },
+  fromProtoMsg(message: DenomUnhaltedEventProtoMsg): DenomUnhaltedEvent {
+    return DenomUnhaltedEvent.decode(message.value);
+  },
+  toProto(message: DenomUnhaltedEvent): Uint8Array {
+    return DenomUnhaltedEvent.encode(message).finish();
+  },
+  toProtoMsg(message: DenomUnhaltedEvent): DenomUnhaltedEventProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.DenomUnhaltedEvent",
+      value: DenomUnhaltedEvent.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
 };
