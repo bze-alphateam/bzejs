@@ -1,5 +1,55 @@
 # Changelog
 
+## v4.0.0
+
+Protobuf files compatible with **BZE v8.3.0**. This is a breaking change release: modules the chain removed are gone, some tradebin fields were renamed, and the cosmos-sdk and ibc-go protos now follow the versions the chain runs (cosmos-sdk v0.53.8, ibc-go v10.7.0).
+
+### Breaking Changes
+
+- **Removed `cosmos.group`** (`cosmos/group/v1` and its module config). The chain no longer runs `x/group` or `x/nft` and rejects their messages.
+- **TradeBin: order queue removed.** `QueueMessage` and the genesis field `queue_message_list` are gone. `OrderCreateMessageEvent` and `OrderCancelMessageEvent` are removed.
+- **TradeBin: renamed v2 params.** `orderBookExtraGasWindow` → `priceLevelOwnersWindow`, `orderBookQueueExtraGas` → `priceLevelExtraGas`, `orderBookPerBlockMessages` → `maxFillsPerOrder`; `orderBookQueueMessageScanExtraGas` (field 12) is removed.
+- **TradeBin: order events.** `message_id` is replaced by `order_id` on the order events.
+- **IBC transfer:** `MsgTransfer.use_aliasing` is gone (not part of ibc-go v10.7.0).
+- **Rate limiting:** ibc-go's `ibc.applications.rate_limiting.v1` package is replaced by `ratelimit.v1`, the ibc-apps rate-limiting module the chain runs. ibc-go's `packet_forward_middleware` protos are removed too.
+- cosmos-sdk protos are pinned to v0.53.8 (they previously followed `release/v0.50.x`), and ibc-go protos to v10.7.0.
+
+### New Features
+
+#### DAO module (`bze.dao`)
+- New module: messages `MsgCreateDao`, `MsgAdminExecute`, `MsgNominateAdmin`, `MsgAcceptAdminNomination`, `MsgWithdrawAdminNomination`, `MsgSubmitProposal`, `MsgVote`, `MsgCancelProposal`, `MsgSettleProposal`, `MsgCleanupProposal`, `MsgUpdateDaoConfig`, `MsgUpdateMetadata`, `MsgUpdateElectorate`, `MsgUpdateMembers`, `MsgUpdateParams`
+- Queries: `Params`, `Dao`, `DaoByAddress`, `DaoController`, `Proposal`, `Ballot`, `VotingPower`, `JoinRecord`, `Daos`, `DaosByAdmin`, `Proposals`, `Ballots`
+
+#### Guardian module (`bze.guardian.v1`)
+- New module: messages `MsgTightenRateLimit`, `MsgBlockDenom`, `MsgUnblockDenom`, `MsgDisableMessages`, `MsgHaltTradingDenoms`, `MsgHaltChain`, `MsgPauseAutomation`, `MsgResumeAutomation`, `MsgCloseChannel`, `MsgReopenChannel`, `MsgUpdateParams`
+- Queries: `Params`, `BlockedDenoms`, `AutomationPaused`, `ClosedChannels`
+
+#### Rate limiting (`ratelimit.v1`)
+- Governance messages `MsgAddRateLimit`, `MsgUpdateRateLimit`, `MsgRemoveRateLimit`, `MsgResetRateLimit`
+- Queries (LCD under `/Stride-Labs/ibc-rate-limiting/ratelimit/`): `AllRateLimits`, `RateLimit`, `RateLimitsByChainId`, `RateLimitsByChannelOrClientId`, `AllBlacklistedDenoms`, `AllWhitelistedAddresses`
+
+#### TokenFactory module
+- New file `bze/tokenfactory/denom_config.proto` (`DenomConfig`: `community_pool`, `transfer_fee`, `gas_surcharge`); query `DenomConfig`; `GenesisDenom.denom_config`
+- `DenomAuthority.mintable`
+- New messages: `MsgSetDenomConfig`, `MsgDisableMinting`, `MsgSetDenomAdmin` (governance)
+- New events: `DenomConfigChangeEvent`, `DenomMintingDisabledEvent`
+
+#### TradeBin module
+- New governance message `MsgUpdatePools` (`PoolUpdate`); new event `PoolFeesUpdatedEvent`
+- New query `PoolPriceAverage` and store type `PoolPriceAverage`
+- New events `OrderAmendedEvent`, `OrderMessageRefundedEvent`
+- `AggregatedOrder.owners`
+- New v2 params `poolPriceHalfLifeBlocks`, `feeMaxPriceDrift`, `moduleMaxPriceDrift`
+
+#### Burner module
+- New params `ibc_move_max_reserve_ratio`, `ibc_move_cooldown_blocks`; store type `IbcMoveLock` and genesis field `ibc_move_locks`
+
+#### Rewards module
+- New event `TradingRewardStartEvent`; `TradingRewardDistributionEvent.unpaid_burnt`
+
+#### TxFeeCollector module
+- New events `CommunityPoolFeePaidEvent`, `GasSurchargePaidEvent`
+
 ## v3.2.0
 
 Protobuf files compatible with **BZE v8.2.0**. Additive release: no existing type or field changed meaning, so v3.1.0 consumers upgrade without code changes.
