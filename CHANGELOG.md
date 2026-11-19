@@ -12,7 +12,7 @@ Protobuf files compatible with **BZE v8.3.0**. This is a breaking change release
 - **TradeBin: order events.** `message_id` is replaced by `order_id` on the order events.
 - **IBC transfer:** `MsgTransfer.use_aliasing` is gone (not part of ibc-go v10.7.0).
 - **Rate limiting:** ibc-go's `ibc.applications.rate_limiting.v1` package is replaced by `ratelimit.v1`, the ibc-apps rate-limiting module the chain runs. ibc-go's `packet_forward_middleware` protos are removed too.
-- cosmos-sdk protos are pinned to v0.53.8 (they previously followed `release/v0.50.x`), and ibc-go protos to v10.7.0.
+- cosmos-sdk protos are pinned to v0.53.8 (they previously followed `release/v0.50.x`), and ibc-go protos to v10.7.0. cosmos-sdk v0.53.8 ships no `cosmos.orm` protos, so the generated `cosmos/orm` module config and query types are removed.
 
 ### New Features
 

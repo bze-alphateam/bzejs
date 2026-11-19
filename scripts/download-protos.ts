@@ -16,12 +16,6 @@ const downloadDir = join(root, 'git-modules', 'protos-download')
 
 // Top-level proto trees taken from the download.
 const SYNCED_DIRS = ['cosmos', 'ibc', 'ratelimit']
-// ibc-go ships these, but the chain does not run them.
-const DROPPED_DIRS = [
-  'ibc/applications/rate_limiting',
-  'ibc/applications/packet_forward_middleware',
-]
-
 // Buf dependencies are cloned at their default branch, so a newer cosmos-sdk clone can
 // add files the pinned tag does not have. Only files of the pinned clone are kept,
 // apart from the dependency trees the pinned repos import.
@@ -90,9 +84,6 @@ function syncDownloaded(): void {
     }
     rmSync(join(protosDir, dir), { recursive: true, force: true })
     cpSync(from, join(protosDir, dir), { recursive: true })
-  }
-  for (const dir of DROPPED_DIRS) {
-    rmSync(join(protosDir, dir), { recursive: true, force: true })
   }
   pruneUnpinned()
 }
