@@ -7,8 +7,6 @@ import { GlobalDecoderRegistry } from "../../../registry";
  * StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
  * It optionally includes the StoreKey for the originating KVStore and a Boolean flag to distinguish between Sets and
  * Deletes
- * 
- * Since: cosmos-sdk 0.43
  * @name StoreKVPair
  * @package cosmos.store.v1beta1
  * @see proto type: cosmos.store.v1beta1.StoreKVPair
@@ -33,8 +31,6 @@ export interface StoreKVPairProtoMsg {
  * StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
  * It optionally includes the StoreKey for the originating KVStore and a Boolean flag to distinguish between Sets and
  * Deletes
- * 
- * Since: cosmos-sdk 0.43
  * @name StoreKVPairAmino
  * @package cosmos.store.v1beta1
  * @see proto type: cosmos.store.v1beta1.StoreKVPair
@@ -59,8 +55,6 @@ export interface StoreKVPairAminoMsg {
  * StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
  * It optionally includes the StoreKey for the originating KVStore and a Boolean flag to distinguish between Sets and
  * Deletes
- * 
- * Since: cosmos-sdk 0.43
  * @name StoreKVPairSDKType
  * @package cosmos.store.v1beta1
  * @see proto type: cosmos.store.v1beta1.StoreKVPair
@@ -133,8 +127,6 @@ function createBaseStoreKVPair(): StoreKVPair {
  * StoreKVPair is a KVStore KVPair used for listening to state changes (Sets and Deletes)
  * It optionally includes the StoreKey for the originating KVStore and a Boolean flag to distinguish between Sets and
  * Deletes
- * 
- * Since: cosmos-sdk 0.43
  * @name StoreKVPair
  * @package cosmos.store.v1beta1
  * @see proto type: cosmos.store.v1beta1.StoreKVPair

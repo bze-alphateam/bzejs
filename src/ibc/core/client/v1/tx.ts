@@ -313,6 +313,106 @@ export interface MsgUpgradeClientResponseAminoMsg {
  */
 export interface MsgUpgradeClientResponseSDKType {}
 /**
+ * MsgSubmitMisbehaviour defines an sdk.Msg type that submits Evidence for
+ * light client misbehaviour.
+ * This message has been deprecated. Use MsgUpdateClient instead.
+ * @name MsgSubmitMisbehaviour
+ * @package ibc.core.client.v1
+ * @see proto type: ibc.core.client.v1.MsgSubmitMisbehaviour
+ * @deprecated
+ */
+export interface MsgSubmitMisbehaviour {
+  /**
+   * client unique identifier
+   */
+  clientId: string;
+  /**
+   * misbehaviour used for freezing the light client
+   */
+  misbehaviour?: Any;
+  /**
+   * signer address
+   */
+  signer: string;
+}
+export interface MsgSubmitMisbehaviourProtoMsg {
+  typeUrl: "/ibc.core.client.v1.MsgSubmitMisbehaviour";
+  value: Uint8Array;
+}
+/**
+ * MsgSubmitMisbehaviour defines an sdk.Msg type that submits Evidence for
+ * light client misbehaviour.
+ * This message has been deprecated. Use MsgUpdateClient instead.
+ * @name MsgSubmitMisbehaviourAmino
+ * @package ibc.core.client.v1
+ * @see proto type: ibc.core.client.v1.MsgSubmitMisbehaviour
+ * @deprecated
+ */
+export interface MsgSubmitMisbehaviourAmino {
+  /**
+   * client unique identifier
+   */
+  client_id?: string;
+  /**
+   * misbehaviour used for freezing the light client
+   */
+  misbehaviour?: AnyAmino;
+  /**
+   * signer address
+   */
+  signer?: string;
+}
+export interface MsgSubmitMisbehaviourAminoMsg {
+  type: "cosmos-sdk/MsgSubmitMisbehaviour";
+  value: MsgSubmitMisbehaviourAmino;
+}
+/**
+ * MsgSubmitMisbehaviour defines an sdk.Msg type that submits Evidence for
+ * light client misbehaviour.
+ * This message has been deprecated. Use MsgUpdateClient instead.
+ * @name MsgSubmitMisbehaviourSDKType
+ * @package ibc.core.client.v1
+ * @see proto type: ibc.core.client.v1.MsgSubmitMisbehaviour
+ * @deprecated
+ */
+export interface MsgSubmitMisbehaviourSDKType {
+  client_id: string;
+  misbehaviour?: AnySDKType;
+  signer: string;
+}
+/**
+ * MsgSubmitMisbehaviourResponse defines the Msg/SubmitMisbehaviour response
+ * type.
+ * @name MsgSubmitMisbehaviourResponse
+ * @package ibc.core.client.v1
+ * @see proto type: ibc.core.client.v1.MsgSubmitMisbehaviourResponse
+ */
+export interface MsgSubmitMisbehaviourResponse {}
+export interface MsgSubmitMisbehaviourResponseProtoMsg {
+  typeUrl: "/ibc.core.client.v1.MsgSubmitMisbehaviourResponse";
+  value: Uint8Array;
+}
+/**
+ * MsgSubmitMisbehaviourResponse defines the Msg/SubmitMisbehaviour response
+ * type.
+ * @name MsgSubmitMisbehaviourResponseAmino
+ * @package ibc.core.client.v1
+ * @see proto type: ibc.core.client.v1.MsgSubmitMisbehaviourResponse
+ */
+export interface MsgSubmitMisbehaviourResponseAmino {}
+export interface MsgSubmitMisbehaviourResponseAminoMsg {
+  type: "cosmos-sdk/MsgSubmitMisbehaviourResponse";
+  value: MsgSubmitMisbehaviourResponseAmino;
+}
+/**
+ * MsgSubmitMisbehaviourResponse defines the Msg/SubmitMisbehaviour response
+ * type.
+ * @name MsgSubmitMisbehaviourResponseSDKType
+ * @package ibc.core.client.v1
+ * @see proto type: ibc.core.client.v1.MsgSubmitMisbehaviourResponse
+ */
+export interface MsgSubmitMisbehaviourResponseSDKType {}
+/**
  * MsgRecoverClient defines the message used to recover a frozen or expired client.
  * @name MsgRecoverClient
  * @package ibc.core.client.v1
@@ -1256,6 +1356,193 @@ export const MsgUpgradeClientResponse = {
     return {
       typeUrl: "/ibc.core.client.v1.MsgUpgradeClientResponse",
       value: MsgUpgradeClientResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgSubmitMisbehaviour(): MsgSubmitMisbehaviour {
+  return {
+    clientId: "",
+    misbehaviour: undefined,
+    signer: ""
+  };
+}
+/**
+ * MsgSubmitMisbehaviour defines an sdk.Msg type that submits Evidence for
+ * light client misbehaviour.
+ * This message has been deprecated. Use MsgUpdateClient instead.
+ * @name MsgSubmitMisbehaviour
+ * @package ibc.core.client.v1
+ * @see proto type: ibc.core.client.v1.MsgSubmitMisbehaviour
+ * @deprecated
+ */
+export const MsgSubmitMisbehaviour = {
+  typeUrl: "/ibc.core.client.v1.MsgSubmitMisbehaviour",
+  aminoType: "cosmos-sdk/MsgSubmitMisbehaviour",
+  is(o: any): o is MsgSubmitMisbehaviour {
+    return o && (o.$typeUrl === MsgSubmitMisbehaviour.typeUrl || typeof o.clientId === "string" && typeof o.signer === "string");
+  },
+  isSDK(o: any): o is MsgSubmitMisbehaviourSDKType {
+    return o && (o.$typeUrl === MsgSubmitMisbehaviour.typeUrl || typeof o.client_id === "string" && typeof o.signer === "string");
+  },
+  isAmino(o: any): o is MsgSubmitMisbehaviourAmino {
+    return o && (o.$typeUrl === MsgSubmitMisbehaviour.typeUrl || typeof o.client_id === "string" && typeof o.signer === "string");
+  },
+  encode(message: MsgSubmitMisbehaviour, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.clientId !== "") {
+      writer.uint32(10).string(message.clientId);
+    }
+    if (message.misbehaviour !== undefined) {
+      Any.encode(message.misbehaviour, writer.uint32(18).fork()).ldelim();
+    }
+    if (message.signer !== "") {
+      writer.uint32(26).string(message.signer);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitMisbehaviour {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSubmitMisbehaviour();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.clientId = reader.string();
+          break;
+        case 2:
+          message.misbehaviour = Any.decode(reader, reader.uint32());
+          break;
+        case 3:
+          message.signer = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSubmitMisbehaviour>): MsgSubmitMisbehaviour {
+    const message = createBaseMsgSubmitMisbehaviour();
+    message.clientId = object.clientId ?? "";
+    message.misbehaviour = object.misbehaviour !== undefined && object.misbehaviour !== null ? Any.fromPartial(object.misbehaviour) : undefined;
+    message.signer = object.signer ?? "";
+    return message;
+  },
+  fromAmino(object: MsgSubmitMisbehaviourAmino): MsgSubmitMisbehaviour {
+    const message = createBaseMsgSubmitMisbehaviour();
+    if (object.client_id !== undefined && object.client_id !== null) {
+      message.clientId = object.client_id;
+    }
+    if (object.misbehaviour !== undefined && object.misbehaviour !== null) {
+      message.misbehaviour = Any.fromAmino(object.misbehaviour);
+    }
+    if (object.signer !== undefined && object.signer !== null) {
+      message.signer = object.signer;
+    }
+    return message;
+  },
+  toAmino(message: MsgSubmitMisbehaviour): MsgSubmitMisbehaviourAmino {
+    const obj: any = {};
+    obj.client_id = message.clientId === "" ? undefined : message.clientId;
+    obj.misbehaviour = message.misbehaviour ? Any.toAmino(message.misbehaviour) : undefined;
+    obj.signer = message.signer === "" ? undefined : message.signer;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSubmitMisbehaviourAminoMsg): MsgSubmitMisbehaviour {
+    return MsgSubmitMisbehaviour.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgSubmitMisbehaviour): MsgSubmitMisbehaviourAminoMsg {
+    return {
+      type: "cosmos-sdk/MsgSubmitMisbehaviour",
+      value: MsgSubmitMisbehaviour.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgSubmitMisbehaviourProtoMsg): MsgSubmitMisbehaviour {
+    return MsgSubmitMisbehaviour.decode(message.value);
+  },
+  toProto(message: MsgSubmitMisbehaviour): Uint8Array {
+    return MsgSubmitMisbehaviour.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSubmitMisbehaviour): MsgSubmitMisbehaviourProtoMsg {
+    return {
+      typeUrl: "/ibc.core.client.v1.MsgSubmitMisbehaviour",
+      value: MsgSubmitMisbehaviour.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgSubmitMisbehaviourResponse(): MsgSubmitMisbehaviourResponse {
+  return {};
+}
+/**
+ * MsgSubmitMisbehaviourResponse defines the Msg/SubmitMisbehaviour response
+ * type.
+ * @name MsgSubmitMisbehaviourResponse
+ * @package ibc.core.client.v1
+ * @see proto type: ibc.core.client.v1.MsgSubmitMisbehaviourResponse
+ */
+export const MsgSubmitMisbehaviourResponse = {
+  typeUrl: "/ibc.core.client.v1.MsgSubmitMisbehaviourResponse",
+  aminoType: "cosmos-sdk/MsgSubmitMisbehaviourResponse",
+  is(o: any): o is MsgSubmitMisbehaviourResponse {
+    return o && o.$typeUrl === MsgSubmitMisbehaviourResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSubmitMisbehaviourResponseSDKType {
+    return o && o.$typeUrl === MsgSubmitMisbehaviourResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSubmitMisbehaviourResponseAmino {
+    return o && o.$typeUrl === MsgSubmitMisbehaviourResponse.typeUrl;
+  },
+  encode(_: MsgSubmitMisbehaviourResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSubmitMisbehaviourResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSubmitMisbehaviourResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgSubmitMisbehaviourResponse>): MsgSubmitMisbehaviourResponse {
+    const message = createBaseMsgSubmitMisbehaviourResponse();
+    return message;
+  },
+  fromAmino(_: MsgSubmitMisbehaviourResponseAmino): MsgSubmitMisbehaviourResponse {
+    const message = createBaseMsgSubmitMisbehaviourResponse();
+    return message;
+  },
+  toAmino(_: MsgSubmitMisbehaviourResponse): MsgSubmitMisbehaviourResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgSubmitMisbehaviourResponseAminoMsg): MsgSubmitMisbehaviourResponse {
+    return MsgSubmitMisbehaviourResponse.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgSubmitMisbehaviourResponse): MsgSubmitMisbehaviourResponseAminoMsg {
+    return {
+      type: "cosmos-sdk/MsgSubmitMisbehaviourResponse",
+      value: MsgSubmitMisbehaviourResponse.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgSubmitMisbehaviourResponseProtoMsg): MsgSubmitMisbehaviourResponse {
+    return MsgSubmitMisbehaviourResponse.decode(message.value);
+  },
+  toProto(message: MsgSubmitMisbehaviourResponse): Uint8Array {
+    return MsgSubmitMisbehaviourResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSubmitMisbehaviourResponse): MsgSubmitMisbehaviourResponseProtoMsg {
+    return {
+      typeUrl: "/ibc.core.client.v1.MsgSubmitMisbehaviourResponse",
+      value: MsgSubmitMisbehaviourResponse.encode(message).finish()
     };
   },
   registerTypeUrl() {}

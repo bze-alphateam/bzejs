@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { setPaginationParams } from "../../helpers";
 import { LCDClient } from "@cosmology/lcd";
-import { QueryParamsRequest, QueryParamsResponseSDKType, QueryDenomAuthorityRequest, QueryDenomAuthorityResponseSDKType, QueryDenomBrandingRequest, QueryDenomBrandingResponseSDKType, QueryAllDenomBrandingRequest, QueryAllDenomBrandingResponseSDKType } from "./query";
+import { QueryParamsRequest, QueryParamsResponseSDKType, QueryDenomAuthorityRequest, QueryDenomAuthorityResponseSDKType, QueryDenomBrandingRequest, QueryDenomBrandingResponseSDKType, QueryAllDenomBrandingRequest, QueryAllDenomBrandingResponseSDKType, QueryDenomConfigRequest, QueryDenomConfigResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -14,6 +14,7 @@ export class LCDQueryClient {
     this.denomAuthority = this.denomAuthority.bind(this);
     this.denomBranding = this.denomBranding.bind(this);
     this.allDenomBranding = this.allDenomBranding.bind(this);
+    this.denomConfig = this.denomConfig.bind(this);
   }
   /* Parameters queries the parameters of the module. */
   async params(_params: QueryParamsRequest = {}): Promise<QueryParamsResponseSDKType> {
@@ -54,5 +55,16 @@ export class LCDQueryClient {
     }
     const endpoint = `bze/tokenfactory/all_denom_branding`;
     return await this.req.get<QueryAllDenomBrandingResponseSDKType>(endpoint, options);
+  }
+  /* Queries the configuration of a denom. Returns the defaults when none is set. */
+  async denomConfig(params: QueryDenomConfigRequest): Promise<QueryDenomConfigResponseSDKType> {
+    const options: any = {
+      params: {}
+    };
+    if (typeof params?.denom !== "undefined") {
+      options.params.denom = params.denom;
+    }
+    const endpoint = `bze/tokenfactory/denom_config`;
+    return await this.req.get<QueryDenomConfigResponseSDKType>(endpoint, options);
   }
 }

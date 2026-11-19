@@ -70,11 +70,6 @@ export const createLCDClient = async ({
           requestClient
         })
       },
-      group: {
-        v1: new (await import("./group/v1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
-      },
       mint: {
         v1beta1: new (await import("./mint/v1beta1/query.lcd")).LCDQueryClient({
           requestClient

@@ -41,62 +41,6 @@ export interface MarketSDKType {
   creator: string;
 }
 /**
- * @name QueueMessage
- * @package bze.tradebin
- * @see proto type: bze.tradebin.QueueMessage
- */
-export interface QueueMessage {
-  messageId: string;
-  marketId: string;
-  messageType: string;
-  amount: string;
-  price: string;
-  createdAt: bigint;
-  orderId: string;
-  orderType: string;
-  owner: string;
-}
-export interface QueueMessageProtoMsg {
-  typeUrl: "/bze.tradebin.QueueMessage";
-  value: Uint8Array;
-}
-/**
- * @name QueueMessageAmino
- * @package bze.tradebin
- * @see proto type: bze.tradebin.QueueMessage
- */
-export interface QueueMessageAmino {
-  message_id?: string;
-  market_id?: string;
-  message_type?: string;
-  amount?: string;
-  price?: string;
-  created_at?: string;
-  order_id?: string;
-  order_type?: string;
-  owner?: string;
-}
-export interface QueueMessageAminoMsg {
-  type: "/bze.tradebin.QueueMessage";
-  value: QueueMessageAmino;
-}
-/**
- * @name QueueMessageSDKType
- * @package bze.tradebin
- * @see proto type: bze.tradebin.QueueMessage
- */
-export interface QueueMessageSDKType {
-  message_id: string;
-  market_id: string;
-  message_type: string;
-  amount: string;
-  price: string;
-  created_at: bigint;
-  order_id: string;
-  order_type: string;
-  owner: string;
-}
-/**
  * @name Order
  * @package bze.tradebin
  * @see proto type: bze.tradebin.Order
@@ -194,6 +138,10 @@ export interface AggregatedOrder {
   orderType: string;
   amount: string;
   price: string;
+  /**
+   * number of distinct owners resting at the price level (one per owner-price index entry)
+   */
+  owners: bigint;
 }
 export interface AggregatedOrderProtoMsg {
   typeUrl: "/bze.tradebin.AggregatedOrder";
@@ -209,6 +157,10 @@ export interface AggregatedOrderAmino {
   order_type?: string;
   amount?: string;
   price?: string;
+  /**
+   * number of distinct owners resting at the price level (one per owner-price index entry)
+   */
+  owners?: string;
 }
 export interface AggregatedOrderAminoMsg {
   type: "/bze.tradebin.AggregatedOrder";
@@ -224,6 +176,7 @@ export interface AggregatedOrderSDKType {
   order_type: string;
   amount: string;
   price: string;
+  owners: bigint;
 }
 /**
  * @name HistoryOrder
@@ -452,6 +405,53 @@ export interface FeeDestinationSDKType {
   burner: string;
   providers: string;
 }
+/**
+ * PoolPriceAverage is the exponential moving average of one pool's price (quote reserve / base reserve).
+ * @name PoolPriceAverage
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.PoolPriceAverage
+ */
+export interface PoolPriceAverage {
+  poolId: string;
+  avgPrice: string;
+  /**
+   * the block height at which the average was last brought up to date
+   */
+  lastHeight: bigint;
+}
+export interface PoolPriceAverageProtoMsg {
+  typeUrl: "/bze.tradebin.PoolPriceAverage";
+  value: Uint8Array;
+}
+/**
+ * PoolPriceAverage is the exponential moving average of one pool's price (quote reserve / base reserve).
+ * @name PoolPriceAverageAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.PoolPriceAverage
+ */
+export interface PoolPriceAverageAmino {
+  pool_id?: string;
+  avg_price?: string;
+  /**
+   * the block height at which the average was last brought up to date
+   */
+  last_height?: string;
+}
+export interface PoolPriceAverageAminoMsg {
+  type: "/bze.tradebin.PoolPriceAverage";
+  value: PoolPriceAverageAmino;
+}
+/**
+ * PoolPriceAverage is the exponential moving average of one pool's price (quote reserve / base reserve).
+ * @name PoolPriceAverageSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.PoolPriceAverage
+ */
+export interface PoolPriceAverageSDKType {
+  pool_id: string;
+  avg_price: string;
+  last_height: bigint;
+}
 function createBaseMarket(): Market {
   return {
     base: "",
@@ -550,180 +550,6 @@ export const Market = {
     return {
       typeUrl: "/bze.tradebin.Market",
       value: Market.encode(message).finish()
-    };
-  },
-  registerTypeUrl() {}
-};
-function createBaseQueueMessage(): QueueMessage {
-  return {
-    messageId: "",
-    marketId: "",
-    messageType: "",
-    amount: "",
-    price: "",
-    createdAt: BigInt(0),
-    orderId: "",
-    orderType: "",
-    owner: ""
-  };
-}
-/**
- * @name QueueMessage
- * @package bze.tradebin
- * @see proto type: bze.tradebin.QueueMessage
- */
-export const QueueMessage = {
-  typeUrl: "/bze.tradebin.QueueMessage",
-  is(o: any): o is QueueMessage {
-    return o && (o.$typeUrl === QueueMessage.typeUrl || typeof o.messageId === "string" && typeof o.marketId === "string" && typeof o.messageType === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.createdAt === "bigint" && typeof o.orderId === "string" && typeof o.orderType === "string" && typeof o.owner === "string");
-  },
-  isSDK(o: any): o is QueueMessageSDKType {
-    return o && (o.$typeUrl === QueueMessage.typeUrl || typeof o.message_id === "string" && typeof o.market_id === "string" && typeof o.message_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.created_at === "bigint" && typeof o.order_id === "string" && typeof o.order_type === "string" && typeof o.owner === "string");
-  },
-  isAmino(o: any): o is QueueMessageAmino {
-    return o && (o.$typeUrl === QueueMessage.typeUrl || typeof o.message_id === "string" && typeof o.market_id === "string" && typeof o.message_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.created_at === "bigint" && typeof o.order_id === "string" && typeof o.order_type === "string" && typeof o.owner === "string");
-  },
-  encode(message: QueueMessage, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.messageId !== "") {
-      writer.uint32(10).string(message.messageId);
-    }
-    if (message.marketId !== "") {
-      writer.uint32(18).string(message.marketId);
-    }
-    if (message.messageType !== "") {
-      writer.uint32(26).string(message.messageType);
-    }
-    if (message.amount !== "") {
-      writer.uint32(34).string(message.amount);
-    }
-    if (message.price !== "") {
-      writer.uint32(42).string(message.price);
-    }
-    if (message.createdAt !== BigInt(0)) {
-      writer.uint32(48).int64(message.createdAt);
-    }
-    if (message.orderId !== "") {
-      writer.uint32(58).string(message.orderId);
-    }
-    if (message.orderType !== "") {
-      writer.uint32(66).string(message.orderType);
-    }
-    if (message.owner !== "") {
-      writer.uint32(74).string(message.owner);
-    }
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): QueueMessage {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseQueueMessage();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.messageId = reader.string();
-          break;
-        case 2:
-          message.marketId = reader.string();
-          break;
-        case 3:
-          message.messageType = reader.string();
-          break;
-        case 4:
-          message.amount = reader.string();
-          break;
-        case 5:
-          message.price = reader.string();
-          break;
-        case 6:
-          message.createdAt = reader.int64();
-          break;
-        case 7:
-          message.orderId = reader.string();
-          break;
-        case 8:
-          message.orderType = reader.string();
-          break;
-        case 9:
-          message.owner = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromPartial(object: Partial<QueueMessage>): QueueMessage {
-    const message = createBaseQueueMessage();
-    message.messageId = object.messageId ?? "";
-    message.marketId = object.marketId ?? "";
-    message.messageType = object.messageType ?? "";
-    message.amount = object.amount ?? "";
-    message.price = object.price ?? "";
-    message.createdAt = object.createdAt !== undefined && object.createdAt !== null ? BigInt(object.createdAt.toString()) : BigInt(0);
-    message.orderId = object.orderId ?? "";
-    message.orderType = object.orderType ?? "";
-    message.owner = object.owner ?? "";
-    return message;
-  },
-  fromAmino(object: QueueMessageAmino): QueueMessage {
-    const message = createBaseQueueMessage();
-    if (object.message_id !== undefined && object.message_id !== null) {
-      message.messageId = object.message_id;
-    }
-    if (object.market_id !== undefined && object.market_id !== null) {
-      message.marketId = object.market_id;
-    }
-    if (object.message_type !== undefined && object.message_type !== null) {
-      message.messageType = object.message_type;
-    }
-    if (object.amount !== undefined && object.amount !== null) {
-      message.amount = object.amount;
-    }
-    if (object.price !== undefined && object.price !== null) {
-      message.price = object.price;
-    }
-    if (object.created_at !== undefined && object.created_at !== null) {
-      message.createdAt = BigInt(object.created_at);
-    }
-    if (object.order_id !== undefined && object.order_id !== null) {
-      message.orderId = object.order_id;
-    }
-    if (object.order_type !== undefined && object.order_type !== null) {
-      message.orderType = object.order_type;
-    }
-    if (object.owner !== undefined && object.owner !== null) {
-      message.owner = object.owner;
-    }
-    return message;
-  },
-  toAmino(message: QueueMessage): QueueMessageAmino {
-    const obj: any = {};
-    obj.message_id = message.messageId === "" ? undefined : message.messageId;
-    obj.market_id = message.marketId === "" ? undefined : message.marketId;
-    obj.message_type = message.messageType === "" ? undefined : message.messageType;
-    obj.amount = message.amount === "" ? undefined : message.amount;
-    obj.price = message.price === "" ? undefined : message.price;
-    obj.created_at = message.createdAt !== BigInt(0) ? message.createdAt?.toString() : undefined;
-    obj.order_id = message.orderId === "" ? undefined : message.orderId;
-    obj.order_type = message.orderType === "" ? undefined : message.orderType;
-    obj.owner = message.owner === "" ? undefined : message.owner;
-    return obj;
-  },
-  fromAminoMsg(object: QueueMessageAminoMsg): QueueMessage {
-    return QueueMessage.fromAmino(object.value);
-  },
-  fromProtoMsg(message: QueueMessageProtoMsg): QueueMessage {
-    return QueueMessage.decode(message.value);
-  },
-  toProto(message: QueueMessage): Uint8Array {
-    return QueueMessage.encode(message).finish();
-  },
-  toProtoMsg(message: QueueMessage): QueueMessageProtoMsg {
-    return {
-      typeUrl: "/bze.tradebin.QueueMessage",
-      value: QueueMessage.encode(message).finish()
     };
   },
   registerTypeUrl() {}
@@ -985,7 +811,8 @@ function createBaseAggregatedOrder(): AggregatedOrder {
     marketId: "",
     orderType: "",
     amount: "",
-    price: ""
+    price: "",
+    owners: BigInt(0)
   };
 }
 /**
@@ -996,13 +823,13 @@ function createBaseAggregatedOrder(): AggregatedOrder {
 export const AggregatedOrder = {
   typeUrl: "/bze.tradebin.AggregatedOrder",
   is(o: any): o is AggregatedOrder {
-    return o && (o.$typeUrl === AggregatedOrder.typeUrl || typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.amount === "string" && typeof o.price === "string");
+    return o && (o.$typeUrl === AggregatedOrder.typeUrl || typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owners === "bigint");
   },
   isSDK(o: any): o is AggregatedOrderSDKType {
-    return o && (o.$typeUrl === AggregatedOrder.typeUrl || typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string");
+    return o && (o.$typeUrl === AggregatedOrder.typeUrl || typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owners === "bigint");
   },
   isAmino(o: any): o is AggregatedOrderAmino {
-    return o && (o.$typeUrl === AggregatedOrder.typeUrl || typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string");
+    return o && (o.$typeUrl === AggregatedOrder.typeUrl || typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owners === "bigint");
   },
   encode(message: AggregatedOrder, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.marketId !== "") {
@@ -1016,6 +843,9 @@ export const AggregatedOrder = {
     }
     if (message.price !== "") {
       writer.uint32(34).string(message.price);
+    }
+    if (message.owners !== BigInt(0)) {
+      writer.uint32(40).uint64(message.owners);
     }
     return writer;
   },
@@ -1038,6 +868,9 @@ export const AggregatedOrder = {
         case 4:
           message.price = reader.string();
           break;
+        case 5:
+          message.owners = reader.uint64();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1051,6 +884,7 @@ export const AggregatedOrder = {
     message.orderType = object.orderType ?? "";
     message.amount = object.amount ?? "";
     message.price = object.price ?? "";
+    message.owners = object.owners !== undefined && object.owners !== null ? BigInt(object.owners.toString()) : BigInt(0);
     return message;
   },
   fromAmino(object: AggregatedOrderAmino): AggregatedOrder {
@@ -1067,6 +901,9 @@ export const AggregatedOrder = {
     if (object.price !== undefined && object.price !== null) {
       message.price = object.price;
     }
+    if (object.owners !== undefined && object.owners !== null) {
+      message.owners = BigInt(object.owners);
+    }
     return message;
   },
   toAmino(message: AggregatedOrder): AggregatedOrderAmino {
@@ -1075,6 +912,7 @@ export const AggregatedOrder = {
     obj.order_type = message.orderType === "" ? undefined : message.orderType;
     obj.amount = message.amount === "" ? undefined : message.amount;
     obj.price = message.price === "" ? undefined : message.price;
+    obj.owners = message.owners !== BigInt(0) ? message.owners?.toString() : undefined;
     return obj;
   },
   fromAminoMsg(object: AggregatedOrderAminoMsg): AggregatedOrder {
@@ -1635,6 +1473,109 @@ export const FeeDestination = {
     return {
       typeUrl: "/bze.tradebin.FeeDestination",
       value: FeeDestination.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBasePoolPriceAverage(): PoolPriceAverage {
+  return {
+    poolId: "",
+    avgPrice: "",
+    lastHeight: BigInt(0)
+  };
+}
+/**
+ * PoolPriceAverage is the exponential moving average of one pool's price (quote reserve / base reserve).
+ * @name PoolPriceAverage
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.PoolPriceAverage
+ */
+export const PoolPriceAverage = {
+  typeUrl: "/bze.tradebin.PoolPriceAverage",
+  is(o: any): o is PoolPriceAverage {
+    return o && (o.$typeUrl === PoolPriceAverage.typeUrl || typeof o.poolId === "string" && typeof o.avgPrice === "string" && typeof o.lastHeight === "bigint");
+  },
+  isSDK(o: any): o is PoolPriceAverageSDKType {
+    return o && (o.$typeUrl === PoolPriceAverage.typeUrl || typeof o.pool_id === "string" && typeof o.avg_price === "string" && typeof o.last_height === "bigint");
+  },
+  isAmino(o: any): o is PoolPriceAverageAmino {
+    return o && (o.$typeUrl === PoolPriceAverage.typeUrl || typeof o.pool_id === "string" && typeof o.avg_price === "string" && typeof o.last_height === "bigint");
+  },
+  encode(message: PoolPriceAverage, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.poolId !== "") {
+      writer.uint32(10).string(message.poolId);
+    }
+    if (message.avgPrice !== "") {
+      writer.uint32(18).string(Decimal.fromUserInput(message.avgPrice, 18).atomics);
+    }
+    if (message.lastHeight !== BigInt(0)) {
+      writer.uint32(24).int64(message.lastHeight);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): PoolPriceAverage {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBasePoolPriceAverage();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.poolId = reader.string();
+          break;
+        case 2:
+          message.avgPrice = Decimal.fromAtomics(reader.string(), 18).toString();
+          break;
+        case 3:
+          message.lastHeight = reader.int64();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<PoolPriceAverage>): PoolPriceAverage {
+    const message = createBasePoolPriceAverage();
+    message.poolId = object.poolId ?? "";
+    message.avgPrice = object.avgPrice ?? "";
+    message.lastHeight = object.lastHeight !== undefined && object.lastHeight !== null ? BigInt(object.lastHeight.toString()) : BigInt(0);
+    return message;
+  },
+  fromAmino(object: PoolPriceAverageAmino): PoolPriceAverage {
+    const message = createBasePoolPriceAverage();
+    if (object.pool_id !== undefined && object.pool_id !== null) {
+      message.poolId = object.pool_id;
+    }
+    if (object.avg_price !== undefined && object.avg_price !== null) {
+      message.avgPrice = object.avg_price;
+    }
+    if (object.last_height !== undefined && object.last_height !== null) {
+      message.lastHeight = BigInt(object.last_height);
+    }
+    return message;
+  },
+  toAmino(message: PoolPriceAverage): PoolPriceAverageAmino {
+    const obj: any = {};
+    obj.pool_id = message.poolId === "" ? undefined : message.poolId;
+    obj.avg_price = message.avgPrice === "" ? undefined : Decimal.fromUserInput(message.avgPrice, 18).atomics;
+    obj.last_height = message.lastHeight !== BigInt(0) ? message.lastHeight?.toString() : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: PoolPriceAverageAminoMsg): PoolPriceAverage {
+    return PoolPriceAverage.fromAmino(object.value);
+  },
+  fromProtoMsg(message: PoolPriceAverageProtoMsg): PoolPriceAverage {
+    return PoolPriceAverage.decode(message.value);
+  },
+  toProto(message: PoolPriceAverage): Uint8Array {
+    return PoolPriceAverage.encode(message).finish();
+  },
+  toProtoMsg(message: PoolPriceAverage): PoolPriceAverageProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.PoolPriceAverage",
+      value: PoolPriceAverage.encode(message).finish()
     };
   },
   registerTypeUrl() {}

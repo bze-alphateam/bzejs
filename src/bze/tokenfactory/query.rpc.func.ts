@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { buildQuery } from "../../helper-func-types";
-import { QueryParamsRequest, QueryParamsResponse, QueryDenomAuthorityRequest, QueryDenomAuthorityResponse, QueryDenomBrandingRequest, QueryDenomBrandingResponse, QueryAllDenomBrandingRequest, QueryAllDenomBrandingResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, QueryDenomAuthorityRequest, QueryDenomAuthorityResponse, QueryDenomBrandingRequest, QueryDenomBrandingResponse, QueryAllDenomBrandingRequest, QueryAllDenomBrandingResponse, QueryDenomConfigRequest, QueryDenomConfigResponse } from "./query";
 /**
  * Parameters queries the parameters of the module.
  * @name getParams
@@ -52,4 +52,17 @@ export const getAllDenomBranding = buildQuery<QueryAllDenomBrandingRequest, Quer
   service: "bze.tokenfactory.Query",
   method: "AllDenomBranding",
   deps: [QueryAllDenomBrandingRequest, QueryAllDenomBrandingResponse]
+});
+/**
+ * Queries the configuration of a denom. Returns the defaults when none is set.
+ * @name getDenomConfig
+ * @package bze.tokenfactory
+ * @see proto service: bze.tokenfactory.DenomConfig
+ */
+export const getDenomConfig = buildQuery<QueryDenomConfigRequest, QueryDenomConfigResponse>({
+  encode: QueryDenomConfigRequest.encode,
+  decode: QueryDenomConfigResponse.decode,
+  service: "bze.tokenfactory.Query",
+  method: "DenomConfig",
+  deps: [QueryDenomConfigRequest, QueryDenomConfigResponse]
 });

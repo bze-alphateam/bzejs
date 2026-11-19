@@ -2,6 +2,7 @@
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { DenomBrandingRecord, DenomBrandingRecordAmino, DenomBrandingRecordSDKType } from "./denom_branding";
 import { DenomAuthority, DenomAuthorityAmino, DenomAuthoritySDKType } from "./denom_authority";
+import { DenomConfig, DenomConfigAmino, DenomConfigSDKType } from "./denom_config";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { GlobalDecoderRegistry } from "../../registry";
 /**
@@ -62,6 +63,10 @@ export interface GenesisStateSDKType {
 export interface GenesisDenom {
   denom: string;
   denomAuthority: DenomAuthority;
+  /**
+   * denom_config is the denom's configuration. Absent means the defaults.
+   */
+  denomConfig?: DenomConfig;
 }
 export interface GenesisDenomProtoMsg {
   typeUrl: "/bze.tokenfactory.GenesisDenom";
@@ -78,6 +83,10 @@ export interface GenesisDenomProtoMsg {
 export interface GenesisDenomAmino {
   denom?: string;
   denom_authority?: DenomAuthorityAmino;
+  /**
+   * denom_config is the denom's configuration. Absent means the defaults.
+   */
+  denom_config?: DenomConfigAmino;
 }
 export interface GenesisDenomAminoMsg {
   type: "/bze.tokenfactory.GenesisDenom";
@@ -94,6 +103,7 @@ export interface GenesisDenomAminoMsg {
 export interface GenesisDenomSDKType {
   denom: string;
   denom_authority: DenomAuthoritySDKType;
+  denom_config?: DenomConfigSDKType;
 }
 function createBaseGenesisState(): GenesisState {
   return {
@@ -212,7 +222,8 @@ export const GenesisState = {
 function createBaseGenesisDenom(): GenesisDenom {
   return {
     denom: "",
-    denomAuthority: DenomAuthority.fromPartial({})
+    denomAuthority: DenomAuthority.fromPartial({}),
+    denomConfig: undefined
   };
 }
 /**
@@ -241,6 +252,9 @@ export const GenesisDenom = {
     if (message.denomAuthority !== undefined) {
       DenomAuthority.encode(message.denomAuthority, writer.uint32(18).fork()).ldelim();
     }
+    if (message.denomConfig !== undefined) {
+      DenomConfig.encode(message.denomConfig, writer.uint32(26).fork()).ldelim();
+    }
     return writer;
   },
   decode(input: BinaryReader | Uint8Array, length?: number): GenesisDenom {
@@ -256,6 +270,9 @@ export const GenesisDenom = {
         case 2:
           message.denomAuthority = DenomAuthority.decode(reader, reader.uint32());
           break;
+        case 3:
+          message.denomConfig = DenomConfig.decode(reader, reader.uint32());
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -267,6 +284,7 @@ export const GenesisDenom = {
     const message = createBaseGenesisDenom();
     message.denom = object.denom ?? "";
     message.denomAuthority = object.denomAuthority !== undefined && object.denomAuthority !== null ? DenomAuthority.fromPartial(object.denomAuthority) : undefined;
+    message.denomConfig = object.denomConfig !== undefined && object.denomConfig !== null ? DenomConfig.fromPartial(object.denomConfig) : undefined;
     return message;
   },
   fromAmino(object: GenesisDenomAmino): GenesisDenom {
@@ -277,12 +295,16 @@ export const GenesisDenom = {
     if (object.denom_authority !== undefined && object.denom_authority !== null) {
       message.denomAuthority = DenomAuthority.fromAmino(object.denom_authority);
     }
+    if (object.denom_config !== undefined && object.denom_config !== null) {
+      message.denomConfig = DenomConfig.fromAmino(object.denom_config);
+    }
     return message;
   },
   toAmino(message: GenesisDenom): GenesisDenomAmino {
     const obj: any = {};
     obj.denom = message.denom === "" ? undefined : message.denom;
     obj.denom_authority = message.denomAuthority ? DenomAuthority.toAmino(message.denomAuthority) : undefined;
+    obj.denom_config = message.denomConfig ? DenomConfig.toAmino(message.denomConfig) : undefined;
     return obj;
   },
   fromAminoMsg(object: GenesisDenomAminoMsg): GenesisDenom {
@@ -305,5 +327,6 @@ export const GenesisDenom = {
       return;
     }
     DenomAuthority.registerTypeUrl();
+    DenomConfig.registerTypeUrl();
   }
 };

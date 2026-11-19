@@ -3,6 +3,7 @@ import { PageRequest, PageRequestAmino, PageRequestSDKType, PageResponse, PageRe
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
 import { DenomAuthority, DenomAuthorityAmino, DenomAuthoritySDKType } from "./denom_authority";
 import { DenomBranding, DenomBrandingAmino, DenomBrandingSDKType, DenomBrandingRecord, DenomBrandingRecordAmino, DenomBrandingRecordSDKType } from "./denom_branding";
+import { DenomConfig, DenomConfigAmino, DenomConfigSDKType } from "./denom_config";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { GlobalDecoderRegistry } from "../../registry";
 /**
@@ -269,6 +270,70 @@ export interface QueryAllDenomBrandingResponseAminoMsg {
 export interface QueryAllDenomBrandingResponseSDKType {
   denom_brandings: DenomBrandingRecordSDKType[];
   pagination?: PageResponseSDKType;
+}
+/**
+ * @name QueryDenomConfigRequest
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.QueryDenomConfigRequest
+ */
+export interface QueryDenomConfigRequest {
+  denom: string;
+}
+export interface QueryDenomConfigRequestProtoMsg {
+  typeUrl: "/bze.tokenfactory.QueryDenomConfigRequest";
+  value: Uint8Array;
+}
+/**
+ * @name QueryDenomConfigRequestAmino
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.QueryDenomConfigRequest
+ */
+export interface QueryDenomConfigRequestAmino {
+  denom?: string;
+}
+export interface QueryDenomConfigRequestAminoMsg {
+  type: "/bze.tokenfactory.QueryDenomConfigRequest";
+  value: QueryDenomConfigRequestAmino;
+}
+/**
+ * @name QueryDenomConfigRequestSDKType
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.QueryDenomConfigRequest
+ */
+export interface QueryDenomConfigRequestSDKType {
+  denom: string;
+}
+/**
+ * @name QueryDenomConfigResponse
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.QueryDenomConfigResponse
+ */
+export interface QueryDenomConfigResponse {
+  config: DenomConfig;
+}
+export interface QueryDenomConfigResponseProtoMsg {
+  typeUrl: "/bze.tokenfactory.QueryDenomConfigResponse";
+  value: Uint8Array;
+}
+/**
+ * @name QueryDenomConfigResponseAmino
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.QueryDenomConfigResponse
+ */
+export interface QueryDenomConfigResponseAmino {
+  config: DenomConfigAmino;
+}
+export interface QueryDenomConfigResponseAminoMsg {
+  type: "/bze.tokenfactory.QueryDenomConfigResponse";
+  value: QueryDenomConfigResponseAmino;
+}
+/**
+ * @name QueryDenomConfigResponseSDKType
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.QueryDenomConfigResponse
+ */
+export interface QueryDenomConfigResponseSDKType {
+  config: DenomConfigSDKType;
 }
 function createBaseQueryParamsRequest(): QueryParamsRequest {
   return {};
@@ -921,5 +986,166 @@ export const QueryAllDenomBrandingResponse = {
     }
     DenomBrandingRecord.registerTypeUrl();
     PageResponse.registerTypeUrl();
+  }
+};
+function createBaseQueryDenomConfigRequest(): QueryDenomConfigRequest {
+  return {
+    denom: ""
+  };
+}
+/**
+ * @name QueryDenomConfigRequest
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.QueryDenomConfigRequest
+ */
+export const QueryDenomConfigRequest = {
+  typeUrl: "/bze.tokenfactory.QueryDenomConfigRequest",
+  is(o: any): o is QueryDenomConfigRequest {
+    return o && (o.$typeUrl === QueryDenomConfigRequest.typeUrl || typeof o.denom === "string");
+  },
+  isSDK(o: any): o is QueryDenomConfigRequestSDKType {
+    return o && (o.$typeUrl === QueryDenomConfigRequest.typeUrl || typeof o.denom === "string");
+  },
+  isAmino(o: any): o is QueryDenomConfigRequestAmino {
+    return o && (o.$typeUrl === QueryDenomConfigRequest.typeUrl || typeof o.denom === "string");
+  },
+  encode(message: QueryDenomConfigRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.denom !== "") {
+      writer.uint32(10).string(message.denom);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomConfigRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomConfigRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.denom = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryDenomConfigRequest>): QueryDenomConfigRequest {
+    const message = createBaseQueryDenomConfigRequest();
+    message.denom = object.denom ?? "";
+    return message;
+  },
+  fromAmino(object: QueryDenomConfigRequestAmino): QueryDenomConfigRequest {
+    const message = createBaseQueryDenomConfigRequest();
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    return message;
+  },
+  toAmino(message: QueryDenomConfigRequest): QueryDenomConfigRequestAmino {
+    const obj: any = {};
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    return obj;
+  },
+  fromAminoMsg(object: QueryDenomConfigRequestAminoMsg): QueryDenomConfigRequest {
+    return QueryDenomConfigRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryDenomConfigRequestProtoMsg): QueryDenomConfigRequest {
+    return QueryDenomConfigRequest.decode(message.value);
+  },
+  toProto(message: QueryDenomConfigRequest): Uint8Array {
+    return QueryDenomConfigRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryDenomConfigRequest): QueryDenomConfigRequestProtoMsg {
+    return {
+      typeUrl: "/bze.tokenfactory.QueryDenomConfigRequest",
+      value: QueryDenomConfigRequest.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseQueryDenomConfigResponse(): QueryDenomConfigResponse {
+  return {
+    config: DenomConfig.fromPartial({})
+  };
+}
+/**
+ * @name QueryDenomConfigResponse
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.QueryDenomConfigResponse
+ */
+export const QueryDenomConfigResponse = {
+  typeUrl: "/bze.tokenfactory.QueryDenomConfigResponse",
+  is(o: any): o is QueryDenomConfigResponse {
+    return o && (o.$typeUrl === QueryDenomConfigResponse.typeUrl || DenomConfig.is(o.config));
+  },
+  isSDK(o: any): o is QueryDenomConfigResponseSDKType {
+    return o && (o.$typeUrl === QueryDenomConfigResponse.typeUrl || DenomConfig.isSDK(o.config));
+  },
+  isAmino(o: any): o is QueryDenomConfigResponseAmino {
+    return o && (o.$typeUrl === QueryDenomConfigResponse.typeUrl || DenomConfig.isAmino(o.config));
+  },
+  encode(message: QueryDenomConfigResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.config !== undefined) {
+      DenomConfig.encode(message.config, writer.uint32(10).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryDenomConfigResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryDenomConfigResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.config = DenomConfig.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryDenomConfigResponse>): QueryDenomConfigResponse {
+    const message = createBaseQueryDenomConfigResponse();
+    message.config = object.config !== undefined && object.config !== null ? DenomConfig.fromPartial(object.config) : undefined;
+    return message;
+  },
+  fromAmino(object: QueryDenomConfigResponseAmino): QueryDenomConfigResponse {
+    const message = createBaseQueryDenomConfigResponse();
+    if (object.config !== undefined && object.config !== null) {
+      message.config = DenomConfig.fromAmino(object.config);
+    }
+    return message;
+  },
+  toAmino(message: QueryDenomConfigResponse): QueryDenomConfigResponseAmino {
+    const obj: any = {};
+    obj.config = message.config ? DenomConfig.toAmino(message.config) : DenomConfig.toAmino(DenomConfig.fromPartial({}));
+    return obj;
+  },
+  fromAminoMsg(object: QueryDenomConfigResponseAminoMsg): QueryDenomConfigResponse {
+    return QueryDenomConfigResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryDenomConfigResponseProtoMsg): QueryDenomConfigResponse {
+    return QueryDenomConfigResponse.decode(message.value);
+  },
+  toProto(message: QueryDenomConfigResponse): Uint8Array {
+    return QueryDenomConfigResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryDenomConfigResponse): QueryDenomConfigResponseProtoMsg {
+    return {
+      typeUrl: "/bze.tokenfactory.QueryDenomConfigResponse",
+      value: QueryDenomConfigResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(QueryDenomConfigResponse.typeUrl)) {
+      return;
+    }
+    DenomConfig.registerTypeUrl();
   }
 };

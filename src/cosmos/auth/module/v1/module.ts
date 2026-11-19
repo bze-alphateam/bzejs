@@ -20,6 +20,12 @@ export interface Module {
    * authority defines the custom module authority. If not set, defaults to the governance module.
    */
   authority: string;
+  /**
+   * enable_unordered_transactions determines whether unordered transactions should be supported or not.
+   * When true, unordered transactions will be validated and processed.
+   * When false, unordered transactions will be rejected.
+   */
+  enableUnorderedTransactions: boolean;
 }
 export interface ModuleProtoMsg {
   typeUrl: "/cosmos.auth.module.v1.Module";
@@ -44,6 +50,12 @@ export interface ModuleAmino {
    * authority defines the custom module authority. If not set, defaults to the governance module.
    */
   authority?: string;
+  /**
+   * enable_unordered_transactions determines whether unordered transactions should be supported or not.
+   * When true, unordered transactions will be validated and processed.
+   * When false, unordered transactions will be rejected.
+   */
+  enable_unordered_transactions?: boolean;
 }
 export interface ModuleAminoMsg {
   type: "cosmos-sdk/Module";
@@ -59,6 +71,7 @@ export interface ModuleSDKType {
   bech32_prefix: string;
   module_account_permissions: ModuleAccountPermissionSDKType[];
   authority: string;
+  enable_unordered_transactions: boolean;
 }
 /**
  * ModuleAccountPermission represents permissions for a module account.
@@ -116,7 +129,8 @@ function createBaseModule(): Module {
   return {
     bech32Prefix: "",
     moduleAccountPermissions: [],
-    authority: ""
+    authority: "",
+    enableUnorderedTransactions: false
   };
 }
 /**
@@ -129,13 +143,13 @@ export const Module = {
   typeUrl: "/cosmos.auth.module.v1.Module",
   aminoType: "cosmos-sdk/Module",
   is(o: any): o is Module {
-    return o && (o.$typeUrl === Module.typeUrl || typeof o.bech32Prefix === "string" && Array.isArray(o.moduleAccountPermissions) && (!o.moduleAccountPermissions.length || ModuleAccountPermission.is(o.moduleAccountPermissions[0])) && typeof o.authority === "string");
+    return o && (o.$typeUrl === Module.typeUrl || typeof o.bech32Prefix === "string" && Array.isArray(o.moduleAccountPermissions) && (!o.moduleAccountPermissions.length || ModuleAccountPermission.is(o.moduleAccountPermissions[0])) && typeof o.authority === "string" && typeof o.enableUnorderedTransactions === "boolean");
   },
   isSDK(o: any): o is ModuleSDKType {
-    return o && (o.$typeUrl === Module.typeUrl || typeof o.bech32_prefix === "string" && Array.isArray(o.module_account_permissions) && (!o.module_account_permissions.length || ModuleAccountPermission.isSDK(o.module_account_permissions[0])) && typeof o.authority === "string");
+    return o && (o.$typeUrl === Module.typeUrl || typeof o.bech32_prefix === "string" && Array.isArray(o.module_account_permissions) && (!o.module_account_permissions.length || ModuleAccountPermission.isSDK(o.module_account_permissions[0])) && typeof o.authority === "string" && typeof o.enable_unordered_transactions === "boolean");
   },
   isAmino(o: any): o is ModuleAmino {
-    return o && (o.$typeUrl === Module.typeUrl || typeof o.bech32_prefix === "string" && Array.isArray(o.module_account_permissions) && (!o.module_account_permissions.length || ModuleAccountPermission.isAmino(o.module_account_permissions[0])) && typeof o.authority === "string");
+    return o && (o.$typeUrl === Module.typeUrl || typeof o.bech32_prefix === "string" && Array.isArray(o.module_account_permissions) && (!o.module_account_permissions.length || ModuleAccountPermission.isAmino(o.module_account_permissions[0])) && typeof o.authority === "string" && typeof o.enable_unordered_transactions === "boolean");
   },
   encode(message: Module, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.bech32Prefix !== "") {
@@ -146,6 +160,9 @@ export const Module = {
     }
     if (message.authority !== "") {
       writer.uint32(26).string(message.authority);
+    }
+    if (message.enableUnorderedTransactions === true) {
+      writer.uint32(32).bool(message.enableUnorderedTransactions);
     }
     return writer;
   },
@@ -165,6 +182,9 @@ export const Module = {
         case 3:
           message.authority = reader.string();
           break;
+        case 4:
+          message.enableUnorderedTransactions = reader.bool();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -177,6 +197,7 @@ export const Module = {
     message.bech32Prefix = object.bech32Prefix ?? "";
     message.moduleAccountPermissions = object.moduleAccountPermissions?.map(e => ModuleAccountPermission.fromPartial(e)) || [];
     message.authority = object.authority ?? "";
+    message.enableUnorderedTransactions = object.enableUnorderedTransactions ?? false;
     return message;
   },
   fromAmino(object: ModuleAmino): Module {
@@ -187,6 +208,9 @@ export const Module = {
     message.moduleAccountPermissions = object.module_account_permissions?.map(e => ModuleAccountPermission.fromAmino(e)) || [];
     if (object.authority !== undefined && object.authority !== null) {
       message.authority = object.authority;
+    }
+    if (object.enable_unordered_transactions !== undefined && object.enable_unordered_transactions !== null) {
+      message.enableUnorderedTransactions = object.enable_unordered_transactions;
     }
     return message;
   },
@@ -199,6 +223,7 @@ export const Module = {
       obj.module_account_permissions = message.moduleAccountPermissions;
     }
     obj.authority = message.authority === "" ? undefined : message.authority;
+    obj.enable_unordered_transactions = message.enableUnorderedTransactions === false ? undefined : message.enableUnorderedTransactions;
     return obj;
   },
   fromAminoMsg(object: ModuleAminoMsg): Module {

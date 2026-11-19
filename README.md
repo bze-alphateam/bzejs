@@ -21,7 +21,7 @@ npm run build            # Compile CJS + ESM to dist/
 ### Regenerating from protos
 
 ```bash
-npm run download-protos  # Download latest proto files from cosmos-sdk and ibc-go
+npm run download-protos  # Download the cosmos-sdk, ibc-go and rate-limiting protos at the tags pinned in scripts/download-protos.ts
 npm run codegen          # Regenerate TypeScript source
 npm run build            # Rebuild
 ```

@@ -3,6 +3,7 @@ import { Params, ParamsAmino, ParamsSDKType, Metadata, MetadataAmino, MetadataSD
 import { DenomBranding, DenomBrandingAmino, DenomBrandingSDKType } from "./denom_branding";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { GlobalDecoderRegistry } from "../../registry";
+import { Decimal } from "@interchainjs/math";
 /**
  * MsgUpdateParams is the Msg/UpdateParams request type.
  * @name MsgUpdateParams
@@ -471,6 +472,255 @@ export interface MsgSetDenomBrandingResponseAminoMsg {
  * @see proto type: bze.tokenfactory.MsgSetDenomBrandingResponse
  */
 export interface MsgSetDenomBrandingResponseSDKType {}
+/**
+ * MsgSetDenomAdmin is the governance message that assigns a new admin to a factory denom,
+ * whatever its current admin is (including a renounced denom whose admin is empty).
+ * @name MsgSetDenomAdmin
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomAdmin
+ */
+export interface MsgSetDenomAdmin {
+  /**
+   * authority is the address that controls the module (defaults to x/gov unless overwritten).
+   */
+  authority: string;
+  /**
+   * denom is the full factory denom, e.g. factory/bze1.../mytoken.
+   */
+  denom: string;
+  /**
+   * new_admin is the account that becomes admin. Must not be empty.
+   */
+  newAdmin: string;
+}
+export interface MsgSetDenomAdminProtoMsg {
+  typeUrl: "/bze.tokenfactory.MsgSetDenomAdmin";
+  value: Uint8Array;
+}
+/**
+ * MsgSetDenomAdmin is the governance message that assigns a new admin to a factory denom,
+ * whatever its current admin is (including a renounced denom whose admin is empty).
+ * @name MsgSetDenomAdminAmino
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomAdmin
+ */
+export interface MsgSetDenomAdminAmino {
+  /**
+   * authority is the address that controls the module (defaults to x/gov unless overwritten).
+   */
+  authority?: string;
+  /**
+   * denom is the full factory denom, e.g. factory/bze1.../mytoken.
+   */
+  denom?: string;
+  /**
+   * new_admin is the account that becomes admin. Must not be empty.
+   */
+  new_admin?: string;
+}
+export interface MsgSetDenomAdminAminoMsg {
+  type: "bze/x/tokenfactory/MsgSetDenomAdmin";
+  value: MsgSetDenomAdminAmino;
+}
+/**
+ * MsgSetDenomAdmin is the governance message that assigns a new admin to a factory denom,
+ * whatever its current admin is (including a renounced denom whose admin is empty).
+ * @name MsgSetDenomAdminSDKType
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomAdmin
+ */
+export interface MsgSetDenomAdminSDKType {
+  authority: string;
+  denom: string;
+  new_admin: string;
+}
+/**
+ * @name MsgSetDenomAdminResponse
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomAdminResponse
+ */
+export interface MsgSetDenomAdminResponse {}
+export interface MsgSetDenomAdminResponseProtoMsg {
+  typeUrl: "/bze.tokenfactory.MsgSetDenomAdminResponse";
+  value: Uint8Array;
+}
+/**
+ * @name MsgSetDenomAdminResponseAmino
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomAdminResponse
+ */
+export interface MsgSetDenomAdminResponseAmino {}
+export interface MsgSetDenomAdminResponseAminoMsg {
+  type: "/bze.tokenfactory.MsgSetDenomAdminResponse";
+  value: MsgSetDenomAdminResponseAmino;
+}
+/**
+ * @name MsgSetDenomAdminResponseSDKType
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomAdminResponse
+ */
+export interface MsgSetDenomAdminResponseSDKType {}
+/**
+ * MsgDisableMinting turns minting off for good on a factory denom. Only the denom admin may send it.
+ * The admin keeps every other right (burn, metadata, branding, admin change).
+ * @name MsgDisableMinting
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgDisableMinting
+ */
+export interface MsgDisableMinting {
+  creator: string;
+  denom: string;
+}
+export interface MsgDisableMintingProtoMsg {
+  typeUrl: "/bze.tokenfactory.MsgDisableMinting";
+  value: Uint8Array;
+}
+/**
+ * MsgDisableMinting turns minting off for good on a factory denom. Only the denom admin may send it.
+ * The admin keeps every other right (burn, metadata, branding, admin change).
+ * @name MsgDisableMintingAmino
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgDisableMinting
+ */
+export interface MsgDisableMintingAmino {
+  creator?: string;
+  denom?: string;
+}
+export interface MsgDisableMintingAminoMsg {
+  type: "bze/x/tokenfactory/MsgDisableMinting";
+  value: MsgDisableMintingAmino;
+}
+/**
+ * MsgDisableMinting turns minting off for good on a factory denom. Only the denom admin may send it.
+ * The admin keeps every other right (burn, metadata, branding, admin change).
+ * @name MsgDisableMintingSDKType
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgDisableMinting
+ */
+export interface MsgDisableMintingSDKType {
+  creator: string;
+  denom: string;
+}
+/**
+ * @name MsgDisableMintingResponse
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgDisableMintingResponse
+ */
+export interface MsgDisableMintingResponse {}
+export interface MsgDisableMintingResponseProtoMsg {
+  typeUrl: "/bze.tokenfactory.MsgDisableMintingResponse";
+  value: Uint8Array;
+}
+/**
+ * @name MsgDisableMintingResponseAmino
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgDisableMintingResponse
+ */
+export interface MsgDisableMintingResponseAmino {}
+export interface MsgDisableMintingResponseAminoMsg {
+  type: "/bze.tokenfactory.MsgDisableMintingResponse";
+  value: MsgDisableMintingResponseAmino;
+}
+/**
+ * @name MsgDisableMintingResponseSDKType
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgDisableMintingResponse
+ */
+export interface MsgDisableMintingResponseSDKType {}
+/**
+ * MsgSetDenomConfig replaces the configuration of a factory denom as a whole.
+ * Only the denom admin may send it. Both rates must be sent, even when zero.
+ * @name MsgSetDenomConfig
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomConfig
+ */
+export interface MsgSetDenomConfig {
+  creator: string;
+  denom: string;
+  /**
+   * community_pool receives the token's fee coins. Empty means none.
+   */
+  communityPool: string;
+  /**
+   * transfer_fee is a ratio, 0 <= x <= 0.05.
+   */
+  transferFee: string;
+  /**
+   * gas_surcharge is a ratio, 0 <= x <= 2.
+   */
+  gasSurcharge: string;
+}
+export interface MsgSetDenomConfigProtoMsg {
+  typeUrl: "/bze.tokenfactory.MsgSetDenomConfig";
+  value: Uint8Array;
+}
+/**
+ * MsgSetDenomConfig replaces the configuration of a factory denom as a whole.
+ * Only the denom admin may send it. Both rates must be sent, even when zero.
+ * @name MsgSetDenomConfigAmino
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomConfig
+ */
+export interface MsgSetDenomConfigAmino {
+  creator?: string;
+  denom?: string;
+  /**
+   * community_pool receives the token's fee coins. Empty means none.
+   */
+  community_pool: string;
+  /**
+   * transfer_fee is a ratio, 0 <= x <= 0.05.
+   */
+  transfer_fee: string;
+  /**
+   * gas_surcharge is a ratio, 0 <= x <= 2.
+   */
+  gas_surcharge: string;
+}
+export interface MsgSetDenomConfigAminoMsg {
+  type: "bze/x/tokenfactory/MsgSetDenomConfig";
+  value: MsgSetDenomConfigAmino;
+}
+/**
+ * MsgSetDenomConfig replaces the configuration of a factory denom as a whole.
+ * Only the denom admin may send it. Both rates must be sent, even when zero.
+ * @name MsgSetDenomConfigSDKType
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomConfig
+ */
+export interface MsgSetDenomConfigSDKType {
+  creator: string;
+  denom: string;
+  community_pool: string;
+  transfer_fee: string;
+  gas_surcharge: string;
+}
+/**
+ * @name MsgSetDenomConfigResponse
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomConfigResponse
+ */
+export interface MsgSetDenomConfigResponse {}
+export interface MsgSetDenomConfigResponseProtoMsg {
+  typeUrl: "/bze.tokenfactory.MsgSetDenomConfigResponse";
+  value: Uint8Array;
+}
+/**
+ * @name MsgSetDenomConfigResponseAmino
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomConfigResponse
+ */
+export interface MsgSetDenomConfigResponseAmino {}
+export interface MsgSetDenomConfigResponseAminoMsg {
+  type: "/bze.tokenfactory.MsgSetDenomConfigResponse";
+  value: MsgSetDenomConfigResponseAmino;
+}
+/**
+ * @name MsgSetDenomConfigResponseSDKType
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomConfigResponse
+ */
+export interface MsgSetDenomConfigResponseSDKType {}
 function createBaseMsgUpdateParams(): MsgUpdateParams {
   return {
     authority: "",
@@ -1656,6 +1906,546 @@ export const MsgSetDenomBrandingResponse = {
     return {
       typeUrl: "/bze.tokenfactory.MsgSetDenomBrandingResponse",
       value: MsgSetDenomBrandingResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgSetDenomAdmin(): MsgSetDenomAdmin {
+  return {
+    authority: "",
+    denom: "",
+    newAdmin: ""
+  };
+}
+/**
+ * MsgSetDenomAdmin is the governance message that assigns a new admin to a factory denom,
+ * whatever its current admin is (including a renounced denom whose admin is empty).
+ * @name MsgSetDenomAdmin
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomAdmin
+ */
+export const MsgSetDenomAdmin = {
+  typeUrl: "/bze.tokenfactory.MsgSetDenomAdmin",
+  aminoType: "bze/x/tokenfactory/MsgSetDenomAdmin",
+  is(o: any): o is MsgSetDenomAdmin {
+    return o && (o.$typeUrl === MsgSetDenomAdmin.typeUrl || typeof o.authority === "string" && typeof o.denom === "string" && typeof o.newAdmin === "string");
+  },
+  isSDK(o: any): o is MsgSetDenomAdminSDKType {
+    return o && (o.$typeUrl === MsgSetDenomAdmin.typeUrl || typeof o.authority === "string" && typeof o.denom === "string" && typeof o.new_admin === "string");
+  },
+  isAmino(o: any): o is MsgSetDenomAdminAmino {
+    return o && (o.$typeUrl === MsgSetDenomAdmin.typeUrl || typeof o.authority === "string" && typeof o.denom === "string" && typeof o.new_admin === "string");
+  },
+  encode(message: MsgSetDenomAdmin, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.authority !== "") {
+      writer.uint32(10).string(message.authority);
+    }
+    if (message.denom !== "") {
+      writer.uint32(18).string(message.denom);
+    }
+    if (message.newAdmin !== "") {
+      writer.uint32(26).string(message.newAdmin);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetDenomAdmin {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetDenomAdmin();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.authority = reader.string();
+          break;
+        case 2:
+          message.denom = reader.string();
+          break;
+        case 3:
+          message.newAdmin = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSetDenomAdmin>): MsgSetDenomAdmin {
+    const message = createBaseMsgSetDenomAdmin();
+    message.authority = object.authority ?? "";
+    message.denom = object.denom ?? "";
+    message.newAdmin = object.newAdmin ?? "";
+    return message;
+  },
+  fromAmino(object: MsgSetDenomAdminAmino): MsgSetDenomAdmin {
+    const message = createBaseMsgSetDenomAdmin();
+    if (object.authority !== undefined && object.authority !== null) {
+      message.authority = object.authority;
+    }
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    if (object.new_admin !== undefined && object.new_admin !== null) {
+      message.newAdmin = object.new_admin;
+    }
+    return message;
+  },
+  toAmino(message: MsgSetDenomAdmin): MsgSetDenomAdminAmino {
+    const obj: any = {};
+    obj.authority = message.authority === "" ? undefined : message.authority;
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    obj.new_admin = message.newAdmin === "" ? undefined : message.newAdmin;
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetDenomAdminAminoMsg): MsgSetDenomAdmin {
+    return MsgSetDenomAdmin.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgSetDenomAdmin): MsgSetDenomAdminAminoMsg {
+    return {
+      type: "bze/x/tokenfactory/MsgSetDenomAdmin",
+      value: MsgSetDenomAdmin.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgSetDenomAdminProtoMsg): MsgSetDenomAdmin {
+    return MsgSetDenomAdmin.decode(message.value);
+  },
+  toProto(message: MsgSetDenomAdmin): Uint8Array {
+    return MsgSetDenomAdmin.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetDenomAdmin): MsgSetDenomAdminProtoMsg {
+    return {
+      typeUrl: "/bze.tokenfactory.MsgSetDenomAdmin",
+      value: MsgSetDenomAdmin.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgSetDenomAdminResponse(): MsgSetDenomAdminResponse {
+  return {};
+}
+/**
+ * @name MsgSetDenomAdminResponse
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomAdminResponse
+ */
+export const MsgSetDenomAdminResponse = {
+  typeUrl: "/bze.tokenfactory.MsgSetDenomAdminResponse",
+  is(o: any): o is MsgSetDenomAdminResponse {
+    return o && o.$typeUrl === MsgSetDenomAdminResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSetDenomAdminResponseSDKType {
+    return o && o.$typeUrl === MsgSetDenomAdminResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSetDenomAdminResponseAmino {
+    return o && o.$typeUrl === MsgSetDenomAdminResponse.typeUrl;
+  },
+  encode(_: MsgSetDenomAdminResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetDenomAdminResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetDenomAdminResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgSetDenomAdminResponse>): MsgSetDenomAdminResponse {
+    const message = createBaseMsgSetDenomAdminResponse();
+    return message;
+  },
+  fromAmino(_: MsgSetDenomAdminResponseAmino): MsgSetDenomAdminResponse {
+    const message = createBaseMsgSetDenomAdminResponse();
+    return message;
+  },
+  toAmino(_: MsgSetDenomAdminResponse): MsgSetDenomAdminResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetDenomAdminResponseAminoMsg): MsgSetDenomAdminResponse {
+    return MsgSetDenomAdminResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgSetDenomAdminResponseProtoMsg): MsgSetDenomAdminResponse {
+    return MsgSetDenomAdminResponse.decode(message.value);
+  },
+  toProto(message: MsgSetDenomAdminResponse): Uint8Array {
+    return MsgSetDenomAdminResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetDenomAdminResponse): MsgSetDenomAdminResponseProtoMsg {
+    return {
+      typeUrl: "/bze.tokenfactory.MsgSetDenomAdminResponse",
+      value: MsgSetDenomAdminResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgDisableMinting(): MsgDisableMinting {
+  return {
+    creator: "",
+    denom: ""
+  };
+}
+/**
+ * MsgDisableMinting turns minting off for good on a factory denom. Only the denom admin may send it.
+ * The admin keeps every other right (burn, metadata, branding, admin change).
+ * @name MsgDisableMinting
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgDisableMinting
+ */
+export const MsgDisableMinting = {
+  typeUrl: "/bze.tokenfactory.MsgDisableMinting",
+  aminoType: "bze/x/tokenfactory/MsgDisableMinting",
+  is(o: any): o is MsgDisableMinting {
+    return o && (o.$typeUrl === MsgDisableMinting.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  isSDK(o: any): o is MsgDisableMintingSDKType {
+    return o && (o.$typeUrl === MsgDisableMinting.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  isAmino(o: any): o is MsgDisableMintingAmino {
+    return o && (o.$typeUrl === MsgDisableMinting.typeUrl || typeof o.creator === "string" && typeof o.denom === "string");
+  },
+  encode(message: MsgDisableMinting, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.denom !== "") {
+      writer.uint32(18).string(message.denom);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgDisableMinting {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgDisableMinting();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.denom = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgDisableMinting>): MsgDisableMinting {
+    const message = createBaseMsgDisableMinting();
+    message.creator = object.creator ?? "";
+    message.denom = object.denom ?? "";
+    return message;
+  },
+  fromAmino(object: MsgDisableMintingAmino): MsgDisableMinting {
+    const message = createBaseMsgDisableMinting();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    return message;
+  },
+  toAmino(message: MsgDisableMinting): MsgDisableMintingAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    return obj;
+  },
+  fromAminoMsg(object: MsgDisableMintingAminoMsg): MsgDisableMinting {
+    return MsgDisableMinting.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgDisableMinting): MsgDisableMintingAminoMsg {
+    return {
+      type: "bze/x/tokenfactory/MsgDisableMinting",
+      value: MsgDisableMinting.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgDisableMintingProtoMsg): MsgDisableMinting {
+    return MsgDisableMinting.decode(message.value);
+  },
+  toProto(message: MsgDisableMinting): Uint8Array {
+    return MsgDisableMinting.encode(message).finish();
+  },
+  toProtoMsg(message: MsgDisableMinting): MsgDisableMintingProtoMsg {
+    return {
+      typeUrl: "/bze.tokenfactory.MsgDisableMinting",
+      value: MsgDisableMinting.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgDisableMintingResponse(): MsgDisableMintingResponse {
+  return {};
+}
+/**
+ * @name MsgDisableMintingResponse
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgDisableMintingResponse
+ */
+export const MsgDisableMintingResponse = {
+  typeUrl: "/bze.tokenfactory.MsgDisableMintingResponse",
+  is(o: any): o is MsgDisableMintingResponse {
+    return o && o.$typeUrl === MsgDisableMintingResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgDisableMintingResponseSDKType {
+    return o && o.$typeUrl === MsgDisableMintingResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgDisableMintingResponseAmino {
+    return o && o.$typeUrl === MsgDisableMintingResponse.typeUrl;
+  },
+  encode(_: MsgDisableMintingResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgDisableMintingResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgDisableMintingResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgDisableMintingResponse>): MsgDisableMintingResponse {
+    const message = createBaseMsgDisableMintingResponse();
+    return message;
+  },
+  fromAmino(_: MsgDisableMintingResponseAmino): MsgDisableMintingResponse {
+    const message = createBaseMsgDisableMintingResponse();
+    return message;
+  },
+  toAmino(_: MsgDisableMintingResponse): MsgDisableMintingResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgDisableMintingResponseAminoMsg): MsgDisableMintingResponse {
+    return MsgDisableMintingResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgDisableMintingResponseProtoMsg): MsgDisableMintingResponse {
+    return MsgDisableMintingResponse.decode(message.value);
+  },
+  toProto(message: MsgDisableMintingResponse): Uint8Array {
+    return MsgDisableMintingResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgDisableMintingResponse): MsgDisableMintingResponseProtoMsg {
+    return {
+      typeUrl: "/bze.tokenfactory.MsgDisableMintingResponse",
+      value: MsgDisableMintingResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgSetDenomConfig(): MsgSetDenomConfig {
+  return {
+    creator: "",
+    denom: "",
+    communityPool: "",
+    transferFee: "",
+    gasSurcharge: ""
+  };
+}
+/**
+ * MsgSetDenomConfig replaces the configuration of a factory denom as a whole.
+ * Only the denom admin may send it. Both rates must be sent, even when zero.
+ * @name MsgSetDenomConfig
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomConfig
+ */
+export const MsgSetDenomConfig = {
+  typeUrl: "/bze.tokenfactory.MsgSetDenomConfig",
+  aminoType: "bze/x/tokenfactory/MsgSetDenomConfig",
+  is(o: any): o is MsgSetDenomConfig {
+    return o && (o.$typeUrl === MsgSetDenomConfig.typeUrl || typeof o.creator === "string" && typeof o.denom === "string" && typeof o.communityPool === "string" && typeof o.transferFee === "string" && typeof o.gasSurcharge === "string");
+  },
+  isSDK(o: any): o is MsgSetDenomConfigSDKType {
+    return o && (o.$typeUrl === MsgSetDenomConfig.typeUrl || typeof o.creator === "string" && typeof o.denom === "string" && typeof o.community_pool === "string" && typeof o.transfer_fee === "string" && typeof o.gas_surcharge === "string");
+  },
+  isAmino(o: any): o is MsgSetDenomConfigAmino {
+    return o && (o.$typeUrl === MsgSetDenomConfig.typeUrl || typeof o.creator === "string" && typeof o.denom === "string" && typeof o.community_pool === "string" && typeof o.transfer_fee === "string" && typeof o.gas_surcharge === "string");
+  },
+  encode(message: MsgSetDenomConfig, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.creator !== "") {
+      writer.uint32(10).string(message.creator);
+    }
+    if (message.denom !== "") {
+      writer.uint32(18).string(message.denom);
+    }
+    if (message.communityPool !== "") {
+      writer.uint32(26).string(message.communityPool);
+    }
+    if (message.transferFee !== "") {
+      writer.uint32(34).string(Decimal.fromUserInput(message.transferFee, 18).atomics);
+    }
+    if (message.gasSurcharge !== "") {
+      writer.uint32(42).string(Decimal.fromUserInput(message.gasSurcharge, 18).atomics);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetDenomConfig {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetDenomConfig();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.creator = reader.string();
+          break;
+        case 2:
+          message.denom = reader.string();
+          break;
+        case 3:
+          message.communityPool = reader.string();
+          break;
+        case 4:
+          message.transferFee = Decimal.fromAtomics(reader.string(), 18).toString();
+          break;
+        case 5:
+          message.gasSurcharge = Decimal.fromAtomics(reader.string(), 18).toString();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgSetDenomConfig>): MsgSetDenomConfig {
+    const message = createBaseMsgSetDenomConfig();
+    message.creator = object.creator ?? "";
+    message.denom = object.denom ?? "";
+    message.communityPool = object.communityPool ?? "";
+    message.transferFee = object.transferFee ?? "";
+    message.gasSurcharge = object.gasSurcharge ?? "";
+    return message;
+  },
+  fromAmino(object: MsgSetDenomConfigAmino): MsgSetDenomConfig {
+    const message = createBaseMsgSetDenomConfig();
+    if (object.creator !== undefined && object.creator !== null) {
+      message.creator = object.creator;
+    }
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    if (object.community_pool !== undefined && object.community_pool !== null) {
+      message.communityPool = object.community_pool;
+    }
+    if (object.transfer_fee !== undefined && object.transfer_fee !== null) {
+      message.transferFee = object.transfer_fee;
+    }
+    if (object.gas_surcharge !== undefined && object.gas_surcharge !== null) {
+      message.gasSurcharge = object.gas_surcharge;
+    }
+    return message;
+  },
+  toAmino(message: MsgSetDenomConfig): MsgSetDenomConfigAmino {
+    const obj: any = {};
+    obj.creator = message.creator === "" ? undefined : message.creator;
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    obj.community_pool = message.communityPool ?? "";
+    obj.transfer_fee = Decimal.fromUserInput(message.transferFee, 18).atomics ?? "";
+    obj.gas_surcharge = Decimal.fromUserInput(message.gasSurcharge, 18).atomics ?? "";
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetDenomConfigAminoMsg): MsgSetDenomConfig {
+    return MsgSetDenomConfig.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgSetDenomConfig): MsgSetDenomConfigAminoMsg {
+    return {
+      type: "bze/x/tokenfactory/MsgSetDenomConfig",
+      value: MsgSetDenomConfig.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgSetDenomConfigProtoMsg): MsgSetDenomConfig {
+    return MsgSetDenomConfig.decode(message.value);
+  },
+  toProto(message: MsgSetDenomConfig): Uint8Array {
+    return MsgSetDenomConfig.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetDenomConfig): MsgSetDenomConfigProtoMsg {
+    return {
+      typeUrl: "/bze.tokenfactory.MsgSetDenomConfig",
+      value: MsgSetDenomConfig.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgSetDenomConfigResponse(): MsgSetDenomConfigResponse {
+  return {};
+}
+/**
+ * @name MsgSetDenomConfigResponse
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.MsgSetDenomConfigResponse
+ */
+export const MsgSetDenomConfigResponse = {
+  typeUrl: "/bze.tokenfactory.MsgSetDenomConfigResponse",
+  is(o: any): o is MsgSetDenomConfigResponse {
+    return o && o.$typeUrl === MsgSetDenomConfigResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgSetDenomConfigResponseSDKType {
+    return o && o.$typeUrl === MsgSetDenomConfigResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgSetDenomConfigResponseAmino {
+    return o && o.$typeUrl === MsgSetDenomConfigResponse.typeUrl;
+  },
+  encode(_: MsgSetDenomConfigResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgSetDenomConfigResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgSetDenomConfigResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgSetDenomConfigResponse>): MsgSetDenomConfigResponse {
+    const message = createBaseMsgSetDenomConfigResponse();
+    return message;
+  },
+  fromAmino(_: MsgSetDenomConfigResponseAmino): MsgSetDenomConfigResponse {
+    const message = createBaseMsgSetDenomConfigResponse();
+    return message;
+  },
+  toAmino(_: MsgSetDenomConfigResponse): MsgSetDenomConfigResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgSetDenomConfigResponseAminoMsg): MsgSetDenomConfigResponse {
+    return MsgSetDenomConfigResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgSetDenomConfigResponseProtoMsg): MsgSetDenomConfigResponse {
+    return MsgSetDenomConfigResponse.decode(message.value);
+  },
+  toProto(message: MsgSetDenomConfigResponse): Uint8Array {
+    return MsgSetDenomConfigResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgSetDenomConfigResponse): MsgSetDenomConfigResponseProtoMsg {
+    return {
+      typeUrl: "/bze.tokenfactory.MsgSetDenomConfigResponse",
+      value: MsgSetDenomConfigResponse.encode(message).finish()
     };
   },
   registerTypeUrl() {}

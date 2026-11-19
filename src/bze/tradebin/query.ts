@@ -4,6 +4,7 @@ import { Params, ParamsAmino, ParamsSDKType } from "./v2/params";
 import { Market, MarketAmino, MarketSDKType, OrderReference, OrderReferenceAmino, OrderReferenceSDKType, AggregatedOrder, AggregatedOrderAmino, AggregatedOrderSDKType, HistoryOrder, HistoryOrderAmino, HistoryOrderSDKType, Order, OrderAmino, OrderSDKType, UserDust, UserDustAmino, UserDustSDKType, LiquidityPool, LiquidityPoolAmino, LiquidityPoolSDKType } from "./store";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { GlobalDecoderRegistry } from "../../registry";
+import { Decimal } from "@interchainjs/math";
 /**
  * QueryParamsRequest is request type for the Query/Params RPC method.
  * @name QueryParamsRequest
@@ -755,6 +756,73 @@ export interface QueryLiquidityPoolResponseAminoMsg {
  */
 export interface QueryLiquidityPoolResponseSDKType {
   pool?: LiquidityPoolSDKType;
+}
+/**
+ * @name QueryPoolPriceAverageRequest
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryPoolPriceAverageRequest
+ */
+export interface QueryPoolPriceAverageRequest {
+  poolId: string;
+}
+export interface QueryPoolPriceAverageRequestProtoMsg {
+  typeUrl: "/bze.tradebin.QueryPoolPriceAverageRequest";
+  value: Uint8Array;
+}
+/**
+ * @name QueryPoolPriceAverageRequestAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryPoolPriceAverageRequest
+ */
+export interface QueryPoolPriceAverageRequestAmino {
+  pool_id?: string;
+}
+export interface QueryPoolPriceAverageRequestAminoMsg {
+  type: "/bze.tradebin.QueryPoolPriceAverageRequest";
+  value: QueryPoolPriceAverageRequestAmino;
+}
+/**
+ * @name QueryPoolPriceAverageRequestSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryPoolPriceAverageRequest
+ */
+export interface QueryPoolPriceAverageRequestSDKType {
+  pool_id: string;
+}
+/**
+ * @name QueryPoolPriceAverageResponse
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryPoolPriceAverageResponse
+ */
+export interface QueryPoolPriceAverageResponse {
+  avgPrice: string;
+  lastHeight: bigint;
+}
+export interface QueryPoolPriceAverageResponseProtoMsg {
+  typeUrl: "/bze.tradebin.QueryPoolPriceAverageResponse";
+  value: Uint8Array;
+}
+/**
+ * @name QueryPoolPriceAverageResponseAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryPoolPriceAverageResponse
+ */
+export interface QueryPoolPriceAverageResponseAmino {
+  avg_price?: string;
+  last_height?: string;
+}
+export interface QueryPoolPriceAverageResponseAminoMsg {
+  type: "/bze.tradebin.QueryPoolPriceAverageResponse";
+  value: QueryPoolPriceAverageResponseAmino;
+}
+/**
+ * @name QueryPoolPriceAverageResponseSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryPoolPriceAverageResponse
+ */
+export interface QueryPoolPriceAverageResponseSDKType {
+  avg_price: string;
+  last_height: bigint;
 }
 /**
  * @name QueryHaltedDenomsRequest
@@ -2860,6 +2928,174 @@ export const QueryLiquidityPoolResponse = {
     }
     LiquidityPool.registerTypeUrl();
   }
+};
+function createBaseQueryPoolPriceAverageRequest(): QueryPoolPriceAverageRequest {
+  return {
+    poolId: ""
+  };
+}
+/**
+ * @name QueryPoolPriceAverageRequest
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryPoolPriceAverageRequest
+ */
+export const QueryPoolPriceAverageRequest = {
+  typeUrl: "/bze.tradebin.QueryPoolPriceAverageRequest",
+  is(o: any): o is QueryPoolPriceAverageRequest {
+    return o && (o.$typeUrl === QueryPoolPriceAverageRequest.typeUrl || typeof o.poolId === "string");
+  },
+  isSDK(o: any): o is QueryPoolPriceAverageRequestSDKType {
+    return o && (o.$typeUrl === QueryPoolPriceAverageRequest.typeUrl || typeof o.pool_id === "string");
+  },
+  isAmino(o: any): o is QueryPoolPriceAverageRequestAmino {
+    return o && (o.$typeUrl === QueryPoolPriceAverageRequest.typeUrl || typeof o.pool_id === "string");
+  },
+  encode(message: QueryPoolPriceAverageRequest, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.poolId !== "") {
+      writer.uint32(10).string(message.poolId);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolPriceAverageRequest {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryPoolPriceAverageRequest();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.poolId = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryPoolPriceAverageRequest>): QueryPoolPriceAverageRequest {
+    const message = createBaseQueryPoolPriceAverageRequest();
+    message.poolId = object.poolId ?? "";
+    return message;
+  },
+  fromAmino(object: QueryPoolPriceAverageRequestAmino): QueryPoolPriceAverageRequest {
+    const message = createBaseQueryPoolPriceAverageRequest();
+    if (object.pool_id !== undefined && object.pool_id !== null) {
+      message.poolId = object.pool_id;
+    }
+    return message;
+  },
+  toAmino(message: QueryPoolPriceAverageRequest): QueryPoolPriceAverageRequestAmino {
+    const obj: any = {};
+    obj.pool_id = message.poolId === "" ? undefined : message.poolId;
+    return obj;
+  },
+  fromAminoMsg(object: QueryPoolPriceAverageRequestAminoMsg): QueryPoolPriceAverageRequest {
+    return QueryPoolPriceAverageRequest.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryPoolPriceAverageRequestProtoMsg): QueryPoolPriceAverageRequest {
+    return QueryPoolPriceAverageRequest.decode(message.value);
+  },
+  toProto(message: QueryPoolPriceAverageRequest): Uint8Array {
+    return QueryPoolPriceAverageRequest.encode(message).finish();
+  },
+  toProtoMsg(message: QueryPoolPriceAverageRequest): QueryPoolPriceAverageRequestProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.QueryPoolPriceAverageRequest",
+      value: QueryPoolPriceAverageRequest.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseQueryPoolPriceAverageResponse(): QueryPoolPriceAverageResponse {
+  return {
+    avgPrice: "",
+    lastHeight: BigInt(0)
+  };
+}
+/**
+ * @name QueryPoolPriceAverageResponse
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.QueryPoolPriceAverageResponse
+ */
+export const QueryPoolPriceAverageResponse = {
+  typeUrl: "/bze.tradebin.QueryPoolPriceAverageResponse",
+  is(o: any): o is QueryPoolPriceAverageResponse {
+    return o && (o.$typeUrl === QueryPoolPriceAverageResponse.typeUrl || typeof o.avgPrice === "string" && typeof o.lastHeight === "bigint");
+  },
+  isSDK(o: any): o is QueryPoolPriceAverageResponseSDKType {
+    return o && (o.$typeUrl === QueryPoolPriceAverageResponse.typeUrl || typeof o.avg_price === "string" && typeof o.last_height === "bigint");
+  },
+  isAmino(o: any): o is QueryPoolPriceAverageResponseAmino {
+    return o && (o.$typeUrl === QueryPoolPriceAverageResponse.typeUrl || typeof o.avg_price === "string" && typeof o.last_height === "bigint");
+  },
+  encode(message: QueryPoolPriceAverageResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.avgPrice !== "") {
+      writer.uint32(10).string(Decimal.fromUserInput(message.avgPrice, 18).atomics);
+    }
+    if (message.lastHeight !== BigInt(0)) {
+      writer.uint32(16).int64(message.lastHeight);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): QueryPoolPriceAverageResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseQueryPoolPriceAverageResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.avgPrice = Decimal.fromAtomics(reader.string(), 18).toString();
+          break;
+        case 2:
+          message.lastHeight = reader.int64();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<QueryPoolPriceAverageResponse>): QueryPoolPriceAverageResponse {
+    const message = createBaseQueryPoolPriceAverageResponse();
+    message.avgPrice = object.avgPrice ?? "";
+    message.lastHeight = object.lastHeight !== undefined && object.lastHeight !== null ? BigInt(object.lastHeight.toString()) : BigInt(0);
+    return message;
+  },
+  fromAmino(object: QueryPoolPriceAverageResponseAmino): QueryPoolPriceAverageResponse {
+    const message = createBaseQueryPoolPriceAverageResponse();
+    if (object.avg_price !== undefined && object.avg_price !== null) {
+      message.avgPrice = object.avg_price;
+    }
+    if (object.last_height !== undefined && object.last_height !== null) {
+      message.lastHeight = BigInt(object.last_height);
+    }
+    return message;
+  },
+  toAmino(message: QueryPoolPriceAverageResponse): QueryPoolPriceAverageResponseAmino {
+    const obj: any = {};
+    obj.avg_price = message.avgPrice === "" ? undefined : Decimal.fromUserInput(message.avgPrice, 18).atomics;
+    obj.last_height = message.lastHeight !== BigInt(0) ? message.lastHeight?.toString() : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: QueryPoolPriceAverageResponseAminoMsg): QueryPoolPriceAverageResponse {
+    return QueryPoolPriceAverageResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: QueryPoolPriceAverageResponseProtoMsg): QueryPoolPriceAverageResponse {
+    return QueryPoolPriceAverageResponse.decode(message.value);
+  },
+  toProto(message: QueryPoolPriceAverageResponse): Uint8Array {
+    return QueryPoolPriceAverageResponse.encode(message).finish();
+  },
+  toProtoMsg(message: QueryPoolPriceAverageResponse): QueryPoolPriceAverageResponseProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.QueryPoolPriceAverageResponse",
+      value: QueryPoolPriceAverageResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
 };
 function createBaseQueryHaltedDenomsRequest(): QueryHaltedDenomsRequest {
   return {

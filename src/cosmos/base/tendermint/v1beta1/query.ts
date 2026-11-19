@@ -282,9 +282,6 @@ export interface GetBlockByHeightResponse {
    * Deprecated: please use `sdk_block` instead
    */
   block?: Block1;
-  /**
-   * Since: cosmos-sdk 0.47
-   */
   sdkBlock?: Block2;
 }
 export interface GetBlockByHeightResponseProtoMsg {
@@ -303,9 +300,6 @@ export interface GetBlockByHeightResponseAmino {
    * Deprecated: please use `sdk_block` instead
    */
   block?: Block1Amino;
-  /**
-   * Since: cosmos-sdk 0.47
-   */
   sdk_block?: Block2Amino;
 }
 export interface GetBlockByHeightResponseAminoMsg {
@@ -364,9 +358,6 @@ export interface GetLatestBlockResponse {
    * Deprecated: please use `sdk_block` instead
    */
   block?: Block1;
-  /**
-   * Since: cosmos-sdk 0.47
-   */
   sdkBlock?: Block2;
 }
 export interface GetLatestBlockResponseProtoMsg {
@@ -385,9 +376,6 @@ export interface GetLatestBlockResponseAmino {
    * Deprecated: please use `sdk_block` instead
    */
   block?: Block1Amino;
-  /**
-   * Since: cosmos-sdk 0.47
-   */
   sdk_block?: Block2Amino;
 }
 export interface GetLatestBlockResponseAminoMsg {
@@ -550,9 +538,6 @@ export interface VersionInfo {
   buildTags: string;
   goVersion: string;
   buildDeps: Module[];
-  /**
-   * Since: cosmos-sdk 0.43
-   */
   cosmosSdkVersion: string;
 }
 export interface VersionInfoProtoMsg {
@@ -573,9 +558,6 @@ export interface VersionInfoAmino {
   build_tags?: string;
   go_version?: string;
   build_deps?: ModuleAmino[];
-  /**
-   * Since: cosmos-sdk 0.43
-   */
   cosmos_sdk_version?: string;
 }
 export interface VersionInfoAminoMsg {

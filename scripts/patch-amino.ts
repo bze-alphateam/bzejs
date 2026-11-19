@@ -34,12 +34,4 @@ export function patchAmino(): void {
     `    obj.timeout_height = message.timeoutHeight ? Height.toAmino(message.timeoutHeight) : {};`,
     `    obj.timeout_height = message.timeoutHeight ? Height.toAmino(message.timeoutHeight) : undefined;`,
   );
-
-  // Bug 2b — MsgTransfer.toAmino(): emits use_aliasing: false instead of
-  // omitting the field. The chain aminojson encoder omits false booleans.
-  patch(
-    'ibc/applications/transfer/v1/tx.ts',
-    `    obj.use_aliasing = message.useAliasing ?? false;`,
-    `    obj.use_aliasing = message.useAliasing || undefined;`,
-  );
 }

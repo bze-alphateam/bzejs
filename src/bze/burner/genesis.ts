@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { Params, ParamsAmino, ParamsSDKType } from "./params";
-import { BurnedCoins, BurnedCoinsAmino, BurnedCoinsSDKType, PeriodicBurnQueue, PeriodicBurnQueueAmino, PeriodicBurnQueueSDKType, RaffleCleanupQueue, RaffleCleanupQueueAmino, RaffleCleanupQueueSDKType } from "./burned_coins";
+import { BurnedCoins, BurnedCoinsAmino, BurnedCoinsSDKType, PeriodicBurnQueue, PeriodicBurnQueueAmino, PeriodicBurnQueueSDKType, RaffleCleanupQueue, RaffleCleanupQueueAmino, RaffleCleanupQueueSDKType, IbcMoveLock, IbcMoveLockAmino, IbcMoveLockSDKType } from "./burned_coins";
 import { Raffle, RaffleAmino, RaffleSDKType, RaffleWinner, RaffleWinnerAmino, RaffleWinnerSDKType, RaffleParticipant, RaffleParticipantAmino, RaffleParticipantSDKType } from "./raffle";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { GlobalDecoderRegistry } from "../../registry";
@@ -22,6 +22,7 @@ export interface GenesisState {
   raffleParticipantCounter: bigint;
   periodicBurnQueue?: PeriodicBurnQueue;
   raffleCleanupQueue?: RaffleCleanupQueue;
+  ibcMoveLocks: IbcMoveLock[];
 }
 export interface GenesisStateProtoMsg {
   typeUrl: "/bze.burner.GenesisState";
@@ -45,6 +46,7 @@ export interface GenesisStateAmino {
   raffle_participant_counter: string;
   periodic_burn_queue?: PeriodicBurnQueueAmino;
   raffle_cleanup_queue?: RaffleCleanupQueueAmino;
+  ibc_move_locks?: IbcMoveLockAmino[];
 }
 export interface GenesisStateAminoMsg {
   type: "/bze.burner.GenesisState";
@@ -65,6 +67,7 @@ export interface GenesisStateSDKType {
   raffle_participant_counter: bigint;
   periodic_burn_queue?: PeriodicBurnQueueSDKType;
   raffle_cleanup_queue?: RaffleCleanupQueueSDKType;
+  ibc_move_locks: IbcMoveLockSDKType[];
 }
 function createBaseGenesisState(): GenesisState {
   return {
@@ -75,7 +78,8 @@ function createBaseGenesisState(): GenesisState {
     raffleParticipantsList: [],
     raffleParticipantCounter: BigInt(0),
     periodicBurnQueue: undefined,
-    raffleCleanupQueue: undefined
+    raffleCleanupQueue: undefined,
+    ibcMoveLocks: []
   };
 }
 /**
@@ -87,13 +91,13 @@ function createBaseGenesisState(): GenesisState {
 export const GenesisState = {
   typeUrl: "/bze.burner.GenesisState",
   is(o: any): o is GenesisState {
-    return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.burnedCoinsList) && (!o.burnedCoinsList.length || BurnedCoins.is(o.burnedCoinsList[0])) && Array.isArray(o.raffleList) && (!o.raffleList.length || Raffle.is(o.raffleList[0])) && Array.isArray(o.raffleWinnersList) && (!o.raffleWinnersList.length || RaffleWinner.is(o.raffleWinnersList[0])) && Array.isArray(o.raffleParticipantsList) && (!o.raffleParticipantsList.length || RaffleParticipant.is(o.raffleParticipantsList[0])) && typeof o.raffleParticipantCounter === "bigint");
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.is(o.params) && Array.isArray(o.burnedCoinsList) && (!o.burnedCoinsList.length || BurnedCoins.is(o.burnedCoinsList[0])) && Array.isArray(o.raffleList) && (!o.raffleList.length || Raffle.is(o.raffleList[0])) && Array.isArray(o.raffleWinnersList) && (!o.raffleWinnersList.length || RaffleWinner.is(o.raffleWinnersList[0])) && Array.isArray(o.raffleParticipantsList) && (!o.raffleParticipantsList.length || RaffleParticipant.is(o.raffleParticipantsList[0])) && typeof o.raffleParticipantCounter === "bigint" && Array.isArray(o.ibcMoveLocks) && (!o.ibcMoveLocks.length || IbcMoveLock.is(o.ibcMoveLocks[0])));
   },
   isSDK(o: any): o is GenesisStateSDKType {
-    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.burned_coins_list) && (!o.burned_coins_list.length || BurnedCoins.isSDK(o.burned_coins_list[0])) && Array.isArray(o.raffle_list) && (!o.raffle_list.length || Raffle.isSDK(o.raffle_list[0])) && Array.isArray(o.raffle_winners_list) && (!o.raffle_winners_list.length || RaffleWinner.isSDK(o.raffle_winners_list[0])) && Array.isArray(o.raffle_participants_list) && (!o.raffle_participants_list.length || RaffleParticipant.isSDK(o.raffle_participants_list[0])) && typeof o.raffle_participant_counter === "bigint");
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isSDK(o.params) && Array.isArray(o.burned_coins_list) && (!o.burned_coins_list.length || BurnedCoins.isSDK(o.burned_coins_list[0])) && Array.isArray(o.raffle_list) && (!o.raffle_list.length || Raffle.isSDK(o.raffle_list[0])) && Array.isArray(o.raffle_winners_list) && (!o.raffle_winners_list.length || RaffleWinner.isSDK(o.raffle_winners_list[0])) && Array.isArray(o.raffle_participants_list) && (!o.raffle_participants_list.length || RaffleParticipant.isSDK(o.raffle_participants_list[0])) && typeof o.raffle_participant_counter === "bigint" && Array.isArray(o.ibc_move_locks) && (!o.ibc_move_locks.length || IbcMoveLock.isSDK(o.ibc_move_locks[0])));
   },
   isAmino(o: any): o is GenesisStateAmino {
-    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.burned_coins_list) && (!o.burned_coins_list.length || BurnedCoins.isAmino(o.burned_coins_list[0])) && Array.isArray(o.raffle_list) && (!o.raffle_list.length || Raffle.isAmino(o.raffle_list[0])) && Array.isArray(o.raffle_winners_list) && (!o.raffle_winners_list.length || RaffleWinner.isAmino(o.raffle_winners_list[0])) && Array.isArray(o.raffle_participants_list) && (!o.raffle_participants_list.length || RaffleParticipant.isAmino(o.raffle_participants_list[0])) && typeof o.raffle_participant_counter === "bigint");
+    return o && (o.$typeUrl === GenesisState.typeUrl || Params.isAmino(o.params) && Array.isArray(o.burned_coins_list) && (!o.burned_coins_list.length || BurnedCoins.isAmino(o.burned_coins_list[0])) && Array.isArray(o.raffle_list) && (!o.raffle_list.length || Raffle.isAmino(o.raffle_list[0])) && Array.isArray(o.raffle_winners_list) && (!o.raffle_winners_list.length || RaffleWinner.isAmino(o.raffle_winners_list[0])) && Array.isArray(o.raffle_participants_list) && (!o.raffle_participants_list.length || RaffleParticipant.isAmino(o.raffle_participants_list[0])) && typeof o.raffle_participant_counter === "bigint" && Array.isArray(o.ibc_move_locks) && (!o.ibc_move_locks.length || IbcMoveLock.isAmino(o.ibc_move_locks[0])));
   },
   encode(message: GenesisState, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.params !== undefined) {
@@ -119,6 +123,9 @@ export const GenesisState = {
     }
     if (message.raffleCleanupQueue !== undefined) {
       RaffleCleanupQueue.encode(message.raffleCleanupQueue, writer.uint32(66).fork()).ldelim();
+    }
+    for (const v of message.ibcMoveLocks) {
+      IbcMoveLock.encode(v!, writer.uint32(74).fork()).ldelim();
     }
     return writer;
   },
@@ -153,6 +160,9 @@ export const GenesisState = {
         case 8:
           message.raffleCleanupQueue = RaffleCleanupQueue.decode(reader, reader.uint32());
           break;
+        case 9:
+          message.ibcMoveLocks.push(IbcMoveLock.decode(reader, reader.uint32()));
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -170,6 +180,7 @@ export const GenesisState = {
     message.raffleParticipantCounter = object.raffleParticipantCounter !== undefined && object.raffleParticipantCounter !== null ? BigInt(object.raffleParticipantCounter.toString()) : BigInt(0);
     message.periodicBurnQueue = object.periodicBurnQueue !== undefined && object.periodicBurnQueue !== null ? PeriodicBurnQueue.fromPartial(object.periodicBurnQueue) : undefined;
     message.raffleCleanupQueue = object.raffleCleanupQueue !== undefined && object.raffleCleanupQueue !== null ? RaffleCleanupQueue.fromPartial(object.raffleCleanupQueue) : undefined;
+    message.ibcMoveLocks = object.ibcMoveLocks?.map(e => IbcMoveLock.fromPartial(e)) || [];
     return message;
   },
   fromAmino(object: GenesisStateAmino): GenesisState {
@@ -190,6 +201,7 @@ export const GenesisState = {
     if (object.raffle_cleanup_queue !== undefined && object.raffle_cleanup_queue !== null) {
       message.raffleCleanupQueue = RaffleCleanupQueue.fromAmino(object.raffle_cleanup_queue);
     }
+    message.ibcMoveLocks = object.ibc_move_locks?.map(e => IbcMoveLock.fromAmino(e)) || [];
     return message;
   },
   toAmino(message: GenesisState): GenesisStateAmino {
@@ -218,6 +230,11 @@ export const GenesisState = {
     obj.raffle_participant_counter = message.raffleParticipantCounter ? message.raffleParticipantCounter?.toString() : "0";
     obj.periodic_burn_queue = message.periodicBurnQueue ? PeriodicBurnQueue.toAmino(message.periodicBurnQueue) : undefined;
     obj.raffle_cleanup_queue = message.raffleCleanupQueue ? RaffleCleanupQueue.toAmino(message.raffleCleanupQueue) : undefined;
+    if (message.ibcMoveLocks) {
+      obj.ibc_move_locks = message.ibcMoveLocks.map(e => e ? IbcMoveLock.toAmino(e) : undefined);
+    } else {
+      obj.ibc_move_locks = message.ibcMoveLocks;
+    }
     return obj;
   },
   fromAminoMsg(object: GenesisStateAminoMsg): GenesisState {
@@ -246,5 +263,6 @@ export const GenesisState = {
     RaffleParticipant.registerTypeUrl();
     PeriodicBurnQueue.registerTypeUrl();
     RaffleCleanupQueue.registerTypeUrl();
+    IbcMoveLock.registerTypeUrl();
   }
 };

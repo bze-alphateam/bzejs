@@ -30,9 +30,7 @@ export class LCDQueryClient {
     const endpoint = `cosmos/feegrant/v1beta1/allowances/${params.grantee}`;
     return await this.req.get<QueryAllowancesResponseSDKType>(endpoint, options);
   }
-  /* AllowancesByGranter returns all the grants given by an address
-  
-   Since: cosmos-sdk 0.46 */
+  /* AllowancesByGranter returns all the grants given by an address */
   async allowancesByGranter(params: QueryAllowancesByGranterRequest): Promise<QueryAllowancesByGranterResponseSDKType> {
     const options: any = {
       params: {}

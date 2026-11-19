@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { TelescopeGeneratedType } from "../../types";
-import { MsgUpdateParams, MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata, MsgSetDenomBranding } from "./tx";
-export const registry: ReadonlyArray<[string, TelescopeGeneratedType<any, any, any>]> = [["/bze.tokenfactory.MsgUpdateParams", MsgUpdateParams], ["/bze.tokenfactory.MsgCreateDenom", MsgCreateDenom], ["/bze.tokenfactory.MsgMint", MsgMint], ["/bze.tokenfactory.MsgBurn", MsgBurn], ["/bze.tokenfactory.MsgChangeAdmin", MsgChangeAdmin], ["/bze.tokenfactory.MsgSetDenomMetadata", MsgSetDenomMetadata], ["/bze.tokenfactory.MsgSetDenomBranding", MsgSetDenomBranding]];
+import { MsgUpdateParams, MsgCreateDenom, MsgMint, MsgBurn, MsgChangeAdmin, MsgSetDenomMetadata, MsgSetDenomBranding, MsgSetDenomAdmin, MsgDisableMinting, MsgSetDenomConfig } from "./tx";
+export const registry: ReadonlyArray<[string, TelescopeGeneratedType<any, any, any>]> = [["/bze.tokenfactory.MsgUpdateParams", MsgUpdateParams], ["/bze.tokenfactory.MsgCreateDenom", MsgCreateDenom], ["/bze.tokenfactory.MsgMint", MsgMint], ["/bze.tokenfactory.MsgBurn", MsgBurn], ["/bze.tokenfactory.MsgChangeAdmin", MsgChangeAdmin], ["/bze.tokenfactory.MsgSetDenomMetadata", MsgSetDenomMetadata], ["/bze.tokenfactory.MsgSetDenomBranding", MsgSetDenomBranding], ["/bze.tokenfactory.MsgSetDenomAdmin", MsgSetDenomAdmin], ["/bze.tokenfactory.MsgDisableMinting", MsgDisableMinting], ["/bze.tokenfactory.MsgSetDenomConfig", MsgSetDenomConfig]];
 export const MessageComposer = {
   encoded: {
     updateParams(value: MsgUpdateParams) {
@@ -44,6 +44,24 @@ export const MessageComposer = {
       return {
         typeUrl: "/bze.tokenfactory.MsgSetDenomBranding",
         value: MsgSetDenomBranding.encode(value).finish()
+      };
+    },
+    setDenomAdmin(value: MsgSetDenomAdmin) {
+      return {
+        typeUrl: "/bze.tokenfactory.MsgSetDenomAdmin",
+        value: MsgSetDenomAdmin.encode(value).finish()
+      };
+    },
+    disableMinting(value: MsgDisableMinting) {
+      return {
+        typeUrl: "/bze.tokenfactory.MsgDisableMinting",
+        value: MsgDisableMinting.encode(value).finish()
+      };
+    },
+    setDenomConfig(value: MsgSetDenomConfig) {
+      return {
+        typeUrl: "/bze.tokenfactory.MsgSetDenomConfig",
+        value: MsgSetDenomConfig.encode(value).finish()
       };
     }
   },
@@ -89,6 +107,24 @@ export const MessageComposer = {
         typeUrl: "/bze.tokenfactory.MsgSetDenomBranding",
         value
       };
+    },
+    setDenomAdmin(value: MsgSetDenomAdmin) {
+      return {
+        typeUrl: "/bze.tokenfactory.MsgSetDenomAdmin",
+        value
+      };
+    },
+    disableMinting(value: MsgDisableMinting) {
+      return {
+        typeUrl: "/bze.tokenfactory.MsgDisableMinting",
+        value
+      };
+    },
+    setDenomConfig(value: MsgSetDenomConfig) {
+      return {
+        typeUrl: "/bze.tokenfactory.MsgSetDenomConfig",
+        value
+      };
     }
   },
   fromPartial: {
@@ -132,6 +168,24 @@ export const MessageComposer = {
       return {
         typeUrl: "/bze.tokenfactory.MsgSetDenomBranding",
         value: MsgSetDenomBranding.fromPartial(value)
+      };
+    },
+    setDenomAdmin(value: MsgSetDenomAdmin) {
+      return {
+        typeUrl: "/bze.tokenfactory.MsgSetDenomAdmin",
+        value: MsgSetDenomAdmin.fromPartial(value)
+      };
+    },
+    disableMinting(value: MsgDisableMinting) {
+      return {
+        typeUrl: "/bze.tokenfactory.MsgDisableMinting",
+        value: MsgDisableMinting.fromPartial(value)
+      };
+    },
+    setDenomConfig(value: MsgSetDenomConfig) {
+      return {
+        typeUrl: "/bze.tokenfactory.MsgSetDenomConfig",
+        value: MsgSetDenomConfig.fromPartial(value)
       };
     }
   }

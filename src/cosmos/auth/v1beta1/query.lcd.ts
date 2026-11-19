@@ -24,9 +24,7 @@ export class LCDQueryClient {
   /* Accounts returns all the existing accounts.
   
    When called from another module, this query might consume a high amount of
-   gas if the pagination field is incorrectly set.
-  
-   Since: cosmos-sdk 0.43 */
+   gas if the pagination field is incorrectly set. */
   async accounts(params: QueryAccountsRequest = {
     pagination: undefined
   }): Promise<QueryAccountsResponseSDKType> {
@@ -44,9 +42,7 @@ export class LCDQueryClient {
     const endpoint = `cosmos/auth/v1beta1/accounts/${params.address}`;
     return await this.req.get<QueryAccountResponseSDKType>(endpoint);
   }
-  /* AccountAddressByID returns account address based on account number.
-  
-   Since: cosmos-sdk 0.46.2 */
+  /* AccountAddressByID returns account address based on account number. */
   async accountAddressByID(params: QueryAccountAddressByIDRequest): Promise<QueryAccountAddressByIDResponseSDKType> {
     const options: any = {
       params: {}
@@ -62,9 +58,7 @@ export class LCDQueryClient {
     const endpoint = `cosmos/auth/v1beta1/params`;
     return await this.req.get<QueryParamsResponseSDKType>(endpoint);
   }
-  /* ModuleAccounts returns all the existing module accounts.
-  
-   Since: cosmos-sdk 0.46 */
+  /* ModuleAccounts returns all the existing module accounts. */
   async moduleAccounts(_params: QueryModuleAccountsRequest = {}): Promise<QueryModuleAccountsResponseSDKType> {
     const endpoint = `cosmos/auth/v1beta1/module_accounts`;
     return await this.req.get<QueryModuleAccountsResponseSDKType>(endpoint);
@@ -74,30 +68,22 @@ export class LCDQueryClient {
     const endpoint = `cosmos/auth/v1beta1/module_accounts/${params.name}`;
     return await this.req.get<QueryModuleAccountByNameResponseSDKType>(endpoint);
   }
-  /* Bech32Prefix queries bech32Prefix
-  
-   Since: cosmos-sdk 0.46 */
+  /* Bech32Prefix queries bech32Prefix */
   async bech32Prefix(_params: Bech32PrefixRequest = {}): Promise<Bech32PrefixResponseSDKType> {
     const endpoint = `cosmos/auth/v1beta1/bech32`;
     return await this.req.get<Bech32PrefixResponseSDKType>(endpoint);
   }
-  /* AddressBytesToString converts Account Address bytes to string
-  
-   Since: cosmos-sdk 0.46 */
+  /* AddressBytesToString converts Account Address bytes to string */
   async addressBytesToString(params: AddressBytesToStringRequest): Promise<AddressBytesToStringResponseSDKType> {
     const endpoint = `cosmos/auth/v1beta1/bech32/${params.addressBytes}`;
     return await this.req.get<AddressBytesToStringResponseSDKType>(endpoint);
   }
-  /* AddressStringToBytes converts Address string to bytes
-  
-   Since: cosmos-sdk 0.46 */
+  /* AddressStringToBytes converts Address string to bytes */
   async addressStringToBytes(params: AddressStringToBytesRequest): Promise<AddressStringToBytesResponseSDKType> {
     const endpoint = `cosmos/auth/v1beta1/bech32/${params.addressString}`;
     return await this.req.get<AddressStringToBytesResponseSDKType>(endpoint);
   }
-  /* AccountInfo queries account info which is common to all account types.
-  
-   Since: cosmos-sdk 0.47 */
+  /* AccountInfo queries account info which is common to all account types. */
   async accountInfo(params: QueryAccountInfoRequest): Promise<QueryAccountInfoResponseSDKType> {
     const endpoint = `cosmos/auth/v1beta1/account_info/${params.address}`;
     return await this.req.get<QueryAccountInfoResponseSDKType>(endpoint);

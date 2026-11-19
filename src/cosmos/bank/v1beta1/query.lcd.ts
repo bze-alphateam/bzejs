@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { setPaginationParams } from "../../../helpers";
 import { LCDClient } from "@cosmology/lcd";
-import { QueryBalanceRequest, QueryBalanceResponseSDKType, QueryAllBalancesRequest, QueryAllBalancesResponseSDKType, QuerySpendableBalancesRequest, QuerySpendableBalancesResponseSDKType, QuerySpendableBalanceByDenomRequest, QuerySpendableBalanceByDenomResponseSDKType, QueryTotalSupplyRequest, QueryTotalSupplyResponseSDKType, QuerySupplyOfRequest, QuerySupplyOfResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryDenomMetadataRequest, QueryDenomMetadataResponseSDKType, QueryDenomMetadataByQueryStringRequest, QueryDenomMetadataByQueryStringResponseSDKType, QueryDenomsMetadataRequest, QueryDenomsMetadataResponseSDKType, QueryDenomOwnersRequest, QueryDenomOwnersResponseSDKType, QueryDenomOwnersByQueryRequest, QueryDenomOwnersByQueryResponseSDKType, QuerySendEnabledRequest, QuerySendEnabledResponseSDKType } from "./query";
+import { QueryBalanceRequest, QueryBalanceResponseSDKType, QueryAllBalancesRequest, QueryAllBalancesResponseSDKType, QuerySpendableBalancesRequest, QuerySpendableBalancesResponseSDKType, QuerySpendableBalanceByDenomRequest, QuerySpendableBalanceByDenomResponseSDKType, QueryTotalSupplyRequest, QueryTotalSupplyResponseSDKType, QuerySupplyOfRequest, QuerySupplyOfResponseSDKType, QueryParamsRequest, QueryParamsResponseSDKType, QueryDenomsMetadataRequest, QueryDenomsMetadataResponseSDKType, QueryDenomMetadataRequest, QueryDenomMetadataResponseSDKType, QueryDenomMetadataByQueryStringRequest, QueryDenomMetadataByQueryStringResponseSDKType, QueryDenomOwnersRequest, QueryDenomOwnersResponseSDKType, QueryDenomOwnersByQueryRequest, QueryDenomOwnersByQueryResponseSDKType, QuerySendEnabledRequest, QuerySendEnabledResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -17,9 +17,9 @@ export class LCDQueryClient {
     this.totalSupply = this.totalSupply.bind(this);
     this.supplyOf = this.supplyOf.bind(this);
     this.params = this.params.bind(this);
+    this.denomsMetadata = this.denomsMetadata.bind(this);
     this.denomMetadata = this.denomMetadata.bind(this);
     this.denomMetadataByQueryString = this.denomMetadataByQueryString.bind(this);
-    this.denomsMetadata = this.denomsMetadata.bind(this);
     this.denomOwners = this.denomOwners.bind(this);
     this.denomOwnersByQuery = this.denomOwnersByQuery.bind(this);
     this.sendEnabled = this.sendEnabled.bind(this);
@@ -56,9 +56,7 @@ export class LCDQueryClient {
    account.
   
    When called from another module, this query might consume a high amount of
-   gas if the pagination field is incorrectly set.
-  
-   Since: cosmos-sdk 0.46 */
+   gas if the pagination field is incorrectly set. */
   async spendableBalances(params: QuerySpendableBalancesRequest): Promise<QuerySpendableBalancesResponseSDKType> {
     const options: any = {
       params: {}
@@ -73,9 +71,7 @@ export class LCDQueryClient {
    a single account.
   
    When called from another module, this query might consume a high amount of
-   gas if the pagination field is incorrectly set.
-  
-   Since: cosmos-sdk 0.47 */
+   gas if the pagination field is incorrectly set. */
   async spendableBalanceByDenom(params: QuerySpendableBalanceByDenomRequest): Promise<QuerySpendableBalanceByDenomResponseSDKType> {
     const options: any = {
       params: {}
@@ -121,22 +117,6 @@ export class LCDQueryClient {
     const endpoint = `cosmos/bank/v1beta1/params`;
     return await this.req.get<QueryParamsResponseSDKType>(endpoint);
   }
-  /* DenomMetadata queries the client metadata of a given coin denomination. */
-  async denomMetadata(params: QueryDenomMetadataRequest): Promise<QueryDenomMetadataResponseSDKType> {
-    const endpoint = `cosmos/bank/v1beta1/denoms_metadata/${params.denom}`;
-    return await this.req.get<QueryDenomMetadataResponseSDKType>(endpoint);
-  }
-  /* DenomMetadataByQueryString queries the client metadata of a given coin denomination. */
-  async denomMetadataByQueryString(params: QueryDenomMetadataByQueryStringRequest): Promise<QueryDenomMetadataByQueryStringResponseSDKType> {
-    const options: any = {
-      params: {}
-    };
-    if (typeof params?.denom !== "undefined") {
-      options.params.denom = params.denom;
-    }
-    const endpoint = `cosmos/bank/v1beta1/denoms_metadata_by_query_string`;
-    return await this.req.get<QueryDenomMetadataByQueryStringResponseSDKType>(endpoint, options);
-  }
   /* DenomsMetadata queries the client metadata for all registered coin
    denominations. */
   async denomsMetadata(params: QueryDenomsMetadataRequest = {
@@ -151,17 +131,40 @@ export class LCDQueryClient {
     const endpoint = `cosmos/bank/v1beta1/denoms_metadata`;
     return await this.req.get<QueryDenomsMetadataResponseSDKType>(endpoint, options);
   }
+  /* DenomMetadata queries the client metadata of a given coin denomination. */
+  async denomMetadata(params: QueryDenomMetadataRequest): Promise<QueryDenomMetadataResponseSDKType> {
+    const options: any = {
+      params: {}
+    };
+    if (typeof params?.denom !== "undefined") {
+      options.params.denom = params.denom;
+    }
+    const endpoint = `cosmos/bank/v1beta1/denoms_metadata/${params.denom}`;
+    return await this.req.get<QueryDenomMetadataResponseSDKType>(endpoint, options);
+  }
+  /* DenomMetadataByQueryString queries the client metadata of a given coin denomination. */
+  async denomMetadataByQueryString(params: QueryDenomMetadataByQueryStringRequest): Promise<QueryDenomMetadataByQueryStringResponseSDKType> {
+    const options: any = {
+      params: {}
+    };
+    if (typeof params?.denom !== "undefined") {
+      options.params.denom = params.denom;
+    }
+    const endpoint = `cosmos/bank/v1beta1/denoms_metadata_by_query_string`;
+    return await this.req.get<QueryDenomMetadataByQueryStringResponseSDKType>(endpoint, options);
+  }
   /* DenomOwners queries for all account addresses that own a particular token
    denomination.
   
    When called from another module, this query might consume a high amount of
-   gas if the pagination field is incorrectly set.
-  
-   Since: cosmos-sdk 0.46 */
+   gas if the pagination field is incorrectly set. */
   async denomOwners(params: QueryDenomOwnersRequest): Promise<QueryDenomOwnersResponseSDKType> {
     const options: any = {
       params: {}
     };
+    if (typeof params?.denom !== "undefined") {
+      options.params.denom = params.denom;
+    }
     if (typeof params?.pagination !== "undefined") {
       setPaginationParams(options, params.pagination);
     }
@@ -169,9 +172,7 @@ export class LCDQueryClient {
     return await this.req.get<QueryDenomOwnersResponseSDKType>(endpoint, options);
   }
   /* DenomOwnersByQuery queries for all account addresses that own a particular token
-   denomination.
-  
-   Since: cosmos-sdk 0.50.3 */
+   denomination. */
   async denomOwnersByQuery(params: QueryDenomOwnersByQueryRequest): Promise<QueryDenomOwnersByQueryResponseSDKType> {
     const options: any = {
       params: {}
@@ -189,9 +190,7 @@ export class LCDQueryClient {
   
    This query only returns denominations that have specific SendEnabled settings.
    Any denomination that does not have a specific setting will use the default
-   params.default_send_enabled, and will not be returned by this query.
-  
-   Since: cosmos-sdk 0.47 */
+   params.default_send_enabled, and will not be returned by this query. */
   async sendEnabled(params: QuerySendEnabledRequest): Promise<QuerySendEnabledResponseSDKType> {
     const options: any = {
       params: {}
