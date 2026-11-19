@@ -39,6 +39,8 @@ export const options: TelescopeInput = {
           'cosmos.autocli.v1',
           'cosmos.msg.v1',
           'cosmos.nft.v1beta1',
+          'cosmos.group.v1',
+          'cosmos.group.module.v1',
           'cosmos.capability.v1beta1',
           'cosmos.orm.v1alpha1',
           'cosmos.orm.v1',

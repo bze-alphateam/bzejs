@@ -1,8 +1,10 @@
 //@ts-nocheck
 import { Params, ParamsAmino, ParamsSDKType } from "./v2/params";
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
+import { FeeDestination, FeeDestinationAmino, FeeDestinationSDKType } from "./store";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { GlobalDecoderRegistry } from "../../registry";
+import { Decimal } from "@interchainjs/math";
 /**
  * MsgUpdateParams is the Msg/UpdateParams request type.
  * @name MsgUpdateParams
@@ -874,6 +876,135 @@ export interface MsgUnhaltDenomsResponseAminoMsg {
  * @see proto type: bze.tradebin.MsgUnhaltDenomsResponse
  */
 export interface MsgUnhaltDenomsResponseSDKType {}
+/**
+ * MsgUpdatePools is the governance message that changes the swap fee and the fee split of existing
+ * liquidity pools. Only fee and fee_dest change; the curve, reserves and LP denom never do. All or
+ * nothing: an unknown pool refuses the whole batch. An entry equal to the pool's current values is a
+ * no-op. Halted pools can be updated.
+ * @name MsgUpdatePools
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgUpdatePools
+ */
+export interface MsgUpdatePools {
+  /**
+   * authority is the address that controls the module (defaults to x/gov unless overwritten).
+   */
+  authority: string;
+  /**
+   * pools to update: at least 1, at most 100, no duplicate pool_id.
+   */
+  updates: PoolUpdate[];
+}
+export interface MsgUpdatePoolsProtoMsg {
+  typeUrl: "/bze.tradebin.MsgUpdatePools";
+  value: Uint8Array;
+}
+/**
+ * MsgUpdatePools is the governance message that changes the swap fee and the fee split of existing
+ * liquidity pools. Only fee and fee_dest change; the curve, reserves and LP denom never do. All or
+ * nothing: an unknown pool refuses the whole batch. An entry equal to the pool's current values is a
+ * no-op. Halted pools can be updated.
+ * @name MsgUpdatePoolsAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgUpdatePools
+ */
+export interface MsgUpdatePoolsAmino {
+  /**
+   * authority is the address that controls the module (defaults to x/gov unless overwritten).
+   */
+  authority?: string;
+  /**
+   * pools to update: at least 1, at most 100, no duplicate pool_id.
+   */
+  updates: PoolUpdateAmino[];
+}
+export interface MsgUpdatePoolsAminoMsg {
+  type: "bze/x/tradebin/MsgUpdatePools";
+  value: MsgUpdatePoolsAmino;
+}
+/**
+ * MsgUpdatePools is the governance message that changes the swap fee and the fee split of existing
+ * liquidity pools. Only fee and fee_dest change; the curve, reserves and LP denom never do. All or
+ * nothing: an unknown pool refuses the whole batch. An entry equal to the pool's current values is a
+ * no-op. Halted pools can be updated.
+ * @name MsgUpdatePoolsSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgUpdatePools
+ */
+export interface MsgUpdatePoolsSDKType {
+  authority: string;
+  updates: PoolUpdateSDKType[];
+}
+/**
+ * PoolUpdate is the new fee and fee split of one pool. Both follow the pool creation rules: the fee is
+ * between 0.001 and 0.05, the fee split shares are non-negative and add up to 1.
+ * @name PoolUpdate
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.PoolUpdate
+ */
+export interface PoolUpdate {
+  poolId: string;
+  fee: string;
+  feeDest: FeeDestination;
+}
+export interface PoolUpdateProtoMsg {
+  typeUrl: "/bze.tradebin.PoolUpdate";
+  value: Uint8Array;
+}
+/**
+ * PoolUpdate is the new fee and fee split of one pool. Both follow the pool creation rules: the fee is
+ * between 0.001 and 0.05, the fee split shares are non-negative and add up to 1.
+ * @name PoolUpdateAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.PoolUpdate
+ */
+export interface PoolUpdateAmino {
+  pool_id?: string;
+  fee?: string;
+  fee_dest: FeeDestinationAmino;
+}
+export interface PoolUpdateAminoMsg {
+  type: "/bze.tradebin.PoolUpdate";
+  value: PoolUpdateAmino;
+}
+/**
+ * PoolUpdate is the new fee and fee split of one pool. Both follow the pool creation rules: the fee is
+ * between 0.001 and 0.05, the fee split shares are non-negative and add up to 1.
+ * @name PoolUpdateSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.PoolUpdate
+ */
+export interface PoolUpdateSDKType {
+  pool_id: string;
+  fee: string;
+  fee_dest: FeeDestinationSDKType;
+}
+/**
+ * @name MsgUpdatePoolsResponse
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgUpdatePoolsResponse
+ */
+export interface MsgUpdatePoolsResponse {}
+export interface MsgUpdatePoolsResponseProtoMsg {
+  typeUrl: "/bze.tradebin.MsgUpdatePoolsResponse";
+  value: Uint8Array;
+}
+/**
+ * @name MsgUpdatePoolsResponseAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgUpdatePoolsResponse
+ */
+export interface MsgUpdatePoolsResponseAmino {}
+export interface MsgUpdatePoolsResponseAminoMsg {
+  type: "/bze.tradebin.MsgUpdatePoolsResponse";
+  value: MsgUpdatePoolsResponseAmino;
+}
+/**
+ * @name MsgUpdatePoolsResponseSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgUpdatePoolsResponse
+ */
+export interface MsgUpdatePoolsResponseSDKType {}
 function createBaseMsgUpdateParams(): MsgUpdateParams {
   return {
     authority: "",
@@ -3119,6 +3250,288 @@ export const MsgUnhaltDenomsResponse = {
     return {
       typeUrl: "/bze.tradebin.MsgUnhaltDenomsResponse",
       value: MsgUnhaltDenomsResponse.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseMsgUpdatePools(): MsgUpdatePools {
+  return {
+    authority: "",
+    updates: []
+  };
+}
+/**
+ * MsgUpdatePools is the governance message that changes the swap fee and the fee split of existing
+ * liquidity pools. Only fee and fee_dest change; the curve, reserves and LP denom never do. All or
+ * nothing: an unknown pool refuses the whole batch. An entry equal to the pool's current values is a
+ * no-op. Halted pools can be updated.
+ * @name MsgUpdatePools
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgUpdatePools
+ */
+export const MsgUpdatePools = {
+  typeUrl: "/bze.tradebin.MsgUpdatePools",
+  aminoType: "bze/x/tradebin/MsgUpdatePools",
+  is(o: any): o is MsgUpdatePools {
+    return o && (o.$typeUrl === MsgUpdatePools.typeUrl || typeof o.authority === "string" && Array.isArray(o.updates) && (!o.updates.length || PoolUpdate.is(o.updates[0])));
+  },
+  isSDK(o: any): o is MsgUpdatePoolsSDKType {
+    return o && (o.$typeUrl === MsgUpdatePools.typeUrl || typeof o.authority === "string" && Array.isArray(o.updates) && (!o.updates.length || PoolUpdate.isSDK(o.updates[0])));
+  },
+  isAmino(o: any): o is MsgUpdatePoolsAmino {
+    return o && (o.$typeUrl === MsgUpdatePools.typeUrl || typeof o.authority === "string" && Array.isArray(o.updates) && (!o.updates.length || PoolUpdate.isAmino(o.updates[0])));
+  },
+  encode(message: MsgUpdatePools, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.authority !== "") {
+      writer.uint32(10).string(message.authority);
+    }
+    for (const v of message.updates) {
+      PoolUpdate.encode(v!, writer.uint32(18).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdatePools {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdatePools();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.authority = reader.string();
+          break;
+        case 2:
+          message.updates.push(PoolUpdate.decode(reader, reader.uint32()));
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<MsgUpdatePools>): MsgUpdatePools {
+    const message = createBaseMsgUpdatePools();
+    message.authority = object.authority ?? "";
+    message.updates = object.updates?.map(e => PoolUpdate.fromPartial(e)) || [];
+    return message;
+  },
+  fromAmino(object: MsgUpdatePoolsAmino): MsgUpdatePools {
+    const message = createBaseMsgUpdatePools();
+    if (object.authority !== undefined && object.authority !== null) {
+      message.authority = object.authority;
+    }
+    message.updates = object.updates?.map(e => PoolUpdate.fromAmino(e)) || [];
+    return message;
+  },
+  toAmino(message: MsgUpdatePools): MsgUpdatePoolsAmino {
+    const obj: any = {};
+    obj.authority = message.authority === "" ? undefined : message.authority;
+    if (message.updates) {
+      obj.updates = message.updates.map(e => e ? PoolUpdate.toAmino(e) : undefined);
+    } else {
+      obj.updates = message.updates;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: MsgUpdatePoolsAminoMsg): MsgUpdatePools {
+    return MsgUpdatePools.fromAmino(object.value);
+  },
+  toAminoMsg(message: MsgUpdatePools): MsgUpdatePoolsAminoMsg {
+    return {
+      type: "bze/x/tradebin/MsgUpdatePools",
+      value: MsgUpdatePools.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: MsgUpdatePoolsProtoMsg): MsgUpdatePools {
+    return MsgUpdatePools.decode(message.value);
+  },
+  toProto(message: MsgUpdatePools): Uint8Array {
+    return MsgUpdatePools.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUpdatePools): MsgUpdatePoolsProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.MsgUpdatePools",
+      value: MsgUpdatePools.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(MsgUpdatePools.typeUrl)) {
+      return;
+    }
+    PoolUpdate.registerTypeUrl();
+  }
+};
+function createBasePoolUpdate(): PoolUpdate {
+  return {
+    poolId: "",
+    fee: "",
+    feeDest: FeeDestination.fromPartial({})
+  };
+}
+/**
+ * PoolUpdate is the new fee and fee split of one pool. Both follow the pool creation rules: the fee is
+ * between 0.001 and 0.05, the fee split shares are non-negative and add up to 1.
+ * @name PoolUpdate
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.PoolUpdate
+ */
+export const PoolUpdate = {
+  typeUrl: "/bze.tradebin.PoolUpdate",
+  is(o: any): o is PoolUpdate {
+    return o && (o.$typeUrl === PoolUpdate.typeUrl || typeof o.poolId === "string" && typeof o.fee === "string" && FeeDestination.is(o.feeDest));
+  },
+  isSDK(o: any): o is PoolUpdateSDKType {
+    return o && (o.$typeUrl === PoolUpdate.typeUrl || typeof o.pool_id === "string" && typeof o.fee === "string" && FeeDestination.isSDK(o.fee_dest));
+  },
+  isAmino(o: any): o is PoolUpdateAmino {
+    return o && (o.$typeUrl === PoolUpdate.typeUrl || typeof o.pool_id === "string" && typeof o.fee === "string" && FeeDestination.isAmino(o.fee_dest));
+  },
+  encode(message: PoolUpdate, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.poolId !== "") {
+      writer.uint32(10).string(message.poolId);
+    }
+    if (message.fee !== "") {
+      writer.uint32(18).string(Decimal.fromUserInput(message.fee, 18).atomics);
+    }
+    if (message.feeDest !== undefined) {
+      FeeDestination.encode(message.feeDest, writer.uint32(26).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): PoolUpdate {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBasePoolUpdate();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.poolId = reader.string();
+          break;
+        case 2:
+          message.fee = Decimal.fromAtomics(reader.string(), 18).toString();
+          break;
+        case 3:
+          message.feeDest = FeeDestination.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<PoolUpdate>): PoolUpdate {
+    const message = createBasePoolUpdate();
+    message.poolId = object.poolId ?? "";
+    message.fee = object.fee ?? "";
+    message.feeDest = object.feeDest !== undefined && object.feeDest !== null ? FeeDestination.fromPartial(object.feeDest) : undefined;
+    return message;
+  },
+  fromAmino(object: PoolUpdateAmino): PoolUpdate {
+    const message = createBasePoolUpdate();
+    if (object.pool_id !== undefined && object.pool_id !== null) {
+      message.poolId = object.pool_id;
+    }
+    if (object.fee !== undefined && object.fee !== null) {
+      message.fee = object.fee;
+    }
+    if (object.fee_dest !== undefined && object.fee_dest !== null) {
+      message.feeDest = FeeDestination.fromAmino(object.fee_dest);
+    }
+    return message;
+  },
+  toAmino(message: PoolUpdate): PoolUpdateAmino {
+    const obj: any = {};
+    obj.pool_id = message.poolId === "" ? undefined : message.poolId;
+    obj.fee = message.fee === "" ? undefined : Decimal.fromUserInput(message.fee, 18).atomics;
+    obj.fee_dest = message.feeDest ? FeeDestination.toAmino(message.feeDest) : FeeDestination.toAmino(FeeDestination.fromPartial({}));
+    return obj;
+  },
+  fromAminoMsg(object: PoolUpdateAminoMsg): PoolUpdate {
+    return PoolUpdate.fromAmino(object.value);
+  },
+  fromProtoMsg(message: PoolUpdateProtoMsg): PoolUpdate {
+    return PoolUpdate.decode(message.value);
+  },
+  toProto(message: PoolUpdate): Uint8Array {
+    return PoolUpdate.encode(message).finish();
+  },
+  toProtoMsg(message: PoolUpdate): PoolUpdateProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.PoolUpdate",
+      value: PoolUpdate.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(PoolUpdate.typeUrl)) {
+      return;
+    }
+    FeeDestination.registerTypeUrl();
+  }
+};
+function createBaseMsgUpdatePoolsResponse(): MsgUpdatePoolsResponse {
+  return {};
+}
+/**
+ * @name MsgUpdatePoolsResponse
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.MsgUpdatePoolsResponse
+ */
+export const MsgUpdatePoolsResponse = {
+  typeUrl: "/bze.tradebin.MsgUpdatePoolsResponse",
+  is(o: any): o is MsgUpdatePoolsResponse {
+    return o && o.$typeUrl === MsgUpdatePoolsResponse.typeUrl;
+  },
+  isSDK(o: any): o is MsgUpdatePoolsResponseSDKType {
+    return o && o.$typeUrl === MsgUpdatePoolsResponse.typeUrl;
+  },
+  isAmino(o: any): o is MsgUpdatePoolsResponseAmino {
+    return o && o.$typeUrl === MsgUpdatePoolsResponse.typeUrl;
+  },
+  encode(_: MsgUpdatePoolsResponse, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): MsgUpdatePoolsResponse {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseMsgUpdatePoolsResponse();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(_: Partial<MsgUpdatePoolsResponse>): MsgUpdatePoolsResponse {
+    const message = createBaseMsgUpdatePoolsResponse();
+    return message;
+  },
+  fromAmino(_: MsgUpdatePoolsResponseAmino): MsgUpdatePoolsResponse {
+    const message = createBaseMsgUpdatePoolsResponse();
+    return message;
+  },
+  toAmino(_: MsgUpdatePoolsResponse): MsgUpdatePoolsResponseAmino {
+    const obj: any = {};
+    return obj;
+  },
+  fromAminoMsg(object: MsgUpdatePoolsResponseAminoMsg): MsgUpdatePoolsResponse {
+    return MsgUpdatePoolsResponse.fromAmino(object.value);
+  },
+  fromProtoMsg(message: MsgUpdatePoolsResponseProtoMsg): MsgUpdatePoolsResponse {
+    return MsgUpdatePoolsResponse.decode(message.value);
+  },
+  toProto(message: MsgUpdatePoolsResponse): Uint8Array {
+    return MsgUpdatePoolsResponse.encode(message).finish();
+  },
+  toProtoMsg(message: MsgUpdatePoolsResponse): MsgUpdatePoolsResponseProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.MsgUpdatePoolsResponse",
+      value: MsgUpdatePoolsResponse.encode(message).finish()
     };
   },
   registerTypeUrl() {}

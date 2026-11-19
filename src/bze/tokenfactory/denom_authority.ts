@@ -10,6 +10,12 @@ export interface DenomAuthority {
    * Can be empty for no admin, or a valid osmosis address
    */
   admin: string;
+  /**
+   * mintable: the admin may mint. Turned off for good by MsgDisableMinting
+   * (or by renouncing the admin through MsgChangeAdmin).
+   * dont_omitempty: the CLI prints a false flag instead of dropping it.
+   */
+  mintable: boolean;
 }
 export interface DenomAuthorityProtoMsg {
   typeUrl: "/bze.tokenfactory.DenomAuthority";
@@ -25,6 +31,12 @@ export interface DenomAuthorityAmino {
    * Can be empty for no admin, or a valid osmosis address
    */
   admin?: string;
+  /**
+   * mintable: the admin may mint. Turned off for good by MsgDisableMinting
+   * (or by renouncing the admin through MsgChangeAdmin).
+   * dont_omitempty: the CLI prints a false flag instead of dropping it.
+   */
+  mintable: boolean;
 }
 export interface DenomAuthorityAminoMsg {
   type: "/bze.tokenfactory.DenomAuthority";
@@ -37,10 +49,12 @@ export interface DenomAuthorityAminoMsg {
  */
 export interface DenomAuthoritySDKType {
   admin: string;
+  mintable: boolean;
 }
 function createBaseDenomAuthority(): DenomAuthority {
   return {
-    admin: ""
+    admin: "",
+    mintable: false
   };
 }
 /**
@@ -51,17 +65,20 @@ function createBaseDenomAuthority(): DenomAuthority {
 export const DenomAuthority = {
   typeUrl: "/bze.tokenfactory.DenomAuthority",
   is(o: any): o is DenomAuthority {
-    return o && (o.$typeUrl === DenomAuthority.typeUrl || typeof o.admin === "string");
+    return o && (o.$typeUrl === DenomAuthority.typeUrl || typeof o.admin === "string" && typeof o.mintable === "boolean");
   },
   isSDK(o: any): o is DenomAuthoritySDKType {
-    return o && (o.$typeUrl === DenomAuthority.typeUrl || typeof o.admin === "string");
+    return o && (o.$typeUrl === DenomAuthority.typeUrl || typeof o.admin === "string" && typeof o.mintable === "boolean");
   },
   isAmino(o: any): o is DenomAuthorityAmino {
-    return o && (o.$typeUrl === DenomAuthority.typeUrl || typeof o.admin === "string");
+    return o && (o.$typeUrl === DenomAuthority.typeUrl || typeof o.admin === "string" && typeof o.mintable === "boolean");
   },
   encode(message: DenomAuthority, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.admin !== "") {
       writer.uint32(10).string(message.admin);
+    }
+    if (message.mintable === true) {
+      writer.uint32(16).bool(message.mintable);
     }
     return writer;
   },
@@ -75,6 +92,9 @@ export const DenomAuthority = {
         case 1:
           message.admin = reader.string();
           break;
+        case 2:
+          message.mintable = reader.bool();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -85,6 +105,7 @@ export const DenomAuthority = {
   fromPartial(object: Partial<DenomAuthority>): DenomAuthority {
     const message = createBaseDenomAuthority();
     message.admin = object.admin ?? "";
+    message.mintable = object.mintable ?? false;
     return message;
   },
   fromAmino(object: DenomAuthorityAmino): DenomAuthority {
@@ -92,11 +113,15 @@ export const DenomAuthority = {
     if (object.admin !== undefined && object.admin !== null) {
       message.admin = object.admin;
     }
+    if (object.mintable !== undefined && object.mintable !== null) {
+      message.mintable = object.mintable;
+    }
     return message;
   },
   toAmino(message: DenomAuthority): DenomAuthorityAmino {
     const obj: any = {};
     obj.admin = message.admin === "" ? undefined : message.admin;
+    obj.mintable = message.mintable ?? false;
     return obj;
   },
   fromAminoMsg(object: DenomAuthorityAminoMsg): DenomAuthority {

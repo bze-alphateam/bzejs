@@ -402,8 +402,6 @@ export interface MsgUndelegateResponse {
   completionTime: Date;
   /**
    * amount returns the amount of undelegated coins
-   * 
-   * Since: cosmos-sdk 0.50
    */
   amount: Coin;
 }
@@ -421,8 +419,6 @@ export interface MsgUndelegateResponseAmino {
   completion_time: string;
   /**
    * amount returns the amount of undelegated coins
-   * 
-   * Since: cosmos-sdk 0.50
    */
   amount: CoinAmino;
 }
@@ -442,8 +438,6 @@ export interface MsgUndelegateResponseSDKType {
 }
 /**
  * MsgCancelUnbondingDelegation defines the SDK message for performing a cancel unbonding delegation for delegator
- * 
- * Since: cosmos-sdk 0.46
  * @name MsgCancelUnbondingDelegation
  * @package cosmos.staking.v1beta1
  * @see proto type: cosmos.staking.v1beta1.MsgCancelUnbondingDelegation
@@ -466,8 +460,6 @@ export interface MsgCancelUnbondingDelegationProtoMsg {
 }
 /**
  * MsgCancelUnbondingDelegation defines the SDK message for performing a cancel unbonding delegation for delegator
- * 
- * Since: cosmos-sdk 0.46
  * @name MsgCancelUnbondingDelegationAmino
  * @package cosmos.staking.v1beta1
  * @see proto type: cosmos.staking.v1beta1.MsgCancelUnbondingDelegation
@@ -490,8 +482,6 @@ export interface MsgCancelUnbondingDelegationAminoMsg {
 }
 /**
  * MsgCancelUnbondingDelegation defines the SDK message for performing a cancel unbonding delegation for delegator
- * 
- * Since: cosmos-sdk 0.46
  * @name MsgCancelUnbondingDelegationSDKType
  * @package cosmos.staking.v1beta1
  * @see proto type: cosmos.staking.v1beta1.MsgCancelUnbondingDelegation
@@ -504,8 +494,6 @@ export interface MsgCancelUnbondingDelegationSDKType {
 }
 /**
  * MsgCancelUnbondingDelegationResponse
- * 
- * Since: cosmos-sdk 0.46
  * @name MsgCancelUnbondingDelegationResponse
  * @package cosmos.staking.v1beta1
  * @see proto type: cosmos.staking.v1beta1.MsgCancelUnbondingDelegationResponse
@@ -517,8 +505,6 @@ export interface MsgCancelUnbondingDelegationResponseProtoMsg {
 }
 /**
  * MsgCancelUnbondingDelegationResponse
- * 
- * Since: cosmos-sdk 0.46
  * @name MsgCancelUnbondingDelegationResponseAmino
  * @package cosmos.staking.v1beta1
  * @see proto type: cosmos.staking.v1beta1.MsgCancelUnbondingDelegationResponse
@@ -530,8 +516,6 @@ export interface MsgCancelUnbondingDelegationResponseAminoMsg {
 }
 /**
  * MsgCancelUnbondingDelegationResponse
- * 
- * Since: cosmos-sdk 0.46
  * @name MsgCancelUnbondingDelegationResponseSDKType
  * @package cosmos.staking.v1beta1
  * @see proto type: cosmos.staking.v1beta1.MsgCancelUnbondingDelegationResponse
@@ -539,8 +523,6 @@ export interface MsgCancelUnbondingDelegationResponseAminoMsg {
 export interface MsgCancelUnbondingDelegationResponseSDKType {}
 /**
  * MsgUpdateParams is the Msg/UpdateParams request type.
- * 
- * Since: cosmos-sdk 0.47
  * @name MsgUpdateParams
  * @package cosmos.staking.v1beta1
  * @see proto type: cosmos.staking.v1beta1.MsgUpdateParams
@@ -563,8 +545,6 @@ export interface MsgUpdateParamsProtoMsg {
 }
 /**
  * MsgUpdateParams is the Msg/UpdateParams request type.
- * 
- * Since: cosmos-sdk 0.47
  * @name MsgUpdateParamsAmino
  * @package cosmos.staking.v1beta1
  * @see proto type: cosmos.staking.v1beta1.MsgUpdateParams
@@ -587,8 +567,6 @@ export interface MsgUpdateParamsAminoMsg {
 }
 /**
  * MsgUpdateParams is the Msg/UpdateParams request type.
- * 
- * Since: cosmos-sdk 0.47
  * @name MsgUpdateParamsSDKType
  * @package cosmos.staking.v1beta1
  * @see proto type: cosmos.staking.v1beta1.MsgUpdateParams
@@ -600,8 +578,6 @@ export interface MsgUpdateParamsSDKType {
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
- * 
- * Since: cosmos-sdk 0.47
  * @name MsgUpdateParamsResponse
  * @package cosmos.staking.v1beta1
  * @see proto type: cosmos.staking.v1beta1.MsgUpdateParamsResponse
@@ -614,8 +590,6 @@ export interface MsgUpdateParamsResponseProtoMsg {
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
- * 
- * Since: cosmos-sdk 0.47
  * @name MsgUpdateParamsResponseAmino
  * @package cosmos.staking.v1beta1
  * @see proto type: cosmos.staking.v1beta1.MsgUpdateParamsResponse
@@ -628,8 +602,6 @@ export interface MsgUpdateParamsResponseAminoMsg {
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
- * 
- * Since: cosmos-sdk 0.47
  * @name MsgUpdateParamsResponseSDKType
  * @package cosmos.staking.v1beta1
  * @see proto type: cosmos.staking.v1beta1.MsgUpdateParamsResponse
@@ -1703,8 +1675,6 @@ function createBaseMsgCancelUnbondingDelegation(): MsgCancelUnbondingDelegation 
 }
 /**
  * MsgCancelUnbondingDelegation defines the SDK message for performing a cancel unbonding delegation for delegator
- * 
- * Since: cosmos-sdk 0.46
  * @name MsgCancelUnbondingDelegation
  * @package cosmos.staking.v1beta1
  * @see proto type: cosmos.staking.v1beta1.MsgCancelUnbondingDelegation
@@ -1827,8 +1797,6 @@ function createBaseMsgCancelUnbondingDelegationResponse(): MsgCancelUnbondingDel
 }
 /**
  * MsgCancelUnbondingDelegationResponse
- * 
- * Since: cosmos-sdk 0.46
  * @name MsgCancelUnbondingDelegationResponse
  * @package cosmos.staking.v1beta1
  * @see proto type: cosmos.staking.v1beta1.MsgCancelUnbondingDelegationResponse
@@ -1905,8 +1873,6 @@ function createBaseMsgUpdateParams(): MsgUpdateParams {
 }
 /**
  * MsgUpdateParams is the Msg/UpdateParams request type.
- * 
- * Since: cosmos-sdk 0.47
  * @name MsgUpdateParams
  * @package cosmos.staking.v1beta1
  * @see proto type: cosmos.staking.v1beta1.MsgUpdateParams
@@ -2008,8 +1974,6 @@ function createBaseMsgUpdateParamsResponse(): MsgUpdateParamsResponse {
 /**
  * MsgUpdateParamsResponse defines the response structure for executing a
  * MsgUpdateParams message.
- * 
- * Since: cosmos-sdk 0.47
  * @name MsgUpdateParamsResponse
  * @package cosmos.staking.v1beta1
  * @see proto type: cosmos.staking.v1beta1.MsgUpdateParamsResponse

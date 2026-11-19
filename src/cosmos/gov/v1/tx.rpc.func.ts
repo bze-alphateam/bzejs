@@ -50,8 +50,6 @@ export const deposit = buildTx<MsgDeposit>({
 /**
  * UpdateParams defines a governance operation for updating the x/gov module
  * parameters. The authority is defined in the keeper.
- * 
- * Since: cosmos-sdk 0.47
  * @name updateParams
  * @package cosmos.gov.v1
  * @see proto service: cosmos.gov.v1.UpdateParams
@@ -61,8 +59,6 @@ export const updateParams = buildTx<MsgUpdateParams>({
 });
 /**
  * CancelProposal defines a method to cancel governance proposal
- * 
- * Since: cosmos-sdk 0.50
  * @name cancelProposal
  * @package cosmos.gov.v1
  * @see proto service: cosmos.gov.v1.CancelProposal

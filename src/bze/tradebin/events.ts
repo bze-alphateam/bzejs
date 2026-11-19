@@ -1,118 +1,8 @@
 //@ts-nocheck
 import { Coin, CoinAmino, CoinSDKType } from "../../cosmos/base/v1beta1/coin";
+import { FeeDestination, FeeDestinationAmino, FeeDestinationSDKType } from "./store";
 import { BinaryReader, BinaryWriter } from "../../binary";
 import { GlobalDecoderRegistry } from "../../registry";
-/**
- * @name OrderCreateMessageEvent
- * @package bze.tradebin
- * @see proto type: bze.tradebin.OrderCreateMessageEvent
- */
-export interface OrderCreateMessageEvent {
-  creator: string;
-  marketId: string;
-  orderType: string;
-  amount: string;
-  price: string;
-  /**
-   * queue message id, zero-filled 24 digits. Not reused while the message is
-   * queued: the counter resets only once the queue is empty, and a message can
-   * be processed in a later block than its tx (per-block limit, retry on error).
-   */
-  messageId: string;
-}
-export interface OrderCreateMessageEventProtoMsg {
-  typeUrl: "/bze.tradebin.OrderCreateMessageEvent";
-  value: Uint8Array;
-}
-/**
- * @name OrderCreateMessageEventAmino
- * @package bze.tradebin
- * @see proto type: bze.tradebin.OrderCreateMessageEvent
- */
-export interface OrderCreateMessageEventAmino {
-  creator?: string;
-  market_id?: string;
-  order_type?: string;
-  amount?: string;
-  price?: string;
-  /**
-   * queue message id, zero-filled 24 digits. Not reused while the message is
-   * queued: the counter resets only once the queue is empty, and a message can
-   * be processed in a later block than its tx (per-block limit, retry on error).
-   */
-  message_id?: string;
-}
-export interface OrderCreateMessageEventAminoMsg {
-  type: "/bze.tradebin.OrderCreateMessageEvent";
-  value: OrderCreateMessageEventAmino;
-}
-/**
- * @name OrderCreateMessageEventSDKType
- * @package bze.tradebin
- * @see proto type: bze.tradebin.OrderCreateMessageEvent
- */
-export interface OrderCreateMessageEventSDKType {
-  creator: string;
-  market_id: string;
-  order_type: string;
-  amount: string;
-  price: string;
-  message_id: string;
-}
-/**
- * @name OrderCancelMessageEvent
- * @package bze.tradebin
- * @see proto type: bze.tradebin.OrderCancelMessageEvent
- */
-export interface OrderCancelMessageEvent {
-  creator: string;
-  marketId: string;
-  orderId: string;
-  orderType: string;
-  /**
-   * queue message id, zero-filled 24 digits. Not reused while the message is
-   * queued: the counter resets only once the queue is empty, and a message can
-   * be processed in a later block than its tx (per-block limit, retry on error).
-   */
-  messageId: string;
-}
-export interface OrderCancelMessageEventProtoMsg {
-  typeUrl: "/bze.tradebin.OrderCancelMessageEvent";
-  value: Uint8Array;
-}
-/**
- * @name OrderCancelMessageEventAmino
- * @package bze.tradebin
- * @see proto type: bze.tradebin.OrderCancelMessageEvent
- */
-export interface OrderCancelMessageEventAmino {
-  creator?: string;
-  marketId?: string;
-  orderId?: string;
-  order_type?: string;
-  /**
-   * queue message id, zero-filled 24 digits. Not reused while the message is
-   * queued: the counter resets only once the queue is empty, and a message can
-   * be processed in a later block than its tx (per-block limit, retry on error).
-   */
-  message_id?: string;
-}
-export interface OrderCancelMessageEventAminoMsg {
-  type: "/bze.tradebin.OrderCancelMessageEvent";
-  value: OrderCancelMessageEventAmino;
-}
-/**
- * @name OrderCancelMessageEventSDKType
- * @package bze.tradebin
- * @see proto type: bze.tradebin.OrderCancelMessageEvent
- */
-export interface OrderCancelMessageEventSDKType {
-  creator: string;
-  marketId: string;
-  orderId: string;
-  order_type: string;
-  message_id: string;
-}
 /**
  * @name MarketCreatedEvent
  * @package bze.tradebin
@@ -165,11 +55,10 @@ export interface OrderExecutedEvent {
   maker: string;
   taker: string;
   /**
-   * queue message id, zero-filled 24 digits. Not reused while the message is
-   * queued: the counter resets only once the queue is empty, and a message can
-   * be processed in a later block than its tx (per-block limit, retry on error).
+   * id of the taker order that executed against this (maker) order, zero-filled.
+   * Every taker gets an order id, even when it never rests on the book.
    */
-  messageId: string;
+  orderId: string;
 }
 export interface OrderExecutedEventProtoMsg {
   typeUrl: "/bze.tradebin.OrderExecutedEvent";
@@ -189,11 +78,10 @@ export interface OrderExecutedEventAmino {
   maker?: string;
   taker?: string;
   /**
-   * queue message id, zero-filled 24 digits. Not reused while the message is
-   * queued: the counter resets only once the queue is empty, and a message can
-   * be processed in a later block than its tx (per-block limit, retry on error).
+   * id of the taker order that executed against this (maker) order, zero-filled.
+   * Every taker gets an order id, even when it never rests on the book.
    */
-  message_id?: string;
+  order_id?: string;
 }
 export interface OrderExecutedEventAminoMsg {
   type: "/bze.tradebin.OrderExecutedEvent";
@@ -212,7 +100,7 @@ export interface OrderExecutedEventSDKType {
   price: string;
   maker: string;
   taker: string;
-  message_id: string;
+  order_id: string;
 }
 /**
  * @name OrderCanceledEvent
@@ -227,11 +115,9 @@ export interface OrderCanceledEvent {
   price: string;
   owner: string;
   /**
-   * queue message id, zero-filled 24 digits. Not reused while the message is
-   * queued: the counter resets only once the queue is empty, and a message can
-   * be processed in a later block than its tx (per-block limit, retry on error).
+   * id of the cancelled order (same as id)
    */
-  messageId: string;
+  orderId: string;
 }
 export interface OrderCanceledEventProtoMsg {
   typeUrl: "/bze.tradebin.OrderCanceledEvent";
@@ -250,11 +136,9 @@ export interface OrderCanceledEventAmino {
   price?: string;
   owner?: string;
   /**
-   * queue message id, zero-filled 24 digits. Not reused while the message is
-   * queued: the counter resets only once the queue is empty, and a message can
-   * be processed in a later block than its tx (per-block limit, retry on error).
+   * id of the cancelled order (same as id)
    */
-  message_id?: string;
+  order_id?: string;
 }
 export interface OrderCanceledEventAminoMsg {
   type: "/bze.tradebin.OrderCanceledEvent";
@@ -272,7 +156,7 @@ export interface OrderCanceledEventSDKType {
   amount: string;
   price: string;
   owner: string;
-  message_id: string;
+  order_id: string;
 }
 /**
  * @name OrderSavedEvent
@@ -287,11 +171,9 @@ export interface OrderSavedEvent {
   price: string;
   owner: string;
   /**
-   * queue message id, zero-filled 24 digits. Not reused while the message is
-   * queued: the counter resets only once the queue is empty, and a message can
-   * be processed in a later block than its tx (per-block limit, retry on error).
+   * id of the order that placed this remainder on the book (same as id)
    */
-  messageId: string;
+  orderId: string;
 }
 export interface OrderSavedEventProtoMsg {
   typeUrl: "/bze.tradebin.OrderSavedEvent";
@@ -310,11 +192,9 @@ export interface OrderSavedEventAmino {
   price?: string;
   owner?: string;
   /**
-   * queue message id, zero-filled 24 digits. Not reused while the message is
-   * queued: the counter resets only once the queue is empty, and a message can
-   * be processed in a later block than its tx (per-block limit, retry on error).
+   * id of the order that placed this remainder on the book (same as id)
    */
-  message_id?: string;
+  order_id?: string;
 }
 export interface OrderSavedEventAminoMsg {
   type: "/bze.tradebin.OrderSavedEvent";
@@ -332,7 +212,93 @@ export interface OrderSavedEventSDKType {
   amount: string;
   price: string;
   owner: string;
-  message_id: string;
+  order_id: string;
+}
+/**
+ * OrderAmendedEvent is emitted when the remainder of an order is added to the order its owner already
+ * rests at the same market, side and price. The merged order is saved under a new id at the back of
+ * its price level (BZE-267) and the resting order's id (previous_id) is removed.
+ * @name OrderAmendedEvent
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.OrderAmendedEvent
+ */
+export interface OrderAmendedEvent {
+  /**
+   * id of the merged order: the id the create order got, which its other events carry too
+   */
+  id: string;
+  marketId: string;
+  orderType: string;
+  price: string;
+  owner: string;
+  /**
+   * amount added to the resting order
+   */
+  addedAmount: string;
+  /**
+   * amount of the resting order after the addition
+   */
+  amount: string;
+  /**
+   * id the order rested under before the addition, which no longer exists
+   */
+  previousId: string;
+}
+export interface OrderAmendedEventProtoMsg {
+  typeUrl: "/bze.tradebin.OrderAmendedEvent";
+  value: Uint8Array;
+}
+/**
+ * OrderAmendedEvent is emitted when the remainder of an order is added to the order its owner already
+ * rests at the same market, side and price. The merged order is saved under a new id at the back of
+ * its price level (BZE-267) and the resting order's id (previous_id) is removed.
+ * @name OrderAmendedEventAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.OrderAmendedEvent
+ */
+export interface OrderAmendedEventAmino {
+  /**
+   * id of the merged order: the id the create order got, which its other events carry too
+   */
+  id?: string;
+  market_id?: string;
+  order_type?: string;
+  price?: string;
+  owner?: string;
+  /**
+   * amount added to the resting order
+   */
+  added_amount?: string;
+  /**
+   * amount of the resting order after the addition
+   */
+  amount?: string;
+  /**
+   * id the order rested under before the addition, which no longer exists
+   */
+  previous_id?: string;
+}
+export interface OrderAmendedEventAminoMsg {
+  type: "/bze.tradebin.OrderAmendedEvent";
+  value: OrderAmendedEventAmino;
+}
+/**
+ * OrderAmendedEvent is emitted when the remainder of an order is added to the order its owner already
+ * rests at the same market, side and price. The merged order is saved under a new id at the back of
+ * its price level (BZE-267) and the resting order's id (previous_id) is removed.
+ * @name OrderAmendedEventSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.OrderAmendedEvent
+ */
+export interface OrderAmendedEventSDKType {
+  id: string;
+  market_id: string;
+  order_type: string;
+  price: string;
+  owner: string;
+  added_amount: string;
+  amount: string;
+  previous_id: string;
 }
 /**
  * @name PoolCreatedEvent
@@ -597,270 +563,149 @@ export interface DenomUnhaltedEventAminoMsg {
 export interface DenomUnhaltedEventSDKType {
   denom: string;
 }
-function createBaseOrderCreateMessageEvent(): OrderCreateMessageEvent {
-  return {
-    creator: "",
-    marketId: "",
-    orderType: "",
-    amount: "",
-    price: "",
-    messageId: ""
-  };
+/**
+ * PoolFeesUpdatedEvent is emitted for every pool a MsgUpdatePools proposal actually changes (not for
+ * entries equal to the pool's current values).
+ * @name PoolFeesUpdatedEvent
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.PoolFeesUpdatedEvent
+ */
+export interface PoolFeesUpdatedEvent {
+  poolId: string;
+  oldFee: string;
+  newFee: string;
+  oldFeeDest: FeeDestination;
+  newFeeDest: FeeDestination;
+}
+export interface PoolFeesUpdatedEventProtoMsg {
+  typeUrl: "/bze.tradebin.PoolFeesUpdatedEvent";
+  value: Uint8Array;
 }
 /**
- * @name OrderCreateMessageEvent
+ * PoolFeesUpdatedEvent is emitted for every pool a MsgUpdatePools proposal actually changes (not for
+ * entries equal to the pool's current values).
+ * @name PoolFeesUpdatedEventAmino
  * @package bze.tradebin
- * @see proto type: bze.tradebin.OrderCreateMessageEvent
+ * @see proto type: bze.tradebin.PoolFeesUpdatedEvent
  */
-export const OrderCreateMessageEvent = {
-  typeUrl: "/bze.tradebin.OrderCreateMessageEvent",
-  is(o: any): o is OrderCreateMessageEvent {
-    return o && (o.$typeUrl === OrderCreateMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.messageId === "string");
-  },
-  isSDK(o: any): o is OrderCreateMessageEventSDKType {
-    return o && (o.$typeUrl === OrderCreateMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.message_id === "string");
-  },
-  isAmino(o: any): o is OrderCreateMessageEventAmino {
-    return o && (o.$typeUrl === OrderCreateMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.message_id === "string");
-  },
-  encode(message: OrderCreateMessageEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.creator !== "") {
-      writer.uint32(10).string(message.creator);
-    }
-    if (message.marketId !== "") {
-      writer.uint32(18).string(message.marketId);
-    }
-    if (message.orderType !== "") {
-      writer.uint32(26).string(message.orderType);
-    }
-    if (message.amount !== "") {
-      writer.uint32(34).string(message.amount);
-    }
-    if (message.price !== "") {
-      writer.uint32(42).string(message.price);
-    }
-    if (message.messageId !== "") {
-      writer.uint32(50).string(message.messageId);
-    }
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): OrderCreateMessageEvent {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseOrderCreateMessageEvent();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.creator = reader.string();
-          break;
-        case 2:
-          message.marketId = reader.string();
-          break;
-        case 3:
-          message.orderType = reader.string();
-          break;
-        case 4:
-          message.amount = reader.string();
-          break;
-        case 5:
-          message.price = reader.string();
-          break;
-        case 6:
-          message.messageId = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromPartial(object: Partial<OrderCreateMessageEvent>): OrderCreateMessageEvent {
-    const message = createBaseOrderCreateMessageEvent();
-    message.creator = object.creator ?? "";
-    message.marketId = object.marketId ?? "";
-    message.orderType = object.orderType ?? "";
-    message.amount = object.amount ?? "";
-    message.price = object.price ?? "";
-    message.messageId = object.messageId ?? "";
-    return message;
-  },
-  fromAmino(object: OrderCreateMessageEventAmino): OrderCreateMessageEvent {
-    const message = createBaseOrderCreateMessageEvent();
-    if (object.creator !== undefined && object.creator !== null) {
-      message.creator = object.creator;
-    }
-    if (object.market_id !== undefined && object.market_id !== null) {
-      message.marketId = object.market_id;
-    }
-    if (object.order_type !== undefined && object.order_type !== null) {
-      message.orderType = object.order_type;
-    }
-    if (object.amount !== undefined && object.amount !== null) {
-      message.amount = object.amount;
-    }
-    if (object.price !== undefined && object.price !== null) {
-      message.price = object.price;
-    }
-    if (object.message_id !== undefined && object.message_id !== null) {
-      message.messageId = object.message_id;
-    }
-    return message;
-  },
-  toAmino(message: OrderCreateMessageEvent): OrderCreateMessageEventAmino {
-    const obj: any = {};
-    obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.market_id = message.marketId === "" ? undefined : message.marketId;
-    obj.order_type = message.orderType === "" ? undefined : message.orderType;
-    obj.amount = message.amount === "" ? undefined : message.amount;
-    obj.price = message.price === "" ? undefined : message.price;
-    obj.message_id = message.messageId === "" ? undefined : message.messageId;
-    return obj;
-  },
-  fromAminoMsg(object: OrderCreateMessageEventAminoMsg): OrderCreateMessageEvent {
-    return OrderCreateMessageEvent.fromAmino(object.value);
-  },
-  fromProtoMsg(message: OrderCreateMessageEventProtoMsg): OrderCreateMessageEvent {
-    return OrderCreateMessageEvent.decode(message.value);
-  },
-  toProto(message: OrderCreateMessageEvent): Uint8Array {
-    return OrderCreateMessageEvent.encode(message).finish();
-  },
-  toProtoMsg(message: OrderCreateMessageEvent): OrderCreateMessageEventProtoMsg {
-    return {
-      typeUrl: "/bze.tradebin.OrderCreateMessageEvent",
-      value: OrderCreateMessageEvent.encode(message).finish()
-    };
-  },
-  registerTypeUrl() {}
-};
-function createBaseOrderCancelMessageEvent(): OrderCancelMessageEvent {
-  return {
-    creator: "",
-    marketId: "",
-    orderId: "",
-    orderType: "",
-    messageId: ""
-  };
+export interface PoolFeesUpdatedEventAmino {
+  pool_id?: string;
+  old_fee?: string;
+  new_fee?: string;
+  old_fee_dest?: FeeDestinationAmino;
+  new_fee_dest?: FeeDestinationAmino;
+}
+export interface PoolFeesUpdatedEventAminoMsg {
+  type: "/bze.tradebin.PoolFeesUpdatedEvent";
+  value: PoolFeesUpdatedEventAmino;
 }
 /**
- * @name OrderCancelMessageEvent
+ * PoolFeesUpdatedEvent is emitted for every pool a MsgUpdatePools proposal actually changes (not for
+ * entries equal to the pool's current values).
+ * @name PoolFeesUpdatedEventSDKType
  * @package bze.tradebin
- * @see proto type: bze.tradebin.OrderCancelMessageEvent
+ * @see proto type: bze.tradebin.PoolFeesUpdatedEvent
  */
-export const OrderCancelMessageEvent = {
-  typeUrl: "/bze.tradebin.OrderCancelMessageEvent",
-  is(o: any): o is OrderCancelMessageEvent {
-    return o && (o.$typeUrl === OrderCancelMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.marketId === "string" && typeof o.orderId === "string" && typeof o.orderType === "string" && typeof o.messageId === "string");
-  },
-  isSDK(o: any): o is OrderCancelMessageEventSDKType {
-    return o && (o.$typeUrl === OrderCancelMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.marketId === "string" && typeof o.orderId === "string" && typeof o.order_type === "string" && typeof o.message_id === "string");
-  },
-  isAmino(o: any): o is OrderCancelMessageEventAmino {
-    return o && (o.$typeUrl === OrderCancelMessageEvent.typeUrl || typeof o.creator === "string" && typeof o.marketId === "string" && typeof o.orderId === "string" && typeof o.order_type === "string" && typeof o.message_id === "string");
-  },
-  encode(message: OrderCancelMessageEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
-    if (message.creator !== "") {
-      writer.uint32(10).string(message.creator);
-    }
-    if (message.marketId !== "") {
-      writer.uint32(18).string(message.marketId);
-    }
-    if (message.orderId !== "") {
-      writer.uint32(26).string(message.orderId);
-    }
-    if (message.orderType !== "") {
-      writer.uint32(34).string(message.orderType);
-    }
-    if (message.messageId !== "") {
-      writer.uint32(42).string(message.messageId);
-    }
-    return writer;
-  },
-  decode(input: BinaryReader | Uint8Array, length?: number): OrderCancelMessageEvent {
-    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
-    let end = length === undefined ? reader.len : reader.pos + length;
-    const message = createBaseOrderCancelMessageEvent();
-    while (reader.pos < end) {
-      const tag = reader.uint32();
-      switch (tag >>> 3) {
-        case 1:
-          message.creator = reader.string();
-          break;
-        case 2:
-          message.marketId = reader.string();
-          break;
-        case 3:
-          message.orderId = reader.string();
-          break;
-        case 4:
-          message.orderType = reader.string();
-          break;
-        case 5:
-          message.messageId = reader.string();
-          break;
-        default:
-          reader.skipType(tag & 7);
-          break;
-      }
-    }
-    return message;
-  },
-  fromPartial(object: Partial<OrderCancelMessageEvent>): OrderCancelMessageEvent {
-    const message = createBaseOrderCancelMessageEvent();
-    message.creator = object.creator ?? "";
-    message.marketId = object.marketId ?? "";
-    message.orderId = object.orderId ?? "";
-    message.orderType = object.orderType ?? "";
-    message.messageId = object.messageId ?? "";
-    return message;
-  },
-  fromAmino(object: OrderCancelMessageEventAmino): OrderCancelMessageEvent {
-    const message = createBaseOrderCancelMessageEvent();
-    if (object.creator !== undefined && object.creator !== null) {
-      message.creator = object.creator;
-    }
-    if (object.marketId !== undefined && object.marketId !== null) {
-      message.marketId = object.marketId;
-    }
-    if (object.orderId !== undefined && object.orderId !== null) {
-      message.orderId = object.orderId;
-    }
-    if (object.order_type !== undefined && object.order_type !== null) {
-      message.orderType = object.order_type;
-    }
-    if (object.message_id !== undefined && object.message_id !== null) {
-      message.messageId = object.message_id;
-    }
-    return message;
-  },
-  toAmino(message: OrderCancelMessageEvent): OrderCancelMessageEventAmino {
-    const obj: any = {};
-    obj.creator = message.creator === "" ? undefined : message.creator;
-    obj.marketId = message.marketId === "" ? undefined : message.marketId;
-    obj.orderId = message.orderId === "" ? undefined : message.orderId;
-    obj.order_type = message.orderType === "" ? undefined : message.orderType;
-    obj.message_id = message.messageId === "" ? undefined : message.messageId;
-    return obj;
-  },
-  fromAminoMsg(object: OrderCancelMessageEventAminoMsg): OrderCancelMessageEvent {
-    return OrderCancelMessageEvent.fromAmino(object.value);
-  },
-  fromProtoMsg(message: OrderCancelMessageEventProtoMsg): OrderCancelMessageEvent {
-    return OrderCancelMessageEvent.decode(message.value);
-  },
-  toProto(message: OrderCancelMessageEvent): Uint8Array {
-    return OrderCancelMessageEvent.encode(message).finish();
-  },
-  toProtoMsg(message: OrderCancelMessageEvent): OrderCancelMessageEventProtoMsg {
-    return {
-      typeUrl: "/bze.tradebin.OrderCancelMessageEvent",
-      value: OrderCancelMessageEvent.encode(message).finish()
-    };
-  },
-  registerTypeUrl() {}
-};
+export interface PoolFeesUpdatedEventSDKType {
+  pool_id: string;
+  old_fee: string;
+  new_fee: string;
+  old_fee_dest: FeeDestinationSDKType;
+  new_fee_dest: FeeDestinationSDKType;
+}
+/**
+ * OrderMessageRefundedEvent is emitted when the unexecuted part of an order is
+ * returned to its owner instead of resting on the book, in the same transaction.
+ * Without it a fill order with no match would leave no trace of its processing.
+ * @name OrderMessageRefundedEvent
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.OrderMessageRefundedEvent
+ */
+export interface OrderMessageRefundedEvent {
+  /**
+   * id of the refunded order, zero-filled (for reason "upgrade": the id of the
+   * queue message refunded by the v8.3.0 migration)
+   */
+  orderId: string;
+  marketId: string;
+  /**
+   * the side of the refunded order
+   */
+  orderType: string;
+  owner: string;
+  /**
+   * base-denom amount of the order that was not executed
+   */
+  amount: string;
+  /**
+   * the coin actually sent back (coin string); empty when it rounded to zero
+   * and only dust was stored
+   */
+  refund: string;
+  /**
+   * no_match | unfilled_remainder | below_min_amount | max_fills_reached | upgrade
+   */
+  reason: string;
+}
+export interface OrderMessageRefundedEventProtoMsg {
+  typeUrl: "/bze.tradebin.OrderMessageRefundedEvent";
+  value: Uint8Array;
+}
+/**
+ * OrderMessageRefundedEvent is emitted when the unexecuted part of an order is
+ * returned to its owner instead of resting on the book, in the same transaction.
+ * Without it a fill order with no match would leave no trace of its processing.
+ * @name OrderMessageRefundedEventAmino
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.OrderMessageRefundedEvent
+ */
+export interface OrderMessageRefundedEventAmino {
+  /**
+   * id of the refunded order, zero-filled (for reason "upgrade": the id of the
+   * queue message refunded by the v8.3.0 migration)
+   */
+  order_id?: string;
+  market_id?: string;
+  /**
+   * the side of the refunded order
+   */
+  order_type?: string;
+  owner?: string;
+  /**
+   * base-denom amount of the order that was not executed
+   */
+  amount?: string;
+  /**
+   * the coin actually sent back (coin string); empty when it rounded to zero
+   * and only dust was stored
+   */
+  refund?: string;
+  /**
+   * no_match | unfilled_remainder | below_min_amount | max_fills_reached | upgrade
+   */
+  reason?: string;
+}
+export interface OrderMessageRefundedEventAminoMsg {
+  type: "/bze.tradebin.OrderMessageRefundedEvent";
+  value: OrderMessageRefundedEventAmino;
+}
+/**
+ * OrderMessageRefundedEvent is emitted when the unexecuted part of an order is
+ * returned to its owner instead of resting on the book, in the same transaction.
+ * Without it a fill order with no match would leave no trace of its processing.
+ * @name OrderMessageRefundedEventSDKType
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.OrderMessageRefundedEvent
+ */
+export interface OrderMessageRefundedEventSDKType {
+  order_id: string;
+  market_id: string;
+  order_type: string;
+  owner: string;
+  amount: string;
+  refund: string;
+  reason: string;
+}
 function createBaseMarketCreatedEvent(): MarketCreatedEvent {
   return {
     creator: "",
@@ -972,7 +817,7 @@ function createBaseOrderExecutedEvent(): OrderExecutedEvent {
     price: "",
     maker: "",
     taker: "",
-    messageId: ""
+    orderId: ""
   };
 }
 /**
@@ -983,13 +828,13 @@ function createBaseOrderExecutedEvent(): OrderExecutedEvent {
 export const OrderExecutedEvent = {
   typeUrl: "/bze.tradebin.OrderExecutedEvent",
   is(o: any): o is OrderExecutedEvent {
-    return o && (o.$typeUrl === OrderExecutedEvent.typeUrl || typeof o.id === "string" && typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.maker === "string" && typeof o.taker === "string" && typeof o.messageId === "string");
+    return o && (o.$typeUrl === OrderExecutedEvent.typeUrl || typeof o.id === "string" && typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.maker === "string" && typeof o.taker === "string" && typeof o.orderId === "string");
   },
   isSDK(o: any): o is OrderExecutedEventSDKType {
-    return o && (o.$typeUrl === OrderExecutedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.maker === "string" && typeof o.taker === "string" && typeof o.message_id === "string");
+    return o && (o.$typeUrl === OrderExecutedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.maker === "string" && typeof o.taker === "string" && typeof o.order_id === "string");
   },
   isAmino(o: any): o is OrderExecutedEventAmino {
-    return o && (o.$typeUrl === OrderExecutedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.maker === "string" && typeof o.taker === "string" && typeof o.message_id === "string");
+    return o && (o.$typeUrl === OrderExecutedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.maker === "string" && typeof o.taker === "string" && typeof o.order_id === "string");
   },
   encode(message: OrderExecutedEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.id !== "") {
@@ -1013,8 +858,8 @@ export const OrderExecutedEvent = {
     if (message.taker !== "") {
       writer.uint32(58).string(message.taker);
     }
-    if (message.messageId !== "") {
-      writer.uint32(66).string(message.messageId);
+    if (message.orderId !== "") {
+      writer.uint32(66).string(message.orderId);
     }
     return writer;
   },
@@ -1047,7 +892,7 @@ export const OrderExecutedEvent = {
           message.taker = reader.string();
           break;
         case 8:
-          message.messageId = reader.string();
+          message.orderId = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -1065,7 +910,7 @@ export const OrderExecutedEvent = {
     message.price = object.price ?? "";
     message.maker = object.maker ?? "";
     message.taker = object.taker ?? "";
-    message.messageId = object.messageId ?? "";
+    message.orderId = object.orderId ?? "";
     return message;
   },
   fromAmino(object: OrderExecutedEventAmino): OrderExecutedEvent {
@@ -1091,8 +936,8 @@ export const OrderExecutedEvent = {
     if (object.taker !== undefined && object.taker !== null) {
       message.taker = object.taker;
     }
-    if (object.message_id !== undefined && object.message_id !== null) {
-      message.messageId = object.message_id;
+    if (object.order_id !== undefined && object.order_id !== null) {
+      message.orderId = object.order_id;
     }
     return message;
   },
@@ -1105,7 +950,7 @@ export const OrderExecutedEvent = {
     obj.price = message.price === "" ? undefined : message.price;
     obj.maker = message.maker === "" ? undefined : message.maker;
     obj.taker = message.taker === "" ? undefined : message.taker;
-    obj.message_id = message.messageId === "" ? undefined : message.messageId;
+    obj.order_id = message.orderId === "" ? undefined : message.orderId;
     return obj;
   },
   fromAminoMsg(object: OrderExecutedEventAminoMsg): OrderExecutedEvent {
@@ -1133,7 +978,7 @@ function createBaseOrderCanceledEvent(): OrderCanceledEvent {
     amount: "",
     price: "",
     owner: "",
-    messageId: ""
+    orderId: ""
   };
 }
 /**
@@ -1144,13 +989,13 @@ function createBaseOrderCanceledEvent(): OrderCanceledEvent {
 export const OrderCanceledEvent = {
   typeUrl: "/bze.tradebin.OrderCanceledEvent",
   is(o: any): o is OrderCanceledEvent {
-    return o && (o.$typeUrl === OrderCanceledEvent.typeUrl || typeof o.id === "string" && typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.messageId === "string");
+    return o && (o.$typeUrl === OrderCanceledEvent.typeUrl || typeof o.id === "string" && typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.orderId === "string");
   },
   isSDK(o: any): o is OrderCanceledEventSDKType {
-    return o && (o.$typeUrl === OrderCanceledEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.message_id === "string");
+    return o && (o.$typeUrl === OrderCanceledEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.order_id === "string");
   },
   isAmino(o: any): o is OrderCanceledEventAmino {
-    return o && (o.$typeUrl === OrderCanceledEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.message_id === "string");
+    return o && (o.$typeUrl === OrderCanceledEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.order_id === "string");
   },
   encode(message: OrderCanceledEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.id !== "") {
@@ -1171,8 +1016,8 @@ export const OrderCanceledEvent = {
     if (message.owner !== "") {
       writer.uint32(50).string(message.owner);
     }
-    if (message.messageId !== "") {
-      writer.uint32(58).string(message.messageId);
+    if (message.orderId !== "") {
+      writer.uint32(58).string(message.orderId);
     }
     return writer;
   },
@@ -1202,7 +1047,7 @@ export const OrderCanceledEvent = {
           message.owner = reader.string();
           break;
         case 7:
-          message.messageId = reader.string();
+          message.orderId = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -1219,7 +1064,7 @@ export const OrderCanceledEvent = {
     message.amount = object.amount ?? "";
     message.price = object.price ?? "";
     message.owner = object.owner ?? "";
-    message.messageId = object.messageId ?? "";
+    message.orderId = object.orderId ?? "";
     return message;
   },
   fromAmino(object: OrderCanceledEventAmino): OrderCanceledEvent {
@@ -1242,8 +1087,8 @@ export const OrderCanceledEvent = {
     if (object.owner !== undefined && object.owner !== null) {
       message.owner = object.owner;
     }
-    if (object.message_id !== undefined && object.message_id !== null) {
-      message.messageId = object.message_id;
+    if (object.order_id !== undefined && object.order_id !== null) {
+      message.orderId = object.order_id;
     }
     return message;
   },
@@ -1255,7 +1100,7 @@ export const OrderCanceledEvent = {
     obj.amount = message.amount === "" ? undefined : message.amount;
     obj.price = message.price === "" ? undefined : message.price;
     obj.owner = message.owner === "" ? undefined : message.owner;
-    obj.message_id = message.messageId === "" ? undefined : message.messageId;
+    obj.order_id = message.orderId === "" ? undefined : message.orderId;
     return obj;
   },
   fromAminoMsg(object: OrderCanceledEventAminoMsg): OrderCanceledEvent {
@@ -1283,7 +1128,7 @@ function createBaseOrderSavedEvent(): OrderSavedEvent {
     amount: "",
     price: "",
     owner: "",
-    messageId: ""
+    orderId: ""
   };
 }
 /**
@@ -1294,13 +1139,13 @@ function createBaseOrderSavedEvent(): OrderSavedEvent {
 export const OrderSavedEvent = {
   typeUrl: "/bze.tradebin.OrderSavedEvent",
   is(o: any): o is OrderSavedEvent {
-    return o && (o.$typeUrl === OrderSavedEvent.typeUrl || typeof o.id === "string" && typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.messageId === "string");
+    return o && (o.$typeUrl === OrderSavedEvent.typeUrl || typeof o.id === "string" && typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.orderId === "string");
   },
   isSDK(o: any): o is OrderSavedEventSDKType {
-    return o && (o.$typeUrl === OrderSavedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.message_id === "string");
+    return o && (o.$typeUrl === OrderSavedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.order_id === "string");
   },
   isAmino(o: any): o is OrderSavedEventAmino {
-    return o && (o.$typeUrl === OrderSavedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.message_id === "string");
+    return o && (o.$typeUrl === OrderSavedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.amount === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.order_id === "string");
   },
   encode(message: OrderSavedEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.id !== "") {
@@ -1321,8 +1166,8 @@ export const OrderSavedEvent = {
     if (message.owner !== "") {
       writer.uint32(50).string(message.owner);
     }
-    if (message.messageId !== "") {
-      writer.uint32(58).string(message.messageId);
+    if (message.orderId !== "") {
+      writer.uint32(58).string(message.orderId);
     }
     return writer;
   },
@@ -1352,7 +1197,7 @@ export const OrderSavedEvent = {
           message.owner = reader.string();
           break;
         case 7:
-          message.messageId = reader.string();
+          message.orderId = reader.string();
           break;
         default:
           reader.skipType(tag & 7);
@@ -1369,7 +1214,7 @@ export const OrderSavedEvent = {
     message.amount = object.amount ?? "";
     message.price = object.price ?? "";
     message.owner = object.owner ?? "";
-    message.messageId = object.messageId ?? "";
+    message.orderId = object.orderId ?? "";
     return message;
   },
   fromAmino(object: OrderSavedEventAmino): OrderSavedEvent {
@@ -1392,8 +1237,8 @@ export const OrderSavedEvent = {
     if (object.owner !== undefined && object.owner !== null) {
       message.owner = object.owner;
     }
-    if (object.message_id !== undefined && object.message_id !== null) {
-      message.messageId = object.message_id;
+    if (object.order_id !== undefined && object.order_id !== null) {
+      message.orderId = object.order_id;
     }
     return message;
   },
@@ -1405,7 +1250,7 @@ export const OrderSavedEvent = {
     obj.amount = message.amount === "" ? undefined : message.amount;
     obj.price = message.price === "" ? undefined : message.price;
     obj.owner = message.owner === "" ? undefined : message.owner;
-    obj.message_id = message.messageId === "" ? undefined : message.messageId;
+    obj.order_id = message.orderId === "" ? undefined : message.orderId;
     return obj;
   },
   fromAminoMsg(object: OrderSavedEventAminoMsg): OrderSavedEvent {
@@ -1421,6 +1266,171 @@ export const OrderSavedEvent = {
     return {
       typeUrl: "/bze.tradebin.OrderSavedEvent",
       value: OrderSavedEvent.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseOrderAmendedEvent(): OrderAmendedEvent {
+  return {
+    id: "",
+    marketId: "",
+    orderType: "",
+    price: "",
+    owner: "",
+    addedAmount: "",
+    amount: "",
+    previousId: ""
+  };
+}
+/**
+ * OrderAmendedEvent is emitted when the remainder of an order is added to the order its owner already
+ * rests at the same market, side and price. The merged order is saved under a new id at the back of
+ * its price level (BZE-267) and the resting order's id (previous_id) is removed.
+ * @name OrderAmendedEvent
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.OrderAmendedEvent
+ */
+export const OrderAmendedEvent = {
+  typeUrl: "/bze.tradebin.OrderAmendedEvent",
+  is(o: any): o is OrderAmendedEvent {
+    return o && (o.$typeUrl === OrderAmendedEvent.typeUrl || typeof o.id === "string" && typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.addedAmount === "string" && typeof o.amount === "string" && typeof o.previousId === "string");
+  },
+  isSDK(o: any): o is OrderAmendedEventSDKType {
+    return o && (o.$typeUrl === OrderAmendedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.added_amount === "string" && typeof o.amount === "string" && typeof o.previous_id === "string");
+  },
+  isAmino(o: any): o is OrderAmendedEventAmino {
+    return o && (o.$typeUrl === OrderAmendedEvent.typeUrl || typeof o.id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.price === "string" && typeof o.owner === "string" && typeof o.added_amount === "string" && typeof o.amount === "string" && typeof o.previous_id === "string");
+  },
+  encode(message: OrderAmendedEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.id !== "") {
+      writer.uint32(10).string(message.id);
+    }
+    if (message.marketId !== "") {
+      writer.uint32(18).string(message.marketId);
+    }
+    if (message.orderType !== "") {
+      writer.uint32(26).string(message.orderType);
+    }
+    if (message.price !== "") {
+      writer.uint32(34).string(message.price);
+    }
+    if (message.owner !== "") {
+      writer.uint32(42).string(message.owner);
+    }
+    if (message.addedAmount !== "") {
+      writer.uint32(50).string(message.addedAmount);
+    }
+    if (message.amount !== "") {
+      writer.uint32(58).string(message.amount);
+    }
+    if (message.previousId !== "") {
+      writer.uint32(66).string(message.previousId);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): OrderAmendedEvent {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseOrderAmendedEvent();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.id = reader.string();
+          break;
+        case 2:
+          message.marketId = reader.string();
+          break;
+        case 3:
+          message.orderType = reader.string();
+          break;
+        case 4:
+          message.price = reader.string();
+          break;
+        case 5:
+          message.owner = reader.string();
+          break;
+        case 6:
+          message.addedAmount = reader.string();
+          break;
+        case 7:
+          message.amount = reader.string();
+          break;
+        case 8:
+          message.previousId = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<OrderAmendedEvent>): OrderAmendedEvent {
+    const message = createBaseOrderAmendedEvent();
+    message.id = object.id ?? "";
+    message.marketId = object.marketId ?? "";
+    message.orderType = object.orderType ?? "";
+    message.price = object.price ?? "";
+    message.owner = object.owner ?? "";
+    message.addedAmount = object.addedAmount ?? "";
+    message.amount = object.amount ?? "";
+    message.previousId = object.previousId ?? "";
+    return message;
+  },
+  fromAmino(object: OrderAmendedEventAmino): OrderAmendedEvent {
+    const message = createBaseOrderAmendedEvent();
+    if (object.id !== undefined && object.id !== null) {
+      message.id = object.id;
+    }
+    if (object.market_id !== undefined && object.market_id !== null) {
+      message.marketId = object.market_id;
+    }
+    if (object.order_type !== undefined && object.order_type !== null) {
+      message.orderType = object.order_type;
+    }
+    if (object.price !== undefined && object.price !== null) {
+      message.price = object.price;
+    }
+    if (object.owner !== undefined && object.owner !== null) {
+      message.owner = object.owner;
+    }
+    if (object.added_amount !== undefined && object.added_amount !== null) {
+      message.addedAmount = object.added_amount;
+    }
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = object.amount;
+    }
+    if (object.previous_id !== undefined && object.previous_id !== null) {
+      message.previousId = object.previous_id;
+    }
+    return message;
+  },
+  toAmino(message: OrderAmendedEvent): OrderAmendedEventAmino {
+    const obj: any = {};
+    obj.id = message.id === "" ? undefined : message.id;
+    obj.market_id = message.marketId === "" ? undefined : message.marketId;
+    obj.order_type = message.orderType === "" ? undefined : message.orderType;
+    obj.price = message.price === "" ? undefined : message.price;
+    obj.owner = message.owner === "" ? undefined : message.owner;
+    obj.added_amount = message.addedAmount === "" ? undefined : message.addedAmount;
+    obj.amount = message.amount === "" ? undefined : message.amount;
+    obj.previous_id = message.previousId === "" ? undefined : message.previousId;
+    return obj;
+  },
+  fromAminoMsg(object: OrderAmendedEventAminoMsg): OrderAmendedEvent {
+    return OrderAmendedEvent.fromAmino(object.value);
+  },
+  fromProtoMsg(message: OrderAmendedEventProtoMsg): OrderAmendedEvent {
+    return OrderAmendedEvent.decode(message.value);
+  },
+  toProto(message: OrderAmendedEvent): Uint8Array {
+    return OrderAmendedEvent.encode(message).finish();
+  },
+  toProtoMsg(message: OrderAmendedEvent): OrderAmendedEventProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.OrderAmendedEvent",
+      value: OrderAmendedEvent.encode(message).finish()
     };
   },
   registerTypeUrl() {}
@@ -2054,6 +2064,292 @@ export const DenomUnhaltedEvent = {
     return {
       typeUrl: "/bze.tradebin.DenomUnhaltedEvent",
       value: DenomUnhaltedEvent.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBasePoolFeesUpdatedEvent(): PoolFeesUpdatedEvent {
+  return {
+    poolId: "",
+    oldFee: "",
+    newFee: "",
+    oldFeeDest: FeeDestination.fromPartial({}),
+    newFeeDest: FeeDestination.fromPartial({})
+  };
+}
+/**
+ * PoolFeesUpdatedEvent is emitted for every pool a MsgUpdatePools proposal actually changes (not for
+ * entries equal to the pool's current values).
+ * @name PoolFeesUpdatedEvent
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.PoolFeesUpdatedEvent
+ */
+export const PoolFeesUpdatedEvent = {
+  typeUrl: "/bze.tradebin.PoolFeesUpdatedEvent",
+  is(o: any): o is PoolFeesUpdatedEvent {
+    return o && (o.$typeUrl === PoolFeesUpdatedEvent.typeUrl || typeof o.poolId === "string" && typeof o.oldFee === "string" && typeof o.newFee === "string" && FeeDestination.is(o.oldFeeDest) && FeeDestination.is(o.newFeeDest));
+  },
+  isSDK(o: any): o is PoolFeesUpdatedEventSDKType {
+    return o && (o.$typeUrl === PoolFeesUpdatedEvent.typeUrl || typeof o.pool_id === "string" && typeof o.old_fee === "string" && typeof o.new_fee === "string" && FeeDestination.isSDK(o.old_fee_dest) && FeeDestination.isSDK(o.new_fee_dest));
+  },
+  isAmino(o: any): o is PoolFeesUpdatedEventAmino {
+    return o && (o.$typeUrl === PoolFeesUpdatedEvent.typeUrl || typeof o.pool_id === "string" && typeof o.old_fee === "string" && typeof o.new_fee === "string" && FeeDestination.isAmino(o.old_fee_dest) && FeeDestination.isAmino(o.new_fee_dest));
+  },
+  encode(message: PoolFeesUpdatedEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.poolId !== "") {
+      writer.uint32(10).string(message.poolId);
+    }
+    if (message.oldFee !== "") {
+      writer.uint32(18).string(message.oldFee);
+    }
+    if (message.newFee !== "") {
+      writer.uint32(26).string(message.newFee);
+    }
+    if (message.oldFeeDest !== undefined) {
+      FeeDestination.encode(message.oldFeeDest, writer.uint32(34).fork()).ldelim();
+    }
+    if (message.newFeeDest !== undefined) {
+      FeeDestination.encode(message.newFeeDest, writer.uint32(42).fork()).ldelim();
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): PoolFeesUpdatedEvent {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBasePoolFeesUpdatedEvent();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.poolId = reader.string();
+          break;
+        case 2:
+          message.oldFee = reader.string();
+          break;
+        case 3:
+          message.newFee = reader.string();
+          break;
+        case 4:
+          message.oldFeeDest = FeeDestination.decode(reader, reader.uint32());
+          break;
+        case 5:
+          message.newFeeDest = FeeDestination.decode(reader, reader.uint32());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<PoolFeesUpdatedEvent>): PoolFeesUpdatedEvent {
+    const message = createBasePoolFeesUpdatedEvent();
+    message.poolId = object.poolId ?? "";
+    message.oldFee = object.oldFee ?? "";
+    message.newFee = object.newFee ?? "";
+    message.oldFeeDest = object.oldFeeDest !== undefined && object.oldFeeDest !== null ? FeeDestination.fromPartial(object.oldFeeDest) : undefined;
+    message.newFeeDest = object.newFeeDest !== undefined && object.newFeeDest !== null ? FeeDestination.fromPartial(object.newFeeDest) : undefined;
+    return message;
+  },
+  fromAmino(object: PoolFeesUpdatedEventAmino): PoolFeesUpdatedEvent {
+    const message = createBasePoolFeesUpdatedEvent();
+    if (object.pool_id !== undefined && object.pool_id !== null) {
+      message.poolId = object.pool_id;
+    }
+    if (object.old_fee !== undefined && object.old_fee !== null) {
+      message.oldFee = object.old_fee;
+    }
+    if (object.new_fee !== undefined && object.new_fee !== null) {
+      message.newFee = object.new_fee;
+    }
+    if (object.old_fee_dest !== undefined && object.old_fee_dest !== null) {
+      message.oldFeeDest = FeeDestination.fromAmino(object.old_fee_dest);
+    }
+    if (object.new_fee_dest !== undefined && object.new_fee_dest !== null) {
+      message.newFeeDest = FeeDestination.fromAmino(object.new_fee_dest);
+    }
+    return message;
+  },
+  toAmino(message: PoolFeesUpdatedEvent): PoolFeesUpdatedEventAmino {
+    const obj: any = {};
+    obj.pool_id = message.poolId === "" ? undefined : message.poolId;
+    obj.old_fee = message.oldFee === "" ? undefined : message.oldFee;
+    obj.new_fee = message.newFee === "" ? undefined : message.newFee;
+    obj.old_fee_dest = message.oldFeeDest ? FeeDestination.toAmino(message.oldFeeDest) : undefined;
+    obj.new_fee_dest = message.newFeeDest ? FeeDestination.toAmino(message.newFeeDest) : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: PoolFeesUpdatedEventAminoMsg): PoolFeesUpdatedEvent {
+    return PoolFeesUpdatedEvent.fromAmino(object.value);
+  },
+  fromProtoMsg(message: PoolFeesUpdatedEventProtoMsg): PoolFeesUpdatedEvent {
+    return PoolFeesUpdatedEvent.decode(message.value);
+  },
+  toProto(message: PoolFeesUpdatedEvent): Uint8Array {
+    return PoolFeesUpdatedEvent.encode(message).finish();
+  },
+  toProtoMsg(message: PoolFeesUpdatedEvent): PoolFeesUpdatedEventProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.PoolFeesUpdatedEvent",
+      value: PoolFeesUpdatedEvent.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {
+    if (!GlobalDecoderRegistry.registerExistingTypeUrl(PoolFeesUpdatedEvent.typeUrl)) {
+      return;
+    }
+    FeeDestination.registerTypeUrl();
+  }
+};
+function createBaseOrderMessageRefundedEvent(): OrderMessageRefundedEvent {
+  return {
+    orderId: "",
+    marketId: "",
+    orderType: "",
+    owner: "",
+    amount: "",
+    refund: "",
+    reason: ""
+  };
+}
+/**
+ * OrderMessageRefundedEvent is emitted when the unexecuted part of an order is
+ * returned to its owner instead of resting on the book, in the same transaction.
+ * Without it a fill order with no match would leave no trace of its processing.
+ * @name OrderMessageRefundedEvent
+ * @package bze.tradebin
+ * @see proto type: bze.tradebin.OrderMessageRefundedEvent
+ */
+export const OrderMessageRefundedEvent = {
+  typeUrl: "/bze.tradebin.OrderMessageRefundedEvent",
+  is(o: any): o is OrderMessageRefundedEvent {
+    return o && (o.$typeUrl === OrderMessageRefundedEvent.typeUrl || typeof o.orderId === "string" && typeof o.marketId === "string" && typeof o.orderType === "string" && typeof o.owner === "string" && typeof o.amount === "string" && typeof o.refund === "string" && typeof o.reason === "string");
+  },
+  isSDK(o: any): o is OrderMessageRefundedEventSDKType {
+    return o && (o.$typeUrl === OrderMessageRefundedEvent.typeUrl || typeof o.order_id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.owner === "string" && typeof o.amount === "string" && typeof o.refund === "string" && typeof o.reason === "string");
+  },
+  isAmino(o: any): o is OrderMessageRefundedEventAmino {
+    return o && (o.$typeUrl === OrderMessageRefundedEvent.typeUrl || typeof o.order_id === "string" && typeof o.market_id === "string" && typeof o.order_type === "string" && typeof o.owner === "string" && typeof o.amount === "string" && typeof o.refund === "string" && typeof o.reason === "string");
+  },
+  encode(message: OrderMessageRefundedEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.orderId !== "") {
+      writer.uint32(10).string(message.orderId);
+    }
+    if (message.marketId !== "") {
+      writer.uint32(18).string(message.marketId);
+    }
+    if (message.orderType !== "") {
+      writer.uint32(26).string(message.orderType);
+    }
+    if (message.owner !== "") {
+      writer.uint32(34).string(message.owner);
+    }
+    if (message.amount !== "") {
+      writer.uint32(42).string(message.amount);
+    }
+    if (message.refund !== "") {
+      writer.uint32(50).string(message.refund);
+    }
+    if (message.reason !== "") {
+      writer.uint32(58).string(message.reason);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): OrderMessageRefundedEvent {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseOrderMessageRefundedEvent();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.orderId = reader.string();
+          break;
+        case 2:
+          message.marketId = reader.string();
+          break;
+        case 3:
+          message.orderType = reader.string();
+          break;
+        case 4:
+          message.owner = reader.string();
+          break;
+        case 5:
+          message.amount = reader.string();
+          break;
+        case 6:
+          message.refund = reader.string();
+          break;
+        case 7:
+          message.reason = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<OrderMessageRefundedEvent>): OrderMessageRefundedEvent {
+    const message = createBaseOrderMessageRefundedEvent();
+    message.orderId = object.orderId ?? "";
+    message.marketId = object.marketId ?? "";
+    message.orderType = object.orderType ?? "";
+    message.owner = object.owner ?? "";
+    message.amount = object.amount ?? "";
+    message.refund = object.refund ?? "";
+    message.reason = object.reason ?? "";
+    return message;
+  },
+  fromAmino(object: OrderMessageRefundedEventAmino): OrderMessageRefundedEvent {
+    const message = createBaseOrderMessageRefundedEvent();
+    if (object.order_id !== undefined && object.order_id !== null) {
+      message.orderId = object.order_id;
+    }
+    if (object.market_id !== undefined && object.market_id !== null) {
+      message.marketId = object.market_id;
+    }
+    if (object.order_type !== undefined && object.order_type !== null) {
+      message.orderType = object.order_type;
+    }
+    if (object.owner !== undefined && object.owner !== null) {
+      message.owner = object.owner;
+    }
+    if (object.amount !== undefined && object.amount !== null) {
+      message.amount = object.amount;
+    }
+    if (object.refund !== undefined && object.refund !== null) {
+      message.refund = object.refund;
+    }
+    if (object.reason !== undefined && object.reason !== null) {
+      message.reason = object.reason;
+    }
+    return message;
+  },
+  toAmino(message: OrderMessageRefundedEvent): OrderMessageRefundedEventAmino {
+    const obj: any = {};
+    obj.order_id = message.orderId === "" ? undefined : message.orderId;
+    obj.market_id = message.marketId === "" ? undefined : message.marketId;
+    obj.order_type = message.orderType === "" ? undefined : message.orderType;
+    obj.owner = message.owner === "" ? undefined : message.owner;
+    obj.amount = message.amount === "" ? undefined : message.amount;
+    obj.refund = message.refund === "" ? undefined : message.refund;
+    obj.reason = message.reason === "" ? undefined : message.reason;
+    return obj;
+  },
+  fromAminoMsg(object: OrderMessageRefundedEventAminoMsg): OrderMessageRefundedEvent {
+    return OrderMessageRefundedEvent.fromAmino(object.value);
+  },
+  fromProtoMsg(message: OrderMessageRefundedEventProtoMsg): OrderMessageRefundedEvent {
+    return OrderMessageRefundedEvent.decode(message.value);
+  },
+  toProto(message: OrderMessageRefundedEvent): Uint8Array {
+    return OrderMessageRefundedEvent.encode(message).finish();
+  },
+  toProtoMsg(message: OrderMessageRefundedEvent): OrderMessageRefundedEventProtoMsg {
+    return {
+      typeUrl: "/bze.tradebin.OrderMessageRefundedEvent",
+      value: OrderMessageRefundedEvent.encode(message).finish()
     };
   },
   registerTypeUrl() {}

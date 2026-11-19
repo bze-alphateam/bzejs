@@ -399,6 +399,10 @@ export interface TradingRewardDistributionEvent {
   prizeAmount: string;
   prizeDenom: string;
   winners: string[];
+  /**
+   * the prize of the slots nobody filled, sent to the burner (empty when every slot was paid)
+   */
+  unpaidBurnt: string;
 }
 export interface TradingRewardDistributionEventProtoMsg {
   typeUrl: "/bze.rewards.TradingRewardDistributionEvent";
@@ -414,6 +418,10 @@ export interface TradingRewardDistributionEventAmino {
   prize_amount?: string;
   prize_denom?: string;
   winners?: string[];
+  /**
+   * the prize of the slots nobody filled, sent to the burner (empty when every slot was paid)
+   */
+  unpaid_burnt?: string;
 }
 export interface TradingRewardDistributionEventAminoMsg {
   type: "/bze.rewards.TradingRewardDistributionEvent";
@@ -429,6 +437,54 @@ export interface TradingRewardDistributionEventSDKType {
   prize_amount: string;
   prize_denom: string;
   winners: string[];
+  unpaid_burnt: string;
+}
+/**
+ * TradingRewardStartEvent is emitted by the first trade on an active trading reward: the countdown
+ * starts with that trade, not with the activation.
+ * @name TradingRewardStartEvent
+ * @package bze.rewards
+ * @see proto type: bze.rewards.TradingRewardStartEvent
+ */
+export interface TradingRewardStartEvent {
+  rewardId: string;
+  /**
+   * the hour epoch at which the reward is paid
+   */
+  expireAt: number;
+}
+export interface TradingRewardStartEventProtoMsg {
+  typeUrl: "/bze.rewards.TradingRewardStartEvent";
+  value: Uint8Array;
+}
+/**
+ * TradingRewardStartEvent is emitted by the first trade on an active trading reward: the countdown
+ * starts with that trade, not with the activation.
+ * @name TradingRewardStartEventAmino
+ * @package bze.rewards
+ * @see proto type: bze.rewards.TradingRewardStartEvent
+ */
+export interface TradingRewardStartEventAmino {
+  reward_id?: string;
+  /**
+   * the hour epoch at which the reward is paid
+   */
+  expire_at?: number;
+}
+export interface TradingRewardStartEventAminoMsg {
+  type: "/bze.rewards.TradingRewardStartEvent";
+  value: TradingRewardStartEventAmino;
+}
+/**
+ * TradingRewardStartEvent is emitted by the first trade on an active trading reward: the countdown
+ * starts with that trade, not with the activation.
+ * @name TradingRewardStartEventSDKType
+ * @package bze.rewards
+ * @see proto type: bze.rewards.TradingRewardStartEvent
+ */
+export interface TradingRewardStartEventSDKType {
+  reward_id: string;
+  expire_at: number;
 }
 /**
  * @name DenomRewardCreateEvent
@@ -1785,7 +1841,8 @@ function createBaseTradingRewardDistributionEvent(): TradingRewardDistributionEv
     rewardId: "",
     prizeAmount: "",
     prizeDenom: "",
-    winners: []
+    winners: [],
+    unpaidBurnt: ""
   };
 }
 /**
@@ -1796,13 +1853,13 @@ function createBaseTradingRewardDistributionEvent(): TradingRewardDistributionEv
 export const TradingRewardDistributionEvent = {
   typeUrl: "/bze.rewards.TradingRewardDistributionEvent",
   is(o: any): o is TradingRewardDistributionEvent {
-    return o && (o.$typeUrl === TradingRewardDistributionEvent.typeUrl || typeof o.rewardId === "string" && typeof o.prizeAmount === "string" && typeof o.prizeDenom === "string" && Array.isArray(o.winners) && (!o.winners.length || typeof o.winners[0] === "string"));
+    return o && (o.$typeUrl === TradingRewardDistributionEvent.typeUrl || typeof o.rewardId === "string" && typeof o.prizeAmount === "string" && typeof o.prizeDenom === "string" && Array.isArray(o.winners) && (!o.winners.length || typeof o.winners[0] === "string") && typeof o.unpaidBurnt === "string");
   },
   isSDK(o: any): o is TradingRewardDistributionEventSDKType {
-    return o && (o.$typeUrl === TradingRewardDistributionEvent.typeUrl || typeof o.reward_id === "string" && typeof o.prize_amount === "string" && typeof o.prize_denom === "string" && Array.isArray(o.winners) && (!o.winners.length || typeof o.winners[0] === "string"));
+    return o && (o.$typeUrl === TradingRewardDistributionEvent.typeUrl || typeof o.reward_id === "string" && typeof o.prize_amount === "string" && typeof o.prize_denom === "string" && Array.isArray(o.winners) && (!o.winners.length || typeof o.winners[0] === "string") && typeof o.unpaid_burnt === "string");
   },
   isAmino(o: any): o is TradingRewardDistributionEventAmino {
-    return o && (o.$typeUrl === TradingRewardDistributionEvent.typeUrl || typeof o.reward_id === "string" && typeof o.prize_amount === "string" && typeof o.prize_denom === "string" && Array.isArray(o.winners) && (!o.winners.length || typeof o.winners[0] === "string"));
+    return o && (o.$typeUrl === TradingRewardDistributionEvent.typeUrl || typeof o.reward_id === "string" && typeof o.prize_amount === "string" && typeof o.prize_denom === "string" && Array.isArray(o.winners) && (!o.winners.length || typeof o.winners[0] === "string") && typeof o.unpaid_burnt === "string");
   },
   encode(message: TradingRewardDistributionEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.rewardId !== "") {
@@ -1816,6 +1873,9 @@ export const TradingRewardDistributionEvent = {
     }
     for (const v of message.winners) {
       writer.uint32(34).string(v!);
+    }
+    if (message.unpaidBurnt !== "") {
+      writer.uint32(42).string(message.unpaidBurnt);
     }
     return writer;
   },
@@ -1838,6 +1898,9 @@ export const TradingRewardDistributionEvent = {
         case 4:
           message.winners.push(reader.string());
           break;
+        case 5:
+          message.unpaidBurnt = reader.string();
+          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -1851,6 +1914,7 @@ export const TradingRewardDistributionEvent = {
     message.prizeAmount = object.prizeAmount ?? "";
     message.prizeDenom = object.prizeDenom ?? "";
     message.winners = object.winners?.map(e => e) || [];
+    message.unpaidBurnt = object.unpaidBurnt ?? "";
     return message;
   },
   fromAmino(object: TradingRewardDistributionEventAmino): TradingRewardDistributionEvent {
@@ -1865,6 +1929,9 @@ export const TradingRewardDistributionEvent = {
       message.prizeDenom = object.prize_denom;
     }
     message.winners = object.winners?.map(e => e) || [];
+    if (object.unpaid_burnt !== undefined && object.unpaid_burnt !== null) {
+      message.unpaidBurnt = object.unpaid_burnt;
+    }
     return message;
   },
   toAmino(message: TradingRewardDistributionEvent): TradingRewardDistributionEventAmino {
@@ -1877,6 +1944,7 @@ export const TradingRewardDistributionEvent = {
     } else {
       obj.winners = message.winners;
     }
+    obj.unpaid_burnt = message.unpaidBurnt === "" ? undefined : message.unpaidBurnt;
     return obj;
   },
   fromAminoMsg(object: TradingRewardDistributionEventAminoMsg): TradingRewardDistributionEvent {
@@ -1892,6 +1960,98 @@ export const TradingRewardDistributionEvent = {
     return {
       typeUrl: "/bze.rewards.TradingRewardDistributionEvent",
       value: TradingRewardDistributionEvent.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseTradingRewardStartEvent(): TradingRewardStartEvent {
+  return {
+    rewardId: "",
+    expireAt: 0
+  };
+}
+/**
+ * TradingRewardStartEvent is emitted by the first trade on an active trading reward: the countdown
+ * starts with that trade, not with the activation.
+ * @name TradingRewardStartEvent
+ * @package bze.rewards
+ * @see proto type: bze.rewards.TradingRewardStartEvent
+ */
+export const TradingRewardStartEvent = {
+  typeUrl: "/bze.rewards.TradingRewardStartEvent",
+  is(o: any): o is TradingRewardStartEvent {
+    return o && (o.$typeUrl === TradingRewardStartEvent.typeUrl || typeof o.rewardId === "string" && typeof o.expireAt === "number");
+  },
+  isSDK(o: any): o is TradingRewardStartEventSDKType {
+    return o && (o.$typeUrl === TradingRewardStartEvent.typeUrl || typeof o.reward_id === "string" && typeof o.expire_at === "number");
+  },
+  isAmino(o: any): o is TradingRewardStartEventAmino {
+    return o && (o.$typeUrl === TradingRewardStartEvent.typeUrl || typeof o.reward_id === "string" && typeof o.expire_at === "number");
+  },
+  encode(message: TradingRewardStartEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.rewardId !== "") {
+      writer.uint32(10).string(message.rewardId);
+    }
+    if (message.expireAt !== 0) {
+      writer.uint32(16).uint32(message.expireAt);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): TradingRewardStartEvent {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseTradingRewardStartEvent();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.rewardId = reader.string();
+          break;
+        case 2:
+          message.expireAt = reader.uint32();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<TradingRewardStartEvent>): TradingRewardStartEvent {
+    const message = createBaseTradingRewardStartEvent();
+    message.rewardId = object.rewardId ?? "";
+    message.expireAt = object.expireAt ?? 0;
+    return message;
+  },
+  fromAmino(object: TradingRewardStartEventAmino): TradingRewardStartEvent {
+    const message = createBaseTradingRewardStartEvent();
+    if (object.reward_id !== undefined && object.reward_id !== null) {
+      message.rewardId = object.reward_id;
+    }
+    if (object.expire_at !== undefined && object.expire_at !== null) {
+      message.expireAt = object.expire_at;
+    }
+    return message;
+  },
+  toAmino(message: TradingRewardStartEvent): TradingRewardStartEventAmino {
+    const obj: any = {};
+    obj.reward_id = message.rewardId === "" ? undefined : message.rewardId;
+    obj.expire_at = message.expireAt === 0 ? undefined : message.expireAt;
+    return obj;
+  },
+  fromAminoMsg(object: TradingRewardStartEventAminoMsg): TradingRewardStartEvent {
+    return TradingRewardStartEvent.fromAmino(object.value);
+  },
+  fromProtoMsg(message: TradingRewardStartEventProtoMsg): TradingRewardStartEvent {
+    return TradingRewardStartEvent.decode(message.value);
+  },
+  toProto(message: TradingRewardStartEvent): Uint8Array {
+    return TradingRewardStartEvent.encode(message).finish();
+  },
+  toProtoMsg(message: TradingRewardStartEvent): TradingRewardStartEventProtoMsg {
+    return {
+      typeUrl: "/bze.rewards.TradingRewardStartEvent",
+      value: TradingRewardStartEvent.encode(message).finish()
     };
   },
   registerTypeUrl() {}

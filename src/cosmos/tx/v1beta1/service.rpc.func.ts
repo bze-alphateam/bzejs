@@ -55,8 +55,6 @@ export const getGetTxsEvent = buildQuery<GetTxsEventRequest, GetTxsEventResponse
 });
 /**
  * GetBlockWithTxs fetches a block with decoded txs.
- * 
- * Since: cosmos-sdk 0.45.2
  * @name getGetBlockWithTxs
  * @package cosmos.tx.v1beta1
  * @see proto service: cosmos.tx.v1beta1.GetBlockWithTxs
@@ -70,8 +68,6 @@ export const getGetBlockWithTxs = buildQuery<GetBlockWithTxsRequest, GetBlockWit
 });
 /**
  * TxDecode decodes the transaction.
- * 
- * Since: cosmos-sdk 0.47
  * @name getTxDecode
  * @package cosmos.tx.v1beta1
  * @see proto service: cosmos.tx.v1beta1.TxDecode
@@ -85,8 +81,6 @@ export const getTxDecode = buildQuery<TxDecodeRequest, TxDecodeResponse>({
 });
 /**
  * TxEncode encodes the transaction.
- * 
- * Since: cosmos-sdk 0.47
  * @name getTxEncode
  * @package cosmos.tx.v1beta1
  * @see proto service: cosmos.tx.v1beta1.TxEncode
@@ -100,8 +94,6 @@ export const getTxEncode = buildQuery<TxEncodeRequest, TxEncodeResponse>({
 });
 /**
  * TxEncodeAmino encodes an Amino transaction from JSON to encoded bytes.
- * 
- * Since: cosmos-sdk 0.47
  * @name getTxEncodeAmino
  * @package cosmos.tx.v1beta1
  * @see proto service: cosmos.tx.v1beta1.TxEncodeAmino
@@ -115,8 +107,6 @@ export const getTxEncodeAmino = buildQuery<TxEncodeAminoRequest, TxEncodeAminoRe
 });
 /**
  * TxDecodeAmino decodes an Amino transaction from encoded bytes to JSON.
- * 
- * Since: cosmos-sdk 0.47
  * @name getTxDecodeAmino
  * @package cosmos.tx.v1beta1
  * @see proto service: cosmos.tx.v1beta1.TxDecodeAmino

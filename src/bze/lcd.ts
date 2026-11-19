@@ -16,9 +16,17 @@ export const createLCDClient = async ({
       cointrunk: new (await import("./cointrunk/query.lcd")).LCDQueryClient({
         requestClient
       }),
+      dao: new (await import("./dao/query.lcd")).LCDQueryClient({
+        requestClient
+      }),
       epochs: new (await import("./epochs/query.lcd")).LCDQueryClient({
         requestClient
       }),
+      guardian: {
+        v1: new (await import("./guardian/v1/query.lcd")).LCDQueryClient({
+          requestClient
+        })
+      },
       rewards: new (await import("./rewards/query.lcd")).LCDQueryClient({
         requestClient
       }),
@@ -90,11 +98,6 @@ export const createLCDClient = async ({
           requestClient
         }),
         v1beta1: new (await import("../cosmos/gov/v1beta1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
-      },
-      group: {
-        v1: new (await import("../cosmos/group/v1/query.lcd")).LCDQueryClient({
           requestClient
         })
       },

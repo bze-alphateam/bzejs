@@ -130,6 +130,53 @@ export interface ClientMessageAminoMsg {
 export interface ClientMessageSDKType {
   data: Uint8Array;
 }
+/**
+ * Checksums defines a list of all checksums that are stored
+ * 
+ * Deprecated: This message is deprecated in favor of storing the checksums
+ * using a Collections.KeySet.
+ * @name Checksums
+ * @package ibc.lightclients.wasm.v1
+ * @see proto type: ibc.lightclients.wasm.v1.Checksums
+ * @deprecated
+ */
+export interface Checksums {
+  checksums: Uint8Array[];
+}
+export interface ChecksumsProtoMsg {
+  typeUrl: "/ibc.lightclients.wasm.v1.Checksums";
+  value: Uint8Array;
+}
+/**
+ * Checksums defines a list of all checksums that are stored
+ * 
+ * Deprecated: This message is deprecated in favor of storing the checksums
+ * using a Collections.KeySet.
+ * @name ChecksumsAmino
+ * @package ibc.lightclients.wasm.v1
+ * @see proto type: ibc.lightclients.wasm.v1.Checksums
+ * @deprecated
+ */
+export interface ChecksumsAmino {
+  checksums?: string[];
+}
+export interface ChecksumsAminoMsg {
+  type: "cosmos-sdk/Checksums";
+  value: ChecksumsAmino;
+}
+/**
+ * Checksums defines a list of all checksums that are stored
+ * 
+ * Deprecated: This message is deprecated in favor of storing the checksums
+ * using a Collections.KeySet.
+ * @name ChecksumsSDKType
+ * @package ibc.lightclients.wasm.v1
+ * @see proto type: ibc.lightclients.wasm.v1.Checksums
+ * @deprecated
+ */
+export interface ChecksumsSDKType {
+  checksums: Uint8Array[];
+}
 function createBaseClientState(): ClientState {
   return {
     data: new Uint8Array(),
@@ -413,6 +460,98 @@ export const ClientMessage = {
     return {
       typeUrl: "/ibc.lightclients.wasm.v1.ClientMessage",
       value: ClientMessage.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseChecksums(): Checksums {
+  return {
+    checksums: []
+  };
+}
+/**
+ * Checksums defines a list of all checksums that are stored
+ * 
+ * Deprecated: This message is deprecated in favor of storing the checksums
+ * using a Collections.KeySet.
+ * @name Checksums
+ * @package ibc.lightclients.wasm.v1
+ * @see proto type: ibc.lightclients.wasm.v1.Checksums
+ * @deprecated
+ */
+export const Checksums = {
+  typeUrl: "/ibc.lightclients.wasm.v1.Checksums",
+  aminoType: "cosmos-sdk/Checksums",
+  is(o: any): o is Checksums {
+    return o && (o.$typeUrl === Checksums.typeUrl || Array.isArray(o.checksums) && (!o.checksums.length || o.checksums[0] instanceof Uint8Array || typeof o.checksums[0] === "string"));
+  },
+  isSDK(o: any): o is ChecksumsSDKType {
+    return o && (o.$typeUrl === Checksums.typeUrl || Array.isArray(o.checksums) && (!o.checksums.length || o.checksums[0] instanceof Uint8Array || typeof o.checksums[0] === "string"));
+  },
+  isAmino(o: any): o is ChecksumsAmino {
+    return o && (o.$typeUrl === Checksums.typeUrl || Array.isArray(o.checksums) && (!o.checksums.length || o.checksums[0] instanceof Uint8Array || typeof o.checksums[0] === "string"));
+  },
+  encode(message: Checksums, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    for (const v of message.checksums) {
+      writer.uint32(10).bytes(v!);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): Checksums {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseChecksums();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.checksums.push(reader.bytes());
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<Checksums>): Checksums {
+    const message = createBaseChecksums();
+    message.checksums = object.checksums?.map(e => e) || [];
+    return message;
+  },
+  fromAmino(object: ChecksumsAmino): Checksums {
+    const message = createBaseChecksums();
+    message.checksums = object.checksums?.map(e => bytesFromBase64(e)) || [];
+    return message;
+  },
+  toAmino(message: Checksums): ChecksumsAmino {
+    const obj: any = {};
+    if (message.checksums) {
+      obj.checksums = message.checksums.map(e => base64FromBytes(e));
+    } else {
+      obj.checksums = message.checksums;
+    }
+    return obj;
+  },
+  fromAminoMsg(object: ChecksumsAminoMsg): Checksums {
+    return Checksums.fromAmino(object.value);
+  },
+  toAminoMsg(message: Checksums): ChecksumsAminoMsg {
+    return {
+      type: "cosmos-sdk/Checksums",
+      value: Checksums.toAmino(message)
+    };
+  },
+  fromProtoMsg(message: ChecksumsProtoMsg): Checksums {
+    return Checksums.decode(message.value);
+  },
+  toProto(message: Checksums): Uint8Array {
+    return Checksums.encode(message).finish();
+  },
+  toProtoMsg(message: Checksums): ChecksumsProtoMsg {
+    return {
+      typeUrl: "/ibc.lightclients.wasm.v1.Checksums",
+      value: Checksums.encode(message).finish()
     };
   },
   registerTypeUrl() {}

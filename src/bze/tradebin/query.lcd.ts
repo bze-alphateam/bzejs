@@ -1,7 +1,7 @@
 //@ts-nocheck
 import { setPaginationParams } from "../../helpers";
 import { LCDClient } from "@cosmology/lcd";
-import { QueryParamsRequest, QueryParamsResponseSDKType, QueryMarketRequest, QueryMarketResponseSDKType, QueryAllMarketsRequest, QueryAllMarketsResponseSDKType, QueryAssetMarketsRequest, QueryAssetMarketsResponseSDKType, QueryUserMarketOrdersRequest, QueryUserMarketOrdersResponseSDKType, QueryMarketAggregatedOrdersRequest, QueryMarketAggregatedOrdersResponseSDKType, QueryMarketHistoryRequest, QueryMarketHistoryResponseSDKType, QueryMarketOrderRequest, QueryMarketOrderResponseSDKType, QueryAllUserDustRequest, QueryAllUserDustResponseSDKType, QueryAllLiquidityPoolsRequest, QueryAllLiquidityPoolsResponseSDKType, QueryLiquidityPoolRequest, QueryLiquidityPoolResponseSDKType, QueryHaltedDenomsRequest, QueryHaltedDenomsResponseSDKType, QueryDenomHaltedRequest, QueryDenomHaltedResponseSDKType } from "./query";
+import { QueryParamsRequest, QueryParamsResponseSDKType, QueryMarketRequest, QueryMarketResponseSDKType, QueryAllMarketsRequest, QueryAllMarketsResponseSDKType, QueryAssetMarketsRequest, QueryAssetMarketsResponseSDKType, QueryUserMarketOrdersRequest, QueryUserMarketOrdersResponseSDKType, QueryMarketAggregatedOrdersRequest, QueryMarketAggregatedOrdersResponseSDKType, QueryMarketHistoryRequest, QueryMarketHistoryResponseSDKType, QueryMarketOrderRequest, QueryMarketOrderResponseSDKType, QueryAllUserDustRequest, QueryAllUserDustResponseSDKType, QueryAllLiquidityPoolsRequest, QueryAllLiquidityPoolsResponseSDKType, QueryLiquidityPoolRequest, QueryLiquidityPoolResponseSDKType, QueryPoolPriceAverageRequest, QueryPoolPriceAverageResponseSDKType, QueryHaltedDenomsRequest, QueryHaltedDenomsResponseSDKType, QueryDenomHaltedRequest, QueryDenomHaltedResponseSDKType } from "./query";
 export class LCDQueryClient {
   req: LCDClient;
   constructor({
@@ -21,6 +21,7 @@ export class LCDQueryClient {
     this.allUserDust = this.allUserDust.bind(this);
     this.allLiquidityPools = this.allLiquidityPools.bind(this);
     this.liquidityPool = this.liquidityPool.bind(this);
+    this.poolPriceAverage = this.poolPriceAverage.bind(this);
     this.haltedDenoms = this.haltedDenoms.bind(this);
     this.denomHalted = this.denomHalted.bind(this);
   }
@@ -163,6 +164,18 @@ export class LCDQueryClient {
     }
     const endpoint = `bze/tradebin/liquidity_pool`;
     return await this.req.get<QueryLiquidityPoolResponseSDKType>(endpoint, options);
+  }
+  /* Queries the moving average of a pool's price. Over REST the pool id is passed as the `pool_id` query
+   parameter (pool ids contain "/", so it cannot be a path segment). */
+  async poolPriceAverage(params: QueryPoolPriceAverageRequest): Promise<QueryPoolPriceAverageResponseSDKType> {
+    const options: any = {
+      params: {}
+    };
+    if (typeof params?.poolId !== "undefined") {
+      options.params.pool_id = params.poolId;
+    }
+    const endpoint = `bze/tradebin/pool_price_average`;
+    return await this.req.get<QueryPoolPriceAverageResponseSDKType>(endpoint, options);
   }
   /* Queries the denoms governance halted on the DEX, paginated, in store (byte) order. */
   async haltedDenoms(params: QueryHaltedDenomsRequest = {

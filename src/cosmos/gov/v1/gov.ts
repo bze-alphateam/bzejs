@@ -305,32 +305,22 @@ export interface Proposal {
   metadata: string;
   /**
    * title is the title of the proposal
-   * 
-   * Since: cosmos-sdk 0.47
    */
   title: string;
   /**
    * summary is a short summary of the proposal
-   * 
-   * Since: cosmos-sdk 0.47
    */
   summary: string;
   /**
    * proposer is the address of the proposal sumbitter
-   * 
-   * Since: cosmos-sdk 0.47
    */
   proposer: string;
   /**
    * expedited defines if the proposal is expedited
-   * 
-   * Since: cosmos-sdk 0.50
    */
   expedited: boolean;
   /**
    * failed_reason defines the reason why the proposal failed
-   * 
-   * Since: cosmos-sdk 0.50
    */
   failedReason: string;
 }
@@ -391,32 +381,22 @@ export interface ProposalAmino {
   metadata?: string;
   /**
    * title is the title of the proposal
-   * 
-   * Since: cosmos-sdk 0.47
    */
   title?: string;
   /**
    * summary is a short summary of the proposal
-   * 
-   * Since: cosmos-sdk 0.47
    */
   summary?: string;
   /**
    * proposer is the address of the proposal sumbitter
-   * 
-   * Since: cosmos-sdk 0.47
    */
   proposer?: string;
   /**
    * expedited defines if the proposal is expedited
-   * 
-   * Since: cosmos-sdk 0.50
    */
   expedited?: boolean;
   /**
    * failed_reason defines the reason why the proposal failed
-   * 
-   * Since: cosmos-sdk 0.50
    */
   failed_reason?: string;
 }
@@ -755,8 +735,6 @@ export interface TallyParamsSDKType {
 }
 /**
  * Params defines the parameters for the x/gov module.
- * 
- * Since: cosmos-sdk 0.47
  * @name Params
  * @package cosmos.gov.v1
  * @see proto type: cosmos.gov.v1.Params
@@ -795,27 +773,19 @@ export interface Params {
   minInitialDepositRatio: string;
   /**
    * The cancel ratio which will not be returned back to the depositors when a proposal is cancelled.
-   * 
-   * Since: cosmos-sdk 0.50
    */
   proposalCancelRatio: string;
   /**
    * The address which will receive (proposal_cancel_ratio * deposit) proposal deposits.
    * If empty, the (proposal_cancel_ratio * deposit) proposal deposits will be burned.
-   * 
-   * Since: cosmos-sdk 0.50
    */
   proposalCancelDest: string;
   /**
    * Duration of the voting period of an expedited proposal.
-   * 
-   * Since: cosmos-sdk 0.50
    */
   expeditedVotingPeriod?: Duration;
   /**
    * Minimum proportion of Yes votes for proposal to pass. Default value: 0.67.
-   * 
-   * Since: cosmos-sdk 0.50
    */
   expeditedThreshold: string;
   /**
@@ -838,8 +808,6 @@ export interface Params {
    * The ratio representing the proportion of the deposit value minimum that must be met when making a deposit.
    * Default value: 0.01. Meaning that for a chain with a min_deposit of 100stake, a deposit of 1stake would be
    * required.
-   * 
-   * Since: cosmos-sdk 0.50
    */
   minDepositRatio: string;
 }
@@ -849,8 +817,6 @@ export interface ParamsProtoMsg {
 }
 /**
  * Params defines the parameters for the x/gov module.
- * 
- * Since: cosmos-sdk 0.47
  * @name ParamsAmino
  * @package cosmos.gov.v1
  * @see proto type: cosmos.gov.v1.Params
@@ -889,27 +855,19 @@ export interface ParamsAmino {
   min_initial_deposit_ratio?: string;
   /**
    * The cancel ratio which will not be returned back to the depositors when a proposal is cancelled.
-   * 
-   * Since: cosmos-sdk 0.50
    */
   proposal_cancel_ratio?: string;
   /**
    * The address which will receive (proposal_cancel_ratio * deposit) proposal deposits.
    * If empty, the (proposal_cancel_ratio * deposit) proposal deposits will be burned.
-   * 
-   * Since: cosmos-sdk 0.50
    */
   proposal_cancel_dest?: string;
   /**
    * Duration of the voting period of an expedited proposal.
-   * 
-   * Since: cosmos-sdk 0.50
    */
   expedited_voting_period?: DurationAmino;
   /**
    * Minimum proportion of Yes votes for proposal to pass. Default value: 0.67.
-   * 
-   * Since: cosmos-sdk 0.50
    */
   expedited_threshold?: string;
   /**
@@ -932,8 +890,6 @@ export interface ParamsAmino {
    * The ratio representing the proportion of the deposit value minimum that must be met when making a deposit.
    * Default value: 0.01. Meaning that for a chain with a min_deposit of 100stake, a deposit of 1stake would be
    * required.
-   * 
-   * Since: cosmos-sdk 0.50
    */
   min_deposit_ratio?: string;
 }
@@ -943,8 +899,6 @@ export interface ParamsAminoMsg {
 }
 /**
  * Params defines the parameters for the x/gov module.
- * 
- * Since: cosmos-sdk 0.47
  * @name ParamsSDKType
  * @package cosmos.gov.v1
  * @see proto type: cosmos.gov.v1.Params
@@ -2025,8 +1979,6 @@ function createBaseParams(): Params {
 }
 /**
  * Params defines the parameters for the x/gov module.
- * 
- * Since: cosmos-sdk 0.47
  * @name Params
  * @package cosmos.gov.v1
  * @see proto type: cosmos.gov.v1.Params

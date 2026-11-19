@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { buildQuery } from "../../helper-func-types";
-import { QueryParamsRequest, QueryParamsResponse, QueryMarketRequest, QueryMarketResponse, QueryAllMarketsRequest, QueryAllMarketsResponse, QueryAssetMarketsRequest, QueryAssetMarketsResponse, QueryUserMarketOrdersRequest, QueryUserMarketOrdersResponse, QueryMarketAggregatedOrdersRequest, QueryMarketAggregatedOrdersResponse, QueryMarketHistoryRequest, QueryMarketHistoryResponse, QueryMarketOrderRequest, QueryMarketOrderResponse, QueryAllUserDustRequest, QueryAllUserDustResponse, QueryAllLiquidityPoolsRequest, QueryAllLiquidityPoolsResponse, QueryLiquidityPoolRequest, QueryLiquidityPoolResponse, QueryHaltedDenomsRequest, QueryHaltedDenomsResponse, QueryDenomHaltedRequest, QueryDenomHaltedResponse } from "./query";
+import { QueryParamsRequest, QueryParamsResponse, QueryMarketRequest, QueryMarketResponse, QueryAllMarketsRequest, QueryAllMarketsResponse, QueryAssetMarketsRequest, QueryAssetMarketsResponse, QueryUserMarketOrdersRequest, QueryUserMarketOrdersResponse, QueryMarketAggregatedOrdersRequest, QueryMarketAggregatedOrdersResponse, QueryMarketHistoryRequest, QueryMarketHistoryResponse, QueryMarketOrderRequest, QueryMarketOrderResponse, QueryAllUserDustRequest, QueryAllUserDustResponse, QueryAllLiquidityPoolsRequest, QueryAllLiquidityPoolsResponse, QueryLiquidityPoolRequest, QueryLiquidityPoolResponse, QueryPoolPriceAverageRequest, QueryPoolPriceAverageResponse, QueryHaltedDenomsRequest, QueryHaltedDenomsResponse, QueryDenomHaltedRequest, QueryDenomHaltedResponse } from "./query";
 /**
  * Parameters queries the parameters of the module.
  * @name getParams
@@ -143,6 +143,20 @@ export const getLiquidityPool = buildQuery<QueryLiquidityPoolRequest, QueryLiqui
   service: "bze.tradebin.Query",
   method: "LiquidityPool",
   deps: [QueryLiquidityPoolRequest, QueryLiquidityPoolResponse]
+});
+/**
+ * Queries the moving average of a pool's price. Over REST the pool id is passed as the `pool_id` query
+ * parameter (pool ids contain "/", so it cannot be a path segment).
+ * @name getPoolPriceAverage
+ * @package bze.tradebin
+ * @see proto service: bze.tradebin.PoolPriceAverage
+ */
+export const getPoolPriceAverage = buildQuery<QueryPoolPriceAverageRequest, QueryPoolPriceAverageResponse>({
+  encode: QueryPoolPriceAverageRequest.encode,
+  decode: QueryPoolPriceAverageResponse.decode,
+  service: "bze.tradebin.Query",
+  method: "PoolPriceAverage",
+  deps: [QueryPoolPriceAverageRequest, QueryPoolPriceAverageResponse]
 });
 /**
  * Queries the denoms governance halted on the DEX, paginated, in store (byte) order.

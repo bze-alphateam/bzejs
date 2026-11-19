@@ -52,15 +52,6 @@ export interface MsgTransfer {
    * optional encoding
    */
   encoding: string;
-  /**
-   * boolean flag to indicate if the transfer message
-   * is sent with the IBC v2 protocol but uses v1 channel identifiers.
-   * In this case, the v1 channel identifiers function as aliases to the
-   * underlying client ids.
-   * This only needs to be set if the channel IDs
-   * are V1 channel identifiers.
-   */
-  useAliasing: boolean;
 }
 export interface MsgTransferProtoMsg {
   typeUrl: "/ibc.applications.transfer.v1.MsgTransfer";
@@ -115,15 +106,6 @@ export interface MsgTransferAmino {
    * optional encoding
    */
   encoding?: string;
-  /**
-   * boolean flag to indicate if the transfer message
-   * is sent with the IBC v2 protocol but uses v1 channel identifiers.
-   * In this case, the v1 channel identifiers function as aliases to the
-   * underlying client ids.
-   * This only needs to be set if the channel IDs
-   * are V1 channel identifiers.
-   */
-  use_aliasing: boolean;
 }
 export interface MsgTransferAminoMsg {
   type: "cosmos-sdk/MsgTransfer";
@@ -147,7 +129,6 @@ export interface MsgTransferSDKType {
   timeout_timestamp: bigint;
   memo: string;
   encoding: string;
-  use_aliasing: boolean;
 }
 /**
  * MsgTransferResponse defines the Msg/Transfer response type.
@@ -286,8 +267,7 @@ function createBaseMsgTransfer(): MsgTransfer {
     timeoutHeight: Height.fromPartial({}),
     timeoutTimestamp: BigInt(0),
     memo: "",
-    encoding: "",
-    useAliasing: false
+    encoding: ""
   };
 }
 /**
@@ -302,13 +282,13 @@ export const MsgTransfer = {
   typeUrl: "/ibc.applications.transfer.v1.MsgTransfer",
   aminoType: "cosmos-sdk/MsgTransfer",
   is(o: any): o is MsgTransfer {
-    return o && (o.$typeUrl === MsgTransfer.typeUrl || typeof o.sourcePort === "string" && typeof o.sourceChannel === "string" && Coin.is(o.token) && typeof o.sender === "string" && typeof o.receiver === "string" && Height.is(o.timeoutHeight) && typeof o.timeoutTimestamp === "bigint" && typeof o.memo === "string" && typeof o.encoding === "string" && typeof o.useAliasing === "boolean");
+    return o && (o.$typeUrl === MsgTransfer.typeUrl || typeof o.sourcePort === "string" && typeof o.sourceChannel === "string" && Coin.is(o.token) && typeof o.sender === "string" && typeof o.receiver === "string" && Height.is(o.timeoutHeight) && typeof o.timeoutTimestamp === "bigint" && typeof o.memo === "string" && typeof o.encoding === "string");
   },
   isSDK(o: any): o is MsgTransferSDKType {
-    return o && (o.$typeUrl === MsgTransfer.typeUrl || typeof o.source_port === "string" && typeof o.source_channel === "string" && Coin.isSDK(o.token) && typeof o.sender === "string" && typeof o.receiver === "string" && Height.isSDK(o.timeout_height) && typeof o.timeout_timestamp === "bigint" && typeof o.memo === "string" && typeof o.encoding === "string" && typeof o.use_aliasing === "boolean");
+    return o && (o.$typeUrl === MsgTransfer.typeUrl || typeof o.source_port === "string" && typeof o.source_channel === "string" && Coin.isSDK(o.token) && typeof o.sender === "string" && typeof o.receiver === "string" && Height.isSDK(o.timeout_height) && typeof o.timeout_timestamp === "bigint" && typeof o.memo === "string" && typeof o.encoding === "string");
   },
   isAmino(o: any): o is MsgTransferAmino {
-    return o && (o.$typeUrl === MsgTransfer.typeUrl || typeof o.source_port === "string" && typeof o.source_channel === "string" && Coin.isAmino(o.token) && typeof o.sender === "string" && typeof o.receiver === "string" && Height.isAmino(o.timeout_height) && typeof o.timeout_timestamp === "bigint" && typeof o.memo === "string" && typeof o.encoding === "string" && typeof o.use_aliasing === "boolean");
+    return o && (o.$typeUrl === MsgTransfer.typeUrl || typeof o.source_port === "string" && typeof o.source_channel === "string" && Coin.isAmino(o.token) && typeof o.sender === "string" && typeof o.receiver === "string" && Height.isAmino(o.timeout_height) && typeof o.timeout_timestamp === "bigint" && typeof o.memo === "string" && typeof o.encoding === "string");
   },
   encode(message: MsgTransfer, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
     if (message.sourcePort !== "") {
@@ -337,9 +317,6 @@ export const MsgTransfer = {
     }
     if (message.encoding !== "") {
       writer.uint32(74).string(message.encoding);
-    }
-    if (message.useAliasing === true) {
-      writer.uint32(80).bool(message.useAliasing);
     }
     return writer;
   },
@@ -377,9 +354,6 @@ export const MsgTransfer = {
         case 9:
           message.encoding = reader.string();
           break;
-        case 10:
-          message.useAliasing = reader.bool();
-          break;
         default:
           reader.skipType(tag & 7);
           break;
@@ -398,7 +372,6 @@ export const MsgTransfer = {
     message.timeoutTimestamp = object.timeoutTimestamp !== undefined && object.timeoutTimestamp !== null ? BigInt(object.timeoutTimestamp.toString()) : BigInt(0);
     message.memo = object.memo ?? "";
     message.encoding = object.encoding ?? "";
-    message.useAliasing = object.useAliasing ?? false;
     return message;
   },
   fromAmino(object: MsgTransferAmino): MsgTransfer {
@@ -430,9 +403,6 @@ export const MsgTransfer = {
     if (object.encoding !== undefined && object.encoding !== null) {
       message.encoding = object.encoding;
     }
-    if (object.use_aliasing !== undefined && object.use_aliasing !== null) {
-      message.useAliasing = object.use_aliasing;
-    }
     return message;
   },
   toAmino(message: MsgTransfer): MsgTransferAmino {
@@ -446,7 +416,6 @@ export const MsgTransfer = {
     obj.timeout_timestamp = message.timeoutTimestamp !== BigInt(0) ? message.timeoutTimestamp?.toString() : undefined;
     obj.memo = message.memo === "" ? undefined : message.memo;
     obj.encoding = message.encoding === "" ? undefined : message.encoding;
-    obj.use_aliasing = message.useAliasing || undefined;
     return obj;
   },
   fromAminoMsg(object: MsgTransferAminoMsg): MsgTransfer {

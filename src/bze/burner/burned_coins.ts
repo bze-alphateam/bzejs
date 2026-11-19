@@ -99,6 +99,44 @@ export interface RaffleCleanupQueueAminoMsg {
 export interface RaffleCleanupQueueSDKType {
   pending_epochs: bigint[];
 }
+/**
+ * IbcMoveLock holds the height of the last successful MsgMoveIbcLockedCoins of a denom.
+ * @name IbcMoveLock
+ * @package bze.burner
+ * @see proto type: bze.burner.IbcMoveLock
+ */
+export interface IbcMoveLock {
+  denom: string;
+  lastMoveHeight: bigint;
+}
+export interface IbcMoveLockProtoMsg {
+  typeUrl: "/bze.burner.IbcMoveLock";
+  value: Uint8Array;
+}
+/**
+ * IbcMoveLock holds the height of the last successful MsgMoveIbcLockedCoins of a denom.
+ * @name IbcMoveLockAmino
+ * @package bze.burner
+ * @see proto type: bze.burner.IbcMoveLock
+ */
+export interface IbcMoveLockAmino {
+  denom?: string;
+  last_move_height?: string;
+}
+export interface IbcMoveLockAminoMsg {
+  type: "/bze.burner.IbcMoveLock";
+  value: IbcMoveLockAmino;
+}
+/**
+ * IbcMoveLock holds the height of the last successful MsgMoveIbcLockedCoins of a denom.
+ * @name IbcMoveLockSDKType
+ * @package bze.burner
+ * @see proto type: bze.burner.IbcMoveLock
+ */
+export interface IbcMoveLockSDKType {
+  denom: string;
+  last_move_height: bigint;
+}
 function createBaseBurnedCoins(): BurnedCoins {
   return {
     burned: "",
@@ -352,6 +390,97 @@ export const RaffleCleanupQueue = {
     return {
       typeUrl: "/bze.burner.RaffleCleanupQueue",
       value: RaffleCleanupQueue.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseIbcMoveLock(): IbcMoveLock {
+  return {
+    denom: "",
+    lastMoveHeight: BigInt(0)
+  };
+}
+/**
+ * IbcMoveLock holds the height of the last successful MsgMoveIbcLockedCoins of a denom.
+ * @name IbcMoveLock
+ * @package bze.burner
+ * @see proto type: bze.burner.IbcMoveLock
+ */
+export const IbcMoveLock = {
+  typeUrl: "/bze.burner.IbcMoveLock",
+  is(o: any): o is IbcMoveLock {
+    return o && (o.$typeUrl === IbcMoveLock.typeUrl || typeof o.denom === "string" && typeof o.lastMoveHeight === "bigint");
+  },
+  isSDK(o: any): o is IbcMoveLockSDKType {
+    return o && (o.$typeUrl === IbcMoveLock.typeUrl || typeof o.denom === "string" && typeof o.last_move_height === "bigint");
+  },
+  isAmino(o: any): o is IbcMoveLockAmino {
+    return o && (o.$typeUrl === IbcMoveLock.typeUrl || typeof o.denom === "string" && typeof o.last_move_height === "bigint");
+  },
+  encode(message: IbcMoveLock, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.denom !== "") {
+      writer.uint32(10).string(message.denom);
+    }
+    if (message.lastMoveHeight !== BigInt(0)) {
+      writer.uint32(16).int64(message.lastMoveHeight);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): IbcMoveLock {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseIbcMoveLock();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.denom = reader.string();
+          break;
+        case 2:
+          message.lastMoveHeight = reader.int64();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<IbcMoveLock>): IbcMoveLock {
+    const message = createBaseIbcMoveLock();
+    message.denom = object.denom ?? "";
+    message.lastMoveHeight = object.lastMoveHeight !== undefined && object.lastMoveHeight !== null ? BigInt(object.lastMoveHeight.toString()) : BigInt(0);
+    return message;
+  },
+  fromAmino(object: IbcMoveLockAmino): IbcMoveLock {
+    const message = createBaseIbcMoveLock();
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    if (object.last_move_height !== undefined && object.last_move_height !== null) {
+      message.lastMoveHeight = BigInt(object.last_move_height);
+    }
+    return message;
+  },
+  toAmino(message: IbcMoveLock): IbcMoveLockAmino {
+    const obj: any = {};
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    obj.last_move_height = message.lastMoveHeight !== BigInt(0) ? message.lastMoveHeight?.toString() : undefined;
+    return obj;
+  },
+  fromAminoMsg(object: IbcMoveLockAminoMsg): IbcMoveLock {
+    return IbcMoveLock.fromAmino(object.value);
+  },
+  fromProtoMsg(message: IbcMoveLockProtoMsg): IbcMoveLock {
+    return IbcMoveLock.decode(message.value);
+  },
+  toProto(message: IbcMoveLock): Uint8Array {
+    return IbcMoveLock.encode(message).finish();
+  },
+  toProtoMsg(message: IbcMoveLock): IbcMoveLockProtoMsg {
+    return {
+      typeUrl: "/bze.burner.IbcMoveLock",
+      value: IbcMoveLock.encode(message).finish()
     };
   },
   registerTypeUrl() {}

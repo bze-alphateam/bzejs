@@ -1,6 +1,6 @@
 //@ts-nocheck
 import { buildTx } from "../../helper-func-types";
-import { MsgUpdateParams, MsgCreateMarket, MsgCreateOrder, MsgCancelOrder, MsgFillOrders, MsgCreateLiquidityPool, MsgAddLiquidity, MsgRemoveLiquidity, MsgMultiSwap, MsgHaltDenoms, MsgUnhaltDenoms } from "./tx";
+import { MsgUpdateParams, MsgCreateMarket, MsgCreateOrder, MsgCancelOrder, MsgFillOrders, MsgCreateLiquidityPool, MsgAddLiquidity, MsgRemoveLiquidity, MsgMultiSwap, MsgHaltDenoms, MsgUnhaltDenoms, MsgUpdatePools } from "./tx";
 /**
  * UpdateParams defines a (governance) operation for updating the module
  * parameters. The authority defaults to the x/gov module account.
@@ -92,4 +92,13 @@ export const haltDenoms = buildTx<MsgHaltDenoms>({
  */
 export const unhaltDenoms = buildTx<MsgUnhaltDenoms>({
   msg: MsgUnhaltDenoms
+});
+/**
+ * UpdatePools changes the swap fee and the fee split of existing liquidity pools. Governance only.
+ * @name updatePools
+ * @package bze.tradebin
+ * @see proto service: bze.tradebin.UpdatePools
+ */
+export const updatePools = buildTx<MsgUpdatePools>({
+  msg: MsgUpdatePools
 });

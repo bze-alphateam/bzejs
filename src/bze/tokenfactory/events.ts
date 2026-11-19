@@ -1,5 +1,6 @@
 //@ts-nocheck
 import { BinaryReader, BinaryWriter } from "../../binary";
+import { Decimal } from "@interchainjs/math";
 /**
  * @name DenomAdminChangeEvent
  * @package bze.tokenfactory
@@ -101,6 +102,85 @@ export interface DenomBrandingChangeEventAminoMsg {
  */
 export interface DenomBrandingChangeEventSDKType {
   denom: string;
+}
+/**
+ * @name DenomMintingDisabledEvent
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.DenomMintingDisabledEvent
+ */
+export interface DenomMintingDisabledEvent {
+  denom: string;
+  admin: string;
+}
+export interface DenomMintingDisabledEventProtoMsg {
+  typeUrl: "/bze.tokenfactory.DenomMintingDisabledEvent";
+  value: Uint8Array;
+}
+/**
+ * @name DenomMintingDisabledEventAmino
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.DenomMintingDisabledEvent
+ */
+export interface DenomMintingDisabledEventAmino {
+  denom?: string;
+  admin?: string;
+}
+export interface DenomMintingDisabledEventAminoMsg {
+  type: "/bze.tokenfactory.DenomMintingDisabledEvent";
+  value: DenomMintingDisabledEventAmino;
+}
+/**
+ * @name DenomMintingDisabledEventSDKType
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.DenomMintingDisabledEvent
+ */
+export interface DenomMintingDisabledEventSDKType {
+  denom: string;
+  admin: string;
+}
+/**
+ * DenomConfigChangeEvent carries the denom's new configuration.
+ * @name DenomConfigChangeEvent
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.DenomConfigChangeEvent
+ */
+export interface DenomConfigChangeEvent {
+  denom: string;
+  communityPool: string;
+  transferFee: string;
+  gasSurcharge: string;
+}
+export interface DenomConfigChangeEventProtoMsg {
+  typeUrl: "/bze.tokenfactory.DenomConfigChangeEvent";
+  value: Uint8Array;
+}
+/**
+ * DenomConfigChangeEvent carries the denom's new configuration.
+ * @name DenomConfigChangeEventAmino
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.DenomConfigChangeEvent
+ */
+export interface DenomConfigChangeEventAmino {
+  denom?: string;
+  community_pool?: string;
+  transfer_fee?: string;
+  gas_surcharge?: string;
+}
+export interface DenomConfigChangeEventAminoMsg {
+  type: "/bze.tokenfactory.DenomConfigChangeEvent";
+  value: DenomConfigChangeEventAmino;
+}
+/**
+ * DenomConfigChangeEvent carries the denom's new configuration.
+ * @name DenomConfigChangeEventSDKType
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.DenomConfigChangeEvent
+ */
+export interface DenomConfigChangeEventSDKType {
+  denom: string;
+  community_pool: string;
+  transfer_fee: string;
+  gas_surcharge: string;
 }
 function createBaseDenomAdminChangeEvent(): DenomAdminChangeEvent {
   return {
@@ -356,6 +436,211 @@ export const DenomBrandingChangeEvent = {
     return {
       typeUrl: "/bze.tokenfactory.DenomBrandingChangeEvent",
       value: DenomBrandingChangeEvent.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseDenomMintingDisabledEvent(): DenomMintingDisabledEvent {
+  return {
+    denom: "",
+    admin: ""
+  };
+}
+/**
+ * @name DenomMintingDisabledEvent
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.DenomMintingDisabledEvent
+ */
+export const DenomMintingDisabledEvent = {
+  typeUrl: "/bze.tokenfactory.DenomMintingDisabledEvent",
+  is(o: any): o is DenomMintingDisabledEvent {
+    return o && (o.$typeUrl === DenomMintingDisabledEvent.typeUrl || typeof o.denom === "string" && typeof o.admin === "string");
+  },
+  isSDK(o: any): o is DenomMintingDisabledEventSDKType {
+    return o && (o.$typeUrl === DenomMintingDisabledEvent.typeUrl || typeof o.denom === "string" && typeof o.admin === "string");
+  },
+  isAmino(o: any): o is DenomMintingDisabledEventAmino {
+    return o && (o.$typeUrl === DenomMintingDisabledEvent.typeUrl || typeof o.denom === "string" && typeof o.admin === "string");
+  },
+  encode(message: DenomMintingDisabledEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.denom !== "") {
+      writer.uint32(10).string(message.denom);
+    }
+    if (message.admin !== "") {
+      writer.uint32(18).string(message.admin);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): DenomMintingDisabledEvent {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDenomMintingDisabledEvent();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.denom = reader.string();
+          break;
+        case 2:
+          message.admin = reader.string();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<DenomMintingDisabledEvent>): DenomMintingDisabledEvent {
+    const message = createBaseDenomMintingDisabledEvent();
+    message.denom = object.denom ?? "";
+    message.admin = object.admin ?? "";
+    return message;
+  },
+  fromAmino(object: DenomMintingDisabledEventAmino): DenomMintingDisabledEvent {
+    const message = createBaseDenomMintingDisabledEvent();
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    if (object.admin !== undefined && object.admin !== null) {
+      message.admin = object.admin;
+    }
+    return message;
+  },
+  toAmino(message: DenomMintingDisabledEvent): DenomMintingDisabledEventAmino {
+    const obj: any = {};
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    obj.admin = message.admin === "" ? undefined : message.admin;
+    return obj;
+  },
+  fromAminoMsg(object: DenomMintingDisabledEventAminoMsg): DenomMintingDisabledEvent {
+    return DenomMintingDisabledEvent.fromAmino(object.value);
+  },
+  fromProtoMsg(message: DenomMintingDisabledEventProtoMsg): DenomMintingDisabledEvent {
+    return DenomMintingDisabledEvent.decode(message.value);
+  },
+  toProto(message: DenomMintingDisabledEvent): Uint8Array {
+    return DenomMintingDisabledEvent.encode(message).finish();
+  },
+  toProtoMsg(message: DenomMintingDisabledEvent): DenomMintingDisabledEventProtoMsg {
+    return {
+      typeUrl: "/bze.tokenfactory.DenomMintingDisabledEvent",
+      value: DenomMintingDisabledEvent.encode(message).finish()
+    };
+  },
+  registerTypeUrl() {}
+};
+function createBaseDenomConfigChangeEvent(): DenomConfigChangeEvent {
+  return {
+    denom: "",
+    communityPool: "",
+    transferFee: "",
+    gasSurcharge: ""
+  };
+}
+/**
+ * DenomConfigChangeEvent carries the denom's new configuration.
+ * @name DenomConfigChangeEvent
+ * @package bze.tokenfactory
+ * @see proto type: bze.tokenfactory.DenomConfigChangeEvent
+ */
+export const DenomConfigChangeEvent = {
+  typeUrl: "/bze.tokenfactory.DenomConfigChangeEvent",
+  is(o: any): o is DenomConfigChangeEvent {
+    return o && (o.$typeUrl === DenomConfigChangeEvent.typeUrl || typeof o.denom === "string" && typeof o.communityPool === "string" && typeof o.transferFee === "string" && typeof o.gasSurcharge === "string");
+  },
+  isSDK(o: any): o is DenomConfigChangeEventSDKType {
+    return o && (o.$typeUrl === DenomConfigChangeEvent.typeUrl || typeof o.denom === "string" && typeof o.community_pool === "string" && typeof o.transfer_fee === "string" && typeof o.gas_surcharge === "string");
+  },
+  isAmino(o: any): o is DenomConfigChangeEventAmino {
+    return o && (o.$typeUrl === DenomConfigChangeEvent.typeUrl || typeof o.denom === "string" && typeof o.community_pool === "string" && typeof o.transfer_fee === "string" && typeof o.gas_surcharge === "string");
+  },
+  encode(message: DenomConfigChangeEvent, writer: BinaryWriter = BinaryWriter.create()): BinaryWriter {
+    if (message.denom !== "") {
+      writer.uint32(10).string(message.denom);
+    }
+    if (message.communityPool !== "") {
+      writer.uint32(18).string(message.communityPool);
+    }
+    if (message.transferFee !== "") {
+      writer.uint32(26).string(Decimal.fromUserInput(message.transferFee, 18).atomics);
+    }
+    if (message.gasSurcharge !== "") {
+      writer.uint32(34).string(Decimal.fromUserInput(message.gasSurcharge, 18).atomics);
+    }
+    return writer;
+  },
+  decode(input: BinaryReader | Uint8Array, length?: number): DenomConfigChangeEvent {
+    const reader = input instanceof BinaryReader ? input : new BinaryReader(input);
+    let end = length === undefined ? reader.len : reader.pos + length;
+    const message = createBaseDenomConfigChangeEvent();
+    while (reader.pos < end) {
+      const tag = reader.uint32();
+      switch (tag >>> 3) {
+        case 1:
+          message.denom = reader.string();
+          break;
+        case 2:
+          message.communityPool = reader.string();
+          break;
+        case 3:
+          message.transferFee = Decimal.fromAtomics(reader.string(), 18).toString();
+          break;
+        case 4:
+          message.gasSurcharge = Decimal.fromAtomics(reader.string(), 18).toString();
+          break;
+        default:
+          reader.skipType(tag & 7);
+          break;
+      }
+    }
+    return message;
+  },
+  fromPartial(object: Partial<DenomConfigChangeEvent>): DenomConfigChangeEvent {
+    const message = createBaseDenomConfigChangeEvent();
+    message.denom = object.denom ?? "";
+    message.communityPool = object.communityPool ?? "";
+    message.transferFee = object.transferFee ?? "";
+    message.gasSurcharge = object.gasSurcharge ?? "";
+    return message;
+  },
+  fromAmino(object: DenomConfigChangeEventAmino): DenomConfigChangeEvent {
+    const message = createBaseDenomConfigChangeEvent();
+    if (object.denom !== undefined && object.denom !== null) {
+      message.denom = object.denom;
+    }
+    if (object.community_pool !== undefined && object.community_pool !== null) {
+      message.communityPool = object.community_pool;
+    }
+    if (object.transfer_fee !== undefined && object.transfer_fee !== null) {
+      message.transferFee = object.transfer_fee;
+    }
+    if (object.gas_surcharge !== undefined && object.gas_surcharge !== null) {
+      message.gasSurcharge = object.gas_surcharge;
+    }
+    return message;
+  },
+  toAmino(message: DenomConfigChangeEvent): DenomConfigChangeEventAmino {
+    const obj: any = {};
+    obj.denom = message.denom === "" ? undefined : message.denom;
+    obj.community_pool = message.communityPool === "" ? undefined : message.communityPool;
+    obj.transfer_fee = message.transferFee === "" ? undefined : Decimal.fromUserInput(message.transferFee, 18).atomics;
+    obj.gas_surcharge = message.gasSurcharge === "" ? undefined : Decimal.fromUserInput(message.gasSurcharge, 18).atomics;
+    return obj;
+  },
+  fromAminoMsg(object: DenomConfigChangeEventAminoMsg): DenomConfigChangeEvent {
+    return DenomConfigChangeEvent.fromAmino(object.value);
+  },
+  fromProtoMsg(message: DenomConfigChangeEventProtoMsg): DenomConfigChangeEvent {
+    return DenomConfigChangeEvent.decode(message.value);
+  },
+  toProto(message: DenomConfigChangeEvent): Uint8Array {
+    return DenomConfigChangeEvent.encode(message).finish();
+  },
+  toProtoMsg(message: DenomConfigChangeEvent): DenomConfigChangeEventProtoMsg {
+    return {
+      typeUrl: "/bze.tokenfactory.DenomConfigChangeEvent",
+      value: DenomConfigChangeEvent.encode(message).finish()
     };
   },
   registerTypeUrl() {}

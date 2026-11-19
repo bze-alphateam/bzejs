@@ -70,11 +70,6 @@ export const createLCDClient = async ({
           requestClient
         })
       },
-      group: {
-        v1: new (await import("../cosmos/group/v1/query.lcd")).LCDQueryClient({
-          requestClient
-        })
-      },
       mint: {
         v1beta1: new (await import("../cosmos/mint/v1beta1/query.lcd")).LCDQueryClient({
           requestClient
@@ -119,11 +114,6 @@ export const createLCDClient = async ({
               requestClient
             })
           }
-        },
-        rate_limiting: {
-          v1: new (await import("./applications/rate_limiting/v1/query.lcd")).LCDQueryClient({
-            requestClient
-          })
         },
         transfer: {
           v1: new (await import("./applications/transfer/v1/query.lcd")).LCDQueryClient({

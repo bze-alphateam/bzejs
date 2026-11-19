@@ -34,6 +34,8 @@ export const withdrawValidatorCommission = buildTx<MsgWithdrawValidatorCommissio
 /**
  * FundCommunityPool defines a method to allow an account to directly
  * fund the community pool.
+ * 
+ * WARNING: This method will fail if an external community pool is used.
  * @name fundCommunityPool
  * @package cosmos.distribution.v1beta1
  * @see proto service: cosmos.distribution.v1beta1.FundCommunityPool
@@ -44,8 +46,6 @@ export const fundCommunityPool = buildTx<MsgFundCommunityPool>({
 /**
  * UpdateParams defines a governance operation for updating the x/distribution
  * module parameters. The authority is defined in the keeper.
- * 
- * Since: cosmos-sdk 0.47
  * @name updateParams
  * @package cosmos.distribution.v1beta1
  * @see proto service: cosmos.distribution.v1beta1.UpdateParams
@@ -59,7 +59,7 @@ export const updateParams = buildTx<MsgUpdateParams>({
  * could be the governance module itself. The authority is defined in the
  * keeper.
  * 
- * Since: cosmos-sdk 0.47
+ * WARNING: This method will fail if an external community pool is used.
  * @name communityPoolSpend
  * @package cosmos.distribution.v1beta1
  * @see proto service: cosmos.distribution.v1beta1.CommunityPoolSpend
@@ -70,8 +70,6 @@ export const communityPoolSpend = buildTx<MsgCommunityPoolSpend>({
 /**
  * DepositValidatorRewardsPool defines a method to provide additional rewards
  * to delegators to a specific validator.
- * 
- * Since: cosmos-sdk 0.50
  * @name depositValidatorRewardsPool
  * @package cosmos.distribution.v1beta1
  * @see proto service: cosmos.distribution.v1beta1.DepositValidatorRewardsPool
