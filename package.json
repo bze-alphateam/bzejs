@@ -50,7 +50,12 @@
     "build:dev": "npm run clean && npm run codegen && tsc --declarationMap && tsc -p tsconfig.esm.json",
     "lint": "eslint . --fix",
     "test": "jest",
-    "publish:npm": "npm run build && npm publish"
+    "publish:npm": "npm run build && npm publish",
+    "check:pack": "bash scripts/ci/check-pack.sh",
+    "check:smoke": "bash scripts/ci/smoke.sh",
+    "check:codegen": "bash scripts/ci/check-codegen.sh",
+    "check:audit": "npm audit --omit=dev --audit-level=high",
+    "check": "npm run build && npm run check:pack && npm run check:smoke && npm run check:codegen && npm run check:audit"
   },
   "dependencies": {
     "@cosmology/lcd": "^0.16.0",
