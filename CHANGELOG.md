@@ -50,6 +50,10 @@ Protobuf files compatible with **BZE v8.3.0**. This is a breaking change release
 #### TxFeeCollector module
 - New events `CommunityPoolFeePaidEvent`, `GasSurchargePaidEvent`
 
+### Dependencies
+
+- `axios` 1.14.0 → 1.21.1. `@cosmology/lcd` still pins its own axios, so apps should override axios themselves (see the README).
+
 ## v3.2.0
 
 Protobuf files compatible with **BZE v8.2.0**. Additive release: no existing type or field changed meaning, so v3.1.0 consumers upgrade without code changes.

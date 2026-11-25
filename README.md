@@ -10,6 +10,23 @@ Generated with [@hyperweb/telescope](https://github.com/hyperweb-io/telescope) v
 npm install @bze/bzejs
 ```
 
+### Security note: override axios
+
+The LCD (REST) clients come from `@cosmology/lcd`, which pins an old, vulnerable axios (`1.8.2` in `0.16.0`). An `overrides` entry in this package does not reach your install, so pin a patched axios in your own app:
+
+npm, in `package.json`:
+
+```json
+"overrides": { "axios": "1.21.1" }
+```
+
+pnpm, in `pnpm-workspace.yaml`:
+
+```yaml
+overrides:
+  axios: "1.21.1"
+```
+
 ## Development
 
 ```bash
