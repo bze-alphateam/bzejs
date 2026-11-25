@@ -50,17 +50,22 @@
     "build:dev": "npm run clean && npm run codegen && tsc --declarationMap && tsc -p tsconfig.esm.json",
     "lint": "eslint . --fix",
     "test": "jest",
-    "publish:npm": "npm run build && npm publish"
+    "publish:npm": "npm run build && npm publish",
+    "check:pack": "bash scripts/ci/check-pack.sh",
+    "check:smoke": "bash scripts/ci/smoke.sh",
+    "check:codegen": "bash scripts/ci/check-codegen.sh",
+    "check:audit": "npm audit --omit=dev --audit-level=high",
+    "check": "npm run build && npm run check:pack && npm run check:smoke && npm run check:codegen && npm run check:audit"
   },
   "dependencies": {
+    "@cosmology/lcd": "^0.16.0",
     "@interchainjs/cosmos": "1.21.0",
     "@interchainjs/cosmos-types": "1.21.0",
     "@interchainjs/encoding": "1.20.0",
     "@interchainjs/pubkey": "1.21.0",
     "@interchainjs/types": "1.21.0",
     "@interchainjs/utils": "1.21.0",
-    "@cosmology/lcd": "^0.16.0",
-    "axios": "1.14.0"
+    "axios": "1.21.1"
   },
   "devDependencies": {
     "@hyperweb/telescope": "^2.2.1",
@@ -70,7 +75,7 @@
     "typescript": "^5.8.3"
   },
   "overrides": {
-    "axios": "1.14.0"
+    "axios": "1.21.1"
   },
   "keywords": []
 }
